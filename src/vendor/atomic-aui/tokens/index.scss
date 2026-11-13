@@ -1,0 +1,12 @@
+// Hand-authored token entrypoint. Components @use '../tokens' (this file).
+// `generated/` is overwritten by `atomic-cli sync-figma`; hand-authored
+// partials (e.g. the F5.27 state-cascade overlay) live alongside it here.
+@forward 'generated';
+@forward 'component-tokens';
+// 810-Layout (page-layout-rhythm) is the one generated layer EXCLUDED from
+// generated/_index.scss so it can be forwarded AFTER the .aui-frame base map:
+// the self-contained `.aui-layout-*` rules then win source order if ever
+// co-placed with `.aui-frame` (though the F-rule keeps them on plain wrappers).
+@forward 'generated/layout';
+@forward 'state-cascade';
+@forward 'icon';

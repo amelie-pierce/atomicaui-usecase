@@ -1,0 +1,207 @@
+// modules/design/atomic-aui/src/tokens/_icon.scss
+// Hand-authored icon primitives (NOT emitted by atomic-cli). No @layer.
+//
+// §7 design notes:
+//   • `.aui-icon`           — glyph-only <i>; no box, no background.
+//   • `.aui-contained-icon` — square centering box <span>; background/border/radius
+//                             are opt-in via the box sx allow-list.
+//   • Duotone support via `--fa-*` inheriting custom props set ON the `.aui-icon`
+//     so FA's ::before/::after pseudos can read them (unlike `--aui-*` which are
+//     registered `inherits:false` and are invisible to pseudos).
+//   • Icon WEIGHT (solid / regular / light / …) is a class (e.g. `fa-solid`),
+//     never font-weight; do NOT touch font-weight here.
+
+// ─── Glyph host ──────────────────────────────────────────────────────────────
+// A bare <i> (or <span>) that renders the icon glyph at the correct size.
+// Glyph sizing is PROFILE-DRIVEN, resolved through a two-level var() chain:
+//   1. `--aui-icon-size`          — the AUTHORITATIVE size. Set by the active 200-Scale profile cell
+//      (`aui-scale-<profile>-<tier>`, inherits:true) — so a profiled host (Button/IconButton) or the
+//      icon's OWN `aui.profile` drives the glyph — AND by a layer-3 `sx.iconSize` override on the glyph
+//      itself (which beats the inherited profile value, like every other axis).
+//   2. `--aui-icon-size-fallback` — the LAST-RESORT per-scale size (`aui-icon-size-fallback-*`, set from
+//      the glyph's own `scale`). Used ONLY when no profile is up-tree (a bare, profile-less glyph), so it
+//      never shadows a profile/sx size.
+//   3. `1em`                      — final fallback (tracks parent text) when nothing above is set.
+.aui-icon {
+  display: inline-block;
+  line-height: 1;           // collapse line-box so place-items centering in a host works
+  font-style: normal;       // FA weight is a class (fa-solid); never italicize the <i>
+  font-family: var(--icongraphy-typeface-family);
+  font-size: var(--aui-icon-size, var(--aui-icon-size-fallback, 1em));
+  color: var(--aui-fg, currentColor);
+  // Duotone: FA reads these INHERITING custom props on its ::before/::after.
+  // `--aui-fg` is inherits:false → pseudos can't see it; these inheriting
+  // shim vars carry the resolved value across the pseudo boundary.
+  --fa-primary-color: var(--aui-fg, currentColor);
+  --fa-secondary-color: var(--aui-fg, currentColor);
+  // `--icongraphy-secondary-opacity` is a raw integer (e.g. 38); divide by 100.
+  --fa-secondary-opacity: calc(var(--icongraphy-secondary-opacity, 38) / 100);
+}
+
+// ─── Glyph size FALLBACK utilities (hand-authored) ────────────────────────────
+// Emitted by `build-icon-classes.ts` (`aui-icon-size-fallback-<px>`) from a glyph's own `scale`.
+// They set the FALLBACK var, not `--aui-icon-size`, so they NEVER shadow an up-tree profile cell's
+// authoritative `--aui-icon-size` (the profile-driven size) nor a layer-3 `sx.iconSize`. They only
+// fire for a bare, profile-less glyph (the `var(--aui-icon-size, var(--aui-icon-size-fallback, …))`
+// chain in `.aui-icon`). The px set mirrors `ICON_GLYPH_SIZE` (the F5.19 generic no-padding sizes:
+// xs 9 / sm 12 / md·lg 14 / xl 16). Mapped to `--p-px-*` tokens (never raw rem).
+.aui-icon-size-fallback-9  { --aui-icon-size-fallback: var(--p-px-9);  }
+.aui-icon-size-fallback-10 { --aui-icon-size-fallback: var(--p-px-10); }
+.aui-icon-size-fallback-12 { --aui-icon-size-fallback: var(--p-px-12); }
+.aui-icon-size-fallback-14 { --aui-icon-size-fallback: var(--p-px-14); }
+.aui-icon-size-fallback-16 { --aui-icon-size-fallback: var(--p-px-16); }
+.aui-icon-size-fallback-18 { --aui-icon-size-fallback: var(--p-px-18); }
+.aui-icon-size-fallback-20 { --aui-icon-size-fallback: var(--p-px-20); }
+.aui-icon-size-fallback-24 { --aui-icon-size-fallback: var(--p-px-24); }
+
+// ─── Icon-container LINE-HEIGHT rails (hand-authored) ──────────────────────────
+// Emitted by `build-icon-classes.ts` (`aui-icon-lh-<tier>`) for an UNPROFILED ContainedIcon
+// (Button.Icon) from its forwarded `scale`. They set ONLY `--aui-line-height-context` (the
+// DEFAULT-profile typescale ladder: xs=l4 / sm=l3 / md=l2 / lg=h6 / xl=h5) so the box container
+// resolves to the text line-height EVEN STANDALONE — the Figma `icon/container = font/line-height`
+// model (every 200-Scale profile's icon/container IS the line-height). The box reads it as the
+// container FALLBACK: `min-*: max(var(--aui-icon-container, var(--aui-line-height-context, 0px)), …)`.
+// They do NOT set `--aui-icon-size` (so the inner glyph keeps following the host/fallback size — box
+// and glyph stay independent) and do NOT pad/min the box (the recipe's hug-reset owns that). Nested in
+// a profiled host the box INHERITS the host's `--aui-icon-container` directly (= host line-height), so
+// this rail is the standalone fallback. This REPLACED the fixed `aui-icon-container-i<n>` band (a px
+// box that did NOT exist in Figma and inflated a default-sm Button icon to 32px). `--aui-line-height-context`
+// is `@property inherits:true` — these rails set it on the box (own-decl), the host value cascades otherwise.
+.aui-icon-lh-l4 { --aui-line-height-context: var(--typography-typescale-l4-line-height); }
+.aui-icon-lh-l3 { --aui-line-height-context: var(--typography-typescale-l3-line-height); }
+.aui-icon-lh-l2 { --aui-line-height-context: var(--typography-typescale-l2-line-height); }
+.aui-icon-lh-h6 { --aui-line-height-context: var(--typography-typescale-h6-line-height); }
+.aui-icon-lh-h5 { --aui-line-height-context: var(--typography-typescale-h5-line-height); }
+
+// ─── Centering box ───────────────────────────────────────────────────────────
+// A transparent square that centers an inner `.aui-icon`. The box paints from its OWN
+// `--aui-bg`/`--paint-*` rails: when no `color`/`paint` is set, the recipe emits `aui-bg-transparent`
+// (`--aui-bg: transparent`) so the box does NOT inherit a host's `--paint-fill` (a checkmark inside a
+// painted checkbox stays transparent + static); when `color`/`paint` is set, the box's own
+// `aui-color-<paint>-<chroma>` cell drives `--paint-fill`. The transparent DEFAULT lives in the recipe
+// (props side), not in this CSS. `--paint-content` is left inheriting, so a bare glyph follows the host
+// content color.
+// SELF-CONTAINED anatomy (2026-06-12 bugfix): `--aui-padding-*`/`--aui-gap`/`--aui-min-*` are
+// `@property inherits:true`, so a ContainedIcon nested in a PADDED/sized host (e.g. a Button with 8px
+// scale padding) would INHERIT that padding/gap/min and inflate its icon box. The RECIPE owns the
+// reset, NOT this CSS: a NO-PROFILE icon emits a 0,1,0 HUG-RESET (`aui-{padding*,gap,min-*}-0`) so it
+// hugs the glyph; a PROFILED icon emits no reset and keeps its profile cell's padding/min. The reset
+// CANNOT live here as `:where(.aui-contained-icon){--aui-padding-*:0}` — `_icon.scss` is forwarded
+// LAST, so a 0,0,0 `:where` reset beats a profile cell's 0,0,0 `:where` padding by source order and
+// would clobber a profiled icon's inset (the P1.1 bug). See `build-icon-classes.ts`.
+.aui-contained-icon {
+  box-sizing: border-box;           // F5.46 inset border
+  // LAYOUT-YIELD (Stage 2 follow-up, 2026-06-27): the ContainedIcon advertises the FULL 32-axis sx
+  // surface (`CONTAINED_ICON_SX_AXES` = every STYLE_PROP_MAP key, incl. the 11 layout axes), so its
+  // default `display`/`place-items` MUST yield to a consumer `aui.sx` layout override. Plain-class
+  // here (0,1,0) loaded LAST (`_icon.scss` is forwarded after `generated/`) MASKED `aui-display-*`
+  // and `aui-align-items-*` (place-items writes align-items) by source order → those two knobs were
+  // DEAD. Dropping them to 0,0,0 via `:where(&)` keeps the default centering box while a layout
+  // override (0,1,0 static utility) WINS — mirrors `.aui-checkbox`/`.aui-button` etc. The sizing
+  // (`inline-size`/`min-*` below) stays plain-class: it already yields to `sx.width`/`height` via the
+  // `var(--aui-width, …)` first-arg chain, and the `:has(> :not(.aui-icon))` custom-content rule must
+  // out-specify it (0,2,0), so those must NOT move into `:where()`.
+  :where(&) {
+    display: inline-grid;
+    place-items: center;}
+  // Size: the box HUGS the inner glyph (`max-content` on both axes), but is AT LEAST the
+  // active container rail. Two sources, in precedence order, drive the MIN size:
+  //   • `--aui-icon-container` — a ContainedIcon's OWN `aui.scale` (→ `aui-icon-container-i<n>`)
+  //     or an `sx.iconContainer` override; wins when set (explicit own-scale).
+  //   • `--scale-icon-container` — the ambient 200-Scale profile rail. LIVE post-P1:
+  //     `default` profile = `var(--aui-line-height-context)` (per-tier line-height, xs→xl), so a
+  //     bare ContainedIcon in a default-profile host (e.g. a Dropdown/Select trigger chevron)
+  //     grows the box to the line-height and tracks the host scale. All NON-default profiles
+  //     (square/checkable/progress/…) override `icon/container` to 0 in Figma → the rail is 0px.
+  // Using `min-*` + `max-content` (NOT `inline-size: var(…, auto)`) is deliberate: a 0px rail
+  // value does NOT fall through to `auto`, so a plain `var(--scale-icon-container, auto)` would
+  // COLLAPSE the box to 0 on the square/icon-only path. With `min-inline-size: …0px` + a
+  // `max-content` track, the 0 min is a no-op and the box HUGS the glyph (icon-size) — exactly
+  // the Figma icon-only HUG. On the default path the line-height min wins (box ≈ line-height).
+  // FULL-surface sx (the sx STANDARD, 2026-06-12): the box reads the anatomy override hooks so its
+  // `aui.sx` matches the box/container-part surface. Default size HUGS the glyph (`max-content`,
+  // clamped to the container rail); an `sx.width`/`height` override wins as the first var() arg.
+  // PROFILE drives the box (2026-06-12): a non-default profile's box size is its `--aui-min-width`/
+  // `--aui-min-height` (per-tier values in tokens/generated/layer-2/_200-scale.scss — its
+  // `--aui-icon-container` is 0), so the box min = max(icon-container band, profile box). The recipe
+  // resets `--aui-min-width/height`
+  // to 0 (a 0,1,0 `aui-min-width-0` class) for a no-profile/no-padding icon so it HUGS (and never
+  // inherits a host's min — `--aui-min-*` is `inherits:true`); a profiled icon's own scale cell sets
+  // its min, so changing `profile` visibly resizes the box.
+  inline-size: var(--aui-width, max-content);
+  min-inline-size: max(var(--aui-icon-container, var(--aui-line-height-context, 0px)), var(--aui-min-width, 0px));
+  block-size: var(--aui-height, max-content);
+  min-block-size: max(var(--aui-icon-container, var(--aui-line-height-context, 0px)), var(--aui-min-height, 0px));
+  // `sx.padding*` insets the glyph (border-box); `sx.gap` is read for surface uniformity (single
+  // child → inert by default). Per-side longhands keep an untouched side at 0.
+  padding-inline-start: var(--aui-padding-inline-start-effective, var(--aui-padding-inline-start, 0));
+  padding-inline-end: var(--aui-padding-inline-end-effective, var(--aui-padding-inline-end, 0));
+  padding-block-start: var(--aui-padding-block-start-effective, var(--aui-padding-block-start, 0));
+  padding-block-end: var(--aui-padding-block-end-effective, var(--aui-padding-block-end, 0));
+  gap: var(--aui-gap, 0);
+
+  // The box resolves a context cell like a frame: an `aui-color-<paint>-<chroma>` class sets the
+  // `--paint-*` rails the box reads here. Default `paint: 'text'` → `--paint-fill` transparent +
+  // `--paint-content` the chroma, so the box stays transparent and its CONTENT color (which the
+  // inner `.aui-icon` glyph inherits via `currentColor`) is the icon hue. `paint: 'solid'|'tonal'`
+  // fills the box. With no cell, `--paint-*` inherit from the host (unchanged default behavior).
+  background: var(--aui-bg, transparent);
+  color: var(--aui-fg, currentColor);
+
+  // Border is fully invisible by default (solid style, zero widths, transparent
+  // color). Each side is individually activated via directional width tokens.
+  // Style reads the sx `borderStyle` hook — mirrors the `.aui-frame` chain.
+  border-style: var(--aui-border-style, solid);
+  border-color: var(--aui-border-color, transparent);
+  border-block-start-width:  var(--aui-border-block-start-width,  0);
+  border-block-end-width:    var(--aui-border-block-end-width,    0);
+  border-inline-start-width: var(--aui-border-inline-start-width, 0);
+  border-inline-end-width:   var(--aui-border-inline-end-width,   0);
+
+  // Radii fall back to the single `--shape-radius` rail (210-Shape profile cell),
+  // then to `0` — mirrors the `.aui-frame` chain exactly.
+  border-start-start-radius: var(--aui-radius-start-start, 0);
+  border-start-end-radius:   var(--aui-radius-start-end,   0);
+  border-end-start-radius:   var(--aui-radius-end-start,   0);
+  border-end-end-radius:     var(--aui-radius-end-end,     0);
+}
+
+// ─── Custom-content child (2026-06-23) ────────────────────────────────────────
+// A `<ContainedIcon>` can render arbitrary CUSTOM content (an <img>/SVG — e.g. a color country
+// flag) instead of an FA glyph: `<ContainedIcon><img …/></ContainedIcon>`. The box sizes/paints
+// exactly as on the FA path (profile/scale → `--aui-icon-container`/`--aui-min-*` above); the CUSTOM
+// child must FILL THE WIDTH of that container so the visual = the icon size at every tier (SCSS
+// cascade, no TS size math — the box already owns the size).
+//
+// 🔑 The FA path sizes the box with `inline-size: var(--aui-width, max-content)`: the box HUGS the
+// tiny glyph then floats up to the `--aui-icon-container`/`--aui-min-*` FLOOR. But a custom <img>/SVG
+// has a LARGE intrinsic size, so a `max-content` box would OVERSHOOT to the child's natural size (the
+// floor is only a min). So on the custom path — detected with `:has(> :not(.aui-icon))` (zero blast
+// radius to the glyph path) — the box takes a DEFINITE size = the SAME `max(icon-container, min-*)`
+// the FA path uses as its FLOOR (an own `--aui-width`/`--aui-height` sx override still wins as the
+// first var() arg), so the box tracks the tier/profile and the child fills it. The custom path ALWAYS
+// has a scale (the component DEFAULTS `aui.scale: 'md'` when the consumer set neither scale nor profile
+// — see contained-icon.tsx), so `--aui-icon-container` is always populated; the `1em` is only an
+// ultimate safety floor (mirrors `.aui-icon`'s `1em`) and never the operative value.
+// SPECIFICITY: this must BEAT the base `.aui-contained-icon { inline-size: var(--aui-width, max-content) }`
+// (0,1,0), so it is NOT wrapped in `:where()` — `.aui-contained-icon:has(…)` is (0,2,0) and wins by
+// specificity (`:has`'s argument adds the `.aui-icon` class weight). An `aui.sx.width`/`height` utility
+// still wins because BOTH rules read `var(--aui-width, …)` first, so a set `--aui-width` short-circuits.
+.aui-contained-icon:has(> :not(.aui-icon)) {
+  inline-size: var(--aui-width, max(var(--aui-icon-container, var(--aui-line-height-context, 0px)), var(--aui-min-width, 0px), 1em));
+  block-size: var(--aui-height, max(var(--aui-icon-container, var(--aui-line-height-context, 0px)), var(--aui-min-height, 0px), 1em));
+}
+
+// The custom child itself: FILL the container box. `inline-size:100%` fills the (now definite) box
+// width; `block-size:auto` keeps the child's aspect; `min-inline-size:0` stops the child's intrinsic
+// size from pushing the box wider; `max-*:100%` + `object-fit:contain` keep an <img>/SVG undistorted
+// and unclipped (padding from an `sx.padding*` inset is respected). `:where()` keeps it zero-specificity
+// so a box `aui.sx` / consumer style still wins. Targets any DIRECT non-glyph child (FA path untouched).
+:where(.aui-contained-icon) > :not(.aui-icon) {
+  inline-size: 100%;
+  block-size: auto;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  max-block-size: 100%;
+  object-fit: contain;
+}

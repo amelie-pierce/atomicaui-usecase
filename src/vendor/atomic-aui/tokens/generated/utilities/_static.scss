@@ -1,0 +1,344 @@
+// AUTO-GENERATED — DO NOT EDIT
+// Source: hand-written static keyword utilities (atomic-cli sync)
+// Synced: 2026-10-13T08:50:04.574Z
+//
+// CSS-keyword utilities (NOT design tokens) that participate in the typed
+// `aui.sx` surface. See lib/emitters/static-utilities.ts.
+
+// textAlign → text-align (keyword utility, non-token)
+.aui-text-align-left {
+  text-align: left;
+}
+.aui-text-align-center {
+  text-align: center;
+}
+.aui-text-align-right {
+  text-align: right;
+}
+.aui-text-align-start {
+  text-align: start;
+}
+.aui-text-align-end {
+  text-align: end;
+}
+.aui-text-align-justify {
+  text-align: justify;
+}
+
+// display → display (keyword utility, non-token)
+.aui-display-flex {
+  display: flex;
+}
+.aui-display-inline-flex {
+  display: inline-flex;
+}
+.aui-display-grid {
+  display: grid;
+}
+.aui-display-inline-grid {
+  display: inline-grid;
+}
+.aui-display-block {
+  display: block;
+}
+.aui-display-inline-block {
+  display: inline-block;
+}
+.aui-display-inline {
+  display: inline;
+}
+.aui-display-none {
+  display: none;
+}
+.aui-display-contents {
+  display: contents;
+}
+
+// flexDirection → flex-direction (keyword utility, non-token)
+.aui-flex-direction-row {
+  flex-direction: row;
+}
+.aui-flex-direction-row-reverse {
+  flex-direction: row-reverse;
+}
+.aui-flex-direction-column {
+  flex-direction: column;
+}
+.aui-flex-direction-column-reverse {
+  flex-direction: column-reverse;
+}
+
+// flexWrap → flex-wrap (keyword utility, non-token)
+.aui-flex-wrap-nowrap {
+  flex-wrap: nowrap;
+}
+.aui-flex-wrap-wrap {
+  flex-wrap: wrap;
+}
+.aui-flex-wrap-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+// alignItems → align-items (keyword utility, non-token)
+.aui-align-items-start {
+  align-items: flex-start;
+}
+.aui-align-items-end {
+  align-items: flex-end;
+}
+.aui-align-items-center {
+  align-items: center;
+}
+.aui-align-items-stretch {
+  align-items: stretch;
+}
+.aui-align-items-baseline {
+  align-items: baseline;
+}
+
+// justifyContent → justify-content (keyword utility, non-token)
+.aui-justify-content-start {
+  justify-content: flex-start;
+}
+.aui-justify-content-end {
+  justify-content: flex-end;
+}
+.aui-justify-content-center {
+  justify-content: center;
+}
+.aui-justify-content-between {
+  justify-content: space-between;
+}
+.aui-justify-content-around {
+  justify-content: space-around;
+}
+.aui-justify-content-evenly {
+  justify-content: space-evenly;
+}
+.aui-justify-content-stretch {
+  justify-content: stretch;
+}
+
+// alignSelf → align-self (keyword utility, non-token)
+.aui-align-self-auto {
+  align-self: auto;
+}
+.aui-align-self-start {
+  align-self: flex-start;
+}
+.aui-align-self-end {
+  align-self: flex-end;
+}
+.aui-align-self-center {
+  align-self: center;
+}
+.aui-align-self-stretch {
+  align-self: stretch;
+}
+.aui-align-self-baseline {
+  align-self: baseline;
+}
+
+// flex → flex (keyword utility, non-token)
+.aui-flex-none {
+  flex: none;
+}
+.aui-flex-auto {
+  flex: auto;
+}
+.aui-flex-initial {
+  flex: initial;
+}
+.aui-flex-fill {
+  flex: 1 1 0%;
+}
+
+// flexBasis → flex-basis (keyword utility, non-token)
+.aui-flex-basis-auto {
+  flex-basis: auto;
+}
+.aui-flex-basis-content {
+  flex-basis: content;
+}
+.aui-flex-basis-0 {
+  flex-basis: 0;
+}
+.aui-flex-basis-quarter {
+  flex-basis: 25%;
+}
+.aui-flex-basis-third {
+  flex-basis: 33.333%;
+}
+.aui-flex-basis-half {
+  flex-basis: 50%;
+}
+.aui-flex-basis-two-thirds {
+  flex-basis: 66.667%;
+}
+.aui-flex-basis-three-quarter {
+  flex-basis: 75%;
+}
+.aui-flex-basis-full {
+  flex-basis: 100%;
+}
+
+// overflow → overflow (keyword utility, non-token)
+.aui-overflow-visible {
+  overflow: visible;
+}
+.aui-overflow-hidden {
+  overflow: hidden;
+}
+.aui-overflow-clip {
+  overflow: clip;
+}
+.aui-overflow-scroll {
+  overflow: scroll;
+}
+.aui-overflow-auto {
+  overflow: auto;
+}
+
+// overflowX → overflow-x (keyword utility, non-token)
+.aui-overflow-x-visible {
+  overflow-x: visible;
+}
+.aui-overflow-x-hidden {
+  overflow-x: hidden;
+}
+.aui-overflow-x-clip {
+  overflow-x: clip;
+}
+.aui-overflow-x-scroll {
+  overflow-x: scroll;
+}
+.aui-overflow-x-auto {
+  overflow-x: auto;
+}
+
+// overflowY → overflow-y (keyword utility, non-token)
+.aui-overflow-y-visible {
+  overflow-y: visible;
+}
+.aui-overflow-y-hidden {
+  overflow-y: hidden;
+}
+.aui-overflow-y-clip {
+  overflow-y: clip;
+}
+.aui-overflow-y-scroll {
+  overflow-y: scroll;
+}
+.aui-overflow-y-auto {
+  overflow-y: auto;
+}
+
+// position → position (keyword utility, non-token)
+.aui-position-static {
+  position: static;
+}
+.aui-position-relative {
+  position: relative;
+}
+.aui-position-absolute {
+  position: absolute;
+}
+.aui-position-sticky {
+  position: sticky;
+}
+.aui-position-fixed {
+  position: fixed;
+}
+
+// gridTemplateColumns → grid-template-columns (keyword utility, non-token)
+.aui-grid-template-columns-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.aui-grid-template-columns-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.aui-grid-template-columns-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--p-px-320, 320px)), 1fr));
+}
+
+// gridColumn → grid-column (keyword utility, non-token)
+.aui-grid-column-full {
+  grid-column: 1 / -1;
+}
+.aui-grid-column-auto {
+  grid-column: auto;
+}
+
+// margin → margin (keyword utility, non-token)
+.aui-margin-0 {
+  margin: 0;
+}
+.aui-margin-auto {
+  margin: auto;
+}
+
+// whiteSpace → white-space (keyword utility, non-token)
+.aui-white-space-normal {
+  white-space: normal;
+}
+.aui-white-space-nowrap {
+  white-space: nowrap;
+}
+.aui-white-space-pre {
+  white-space: pre;
+}
+.aui-white-space-pre-line {
+  white-space: pre-line;
+}
+.aui-white-space-pre-wrap {
+  white-space: pre-wrap;
+}
+.aui-white-space-break-spaces {
+  white-space: break-spaces;
+}
+
+// textOverflow → text-overflow (keyword utility, non-token)
+.aui-text-overflow-clip {
+  text-overflow: clip;
+}
+.aui-text-overflow-ellipsis {
+  text-overflow: ellipsis;
+}
+
+// textDecoration → text-decoration (keyword utility, non-token)
+.aui-text-decoration-none {
+  text-decoration: none;
+}
+.aui-text-decoration-underline {
+  text-decoration: underline;
+}
+.aui-text-decoration-overline {
+  text-decoration: overline;
+}
+.aui-text-decoration-line-through {
+  text-decoration: line-through;
+}
+
+// borderStyle → --aui-border-style hook (keyword utility, non-token; base map reads it for border-style)
+.aui-border-style-solid {
+  --aui-border-style: solid;
+}
+.aui-border-style-dashed {
+  --aui-border-style: dashed;
+}
+.aui-border-style-dotted {
+  --aui-border-style: dotted;
+}
+.aui-border-style-none {
+  --aui-border-style: none;
+}
+
+// aui-width keyword value(s) → --aui-width (non-token, extends the token axis)
+.aui-width-fill {
+  --aui-width: 100%;
+}
+
+// aui-height keyword value(s) → --aui-height (non-token, extends the token axis)
+.aui-height-fill {
+  --aui-height: 100%;
+}

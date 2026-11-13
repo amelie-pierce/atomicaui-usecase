@@ -1,0 +1,1405 @@
+// AUTO-GENERATED — DO NOT EDIT
+// Source: AtomicAUI Core 7.0 (Figma file 3ZvIabuROiLDIH3onwm3A4)
+// Collection: 200-Scale
+// Synced: 2026-10-13T08:50:04.564Z
+
+:where(.aui-scale-block-padding-lg) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-6);
+  --aui-padding-block-start: var(--p-px-6);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-36);
+  --aui-height-context: var(--p-px-44);
+  --aui-min-width: var(--p-px-14);
+  --aui-min-height: var(--p-px-14);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i18-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-block-padding-md) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-5);
+  --aui-padding-block-start: var(--p-px-5);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-32);
+  --aui-height-context: var(--p-px-38);
+  --aui-min-width: var(--p-px-12);
+  --aui-min-height: var(--p-px-12);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-block-padding-sm) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-28);
+  --aui-height-context: var(--p-px-32);
+  --aui-min-width: var(--p-px-10);
+  --aui-min-height: var(--p-px-10);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i14-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-block-padding-xl) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-6);
+  --aui-padding-block-start: var(--p-px-6);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-40);
+  --aui-height-context: var(--p-px-52);
+  --aui-min-width: var(--p-px-16);
+  --aui-min-height: var(--p-px-16);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i20-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}
+:where(.aui-scale-block-padding-xs) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-24);
+  --aui-height-context: var(--p-px-28);
+  --aui-min-width: var(--p-px-8);
+  --aui-min-height: var(--p-px-8);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i10-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-checkable-lg) {
+  --aui-padding-inline-end: var(--p-px-3);
+  --aui-padding-inline-start: var(--p-px-3);
+  --aui-padding-block-end: var(--p-px-3);
+  --aui-padding-block-start: var(--p-px-3);
+  --aui-gap: var(--p-px-12);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-30);
+  --aui-height-context: var(--p-px-30);
+  --aui-min-width: var(--p-px-30);
+  --aui-min-height: var(--p-px-30);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-14);
+}
+:where(.aui-scale-checkable-md) {
+  --aui-padding-inline-end: var(--p-px-3);
+  --aui-padding-inline-start: var(--p-px-3);
+  --aui-padding-block-end: var(--p-px-3);
+  --aui-padding-block-start: var(--p-px-3);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-24);
+  --aui-height-context: var(--p-px-24);
+  --aui-min-width: var(--p-px-24);
+  --aui-min-height: var(--p-px-24);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i12-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}
+:where(.aui-scale-checkable-sm) {
+  --aui-padding-inline-end: var(--p-px-2);
+  --aui-padding-inline-start: var(--p-px-2);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-8);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-22);
+  --aui-height-context: var(--p-px-22);
+  --aui-min-width: var(--p-px-22);
+  --aui-min-height: var(--p-px-22);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i10-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-checkable-xl) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-16);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-34);
+  --aui-height-context: var(--p-px-34);
+  --aui-min-width: var(--p-px-34);
+  --aui-min-height: var(--p-px-34);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i18-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-16);
+}
+:where(.aui-scale-checkable-xs) {
+  --aui-padding-inline-end: var(--p-px-2);
+  --aui-padding-inline-start: var(--p-px-2);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-20);
+  --aui-height-context: var(--p-px-20);
+  --aui-min-width: var(--p-px-20);
+  --aui-min-height: var(--p-px-20);
+  --aui-font-size-context: var(--typography-typescale-l5-font-size);
+  --aui-line-height-context: var(--typography-typescale-l5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l5-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i9-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-chip-lg) {
+  --aui-padding-inline-end: var(--p-px-10);
+  --aui-padding-inline-start: var(--p-px-10);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-5);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-28);
+  --aui-height-context: var(--p-px-28);
+  --aui-min-width: var(--p-px-28);
+  --aui-min-height: var(--p-px-28);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i14-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-chip-md) {
+  --aui-padding-inline-end: var(--p-px-8);
+  --aui-padding-inline-start: var(--p-px-8);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-4);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-22);
+  --aui-height-context: var(--p-px-22);
+  --aui-min-width: var(--p-px-22);
+  --aui-min-height: var(--p-px-22);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i11-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-chip-sm) {
+  --aui-padding-inline-end: var(--p-px-6);
+  --aui-padding-inline-start: var(--p-px-6);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-3);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-20);
+  --aui-height-context: var(--p-px-20);
+  --aui-min-width: var(--p-px-20);
+  --aui-min-height: var(--p-px-20);
+  --aui-font-size-context: var(--typography-typescale-l5-font-size);
+  --aui-line-height-context: var(--typography-typescale-l5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l5-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i10-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-chip-xl) {
+  --aui-padding-inline-end: var(--p-px-12);
+  --aui-padding-inline-start: var(--p-px-12);
+  --aui-padding-block-end: var(--p-px-5);
+  --aui-padding-block-start: var(--p-px-5);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-32);
+  --aui-height-context: var(--p-px-32);
+  --aui-min-width: var(--p-px-32);
+  --aui-min-height: var(--p-px-32);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-chip-xs) {
+  --aui-padding-inline-end: var(--p-px-6);
+  --aui-padding-inline-start: var(--p-px-6);
+  --aui-padding-block-end: var(--p-px-1);
+  --aui-padding-block-start: var(--p-px-1);
+  --aui-gap: var(--p-px-2);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-18);
+  --aui-height-context: var(--p-px-18);
+  --aui-min-width: var(--p-px-18);
+  --aui-min-height: var(--p-px-18);
+  --aui-font-size-context: var(--typography-typescale-l5-font-size);
+  --aui-line-height-context: var(--typography-typescale-l5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l5-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i9-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-compact-lg) {
+  --aui-padding-inline-end: var(--p-px-8);
+  --aui-padding-inline-start: var(--p-px-8);
+  --aui-padding-block-end: var(--p-px-3);
+  --aui-padding-block-start: var(--p-px-3);
+  --aui-gap: var(--p-px-5);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-0);
+  --aui-height-context: var(--p-px-0);
+  --aui-min-width: var(--p-px-56);
+  --aui-min-height: var(--p-px-20);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-compact-md) {
+  --aui-padding-inline-end: var(--p-px-6);
+  --aui-padding-inline-start: var(--p-px-6);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-4);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-0);
+  --aui-height-context: var(--p-px-0);
+  --aui-min-width: var(--p-px-48);
+  --aui-min-height: var(--p-px-20);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i14-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-compact-sm) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-3);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-0);
+  --aui-height-context: var(--p-px-0);
+  --aui-min-width: var(--p-px-20);
+  --aui-min-height: var(--p-px-12);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i11-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-compact-xl) {
+  --aui-padding-inline-end: var(--p-px-10);
+  --aui-padding-inline-start: var(--p-px-10);
+  --aui-padding-block-end: var(--p-px-3);
+  --aui-padding-block-start: var(--p-px-3);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-0);
+  --aui-height-context: var(--p-px-0);
+  --aui-min-width: var(--p-px-64);
+  --aui-min-height: var(--p-px-28);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i20-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}
+:where(.aui-scale-compact-xs) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-2);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-0);
+  --aui-height-context: var(--p-px-0);
+  --aui-min-width: var(--p-px-18);
+  --aui-min-height: var(--p-px-12);
+  --aui-font-size-context: var(--typography-typescale-l5-font-size);
+  --aui-line-height-context: var(--typography-typescale-l5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l5-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i9-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-contained-lg) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-24);
+  --aui-height-context: var(--p-px-24);
+  --aui-min-width: var(--p-px-24);
+  --aui-min-height: var(--p-px-24);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i18-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-contained-md) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-22);
+  --aui-height-context: var(--p-px-22);
+  --aui-min-width: var(--p-px-22);
+  --aui-min-height: var(--p-px-22);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-contained-sm) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-20);
+  --aui-height-context: var(--p-px-20);
+  --aui-min-width: var(--p-px-20);
+  --aui-min-height: var(--p-px-20);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i14-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-contained-xl) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-28);
+  --aui-height-context: var(--p-px-28);
+  --aui-min-width: var(--p-px-28);
+  --aui-min-height: var(--p-px-28);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i20-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}
+:where(.aui-scale-contained-xs) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-16);
+  --aui-height-context: var(--p-px-16);
+  --aui-min-width: var(--p-px-16);
+  --aui-min-height: var(--p-px-16);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i10-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-contained-padding-inline-lg) {
+  --aui-padding-inline-end: var(--p-px-6);
+  --aui-padding-inline-start: var(--p-px-6);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-24);
+  --aui-height-context: var(--p-px-24);
+  --aui-min-width: var(--p-px-24);
+  --aui-min-height: var(--p-px-24);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i18-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-contained-padding-inline-md) {
+  --aui-padding-inline-end: var(--p-px-5);
+  --aui-padding-inline-start: var(--p-px-5);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-22);
+  --aui-height-context: var(--p-px-22);
+  --aui-min-width: var(--p-px-22);
+  --aui-min-height: var(--p-px-22);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-contained-padding-inline-sm) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-20);
+  --aui-height-context: var(--p-px-20);
+  --aui-min-width: var(--p-px-20);
+  --aui-min-height: var(--p-px-20);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i14-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-contained-padding-inline-xl) {
+  --aui-padding-inline-end: var(--p-px-6);
+  --aui-padding-inline-start: var(--p-px-6);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-28);
+  --aui-height-context: var(--p-px-28);
+  --aui-min-width: var(--p-px-28);
+  --aui-min-height: var(--p-px-28);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i20-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}
+:where(.aui-scale-contained-padding-inline-xs) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-0);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-16);
+  --aui-height-context: var(--p-px-16);
+  --aui-min-width: var(--p-px-16);
+  --aui-min-height: var(--p-px-16);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i10-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-default-lg) {
+  --aui-padding-inline-end: var(--p-px-14);
+  --aui-padding-inline-start: var(--p-px-14);
+  --aui-padding-block-end: var(--p-px-6);
+  --aui-padding-block-start: var(--p-px-6);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-36);
+  --aui-height-context: var(--p-px-44);
+  --aui-min-width: var(--p-px-14);
+  --aui-min-height: var(--p-px-14);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i18-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-default-md) {
+  --aui-padding-inline-end: var(--p-px-12);
+  --aui-padding-inline-start: var(--p-px-12);
+  --aui-padding-block-end: var(--p-px-5);
+  --aui-padding-block-start: var(--p-px-5);
+  --aui-gap: var(--p-px-8);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-32);
+  --aui-height-context: var(--p-px-38);
+  --aui-min-width: var(--p-px-12);
+  --aui-min-height: var(--p-px-12);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-default-sm) {
+  --aui-padding-inline-end: var(--p-px-8);
+  --aui-padding-inline-start: var(--p-px-8);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-28);
+  --aui-height-context: var(--p-px-32);
+  --aui-min-width: var(--p-px-10);
+  --aui-min-height: var(--p-px-10);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i14-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-default-xl) {
+  --aui-padding-inline-end: var(--p-px-16);
+  --aui-padding-inline-start: var(--p-px-16);
+  --aui-padding-block-end: var(--p-px-6);
+  --aui-padding-block-start: var(--p-px-6);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-40);
+  --aui-height-context: var(--p-px-52);
+  --aui-min-width: var(--p-px-16);
+  --aui-min-height: var(--p-px-16);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i20-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}
+:where(.aui-scale-default-xs) {
+  --aui-padding-inline-end: var(--p-px-6);
+  --aui-padding-inline-start: var(--p-px-6);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-4);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-24);
+  --aui-height-context: var(--p-px-28);
+  --aui-min-width: var(--p-px-8);
+  --aui-min-height: var(--p-px-8);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i10-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-equal-padding-lg) {
+  --aui-padding-inline-end: var(--p-px-6);
+  --aui-padding-inline-start: var(--p-px-6);
+  --aui-padding-block-end: var(--p-px-6);
+  --aui-padding-block-start: var(--p-px-6);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-36);
+  --aui-height-context: var(--p-px-44);
+  --aui-min-width: var(--p-px-14);
+  --aui-min-height: var(--p-px-14);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i18-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-equal-padding-md) {
+  --aui-padding-inline-end: var(--p-px-5);
+  --aui-padding-inline-start: var(--p-px-5);
+  --aui-padding-block-end: var(--p-px-5);
+  --aui-padding-block-start: var(--p-px-5);
+  --aui-gap: var(--p-px-8);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-32);
+  --aui-height-context: var(--p-px-38);
+  --aui-min-width: var(--p-px-12);
+  --aui-min-height: var(--p-px-12);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-equal-padding-sm) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-28);
+  --aui-height-context: var(--p-px-32);
+  --aui-min-width: var(--p-px-10);
+  --aui-min-height: var(--p-px-10);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i14-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-equal-padding-xl) {
+  --aui-padding-inline-end: var(--p-px-6);
+  --aui-padding-inline-start: var(--p-px-6);
+  --aui-padding-block-end: var(--p-px-6);
+  --aui-padding-block-start: var(--p-px-6);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-40);
+  --aui-height-context: var(--p-px-52);
+  --aui-min-width: var(--p-px-16);
+  --aui-min-height: var(--p-px-16);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i20-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}
+:where(.aui-scale-equal-padding-xs) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-4);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-24);
+  --aui-height-context: var(--p-px-28);
+  --aui-min-width: var(--p-px-8);
+  --aui-min-height: var(--p-px-8);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i10-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-no-padding-lg) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-36);
+  --aui-height-context: var(--p-px-44);
+  --aui-min-width: var(--p-px-14);
+  --aui-min-height: var(--p-px-14);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i18-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-no-padding-md) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-8);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-32);
+  --aui-height-context: var(--p-px-38);
+  --aui-min-width: var(--p-px-12);
+  --aui-min-height: var(--p-px-12);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-no-padding-sm) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-28);
+  --aui-height-context: var(--p-px-32);
+  --aui-min-width: var(--p-px-10);
+  --aui-min-height: var(--p-px-10);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i14-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-no-padding-xl) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-40);
+  --aui-height-context: var(--p-px-52);
+  --aui-min-width: var(--p-px-16);
+  --aui-min-height: var(--p-px-16);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i20-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}
+:where(.aui-scale-no-padding-xs) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-4);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-24);
+  --aui-height-context: var(--p-px-28);
+  --aui-min-width: var(--p-px-8);
+  --aui-min-height: var(--p-px-8);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i10-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-progress-lg) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-0);
+  --aui-height-context: var(--p-px-10);
+  --aui-min-width: var(--p-px-96);
+  --aui-min-height: var(--p-px-10);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--p-px-0);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-40);
+}
+:where(.aui-scale-progress-md) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-8);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-0);
+  --aui-height-context: var(--p-px-8);
+  --aui-min-width: var(--p-px-80);
+  --aui-min-height: var(--p-px-8);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--p-px-0);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-36);
+}
+:where(.aui-scale-progress-sm) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-0);
+  --aui-height-context: var(--p-px-6);
+  --aui-min-width: var(--p-px-64);
+  --aui-min-height: var(--p-px-6);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--p-px-0);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-32);
+}
+:where(.aui-scale-progress-xl) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-12);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-0);
+  --aui-height-context: var(--p-px-12);
+  --aui-min-width: var(--p-px-128);
+  --aui-min-height: var(--p-px-12);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--p-px-0);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-44);
+}
+:where(.aui-scale-progress-xs) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-4);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-0);
+  --aui-height-context: var(--p-px-4);
+  --aui-min-width: var(--p-px-48);
+  --aui-min-height: var(--p-px-4);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--p-px-0);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-28);
+}
+:where(.aui-scale-spinner-lg) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-14);
+  --aui-stroke-width-context: var(--p-px-3);
+  --aui-width-context: var(--p-px-48);
+  --aui-height-context: var(--p-px-48);
+  --aui-min-width: var(--p-px-36);
+  --aui-min-height: var(--p-px-36);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--p-px-36);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-48);
+}
+:where(.aui-scale-spinner-md) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-8);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-36);
+  --aui-height-context: var(--p-px-36);
+  --aui-min-width: var(--p-px-24);
+  --aui-min-height: var(--p-px-24);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--p-px-24);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-36);
+}
+:where(.aui-scale-spinner-sm) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-32);
+  --aui-height-context: var(--p-px-32);
+  --aui-min-width: var(--p-px-20);
+  --aui-min-height: var(--p-px-20);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--p-px-20);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-32);
+}
+:where(.aui-scale-spinner-xl) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-20);
+  --aui-stroke-width-context: var(--p-px-4);
+  --aui-width-context: var(--p-px-60);
+  --aui-height-context: var(--p-px-60);
+  --aui-min-width: var(--p-px-48);
+  --aui-min-height: var(--p-px-48);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--p-px-48);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-60);
+}
+:where(.aui-scale-spinner-xs) {
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-gap: var(--p-px-4);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-28);
+  --aui-height-context: var(--p-px-28);
+  --aui-min-width: var(--p-px-16);
+  --aui-min-height: var(--p-px-16);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--p-px-16);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-28);
+}
+:where(.aui-scale-square-lg) {
+  --aui-padding-inline-end: var(--p-px-2);
+  --aui-padding-inline-start: var(--p-px-2);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-38);
+  --aui-height-context: var(--p-px-38);
+  --aui-min-width: var(--p-px-34);
+  --aui-min-height: var(--p-px-34);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i18-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-square-md) {
+  --aui-padding-inline-end: var(--p-px-2);
+  --aui-padding-inline-start: var(--p-px-2);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-8);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-32);
+  --aui-height-context: var(--p-px-32);
+  --aui-min-width: var(--p-px-28);
+  --aui-min-height: var(--p-px-28);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-square-sm) {
+  --aui-padding-inline-end: var(--p-px-1);
+  --aui-padding-inline-start: var(--p-px-1);
+  --aui-padding-block-end: var(--p-px-1);
+  --aui-padding-block-start: var(--p-px-1);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-28);
+  --aui-height-context: var(--p-px-28);
+  --aui-min-width: var(--p-px-26);
+  --aui-min-height: var(--p-px-26);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i14-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-square-xl) {
+  --aui-padding-inline-end: var(--p-px-2);
+  --aui-padding-inline-start: var(--p-px-2);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-42);
+  --aui-height-context: var(--p-px-42);
+  --aui-min-width: var(--p-px-38);
+  --aui-min-height: var(--p-px-38);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i20-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}
+:where(.aui-scale-square-xs) {
+  --aui-padding-inline-end: var(--p-px-1);
+  --aui-padding-inline-start: var(--p-px-1);
+  --aui-padding-block-end: var(--p-px-1);
+  --aui-padding-block-start: var(--p-px-1);
+  --aui-gap: var(--p-px-4);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-26);
+  --aui-height-context: var(--p-px-26);
+  --aui-min-width: var(--p-px-24);
+  --aui-min-height: var(--p-px-24);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i10-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-square-compact-lg) {
+  --aui-padding-inline-end: var(--p-px-3);
+  --aui-padding-inline-start: var(--p-px-3);
+  --aui-padding-block-end: var(--p-px-3);
+  --aui-padding-block-start: var(--p-px-3);
+  --aui-gap: var(--p-px-5);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-30);
+  --aui-height-context: var(--p-px-30);
+  --aui-min-width: var(--p-px-30);
+  --aui-min-height: var(--p-px-30);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i16-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-10);
+}
+:where(.aui-scale-square-compact-md) {
+  --aui-padding-inline-end: var(--p-px-2);
+  --aui-padding-inline-start: var(--p-px-2);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-4);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-24);
+  --aui-height-context: var(--p-px-24);
+  --aui-min-width: var(--p-px-24);
+  --aui-min-height: var(--p-px-24);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i14-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-square-compact-sm) {
+  --aui-padding-inline-end: var(--p-px-2);
+  --aui-padding-inline-start: var(--p-px-2);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-3);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-22);
+  --aui-height-context: var(--p-px-22);
+  --aui-min-width: var(--p-px-22);
+  --aui-min-height: var(--p-px-22);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--icongraphy-typescale-i11-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-8);
+}
+:where(.aui-scale-square-compact-xl) {
+  --aui-padding-inline-end: var(--p-px-3);
+  --aui-padding-inline-start: var(--p-px-3);
+  --aui-padding-block-end: var(--p-px-3);
+  --aui-padding-block-start: var(--p-px-3);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-34);
+  --aui-height-context: var(--p-px-34);
+  --aui-min-width: var(--p-px-34);
+  --aui-min-height: var(--p-px-34);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--icongraphy-typescale-i18-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}
+:where(.aui-scale-square-compact-xs) {
+  --aui-padding-inline-end: var(--p-px-2);
+  --aui-padding-inline-start: var(--p-px-2);
+  --aui-padding-block-end: var(--p-px-2);
+  --aui-padding-block-start: var(--p-px-2);
+  --aui-gap: var(--p-px-2);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-20);
+  --aui-height-context: var(--p-px-20);
+  --aui-min-width: var(--p-px-20);
+  --aui-min-height: var(--p-px-20);
+  --aui-font-size-context: var(--typography-typescale-l5-font-size);
+  --aui-line-height-context: var(--typography-typescale-l5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l5-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--icongraphy-typescale-i9-size);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-6);
+}
+:where(.aui-scale-switch-lg) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-8);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-40);
+  --aui-height-context: var(--p-px-40);
+  --aui-min-width: var(--p-px-44);
+  --aui-min-height: var(--p-px-18);
+  --aui-font-size-context: var(--typography-typescale-h6-font-size);
+  --aui-line-height-context: var(--typography-typescale-h6-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h6-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--p-px-18);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-18);
+}
+:where(.aui-scale-switch-md) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-8);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-36);
+  --aui-height-context: var(--p-px-36);
+  --aui-min-width: var(--p-px-40);
+  --aui-min-height: var(--p-px-16);
+  --aui-font-size-context: var(--typography-typescale-l2-font-size);
+  --aui-line-height-context: var(--typography-typescale-l2-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l2-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--p-px-16);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-16);
+}
+:where(.aui-scale-switch-sm) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-6);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-32);
+  --aui-height-context: var(--p-px-32);
+  --aui-min-width: var(--p-px-36);
+  --aui-min-height: var(--p-px-14);
+  --aui-font-size-context: var(--typography-typescale-l3-font-size);
+  --aui-line-height-context: var(--typography-typescale-l3-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l3-tracking);
+  --aui-font-weight-context: var(--p-weight-regular);
+  --aui-font-italic-context: var(--p-italic-regular);
+  --aui-icon-size: var(--p-px-14);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-14);
+}
+:where(.aui-scale-switch-xl) {
+  --aui-padding-inline-end: var(--p-px-5);
+  --aui-padding-inline-start: var(--p-px-5);
+  --aui-padding-block-end: var(--p-px-5);
+  --aui-padding-block-start: var(--p-px-5);
+  --aui-gap: var(--p-px-10);
+  --aui-stroke-width-context: var(--p-px-2);
+  --aui-width-context: var(--p-px-44);
+  --aui-height-context: var(--p-px-44);
+  --aui-min-width: var(--p-px-48);
+  --aui-min-height: var(--p-px-20);
+  --aui-font-size-context: var(--typography-typescale-h5-font-size);
+  --aui-line-height-context: var(--typography-typescale-h5-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-h5-tracking);
+  --aui-font-weight-context: var(--p-weight-light);
+  --aui-font-italic-context: var(--p-italic-light);
+  --aui-icon-size: var(--p-px-20);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-20);
+}
+:where(.aui-scale-switch-xs) {
+  --aui-padding-inline-end: var(--p-px-4);
+  --aui-padding-inline-start: var(--p-px-4);
+  --aui-padding-block-end: var(--p-px-4);
+  --aui-padding-block-start: var(--p-px-4);
+  --aui-gap: var(--p-px-4);
+  --aui-stroke-width-context: var(--p-px-1);
+  --aui-width-context: var(--p-px-28);
+  --aui-height-context: var(--p-px-28);
+  --aui-min-width: var(--p-px-32);
+  --aui-min-height: var(--p-px-12);
+  --aui-font-size-context: var(--typography-typescale-l4-font-size);
+  --aui-line-height-context: var(--typography-typescale-l4-line-height);
+  --aui-letter-spacing-context: var(--typography-typescale-l4-tracking);
+  --aui-font-weight-context: var(--p-weight-medium);
+  --aui-font-italic-context: var(--p-italic-medium);
+  --aui-icon-size: var(--p-px-12);
+  --aui-icon-container: var(--aui-line-height-context);
+  --aui-dot-size: var(--p-px-12);
+}

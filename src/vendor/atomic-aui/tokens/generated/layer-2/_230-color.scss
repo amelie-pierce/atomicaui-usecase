@@ -1,0 +1,269 @@
+// AUTO-GENERATED — DO NOT EDIT
+// Source: AtomicAUI Core 7.0 (Figma file 3ZvIabuROiLDIH3onwm3A4)
+// Collection: 230-Color
+// Synced: 2026-10-13T08:50:04.566Z
+
+:where(.aui-color-fixed-disabled) {
+  --aui-bg: var(--theme-disabled);
+  --aui-fg: var(--theme-on-disabled);
+  --aui-border-color: var(--theme-on-disabled);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-fixed-error) {
+  --aui-bg: var(--theme-surface);
+  --aui-fg: var(--theme-text);
+  --aui-border-color: var(--theme-error);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-fixed-info) {
+  --aui-bg: var(--theme-surface);
+  --aui-fg: var(--theme-text);
+  --aui-border-color: var(--theme-info);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-fixed-overlay) {
+  --aui-bg: var(--theme-overlay);
+  --aui-fg: var(--theme-text);
+  --aui-border-color: var(--theme-outlined);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-fixed-primary) {
+  --aui-bg: var(--theme-surface);
+  --aui-fg: var(--theme-text);
+  --aui-border-color: var(--theme-primary);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-fixed-raised) {
+  --aui-bg: var(--theme-raised);
+  --aui-fg: var(--theme-text);
+  --aui-border-color: var(--theme-outlined);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-fixed-secondary) {
+  --aui-bg: var(--theme-surface);
+  --aui-fg: var(--theme-text);
+  --aui-border-color: var(--theme-secondary);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-fixed-success) {
+  --aui-bg: var(--theme-surface);
+  --aui-fg: var(--theme-text);
+  --aui-border-color: var(--theme-success);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-fixed-surface) {
+  --aui-bg: var(--theme-surface);
+  --aui-fg: var(--theme-text);
+  --aui-border-color: var(--theme-outlined);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-fixed-surface-alt) {
+  --aui-bg: var(--theme-surface-alt);
+  --aui-fg: var(--theme-text);
+  --aui-border-color: var(--theme-outlined);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-fixed-warning) {
+  --aui-bg: var(--theme-surface);
+  --aui-fg: var(--theme-text);
+  --aui-border-color: var(--theme-warning);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-solid-disabled) {
+  --aui-bg: var(--theme-disabled);
+  --aui-fg: var(--theme-on-disabled);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-solid-error) {
+  --aui-bg: var(--theme-error);
+  --aui-fg: var(--theme-on-error);
+  --aui-border-color: var(--theme-error);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-solid-info) {
+  --aui-bg: var(--theme-info);
+  --aui-fg: var(--theme-on-info);
+  --aui-border-color: var(--theme-info);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-solid-overlay) {
+  --aui-bg: var(--theme-overlay);
+  --aui-fg: var(--theme-on-overlay);
+  --aui-border-color: var(--theme-overlay);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-solid-primary) {
+  --aui-bg: var(--theme-primary);
+  --aui-fg: var(--theme-on-primary);
+  --aui-border-color: var(--theme-primary);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-solid-raised) {
+  --aui-bg: var(--theme-raised);
+  --aui-fg: var(--theme-on-raised);
+  --aui-border-color: var(--theme-raised);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-solid-secondary) {
+  --aui-bg: var(--theme-secondary);
+  --aui-fg: var(--theme-on-secondary);
+  --aui-border-color: var(--theme-secondary);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-solid-success) {
+  --aui-bg: var(--theme-success);
+  --aui-fg: var(--theme-on-success);
+  --aui-border-color: var(--theme-success);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-solid-surface) {
+  --aui-bg: var(--theme-surface);
+  --aui-fg: var(--theme-on-surface);
+  --aui-border-color: var(--theme-surface);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-solid-surface-alt) {
+  --aui-bg: var(--theme-surface-alt);
+  --aui-fg: var(--theme-on-surface-alt);
+  --aui-border-color: var(--theme-surface-alt);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-solid-warning) {
+  --aui-bg: var(--theme-warning);
+  --aui-fg: var(--theme-on-warning);
+  --aui-border-color: var(--theme-warning);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-text-disabled) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-on-disabled);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-text-error) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-error);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-text-info) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-info);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-text-overlay) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-on-overlay);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-text-primary) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-primary);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-text-raised) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-on-raised);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-text-secondary) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-secondary);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-text-success) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-success);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-text-surface) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-on-surface);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-text-surface-alt) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-on-surface-alt);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-text-warning) {
+  --aui-bg: var(--theme-transparent);
+  --aui-fg: var(--theme-warning);
+  --aui-border-color: var(--theme-transparent);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-tonal-disabled) {
+  --aui-bg: var(--theme-disabled);
+  --aui-fg: var(--theme-on-disabled);
+  --aui-border-color: var(--theme-on-disabled);
+  --aui-overlay-color: var(--theme-transparent);
+}
+:where(.aui-color-tonal-error) {
+  --aui-bg: var(--theme-on-error);
+  --aui-fg: var(--theme-error);
+  --aui-border-color: var(--theme-error);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-tonal-info) {
+  --aui-bg: var(--theme-on-info);
+  --aui-fg: var(--theme-info);
+  --aui-border-color: var(--theme-info);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-tonal-overlay) {
+  --aui-bg: var(--theme-overlay);
+  --aui-fg: var(--theme-on-overlay);
+  --aui-border-color: var(--theme-on-overlay);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-tonal-primary) {
+  --aui-bg: var(--theme-on-primary);
+  --aui-fg: var(--theme-primary);
+  --aui-border-color: var(--theme-primary);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-tonal-raised) {
+  --aui-bg: var(--theme-raised);
+  --aui-fg: var(--theme-on-raised);
+  --aui-border-color: var(--theme-on-raised);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-tonal-secondary) {
+  --aui-bg: var(--theme-on-secondary);
+  --aui-fg: var(--theme-secondary);
+  --aui-border-color: var(--theme-secondary);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-tonal-success) {
+  --aui-bg: var(--theme-on-success);
+  --aui-fg: var(--theme-success);
+  --aui-border-color: var(--theme-success);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-tonal-surface) {
+  --aui-bg: var(--theme-surface);
+  --aui-fg: var(--theme-on-surface);
+  --aui-border-color: var(--theme-on-surface);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-tonal-surface-alt) {
+  --aui-bg: var(--theme-surface-alt);
+  --aui-fg: var(--theme-on-surface-alt);
+  --aui-border-color: var(--theme-on-surface-alt);
+  --aui-overlay-color: var(--aui-fg);
+}
+:where(.aui-color-tonal-warning) {
+  --aui-bg: var(--theme-on-warning);
+  --aui-fg: var(--theme-warning);
+  --aui-border-color: var(--theme-warning);
+  --aui-overlay-color: var(--aui-fg);
+}

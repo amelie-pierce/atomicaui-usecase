@@ -1,0 +1,140 @@
+// AUTO-GENERATED — DO NOT EDIT
+// Source: AtomicAUI Core 7.0 (Figma file 3ZvIabuROiLDIH3onwm3A4)
+// Collection: 300-Typography-Typescale
+// Synced: 2026-10-13T08:50:04.572Z
+
+:where(.aui-typography-typescale-default) {
+  --aui-font-size: var(--aui-font-size-context);
+  --aui-line-height: var(--aui-line-height-context);
+  --aui-typography-weight: var(--aui-font-weight-context);
+  --aui-typography-italic: var(--aui-font-italic-context);
+  --aui-letter-spacing: var(--aui-letter-spacing-context);
+}
+
+:where(.aui-typography-typescale-h1) {
+  --aui-font-size: var(--typography-typescale-h1-font-size);
+  --aui-line-height: var(--typography-typescale-h1-line-height);
+  --aui-typography-weight: var(--p-weight-light);
+  --aui-typography-italic: var(--p-italic-light);
+  --aui-letter-spacing: var(--typography-typescale-h1-tracking);
+}
+
+:where(.aui-typography-typescale-h2) {
+  --aui-font-size: var(--typography-typescale-h2-font-size);
+  --aui-line-height: var(--typography-typescale-h2-line-height);
+  --aui-typography-weight: var(--p-weight-light);
+  --aui-typography-italic: var(--p-italic-light);
+  --aui-letter-spacing: var(--typography-typescale-h2-tracking);
+}
+
+:where(.aui-typography-typescale-h3) {
+  --aui-font-size: var(--typography-typescale-h3-font-size);
+  --aui-line-height: var(--typography-typescale-h3-line-height);
+  --aui-typography-weight: var(--p-weight-light);
+  --aui-typography-italic: var(--p-italic-light);
+  --aui-letter-spacing: var(--typography-typescale-h3-tracking);
+}
+
+:where(.aui-typography-typescale-h4) {
+  --aui-font-size: var(--typography-typescale-h4-font-size);
+  --aui-line-height: var(--typography-typescale-h4-line-height);
+  --aui-typography-weight: var(--p-weight-regular);
+  --aui-typography-italic: var(--p-italic-regular);
+  --aui-letter-spacing: var(--typography-typescale-h4-tracking);
+}
+
+:where(.aui-typography-typescale-h5) {
+  --aui-font-size: var(--typography-typescale-h5-font-size);
+  --aui-line-height: var(--typography-typescale-h5-line-height);
+  --aui-typography-weight: var(--p-weight-regular);
+  --aui-typography-italic: var(--p-italic-regular);
+  --aui-letter-spacing: var(--typography-typescale-h5-tracking);
+}
+
+:where(.aui-typography-typescale-h6) {
+  --aui-font-size: var(--typography-typescale-h6-font-size);
+  --aui-line-height: var(--typography-typescale-h6-line-height);
+  --aui-typography-weight: var(--p-weight-medium);
+  --aui-typography-italic: var(--p-italic-medium);
+  --aui-letter-spacing: var(--typography-typescale-h6-tracking);
+}
+
+:where(.aui-typography-typescale-p1) {
+  --aui-font-size: var(--typography-typescale-p1-font-size);
+  --aui-line-height: var(--typography-typescale-p1-line-height);
+  --aui-typography-weight: var(--p-weight-regular);
+  --aui-typography-italic: var(--p-italic-regular);
+  --aui-letter-spacing: var(--typography-typescale-p1-tracking);
+}
+
+:where(.aui-typography-typescale-p2) {
+  --aui-font-size: var(--typography-typescale-p2-font-size);
+  --aui-line-height: var(--typography-typescale-p2-line-height);
+  --aui-typography-weight: var(--p-weight-regular);
+  --aui-typography-italic: var(--p-italic-regular);
+  --aui-letter-spacing: var(--typography-typescale-p2-tracking);
+}
+
+:where(.aui-typography-typescale-p3) {
+  --aui-font-size: var(--typography-typescale-p3-font-size);
+  --aui-line-height: var(--typography-typescale-p3-line-height);
+  --aui-typography-weight: var(--p-weight-regular);
+  --aui-typography-italic: var(--p-italic-regular);
+  --aui-letter-spacing: var(--typography-typescale-p3-tracking);
+}
+
+:where(.aui-typography-typescale-l1) {
+  --aui-font-size: var(--typography-typescale-l1-font-size);
+  --aui-line-height: var(--typography-typescale-l1-line-height);
+  --aui-typography-weight: var(--p-weight-medium);
+  --aui-typography-italic: var(--p-italic-medium);
+  --aui-letter-spacing: var(--typography-typescale-l1-tracking);
+}
+
+:where(.aui-typography-typescale-l2) {
+  --aui-font-size: var(--typography-typescale-l2-font-size);
+  --aui-line-height: var(--typography-typescale-l2-line-height);
+  --aui-typography-weight: var(--p-weight-medium);
+  --aui-typography-italic: var(--p-italic-medium);
+  --aui-letter-spacing: var(--typography-typescale-l2-tracking);
+}
+
+:where(.aui-typography-typescale-l3) {
+  --aui-font-size: var(--typography-typescale-l3-font-size);
+  --aui-line-height: var(--typography-typescale-l3-line-height);
+  --aui-typography-weight: var(--p-weight-medium);
+  --aui-typography-italic: var(--p-italic-medium);
+  --aui-letter-spacing: var(--typography-typescale-l3-tracking);
+}
+
+:where(.aui-typography-typescale-l4) {
+  --aui-font-size: var(--typography-typescale-l4-font-size);
+  --aui-line-height: var(--typography-typescale-l4-line-height);
+  --aui-typography-weight: var(--p-weight-semi-bold);
+  --aui-typography-italic: var(--p-italic-semi-bold);
+  --aui-letter-spacing: var(--typography-typescale-l4-tracking);
+}
+
+:where(.aui-typography-typescale-l5) {
+  --aui-font-size: var(--typography-typescale-l5-font-size);
+  --aui-line-height: var(--typography-typescale-l5-line-height);
+  --aui-typography-weight: var(--p-weight-semi-bold);
+  --aui-typography-italic: var(--p-italic-semi-bold);
+  --aui-letter-spacing: var(--typography-typescale-l5-tracking);
+}
+
+:where(.aui-typography-typescale-l6) {
+  --aui-font-size: var(--typography-typescale-l6-font-size);
+  --aui-line-height: var(--typography-typescale-l6-line-height);
+  --aui-typography-weight: var(--p-weight-semi-bold);
+  --aui-typography-italic: var(--p-italic-semi-bold);
+  --aui-letter-spacing: var(--typography-typescale-l6-tracking);
+}
+
+:where(.aui-typography-typescale-l7) {
+  --aui-font-size: var(--typography-typescale-l7-font-size);
+  --aui-line-height: var(--typography-typescale-l7-line-height);
+  --aui-typography-weight: var(--p-weight-bold);
+  --aui-typography-italic: var(--p-italic-bold);
+  --aui-letter-spacing: var(--typography-typescale-l7-tracking);
+}

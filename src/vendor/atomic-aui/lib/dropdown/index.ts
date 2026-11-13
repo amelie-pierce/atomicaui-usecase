@@ -1,0 +1,40 @@
+// modules/design/atomic-aui/src/lib/dropdown/index.ts
+//
+// Public surface for the Dropdown component (the action menu: Root + Trigger + Portal +
+// Positioner + Popup + Item).
+export { Dropdown, createDropdownHandle } from './dropdown';
+export type {
+  DropdownRootProps,
+  DropdownTriggerProps,
+  DropdownChevronProps,
+  DropdownIconProps,
+  DropdownPortalProps,
+  DropdownPositionerProps,
+  DropdownPopupProps,
+  DropdownItemProps,
+  DropdownGroupProps,
+  DropdownGroupLabelProps,
+  DropdownSeparatorProps,
+  DropdownArrowProps,
+  DropdownBackdropProps,
+  DropdownViewportProps,
+  DropdownHandle,
+  DropdownCheckboxItemProps,
+  DropdownCheckboxItemIndicatorProps,
+  DropdownRadioGroupProps,
+  DropdownRadioItemProps,
+  DropdownRadioItemIndicatorProps,
+  DropdownSubmenuRootProps,
+  DropdownSubmenuTriggerProps,
+  DropdownLinkItemProps,
+  DropdownTriggerAui,
+  DropdownPopupAui,
+  DropdownItemAui,
+  DropdownGroupLabelAui,
+  DropdownCheckableItemAui,
+  DropdownSubmenuTriggerAui,
+  DropdownColor,
+  DropdownPaint,
+  DropdownScale,
+  DropdownShape,
+} from './dropdown';

@@ -64,16 +64,6 @@ $narrow: 840px;
   min-block-size: 0;
 }
 
-.ug-card__header {
-  flex: none;
-  padding-block-end: var(--p-px-12);
-  border-block-end: var(--p-px-1) solid var(--theme-raised);
-}
-
-.ug-card__header :is(h1, h2) {
-  margin: 0;
-}
-
 .ug-card__content {
   flex: 1 1 auto;
   min-block-size: 0;
@@ -88,6 +78,16 @@ $narrow: 840px;
   justify-content: center;
   gap: var(--p-px-16);
   min-block-size: 100%;
+}
+
+// The Copy button sits top-right of the code card and stays in view while the snippet scrolls.
+.ug-code__bar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-block-end: var(--p-px-8);
 }
 
 .ug-code__pre {

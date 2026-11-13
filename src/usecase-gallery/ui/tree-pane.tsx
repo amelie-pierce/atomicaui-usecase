@@ -54,7 +54,8 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
   }, [groups, selectedId]);
 
   return (
-    <PaneCard id="ug-tree-title" title={title} as="h1" className="ug-tree">
+    <PaneCard label="Components" className="ug-tree">
+      <h1 className="ug-visually-hidden">{title}</h1>
       <nav
         aria-label="Components and use cases"
         data-icon-font={iconFont ? 'loaded' : undefined}

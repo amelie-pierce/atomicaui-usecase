@@ -105,7 +105,13 @@ $narrow: 840px;
 }
 
 .ug-docs__head {
+  gap: var(--p-px-8);
   padding-block-end: var(--p-px-16);
+}
+
+// The id chip hugs its label instead of stretching across the column.
+.ug-docs__id {
+  align-self: flex-start;
 }
 
 .ug-docs__head :is(p, h3),
@@ -126,6 +132,39 @@ $narrow: 840px;
 }
 
 // ── Tree ────────────────────────────────────────────────────────────────────
+// STOPGAP: the kit chevron is a Font Awesome glyph and renders blank until the host loads that font.
+// Until then this drawn chevron stands in (the kit rotates the chevron span itself on open). Once a
+// kit font face has loaded, TreePane sets data-icon-font="loaded" and this block steps aside. To drop
+// it for good, delete this block and the `useKitIconFont` hook in ui/tree-pane.tsx.
+.ug-tree__chevron {
+  position: relative;
+  flex: none;
+  inline-size: var(--p-px-16);
+  block-size: var(--p-px-16);
+}
+
+.ug-tree__chevron::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: var(--p-px-8);
+  block-size: var(--p-px-8);
+  border-inline-end: var(--p-px-2) solid currentColor;
+  border-block-end: var(--p-px-2) solid currentColor;
+  transform: translate(-50%, -75%) rotate(45deg);
+}
+
+[data-icon-font='loaded'] .ug-tree__chevron::after {
+  content: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ug-tree__chevron {
+    transition: none;
+  }
+}
+
 .ug-tree__list {
   list-style: none;
   margin: 0;
@@ -149,7 +188,6 @@ $narrow: 840px;
 
   &[aria-current='page'] {
     background: var(--theme-raised);
-    box-shadow: inset var(--p-px-3) 0 0 var(--theme-primary);
   }
 
   &:focus-visible {

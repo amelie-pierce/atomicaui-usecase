@@ -159,12 +159,6 @@ $narrow: 840px;
   content: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .ug-tree__chevron {
-    transition: none;
-  }
-}
-
 .ug-tree__list {
   list-style: none;
   margin: 0;

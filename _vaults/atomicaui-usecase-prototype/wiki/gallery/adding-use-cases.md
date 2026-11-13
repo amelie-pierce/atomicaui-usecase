@@ -1,14 +1,20 @@
 ---
 title: Adding use cases
-description: How the gallery registry works and how to add a use case or component.
+description: How the self-contained usecase-gallery folder discovers use cases and how to add one.
 date: 2026-11-13
 ---
 
 # Adding use cases
 
-- Every use case is one `define({...})` entry in `USE_CASES` (`src/usecases/registry.tsx`). The entry holds an `element`; the preview renders that element and the displayed code is generated from it by `elementToJsx` (`src/usecases/serialize-jsx.ts`), so the two cannot drift.
-- A new component needs only entries with a new `component` name; the sidebar groups by that name (`COMPONENT_NAMES`, `src/usecases/registry.tsx`, `src/App.tsx`).
-- Selection is the URL hash equal to the use case id (`#Button-001`); an unknown hash falls back to the first entry (`src/App.tsx`).
-- The serializer handles strings, booleans, numbers, plain objects and nested elements as props or children; arrow functions are not supported (UNVERIFIED beyond that).
+Updated 2026-11-13: replaced the old single `registry.tsx` with the portable `src/usecase-gallery/` folder. Its own `README.md` is the how-to; this note holds the non-obvious facts.
+
+- Discovery is `import.meta.glob` in `src/usecase-gallery/catalog/catalog.ts`; the rules and validation (id pattern, prefix match, duplicates) are in `src/usecase-gallery/catalog/build-catalog.ts`. A use case is a folder with `example.tsx` and `usecase.ts`; a component is `<component>.meta.ts`. No registry edit.
+- Preview and code come from one file: `example.tsx` is rendered (lazy) and read with `?raw`; `src/usecase-gallery/catalog/snippet.ts` strips the kit import and the `Example` wrapper. It expects `return` to be the last statement of the component.
+- `src/usecase-gallery/kit.ts` is the only file that imports the vendored kit (`src/vendor/atomic-aui`, read-only).
+- Selection is the URL hash (`#Button-001`); unknown hash falls back to the first use case (`src/usecase-gallery/hooks/use-hash-selection.ts`).
+- Layout: `Panels` (kit, wraps react-resizable-panels) above 840px, one stacked column below (`src/usecase-gallery/layout/layouts.tsx`, `usecase-gallery.tsx`).
 - `vite.config.ts` enables `@vitejs/plugin-react`; without it JSX compiles with the classic transform and the page fails at runtime with "React is not defined" even though `npm run build` passes.
+- Kit `Card` paints over bare children: put content in `Card.Body` / `Card.Content` (`src/usecase-gallery/ui/docs-pane.tsx`, `code-pane.tsx`), otherwise text is invisible.
+- `Panels.Panel` styles land on RRP's nested inner div, which is a flex row by default; pane wrappers need `flex-direction: column` (`src/usecase-gallery/styles/gallery.scss`).
+- The kit's `Icon` needs the FontAwesome web font, which this app does not load, so glyphs (e.g. the Collapsible chevron) render blank. No icon-only controls are used for that reason.
 - Button props: only `aui` (`color`, `paint`, `scale`, `shape`), native `disabled`, and `Button.Icon` / `Button.Spinner` parts (`src/vendor/atomic-aui/lib/button/button.tsx`). There is no `loading` prop.

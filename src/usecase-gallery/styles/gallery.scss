@@ -1,0 +1,241 @@
+// Layout and chrome for the use case gallery. Color, type, spacing and shape come from AtomicAUI tokens
+// (CSS variables) and kit components only; the tokens stylesheet must be loaded by the host app.
+
+$narrow: 840px;
+
+.ug {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  padding: var(--p-px-16);
+  background: var(--theme-surface-alt);
+  color: var(--theme-on-surface-alt);
+  overflow: hidden;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+.ug-visually-hidden {
+  position: absolute;
+  inline-size: var(--p-px-1);
+  block-size: var(--p-px-1);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+// ── Resizable shell ─────────────────────────────────────────────────────────
+.ug-layout {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.ug-layout__panel {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  min-block-size: 0;
+  block-size: 100%;
+  overflow: auto;
+  // Panels paint a surface by default; the panes below are the cards, so the panel itself stays clear.
+  background: transparent;
+}
+
+// ── Panes ───────────────────────────────────────────────────────────────────
+.ug-pane {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-8);
+  flex: 1 1 auto;
+  min-block-size: 0;
+}
+
+.ug-pane__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--p-px-12);
+}
+
+.ug-pane__heading {
+  margin: 0;
+}
+
+.ug-pane,
+.ug-render,
+.ug-code,
+.ug-docs,
+.ug-tree {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.ug-render,
+.ug-code,
+.ug-docs,
+.ug-tree {
+  border: var(--p-px-1) solid var(--theme-raised);
+}
+
+.ug-render {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  display: flex;
+  overflow: auto;
+}
+
+.ug-render__stage {
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--p-px-16);
+  padding: var(--p-px-24);
+}
+
+.ug-code {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.ug-code__content {
+  flex: 1 1 auto;
+  display: flex;
+  min-inline-size: 0;
+  min-block-size: 0;
+}
+
+.ug-code__pre {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  margin: 0;
+  padding: var(--p-px-16);
+  overflow: auto;
+  white-space: pre;
+  tab-size: 2;
+}
+
+.ug-docs {
+  block-size: 100%;
+  overflow: auto;
+}
+
+.ug-docs__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-16);
+}
+
+.ug-pane__heading,
+.ug-docs :is(p, h2, h3) {
+  margin: 0;
+}
+
+.ug-docs__head,
+.ug-docs__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-6);
+  margin: 0;
+}
+
+.ug-docs__section {
+  padding-block-start: var(--p-px-16);
+  border-block-start: var(--p-px-1) solid var(--theme-raised);
+}
+
+// ── Tree ────────────────────────────────────────────────────────────────────
+.ug-tree {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-12);
+  block-size: 100%;
+  padding: var(--p-px-16);
+  background: var(--theme-surface);
+  color: var(--theme-on-surface);
+  border-radius: var(--p-px-8);
+  overflow: hidden;
+}
+
+.ug-tree__title {
+  margin: 0;
+  padding-block-end: var(--p-px-12);
+  border-block-end: var(--p-px-1) solid var(--theme-raised);
+}
+
+.ug-tree__groups {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow-y: auto;
+}
+
+.ug-tree__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-2);
+}
+
+.ug-tree__link {
+  display: flex;
+  flex-direction: column;
+  padding: var(--p-px-8);
+  border-radius: var(--p-px-8);
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--theme-raised);
+  }
+
+  &[aria-current='page'] {
+    background: var(--theme-raised);
+    box-shadow: inset var(--p-px-3) 0 0 var(--theme-primary);
+  }
+
+  &:focus-visible {
+    outline: var(--p-px-2) solid var(--theme-focus);
+    outline-offset: calc(var(--p-px-2) * -1);
+  }
+}
+
+// ── Narrow: one scrolling column ────────────────────────────────────────────
+.ug-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-16);
+}
+
+@media (max-width: $narrow) {
+  .ug {
+    position: static;
+    min-block-size: 100dvh;
+    overflow: visible;
+  }
+
+  .ug-tree {
+    block-size: auto;
+    max-block-size: calc(var(--p-px-16) * 14);
+  }
+
+  .ug-render__stage {
+    min-block-size: var(--p-px-160);
+  }
+
+  .ug-code {
+    min-block-size: var(--p-px-128);
+  }
+
+  .ug-docs {
+    block-size: auto;
+  }
+}

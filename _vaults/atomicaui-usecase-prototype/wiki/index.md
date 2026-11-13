@@ -6,7 +6,7 @@ date: 2026-11-13
 
 # atomicaui-usecase-prototype
 
-A Vite + React page that lists AtomicAUI components and their use cases (`Button-001`, ...), each with a description, a live preview and copyable code. Source: `src/`.
+A Vite + React page that lists AtomicAUI components and their use cases (`Button-001`, ...), each with a description, a live preview and copyable code. Source: `src/`; the feature is the self-contained `src/usecase-gallery/`.
 
 ## Operating mode
 
@@ -14,7 +14,7 @@ Notes are compiled just in time, file-cited, and every note is registered in thi
 
 ## Authority order
 
-Live code (`src/usecases/registry.tsx`, `src/App.tsx`), then the vendored library at `src/vendor/atomic-aui` (read-only, never edit), then these notes.
+Live code (`src/usecase-gallery/`, `src/App.tsx`), then the vendored library at `src/vendor/atomic-aui` (read-only, never edit), then these notes.
 
 ## Taxonomy
 

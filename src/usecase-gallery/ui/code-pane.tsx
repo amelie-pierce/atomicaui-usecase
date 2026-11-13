@@ -18,25 +18,19 @@ export function CodePane({ usecase }: { usecase: Usecase }) {
   const code = usecase.loadCode();
   const { status, copy } = useCopy();
   return (
-    <PaneCard
-      id="ug-code-title"
-      title="Code"
-      className="ug-code"
-      action={
-        <>
-          <Button
-            aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }}
-            aria-label={`Copy code for ${usecase.id}`}
-            onClick={() => code.then(copy)}
-          >
-            {LABEL[status]}
-          </Button>
-          <span role="status" className="ug-visually-hidden">
-            {status === 'copied' ? 'Code copied to clipboard' : status === 'failed' ? 'Copy failed' : ''}
-          </span>
-        </>
-      }
-    >
+    <PaneCard label="Code" className="ug-code">
+      <div className="ug-code__bar">
+        <Button
+          aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }}
+          aria-label={`Copy code for ${usecase.id}`}
+          onClick={() => code.then(copy)}
+        >
+          {LABEL[status]}
+        </Button>
+        <span role="status" className="ug-visually-hidden">
+          {status === 'copied' ? 'Code copied to clipboard' : status === 'failed' ? 'Copy failed' : ''}
+        </span>
+      </div>
       <Suspense fallback={null}>
         <Snippet code={code} />
       </Suspense>

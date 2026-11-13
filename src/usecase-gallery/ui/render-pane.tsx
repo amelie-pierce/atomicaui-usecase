@@ -6,7 +6,7 @@ import { PaneCard } from './pane-card';
 export function RenderPane({ usecase }: { usecase: Usecase }) {
   const { Example } = usecase;
   return (
-    <PaneCard id="ug-render-title" title="Preview" className="ug-render">
+    <PaneCard label="Preview" className="ug-render">
       <Suspense fallback={null}>
         <div className="ug-render__stage">
           <Example />

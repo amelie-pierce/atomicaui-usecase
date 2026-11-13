@@ -10,12 +10,12 @@ const SECTIONS = [
 
 export function DocsPane({ usecase }: { usecase: Usecase }) {
   return (
-    <PaneCard id="ug-docs-title" title="Documentation" className="ug-docs">
+    <PaneCard label="Documentation" className="ug-docs">
       <header className="ug-docs__head">
         <Chip aui={{ color: 'primary', paint: 'solid', scale: 'md' }} className="ug-docs__id">
           <Chip.Label weight="bold">{usecase.id}</Chip.Label>
         </Chip>
-        <Type role="h4" as="h3" weight="bold">{usecase.title}</Type>
+        <Type role="h4" as="h2" weight="bold">{usecase.title}</Type>
         <Type role="p3" as="p" color="muted">{usecase.summary}</Type>
       </header>
       <dl className="ug-docs__sections">

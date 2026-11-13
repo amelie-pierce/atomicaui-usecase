@@ -1,5 +1,6 @@
-import { Card, Type } from '../kit';
+import { Type } from '../kit';
 import type { Usecase } from '../types';
+import { PaneCard } from './pane-card';
 
 const SECTIONS = [
   ['Where', 'where'],
@@ -9,20 +10,20 @@ const SECTIONS = [
 
 export function DocsPane({ usecase }: { usecase: Usecase }) {
   return (
-    <Card aui={{ color: 'surface' }} className="ug-docs" aria-labelledby="ug-docs-title">
-      <Card.Body className="ug-docs__body">
-        <header className="ug-docs__head">
-          <Type role="h6" as="p" family="display" color="muted">{usecase.id}</Type>
-          <Type role="h4" as="h2" family="display" id="ug-docs-title">{usecase.title}</Type>
-          <Type role="p2">{usecase.summary}</Type>
-        </header>
+    <PaneCard id="ug-docs-title" title="Documentation" className="ug-docs">
+      <header className="ug-docs__head">
+        <Type role="l4" as="p" color="muted">{usecase.id}</Type>
+        <Type role="l2" as="h3">{usecase.title}</Type>
+        <Type role="p3" as="p">{usecase.summary}</Type>
+      </header>
+      <dl className="ug-docs__sections">
         {SECTIONS.map(([label, key]) => (
-          <section key={key} className="ug-docs__section">
-            <Type role="h6" as="h3" family="display">{label}</Type>
-            <Type role="p2">{usecase[key]}</Type>
-          </section>
+          <div key={key} className="ug-docs__section">
+            <Type as="dt" role="l4" color="muted">{label}</Type>
+            <Type as="dd" role="p3">{usecase[key]}</Type>
+          </div>
         ))}
-      </Card.Body>
-    </Card>
+      </dl>
+    </PaneCard>
   );
 }

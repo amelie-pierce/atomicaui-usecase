@@ -1,5 +1,7 @@
 import { Button } from '../../../kit';
 
 export default function Example() {
-  return <Button aui={{ color: 'secondary', paint: 'tonal' }}>Cancel</Button>;
+  return (
+    <Button aui={{ scale: 'sm', color: 'surface-alt', paint: 'solid', shape: 'soft' }}>Cancel</Button>
+  );
 }

@@ -14,7 +14,7 @@ Updated 2026-11-13: replaced the old single `registry.tsx` with the portable `sr
 - Selection is the URL hash (`#Button-001`); unknown hash falls back to the first use case (`src/usecase-gallery/hooks/use-hash-selection.ts`).
 - Layout: `Panels` (kit, wraps react-resizable-panels) above 840px, one stacked column below (`src/usecase-gallery/layout/layouts.tsx`, `usecase-gallery.tsx`).
 - `vite.config.ts` enables `@vitejs/plugin-react`; without it JSX compiles with the classic transform and the page fails at runtime with "React is not defined" even though `npm run build` passes.
-- Kit `Card` paints over bare children: put content in `Card.Body` / `Card.Content` (`src/usecase-gallery/ui/docs-pane.tsx`, `code-pane.tsx`), otherwise text is invisible.
+- Kit `Card` paints over bare children: put content in `Card.Body` / `Card.Content` (`src/usecase-gallery/ui/pane-card.tsx`), otherwise text is invisible.
 - `Panels.Panel` styles land on RRP's nested inner div, which is a flex row by default; pane wrappers need `flex-direction: column` (`src/usecase-gallery/styles/gallery.scss`).
 - The kit's `Icon` needs the FontAwesome web font, which this app does not load, so glyphs (e.g. the Collapsible chevron) render blank. No icon-only controls are used for that reason.
 - Button props: only `aui` (`color`, `paint`, `scale`, `shape`), native `disabled`, and `Button.Icon` / `Button.Spinner` parts (`src/vendor/atomic-aui/lib/button/button.tsx`). There is no `loading` prop.

@@ -1,9 +1,9 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  title: 'Primary action',
-  summary: 'One solid Button marks the main action of a view.',
-  where: 'The footer of a form or dialog, a card, or the end of a page: Save changes, Continue, Send.',
-  when: 'Use it when one outcome is the expected next step. Keep a single primary action per view so the next step is obvious.',
-  how: 'Set aui color to "primary" and paint to "solid". Label it with a verb, and pair it with a quieter secondary action.',
+  title: 'Dialog confirm',
+  summary: 'The solid secondary Button commits the action of a dialog.',
+  where: 'The footer of a confirmation or form dialog, beside Cancel: Reset, Submit, Accept. Real site source: HCS Button-001.',
+  when: 'Use it for the one action that confirms the dialog. In brand atomic the near-black fill is color "secondary", not "primary" (orange). Pair it with the gray Cancel from Button-002.',
+  how: 'Set aui scale "sm", color "secondary" and paint "solid". The real dialogs use Dialog.Button or AlertDialog.Button with the same aui; Button is shown here because the gallery kit does not export them.',
 });

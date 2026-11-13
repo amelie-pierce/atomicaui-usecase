@@ -1,0 +1,25 @@
+body { margin: 0; font-family: system-ui, sans-serif; color: #1c1b1f; }
+.gallery { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+.gallery-sidebar { background: #f4f4f6; border-right: 1px solid #dcdce0; padding: 24px 16px; box-sizing: border-box; }
+.gallery-brand { font-size: 14px; margin: 0 0 16px; text-transform: uppercase; letter-spacing: .06em; color: #55555c; }
+.gallery-group summary { font-weight: 600; padding: 8px; cursor: pointer; border-radius: 6px; }
+.gallery-group summary:focus-visible, .gallery-sidebar a:focus-visible, .gallery-code button:focus-visible { outline: 2px solid #3b5bdb; outline-offset: 2px; }
+.gallery-group ul { list-style: none; margin: 4px 0 12px; padding: 0; }
+.gallery-sidebar a { display: flex; flex-direction: column; gap: 2px; padding: 8px 12px; margin: 2px 0; border-radius: 6px; color: inherit; text-decoration: none; border-left: 3px solid transparent; }
+.gallery-sidebar a:hover { background: #e8e8ec; }
+.gallery-sidebar a[aria-current='page'] { background: #e3e8ff; border-left-color: #3b5bdb; font-weight: 600; }
+.gallery-id { font: 12px ui-monospace, monospace; color: #6b6b73; }
+.gallery-main { padding: 32px; max-width: 880px; box-sizing: border-box; min-width: 0; }
+.gallery-main h2 { margin: 4px 0 8px; font-size: 28px; }
+.gallery-description { margin: 0 0 24px; line-height: 1.55; max-width: 65ch; }
+.gallery-preview { display: flex; align-items: center; justify-content: center; min-height: 160px; padding: 24px; border: 1px solid #dcdce0; border-radius: 10px; background: #fff; }
+.gallery-code { margin-top: 24px; border-radius: 10px; overflow: hidden; background: #1e1e24; color: #e8e8ec; }
+.gallery-code-bar { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; font: 12px ui-monospace, monospace; background: #2a2a32; }
+.gallery-code button { background: #3b5bdb; color: #fff; border: 0; border-radius: 6px; padding: 6px 14px; cursor: pointer; font: inherit; min-width: 72px; }
+.gallery-code pre { margin: 0; padding: 16px; overflow-x: auto; font: 13px/1.6 ui-monospace, monospace; }
+.gallery-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (max-width: 720px) {
+  .gallery { grid-template-columns: 1fr; }
+  .gallery-sidebar { border-right: 0; border-bottom: 1px solid #dcdce0; }
+  .gallery-main { padding: 20px 16px; }
+}

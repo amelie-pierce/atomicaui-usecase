@@ -72,6 +72,13 @@ The docs card shows the use case id, title and summary, then Where / When / How 
 
 1. Copy this folder into the other app.
 2. Install the peer dependencies: `react` and `react-dom` 19, and the AtomicAUI kit with its own dependencies (`@base-ui/react`, `react-resizable-panels` 4), plus `sass`. The build must be Vite (`import.meta.glob`, `?raw`).
-3. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Collapsible`, `Panels` and `Type`. That is the only edit.
-4. Make sure the host renders `AuiIdentityProvider` and loads the AtomicAUI token stylesheet; the gallery uses its CSS variables and does not load tokens itself. The icon font the kit needs for glyphs (such as the Collapsible chevron) must also be available.
+3. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Chip`, `Collapsible`, `Panels` and `Type`. That is the only edit.
+4. Make sure the host renders `AuiIdentityProvider` and loads the AtomicAUI token stylesheet; the gallery uses its CSS variables and does not load tokens itself. Also load the icon font (see below).
 5. Render `<UsecaseGallery title="..." />` full screen: it fills the viewport.
+
+## Host requirements: icon font
+
+Kit icons are Font Awesome glyphs. With brand `atomic` they resolve to **Font Awesome 7 Pro Duotone** (`--icongraphy-typeface-family`, classes `fa-duotone fa-*`), a licensed font the host must load; this folder neither bundles nor loads it. Until the host does, kit icons render blank.
+
+- The component toggle's drawn chevron (`.ug-tree__chevron` in `styles/gallery.scss`) is a **stopgap**. It hides itself once a Font Awesome font face has loaded, so the kit chevron then shows alone. To remove the stopgap, delete that block and `useKitIconFont` in `ui/tree-pane.tsx`.
+- The Copy button is text-labelled (no icon), so it works without the font.

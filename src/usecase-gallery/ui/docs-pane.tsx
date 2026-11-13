@@ -1,4 +1,4 @@
-import { Type } from '../kit';
+import { Chip, Type } from '../kit';
 import type { Usecase } from '../types';
 import { PaneCard } from './pane-card';
 
@@ -12,9 +12,11 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
   return (
     <PaneCard id="ug-docs-title" title="Documentation" className="ug-docs">
       <header className="ug-docs__head">
-        <Type role="l4" as="p" color="muted">{usecase.id}</Type>
-        <Type role="l2" as="h3">{usecase.title}</Type>
-        <Type role="p3" as="p">{usecase.summary}</Type>
+        <Chip aui={{ color: 'primary', paint: 'solid', scale: 'md' }} className="ug-docs__id">
+          <Chip.Label weight="bold">{usecase.id}</Chip.Label>
+        </Chip>
+        <Type role="h4" as="h3" weight="bold">{usecase.title}</Type>
+        <Type role="p3" as="p" color="muted">{usecase.summary}</Type>
       </header>
       <dl className="ug-docs__sections">
         {SECTIONS.map(([label, key]) => (

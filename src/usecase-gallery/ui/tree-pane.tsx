@@ -1,6 +1,7 @@
 import type { KeyboardEvent } from 'react';
 import { Collapsible, Type } from '../kit';
 import type { ComponentGroup } from '../types';
+import { PaneCard } from './pane-card';
 
 interface TreePaneProps {
   groups: ComponentGroup[];
@@ -20,11 +21,8 @@ const moveFocus = (event: KeyboardEvent<HTMLElement>) => {
 
 export function TreePane({ groups, selectedId, title }: TreePaneProps) {
   return (
-    <nav className="ug-tree" aria-label="Components and use cases" onKeyDown={moveFocus}>
-      <Type role="h6" as="h1" family="display" className="ug-tree__title">
-        {title}
-      </Type>
-      <div className="ug-tree__groups">
+    <PaneCard id="ug-tree-title" title={title} as="h1" className="ug-tree">
+      <nav aria-label="Components and use cases" onKeyDown={moveFocus}>
         {groups.map((group) => (
           <Collapsible key={group.id} defaultOpen>
             <Collapsible.Header>
@@ -51,7 +49,7 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
             </Collapsible.Panel>
           </Collapsible>
         ))}
-      </div>
-    </nav>
+      </nav>
+    </PaneCard>
   );
 }

@@ -40,109 +40,83 @@ $narrow: 840px;
   min-inline-size: 0;
   min-block-size: 0;
   block-size: 100%;
-  overflow: auto;
+  overflow: hidden;
   // Panels paint a surface by default; the panes below are the cards, so the panel itself stays clear.
   background: transparent;
 }
 
-// ── Panes ───────────────────────────────────────────────────────────────────
-.ug-pane {
+// ── Card: the one frame every pane shares ───────────────────────────────────
+.ug-card {
   display: flex;
   flex-direction: column;
-  gap: var(--p-px-8);
-  flex: 1 1 auto;
-  min-block-size: 0;
-}
-
-.ug-pane__bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--p-px-12);
-}
-
-.ug-pane__heading {
-  margin: 0;
-}
-
-.ug-pane,
-.ug-render,
-.ug-code,
-.ug-docs,
-.ug-tree {
   inline-size: 100%;
+  block-size: 100%;
   min-inline-size: 0;
-}
-
-.ug-render,
-.ug-code,
-.ug-docs,
-.ug-tree {
+  min-block-size: 0;
+  overflow: hidden;
   border: var(--p-px-1) solid var(--theme-raised);
 }
 
-.ug-render {
+.ug-card__body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-block-size: 0;
+}
+
+.ug-card__header {
+  flex: none;
+  padding-block-end: var(--p-px-12);
+  border-block-end: var(--p-px-1) solid var(--theme-raised);
+}
+
+.ug-card__header :is(h1, h2) {
+  margin: 0;
+}
+
+.ug-card__content {
   flex: 1 1 auto;
   min-block-size: 0;
-  display: flex;
   overflow: auto;
 }
 
+// ── Pane content ────────────────────────────────────────────────────────────
 .ug-render__stage {
-  flex: 1 1 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: var(--p-px-16);
-  padding: var(--p-px-24);
-}
-
-.ug-code {
-  flex: 1 1 auto;
-  min-block-size: 0;
-  display: flex;
-  overflow: hidden;
-}
-
-.ug-code__content {
-  flex: 1 1 auto;
-  display: flex;
-  min-inline-size: 0;
-  min-block-size: 0;
+  min-block-size: 100%;
 }
 
 .ug-code__pre {
-  flex: 1 1 auto;
-  min-inline-size: 0;
   margin: 0;
-  padding: var(--p-px-16);
-  overflow: auto;
   white-space: pre;
   tab-size: 2;
-}
-
-.ug-docs {
-  block-size: 100%;
-  overflow: auto;
-}
-
-.ug-docs__body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--p-px-16);
-}
-
-.ug-pane__heading,
-.ug-docs :is(p, h2, h3) {
-  margin: 0;
 }
 
 .ug-docs__head,
 .ug-docs__section {
   display: flex;
   flex-direction: column;
-  gap: var(--p-px-6);
+  gap: var(--p-px-4);
+  margin: 0;
+}
+
+.ug-docs__head {
+  padding-block-end: var(--p-px-16);
+}
+
+.ug-docs__head :is(p, h3),
+.ug-docs__section :is(dt, dd) {
+  margin: 0;
+}
+
+.ug-docs__sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-16);
   margin: 0;
 }
 
@@ -152,30 +126,6 @@ $narrow: 840px;
 }
 
 // ── Tree ────────────────────────────────────────────────────────────────────
-.ug-tree {
-  display: flex;
-  flex-direction: column;
-  gap: var(--p-px-12);
-  block-size: 100%;
-  padding: var(--p-px-16);
-  background: var(--theme-surface);
-  color: var(--theme-on-surface);
-  border-radius: var(--p-px-8);
-  overflow: hidden;
-}
-
-.ug-tree__title {
-  margin: 0;
-  padding-block-end: var(--p-px-12);
-  border-block-end: var(--p-px-1) solid var(--theme-raised);
-}
-
-.ug-tree__groups {
-  flex: 1 1 auto;
-  min-block-size: 0;
-  overflow-y: auto;
-}
-
 .ug-tree__list {
   list-style: none;
   margin: 0;
@@ -222,20 +172,19 @@ $narrow: 840px;
     overflow: visible;
   }
 
-  .ug-tree {
+  .ug-card {
     block-size: auto;
+  }
+
+  .ug-tree .ug-card__content {
     max-block-size: calc(var(--p-px-16) * 14);
   }
 
-  .ug-render__stage {
+  .ug-render .ug-card__content {
     min-block-size: var(--p-px-160);
   }
 
-  .ug-code {
+  .ug-code .ug-card__content {
     min-block-size: var(--p-px-128);
-  }
-
-  .ug-docs {
-    block-size: auto;
   }
 }

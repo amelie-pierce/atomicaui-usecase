@@ -14,7 +14,7 @@ usecase-gallery/
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
   hooks/                   hash selection, copy-to-clipboard, media query
   layout/                  gallery shell and the resizable / stacked layouts
-  ui/                      tree, render, code and docs panes
+  ui/                      pane-card (the shared Card) and the tree, render, code and docs panes
   styles/gallery.scss      layout and chrome, tokens only
   usecases/
     <component>/
@@ -55,6 +55,12 @@ No registry or shell edit is needed.
 ## Add a component
 
 Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, title })`, then add use cases as above. `id` is the PascalCase prefix of its use case ids.
+
+## Layout and type
+
+Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with a `Card.Header` title (plus an optional `Card.Action`) over a scrolling `Card.Content`. Change card padding, border or header there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview above the code with its Copy button, separated by a draggable `Panels` handle. All text is the kit's `Type` (role, family, weight) or `Card.Title`; the stylesheet sets no font values.
+
+The docs card shows the use case id, title and summary, then Where / When / How as a definition list; those three fields are the whole doc format.
 
 ## Id rules
 

@@ -72,7 +72,7 @@ The docs card shows the use case id, title and summary, then Where / When / How 
 
 1. Copy this folder into the other app.
 2. Install the peer dependencies: `react` and `react-dom` 19, and the AtomicAUI kit with its own dependencies (`@base-ui/react`, `react-resizable-panels` 4), plus `sass`. The build must be Vite (`import.meta.glob`, `?raw`).
-3. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Chip`, `Collapsible`, `Panels` and `Type`. That is the only edit.
+3. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Collapsible`, `IconButton`, `Panels` and `Type`. That is the only edit.
 4. Make sure the host renders `AuiIdentityProvider` and loads the AtomicAUI token stylesheet; the gallery uses its CSS variables and does not load tokens itself. Also load the icon font (see below).
 5. Render `<UsecaseGallery title="..." />` full screen: it fills the viewport.
 

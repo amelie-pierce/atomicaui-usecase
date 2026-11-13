@@ -109,11 +109,6 @@ $narrow: 840px;
   padding-block-end: var(--p-px-16);
 }
 
-// The id chip hugs its label instead of stretching across the column.
-.ug-docs__id {
-  align-self: flex-start;
-}
-
 .ug-docs__head :is(p, h3),
 .ug-docs__section :is(dt, dd) {
   margin: 0;

@@ -23,24 +23,7 @@ const moveFocus = (event: KeyboardEvent<HTMLElement>) => {
   stops[index + (event.key === 'ArrowDown' ? 1 : -1)]?.focus();
 };
 
-// The kit's icons are a Font Awesome web font the host must load. Until it is, the drawn chevron
-// (see `.ug-tree__chevron` in gallery.scss) stands in; once a kit font face has loaded it steps aside.
-const hasKitIconFont = () =>
-  Array.from(document.fonts).some((face) => face.family.includes('Font Awesome') && face.status === 'loaded');
-
-function useKitIconFont() {
-  const [loaded, setLoaded] = useState(hasKitIconFont);
-  useEffect(() => {
-    const update = () => setLoaded(hasKitIconFont());
-    document.fonts.addEventListener('loadingdone', update);
-    void document.fonts.ready.then(update);
-    return () => document.fonts.removeEventListener('loadingdone', update);
-  }, []);
-  return loaded;
-}
-
 export function TreePane({ groups, selectedId, title }: TreePaneProps) {
-  const iconFont = useKitIconFont();
   // Components are open by default; the user closes them, and choosing a use case reopens its component.
   const [closed, setClosed] = useState<ReadonlySet<string>>(new Set());
   useEffect(() => {
@@ -56,11 +39,7 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
   return (
     <PaneCard label="Components" className="ug-tree">
       <h1 className="ug-visually-hidden">{title}</h1>
-      <nav
-        aria-label="Components and use cases"
-        data-icon-font={iconFont ? 'loaded' : undefined}
-        onKeyDown={moveFocus}
-      >
+      <nav aria-label="Components and use cases" onKeyDown={moveFocus}>
         {groups.map((group) => (
           <Collapsible
             key={group.id}
@@ -77,7 +56,7 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
             <Collapsible.Header>
               <Collapsible.Trigger>
                 <Type role="p2" as="span" weight="semi-bold">{group.title}</Type>
-                <Collapsible.Chevron className="ug-tree__chevron" />
+                <Collapsible.Chevron />
               </Collapsible.Trigger>
             </Collapsible.Header>
             <Collapsible.Panel>

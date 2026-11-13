@@ -1,0 +1,42 @@
+// modules/design/atomic-aui/src/lib/field/index.ts
+//
+// Public surface for the Field component (the compound labelled field group: Root + Label +
+// Control + Description + Error + the composed Icon/Button adornments + the Validity seam).
+export { Field } from './field';
+export type {
+  FieldRootProps,
+  FieldLabelProps,
+  FieldControlProps,
+  FieldInputProps,
+  FieldTextareaProps,
+  FieldDescriptionProps,
+  FieldErrorProps,
+  FieldIconProps,
+  FieldButtonProps,
+  FieldButtonIconProps,
+  FieldSelectProps,
+  FieldSelectTriggerProps,
+  FieldSelectPopupProps,
+  FieldSelectItemProps,
+  FieldNumberFieldProps,
+  FieldNumberFieldGroupProps,
+  FieldNumberFieldInputProps,
+  FieldNumberFieldUnitProps,
+  FieldNumberFieldIconProps,
+  FieldNumberFieldButtonProps,
+  FieldNumberFieldSteppersProps,
+  FieldComboboxProps,
+  FieldAutocompleteProps,
+  FieldRootAui,
+  FieldControlAui,
+  FieldLabelAui,
+  FieldDescriptionAui,
+  FieldErrorAui,
+  FieldIconAui,
+  FieldColor,
+  FieldPaint,
+  FieldScale,
+  FieldProfile,
+  FieldShape,
+  FieldElevation,
+} from './field';

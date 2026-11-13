@@ -1,0 +1,272 @@
+// AtomicAUI component-token bridge (hand-authored; NOT emitted by atomic-cli).
+//
+// Core 6.0 resolution, all converging on `.aui-frame` (shared-var cascade 2026-06-12):
+//   1. `--aui-*` component token — the ONE var per role, written by BOTH the layer-2
+//      CONTEXT cell (`.aui-scale-<profile>-<tier>` / `.aui-shape-<x>` writes `--aui-
+//      padding-*` / `--aui-radius-*` DIRECTLY) AND a layer-3 utility / `sx` override
+//      (`.aui-padding-inline-start-md`). sx is layer-3 → loads after the context cell
+//      → wins by source order. The geometry/typography hooks INHERIT (they replaced
+//      the inheriting `--scale-*`/`--shape-radius`/`--typescale-*` rails), so an
+//      unscaled child / `::after` pseudo still reads the context by inheritance.
+//   2. a literal fallback. (No intermediate `--scale-*`/`--shape-radius` rail — the
+//      `--scale-font-*`/`--scale-width/height`/`--scale-stroke-width` rails survive
+//      only where a non-`--aui-*` reader needs them: the font fallback, FAN_EXCLUDE
+//      width/height, and the paint-border stroke width.)
+// Colour resolves through the `--paint-*` rails the compound `230-Color` matrix
+// (`.aui-color-<paint>-<chroma>`) sets directly. No `@layer` — the `var()`
+// fallback gives utility-over-rail ordering without it (F5.45 / F5.47).
+
+// === @property registrations =================================================
+// The COLOR roles (`--aui-bg`/`--aui-fg`/`--aui-border-color`) are `inherits: true` — the
+// SHARED-VAR CASCADE: context (230) + override (5xx) write the same var, which cascades to
+// child parts; nested components re-write it via their own 230 cell (the isolation). All
+// The fanned GEOMETRY/typography roles (radius/padding/gap/min/icon-size/icon-container/dot/
+// font-size/line-height/letter-spacing) + `--aui-overlay-color` are now `inherits: true` too
+// (they replaced inheriting context rails). `--aui-width`/`--aui-height`/border-widths/focus/
+// the style-string twins stay `inherits: false` (intrinsic / would leak a border to children).
+// `syntax: "*"` + no `initial-value` → guaranteed-invalid initial → `var()` fallback applies.
+// This list MUST stay in lockstep with every layer-3 `utilityPrefix` in
+// tools/atomic-cli/src/lib/emitters/emit-policy.ts.
+
+// paint-routed roles — SHARED-VAR CASCADE (2026-06-11): the color hooks (`--aui-bg`/
+// `--aui-fg`/`--aui-border-color`) are each the ONE var for their role, written by BOTH the
+// 230-Color context cell AND the 500/510/520 `sx` override (layer-3 after layer-2 → sx wins
+// by source order). They INHERIT so a resolved color cascades to child parts (a checkmark
+// follows the control's foreground); isolation comes from a nested component re-writing the
+// hook via its own 230 cell. See the shared-var-cascade spec.
+@property --aui-bg            { syntax: "*"; inherits: true; }
+@property --aui-fg            { syntax: "*"; inherits: true; }
+@property --aui-border-color  { syntax: "*"; inherits: true; }
+// (removed 2026-06-12 dead-token audit: --aui-content-muted, --aui-content-muted-text,
+//  --aui-duotone-secondary-opacity, --aui-accent — registered but never set/read; the
+//  duotone icon path reads --icongraphy-secondary-opacity instead. Codex-confirmed.)
+// --aui-overlay-color (renamed from --paint-overlay-color, 2026-06-12) is the
+// hover/pressed state-layer tint. It MUST inherit: the `::after` pseudo reads it
+// from its originating element by inheritance (an inherits:false --aui-* token is
+// invisible to the pseudo). See _state-cascade.scss.
+@property --aui-overlay-color { syntax: "*"; inherits: true; }
+// border widths (per side)
+@property --aui-border-block-start-width  { syntax: "*"; inherits: false; }
+@property --aui-border-block-end-width    { syntax: "*"; inherits: false; }
+@property --aui-border-inline-start-width { syntax: "*"; inherits: false; }
+@property --aui-border-inline-end-width   { syntax: "*"; inherits: false; }
+// border style (keyword axis, non-token — sx `borderStyle`, e.g. the FileUpload dashed
+// dropzone). `inherits: false` like the widths: an inherited dashed style would leak
+// to any bordered child part. Unset → the base map's `solid` fallback.
+@property --aui-border-style { syntax: "*"; inherits: false; }
+// radii (per corner)
+@property --aui-radius-start-start { syntax: "*"; inherits: true ; }
+@property --aui-radius-start-end   { syntax: "*"; inherits: true ; }
+@property --aui-radius-end-start   { syntax: "*"; inherits: true ; }
+@property --aui-radius-end-end     { syntax: "*"; inherits: true ; }
+// spacing (directional — 570/575/580/585 + 590 gap)
+@property --aui-padding-inline-start { syntax: "*"; inherits: true ; }
+@property --aui-padding-inline-end   { syntax: "*"; inherits: true ; }
+@property --aui-padding-block-start  { syntax: "*"; inherits: true ; }
+@property --aui-padding-block-end    { syntax: "*"; inherits: true ; }
+// Physical padding is a LOCAL rendered result, not an inheriting context rail. A bordered frame
+// writes these four hooks as `nominal profile padding - resolved border width`; every frame marker
+// reads them first, while an unbordered frame falls through to the nominal hooks above.
+@property --aui-padding-inline-start-effective { syntax: "*"; inherits: false; }
+@property --aui-padding-inline-end-effective   { syntax: "*"; inherits: false; }
+@property --aui-padding-block-start-effective  { syntax: "*"; inherits: false; }
+@property --aui-padding-block-end-effective    { syntax: "*"; inherits: false; }
+@property --aui-gap            { syntax: "*"; inherits: true ; }
+// row-gap/column-gap longhands (sx rowGap/columnGap — emitted from the SAME 590-Gap
+// rail as --aui-gap, so drift-free). Inherit like --aui-gap. Unset → the base map's
+// `var(--aui-row-gap, var(--aui-gap, …))` chain falls back to the gap shorthand, so
+// `gap` alone still fills both axes and a longhand overrides one.
+@property --aui-row-gap        { syntax: "*"; inherits: true ; }
+@property --aui-column-gap     { syntax: "*"; inherits: true ; }
+// sizing (width/min-width, height/min-height — max-* dropped in Core 6.0)
+@property --aui-width      { syntax: "*"; inherits: false; }
+@property --aui-min-width  { syntax: "*"; inherits: true ; }
+@property --aui-max-width  { syntax: "*"; inherits: false; }
+@property --aui-height     { syntax: "*"; inherits: false; }
+@property --aui-min-height { syntax: "*"; inherits: true ; }
+@property --aui-max-height { syntax: "*"; inherits: false; }
+// typography
+@property --aui-font-size       { syntax: "*"; inherits: true ; }
+@property --aui-line-height     { syntax: "*"; inherits: true ; }
+@property --aui-letter-spacing  { syntax: "*"; inherits: true ; }
+// The 645 style STRING is NOT registered/consumed as a var (dead-token audit 2026-06-12):
+// the `.aui-typography-style-*` utility + the 300-Typescale cell write only the DERIVED twins
+// (the emitter's style→weight/italic fold) — the numeric weight + normal|italic the box reads.
+@property --aui-typography-weight { syntax: "*"; inherits: false; }
+@property --aui-typography-italic { syntax: "*"; inherits: false; }
+// icon / dot (icon weight/style is applied via CLASS names by build-icon-classes, NOT a CSS
+// var — so --aui-icon-style/--aui-icon-weight are NOT registered; dead-token audit 2026-06-12)
+@property --aui-icon-size      { syntax: "*"; inherits: true ; }
+// Glyph size FALLBACK — the LAST-RESORT per-scale size a profile-less glyph uses. `.aui-icon` reads
+// `font-size: var(--aui-icon-size, var(--aui-icon-size-fallback, 1em))`, so an up-tree profile cell's
+// authoritative `--aui-icon-size` (and a layer-3 `sx.iconSize`) always wins; this only keeps a bare
+// icon from collapsing to `1em`. Set + read on the SAME glyph (`inherits:false` — no leak to children).
+@property --aui-icon-size-fallback { syntax: "*"; inherits: false; }
+@property --aui-icon-container { syntax: "*"; inherits: true ; }
+@property --aui-dot-size       { syntax: "*"; inherits: true ; }
+// focus ring
+@property --aui-focus-color { syntax: "*"; inherits: false; }
+@property --aui-focus-width { syntax: "*"; inherits: false; }
+// D9: the focus-ring outline-offset override hook. Unset → the fleet INSET default (the ring sits INSIDE
+// the box edge so an ancestor `overflow:hidden` — e.g. the CardGroup item in the D5 scroll viewport —
+// can't clip it). See the `$aui-focus-ring-offset` definition in `_state-cascade.scss`.
+@property --aui-focus-offset { syntax: "*"; inherits: false; }
+// CONTEXT-tier rails (2026-06-12) — renamed from `--scale-*`/`--border-width` so EVERY layer-2
+// var starts with `--aui-`. These are the scale/border DEFAULTS that have no layer-3 override
+// counterpart (the width/height free-size sentinel, the font scale-default fallback chain read
+// when no named typescale applies, the paint-border stroke width, the inheriting border-width the
+// popup arrows read). They INHERIT (the rails they replaced inherited). `--aui-font-style-context`
+// is fold-only (never read), so it is NOT registered — only its weight/italic twins are.
+@property --aui-font-size-context     { syntax: "*"; inherits: true; }
+@property --aui-line-height-context   { syntax: "*"; inherits: true; }
+@property --aui-letter-spacing-context { syntax: "*"; inherits: true; }
+@property --aui-font-weight-context   { syntax: "*"; inherits: true; }
+@property --aui-font-italic-context   { syntax: "*"; inherits: true; }
+@property --aui-width-context         { syntax: "*"; inherits: true; }
+@property --aui-height-context        { syntax: "*"; inherits: true; }
+@property --aui-stroke-width-context  { syntax: "*"; inherits: true; }
+@property --aui-border-width-context  { syntax: "*"; inherits: true; }
+// Carousel slide gap: typed `<length>`; used by the container `gap` and the slide basis (CSS-only).
+@property --aui-carousel-gap { syntax: "<length>"; inherits: false; initial-value: 0px; }
+
+// === universal component base map ============================================
+// token (with axis-rail / literal fallback) → CSS property, for the box roles.
+// Icon/dot/focus/paint-muted tokens are registered above but consumed by
+// component-specific anatomy and _state-cascade.scss, not the generic box.
+.aui-frame {
+  // F5.46 size-neutrality: border is drawn inside the box so width tokens hold.
+  box-sizing: border-box;
+  // Borders are 0-width by default (invisible) until a width token activates
+  // them; style must be set or width renders nothing. The style reads the
+  // `--aui-border-style` hook (sx `borderStyle` keyword utility, e.g.
+  // `aui-border-style-dashed`) with the historical `solid` as the fallback.
+  border-style: var(--aui-border-style, solid);
+
+  // SHARED-VAR CASCADE (2026-06-11): `--aui-bg`/`--aui-fg`/`--aui-border-color` are each ONE
+  // var per role, written by BOTH the 230-Color context cell AND the 500/510/520 `sx` override
+  // (sx is layer-3, loads after the layer-2 cell → wins by source order). They INHERIT, so a
+  // resolved color cascades to child parts. The old `var(--paint-*)` / `--emphasis-content`
+  // default tails are GONE — the context writes the shared var directly, so the base map reads
+  // ONE var + a literal safety fallback (the 231-Emphasis `reduced` mode now writes `--aui-fg`).
+  background:   var(--aui-bg,           transparent);
+  color:        var(--aui-fg,           currentColor);
+  border-color: var(--aui-border-color, transparent);
+  // NOTE: --aui-accent is registered but intentionally NOT mapped on the
+  // generic box — the accent role (focus ring / selected indicator / duotone
+  // tone-on-tone) is consumed by component anatomy + _state-cascade.scss.
+
+  border-block-start-width:  var(--aui-border-block-start-width, var(--p-px-0));
+  border-block-end-width:    var(--aui-border-block-end-width, var(--p-px-0));
+  border-inline-start-width: var(--aui-border-inline-start-width, var(--p-px-0));
+  border-inline-end-width:   var(--aui-border-inline-end-width, var(--p-px-0));
+
+  // radii: the 210-Shape cell writes `--aui-radius-*` DIRECTLY (inheriting), so the
+  // base map reads the hook + a literal floor — no intermediate `--shape-radius` rail.
+  border-start-start-radius: var(--aui-radius-start-start, var(--p-px-0));
+  border-start-end-radius:   var(--aui-radius-start-end,   var(--p-px-0));
+  border-end-start-radius:   var(--aui-radius-end-start,   var(--p-px-0));
+  border-end-end-radius:     var(--aui-radius-end-end,     var(--p-px-0));
+
+  // spacing/sizing: the 200-Scale cell writes `--aui-*` DIRECTLY (inheriting), so the
+  // base map reads the hook + a literal floor — no intermediate `--scale-*` rail.
+  padding-inline-start: var(--aui-padding-inline-start-effective, var(--aui-padding-inline-start, var(--p-px-0)));
+  padding-inline-end:   var(--aui-padding-inline-end-effective,   var(--aui-padding-inline-end,   var(--p-px-0)));
+  padding-block-start:  var(--aui-padding-block-start-effective,  var(--aui-padding-block-start,  var(--p-px-0)));
+  padding-block-end:    var(--aui-padding-block-end-effective,    var(--aui-padding-block-end,    var(--p-px-0)));
+  // gap is split into its two longhands so an sx rowGap/columnGap can override ONE
+  // axis while the other still rides the `gap` shorthand hook. Each longhand reads
+  // its own hook first, then falls back to --aui-gap (the shorthand), then the zero
+  // floor — so setting only `gap` fills both, and setting `rowGap`/`columnGap` wins
+  // for that axis. (generated/ @forwards BEFORE this base map, so these longhands
+  // can't be property utilities — they'd be masked; the hooks are order-safe.)
+  row-gap:              var(--aui-row-gap,    var(--aui-gap, var(--p-px-0)));
+  column-gap:           var(--aui-column-gap, var(--aui-gap, var(--p-px-0)));
+
+  // width/height default to `auto` — the box HUGS its content (text buttons,
+  // labels). They do NOT fall back to `--scale-width`/`--scale-height`: those are
+  // a FIXED control size that would force every text button to the profile's square
+  // (e.g. default = 32px, clipping the label). Fixed-size controls instead get their
+  // size from `min-*` (scale floor) + `aspect-ratio:1` (.aui-checkbox/.aui-radio) or
+  // an explicit marker `inline-size` (.aui-switch). An explicit `--aui-width` (the
+  // `aui-width-*` utility / sx) still pins a fixed size when wanted (e.g. Swatch).
+  width:      var(--aui-width, auto);
+  min-width:  var(--aui-min-width,  var(--p-px-0));
+  // max-width/max-height default to `none` (no clamp) — an `aui-max-width-*`
+  // utility / `sx.maxWidth` sets the hook to a token px. Used for off-grid
+  // responsive clamps (e.g. a Dialog `min()` width, a long-menu popup floor).
+  max-width:  var(--aui-max-width, none);
+  height:     var(--aui-height, auto);
+  min-height: var(--aui-min-height, var(--p-px-0));
+  max-height: var(--aui-max-height, none);
+
+  // Font size/leading/tracking: a NAMED typescale (`.aui-typography-typescale-h1`)
+  // now writes `--aui-font-size` DIRECTLY (and sx overrides it later by source order);
+  // else the `--scale-*` rail (200-Scale profile cell). The `default` typescale's
+  // source (`--font-font-size`) is undefined → `--aui-font-size` is guaranteed-invalid
+  // → var() falls through to `--scale-font-size`, so recipe components (Button) stay
+  // scale-sized while `<Type role="h1">` gets the h1 size. No `--typescale-*` middle rail.
+  // Typeface: form-control elements (`<button>`/`<input>`/`<select>` — Button, Select/Dropdown
+  // trigger, etc.) do NOT inherit `font-family` from `<body>`; UAs pin their own control font
+  // (Arial/Helvetica). The frame never set font-family, so every button/input-based control
+  // rendered in the UA default instead of the ADC typeface. Read the resolved 110-Typography
+  // family (`--typography-typeface-family` = Inter for body/display, JetBrains Mono for mono,
+  // set by the `[data-aui-typography]` compound selector and inheriting down), falling back to
+  // `inherit` so a plain frame still picks up its ancestor's family (the app body = Inter).
+  font-family:    var(--typography-typeface-family, inherit);
+  font-size:      var(--aui-font-size,      var(--aui-font-size-context, inherit));
+  line-height:    var(--aui-line-height,    var(--aui-line-height-context, inherit));
+  letter-spacing: var(--aui-letter-spacing, var(--aui-letter-spacing-context, normal));
+  // font-weight + font-style read the rails DERIVED from the Figma `style` STRING
+  // ("Semi Bold Italic" → weight 600 + italic): the emitter's style→weight/italic
+  // sibling fold splits every style binding into the NUMERIC `--*-weight-*` twin and
+  // the `--*-italic-*` twin (normal|italic). The active `.aui-typography-typescale-*`
+  // class sets `--typescale-weight`/`--typescale-italic`; the `default` typescale
+  // aliases them to the 200-Scale rails (`--scale-font-weight`/`--scale-font-italic`),
+  // so recipe components are SCALE-AWARE (per-tier: xs medium … xl light) while named
+  // typescales win. NOTE: do NOT read `--aui-typography-style` / `--scale-font-style`
+  // here — those carry the STYLE NAME string ("Regular"/"Bold"), invalid as
+  // `font-weight`. The sx tier rides the DERIVED twins instead: each
+  // `.aui-typography-style-<x>` utility also sets `--aui-typography-weight` /
+  // `--aui-typography-italic` (the emitter's fold), so `sx: { typographyStyle }`
+  // overrides BOTH halves at the top of the chain (sx > context, Dim B).
+  // Shared-var cascade: the 300-Typescale CONTEXT cell writes `--aui-typography-weight` /
+  // `--aui-typography-italic` DIRECTLY (the SAME layer-3 hooks `.aui-typography-style-<x>` sx
+  // writes), so the base map reads ONE var + `inherit`. The typescale cell + section markers
+  // are `:where()` (0,0,0) so sx (0,1,0) wins; section markers beat the cell by source order.
+  // (font-weight/font-style inherit naturally, so a child without its own typescale class
+  // still inherits the computed weight via the `inherit` fallback.) No `-context` tier.
+  font-weight:    var(--aui-typography-weight, inherit);
+  font-style:     var(--aui-typography-italic, inherit);
+}
+
+// SCALE-AWARE inset border width (2026-06-12): a bordered paint (tonal/fixed) draws its border at
+// the active scale's stroke width (`--aui-stroke-width-context`: 1px at sm … 2px at xl), NOT a fixed
+// 1px. Set at 0,0,0 (`:where`) so an `aui.sx.borderWidth*` (0,1,0) still overrides it, and so the
+// recipe no longer needs the fixed `aui-border-*-width-1` quartet. Fallback 1px if a context with no
+// scale rail ever emits `--inset`. The inset-padding clamp below then reads the resolved width.
+:where(.aui-frame--inset) {
+  --aui-border-block-start-width:  var(--aui-stroke-width-context, var(--p-px-1));
+  --aui-border-block-end-width:    var(--aui-stroke-width-context, var(--p-px-1));
+  --aui-border-inline-start-width: var(--aui-stroke-width-context, var(--p-px-1));
+  --aui-border-inline-end-width:   var(--aui-stroke-width-context, var(--p-px-1));
+}
+
+// Inset-border opt-in (F5.46): effective padding = nominal − per-side border.
+// Apply ONLY to components that draw an inset border (not outline/focus-ring).
+// Each side clamps independently against its own directional padding token,
+// falling back to the shared `--scale-padding-*` rail when unset.
+.aui-frame--inset {
+  // clamp (not max): lower bound 0, upper bound the nominal padding — so a
+  // malformed/negative border-width token can't inflate padding past nominal.
+  // Every structural zero is the tokenized `var(--p-px-0)`. This is SAFE inside
+  // clamp()/calc() because `--p-px-0` is LENGTH-typed (`0rem`) — the emitter
+  // (atomic-cli `formatFloatValue`) keeps every zero LENGTH unit-typed, never a
+  // bare unitless `0` (which is a <length> TYPE ERROR in math fns that drops the
+  // declaration → padding collapses → tonal/fixed break). The invariant is
+  // locked by `scripts/check-token-units.js` (CI `yarn check:tokens`), so
+  // `var(--p-px-0)` here can't silently regress to a unitless zero again.
+  --aui-padding-inline-start-effective: clamp(var(--p-px-0), calc(var(--aui-padding-inline-start, var(--p-px-0)) - var(--aui-border-inline-start-width, var(--p-px-0))), var(--aui-padding-inline-start, var(--p-px-0)));
+  --aui-padding-inline-end-effective:   clamp(var(--p-px-0), calc(var(--aui-padding-inline-end,   var(--p-px-0)) - var(--aui-border-inline-end-width, var(--p-px-0))),   var(--aui-padding-inline-end,   var(--p-px-0)));
+  --aui-padding-block-start-effective:  clamp(var(--p-px-0), calc(var(--aui-padding-block-start,  var(--p-px-0))  - var(--aui-border-block-start-width, var(--p-px-0))),  var(--aui-padding-block-start,  var(--p-px-0)));
+  --aui-padding-block-end-effective:    clamp(var(--p-px-0), calc(var(--aui-padding-block-end,    var(--p-px-0))  - var(--aui-border-block-end-width, var(--p-px-0))),    var(--aui-padding-block-end,    var(--p-px-0)));
+}

@@ -1,0 +1,40 @@
+// modules/design/atomic-aui/src/lib/menubar/index.ts
+//
+// Public surface for the Menubar component (the application menu bar: a filled surface bar of
+// top-level menus, each a reused Dropdown that auto-detects the menubar parent).
+export { Menubar } from './menubar';
+export type {
+  MenubarProps,
+  MenubarBaseProps,
+  MenubarDropdownTriggerProps,
+  MenubarSpacerProps,
+  MenubarDividerProps,
+  MenubarIconProps,
+  MenubarChevronProps,
+  MenubarButtonProps,
+  MenubarIconButtonProps,
+  MenubarDropdownPopupProps,
+  MenubarDropdownItemProps,
+  MenubarDropdownSeparatorProps,
+  MenubarDropdownGroupProps,
+  MenubarDropdownGroupLabelProps,
+  MenubarDropdownCheckboxItemProps,
+  MenubarDropdownCheckboxItemIndicatorProps,
+  MenubarDropdownRadioGroupProps,
+  MenubarDropdownRadioItemProps,
+  MenubarDropdownRadioItemIndicatorProps,
+  MenubarDropdownSubmenuRootProps,
+  MenubarDropdownSubmenuTriggerProps,
+  MenubarDropdownLinkItemProps,
+  MenubarDropdownPortalProps,
+  MenubarDropdownPositionerProps,
+  MenubarDropdownArrowProps,
+  MenubarDropdownBackdropProps,
+  MenubarDropdownViewportProps,
+  MenubarRootAui,
+  MenubarTriggerAui,
+  MenubarColor,
+  MenubarPaint,
+  MenubarScale,
+  MenubarShape,
+} from './menubar';

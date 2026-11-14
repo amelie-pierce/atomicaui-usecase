@@ -7,7 +7,6 @@ import { RenderPane } from '../ui/render-pane';
 import { TreePane } from '../ui/tree-pane';
 import { ResizableLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
-import '../styles/free-icons.scss'; // TEMPORARY free icon font swap; see README
 
 /** Below this width the three resizable panes stack into one scrolling column. */
 const NARROW = '(max-width: 840px)';

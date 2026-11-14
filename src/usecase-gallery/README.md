@@ -80,11 +80,6 @@ The docs card shows the use case id, title and summary, then Where / When / How 
 
 Kit icons are Font Awesome glyphs. With brand `atomic` they resolve to **Font Awesome 7 Pro Duotone** (`--icongraphy-typeface-family`, classes `fa-duotone fa-*`), a licensed font the host must load; this folder neither bundles nor loads it.
 
-### Temporary: free icon font
-
-Until the Pro licence/kit is available, `styles/free-icons.scss` (imported once in `layout/usecase-gallery.tsx`) loads **Font Awesome Free 7** (`@fortawesome/fontawesome-free`, pinned) and points `.aui-icon.fa-duotone` at its solid face, so the kit's icons render as single-tone glyphs instead of blank. Every icon name the use cases use exists in Free. This is **TEMPORARY**. To remove it once the Pro font is loaded by the host:
-
-1. Delete `styles/free-icons.scss` and its import line in `layout/usecase-gallery.tsx`.
-2. Run `npm uninstall @fortawesome/fontawesome-free`.
+The host app loads the shared Pro Web Font kit with one script tag in `index.html` (`https://kit.fontawesome.com/159db568f7.js`); the deploy origin must be permitted in the kit's settings, otherwise icons render blank.
 
 The Copy button is text-labelled (no icon), so it never depended on the font.

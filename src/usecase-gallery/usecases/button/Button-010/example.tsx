@@ -14,7 +14,7 @@ export default function Example() {
           sx: { minWidth: '24', minHeight: '24' },
         }}
       >
-        <Button.Icon name="angle-right" weight="solid" aui={{ scale: 'sm' }} />
+        <Button.Icon name="angle-right" aui={{ scale: 'sm' }} />
       </Button>
       <Button
         aria-label="Why Not for failing model"
@@ -27,7 +27,7 @@ export default function Example() {
           sx: { minWidth: '24', minHeight: '24' },
         }}
       >
-        <Button.Icon name="angle-right" weight="solid" aui={{ scale: 'sm' }} />
+        <Button.Icon name="angle-right" aui={{ scale: 'sm' }} />
       </Button>
     </>
   );

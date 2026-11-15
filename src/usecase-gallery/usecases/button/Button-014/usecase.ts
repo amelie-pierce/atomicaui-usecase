@@ -1,11 +1,11 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Button',
+  area: 'Body text',
+  title: 'Inline link Button',
   apps: ['hcs'],
-  title: 'Walkthrough close',
-  summary: 'A transparent X IconButton closes the walkthrough card.',
-  where: 'The top corner of a coach-mark card. Real site source: HCS Button-017.',
-  when: 'Use it to dismiss a card without acting. Unlike the panel icon buttons it uses the surface color.',
-  how: 'Set aui scale "sm", paint "text" and color "surface". The glyph is xmark.',
+  summary: 'A Button styled as an underlined warning-colored link inside body copy.',
+  where: 'Sentences of body text where an action reads as a link: All Products, Form. Real site source: HCS Button-008.',
+  when: 'Use it for an action, not navigation, that belongs inside a sentence. For real navigation use a link. The real site underlines a phone link in the default color, so the two differ.',
+  how: 'Set aui scale "sm", profile "no-padding", color "warning" and paint "text", plus sx display "inline-flex" and textDecoration "underline". Set type="button".',
 });

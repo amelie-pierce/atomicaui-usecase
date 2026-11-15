@@ -1,11 +1,18 @@
-import { Button, IconButton } from '../../../kit';
+import { IconButton } from '../../../kit';
 
 export default function Example() {
   return (
-    <>
-      <IconButton name="rotate-left" aria-label="Reset columns" aui={{ paint: 'text' }} />
-      <Button aui={{ scale: 'sm', paint: 'text' }}>Cancel</Button>
-      <Button aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Save</Button>
-    </>
+    <IconButton
+      name="xmark"
+      aria-label="Close help"
+      aui={{
+        scale: 'sm',
+        profile: 'square-compact',
+        color: 'secondary',
+        paint: 'text',
+        shape: 'soft',
+        sx: { flex: 'none' },
+      }}
+    />
   );
 }

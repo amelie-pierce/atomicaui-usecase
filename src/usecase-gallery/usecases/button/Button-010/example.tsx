@@ -4,30 +4,18 @@ export default function Example() {
   return (
     <>
       <Button
-        aria-label="Why Not for passing model"
-        aria-expanded={false}
-        aui={{
-          scale: 'sm',
-          profile: 'square-compact',
-          color: 'surface',
-          paint: 'text',
-          sx: { minWidth: '24', minHeight: '24' },
-        }}
+        aria-label="Back to top"
+        aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}
       >
-        <Button.Icon name="angle-right" aui={{ scale: 'sm' }} />
+        <Button.Icon name="arrow-up" />
+        Back to top
       </Button>
       <Button
-        aria-label="Why Not for failing model"
-        aria-expanded={false}
-        aui={{
-          scale: 'sm',
-          profile: 'square-compact',
-          color: 'error',
-          paint: 'text',
-          sx: { minWidth: '24', minHeight: '24' },
-        }}
+        aria-label="Jump to table notes"
+        aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}
       >
-        <Button.Icon name="angle-right" aui={{ scale: 'sm' }} />
+        <Button.Icon name="arrow-down" />
+        Table Notes
       </Button>
     </>
   );

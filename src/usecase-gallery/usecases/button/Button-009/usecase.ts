@@ -1,11 +1,11 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Button',
+  area: 'Table',
+  title: 'Column menu',
   apps: ['hcs'],
-  title: 'Floating scroll helper',
-  summary: 'Text Buttons with an arrow jump to the top of a long table or down to its notes.',
-  where: 'A floating bar over a scrolling results table: Back to top, Table Notes. Real site source: HCS Button-009.',
-  when: 'Use it for in-page jumps in a long scrolling view. Show each one only when it applies, and give it an aria-label that names the target.',
-  how: 'Set aui color "secondary", paint "text" and scale "sm", with Button.Icon arrow-up or arrow-down before the label.',
+  summary: 'A small IconButton opens the menu of a table column header.',
+  where: 'The header cell of each table column, beside the column title. Real site source: HCS Button-014.',
+  when: 'Use it for a per-column menu where space is tight. It is smaller than the panel icon buttons and uses the surface color.',
+  how: 'Set aui color "surface", paint "text", profile "square-compact", shape "soft" and scale "xs".',
 });

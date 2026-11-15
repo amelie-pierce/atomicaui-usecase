@@ -1,13 +1,11 @@
-import { Button } from '../../../kit';
+import { IconButton } from '../../../kit';
 
 export default function Example() {
   return (
-    <>
-      <Button aui={{ scale: 'sm' }}>Try again</Button>
-      <Button aui={{ scale: 'sm' }}>
-        <Button.Icon name="filter-circle-xmark" aui={{ scale: 'sm' }} />
-        Reset filters
-      </Button>
-    </>
+    <IconButton
+      name="xmark"
+      aria-label="Close walkthrough"
+      aui={{ scale: 'sm', paint: 'text', color: 'surface' }}
+    />
   );
 }

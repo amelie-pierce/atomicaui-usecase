@@ -1,11 +1,11 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Button',
+  area: 'Table',
+  title: 'Row expander',
   apps: ['hcs'],
-  title: 'Inline link Button',
-  summary: 'A Button styled as an underlined warning-colored link inside body copy.',
-  where: 'Sentences of body text where an action reads as a link: All Products, Form. Real site source: HCS Button-008.',
-  when: 'Use it for an action, not navigation, that belongs inside a sentence. For real navigation use a link. The real site underlines a phone link in the default color, so the two differ.',
-  how: 'Set aui scale "sm", profile "no-padding", color "warning" and paint "text", plus sx display "inline-flex" and textDecoration "underline". Set type="button".',
+  summary: 'A compact chevron Button expands a table row, in the error color when the row failed.',
+  where: 'The first cell of each result row, to reveal why a product did not pass. Real site source: HCS Button-010.',
+  when: 'Use it for a per-row disclosure. Switch color to "error" for rows that failed so the reason stands out. Always set aria-label and aria-expanded.',
+  how: 'Set aui scale "sm", profile "square-compact", paint "text" and color "surface" (or "error"), with sx minWidth and minHeight "24" for a safe hit area. The glyph is angle-right, shown here in the closed state; the app rotates it 90 degrees through CSS when aria-expanded is true.',
 });

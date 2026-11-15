@@ -1,11 +1,11 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Button',
+  area: 'Popover',
+  title: 'Help popover close',
   apps: ['hcs'],
-  title: 'Popover footer',
-  summary: 'An icon-only reset, a ghost text Cancel and a solid secondary Save close a popover.',
-  where: 'The footer of a popover form, such as the column configurator: a reset icon, Cancel, Save. Real site source: HCS Button-016. Dialogs use a gray solid Cancel instead (Button-002).',
-  when: 'Use it when the popover is lightweight and the Cancel should not compete with Save. Prefer the filled Cancel of Button-002 in dialogs; the real site spells the two differently.',
-  how: 'Cancel sets aui scale "sm" (to match Save\'s height) and paint "text" (default color, no fill). Save sets scale "sm", color "secondary" and paint "solid". Cancel and Save carry no icon; the reset is an IconButton with the rotate-left glyph, name only, aui paint "text", and needs an aria-label.',
+  summary: 'A transparent X IconButton closes a help popover.',
+  where: 'The corner of a popover that explains a panel, beside the circle-question help trigger of Button-011. Real site source: HCS Button-013.',
+  when: 'Use it to dismiss a popover that has no footer. It is the compact square profile, not the contained header size, so it stays out of the way of the text.',
+  how: 'Set aui color "secondary", paint "text", scale "sm", shape "soft" and profile "square-compact", plus sx flex "none". The glyph is xmark and the IconButton needs an aria-label.',
 });

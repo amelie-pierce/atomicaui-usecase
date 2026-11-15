@@ -11,10 +11,6 @@ export default function Example() {
         Next
         <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
       </Button>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
-        End
-        <Button.Icon name="check" aui={{ scale: 'sm' }} />
-      </Button>
     </>
   );
 }

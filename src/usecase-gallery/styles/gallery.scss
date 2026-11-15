@@ -114,24 +114,15 @@ $narrow: 840px;
   margin: 0;
 }
 
-// Id and name share one box: the id stays whole (never wraps), the name wraps beside or under it.
+// Id and name share one box and flow as one line of text: the id stays whole (never wraps) and the
+// name starts beside it, wrapping under it when it is long.
 .ug-docs__title {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: var(--p-px-8);
-  row-gap: var(--p-px-2);
+  overflow-wrap: anywhere;
 }
 
 .ug-docs__id {
-  flex: none;
   white-space: nowrap;
-}
-
-.ug-docs__title > :not(.ug-docs__id) {
-  flex: 1 1 auto;
-  min-inline-size: 0;
-  overflow-wrap: anywhere;
+  margin-inline-end: var(--p-px-8);
 }
 
 .ug-docs__apps {

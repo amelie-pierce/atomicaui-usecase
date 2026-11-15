@@ -109,9 +109,57 @@ $narrow: 840px;
   padding-block-end: var(--p-px-16);
 }
 
-.ug-docs__head :is(p, h3),
+.ug-docs__head :is(p, h2),
 .ug-docs__section :is(dt, dd) {
   margin: 0;
+}
+
+// Id and name share one box: the id stays whole (never wraps), the name wraps beside or under it.
+.ug-docs__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--p-px-8);
+  row-gap: var(--p-px-2);
+}
+
+.ug-docs__id {
+  flex: none;
+  white-space: nowrap;
+}
+
+.ug-docs__title > :not(.ug-docs__id) {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.ug-docs__apps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--p-px-8);
+}
+
+.ug-docs__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--p-px-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ug-docs__badge {
+  display: inline-flex;
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--p-px-4);
+
+  &:focus-visible {
+    outline: var(--p-px-2) solid var(--theme-focus);
+    outline-offset: var(--p-px-2);
+  }
 }
 
 .ug-docs__sections {
@@ -127,6 +175,11 @@ $narrow: 840px;
 }
 
 // ── Tree ────────────────────────────────────────────────────────────────────
+// Areas nest one step inside their component.
+.ug-tree__areas {
+  padding-inline-start: var(--p-px-8);
+}
+
 .ug-tree__list {
   list-style: none;
   margin: 0;

@@ -1,6 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  area: 'Button',
+  apps: ['hcs'],
   title: 'Popover footer',
   summary: 'An icon-only reset, a ghost text Cancel and a solid secondary Save close a popover.',
   where: 'The footer of a popover form, such as the column configurator: a reset icon, Cancel, Save. Real site source: HCS Button-016. Dialogs use a gray solid Cancel instead (Button-002).',

@@ -1,6 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  area: 'Button',
+  apps: ['hcs'],
   title: 'Floating scroll helper',
   summary: 'Text Buttons with an arrow jump to the top of a long table or down to its notes.',
   where: 'A floating bar over a scrolling results table: Back to top, Table Notes. Real site source: HCS Button-009.',

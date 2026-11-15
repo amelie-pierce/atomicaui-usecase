@@ -1,6 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  area: 'Button',
+  apps: ['hcs'],
   title: 'Inline link Button',
   summary: 'A Button styled as an underlined warning-colored link inside body copy.',
   where: 'Sentences of body text where an action reads as a link: All Products, Form. Real site source: HCS Button-008.',

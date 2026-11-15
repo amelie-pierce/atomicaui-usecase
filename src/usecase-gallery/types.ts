@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import type { AppKey } from './apps';
 
 /** Written once per component in `usecases/<component>/<component>.meta.ts`. */
 export interface ComponentMeta {
@@ -10,6 +11,8 @@ export interface ComponentMeta {
 
 /** Written once per use case in `usecases/<component>/<UseCaseId>/usecase.ts`. */
 export interface UsecaseDoc {
+  /** Where the component is used, e.g. `Dialog`, `Walkthrough`, `Table`. Use cases with the same area share a tree group. */
+  area: string;
   title: string;
   /** One sentence: what this use case shows. */
   summary: string;
@@ -19,6 +22,8 @@ export interface UsecaseDoc {
   when: string;
   /** How to use it: the props and rules that matter. */
   how: string;
+  /** Keys of the apps (see `apps.ts`) that use this pattern. */
+  apps: AppKey[];
 }
 
 export interface Usecase extends UsecaseDoc {
@@ -31,6 +36,12 @@ export interface Usecase extends UsecaseDoc {
   loadCode: () => Promise<string>;
 }
 
-export interface ComponentGroup extends ComponentMeta {
+/** The use cases of one component that live in the same place in a product. */
+export interface AreaGroup {
+  title: string;
   usecases: Usecase[];
+}
+
+export interface ComponentGroup extends ComponentMeta {
+  areas: AreaGroup[];
 }

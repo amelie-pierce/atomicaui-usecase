@@ -1,6 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  area: 'Button',
+  apps: ['hcs'],
   title: 'Dialog confirm',
   summary: 'The solid secondary Button commits the action of a dialog.',
   where: 'The footer of a confirmation or form dialog, beside Cancel: Reset, Submit, Accept. Real site source: HCS Button-001.',

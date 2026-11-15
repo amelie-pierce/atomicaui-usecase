@@ -1,6 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  area: 'Button',
+  apps: ['hcs'],
   title: 'Outlined toolbar action',
   summary: 'A tonal surface Button carries a toolbar action with a dark outline; Print Output has a leading print icon and View options has none.',
   where: 'A results toolbar beside other controls: Print Output, View options. Real site source: HCS Button-004.',

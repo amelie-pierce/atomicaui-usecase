@@ -9,4 +9,4 @@ export const catalog = buildCatalog({
   sources: import.meta.glob('../usecases/*/*/example.tsx', { query: '?raw', import: 'default' }),
 });
 
-export const allUsecases = catalog.flatMap((group) => group.usecases);
+export const allUsecases = catalog.flatMap((group) => group.areas.flatMap((area) => area.usecases));

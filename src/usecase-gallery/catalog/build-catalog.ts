@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import type { ComponentType } from 'react';
 import { toSnippet } from './snippet';
-import type { ComponentGroup, ComponentMeta, Usecase, UsecaseDoc } from '../types';
+import type { AreaGroup, ComponentGroup, ComponentMeta, Usecase, UsecaseDoc } from '../types';
 
 type Loader<T> = () => Promise<T>;
 
@@ -28,7 +28,7 @@ const fail = (message: string): never => {
 
 /** Pure assembly of the catalog from glob results, so the discovery rules live in one testable place. */
 export function buildCatalog({ metas, docs, examples, sources }: CatalogSources): ComponentGroup[] {
-  const groups = new Map<string, ComponentGroup>();
+  const groups = new Map<string, ComponentGroup & { usecases: Usecase[] }>();
   for (const [path, meta] of Object.entries(metas)) {
     groups.set(componentKey(path), { ...meta, usecases: [] });
   }
@@ -62,5 +62,17 @@ export function buildCatalog({ metas, docs, examples, sources }: CatalogSources)
   return [...groups.values()]
     .filter((group) => group.usecases.length > 0)
     .sort((a, b) => byNaturalOrder(a.title, b.title))
-    .map((group) => ({ ...group, usecases: group.usecases.sort((a, b) => byNaturalOrder(a.id, b.id)) }));
+    .map(({ usecases, ...group }) => ({ ...group, areas: groupByArea(usecases) }));
+}
+
+/** Areas appear in the order of their lowest use case id, so a new area slots in where its first use case sits. */
+function groupByArea(usecases: Usecase[]): AreaGroup[] {
+  const areas = new Map<string, AreaGroup>();
+  for (const usecase of [...usecases].sort((a, b) => byNaturalOrder(a.id, b.id))) {
+    const title = usecase.area.trim() || fail(`${usecase.id} has an empty area`);
+    const area = areas.get(title) ?? { title, usecases: [] };
+    area.usecases.push(usecase);
+    areas.set(title, area);
+  }
+  return [...areas.values()];
 }

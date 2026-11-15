@@ -1,6 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  area: 'Button',
+  apps: ['hcs'],
   title: 'Walkthrough close',
   summary: 'A transparent X IconButton closes the walkthrough card.',
   where: 'The top corner of a coach-mark card. Real site source: HCS Button-017.',

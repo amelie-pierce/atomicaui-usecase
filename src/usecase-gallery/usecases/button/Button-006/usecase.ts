@@ -1,6 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  area: 'Button',
+  apps: ['hcs'],
   title: 'Neutral default action',
   summary: 'The default gray Button, with or without a leading icon, for recovery and reset actions.',
   where: 'Error screens and table toolbars: Try again (Retry), Reset filters. Real site source: HCS Button-005 and Button-007.',

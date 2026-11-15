@@ -1,6 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  area: 'Button',
+  apps: ['hcs'],
   title: 'Row expander',
   summary: 'A compact chevron Button expands a table row, in the error color when the row failed.',
   where: 'The first cell of each result row, to reveal why a product did not pass. Real site source: HCS Button-010.',

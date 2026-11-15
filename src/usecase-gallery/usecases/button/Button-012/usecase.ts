@@ -1,6 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  area: 'Button',
+  apps: ['hcs'],
   title: 'Column kebab',
   summary: 'A small IconButton opens the menu of a table column header.',
   where: 'The header cell of each table column, beside the column title. Real site source: HCS Button-014.',

@@ -1,6 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  area: 'Button',
+  apps: ['hcs'],
   title: 'Dialog cancel',
   summary: 'The gray solid Button dismisses a dialog without acting.',
   where: 'The footer of a dialog, left of the confirm Button: Cancel, Do Not Accept. Real site source: HCS Button-002. Popovers use a ghost Cancel instead (Button-003).',

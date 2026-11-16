@@ -14,13 +14,12 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
     <PaneCard label="Documentation" className="ug-docs">
       <header className="ug-docs__head">
         <h2 className="ug-docs__title">
-          <Type role="h4" as="span" weight="bold">{usecase.id}</Type>
-          <Type role="h4" as="span" weight="bold">{usecase.title}</Type>
+          <Type role="p3" as="span" weight="bold">{usecase.id}</Type>
+          <Type role="p3" as="span" weight="bold">{usecase.title}</Type>
         </h2>
         <Type role="p3" as="p" color="muted">{usecase.summary}</Type>
         <div className="ug-docs__apps">
-          <Type role="l4" as="span" color="muted">Used in</Type>
-          <ul className="ug-docs__badges">
+          <ul className="ug-docs__badges" aria-label="Used in">
             {usecase.apps.map((key) => {
               const app = APPS[key];
               return (

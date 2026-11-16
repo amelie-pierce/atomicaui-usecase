@@ -26,6 +26,12 @@ export interface UsecaseDoc {
   apps: AppKey[];
   /** Optional: the area's context places this example elsewhere (for example `close`, the card corner); uses `contexts/<area-slug>-<variant>.tsx`. */
   contextVariant?: string;
+  /**
+   * Optional: several In context cases of this use case (for example the three dialogs). Each id names a file
+   * `scenes/<id>.tsx` in the use case folder; the preview shows a radio group and renders the chosen scene
+   * instead of the area context. One entry (or none) shows no radio group.
+   */
+  cases?: { id: string; name: string }[];
 }
 
 /** The props of a context component: the example to place inside the real area. */
@@ -38,7 +44,15 @@ export interface ContextProps {
 /** What the centre preview shows: the lone component, or the component inside the area that holds it. */
 export type PreviewMode = 'component' | 'context';
 
-export interface Usecase extends UsecaseDoc {
+/** One resolved In context case: its scene and the snippet with the example placed inside it. */
+export interface UsecaseCase {
+  id: string;
+  name: string;
+  Scene: ComponentType<ContextProps>;
+  loadCode: () => Promise<string>;
+}
+
+export interface Usecase extends Omit<UsecaseDoc, 'cases'> {
   /** `<ComponentId>-<NNN>`; also the URL hash. */
   id: string;
   componentId: string;
@@ -50,6 +64,8 @@ export interface Usecase extends UsecaseDoc {
   Context?: ComponentType<ContextProps>;
   /** Resolves to the snippet with the example placed inside the context's JSX; present with `Context`. */
   loadContextCode?: () => Promise<string>;
+  /** The In context cases from `scenes/`; they take the place of `Context` when present. */
+  cases?: UsecaseCase[];
 }
 
 /** The use cases of one component that live in the same place in a product. */

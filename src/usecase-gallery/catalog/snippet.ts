@@ -33,7 +33,8 @@ export const toContextSnippet = (contextSource: string, exampleSnippet: string):
     .replace(PREVIEW_ONLY_PROPS, '')
     .replace(MOCK_SCENERY, (_, name: string) => `{/* sample ${name.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase()} */}`);
   const slot = CHILDREN_LINE.exec(context);
-  if (!slot) return exampleSnippet;
+  // A scene with no slot writes its own controls (a static state of the case), so it is the snippet.
+  if (!slot) return context;
   // A fragment only groups siblings; inside the context's parent element it is noise.
   const unwrapped = /^<>\s*([\s\S]*?)\s*<\/>$/.exec(exampleSnippet.trim())?.[1];
   const indented = (unwrapped ? dedent(unwrapped) : exampleSnippet)

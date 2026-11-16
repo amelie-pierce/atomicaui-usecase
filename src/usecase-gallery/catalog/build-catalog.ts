@@ -14,6 +14,9 @@ export interface CatalogSources {
   /** `../contexts/<area-slug>.tsx` components and their sources, optional per area. */
   contexts?: Record<string, Loader<ComponentType<ContextProps>>>;
   contextSources?: Record<string, Loader<string>>;
+  /** `../usecases/<component>/<UseCaseId>/scenes/<case>.tsx`: the In context cases of one use case. */
+  scenes?: Record<string, Loader<ComponentType<ContextProps>>>;
+  sceneSources?: Record<string, Loader<string>>;
 }
 
 const ID_PATTERN = /^([A-Z][A-Za-z0-9]*)-(\d{3,})$/;
@@ -28,6 +31,11 @@ const componentKey = (path: string) => segments(path).slice(-2, -1)[0];
 /** `Body text` -> `body-text`: the file name of an area's context. */
 export const areaSlug = (area: string) => area.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 /** `.../contexts/<area-slug>[-<variant>].tsx` -> the file name without extension. */
+/** `.../usecases/<component>/<UseCaseId>/scenes/<case>.tsx` -> `<component>/<UseCaseId>/<case>`. */
+const sceneKey = (path: string) => {
+  const [component, id, , file] = segments(path).slice(-4);
+  return `${component}/${id}/${file.replace(/\.tsx$/, '')}`;
+};
 const contextKey = (path: string) => segments(path).slice(-1)[0].replace(/\.tsx$/, '');
 
 const fail = (message: string): never => {
@@ -35,7 +43,7 @@ const fail = (message: string): never => {
 };
 
 /** Pure assembly of the catalog from glob results, so the discovery rules live in one testable place. */
-export function buildCatalog({ metas, docs, examples, sources, contexts = {}, contextSources = {} }: CatalogSources): ComponentGroup[] {
+export function buildCatalog({ metas, docs, examples, sources, contexts = {}, contextSources = {}, scenes = {}, sceneSources = {} }: CatalogSources): ComponentGroup[] {
   const groups = new Map<string, ComponentGroup & { usecases: Usecase[] }>();
   for (const [path, meta] of Object.entries(metas)) {
     groups.set(componentKey(path), { ...meta, usecases: [] });
@@ -45,6 +53,8 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
   const sourceByPath = new Map(Object.entries(sources).map(([p, load]) => [usecaseKey(p).join('/'), load]));
   const contextBySlug = new Map(Object.entries(contexts).map(([p, load]) => [contextKey(p), load]));
   const contextSourceBySlug = new Map(Object.entries(contextSources).map(([p, load]) => [contextKey(p), load]));
+  const sceneByKey = new Map(Object.entries(scenes).map(([p, load]) => [sceneKey(p), load]));
+  const sceneSourceByKey = new Map(Object.entries(sceneSources).map(([p, load]) => [sceneKey(p), load]));
   const lazyContexts = new Map<string, ComponentType<ContextProps>>();
   const ids = new Set<string>();
 
@@ -60,8 +70,9 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
     const loadExample = exampleByPath.get(key) ?? fail(`${id} is missing example.tsx`);
     const loadSource = sourceByPath.get(key) ?? fail(`${id} is missing example.tsx`);
     let code: Promise<string> | undefined;
+    const { cases, ...docFields } = doc;
     const usecase: Usecase = {
-      ...doc,
+      ...docFields,
       id,
       componentId: group.id,
       Example: lazy(() => loadExample().then((component) => ({ default: component }))),
@@ -81,6 +92,23 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
         (contextCode ??= Promise.all([usecase.loadCode(), loadContextSource()]).then(([snippet, source]) =>
           toContextSnippet(source, snippet),
         ));
+    }
+    if (cases && cases.length > 0) {
+      const caseIds = new Set<string>();
+      usecase.cases = cases.map(({ id: caseId, name }) => {
+        if (caseIds.has(caseId)) fail(`${id} lists the case "${caseId}" twice`);
+        caseIds.add(caseId);
+        const loadScene = sceneByKey.get(`${key}/${caseId}`) ?? fail(`${id} lists the case "${caseId}" but scenes/${caseId}.tsx is missing`);
+        const loadSceneSource = sceneSourceByKey.get(`${key}/${caseId}`) ?? fail(`${id} lists the case "${caseId}" but scenes/${caseId}.tsx is missing`);
+        const Scene = lazy(() => loadScene().then((component) => ({ default: component })));
+        let sceneCode: Promise<string> | undefined;
+        return {
+          id: caseId,
+          name,
+          Scene,
+          loadCode: () => (sceneCode ??= Promise.all([usecase.loadCode(), loadSceneSource()]).then(([snippet, source]) => toContextSnippet(source, snippet))),
+        };
+      });
     }
     group.usecases.push(usecase);
   }

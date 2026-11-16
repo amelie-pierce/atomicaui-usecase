@@ -83,6 +83,7 @@ $narrow: 840px;
 }
 
 .ug-render__toggle {
+  flex: none;
   inline-size: fit-content;
   margin-block-end: var(--p-px-16);
 }
@@ -92,8 +93,17 @@ $narrow: 840px;
   flex-direction: column;
 }
 
+.ug-render__cases {
+  flex: none;
+  flex-wrap: wrap;
+  margin-block-end: var(--p-px-12);
+}
+
 .ug-render__stage {
   flex: 1 1 auto;
+  // A tall scene scrolls inside the stage instead of pushing the toggle and the case picker out of the pane.
+  min-block-size: 0;
+  overflow: auto;
   display: flex;
   flex-wrap: wrap;
   // `safe`: a tall scene (stacked dialogs) scrolls from its top instead of spilling over the toggle.

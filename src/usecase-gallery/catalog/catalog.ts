@@ -10,6 +10,9 @@ export const catalog = buildCatalog({
   // One file per area, named for it (`contexts/dialog.tsx`); an area without one falls back to a plain frame.
   contexts: import.meta.glob('../contexts/*.tsx', { import: 'default' }),
   contextSources: import.meta.glob('../contexts/*.tsx', { query: '?raw', import: 'default' }),
+  // In context cases of one use case: `usecases/<component>/<UseCaseId>/scenes/<case>.tsx`, listed in its `usecase.ts`.
+  scenes: import.meta.glob('../usecases/*/*/scenes/*.tsx', { import: 'default' }),
+  sceneSources: import.meta.glob('../usecases/*/*/scenes/*.tsx', { query: '?raw', import: 'default' }),
 });
 
 export const allUsecases = catalog.flatMap((group) => group.areas.flatMap((area) => area.usecases));

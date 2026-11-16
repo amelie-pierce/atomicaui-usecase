@@ -103,7 +103,7 @@ Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a
 | doc summary | `l3` muted 16/20 |
 | Where / When / How labels | `l3` semi-bold 16/20 |
 | doc body | `l3` 16/20 |
-| code | `l3` mono (JetBrains Mono) 16/20 |
+| code | `l3` mono (JetBrains Mono) regular 16/20 |
 | badges, toggle labels, Copy | kit part at `sm`, 16/20 |
 | fallback frame note | `l3` muted |
 

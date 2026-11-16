@@ -58,7 +58,7 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
           <Collapsible key={group.id} open={!closed.has(group.id)} onOpenChange={(open) => setOpen(group.id, open)}>
             <Collapsible.Header>
               <Collapsible.Trigger>
-                <Type role="p2" as="span" weight="semi-bold">{group.title}</Type>
+                <Type role="p3" as="span" weight="semi-bold">{group.title}</Type>
                 <Collapsible.Chevron />
               </Collapsible.Trigger>
             </Collapsible.Header>
@@ -87,7 +87,7 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
                                 className="ug-tree__link"
                                 aria-current={selected ? 'page' : undefined}
                               >
-                                <Type role="p2" as="span" weight={selected ? 'bold' : 'semi-bold'}>{usecase.id}</Type>
+                                <Type role="p3" as="span" weight={selected ? 'bold' : 'semi-bold'}>{usecase.id}</Type>
                                 <Type role="p3" as="span" weight={selected ? 'bold' : undefined}>{usecase.title}</Type>
                               </a>
                             </li>

@@ -18,3 +18,22 @@ export const toSnippet = (source: string): string => {
   const jsx = RETURNED_JSX.exec(body)?.[1];
   return jsx ? dedent(jsx) : body;
 };
+
+const CHILDREN_LINE = /^([ \t]*)\{children\}[ \t]*$/m;
+
+/**
+ * Turns a `contexts/<area>.tsx` source and the example's snippet into the in-context snippet: the JSX
+ * the context returns, with its `{children}` line replaced by the example. Falls back to the example alone.
+ */
+export const toContextSnippet = (contextSource: string, exampleSnippet: string): string => {
+  const context = toSnippet(contextSource);
+  const slot = CHILDREN_LINE.exec(context);
+  if (!slot) return exampleSnippet;
+  // A fragment only groups siblings; inside the context's parent element it is noise.
+  const unwrapped = /^<>\s*([\s\S]*?)\s*<\/>$/.exec(exampleSnippet.trim())?.[1];
+  const indented = (unwrapped ? dedent(unwrapped) : exampleSnippet)
+    .split('\n')
+    .map((line, index) => (index === 0 || !line.trim() ? line : slot[1] + line))
+    .join('\n');
+  return context.replace(CHILDREN_LINE, slot[1] + indented);
+};

@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import type { AppKey } from './apps';
 
 /** Written once per component in `usecases/<component>/<component>.meta.ts`. */
@@ -26,6 +26,16 @@ export interface UsecaseDoc {
   apps: AppKey[];
 }
 
+/** The props of a context component: the example to place inside the real area. */
+export interface ContextProps {
+  children: ReactNode;
+  /** The preview stage; portaled parts (a Dialog's popup) render here so they stay static inside the card. */
+  host: HTMLElement;
+}
+
+/** What the centre preview shows: the lone component, or the component inside the area that holds it. */
+export type PreviewMode = 'component' | 'context';
+
 export interface Usecase extends UsecaseDoc {
   /** `<ComponentId>-<NNN>`; also the URL hash. */
   id: string;
@@ -34,6 +44,10 @@ export interface Usecase extends UsecaseDoc {
   Example: ComponentType;
   /** Resolves to the copyable snippet, derived from the same `example.tsx` that renders. */
   loadCode: () => Promise<string>;
+  /** The real area that holds the example (`contexts/<area>.tsx`); absent when the kit cannot compose it. */
+  Context?: ComponentType<ContextProps>;
+  /** Resolves to the snippet with the example placed inside the context's JSX; present with `Context`. */
+  loadContextCode?: () => Promise<string>;
 }
 
 /** The use cases of one component that live in the same place in a product. */

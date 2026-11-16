@@ -4,6 +4,7 @@ export default defineUsecase({
   area: 'Toolbar',
   title: 'Reset filters',
   apps: ['hcs'],
+  source: { hcs: 'src/App.tsx' },
   summary: 'A neutral default Button clears the active filters of a results table.',
   where: 'The toolbar row above the Output table, after the search field and before the result count and the product filter. Real site source: HCS Button-005 (Reset filters).',
   when: 'Use it beside filter controls, shown only while a filter is active. It is the plain default Button because clearing filters is a quiet action.',

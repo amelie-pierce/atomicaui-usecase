@@ -44,7 +44,7 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
       <dl className="ug-docs__sections">
         {SECTIONS.map(([label, key]) => (
           <div key={key} className="ug-docs__section">
-            <Type as="dt" role="l3" weight="semi-bold" color="primary">{label}</Type>
+            <Type as="dt" role="l3" weight="semi-bold">{label}</Type>
             <Type as="dd" role="l3">{usecase[key]}</Type>
           </div>
         ))}

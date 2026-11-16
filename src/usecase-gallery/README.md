@@ -79,6 +79,8 @@ export default function PanelContext({ children }: ContextProps) {
 
 Use only components exported by `kit.ts` (add an export there if the kit has the part). Portaled parts (a Dialog or Popover popup) take `container={host}`, the preview stage, and skip the backdrop and viewport, so they render open inside the card rather than as an overlay. The code pane strips these preview-only props (`open`, `modal={false}`, `initialFocus={false}`, `container={host}`, `anchor={host}`) from the copyable snippet (`PREVIEW_ONLY_PROPS` in `catalog/snippet.ts`). One context serves every use case of its area, so the example goes where that area's controls most often sit.
 
+When a use case sits elsewhere than the rest of its area (a close X in the corner of a card, not its footer), set `contextVariant` in its `usecase.ts` (for example `contextVariant: 'close'`) and add `contexts/<area-slug>-<variant>.tsx` (`walkthrough-close.tsx`, `popover-close.tsx`). That use case then renders in the variant instead of the area's context; a missing variant file fails the catalog build. Variants currently: Walkthrough close (Button-006) and Help popover close (Button-003) put the X in the card header's `Card.Action`, at the top right; the footer contexts keep Previous/Next/End and the popover footer.
+
 An area with no context file shows its example in a plain dashed frame with a short note. Currently without a context: Toolbar, Form, Body text, Viewer, Error screen (no kit component stands for them).
 
 ## Add an app

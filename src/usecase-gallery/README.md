@@ -98,7 +98,7 @@ Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a
 | Element | Type |
 | --- | --- |
 | tree component and area titles | `l3` semi-bold 16/20 |
-| tree use case rows (id and name) | `l3` regular 16/20, selected row bold |
+| tree use case rows (id and name) | `l3` regular 16/20, selected row bold, primary text on a light primary tint |
 | doc id and name | `l3` bold 16/20 |
 | doc summary | `l3` muted 16/20 |
 | Where / When / How labels | `l3` semi-bold 16/20 |

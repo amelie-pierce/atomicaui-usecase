@@ -71,6 +71,14 @@ $narrow: 840px;
 }
 
 // ── Pane content ────────────────────────────────────────────────────────────
+// The theme primary is too light for small text (about 3.2:1 on white); where the gallery uses primary for
+// titles and the active toggle segment, resolve it to the palette's darker orange (at least 4.7:1 on the
+// surfaces, 5.2:1 with its white on-primary), the same step the high-contrast theme uses.
+.ug-render__toggle,
+.ug-docs {
+  --theme-primary: var(--p-palette-orange-600);
+}
+
 .ug-render__toggle {
   inline-size: fit-content;
   margin-block-end: var(--p-px-16);

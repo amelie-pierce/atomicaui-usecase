@@ -1,6 +1,6 @@
 import { Suspense, useState } from 'react';
-import { Button, ToggleGroup, Type } from '../kit';
-import type { PreviewMode, Usecase } from '../types';
+import { Button, Radio, RadioGroup, ToggleGroup, Type } from '../kit';
+import type { PreviewMode, Usecase, UsecaseCase } from '../types';
 import { PaneCard } from './pane-card';
 
 const MODES: { value: PreviewMode; label: string }[] = [
@@ -25,12 +25,18 @@ export function RenderPane({
   usecase,
   mode,
   onModeChange,
+  activeCase,
+  onCaseChange,
 }: {
   usecase: Usecase;
   mode: PreviewMode;
   onModeChange: (mode: PreviewMode) => void;
+  activeCase?: UsecaseCase;
+  onCaseChange: (caseId: string) => void;
 }) {
-  const { Example, Context } = usecase;
+  const { Example } = usecase;
+  const Context = activeCase?.Scene ?? usecase.Context;
+  const cases = usecase.cases ?? [];
   const [host, setHost] = useState<HTMLElement | null>(null);
   return (
     <PaneCard label="Preview" className="ug-render">
@@ -53,6 +59,21 @@ export function RenderPane({
           />
         ))}
       </ToggleGroup>
+      {mode === 'context' && cases.length > 1 && (
+        <RadioGroup
+          className="ug-render__cases"
+          aria-label="In context case"
+          direction="row"
+          value={activeCase?.id}
+          onValueChange={(next) => onCaseChange(String(next))}
+        >
+          {cases.map(({ id, name }) => (
+            <Radio key={id} value={id}>
+              <Radio.Label>{name}</Radio.Label>
+            </Radio>
+          ))}
+        </RadioGroup>
+      )}
       <div className="ug-render__stage" ref={setHost}>
         <Suspense fallback={null}>
           {mode === 'component' ? (

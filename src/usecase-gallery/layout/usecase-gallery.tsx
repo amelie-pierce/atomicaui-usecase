@@ -25,13 +25,18 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
     allUsecases.map((usecase) => usecase.id),
     allUsecases[0]?.id ?? '',
   );
+  // The In context case is per use case: choosing another use case starts again at its first case.
+  const [chosen, setChosen] = useState<{ usecaseId: string; caseId: string }>();
+  if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
   const usecase = allUsecases.find((candidate) => candidate.id === selectedId);
   if (!usecase) return null;
+  const activeCase =
+    usecase.cases?.find((candidate) => chosen?.usecaseId === usecase.id && candidate.id === chosen.caseId) ?? usecase.cases?.[0];
 
   const panes = {
     tree: <TreePane groups={catalog} selectedId={usecase.id} title={title} />,
-    render: <RenderPane usecase={usecase} mode={mode} onModeChange={setMode} />,
-    code: <CodePane key={`${usecase.id}-${mode}`} usecase={usecase} mode={mode} />,
+    render: <RenderPane usecase={usecase} mode={mode} onModeChange={setMode} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ usecaseId: usecase.id, caseId })} />,
+    code: <CodePane key={`${usecase.id}-${mode}-${activeCase?.id}`} usecase={usecase} mode={mode} activeCase={activeCase} />,
     docs: <DocsPane usecase={usecase} />,
   };
   return (

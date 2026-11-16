@@ -20,6 +20,8 @@ export const toSnippet = (source: string): string => {
 };
 
 const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
+// Scenery from `mock-data.tsx` is not part of the pattern: the copied code keeps a one-line placeholder.
+const MOCK_SCENERY = /<Mock(\w+)\s*\/>/g;
 const CHILDREN_LINE = /^([ \t]*)\{children\}[ \t]*$/m;
 
 /**
@@ -27,7 +29,9 @@ const CHILDREN_LINE = /^([ \t]*)\{children\}[ \t]*$/m;
  * the context returns minus its preview-only props (forced open, `host` container), with its `{children}` line replaced by the example. Falls back to the example alone.
  */
 export const toContextSnippet = (contextSource: string, exampleSnippet: string): string => {
-  const context = toSnippet(contextSource).replace(PREVIEW_ONLY_PROPS, '');
+  const context = toSnippet(contextSource)
+    .replace(PREVIEW_ONLY_PROPS, '')
+    .replace(MOCK_SCENERY, (_, name: string) => `{/* sample ${name.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase()} */}`);
   const slot = CHILDREN_LINE.exec(context);
   if (!slot) return exampleSnippet;
   // A fragment only groups siblings; inside the context's parent element it is noise.

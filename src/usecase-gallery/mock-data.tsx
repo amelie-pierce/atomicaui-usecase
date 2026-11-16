@@ -1,4 +1,4 @@
-import { Chip, Field, Table, View } from './kit';
+import { Checkbox, Chip, Field, Radio, RadioGroup, Table, Type, View } from './kit';
 
 // The only mock values the In context scenes use: simple placeholders in hcs wording, no real data.
 
@@ -67,5 +67,25 @@ export function MockSelectField({ label, value, disabled }: { label: string; val
         <Field.SelectTrigger />
       </Field.Select>
     </Field>
+  );
+}
+
+/** The viewer's camera and visibility controls under Reset view: two radios, a heading, four checkboxes. */
+export function MockViewerControls() {
+  return (
+    <>
+      <RadioGroup aria-label="Projection" defaultValue="perspective" aui={{ scale: 'sm' }}>
+        <Radio value="perspective"><Radio.Label>Perspective</Radio.Label></Radio>
+        <Radio value="orthographic"><Radio.Label>Orthographic</Radio.Label></Radio>
+      </RadioGroup>
+      <Type as="h3" role="l3" weight="bold">Object Visibility</Type>
+      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '2' } }}>
+        {['Supporting Beam', 'Supported Beam', 'Connector', 'Connector Detail'].map((name) => (
+          <Checkbox key={name} defaultChecked aui={{ scale: 'sm' }}>
+            <Checkbox.Label>{name}</Checkbox.Label>
+          </Checkbox>
+        ))}
+      </View>
+    </>
   );
 }

@@ -1,4 +1,5 @@
-import { Accordion, Checkbox, Chip, Field, Menubar, Radio, RadioGroup, Table, Type, View } from './kit';
+import { Accordion, Button, Checkbox, Chip, ContainedImage, Dropdown, Field, IconButton, Menubar, Popover, Radio, RadioGroup, Table, Tooltip, Type, View } from './kit';
+import connectorThumbnail from './usecases/button/Button-008/connector-thumbnail.svg';
 
 // The only mock values the In context scenes use: simple placeholders in hcs wording, no real data.
 
@@ -197,6 +198,219 @@ export function MockTourTarget({ target }: { target: keyof typeof TOUR_TARGETS }
         )}
       </div>
       <div className="ug-tour__spotlight" style={{ left: left - 4, top: top - 4, width: width + 8, height: height + 8 }} aria-hidden="true" />
+    </>
+  );
+}
+
+/** The Output product filter (HcsProductFilter.tsx): an outlined Dropdown trigger, closed; the label carries the count unless the inputs are invalid. */
+export function MockProductFilter({ label, disabled }: { label: string; disabled?: boolean }) {
+  return (
+    <div>
+      <Dropdown aui={{ scale: 'sm' }}>
+        <Dropdown.Trigger
+          aria-label="Product filter"
+          disabled={disabled}
+          aui={{ scale: 'sm', color: 'surface', paint: 'fixed', sx: { whiteSpace: 'nowrap', borderColor: 'outlined', borderBlockStartWidth: '1', borderBlockEndWidth: '1', borderInlineStartWidth: '1', borderInlineEndWidth: '1' } }}
+        >
+          {label}
+          <Dropdown.Chevron aui={{ scale: 'sm' }} />
+        </Dropdown.Trigger>
+      </Dropdown>
+    </div>
+  );
+}
+
+/** The Output toolbar row without Reset filters: search fills the line, then the count and the product filter (App.tsx). */
+export function MockOutputToolbar({ invalid }: { invalid?: boolean }) {
+  return (
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', flex: 'none', flexWrap: 'wrap', paddingBlockEnd: '6' } }}>
+      <Field style={{ minWidth: 112 }} aui={{ scale: 'sm', sx: { flex: 'fill' } }}>
+        <Field.Control>
+          <Field.Icon name="magnifying-glass" />
+          <Field.Input aria-label="Search connector models" placeholder="Search connector models..." />
+          <Field.Button aria-label="Clear search">
+            <Field.ButtonIcon name="xmark" />
+          </Field.Button>
+        </Field.Control>
+      </Field>
+      {!invalid && (
+        <Type color="muted" aui={{ sx: { margin: '0', fontSize: '12', flex: 'none' } }}>
+          <span role="status">Showing 2 of 3 results</span>
+        </Type>
+      )}
+      <MockProductFilter label={invalid ? 'Passed Products' : 'Passed Products (2)'} disabled={invalid} />
+    </View>
+  );
+}
+
+const outputColumnWidths = ['384', '128', '128', '192', '192', '192', '192', '192', '288'] as const;
+const outputHeaderLines: Record<string, [string, string]> = {
+  load: ['Load', '(lb)'],
+  lateral: ['Lateral (Tension)', '(lb)'],
+  plateThickness: ['Plate Thickness', '(PT) (in.)'],
+  plateDepth: ['Plate Depth', '(PD) (in.)'],
+  rotationBolt: ['Rotation Bolt', '(Qty) (Total)'],
+  lateralBolt: ['Lateral Bolt', '(Qty) (Total)'],
+  machineBoltSize: ['Machine Bolt Size', '(Dia x Length) (in.)'],
+};
+const outputSelection = {
+  scale: 'sm',
+  sx: { minWidth: '24', minHeight: '24' },
+  states: {
+    unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
+    selected: { color: 'primary', paint: 'solid' },
+  },
+} as const;
+
+/**
+ * The Output results table of F01Results.tsx with the passed rows only: nine columns, all-cell borders, the Model column
+ * frozen, single selection by radio (first row selected). The table scrolls sideways in a narrow pane.
+ */
+export function MockOutputTable() {
+  const rows = MOCK_RESULT_ROWS.filter((row) => row.passed);
+  return (
+    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', overflow: 'hidden', position: 'relative', flex: 'fill', minHeight: '0' } }}>
+      <Table
+        aria-label="Connector calculation results"
+        aui={{ scale: 'sm', shape: 'soft', sx: { gap: '0', minHeight: '0', borderColor: 'outlined', borderBlockStartWidth: '1', borderBlockEndWidth: '1', borderInlineStartWidth: '1', borderInlineEndWidth: '1' } }}
+        border="all-cells"
+        borderStyle="tonal"
+        scroll="self"
+        bodyFit="content"
+        fit="fill"
+        minInlineSize={1888}
+        frozenColumns={1}
+        sortable
+        expandable
+        rowAui={{
+          color: 'surface-alt',
+          paint: 'solid',
+          states: {
+            unselected: { color: 'surface-alt', paint: 'solid' },
+            selected: { color: 'surface-alt', paint: 'solid', sx: { borderColor: 'secondary', borderInlineStartWidth: '4' } },
+          },
+        }}
+        selectionMode="single"
+        indicatorType="radio"
+        indicatorColumn={false}
+        selectionToggleAui={outputSelection}
+        headerCellAui={{ color: 'raised', sx: { textAlign: 'center' } }}
+      >
+        <Table.Head>
+          <Table.Row selectable={false} expandable={false}>
+            {MOCK_OUTPUT_COLUMNS.map((column, index) => (
+              <Table.HeaderCell key={column.id} aui={{ scale: 'sm', color: 'raised', sx: { width: outputColumnWidths[index], textAlign: 'center' } }} sortDirection={false}>
+                <span>
+                  {outputHeaderLines[column.id] ? (
+                    <>
+                      {outputHeaderLines[column.id][0]}
+                      <br />
+                      {outputHeaderLines[column.id][1]}
+                    </>
+                  ) : (
+                    column.header
+                  )}
+                </span>
+              </Table.HeaderCell>
+            ))}
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          {rows.map((row, rowIndex) => (
+            <Table.Row key={row.id} selected={rowIndex === 0} expandable expansionLabel={`Show Why Not for ${row.model}`} selectionLabel={row.model}>
+              <Table.Cell aui={{ scale: 'sm', sx: { width: outputColumnWidths[0], whiteSpace: 'nowrap', textAlign: 'left' } }}>
+                <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '12', minWidth: '0', textAlign: 'left', justifyContent: 'flex-start' } }}>
+                  <Button aria-label={`Why Not for ${row.model}`} aria-expanded={false} aui={{ scale: 'sm', profile: 'square-compact', color: 'surface', paint: 'text', sx: { minWidth: '24', minHeight: '24' } }}>
+                    <Button.Icon name="angle-right" weight="solid" aui={{ scale: 'sm' }} />
+                  </Button>
+                  <Table.SelectionToggle aui={outputSelection} />
+                  <ContainedImage src={connectorThumbnail} alt="" fit="contain" style={{ inlineSize: 32, blockSize: 32, flex: 'none' }} />
+                  <span title={row.model} style={{ flex: '1 1 auto', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row.model}</span>
+                </View>
+              </Table.Cell>
+              <Table.Cell aui={{ scale: 'sm', sx: { width: outputColumnWidths[1], whiteSpace: 'nowrap', textAlign: 'center' } }}>
+                <Chip aui={{ scale: 'sm', color: 'success', paint: 'tonal' }}>
+                  <Chip.Icon name="circle-check" aui={{ scale: 'sm' }} />
+                  Passed
+                </Chip>
+              </Table.Cell>
+              {row.cells.map((value, cellIndex) => (
+                <Table.Cell key={cellIndex} aui={{ scale: 'sm', sx: { width: outputColumnWidths[cellIndex + 2], whiteSpace: 'nowrap', textAlign: 'center' } }}>{value}</Table.Cell>
+              ))}
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    </View>
+  );
+}
+
+/** The Table Notes under the Output table (App.tsx `notes`): a bold heading and the two note rows. */
+export function MockOutputNotes() {
+  return (
+    <View aui={{ paint: 'text', profile: 'default', scale: 'sm', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }}>
+      <Type as="h3" role="l3" weight="bold">Table Notes:</Type>
+      <View as="ol" aui={{ paint: 'text', profile: 'no-padding', scale: 'sm', sx: { paddingInlineStart: '24', gap: '0' } }}>
+        <Type as="li" weight="regular">All loads are displayed in units of pounds and based on Allowable Stress Design</Type>
+        <Type as="li" weight="regular">
+          Refer to{' '}
+          <Type as="a" weight="regular" color="secondary" href="http://www.strongtie.com/productuse/general-notes.html" target="_blank" rel="noopener noreferrer" aui={{ sx: { textDecoration: 'underline', whiteSpace: 'normal' } }}>
+            General Notes
+          </Type>{' '}
+          for more information.
+        </Type>
+      </View>
+    </View>
+  );
+}
+
+/** The Output body below the header: the toolbar, then the table and the notes (or the placeholder while the inputs are invalid). */
+export function MockOutputBody({ invalid }: { invalid?: boolean }) {
+  return (
+    <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flex: 'fill', width: 'fill', minHeight: '0' } }}>
+      <View aui={{ color: 'surface', shape: 'soft', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', width: 'fill', gap: '0', flex: 'fill', minHeight: '0', paddingBlockStart: '8', paddingBlockEnd: '8', paddingInlineStart: '8', paddingInlineEnd: '8' } }}>
+        <MockOutputToolbar invalid={invalid} />
+        {invalid ? (
+          <View as="p" role="status" aui={{ scale: 'sm', paint: 'text', sx: { flex: 'none' } }}>
+            Please enter design inputs to view compatible products.
+          </View>
+        ) : (
+          <>
+            <MockOutputTable />
+            <MockOutputNotes />
+          </>
+        )}
+      </View>
+    </View>
+  );
+}
+
+/** The Output header action group without the scroll helpers: Configure columns (closed Popover, Tooltip) and Print Output. */
+export function MockOutputActions() {
+  return (
+    <>
+      <Popover>
+        <Tooltip.Provider>
+          <Tooltip>
+            <Tooltip.Trigger
+              render={
+                <Popover.Trigger
+                  render={<IconButton name="table-columns" aria-label="Configure columns" aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'contained', shape: 'soft' }} />}
+                />
+              }
+            />
+            <Tooltip.Portal>
+              <Tooltip.Positioner side="bottom" sideOffset={4}>
+                <Tooltip.Popup aui={{ scale: 'sm' }}>Configure columns</Tooltip.Popup>
+              </Tooltip.Positioner>
+            </Tooltip.Portal>
+          </Tooltip>
+        </Tooltip.Provider>
+      </Popover>
+      <Button aui={{ scale: 'sm', color: 'surface', paint: 'tonal', sx: { flex: 'none' } }}>
+        <Button.Icon name="print" aui={{ scale: 'sm' }} />
+        Print Output
+      </Button>
     </>
   );
 }

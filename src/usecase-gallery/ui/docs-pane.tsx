@@ -19,8 +19,7 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
         </h2>
         <Type role="p3" as="p" color="muted">{usecase.summary}</Type>
         <div className="ug-docs__apps">
-          <Type role="l4" as="span" color="muted">Used in</Type>
-          <ul className="ug-docs__badges">
+          <ul className="ug-docs__badges" aria-label="Used in">
             {usecase.apps.map((key) => {
               const app = APPS[key];
               return (

@@ -54,7 +54,7 @@ export default defineUsecase({ area, title, apps: ['hcs'], summary, where, when,
 
 `area` is the place in a product where the component is used (`'Dialog'`, `'Walkthrough'`, `'Table'`). Use cases of one component with the same `area` share a tree group; a new area is just a new string, and areas are listed in the order of their lowest use case id. A use case is one real situation, so controls that appear together there belong in one example (the Cancel and Confirm of a dialog footer are one use case; Previous and Next of a walkthrough are one, End is another).
 
-`apps` lists the keys of the apps that use the pattern; the docs pane shows one "Used in" badge per key.
+`apps` lists the keys of the apps that use the pattern; the docs pane shows one badge per key, in an unlabelled row (the list carries an `aria-label` of "Used in").
 
 No registry or shell edit is needed.
 
@@ -93,7 +93,7 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview (with its mode toggle, a kit `ToggleGroup`) above the code, whose Copy button sits top-right inside the code card, separated by a draggable `Panels` handle. All text is the kit's `Type` (role, family, weight); the stylesheet sets no font values.
 
-The docs card shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a Used in row of app badges, then Where / When / How as a definition list; those three fields are the whole doc format.
+The docs card shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a row of app badges (no visible label), then Where / When / How as a definition list; those three fields are the whole doc format.
 
 ## Id rules
 

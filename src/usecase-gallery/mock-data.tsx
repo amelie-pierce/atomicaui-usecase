@@ -1,4 +1,4 @@
-import { Checkbox, Chip, Field, Radio, RadioGroup, Table, Type, View } from './kit';
+import { Accordion, Checkbox, Chip, Field, Menubar, Radio, RadioGroup, Table, Type, View } from './kit';
 
 // The only mock values the In context scenes use: simple placeholders in hcs wording, no real data.
 
@@ -155,6 +155,48 @@ export function MockLicenceText() {
           {i + 1}. This is demonstration license text for the HCS usability prototype. All product information and calculated capacities are mock values. Review the terms with your organization before using engineering software. By accepting, you agree to use this prototype for evaluation and QA walkthroughs only.
         </Type>
       ))}
+    </>
+  );
+}
+
+// The page under the tour: the target the step points at and the spotlight around it (4px outside the target, as
+// F01Walkthrough measures it). Positions are fixed numbers in the `.ug-tour` frame (the app measures them at run time).
+const TOUR_TARGETS = {
+  connection: { left: 12, top: 12, width: 200, height: 44 },
+  beams: { left: 12, top: 12, width: 200, height: 96 },
+  file: { left: 484, top: 12, width: 56, height: 28 },
+};
+
+/** The page element a walkthrough step highlights, with its spotlight. */
+export function MockTourTarget({ target }: { target: keyof typeof TOUR_TARGETS }) {
+  const { left, top, width, height } = TOUR_TARGETS[target];
+  return (
+    <>
+      <div className="ug-tour__target" style={{ left, top, width, height }}>
+        {target === 'file' ? (
+          <Menubar aria-label="Main navigation" aui={{ scale: 'sm' }}>
+            <Menubar.Dropdown aui={{ scale: 'sm' }}>
+              <Menubar.DropdownTrigger aui={{ scale: 'sm' }}>File</Menubar.DropdownTrigger>
+            </Menubar.Dropdown>
+          </Menubar>
+        ) : (
+          <Accordion defaultValue={target === 'beams' ? ['Beam Properties'] : []} aui={{ scale: 'sm' }}>
+            <Accordion.Item value={target === 'beams' ? 'Beam Properties' : 'Connection Type'} aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
+              <Accordion.Header>
+                <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
+                  <Accordion.Icon name={target === 'beams' ? 'layer-group' : 'link'} weight="regular" aria-hidden />
+                  <Type role="l4" weight="semi-bold">{target === 'beams' ? 'Beam Properties' : 'Connection Type'}</Type>
+                  <Accordion.Chevron />
+                </Accordion.Trigger>
+              </Accordion.Header>
+              <Accordion.Panel aui={{ profile: 'default' }}>
+                <Type as="h3" weight="semi-bold">Supporting Beam</Type>
+              </Accordion.Panel>
+            </Accordion.Item>
+          </Accordion>
+        )}
+      </div>
+      <div className="ug-tour__spotlight" style={{ left: left - 4, top: top - 4, width: width + 8, height: height + 8 }} aria-hidden="true" />
     </>
   );
 }

@@ -324,3 +324,36 @@ $narrow: 840px;
     transition: none;
   }
 }
+
+// In context Walkthrough stand-in for the HCS page under the tour. In the app (F01Walkthrough.css) the spotlight and the card
+// are position: fixed at rectangles measured from the target; here the stage frame is their containing block and the
+// rectangles are fixed numbers, so the frame clips the dimming shadow instead of the page.
+.ug-tour {
+  position: relative;
+  flex: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  inline-size: calc(var(--p-px-16) * 36);
+  block-size: calc(var(--p-px-16) * 14);
+  border-radius: var(--p-px-4);
+  background: var(--theme-surface-alt);
+}
+
+.ug-tour__target {
+  position: absolute;
+}
+
+.ug-tour__spotlight {
+  position: absolute;
+  z-index: 1;
+  border: var(--p-px-2) solid var(--theme-surface);
+  border-radius: var(--p-px-4);
+  box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--p-palette-black) 56%, transparent);
+  pointer-events: none;
+}
+
+.ug-tour__card {
+  position: absolute;
+  z-index: 2;
+  box-sizing: border-box;
+}

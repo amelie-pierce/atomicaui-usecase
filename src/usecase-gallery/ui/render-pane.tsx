@@ -1,4 +1,6 @@
 import { Suspense, useState } from 'react';
+import { APPS } from '../apps';
+import type { AppKey } from '../apps';
 import { Button, Radio, RadioGroup, ToggleGroup, Type } from '../kit';
 import type { PreviewMode, Usecase, UsecaseCase } from '../types';
 import { PaneCard } from './pane-card';
@@ -25,18 +27,27 @@ export function RenderPane({
   usecase,
   mode,
   onModeChange,
+  apps,
+  activeApp,
+  onAppChange,
+  cases,
   activeCase,
   onCaseChange,
 }: {
   usecase: Usecase;
   mode: PreviewMode;
   onModeChange: (mode: PreviewMode) => void;
+  /** Apps with their own UI for this use case; the toggle row shows only with two or more. */
+  apps: AppKey[];
+  activeApp?: AppKey;
+  onAppChange: (app: AppKey) => void;
+  /** The cases of the active app. */
+  cases: UsecaseCase[];
   activeCase?: UsecaseCase;
   onCaseChange: (caseId: string) => void;
 }) {
   const { Example } = usecase;
   const Context = activeCase?.Scene ?? usecase.Context;
-  const cases = usecase.cases ?? [];
   const [host, setHost] = useState<HTMLElement | null>(null);
   return (
     <PaneCard label="Preview" className="ug-render">
@@ -59,6 +70,26 @@ export function RenderPane({
           />
         ))}
       </ToggleGroup>
+      {mode === 'context' && apps.length > 1 && (
+        <ToggleGroup
+          className="ug-render__toggle"
+          aria-label="App UI"
+          value={activeApp ? [activeApp] : []}
+          onValueChange={([next]) => next && onAppChange(next as AppKey)}
+        >
+          {apps.map((key) => (
+            <ToggleGroup.Item
+              key={key}
+              value={key}
+              render={(props, { pressed }) => (
+                <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>
+                  {APPS[key].label}
+                </Button>
+              )}
+            />
+          ))}
+        </ToggleGroup>
+      )}
       {mode === 'context' && cases.length > 1 && (
         <RadioGroup
           className="ug-render__cases"

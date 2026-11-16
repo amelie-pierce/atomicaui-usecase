@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { catalog, allUsecases } from '../catalog/catalog';
+import { appsWithUi, casesForApp } from '../catalog/app-views';
 import { useHashSelection } from '../hooks/use-hash-selection';
 import { useMediaQuery } from '../hooks/use-media-query';
 import { CodePane } from '../ui/code-pane';
 import { DocsPane } from '../ui/docs-pane';
 import { RenderPane } from '../ui/render-pane';
 import { TreePane } from '../ui/tree-pane';
+import type { AppKey } from '../apps';
 import type { PreviewMode } from '../types';
 import { ResizableLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
@@ -25,17 +27,19 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
     allUsecases.map((usecase) => usecase.id),
     allUsecases[0]?.id ?? '',
   );
-  // The In context case is per use case: choosing another use case starts again at its first case.
-  const [chosen, setChosen] = useState<{ usecaseId: string; caseId: string }>();
+  // The In context app and case are per use case: choosing another use case starts again at its first app and case.
+  const [chosen, setChosen] = useState<{ usecaseId: string; app?: AppKey; caseId?: string }>();
   if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
   const usecase = allUsecases.find((candidate) => candidate.id === selectedId);
   if (!usecase) return null;
-  const activeCase =
-    usecase.cases?.find((candidate) => chosen?.usecaseId === usecase.id && candidate.id === chosen.caseId) ?? usecase.cases?.[0];
+  const apps = appsWithUi(usecase);
+  const activeApp = apps.find((key) => key === chosen?.app) ?? apps[0];
+  const cases = casesForApp(usecase, apps.length > 1 ? activeApp : undefined);
+  const activeCase = cases.find((candidate) => candidate.id === chosen?.caseId) ?? cases[0];
 
   const panes = {
     tree: <TreePane groups={catalog} selectedId={usecase.id} title={title} />,
-    render: <RenderPane usecase={usecase} mode={mode} onModeChange={setMode} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ usecaseId: usecase.id, caseId })} />,
+    render: <RenderPane usecase={usecase} mode={mode} onModeChange={setMode} apps={apps} activeApp={activeApp} onAppChange={(app) => setChosen({ usecaseId: usecase.id, app })} cases={cases} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ usecaseId: usecase.id, app: activeApp, caseId })} />,
     code: <CodePane key={`${usecase.id}-${mode}-${activeCase?.id}`} usecase={usecase} mode={mode} activeCase={activeCase} />,
     docs: <DocsPane usecase={usecase} />,
   };

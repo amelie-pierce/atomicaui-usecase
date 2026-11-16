@@ -1,27 +1,27 @@
 import type { ContextProps } from '../types';
-import { AlertDialog, Dialog, Field, Type } from '../kit';
+import { Dialog, Field, Type } from '../kit';
 
 // Static stand-ins for the three dialogs the real app shows. Only the Reset footer takes the example;
 // the Accept and Feedback footers are written out (Accept is disabled until the licence is read).
 export default function DialogContext({ children, host }: ContextProps) {
   return (
     <>
-      <AlertDialog open>
-        <AlertDialog.Portal container={host}>
-          <AlertDialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }}>
-            <AlertDialog.Title aui={{ color: 'raised' }}>
-              <AlertDialog.Icon name="triangle-exclamation" aui={{ color: 'warning' }} />
+      <Dialog open modal={false}>
+        <Dialog.Portal container={host}>
+          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }}>
+            <Dialog.Title aui={{ color: 'raised' }}>
+              <Dialog.Icon name="triangle-exclamation" aui={{ color: 'warning' }} />
               Warning: Reset Inputs?
-              <AlertDialog.Spacer />
-              <AlertDialog.Close />
-            </AlertDialog.Title>
-            <AlertDialog.Description>All inputs return to their default values.</AlertDialog.Description>
-            <AlertDialog.Actions>
+              <Dialog.Spacer />
+              <Dialog.Close />
+            </Dialog.Title>
+            <Dialog.Description>All inputs return to their default values.</Dialog.Description>
+            <Dialog.Actions>
               {children}
-            </AlertDialog.Actions>
-          </AlertDialog.Popup>
-        </AlertDialog.Portal>
-      </AlertDialog>
+            </Dialog.Actions>
+          </Dialog.Popup>
+        </Dialog.Portal>
+      </Dialog>
       <Dialog open modal={false}>
         <Dialog.Portal container={host}>
           <Dialog.Popup initialFocus={false}>

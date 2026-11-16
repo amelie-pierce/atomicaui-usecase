@@ -93,7 +93,9 @@ $narrow: 840px;
   flex: 1 1 auto;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  // `safe`: a tall scene (stacked dialogs) scrolls from its top instead of spilling over the toggle.
+  align-items: safe center;
+  align-content: safe center;
   justify-content: center;
   gap: var(--p-px-16);
 }
@@ -120,6 +122,14 @@ $narrow: 840px;
 .ug-render__stage :has(> [data-aui-popup-motion]) {
   position: static !important;
   transform: none !important;
+}
+
+// A dialog popup keeps to the stage on a narrow screen, as the real one does to the viewport.
+.ug-render__stage :has(> [role='dialog']),
+.ug-render__stage :has(> [role='alertdialog']),
+.ug-render__stage [role='dialog'],
+.ug-render__stage [role='alertdialog'] {
+  max-inline-size: 100%;
 }
 
 // Block-level contexts (a Card, a Table) take a readable measure instead of shrinking to their content.

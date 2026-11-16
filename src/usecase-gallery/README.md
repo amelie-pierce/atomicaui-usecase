@@ -1,6 +1,6 @@
 # usecase-gallery
 
-A read-only gallery of component use cases: a tree of components and use case ids (`Button-001`), the rendered example, the code to copy, and where/when/how to use it. Selection lives in the URL hash (`#Button-001`).
+A read-only gallery of component use cases: a tree of components, the areas where each is used (Dialog, Walkthrough, Table, ...) and use case ids (`Button-001`), the rendered example, the code to copy, and where/when/how to use it, plus which apps use it. Selection lives in the URL hash (`#Button-001`).
 
 The folder is self-contained. It imports only `react`, `react-dom` and its own `kit.ts`.
 
@@ -10,6 +10,7 @@ The folder is self-contained. It imports only `react`, `react-dom` and its own `
 usecase-gallery/
   index.ts                 public API: <UsecaseGallery />, defineUsecase, defineComponent
   kit.ts                   the ONLY file that imports the AtomicAUI kit
+  apps.ts                  the app registry: key, name, label, url
   types.ts, define.ts      shared types and the define helpers
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
   hooks/                   hash selection, copy-to-clipboard, media query
@@ -21,7 +22,7 @@ usecase-gallery/
       <component>.meta.ts  defineComponent({ id: 'Button', title: 'Button' })
       <UseCaseId>/         e.g. Button-001
         example.tsx        the rendered example AND the source shown as code
-        usecase.ts         defineUsecase({ title, summary, where, when, how })
+        usecase.ts         defineUsecase({ area, title, apps, summary, where, when, how })
 ```
 
 Everything under `usecases/` is discovered automatically. The tree and the docs load up front; each example and its source load on demand, so the catalog scales to many components and use cases.
@@ -47,10 +48,18 @@ The preview renders this component, and the code pane shows the JSX it returns (
 ```ts
 import { defineUsecase } from '../../../define';
 
-export default defineUsecase({ title, summary, where, when, how });
+export default defineUsecase({ area, title, apps: ['hcs'], summary, where, when, how });
 ```
 
+`area` is the place in a product where the component is used (`'Dialog'`, `'Walkthrough'`, `'Table'`). Use cases of one component with the same `area` share a tree group; a new area is just a new string, and areas are listed in the order of their lowest use case id. A use case is one real situation, so controls that appear together there belong in one example (the Cancel and Confirm of a dialog footer are one use case; Previous and Next of a walkthrough are one, End is another).
+
+`apps` lists the keys of the apps that use the pattern; the docs pane shows one "Used in" badge per key.
+
 No registry or shell edit is needed.
+
+## Add an app
+
+Add one entry to `apps.ts`: `{ name, label, url }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); the key becomes valid in `apps: [...]`. The `hcs` url is provisional (the repository, until the deployed app has an address).
 
 ## Add a component
 
@@ -60,19 +69,19 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview above the code, whose Copy button sits top-right inside the code card, separated by a draggable `Panels` handle. All text is the kit's `Type` (role, family, weight); the stylesheet sets no font values.
 
-The docs card shows the use case id, title and summary, then Where / When / How as a definition list; those three fields are the whole doc format.
+The docs card shows the use case id and title in one box (the id never wraps; a long title wraps below it), the summary, a Used in row of app badges, then Where / When / How as a definition list; those three fields are the whole doc format.
 
 ## Id rules
 
 - A use case folder is named `<ComponentId>-<NNN>`: the `id` from the component's meta, a dash, and at least three digits (`Button-001`, `Button-012`).
 - The prefix must match the `id` in the component's meta file, and ids are unique across the gallery. A violation throws at startup with the reason.
-- Ids are never reused or renumbered, because they appear in shared URLs.
+- Ids are never reused or renumbered once shared, because they appear in URLs. The one exception: the move to areas regrouped Button-001..014 into Button-001..016.
 
 ## Move it to another app
 
 1. Copy this folder into the other app.
 2. Install the peer dependencies: `react` and `react-dom` 19, and the AtomicAUI kit with its own dependencies (`@base-ui/react`, `react-resizable-panels` 4), plus `sass`. The build must be Vite (`import.meta.glob`, `?raw`).
-3. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Collapsible`, `IconButton`, `Panels` and `Type`. That is the only edit.
+3. Edit `apps.ts` for that app's registry. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Chip`, `Collapsible`, `IconButton`, `Panels` and `Type`.
 4. Make sure the host renders `AuiIdentityProvider` and loads the AtomicAUI token stylesheet; the gallery uses its CSS variables and does not load tokens itself. Also load the icon font (see below).
 5. Render `<UsecaseGallery title="..." />` full screen: it fills the viewport.
 

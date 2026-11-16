@@ -1,11 +1,22 @@
-import { IconButton } from '../../../kit';
+import { Button, Type } from '../../../kit';
 
 export default function Example() {
   return (
-    <IconButton
-      name="xmark"
-      aria-label="Close walkthrough"
-      aui={{ scale: 'sm', paint: 'text', color: 'surface' }}
-    />
+    <Type role="l4">
+      Select{' '}
+      <Button
+        type="button"
+        aui={{
+          scale: 'sm',
+          profile: 'no-padding',
+          color: 'warning',
+          paint: 'text',
+          sx: { display: 'inline-flex', textDecoration: 'underline' },
+        }}
+      >
+        All Products
+      </Button>{' '}
+      to review every solution.
+    </Type>
   );
 }

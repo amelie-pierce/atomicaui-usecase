@@ -2,12 +2,9 @@ import { Button } from '../../../kit';
 
 export default function Example() {
   return (
-    <>
-      <Button aui={{ scale: 'sm', color: 'surface', paint: 'tonal' }}>
-        <Button.Icon name="print" aui={{ scale: 'sm' }} />
-        Print Output
-      </Button>
-      <Button aui={{ scale: 'sm', color: 'surface', paint: 'tonal' }}>View options</Button>
-    </>
+    <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
+      End
+      <Button.Icon name="check" aui={{ scale: 'sm' }} />
+    </Button>
   );
 }

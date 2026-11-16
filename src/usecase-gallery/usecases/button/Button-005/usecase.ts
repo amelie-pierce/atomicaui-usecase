@@ -1,9 +1,11 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  title: 'Outlined toolbar action',
-  summary: 'A tonal surface Button carries a toolbar action with a dark outline; Print Output has a leading print icon and View options has none.',
-  where: 'A results toolbar beside other controls: Print Output, View options. Real site source: HCS Button-004.',
-  when: 'Use it for a tertiary action that should read as a button but stay quieter than a solid one. Add the native disabled attribute while the action is unavailable.',
-  how: 'Set aui scale "sm", color "surface" and paint "tonal". Add sx flex "none" to stop it shrinking in a flex row. Print Output adds Button.Icon print before the label; View options is text only.',
+  area: 'Walkthrough',
+  title: 'Last step: End',
+  apps: ['hcs'],
+  summary: 'A borderless text Button with a check after the label finishes the guided tour.',
+  where: 'The card of a coach-mark walkthrough, on the last step, where it replaces Next. Real site source: HCS Button-003 (End). Earlier steps use Previous and Next (Button-004).',
+  when: 'Use it to close a flow that has been walked through, not to dismiss it early; for that use the close icon (Button-006).',
+  how: 'Set aui scale "sm", paint "text" and color "secondary", with Button.Icon check after the label (the arrow of Next becomes the check).',
 });

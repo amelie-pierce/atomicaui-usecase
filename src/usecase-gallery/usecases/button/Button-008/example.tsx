@@ -1,22 +1,34 @@
-import { Button, Type } from '../../../kit';
+import { Button } from '../../../kit';
 
 export default function Example() {
   return (
-    <Type role="l4">
-      Select{' '}
+    <>
       <Button
-        type="button"
+        aria-label="Why Not for passing model"
+        aria-expanded={false}
         aui={{
           scale: 'sm',
-          profile: 'no-padding',
-          color: 'warning',
+          profile: 'square-compact',
+          color: 'surface',
           paint: 'text',
-          sx: { display: 'inline-flex', textDecoration: 'underline' },
+          sx: { minWidth: '24', minHeight: '24' },
         }}
       >
-        All Products
-      </Button>{' '}
-      to review every solution.
-    </Type>
+        <Button.Icon name="angle-right" aui={{ scale: 'sm' }} />
+      </Button>
+      <Button
+        aria-label="Why Not for failing model"
+        aria-expanded={false}
+        aui={{
+          scale: 'sm',
+          profile: 'square-compact',
+          color: 'error',
+          paint: 'text',
+          sx: { minWidth: '24', minHeight: '24' },
+        }}
+      >
+        <Button.Icon name="angle-right" aui={{ scale: 'sm' }} />
+      </Button>
+    </>
   );
 }

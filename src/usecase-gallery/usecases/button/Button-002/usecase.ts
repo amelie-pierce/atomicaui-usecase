@@ -1,9 +1,11 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  title: 'Dialog cancel',
-  summary: 'The gray solid Button dismisses a dialog without acting.',
-  where: 'The footer of a dialog, left of the confirm Button: Cancel, Do Not Accept. Real site source: HCS Button-002. Popovers use a ghost Cancel instead (Button-003).',
-  when: 'Use it for the neutral way out of a dialog. In brand atomic gray is color "surface-alt" (the Button default), not "secondary". Inside a popover the real site drops the fill; see Button-003.',
-  how: 'Set aui scale "sm", color "surface-alt", paint "solid" and shape "soft". Color, paint and shape are the Button defaults, so aui={{ scale: "sm" }} gives the same look.',
+  area: 'Popover',
+  title: 'Popover footer',
+  apps: ['hcs'],
+  summary: 'An icon-only reset, a ghost text Cancel and a solid secondary Save close a popover.',
+  where: 'The footer of a popover form, such as the column configurator: a reset icon, Cancel, Save. Real site source: HCS Button-016. Dialogs use a gray solid Cancel instead (Button-001).',
+  when: 'Use it when the popover is lightweight and the Cancel should not compete with Save. Prefer the filled Cancel of Button-001 in dialogs; the real site spells the two differently.',
+  how: 'Cancel sets aui scale "sm" (to match Save\'s height) and paint "text" (default color, no fill). Save sets scale "sm", color "secondary" and paint "solid". Cancel and Save carry no icon; the reset is an IconButton with the rotate-left glyph, name only, aui paint "text", and needs an aria-label.',
 });

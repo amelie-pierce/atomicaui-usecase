@@ -162,15 +162,16 @@ $narrow: 840px;
 }
 
 // ── Tree ────────────────────────────────────────────────────────────────────
-// Each level nests one step (16px) inside its parent: areas inside their component, use cases inside their area.
-.ug-tree__areas,
-.ug-tree__list {
-  padding-inline-start: var(--p-px-16);
+// Each level's text sits one 16px step right of its parent's: the component panel already insets its content by
+// 8px, so areas add 8px and use cases add the full 16px.
+.ug-tree__areas {
+  padding-inline-start: var(--p-px-8);
 }
 
 .ug-tree__list {
   list-style: none;
   margin: 0;
+  padding-inline-start: var(--p-px-16);
   display: flex;
   flex-direction: column;
   gap: var(--p-px-2);

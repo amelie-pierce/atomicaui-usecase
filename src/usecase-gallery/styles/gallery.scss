@@ -114,15 +114,11 @@ $narrow: 840px;
   margin: 0;
 }
 
-// Id and name share one box and flow as one line of text: the id stays whole (never wraps) and the
-// name starts beside it, wrapping under it when it is long.
+// Id and name share one box, id on its own line with the name below it; a long name wraps normally.
 .ug-docs__title {
+  display: flex;
+  flex-direction: column;
   overflow-wrap: anywhere;
-}
-
-.ug-docs__id {
-  white-space: nowrap;
-  margin-inline-end: var(--p-px-8);
 }
 
 .ug-docs__apps {

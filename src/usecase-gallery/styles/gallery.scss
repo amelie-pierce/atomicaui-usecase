@@ -244,10 +244,10 @@ $narrow: 840px;
   // Selected row: primary text on a light primary tint (the kit mixes theme tokens the same way), no border.
   &[aria-current='page'] {
     color: var(--theme-primary);
-    background: color-mix(in srgb, var(--theme-primary) 12%, transparent);
+    background: color-mix(in srgb, var(--theme-primary) 8%, transparent);
 
     &:hover {
-      background: color-mix(in srgb, var(--theme-primary) 20%, transparent);
+      background: color-mix(in srgb, var(--theme-primary) 14%, transparent);
     }
   }
 

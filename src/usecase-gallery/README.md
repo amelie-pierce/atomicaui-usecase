@@ -85,7 +85,7 @@ When a use case sits elsewhere than the rest of its area (the Output header's sc
 
 ### Several cases for one use case
 
-When one use case has several In context scenes (the three dialogs of Button-001, the results strip and the error page of Button-016, Print enabled or disabled), do not stack them. List them in `usecase.ts` and put each scene in the use case folder; touch nothing else:
+When one use case has several In context scenes (the three dialogs of Button-001, Print enabled or disabled), do not stack them. List them in `usecase.ts` and put each scene in the use case folder; touch nothing else:
 
 ```ts
 cases: [

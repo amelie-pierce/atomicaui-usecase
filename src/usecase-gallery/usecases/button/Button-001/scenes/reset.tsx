@@ -1,14 +1,14 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog } from '../../../../kit';
 
-// HcsResetDialog: a modal Dialog, 560px wide (capped to the viewport) with its backdrop and viewport.
+// HcsResetDialog: a modal Dialog, 560px wide (a scene-local inline width, since there is no 560 width token) with its backdrop and viewport.
 export default function ResetScene({ children, host }: ContextProps) {
   return (
     <Dialog open modal={false}>
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft', sx: { width: '560' } }}>
+          <Dialog.Popup initialFocus={false} style={{ width: 560 }} aui={{ scale: 'sm', shape: 'soft' }}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
               <Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />
               Warning: Reset Inputs?

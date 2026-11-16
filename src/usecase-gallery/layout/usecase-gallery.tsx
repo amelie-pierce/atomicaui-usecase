@@ -27,6 +27,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   );
   // The In context case is per use case: choosing another use case starts again at its first case.
   const [chosen, setChosen] = useState<{ usecaseId: string; caseId: string }>();
+  if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
   const usecase = allUsecases.find((candidate) => candidate.id === selectedId);
   if (!usecase) return null;
   const activeCase =

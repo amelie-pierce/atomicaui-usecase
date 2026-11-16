@@ -11,6 +11,9 @@ $narrow: 840px;
   background: var(--theme-surface-alt);
   color: var(--theme-on-surface-alt);
   overflow: hidden;
+  // hcs root: 16px Inter; text outside a kit part gets a 1.35 line height.
+  font-size: var(--p-px-16);
+  line-height: 1.35;
 
   *,
   *::before,

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { catalog, allUsecases } from '../catalog/catalog';
 import { useHashSelection } from '../hooks/use-hash-selection';
 import { useMediaQuery } from '../hooks/use-media-query';
@@ -5,6 +6,7 @@ import { CodePane } from '../ui/code-pane';
 import { DocsPane } from '../ui/docs-pane';
 import { RenderPane } from '../ui/render-pane';
 import { TreePane } from '../ui/tree-pane';
+import type { PreviewMode } from '../types';
 import { ResizableLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
 
@@ -18,6 +20,7 @@ export interface UsecaseGalleryProps {
 
 export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const narrow = useMediaQuery(NARROW);
+  const [mode, setMode] = useState<PreviewMode>('component');
   const { selectedId } = useHashSelection(
     allUsecases.map((usecase) => usecase.id),
     allUsecases[0]?.id ?? '',
@@ -27,8 +30,8 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
 
   const panes = {
     tree: <TreePane groups={catalog} selectedId={usecase.id} title={title} />,
-    render: <RenderPane usecase={usecase} />,
-    code: <CodePane key={usecase.id} usecase={usecase} />,
+    render: <RenderPane usecase={usecase} mode={mode} onModeChange={setMode} />,
+    code: <CodePane key={`${usecase.id}-${mode}`} usecase={usecase} mode={mode} />,
     docs: <DocsPane usecase={usecase} />,
   };
   return (

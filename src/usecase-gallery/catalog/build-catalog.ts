@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import type { ComponentType } from 'react';
-import { toSnippet } from './snippet';
-import type { AreaGroup, ComponentGroup, ComponentMeta, Usecase, UsecaseDoc } from '../types';
+import { toContextSnippet, toSnippet } from './snippet';
+import type { AreaGroup, ComponentGroup, ComponentMeta, ContextProps, Usecase, UsecaseDoc } from '../types';
 
 type Loader<T> = () => Promise<T>;
 
@@ -11,6 +11,9 @@ export interface CatalogSources {
   docs: Record<string, UsecaseDoc>;
   examples: Record<string, Loader<ComponentType>>;
   sources: Record<string, Loader<string>>;
+  /** `../contexts/<area-slug>.tsx` components and their sources, optional per area. */
+  contexts?: Record<string, Loader<ComponentType<ContextProps>>>;
+  contextSources?: Record<string, Loader<string>>;
 }
 
 const ID_PATTERN = /^([A-Z][A-Za-z0-9]*)-(\d{3,})$/;
@@ -22,12 +25,17 @@ const usecaseKey = (path: string) => segments(path).slice(-3, -1);
 /** `.../usecases/<component>/<component>.meta.ts` -> component. */
 const componentKey = (path: string) => segments(path).slice(-2, -1)[0];
 
+/** `Body text` -> `body-text`: the file name of an area's context. */
+export const areaSlug = (area: string) => area.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+/** `.../contexts/<area-slug>.tsx` -> area-slug. */
+const contextKey = (path: string) => segments(path).slice(-1)[0].replace(/\.tsx$/, '');
+
 const fail = (message: string): never => {
   throw new Error(`[usecase-gallery] ${message}`);
 };
 
 /** Pure assembly of the catalog from glob results, so the discovery rules live in one testable place. */
-export function buildCatalog({ metas, docs, examples, sources }: CatalogSources): ComponentGroup[] {
+export function buildCatalog({ metas, docs, examples, sources, contexts = {}, contextSources = {} }: CatalogSources): ComponentGroup[] {
   const groups = new Map<string, ComponentGroup & { usecases: Usecase[] }>();
   for (const [path, meta] of Object.entries(metas)) {
     groups.set(componentKey(path), { ...meta, usecases: [] });
@@ -35,6 +43,9 @@ export function buildCatalog({ metas, docs, examples, sources }: CatalogSources)
 
   const exampleByPath = new Map(Object.entries(examples).map(([p, load]) => [usecaseKey(p).join('/'), load]));
   const sourceByPath = new Map(Object.entries(sources).map(([p, load]) => [usecaseKey(p).join('/'), load]));
+  const contextBySlug = new Map(Object.entries(contexts).map(([p, load]) => [contextKey(p), load]));
+  const contextSourceBySlug = new Map(Object.entries(contextSources).map(([p, load]) => [contextKey(p), load]));
+  const lazyContexts = new Map<string, ComponentType<ContextProps>>();
   const ids = new Set<string>();
 
   for (const [path, doc] of Object.entries(docs)) {
@@ -56,6 +67,20 @@ export function buildCatalog({ metas, docs, examples, sources }: CatalogSources)
       Example: lazy(() => loadExample().then((component) => ({ default: component }))),
       loadCode: () => (code ??= loadSource().then(toSnippet)),
     };
+    const slug = areaSlug(doc.area);
+    const loadContext = contextBySlug.get(slug);
+    const loadContextSource = contextSourceBySlug.get(slug);
+    if (loadContext && loadContextSource) {
+      if (!lazyContexts.has(slug)) {
+        lazyContexts.set(slug, lazy(() => loadContext().then((component) => ({ default: component }))));
+      }
+      usecase.Context = lazyContexts.get(slug);
+      let contextCode: Promise<string> | undefined;
+      usecase.loadContextCode = () =>
+        (contextCode ??= Promise.all([usecase.loadCode(), loadContextSource()]).then(([snippet, source]) =>
+          toContextSnippet(source, snippet),
+        ));
+    }
     group.usecases.push(usecase);
   }
 

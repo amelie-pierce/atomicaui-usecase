@@ -5,8 +5,7 @@ export const APPS = {
   hcs: {
     name: 'hcs-design-prototype',
     label: 'HCS',
-    // Provisional: replace with the deployed web app's address.
-    url: 'https://github.com/amelie-pierce/hcs-design-prototype',
+    url: 'https://city-liver-03162968.figma.site',
   },
 } as const satisfies Record<string, { name: string; label: string; url: string }>;
 

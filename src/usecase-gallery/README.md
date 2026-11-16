@@ -12,6 +12,7 @@ usecase-gallery/
   kit.ts                   the ONLY file that imports the AtomicAUI kit
   apps.ts                  the app registry: key, name, label, url
   types.ts, define.ts      shared types and the define helpers
+  contexts/                one file per area: the real kit area that holds an example (dialog.tsx, table.tsx, ...)
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
   hooks/                   hash selection, copy-to-clipboard, media query
   layout/                  gallery shell and the resizable / stacked layouts
@@ -57,9 +58,32 @@ export default defineUsecase({ area, title, apps: ['hcs'], summary, where, when,
 
 No registry or shell edit is needed.
 
+## Add an in-context view
+
+The preview has a Component | In context toggle (default Component). In context renders the example inside the real area that holds it, built only from kit parts, static and read-only; the code pane shows the context's JSX with the example inside it.
+
+To add a context for an area, create one file, `contexts/<area-slug>.tsx`, and touch nothing else. The slug is the `area` lowercased with dashes (`Body text` -> `body-text.tsx`). It default-exports a component that places `{children}` (the example) on a line of its own inside the area's JSX:
+
+```tsx
+import type { ContextProps } from '../types';
+import { Card } from '../kit';
+
+export default function PanelContext({ children }: ContextProps) {
+  return (
+    <Card.Footer>
+      {children}
+    </Card.Footer>
+  );
+}
+```
+
+Use only components exported by `kit.ts` (add an export there if the kit has the part). Portaled parts (a Dialog or Popover popup) take `container={host}`, the preview stage, and skip the backdrop and viewport, so they render open inside the card rather than as an overlay. The code pane strips these preview-only props (`open`, `modal={false}`, `initialFocus={false}`, `container={host}`, `anchor={host}`) from the copyable snippet (`PREVIEW_ONLY_PROPS` in `catalog/snippet.ts`). One context serves every use case of its area, so the example goes where that area's controls most often sit.
+
+An area with no context file shows its example in a plain dashed frame with a short note. Currently without a context: Toolbar, Form, Body text, Viewer, Error screen (no kit component stands for them).
+
 ## Add an app
 
-Add one entry to `apps.ts`: `{ name, label, url }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); the key becomes valid in `apps: [...]`. The `hcs` url is provisional (the repository, until the deployed app has an address).
+Add one entry to `apps.ts`: `{ name, label, url }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); the key becomes valid in `apps: [...]`.
 
 ## Add a component
 
@@ -67,7 +91,7 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 ## Layout and type
 
-Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview above the code, whose Copy button sits top-right inside the code card, separated by a draggable `Panels` handle. All text is the kit's `Type` (role, family, weight); the stylesheet sets no font values.
+Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview (with its mode toggle, a kit `ToggleGroup`) above the code, whose Copy button sits top-right inside the code card, separated by a draggable `Panels` handle. All text is the kit's `Type` (role, family, weight); the stylesheet sets no font values.
 
 The docs card shows the use case id and title in one box (the id never wraps; a long title wraps below it), the summary, a Used in row of app badges, then Where / When / How as a definition list; those three fields are the whole doc format.
 
@@ -81,7 +105,7 @@ The docs card shows the use case id and title in one box (the id never wraps; a 
 
 1. Copy this folder into the other app.
 2. Install the peer dependencies: `react` and `react-dom` 19, and the AtomicAUI kit with its own dependencies (`@base-ui/react`, `react-resizable-panels` 4), plus `sass`. The build must be Vite (`import.meta.glob`, `?raw`).
-3. Edit `apps.ts` for that app's registry. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Chip`, `Collapsible`, `IconButton`, `Panels` and `Type`.
+3. Edit `apps.ts` for that app's registry. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Chip`, `Collapsible`, `Dialog`, `IconButton`, `Panels`, `Popover`, `Table`, `ToggleGroup` and `Type`.
 4. Make sure the host renders `AuiIdentityProvider` and loads the AtomicAUI token stylesheet; the gallery uses its CSS variables and does not load tokens itself. Also load the icon font (see below).
 5. Render `<UsecaseGallery title="..." />` full screen: it fills the viewport.
 

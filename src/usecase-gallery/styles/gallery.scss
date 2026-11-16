@@ -71,13 +71,53 @@ $narrow: 840px;
 }
 
 // ── Pane content ────────────────────────────────────────────────────────────
+.ug-render__toggle {
+  inline-size: fit-content;
+  margin-block-end: var(--p-px-16);
+}
+
+.ug-render .ug-card__content {
+  display: flex;
+  flex-direction: column;
+}
+
 .ug-render__stage {
+  flex: 1 1 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: var(--p-px-16);
-  min-block-size: 100%;
+}
+
+// A plain labelled frame for an area the kit cannot compose.
+.ug-render__frame {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-8);
+  padding: var(--p-px-16);
+  border: var(--p-px-1) dashed var(--theme-on-surface-alt);
+  border-radius: var(--p-px-8);
+}
+
+.ug-render__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--p-px-16);
+}
+
+// Contexts portal their popups into the stage; a Popover's positioner is released from the page so
+// the popup sits static inside the card instead of floating over the anchor.
+.ug-render__stage :has(> [data-aui-popup-motion]) {
+  position: static !important;
+  transform: none !important;
+}
+
+// Block-level contexts (a Card, a Table) take a readable measure instead of shrinking to their content.
+.ug-render__stage .aui-card,
+.ug-render__stage > .aui-table {
+  inline-size: min(100%, calc(var(--p-px-16) * 24));
 }
 
 // The Copy button sits top-right of the code card and stays in view while the snippet scrolls.

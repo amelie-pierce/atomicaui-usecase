@@ -29,9 +29,16 @@ export interface UsecaseDoc {
   /**
    * Optional: several In context cases of this use case (for example the three dialogs). Each id names a file
    * `scenes/<id>.tsx` in the use case folder; the preview shows a radio group and renders the chosen scene
-   * instead of the area context. One entry (or none) shows no radio group.
+   * instead of the area context. One entry (or none) shows no radio group. A case with `app` is that app's own UI
+   * (a key of `apps.ts`, listed in `apps`); when two or more apps have cases, the preview adds a toggle row to pick
+   * the app and the radio group lists only that app's cases (cases without `app` show for every app).
    */
-  cases?: { id: string; name: string }[];
+  cases?: { id: string; name: string; app?: AppKey; source?: string }[];
+  /**
+   * Optional: the source design each app's In context scenes were built from, per app key (for HCS, the file in the
+   * hcs-design-prototype repo). A case's own `source` overrides it for that scene.
+   */
+  source?: Partial<Record<AppKey, string>>;
 }
 
 /** The props of a context component: the example to place inside the real area. */
@@ -48,6 +55,8 @@ export type PreviewMode = 'component' | 'context';
 export interface UsecaseCase {
   id: string;
   name: string;
+  /** The app whose UI this scene shows; absent when the scene is the same in every app. */
+  app?: AppKey;
   Scene: ComponentType<ContextProps>;
   loadCode: () => Promise<string>;
 }

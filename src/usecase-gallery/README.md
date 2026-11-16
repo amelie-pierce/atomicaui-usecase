@@ -96,6 +96,10 @@ cases: [
 
 Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ children, host }`). With more than one case the preview shows a kit `RadioGroup` of the names above the scene (default: the first; the choice survives the Component | In context toggle and resets on another use case), renders only the chosen scene and shows its code. A scene that places `{children}` gets the example spliced in; one that writes its own controls (a disabled or alternative state) is shown as written. A use case with one case, or none, shows no radio group and uses the area context. A missing scene file fails the catalog build.
 
+### The same use case in another app
+
+When another app (a key of `apps.ts`, listed in `apps`) has its own UI for the use case, give each such scene a case with `app: '<key>'` (`cases: [{ id: 'hcs-header', name: 'Header cell', app: 'hcs' }, ...]`). With two or more apps that have cases, the preview shows one extra row, a `ToggleGroup` of the app labels, above the radio group; the radio group then lists only the chosen app's cases, and cases without `app` appear for every app. With fewer than two, nothing is shown and the use case renders as before. The first app in `apps.ts` order is the default and the choice resets on another use case. Record the design each scene was built from with `source: { hcs: '<path>' }` (and `source` on a case when it differs); a case whose `app` is not in `apps` fails the catalog build. The agent procedure is in `.claude/skills/usecase-gallery/SKILL.md`.
+
 ### Sample content
 
 Scenes put sample content around the example (result rows, selects, viewer controls) so the button sits among realistic content. Values and the small `Mock...` scenery components live in `mock-data.tsx`, in hcs wording with placeholder values only. In the copied code each `<Mock... />` becomes a one-line `{/* sample ... */}` comment, so the snippet shows the component usage, not the rows. Text that is part of the pattern (a label, a count) is written inline.

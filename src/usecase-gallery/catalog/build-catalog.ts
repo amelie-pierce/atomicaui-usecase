@@ -95,7 +95,8 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
     }
     if (cases && cases.length > 0) {
       const caseIds = new Set<string>();
-      usecase.cases = cases.map(({ id: caseId, name }) => {
+      usecase.cases = cases.map(({ id: caseId, name, app }) => {
+        if (app && !doc.apps.includes(app)) fail(`${id} sets the case "${caseId}" to app "${app}", which is not in its apps`);
         if (caseIds.has(caseId)) fail(`${id} lists the case "${caseId}" twice`);
         caseIds.add(caseId);
         const loadScene = sceneByKey.get(`${key}/${caseId}`) ?? fail(`${id} lists the case "${caseId}" but scenes/${caseId}.tsx is missing`);
@@ -105,6 +106,7 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
         return {
           id: caseId,
           name,
+          app,
           Scene,
           loadCode: () => (sceneCode ??= Promise.all([usecase.loadCode(), loadSceneSource()]).then(([snippet, source]) => toContextSnippet(source, snippet))),
         };

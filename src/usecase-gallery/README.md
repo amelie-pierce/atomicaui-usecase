@@ -77,7 +77,7 @@ export default function PanelContext({ children }: ContextProps) {
 }
 ```
 
-Use only components exported by `kit.ts` (add an export there if the kit has the part). Portaled parts (a Dialog or Popover popup) take `container={host}`, the preview stage, and skip the backdrop and viewport, so they render open inside the card rather than as an overlay. One context serves every use case of its area, so the example goes where that area's controls most often sit.
+Use only components exported by `kit.ts` (add an export there if the kit has the part). Portaled parts (a Dialog or Popover popup) take `container={host}`, the preview stage, and skip the backdrop and viewport, so they render open inside the card rather than as an overlay. The code pane strips these preview-only props (`open`, `modal={false}`, `initialFocus={false}`, `container={host}`, `anchor={host}`) from the copyable snippet (`PREVIEW_ONLY_PROPS` in `catalog/snippet.ts`). One context serves every use case of its area, so the example goes where that area's controls most often sit.
 
 An area with no context file shows its example in a plain dashed frame with a short note. Currently without a context: Toolbar, Form, Body text, Viewer, Error screen (no kit component stands for them).
 

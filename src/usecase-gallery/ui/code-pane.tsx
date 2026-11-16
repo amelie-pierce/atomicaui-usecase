@@ -8,7 +8,7 @@ const LABEL = { idle: 'Copy', copied: 'Copied', failed: 'Copy failed' } as const
 
 function Snippet({ code }: { code: Promise<string> }) {
   return (
-    <Type as="pre" family="mono" role="p3" className="ug-code__pre" tabIndex={0} aria-label="Code snippet">
+    <Type as="pre" family="mono" role="l4" className="ug-code__pre" tabIndex={0} aria-label="Code snippet">
       <code>{use(code)}</code>
     </Type>
   );

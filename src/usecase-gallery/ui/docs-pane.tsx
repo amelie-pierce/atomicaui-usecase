@@ -31,7 +31,7 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
                     className="ug-docs__badge"
                     aria-label={`${app.label} (opens ${app.name} in a new tab)`}
                   >
-                    <Chip>
+                    <Chip aui={{ scale: 'sm' }}>
                       <Chip.Label>{app.label}</Chip.Label>
                     </Chip>
                   </a>
@@ -44,7 +44,7 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
       <dl className="ug-docs__sections">
         {SECTIONS.map(([label, key]) => (
           <div key={key} className="ug-docs__section">
-            <Type as="dt" role="l4" color="primary">{label}</Type>
+            <Type as="dt" role="l4" weight="semi-bold" color="primary">{label}</Type>
             <Type as="dd" role="p3">{usecase[key]}</Type>
           </div>
         ))}

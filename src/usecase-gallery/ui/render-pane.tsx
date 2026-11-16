@@ -12,7 +12,7 @@ const MODES: { value: PreviewMode; label: string }[] = [
 function FallbackFrame({ area, children }: { area: string; children: React.ReactNode }) {
   return (
     <div className="ug-render__frame">
-      <Type role="l4" as="p" color="muted">
+      <Type role="p3" as="p" color="muted">
         {area}: no kit component holds this area, so it is shown in a plain frame.
       </Type>
       <div className="ug-render__row">{children}</div>
@@ -46,7 +46,7 @@ export function RenderPane({
             key={value}
             value={value}
             render={(props, { pressed }) => (
-              <Button {...props} aui={{ scale: 'xs', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>
+              <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>
                 {label}
               </Button>
             )}

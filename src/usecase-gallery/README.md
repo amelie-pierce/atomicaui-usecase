@@ -93,7 +93,21 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 ## Layout and type
 
-Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview (with its mode toggle, a kit `ToggleGroup`) above the code, whose Copy button sits top-right inside the code card, separated by a draggable `Panels` handle. All text is the kit's `Type` (role, family, weight); the stylesheet sets no font values. The doc pane's use case id, name and Where / When / How headings use `Type color="primary"`; the active toggle segment is a primary solid `Button`, the inactive one a neutral secondary text `Button`. Theme primary is only about 3.2:1 on the light surface, so `.ug-docs` and `.ug-render__toggle` in `gallery.scss` resolve `--theme-primary` to `--p-palette-orange-600` (at least 4.7:1 as text, 5.2:1 under the white on-primary toggle text).
+Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview (with its mode toggle, a kit `ToggleGroup`) above the code, whose Copy button sits top-right inside the code card, separated by a draggable `Panels` handle. All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
+
+| Element | Type |
+| --- | --- |
+| tree component and area titles | `l3` semi-bold 16/20 |
+| tree use case rows (id and name) | `l3` regular 16/20, selected row bold |
+| doc id and name | `p3` bold 14/20 (body size) |
+| doc summary | `p3` muted 14/20 |
+| Where / When / How labels | `l4` semi-bold muted 14/18 |
+| doc body | `p3` 14/20 |
+| code | `l4` mono (JetBrains Mono) 14/18 |
+| badges, toggle labels, Copy | kit part at `sm`, 16/20 |
+| fallback frame note | `p3` muted |
+
+The doc pane's use case id, name and Where / When / How headings use `Type color="primary"`; the active toggle segment is a primary solid `Button`, the inactive one a neutral secondary text `Button`. Theme primary is only about 3.2:1 on the light surface, so `.ug-docs` and `.ug-render__toggle` in `gallery.scss` resolve `--theme-primary` to `--p-palette-orange-600` (at least 4.7:1 as text, 5.2:1 under the white on-primary toggle text).
 
 The docs card shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a row of app badges (no visible label), then Where / When / How as a definition list; those three fields are the whole doc format.
 
@@ -108,8 +122,12 @@ The docs card shows the use case id and title in one box, at the same size as th
 1. Copy this folder into the other app.
 2. Install the peer dependencies: `react` and `react-dom` 19, and the AtomicAUI kit with its own dependencies (`@base-ui/react`, `react-resizable-panels` 4), plus `sass`. The build must be Vite (`import.meta.glob`, `?raw`).
 3. Edit `apps.ts` for that app's registry. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Chip`, `Collapsible`, `Dialog`, `IconButton`, `Panels`, `Popover`, `Table`, `ToggleGroup` and `Type`.
-4. Make sure the host renders `AuiIdentityProvider` and loads the AtomicAUI token stylesheet; the gallery uses its CSS variables and does not load tokens itself. Also load the icon font (see below).
+4. Make sure the host renders `AuiIdentityProvider` with `typeface="engineering"` and `typography="body"` and loads the AtomicAUI token stylesheet; the gallery uses its CSS variables and does not load tokens itself. Also load the icon font (see below).
 5. Render `<UsecaseGallery title="..." />` full screen: it fills the viewport.
+
+## Host requirements: fonts
+
+The host declares Inter and JetBrains Mono and overrides `--p-font-inter` and `--p-font-jetbrains-mono` with fallbacks, as hcs does. This app self-hosts the two variable woff2 files in `public/fonts` and declares them in `src/fonts.scss` (together with `html { font-size: 16px }` and the Inter body); hcs itself also lists a CDN copy.
 
 ## Host requirements: icon font
 

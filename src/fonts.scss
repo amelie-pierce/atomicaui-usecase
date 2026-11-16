@@ -1,0 +1,32 @@
+// Page-level type for the host app, copied from hcs (styles.scss, prototype/index.css): Inter and JetBrains Mono
+// are self-hosted from /public/fonts, and the two --p-font-* tokens gain the same fallbacks hcs gives them.
+// Theme text and surface colours are defined on the identity provider element, below body, so the gallery root paints them.
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/InterVariable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/JetBrainsMono-Variable.woff2') format('woff2');
+}
+
+:root {
+  --p-font-inter: 'Inter', Arial, Helvetica, sans-serif;
+  --p-font-jetbrains-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--p-font-inter);
+}

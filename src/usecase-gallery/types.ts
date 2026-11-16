@@ -24,6 +24,8 @@ export interface UsecaseDoc {
   how: string;
   /** Keys of the apps (see `apps.ts`) that use this pattern. */
   apps: AppKey[];
+  /** Optional: the area's context places this example elsewhere (for example `close`, the card corner); uses `contexts/<area-slug>-<variant>.tsx`. */
+  contextVariant?: string;
 }
 
 /** The props of a context component: the example to place inside the real area. */

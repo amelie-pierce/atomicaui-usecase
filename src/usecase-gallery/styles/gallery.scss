@@ -310,3 +310,17 @@ $narrow: 840px;
     min-block-size: var(--p-px-128);
   }
 }
+
+// The results table's Why Not expander: only the chevron icon turns 90 degrees when the button is expanded, with a short
+// transition (the app's `.hcs-why-not-toggle` in F01Results.css); the kit has no transform axis.
+.ug-results button[aria-expanded='true'] .aui-icon {
+  transform: rotate(90deg);
+}
+.ug-results button[aria-expanded] .aui-icon {
+  transition: transform 160ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ug-results button[aria-expanded] .aui-icon {
+    transition: none;
+  }
+}

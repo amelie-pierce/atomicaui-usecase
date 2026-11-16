@@ -12,7 +12,7 @@ usecase-gallery/
   kit.ts                   the ONLY file that imports the AtomicAUI kit
   apps.ts                  the app registry: key, name, label, url
   types.ts, define.ts      shared types and the define helpers
-  contexts/                one file per area: the real kit area that holds an example (table.tsx, panel.tsx, ...)
+  contexts/                one file per area: the real kit area that holds an example (panel.tsx, table-header.tsx, ...)
   mock-data.tsx            the one place for sample content (rows, fields, viewer controls) the scenes show around an example
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
   hooks/                   hash selection, copy-to-clipboard, media query

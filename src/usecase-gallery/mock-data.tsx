@@ -48,6 +48,33 @@ export const MOCK_OUTPUT_ROWS_BY_LOAD = [
   { model: 'Model A-100', status: 'Passed', load: '2,450', lateral: '1,180' },
 ];
 
+// Result rows of the Output table (F01Results.tsx): one value per Output column, in `MOCK_OUTPUT_COLUMNS` order.
+// `checks` are the Width, Depth, Lateral and Download results the Why Not tabs report; a failed row has at least one false.
+export const MOCK_RESULT_ROWS = [
+  { id: 'a', model: 'Model A-100', passed: true, checks: [true, true, true, true], cells: ['2,450', '1,180', '0.25', '3.500', '4', '6', '0.50 x 4.0'] },
+  { id: 'b', model: 'Model B-200', passed: true, checks: [true, true, true, true], cells: ['2,210', '1,040', '0.25', '4.750', '4', '4', '0.50 x 5.0'] },
+  { id: 'c', model: 'Model C-300', passed: false, checks: [true, false, true, false], cells: ['1,180', '620', '0.19', '3.250', '2', '4', '0.38 x 3.5'] },
+];
+
+// The Why Not tab texts of the failed row (engine.ts `why`, productCheck.ts `checkDetail`): the Connection tab, then one tab
+// per check. Lateral and Download add muted lines of the form `P<script> (<unit>): value`.
+export const MOCK_WHY_NOT_TABS = [
+  { name: 'Connection', passed: false, text: 'Fails: Depth, Download.', values: [] },
+  { name: 'Width', passed: true, text: 'Connector fits 3 1/2 in. beams. Your beam is 3 1/2 in.', values: [] },
+  { name: 'Depth', passed: false, text: "Required height 9.250 in. is outside this connector's range (3.000 \u2013 8.000 in.).", values: [] },
+  { name: 'Lateral', passed: true, text: 'Maximum lateral capacity is 620 lb. Demand is 500 lb.', values: [{ script: 'lateral', unit: 'lb', value: '620' }] },
+  {
+    name: 'Download',
+    passed: false,
+    text: 'Maximum download capacity is 1,180 lb. Demand is 2,000 lb.',
+    values: [
+      { script: 'pear', unit: 'lb', value: '1,420' },
+      { script: 'rot', unit: 'lb', value: '1,180' },
+      { script: 'download', unit: 'lb', value: '1,180' },
+    ],
+  },
+];
+
 // The Download Duration notes the help popover lists (HcsDownloadDurationHelp.tsx `durationNotes`).
 export const MOCK_DURATION_NOTES = [
   ['Dead 90', '90% of design load. (Permanent)'],

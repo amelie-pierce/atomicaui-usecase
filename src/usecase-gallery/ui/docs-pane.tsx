@@ -1,7 +1,6 @@
 import { APPS } from '../apps';
 import { Chip, Type } from '../kit';
 import type { Usecase } from '../types';
-import { PaneCard } from './pane-card';
 
 const SECTIONS = [
   ['Where', 'where'],
@@ -11,7 +10,7 @@ const SECTIONS = [
 
 export function DocsPane({ usecase }: { usecase: Usecase }) {
   return (
-    <PaneCard label="Documentation" className="ug-docs">
+    <div className="ug-docs">
       <header className="ug-docs__head">
         <h2 className="ug-docs__title">
           <Type role="l3" as="span" weight="bold" color="primary">{usecase.id}</Type>
@@ -49,6 +48,6 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
           </div>
         ))}
       </dl>
-    </PaneCard>
+    </div>
   );
 }

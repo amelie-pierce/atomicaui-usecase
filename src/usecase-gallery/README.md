@@ -17,7 +17,7 @@ usecase-gallery/
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
   hooks/                   hash selection, copy-to-clipboard, media query
   layout/                  gallery shell and the resizable / stacked layouts
-  ui/                      pane-card (the shared Card) and the tree, render, code and docs panes
+  ui/                      pane-card (the shared Card) and the tree, render, detail (docs or code) panes
   styles/gallery.scss      layout and chrome, tokens only
   usecases/
     <component>/
@@ -44,7 +44,7 @@ export default function Example() {
 }
 ```
 
-The preview renders this component, and the code pane shows the JSX it returns (the kit import and the wrapper are stripped), read from the same file with Vite `?raw`, so the two cannot drift. Keep the `return` the last statement of the component. Do not add controls or state: the page is read-only.
+The preview renders this component, and the Code view of the right pane shows the JSX it returns (the kit import and the wrapper are stripped), read from the same file with Vite `?raw`, so the two cannot drift. Keep the `return` the last statement of the component. Do not add controls or state: the page is read-only.
 
 `usecase.ts`:
 
@@ -56,13 +56,13 @@ export default defineUsecase({ area, title, apps: ['hcs'], summary, where, when,
 
 `area` is the place in a product where the component is used (`'Dialog'`, `'Walkthrough'`, `'Table'`). Use cases of one component with the same `area` share a tree group; a new area is just a new string, and areas are listed in the order of their lowest use case id. A use case is one real situation, so controls that appear together there belong in one example (the Cancel and Confirm of a dialog footer are one use case; Previous and Next of a walkthrough are one, End is another).
 
-`apps` lists the keys of the apps that use the pattern; the docs pane shows one badge per key, in an unlabelled row (the list carries an `aria-label` of "Used in").
+`apps` lists the keys of the apps that use the pattern; the Document view shows one badge per key, in an unlabelled row (the list carries an `aria-label` of "Used in").
 
 No registry or shell edit is needed.
 
 ## Add an in-context view
 
-The preview has a Component | In context toggle (default Component). In context renders the example inside the real area that holds it, built only from kit parts, static and read-only; the code pane shows the context's JSX with the example inside it.
+The preview has a Component | In context toggle (default Component). In context renders the example inside the real area that holds it, built only from kit parts, static and read-only; the Code view shows the context's JSX with the example inside it.
 
 To add a context for an area, create one file, `contexts/<area-slug>.tsx`, and touch nothing else. The slug is the `area` lowercased with dashes (`Body text` -> `body-text.tsx`). It default-exports a component that places `{children}` (the example) on a line of its own inside the area's JSX:
 
@@ -79,7 +79,7 @@ export default function PanelContext({ children }: ContextProps) {
 }
 ```
 
-Use only components exported by `kit.ts` (add an export there if the kit has the part). Portaled parts (a Dialog or Popover popup) take `container={host}`, the preview stage, and skip the backdrop and viewport, so they render open inside the card rather than as an overlay. The code pane strips these preview-only props (`open`, `modal={false}`, `initialFocus={false}`, `container={host}`, `anchor={host}`) from the copyable snippet (`PREVIEW_ONLY_PROPS` in `catalog/snippet.ts`). One context serves every use case of its area, so the example goes where that area's controls most often sit.
+Use only components exported by `kit.ts` (add an export there if the kit has the part). Portaled parts (a Dialog or Popover popup) take `container={host}`, the preview stage, and skip the backdrop and viewport, so they render open inside the card rather than as an overlay. The Code view strips these preview-only props (`open`, `modal={false}`, `initialFocus={false}`, `container={host}`, `anchor={host}`) from the copyable snippet (`PREVIEW_ONLY_PROPS` in `catalog/snippet.ts`). One context serves every use case of its area, so the example goes where that area's controls most often sit.
 
 When a use case sits elsewhere than the rest of its area (the Output header's scroll helpers, a close X in a popover's intro row), set `contextVariant` in its `usecase.ts` (for example `contextVariant: 'helpers'`) and add `contexts/<area-slug>-<variant>.tsx`. That use case then renders in the variant instead of the area's context; a missing variant file fails the catalog build.
 
@@ -120,7 +120,7 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 ## Layout and type
 
-Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview (with its mode toggle, a kit `ToggleGroup`) above the code, whose Copy button sits top-right inside the code card, separated by a draggable `Panels` handle. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
+Every pane (tree, preview, right pane) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre card is the preview only (its Component | In context toggle, a kit `ToggleGroup`, the app and case pickers and the stage). The right card (`ui/detail-pane.tsx`) has a Document | Code `ToggleGroup` above its content: Document (the default) is the docs, Code is the copyable snippet with its Copy button top-right. The choice is kept when another use case is selected. Draggable `Panels` handles sit between the three columns; below 840px they stack. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
 
 | Element | Type |
 | --- | --- |
@@ -134,7 +134,7 @@ Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a
 | badges, toggle labels, Copy | kit part at `sm`, 16/20 |
 | fallback frame note | `l3` muted |
 
-The doc pane's use case id and name use `Type color="primary"`; the Where / When / How labels use the default text color; the active toggle segment is a primary solid `Button`, the inactive one a neutral secondary text `Button`. Theme primary is only about 3.2:1 on the light surface, so `.ug-docs` (id and name) and `.ug-render__toggle` in `gallery.scss` resolve `--theme-primary` to `--p-palette-orange-600` (at least 4.7:1 as text, 5.2:1 under the white on-primary toggle text).
+The doc pane's use case id and name use `Type color="primary"`; the Where / When / How labels use the default text color; the active toggle segment is a primary solid `Button`, the inactive one a neutral secondary text `Button`. Theme primary is only about 3.2:1 on the light surface, so `.ug-docs` (id and name) and `.ug-render__toggle` and `.ug-detail__toggle` in `gallery.scss` resolve `--theme-primary` to `--p-palette-orange-600` (at least 4.7:1 as text, 5.2:1 under the white on-primary toggle text).
 
 The docs card shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a row of app badges (no visible label), then Where / When / How as a definition list; those three fields are the whole doc format.
 

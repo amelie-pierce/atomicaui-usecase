@@ -15,7 +15,7 @@ Live code wins over both: `define.ts`, `types.ts`, `apps.ts`, `catalog/build-cat
 - Discovery is automatic (`import.meta.glob` in `catalog/catalog.ts`); a new use case, component or scene needs no registry or shell edit.
 - `src/usecase-gallery/kit.ts` is the only file that imports the AtomicAUI kit. Every other file imports kit parts from it; add an export there when the kit has the part.
 - Use AtomicAUI tokens only: no raw colors or pixel values; tokens come from the kit and `--p-*` variables, with the small inline styles the README allows.
-- Examples are read-only: fixed props, no state, no controls. Keep `return` the last statement of `Example`, because the code pane is cut from that file.
+- Examples are read-only: fixed props, no state, no controls. Keep `return` the last statement of `Example`, because the Code view of the right pane is cut from that file.
 - Never hand-edit `src/vendor/atomic-aui`.
 
 ## Add a use case
@@ -28,7 +28,7 @@ Live code wins over both: `define.ts`, `types.ts`, `apps.ts`, `catalog/build-cat
 
 ## Change a use case
 
-Edit in place and keep its id. A change to `example.tsx` changes the Component preview and the code pane together; a change to a scene changes the In context preview and its code. Update `where`, `when` and `how` when the behavior they describe changes. A rename or regroup of ids is never part of a change.
+Edit in place and keep its id. A change to `example.tsx` changes the Component preview and the Code view together; a change to a scene changes the In context preview and its code. Update `where`, `when` and `how` when the behavior they describe changes. A rename or regroup of ids is never part of a change.
 
 ## In context rules
 

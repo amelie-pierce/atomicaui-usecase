@@ -78,6 +78,7 @@ $narrow: 840px;
 // titles and the active toggle segment, resolve it to the palette's darker orange (at least 4.7:1 on the
 // surfaces, 5.2:1 with its white on-primary), the same step the high-contrast theme uses.
 .ug-render__toggle,
+.ug-detail__toggle,
 .ug-docs,
 .ug-tree__link {
   --theme-primary: var(--p-palette-orange-600);
@@ -92,6 +93,12 @@ $narrow: 840px;
 .ug-render .ug-card__content {
   display: flex;
   flex-direction: column;
+}
+
+.ug-detail__toggle {
+  flex: none;
+  inline-size: fit-content;
+  margin-block-end: var(--p-px-16);
 }
 
 .ug-render__cases {
@@ -155,7 +162,7 @@ $narrow: 840px;
   inline-size: min(100%, calc(var(--p-px-16) * 24));
 }
 
-// The Copy button sits top-right of the code card and stays in view while the snippet scrolls.
+// The Copy button sits top-right of the code view and stays in view while the snippet scrolls.
 .ug-code__bar {
   position: sticky;
   inset-block-start: 0;
@@ -306,7 +313,7 @@ $narrow: 840px;
     min-block-size: var(--p-px-160);
   }
 
-  .ug-code .ug-card__content {
+  .ug-detail .ug-card__content {
     min-block-size: var(--p-px-128);
   }
 }

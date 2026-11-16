@@ -2,7 +2,6 @@ import { Suspense, use } from 'react';
 import { Button, Type } from '../kit';
 import { useCopy } from '../hooks/use-copy';
 import type { PreviewMode, Usecase, UsecaseCase } from '../types';
-import { PaneCard } from './pane-card';
 
 const LABEL = { idle: 'Copy', copied: 'Copied', failed: 'Copy failed' } as const;
 
@@ -19,7 +18,7 @@ export function CodePane({ usecase, mode, activeCase }: { usecase: Usecase; mode
     mode === 'context' && activeCase ? activeCase.loadCode() : mode === 'context' && usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
   const { status, copy } = useCopy();
   return (
-    <PaneCard label="Code" className="ug-code">
+    <div className="ug-code">
       <div className="ug-code__bar">
         <Button
           aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }}
@@ -35,6 +34,6 @@ export function CodePane({ usecase, mode, activeCase }: { usecase: Usecase; mode
       <Suspense fallback={null}>
         <Snippet code={code} />
       </Suspense>
-    </PaneCard>
+    </div>
   );
 }

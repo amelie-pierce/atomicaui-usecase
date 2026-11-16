@@ -4,6 +4,7 @@ export default defineUsecase({
   area: 'Popover',
   title: 'Help popover close',
   apps: ['hcs'],
+  contextVariant: 'close',
   summary: 'A transparent X IconButton closes a help popover.',
   where: 'The corner of a popover that explains a panel, beside the circle-question help trigger of Button-011. Real site source: HCS Button-013.',
   when: 'Use it to dismiss a popover that has no footer. It is the compact square profile, not the contained header size, so it stays out of the way of the text.',

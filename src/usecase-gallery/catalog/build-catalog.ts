@@ -27,7 +27,7 @@ const componentKey = (path: string) => segments(path).slice(-2, -1)[0];
 
 /** `Body text` -> `body-text`: the file name of an area's context. */
 export const areaSlug = (area: string) => area.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-/** `.../contexts/<area-slug>.tsx` -> area-slug. */
+/** `.../contexts/<area-slug>[-<variant>].tsx` -> the file name without extension. */
 const contextKey = (path: string) => segments(path).slice(-1)[0].replace(/\.tsx$/, '');
 
 const fail = (message: string): never => {
@@ -67,7 +67,8 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
       Example: lazy(() => loadExample().then((component) => ({ default: component }))),
       loadCode: () => (code ??= loadSource().then(toSnippet)),
     };
-    const slug = areaSlug(doc.area);
+    const slug = doc.contextVariant ? `${areaSlug(doc.area)}-${doc.contextVariant}` : areaSlug(doc.area);
+    if (doc.contextVariant && !contextBySlug.has(slug)) fail(`${id} sets contextVariant "${doc.contextVariant}" but contexts/${slug}.tsx is missing`);
     const loadContext = contextBySlug.get(slug);
     const loadContextSource = contextSourceBySlug.get(slug);
     if (loadContext && loadContextSource) {

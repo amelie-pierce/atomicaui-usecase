@@ -1,31 +1,49 @@
+import { useRef } from 'react';
 import type { ContextProps } from '../types';
-import { Type, View } from '../kit';
-import { MockViewerControls } from '../mock-data';
+import { IconButton, Popover, Type, View } from '../kit';
+import { MockViewerCanvas, MockViewerControls } from '../mock-data';
 
-// The compact viewer: View options sits alone at the top right of the canvas (8px in) and opens a popover
-// holding the same controls. The popup is shown static, as a View card under the button, the nearest kit-only
-// form of the app's local popover surface. The canvas is a framed stand-in.
-export default function ViewerOptionsContext({ children }: ContextProps) {
+// The compact 3D Viewer (side-by-side and engineering layouts, narrow screens), where the floating controls give way to one View options
+// button in the top-end corner of the scene, 8px in (the app's `.f02-mobile-options`, the `ug-scene__options` rule). The button is the
+// trigger of a Popover (side bottom, align end, offset 4) whose popup is the same controls stack as the desktop overlay, on a surface card
+// (`.f02-popover`: 12px padding, 4px radius, shadow). It is shown open and floats over the canvas.
+export default function ViewerOptionsContext({ children, host }: ContextProps) {
+  const anchor = useRef<HTMLSpanElement>(null);
   return (
     <View
       as="section"
-      aria-label="3D Viewer (stand-in)"
-      aui={{ scale: 'sm', color: 'surface', paint: 'fixed', shape: 'soft', profile: 'no-padding' }}
-      style={{ position: 'relative', inlineSize: 'min(100%, 420px)', blockSize: 360 }}
+      aria-label="3D Viewer"
+      aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
+      style={{ inlineSize: 'min(100%, 560px)' }}
     >
-      <Type as="p" role="p3" color="muted" style={{ position: 'absolute', insetBlockEnd: 8, insetInlineStart: 12 }}>
-        Stand-in: the app draws a 3D beam connection here.
-      </Type>
-      <View
-        aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', alignItems: 'end', gap: '4' } }}
-        style={{ position: 'absolute', insetBlockStart: 8, insetInlineEnd: 8 }}
-      >
-        {children}
-        <View
-          aria-label="View options"
-          aui={{ color: 'surface', paint: 'solid', profile: 'default', shape: 'soft', elevation: 4, sx: { display: 'flex', flexDirection: 'column', alignItems: 'start', gap: '4' } }}
-        >
-          <MockViewerControls />
+      <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', height: '28', flex: 'none' } }}>
+        <Type as="h2" role="l3" weight="semi-bold">3D Viewer</Type>
+      </View>
+      <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flex: 'fill', width: 'fill', minHeight: '0' } }}>
+        <View aui={{ color: 'surface', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', width: 'fill', gap: '0', flex: 'fill', minHeight: '0', overflow: 'hidden' } }}>
+          <div className="ug-scene">
+            <MockViewerCanvas />
+            <Popover open>
+              <span ref={anchor} className="ug-scene__options">
+                {children}
+              </span>
+              <Popover.Portal container={host}>
+                <Popover.Positioner anchor={anchor} side="bottom" align="end" sideOffset={4} className="ug-anchored">
+                  <Popover.Popup initialFocus={false} aria-label="View options" className="ug-scene__popover">
+                    <div className="ug-scene__controls" style={{ position: 'static', maxInlineSize: 'none' }}>
+                      <IconButton
+                        name="bullseye"
+                        aria-label="Reset view"
+                        title="Reset view"
+                        aui={{ scale: 'sm', color: 'primary', paint: 'text', shape: 'soft', sx: { borderWidth: '1', borderStyle: 'solid', borderColor: 'outlined' } }}
+                      />
+                      <MockViewerControls />
+                    </div>
+                  </Popover.Popup>
+                </Popover.Positioner>
+              </Popover.Portal>
+            </Popover>
+          </div>
         </View>
       </View>
     </View>

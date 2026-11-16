@@ -1,31 +1,33 @@
 import type { ContextProps } from '../types';
 import { Type, View } from '../kit';
-import { MockViewerControls } from '../mock-data';
+import { MockViewerCanvas, MockViewerControls } from '../mock-data';
 
-// The 3D Viewer canvas. The real canvas is a Babylon scene and the view cube is raw buttons with CSS 3D, neither
-// buildable from kit parts: they are framed stand-ins. The controls stack floats at the right, 62px from the top
-// (the app uses local CSS; here an inline style), starting with Reset view, then the projection radios, the
-// Object Visibility heading and its checkboxes.
+// The 3D Viewer pane as App.tsx composes it: pane frame, the 28px header, and a body card (overflow hidden) holding the scene. The scene
+// is the live canvas (a three.js scene the kit has no part for, so a framed stand-in) with the desktop controls overlaid at the top end,
+// 62px down and 12px in (the app's `.f02-controls-desktop`, here the `ug-scene__controls` rule): Reset view first, then the projection
+// radios (Perspective selected), the Object Visibility heading and four checkboxes with the app's selected and unselected recipes.
+// Connector Detail starts unchecked.
 export default function ViewerContext({ children }: ContextProps) {
   return (
     <View
       as="section"
-      aria-label="3D Viewer (stand-in)"
-      aui={{ scale: 'sm', color: 'surface', paint: 'fixed', shape: 'soft', profile: 'no-padding' }}
-      style={{ position: 'relative', inlineSize: 'min(100%, 560px)', blockSize: 360 }}
+      aria-label="3D Viewer"
+      aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
+      style={{ inlineSize: 'min(100%, 560px)' }}
     >
-      <View aria-label="View cube (stand-in)" aui={{ scale: 'sm', color: 'surface-alt', paint: 'fixed', shape: 'soft', profile: 'no-padding' }} style={{ position: 'absolute', insetBlockStart: 21, insetInlineStart: 21, inlineSize: 48, blockSize: 48, display: 'grid', placeItems: 'center' }}>
-        <Type as="span" role="p3" color="muted">Cube</Type>
+      <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', height: '28', flex: 'none' } }}>
+        <Type as="h2" role="l3" weight="semi-bold">3D Viewer</Type>
       </View>
-      <Type as="p" role="p3" color="muted" style={{ position: 'absolute', insetBlockEnd: 8, insetInlineStart: 12 }}>
-        Stand-in: the app draws a 3D beam connection here.
-      </Type>
-      <View
-        aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', alignItems: 'start', gap: '4' } }}
-        style={{ position: 'absolute', insetBlockStart: 62, insetInlineEnd: 12, maxInlineSize: 'calc(100% - 120px)' }}
-      >
-        {children}
-        <MockViewerControls />
+      <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flex: 'fill', width: 'fill', minHeight: '0' } }}>
+        <View aui={{ color: 'surface', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', width: 'fill', gap: '0', flex: 'fill', minHeight: '0', overflow: 'hidden' } }}>
+          <div className="ug-scene">
+            <MockViewerCanvas />
+            <div className="ug-scene__controls">
+              {children}
+              <MockViewerControls />
+            </div>
+          </div>
+        </View>
       </View>
     </View>
   );

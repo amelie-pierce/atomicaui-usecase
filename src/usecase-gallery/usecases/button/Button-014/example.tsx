@@ -1,9 +1,9 @@
-import { Button, Type } from '../../../kit';
+import { Button } from '../../../kit';
 
 export default function Example() {
   return (
-    <Type role="l4">
-      Select{' '}
+    <>
+      Selecting{' '}
       <Button
         type="button"
         aui={{
@@ -16,7 +16,7 @@ export default function Example() {
       >
         All Products
       </Button>{' '}
-      to review every solution.
-    </Type>
+      to review all solutions, including the reasons each one failed.
+    </>
   );
 }

@@ -1,46 +1,45 @@
 import type { ContextProps } from '../types';
-import { Accordion, IconButton, Type, View } from '../kit';
+import { Accordion, IconButton, Panels, Tooltip, Type, View } from '../kit';
+import { MockInputGalvanized, MockInputSection } from '../mock-data';
 
-// The Input pane header: collapse chevron at the start, the title, a spacer, then the header icon button
-// (Collapse all) at the end. Header icons are the contained profile (20px box), not the 28px rail size.
+// The Input pane as App.tsx composes it when stacked: pane frame, the 28px header (collapse chevron with its tooltip, the semi-bold title, a
+// Panels.Spacer, then Collapse all), and under it a vertical scroll area holding one surface card of flush accordion sections (Connection
+// Type, Load Properties, Beam Properties, all open as the app starts) and the Galvanized card. The scroll area has a fixed height here.
 export default function PanelContext({ children }: ContextProps) {
   return (
     <View
-      as="section"
+      as="aside"
       aria-label="Input"
-      aui={{ scale: 'sm', color: 'surface-alt', paint: 'fixed', shape: 'soft', profile: 'default', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }}
-      style={{ inlineSize: 'min(100%, 420px)' }}
+      aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }}
+      style={{ inlineSize: 'min(100%, 420px)', blockSize: 480 }}
     >
-      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '8' } }} style={{ minBlockSize: 28 }}>
-        <IconButton name="angle-left" aria-label="Collapse Input" aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'contained', shape: 'soft' }} />
-        <Type as="h2" role="l3" weight="bold">Input</Type>
-        <View aui={{ paint: 'text', profile: 'no-padding', sx: { flex: 'fill' } }} />
+      <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', height: '28', flex: 'none' } }}>
+        <Tooltip.Provider>
+          <Tooltip>
+            <Tooltip.Trigger
+              render={<IconButton name="angle-left" aria-label="Collapse Input" aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'contained', shape: 'soft' }} />}
+            />
+            <Tooltip.Portal>
+              <Tooltip.Positioner side="bottom" sideOffset={4}>
+                <Tooltip.Popup aui={{ scale: 'sm' }}>Collapse Input</Tooltip.Popup>
+              </Tooltip.Positioner>
+            </Tooltip.Portal>
+          </Tooltip>
+        </Tooltip.Provider>
+        <Type as="h2" role="l3" weight="semi-bold">Input</Type>
+        <Panels.Spacer />
         {children}
       </View>
-      <Accordion defaultValue={['connection']} aui={{ scale: 'sm' }}>
-        <Accordion.Item value="connection">
-          <Accordion.Header>
-            <Accordion.Trigger>
-              Connection Type
-              <Accordion.Chevron />
-            </Accordion.Trigger>
-          </Accordion.Header>
-          <Accordion.Panel>
-            <Type as="p" role="p3">Face mount hanger on a supporting beam.</Type>
-          </Accordion.Panel>
-        </Accordion.Item>
-        <Accordion.Item value="load">
-          <Accordion.Header>
-            <Accordion.Trigger>
-              Load Properties
-              <Accordion.Chevron />
-            </Accordion.Trigger>
-          </Accordion.Header>
-          <Accordion.Panel>
-            <Type as="p" role="p3">Download duration and loads.</Type>
-          </Accordion.Panel>
-        </Accordion.Item>
-      </Accordion>
+      <View.ScrollArea scrollAxis="vertical" scrollbarSize={8} aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flex: 'fill', width: 'fill', minHeight: '0' } }}>
+        <View aui={{ color: 'surface', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', width: 'fill', overflow: 'hidden', gap: '0' } }}>
+          <Accordion openMultiple defaultValue={['Connection Type', 'Load Properties', 'Beam Properties']} aui={{ scale: 'sm' }}>
+            <MockInputSection name="Connection Type" />
+            <MockInputSection name="Load Properties" divider />
+            <MockInputSection name="Beam Properties" divider />
+            <MockInputGalvanized />
+          </Accordion>
+        </View>
+      </View.ScrollArea>
     </View>
   );
 }

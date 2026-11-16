@@ -1,4 +1,10 @@
-import { Checkbox, Chip, Field, Radio, RadioGroup, Table, Type, View } from './kit';
+import type { ReactElement, ReactNode } from 'react';
+import { Accordion, Button, Checkbox, Chip, ContainedImage, Dropdown, Field, IconButton, Menubar, Popover, Radio, Panels, RadioGroup, Select, Symbol, Table, Tooltip, Type, View } from './kit';
+import nonDapped from './assets/connection-types/non-dapped.svg';
+import topDapped from './assets/connection-types/top-dapped.svg';
+import bottomDapped from './assets/connection-types/bottom-dapped.svg';
+import topBottomDapped from './assets/connection-types/top-bottom-dapped.svg';
+import connectorThumbnail from './usecases/button/Button-008/connector-thumbnail.svg';
 
 // The only mock values the In context scenes use: simple placeholders in hcs wording, no real data.
 
@@ -126,23 +132,43 @@ export function MockSelectField({ label, value, disabled }: { label: string; val
   );
 }
 
-/** The viewer's camera and visibility controls under Reset view: two radios, a heading, four checkboxes. */
+const viewerSelection = { scale: 'sm', states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } } as const;
+const viewerRadio = {
+  scale: 'sm',
+  states: {
+    unselected: { color: 'surface', paint: 'solid', sx: { borderWidth: '1', borderStyle: 'solid', borderColor: 'outlined' } },
+    selected: { color: 'primary', paint: 'solid' },
+  },
+} as const;
+
+/**
+ * The viewer's camera and visibility controls under Reset view (App.tsx `f02-controls`): the projection radios (Perspective
+ * selected), the Object Visibility heading and four checkboxes. With a Passed product selected the first three are checked;
+ * Connector Detail starts unchecked.
+ */
 export function MockViewerControls() {
   return (
     <>
-      <RadioGroup aria-label="Projection" defaultValue="perspective" aui={{ scale: 'sm' }}>
-        <Radio value="perspective"><Radio.Label>Perspective</Radio.Label></Radio>
-        <Radio value="orthographic"><Radio.Label>Orthographic</Radio.Label></Radio>
+      <RadioGroup className="ug-scene__projections" aria-label="Camera projection" defaultValue="perspective" aui={{ scale: 'sm', profile: 'no-padding' }}>
+        <Radio value="perspective" aui={viewerRadio}><Radio.Label>Perspective</Radio.Label></Radio>
+        <Radio value="orthographic" aui={viewerRadio}><Radio.Label>Orthographic</Radio.Label></Radio>
       </RadioGroup>
-      <Type as="h3" role="l3" weight="bold">Object Visibility</Type>
-      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '2' } }}>
-        {['Supporting Beam', 'Supported Beam', 'Connector', 'Connector Detail'].map((name) => (
-          <Checkbox key={name} defaultChecked aui={{ scale: 'sm' }}>
-            <Checkbox.Label>{name}</Checkbox.Label>
-          </Checkbox>
-        ))}
-      </View>
+      <Type role="l3" weight="semi-bold">Object Visibility</Type>
+      {[['Supporting Beam', true], ['Supported Beam', true], ['Connector', true], ['Connector Detail', false]].map(([name, on]) => (
+        <Checkbox key={String(name)} defaultChecked={Boolean(on)} aria-label={String(name)} aui={viewerSelection}>
+          <Checkbox.Label aui={{ scale: 'sm' }}>{String(name)}</Checkbox.Label>
+        </Checkbox>
+      ))}
     </>
+  );
+}
+
+/** The 3D canvas stand-in: the app draws the beams and connector with three.js, which the kit has no part for. */
+export function MockViewerCanvas() {
+  return (
+    <View aui={{ scale: 'sm', color: 'surface-alt', paint: 'fixed', shape: 'soft', profile: 'default', sx: { display: 'flex', alignItems: 'end', justifyContent: 'start', flex: 'fill' } }} style={{ borderStyle: 'dashed' }}>
+      <Type role="l4" color="muted">3D canvas (drawn live in the app)</Type>
+    </View>
   );
 }
 
@@ -156,5 +182,435 @@ export function MockLicenceText() {
         </Type>
       ))}
     </>
+  );
+}
+
+// The page under the tour: the target the step points at and the spotlight around it (4px outside the target, as
+// F01Walkthrough measures it). Positions are fixed numbers in the `.ug-tour` frame (the app measures them at run time).
+const TOUR_TARGETS = {
+  connection: { left: 12, top: 12, width: 200, height: 44 },
+  beams: { left: 12, top: 12, width: 200, height: 96 },
+  file: { left: 484, top: 12, width: 56, height: 28 },
+};
+
+/** The page element a walkthrough step highlights, with its spotlight. */
+export function MockTourTarget({ target }: { target: keyof typeof TOUR_TARGETS }) {
+  const { left, top, width, height } = TOUR_TARGETS[target];
+  return (
+    <>
+      <div className="ug-tour__target" style={{ left, top, width, height }}>
+        {target === 'file' ? (
+          <Menubar aria-label="Main navigation" aui={{ scale: 'sm' }}>
+            <Menubar.Dropdown aui={{ scale: 'sm' }}>
+              <Menubar.DropdownTrigger aui={{ scale: 'sm' }}>File</Menubar.DropdownTrigger>
+            </Menubar.Dropdown>
+          </Menubar>
+        ) : (
+          <Accordion defaultValue={target === 'beams' ? ['Beam Properties'] : []} aui={{ scale: 'sm' }}>
+            <Accordion.Item value={target === 'beams' ? 'Beam Properties' : 'Connection Type'} aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
+              <Accordion.Header>
+                <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
+                  <Accordion.Icon name={target === 'beams' ? 'layer-group' : 'link'} weight="regular" aria-hidden />
+                  <Type role="l4" weight="semi-bold">{target === 'beams' ? 'Beam Properties' : 'Connection Type'}</Type>
+                  <Accordion.Chevron />
+                </Accordion.Trigger>
+              </Accordion.Header>
+              <Accordion.Panel aui={{ profile: 'default' }}>
+                <Type as="h3" weight="semi-bold">Supporting Beam</Type>
+              </Accordion.Panel>
+            </Accordion.Item>
+          </Accordion>
+        )}
+      </div>
+      <div className="ug-tour__spotlight" style={{ left: left - 4, top: top - 4, width: width + 8, height: height + 8 }} aria-hidden="true" />
+    </>
+  );
+}
+
+/** The Output product filter (HcsProductFilter.tsx): an outlined Dropdown trigger, closed; the label carries the count unless the inputs are invalid. */
+export function MockProductFilter({ label, disabled }: { label: string; disabled?: boolean }) {
+  return (
+    <div>
+      <Dropdown aui={{ scale: 'sm' }}>
+        <Dropdown.Trigger
+          aria-label="Product filter"
+          disabled={disabled}
+          aui={{ scale: 'sm', color: 'surface', paint: 'fixed', sx: { whiteSpace: 'nowrap', borderColor: 'outlined', borderBlockStartWidth: '1', borderBlockEndWidth: '1', borderInlineStartWidth: '1', borderInlineEndWidth: '1' } }}
+        >
+          {label}
+          <Dropdown.Chevron aui={{ scale: 'sm' }} />
+        </Dropdown.Trigger>
+      </Dropdown>
+    </div>
+  );
+}
+
+/** The Output toolbar row without Reset filters: search fills the line, then the count and the product filter (App.tsx). */
+export function MockOutputToolbar({ invalid }: { invalid?: boolean }) {
+  return (
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', flex: 'none', flexWrap: 'wrap', paddingBlockEnd: '6' } }}>
+      <Field style={{ minWidth: 112 }} aui={{ scale: 'sm', sx: { flex: 'fill' } }}>
+        <Field.Control>
+          <Field.Icon name="magnifying-glass" />
+          <Field.Input aria-label="Search connector models" placeholder="Search connector models..." />
+          <Field.Button aria-label="Clear search">
+            <Field.ButtonIcon name="xmark" />
+          </Field.Button>
+        </Field.Control>
+      </Field>
+      {!invalid && (
+        <Type color="muted" aui={{ sx: { margin: '0', fontSize: '12', flex: 'none' } }}>
+          <span role="status">Showing 2 of 3 results</span>
+        </Type>
+      )}
+      <MockProductFilter label={invalid ? 'Passed Products' : 'Passed Products (2)'} disabled={invalid} />
+    </View>
+  );
+}
+
+const outputColumnWidths = ['384', '128', '128', '192', '192', '192', '192', '192', '288'] as const;
+const outputHeaderLines: Record<string, [string, string]> = {
+  load: ['Load', '(lb)'],
+  lateral: ['Lateral (Tension)', '(lb)'],
+  plateThickness: ['Plate Thickness', '(PT) (in.)'],
+  plateDepth: ['Plate Depth', '(PD) (in.)'],
+  rotationBolt: ['Rotation Bolt', '(Qty) (Total)'],
+  lateralBolt: ['Lateral Bolt', '(Qty) (Total)'],
+  machineBoltSize: ['Machine Bolt Size', '(Dia x Length) (in.)'],
+};
+const outputSelection = {
+  scale: 'sm',
+  sx: { minWidth: '24', minHeight: '24' },
+  states: {
+    unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
+    selected: { color: 'primary', paint: 'solid' },
+  },
+} as const;
+
+/**
+ * The Output results table of F01Results.tsx with the passed rows only: nine columns, all-cell borders, the Model column
+ * frozen, single selection by radio (first row selected). The table scrolls sideways in a narrow pane.
+ */
+export function MockOutputTable() {
+  const rows = MOCK_RESULT_ROWS.filter((row) => row.passed);
+  return (
+    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', overflow: 'hidden', position: 'relative', flex: 'fill', minHeight: '0' } }}>
+      <Table
+        aria-label="Connector calculation results"
+        aui={{ scale: 'sm', shape: 'soft', sx: { gap: '0', minHeight: '0', borderColor: 'outlined', borderBlockStartWidth: '1', borderBlockEndWidth: '1', borderInlineStartWidth: '1', borderInlineEndWidth: '1' } }}
+        border="all-cells"
+        borderStyle="tonal"
+        scroll="self"
+        bodyFit="content"
+        fit="fill"
+        minInlineSize={1888}
+        frozenColumns={1}
+        sortable
+        expandable
+        rowAui={{
+          color: 'surface-alt',
+          paint: 'solid',
+          states: {
+            unselected: { color: 'surface-alt', paint: 'solid' },
+            selected: { color: 'surface-alt', paint: 'solid', sx: { borderColor: 'secondary', borderInlineStartWidth: '4' } },
+          },
+        }}
+        selectionMode="single"
+        indicatorType="radio"
+        indicatorColumn={false}
+        selectionToggleAui={outputSelection}
+        headerCellAui={{ color: 'raised', sx: { textAlign: 'center' } }}
+      >
+        <Table.Head>
+          <Table.Row selectable={false} expandable={false}>
+            {MOCK_OUTPUT_COLUMNS.map((column, index) => (
+              <Table.HeaderCell key={column.id} aui={{ scale: 'sm', color: 'raised', sx: { width: outputColumnWidths[index], textAlign: 'center' } }} sortDirection={false}>
+                <span>
+                  {outputHeaderLines[column.id] ? (
+                    <>
+                      {outputHeaderLines[column.id][0]}
+                      <br />
+                      {outputHeaderLines[column.id][1]}
+                    </>
+                  ) : (
+                    column.header
+                  )}
+                </span>
+              </Table.HeaderCell>
+            ))}
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          {rows.map((row, rowIndex) => (
+            <Table.Row key={row.id} selected={rowIndex === 0} expandable expansionLabel={`Show Why Not for ${row.model}`} selectionLabel={row.model}>
+              <Table.Cell aui={{ scale: 'sm', sx: { width: outputColumnWidths[0], whiteSpace: 'nowrap', textAlign: 'left' } }}>
+                <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '12', minWidth: '0', textAlign: 'left', justifyContent: 'flex-start' } }}>
+                  <Button aria-label={`Why Not for ${row.model}`} aria-expanded={false} aui={{ scale: 'sm', profile: 'square-compact', color: 'surface', paint: 'text', sx: { minWidth: '24', minHeight: '24' } }}>
+                    <Button.Icon name="angle-right" weight="solid" aui={{ scale: 'sm' }} />
+                  </Button>
+                  <Table.SelectionToggle aui={outputSelection} />
+                  <ContainedImage src={connectorThumbnail} alt="" fit="contain" style={{ inlineSize: 32, blockSize: 32, flex: 'none' }} />
+                  <span title={row.model} style={{ flex: '1 1 auto', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row.model}</span>
+                </View>
+              </Table.Cell>
+              <Table.Cell aui={{ scale: 'sm', sx: { width: outputColumnWidths[1], whiteSpace: 'nowrap', textAlign: 'center' } }}>
+                <Chip aui={{ scale: 'sm', color: 'success', paint: 'tonal' }}>
+                  <Chip.Icon name="circle-check" aui={{ scale: 'sm' }} />
+                  Passed
+                </Chip>
+              </Table.Cell>
+              {row.cells.map((value, cellIndex) => (
+                <Table.Cell key={cellIndex} aui={{ scale: 'sm', sx: { width: outputColumnWidths[cellIndex + 2], whiteSpace: 'nowrap', textAlign: 'center' } }}>{value}</Table.Cell>
+              ))}
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table>
+    </View>
+  );
+}
+
+/** The Table Notes under the Output table (App.tsx `notes`): a bold heading and the two note rows. */
+export function MockOutputNotes() {
+  return (
+    <View aui={{ paint: 'text', profile: 'default', scale: 'sm', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }}>
+      <Type as="h3" role="l3" weight="bold">Table Notes:</Type>
+      <View as="ol" aui={{ paint: 'text', profile: 'no-padding', scale: 'sm', sx: { paddingInlineStart: '24', gap: '0' } }} style={{ listStyle: 'decimal' }}>
+        <Type as="li" weight="regular">All loads are displayed in units of pounds and based on Allowable Stress Design</Type>
+        <Type as="li" weight="regular">
+          Refer to{' '}
+          <Type as="a" weight="regular" color="secondary" href="http://www.strongtie.com/productuse/general-notes.html" target="_blank" rel="noopener noreferrer" aui={{ sx: { textDecoration: 'underline', whiteSpace: 'normal' } }}>
+            General Notes
+          </Type>{' '}
+          for more information.
+        </Type>
+      </View>
+    </View>
+  );
+}
+
+/** The Output body below the header: the toolbar, then the table and the notes (or the placeholder while the inputs are invalid). */
+export function MockOutputBody({ invalid }: { invalid?: boolean }) {
+  return (
+    <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flex: 'fill', width: 'fill', minHeight: '0' } }}>
+      <View aui={{ color: 'surface', shape: 'soft', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', width: 'fill', gap: '0', flex: 'fill', minHeight: '0', paddingBlockStart: '8', paddingBlockEnd: '8', paddingInlineStart: '8', paddingInlineEnd: '8' } }}>
+        <MockOutputToolbar invalid={invalid} />
+        {invalid ? (
+          <View as="p" role="status" aui={{ scale: 'sm', paint: 'text', sx: { flex: 'none' } }}>
+            Please enter design inputs to view compatible products.
+          </View>
+        ) : (
+          <>
+            <MockOutputTable />
+            <MockOutputNotes />
+          </>
+        )}
+      </View>
+    </View>
+  );
+}
+
+/** The Output header action group without the scroll helpers: Configure columns (closed Popover, Tooltip) and Print Output. */
+export function MockOutputActions() {
+  return (
+    <>
+      <Popover>
+        <Tooltip.Provider>
+          <Tooltip>
+            <Tooltip.Trigger
+              render={
+                <Popover.Trigger
+                  render={<IconButton name="table-columns" aria-label="Configure columns" aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'contained', shape: 'soft' }} />}
+                />
+              }
+            />
+            <Tooltip.Portal>
+              <Tooltip.Positioner side="bottom" sideOffset={4}>
+                <Tooltip.Popup aui={{ scale: 'sm' }}>Configure columns</Tooltip.Popup>
+              </Tooltip.Positioner>
+            </Tooltip.Portal>
+          </Tooltip>
+        </Tooltip.Provider>
+      </Popover>
+      <Button aui={{ scale: 'sm', color: 'surface', paint: 'tonal', sx: { flex: 'none' } }}>
+        <Button.Icon name="print" aui={{ scale: 'sm' }} />
+        Print Output
+      </Button>
+    </>
+  );
+}
+
+// The Input pane fields (App.tsx `NumberField` and HcsSelectbox.tsx): a Field with a 28px control; static, with the value shown.
+const inputControl = { scale: 'sm', sx: { height: '28', minHeight: '28', paddingBlockStart: '3', paddingBlockEnd: '3', paddingInlineStart: '8', paddingInlineEnd: '8', fontSize: '16', lineHeight: '20' } } as const;
+const selectGeometry = { minHeight: '28', paddingBlockStart: '3', paddingBlockEnd: '3', fontSize: '16', lineHeight: '20' } as const;
+
+/** A numeric Input field with its unit suffix. */
+export function MockNumberField({ label, value, unit, disabled }: { label: ReactNode; value: string; unit: string; disabled?: boolean }) {
+  return (
+    <Field disabled={disabled} aui={{ scale: 'sm', sx: { gap: '3' } }}>
+      <Field.Label aui={{ scale: 'sm' }}>{label}</Field.Label>
+      <Field.Control aui={inputControl} aria-label={typeof label === 'string' ? label : undefined} defaultValue={value}>
+        <Symbol>{unit}</Symbol>
+      </Field.Control>
+    </Field>
+  );
+}
+
+/** A labelled single-value Input select (HcsSelectbox), closed on `value`; `accessory` follows the label (the help trigger). */
+export function MockChoice({ label, value, options, disabled, accessory }: { label: string; value: string; options: string[]; disabled?: boolean; accessory?: ReactNode }) {
+  const fieldLabel = <Field.Label aui={{ scale: 'sm' }}>{label}</Field.Label>;
+  return (
+    <Field disabled={disabled} aui={{ scale: 'sm', sx: { gap: '3' } }}>
+      {accessory ? (
+        <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', alignItems: 'center' } }}>
+          {fieldLabel}
+          {accessory}
+        </View>
+      ) : (
+        fieldLabel
+      )}
+      <Select aui={{ scale: 'sm' }} defaultValue={value} items={options.map((option) => ({ label: option, value: option }))} disabled={disabled}>
+        <Select.Trigger aria-label={label} aui={{ scale: 'sm', color: 'surface', paint: 'fixed', sx: { ...selectGeometry, height: '28' } }} style={{ inlineSize: '100%', minInlineSize: 0 }}>
+          <Select.Value />
+          <Select.Chevron aui={{ scale: 'sm' }} />
+        </Select.Trigger>
+      </Select>
+    </Field>
+  );
+}
+
+const MOCK_BEAM_TYPES = ['Glulam', 'Laminated Strand Lumber', 'Laminated Veneer Lumber', 'Parallel Strand Lumber', 'Solid Sawn'];
+const MOCK_DURATIONS = ['Dead (90)', 'Floor (100)', 'Snow (115)', 'Roof (125)', 'Quake/Wind (160)'];
+const fieldGrid = { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 'var(--p-px-8)' } as const;
+
+/** The Connection Type cards: four selection cards with their illustrations, the first selected. */
+export function MockConnectionCards() {
+  const cards = [['Non-dapped', nonDapped], ['Top dapped', topDapped], ['Bottom dapped', bottomDapped], ['Top & bottom dapped', topBottomDapped]] as const;
+  return (
+    <View role="group" aria-label="Connection type" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexWrap: 'wrap', rowGap: '4', columnGap: '4', width: 'fill' } }}>
+      {cards.map(([label, image], i) => (
+        <View
+          key={label}
+          as="button"
+          interactive
+          selected={i === 0}
+          aria-label={label}
+          aui={{
+            profile: 'default',
+            scale: 'sm',
+            shape: 'soft',
+            states: {
+              unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
+              selected: { color: 'primary', paint: 'tonal', sx: { background: 'surface', foreground: 'on-surface', borderBlockStartWidth: '2', borderBlockEndWidth: '2', borderInlineStartWidth: '2', borderInlineEndWidth: '2' } },
+            },
+            sx: { display: 'flex', flex: 'fill', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '96', minWidth: '96', rowGap: '4', columnGap: '4', paddingInlineStart: '4', paddingInlineEnd: '4' },
+          }}
+        >
+          <ContainedImage src={image} alt="" fit="contain" style={{ height: 48, width: '100%', flexShrink: 0 }} imageProps={{ draggable: false }} />
+          <Type as="span" role="p3" aui={{ sx: { whiteSpace: 'normal', textAlign: 'center' } }}>{label}</Type>
+        </View>
+      ))}
+    </View>
+  );
+}
+
+/** The Load Properties fields: Download, Download Duration (label plus `accessory`), Lateral Load and its locked duration. */
+export function MockLoadFields({ accessory }: { accessory?: ReactNode }) {
+  return (
+    <div style={fieldGrid}>
+      <MockNumberField label="Download (ASD)" value="2,000" unit="lb" />
+      <MockChoice label="Download Duration" value="Snow (115)" options={MOCK_DURATIONS} accessory={accessory} />
+      <MockNumberField label="Lateral Load (Tension) (ASD)" value="500" unit="lb" />
+      <MockChoice label="Lateral Load Duration" value="Quake/Wind (160)" options={['Quake/Wind (160)']} disabled />
+    </div>
+  );
+}
+
+/** One beam column of Beam Properties: type, species, SG, Fc perp with `reset` below it, width and depth. */
+export function MockBeamColumn({ beam, reset, supporting }: { beam: string; reset?: ReactNode; supporting: boolean }) {
+  return (
+    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '8', minWidth: '0' } }}>
+      <Type as="h3" weight="semi-bold" aui={{ sx: { fontSize: '14', margin: '0' } }}>{beam} Beam</Type>
+      <MockChoice label={`${beam} Beam Type`} value="Glulam" options={MOCK_BEAM_TYPES} />
+      <MockChoice label="Species" value="DF/SP (Douglas fir or Southern Pine)" options={['DF/SP (Douglas fir or Southern Pine)']} />
+      <MockNumberField label="SG" value="0.50" unit="" disabled />
+      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', alignItems: 'stretch', gap: '4', minWidth: '0' } }}>
+        <MockNumberField label={<span><Type as="span">Fc</Type><Symbol script="subscript">perp</Symbol></span>} value="650" unit="psi" />
+        {reset}
+      </View>
+      <MockChoice label="Width" value="3 1/2″" options={['3 1/2″']} disabled={!supporting} />
+      <MockNumberField label="Depth" value="11.875" unit="in" />
+    </View>
+  );
+}
+
+/** One Input pane accordion item (App.tsx `Section`): the real item shell with the section's own content. */
+export function MockInputSection({ name, divider }: { name: 'Connection Type' | 'Load Properties' | 'Beam Properties'; divider?: boolean }) {
+  const icon = { 'Connection Type': 'link', 'Load Properties': 'arrow-down', 'Beam Properties': 'layer-group' }[name];
+  return (
+    <Accordion.Item value={name} aui={{ color: 'surface', scale: 'sm', shape: 'none', sx: divider ? { borderColor: 'outlined', borderStyle: 'solid', borderBlockStartWidth: '1' } : undefined }}>
+      <Accordion.Header>
+        <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
+          <Accordion.Icon name={icon} weight="regular" aria-hidden />
+          <Type role="l4" weight="semi-bold">{name}</Type>
+          <Accordion.Chevron />
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Panel aui={{ profile: 'default' }}>
+        {name === 'Connection Type' && <MockConnectionCards />}
+        {name === 'Load Properties' && <MockLoadFields />}
+        {name === 'Beam Properties' && (
+          <div style={fieldGrid}>
+            <MockBeamColumn beam="Supporting" supporting reset={<Button aui={{ scale: 'sm', paint: 'solid', color: 'raised', shape: 'soft' }} style={{ alignSelf: 'flex-start' }}><Button.Icon name="arrow-rotate-left" />Reset to default</Button>} />
+            <MockBeamColumn beam="Supported" supporting={false} reset={<Button aui={{ scale: 'sm', paint: 'solid', color: 'raised', shape: 'soft' }} style={{ alignSelf: 'flex-start' }}><Button.Icon name="arrow-rotate-left" />Reset to default</Button>} />
+          </div>
+        )}
+      </Accordion.Panel>
+    </Accordion.Item>
+  );
+}
+
+/** The Galvanized card that ends the Input pane. */
+export function MockInputGalvanized() {
+  return (
+    <View aui={{ scale: 'sm', color: 'surface', paint: 'solid', profile: 'default', sx: { alignSelf: 'stretch', borderColor: 'outlined', borderStyle: 'solid', borderBlockStartWidth: '1' } }}>
+      <Checkbox aria-label="Galvanized" aui={{ scale: 'sm', states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }}>
+        <Checkbox.Label aui={{ scale: 'sm' }}>Galvanized</Checkbox.Label>
+      </Checkbox>
+      <Type role="l4" color="muted">Applies to ordering and print. Does not affect capacity.</Type>
+    </View>
+  );
+}
+
+/** Icon-only button tooltip (HcsIconTooltip.tsx): the same text as the aria-label, below the button. */
+export function MockIconTooltip({ label, children }: { label: string; children: ReactElement }) {
+  return (
+    <Tooltip.Provider>
+      <Tooltip>
+        <Tooltip.Trigger render={children} />
+        <Tooltip.Portal>
+          <Tooltip.Positioner side="bottom" sideOffset={4}>
+            <Tooltip.Popup aui={{ scale: 'sm' }}>{label}</Tooltip.Popup>
+          </Tooltip.Positioner>
+        </Tooltip.Portal>
+      </Tooltip>
+    </Tooltip.Provider>
+  );
+}
+
+/** The Input pane header: collapse chevron, title, spacer, then Collapse all (App.tsx lines 945-985). */
+export function MockInputHeader() {
+  const icon = { color: 'secondary', paint: 'text', scale: 'sm', profile: 'contained', shape: 'soft' } as const;
+  return (
+    <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', height: '28', flex: 'none' } }}>
+      <MockIconTooltip label="Collapse Input">
+        <IconButton name="angle-left" aria-label="Collapse Input" aui={icon} />
+      </MockIconTooltip>
+      <Type as="h2" role="l3" weight="semi-bold">Input</Type>
+      <Panels.Spacer />
+      <MockIconTooltip label="Collapse all">
+        <IconButton name="arrows-to-line" weight="regular" aria-label="Collapse all" aui={icon} />
+      </MockIconTooltip>
+    </View>
   );
 }

@@ -324,3 +324,101 @@ $narrow: 840px;
     transition: none;
   }
 }
+
+// In context Walkthrough stand-in for the HCS page under the tour. In the app (F01Walkthrough.css) the spotlight and the card
+// are position: fixed at rectangles measured from the target; here the stage frame is their containing block and the
+// rectangles are fixed numbers, so the frame clips the dimming shadow instead of the page.
+.ug-tour {
+  position: relative;
+  flex: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  inline-size: calc(var(--p-px-16) * 36);
+  block-size: calc(var(--p-px-16) * 14);
+  border-radius: var(--p-px-4);
+  background: var(--theme-surface-alt);
+}
+
+.ug-tour__target {
+  position: absolute;
+}
+
+.ug-tour__spotlight {
+  position: absolute;
+  z-index: 1;
+  border: var(--p-px-2) solid var(--theme-surface);
+  border-radius: var(--p-px-4);
+  box-shadow: 0 0 0 100vmax color-mix(in srgb, var(--p-palette-black) 56%, transparent);
+  pointer-events: none;
+}
+
+.ug-tour__card {
+  position: absolute;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+// The viewer scene (App.tsx `.scene`): the canvas fills it, the desktop controls overlay it top-right below the Reset view corner
+// (`.f02-controls-desktop`, 62px down, 12px in) and the compact View options button sits in the top-right corner (8px in).
+.ug-scene {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  min-block-size: calc(var(--p-px-320) + var(--p-px-10));
+}
+
+.ug-scene__controls {
+  position: absolute;
+  inset-block-start: calc(var(--p-px-60) + var(--p-px-2));
+  inset-inline-end: var(--p-px-12);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--p-px-3);
+  max-inline-size: calc(100% - var(--p-px-96) - var(--p-px-24));
+  color: var(--theme-on-surface);
+  font-size: var(--p-px-14);
+}
+
+.ug-scene__projections {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--p-px-2);
+}
+
+.ug-scene__options {
+  position: absolute;
+  inset-block-start: var(--p-px-8);
+  inset-inline-end: var(--p-px-8);
+}
+
+.ug-scene__popover {
+  z-index: 100;
+  padding: var(--p-px-12);
+  border-radius: var(--p-px-4);
+  background: var(--theme-surface);
+  box-shadow: 0 var(--p-px-4) var(--p-px-16) color-mix(in srgb, var(--p-palette-black) 20%, transparent);
+}
+
+// The split layout (index.css `.hcs-resizable`, `.hcs-input-content`): the Panels group and its wrapper div fill the container height, so
+// the collapsed rail and the viewer pane fill the panel height.
+.ug-split,
+.ug-split > div,
+.ug-split__panel {
+  block-size: 100%;
+  min-inline-size: 0;
+}
+
+// The app's browser reset (hcs index.css, `@layer base`) for the text blocks a scene uses: the hcs layouts rely on zero margins and
+// no list markers. In a layer so every unlayered kit and gallery rule still wins, as in the app.
+@layer base {
+  .ug-render__stage :is(h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, figure) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .ug-render__stage :is(ol, ul) {
+    list-style: none;
+  }
+}

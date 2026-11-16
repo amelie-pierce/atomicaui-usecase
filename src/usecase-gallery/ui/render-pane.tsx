@@ -12,7 +12,7 @@ const MODES: { value: PreviewMode; label: string }[] = [
 function FallbackFrame({ area, children }: { area: string; children: React.ReactNode }) {
   return (
     <div className="ug-render__frame">
-      <Type role="p3" as="p" color="muted">
+      <Type role="l3" as="p" color="muted">
         {area}: no kit component holds this area, so it is shown in a plain frame.
       </Type>
       <div className="ug-render__row">{children}</div>

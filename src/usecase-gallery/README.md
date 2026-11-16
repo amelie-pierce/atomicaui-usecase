@@ -116,21 +116,21 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 ## Layout and type
 
-Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview (with its mode toggle, a kit `ToggleGroup`) above the code, whose Copy button sits top-right inside the code card, separated by a draggable `Panels` handle. All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
+Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview (with its mode toggle, a kit `ToggleGroup`) above the code, whose Copy button sits top-right inside the code card, separated by a draggable `Panels` handle. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
 
 | Element | Type |
 | --- | --- |
 | tree component and area titles | `l3` semi-bold 16/20 |
-| tree use case rows (id and name) | `l3` regular 16/20, selected row bold |
-| doc id and name | `p3` bold 14/20 (body size) |
-| doc summary | `p3` muted 14/20 |
-| Where / When / How labels | `l4` semi-bold muted 14/18 |
-| doc body | `p3` 14/20 |
-| code | `l4` mono (JetBrains Mono) 14/18 |
+| tree use case rows (id and name) | `l3` regular 16/20, selected row bold, primary text on a light primary tint |
+| doc id and name | `l3` bold 16/20 |
+| doc summary | `l3` muted 16/20 |
+| Where / When / How labels | `l3` semi-bold 16/20 |
+| doc body | `l3` 16/20 |
+| code | `l3` mono (JetBrains Mono) regular 16/20 |
 | badges, toggle labels, Copy | kit part at `sm`, 16/20 |
-| fallback frame note | `p3` muted |
+| fallback frame note | `l3` muted |
 
-The doc pane's use case id, name and Where / When / How headings use `Type color="primary"`; the active toggle segment is a primary solid `Button`, the inactive one a neutral secondary text `Button`. Theme primary is only about 3.2:1 on the light surface, so `.ug-docs` and `.ug-render__toggle` in `gallery.scss` resolve `--theme-primary` to `--p-palette-orange-600` (at least 4.7:1 as text, 5.2:1 under the white on-primary toggle text).
+The doc pane's use case id and name use `Type color="primary"`; the Where / When / How labels use the default text color; the active toggle segment is a primary solid `Button`, the inactive one a neutral secondary text `Button`. Theme primary is only about 3.2:1 on the light surface, so `.ug-docs` (id and name) and `.ug-render__toggle` in `gallery.scss` resolve `--theme-primary` to `--p-palette-orange-600` (at least 4.7:1 as text, 5.2:1 under the white on-primary toggle text).
 
 The docs card shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a row of app badges (no visible label), then Where / When / How as a definition list; those three fields are the whole doc format.
 

@@ -78,7 +78,8 @@ $narrow: 840px;
 // titles and the active toggle segment, resolve it to the palette's darker orange (at least 4.7:1 on the
 // surfaces, 5.2:1 with its white on-primary), the same step the high-contrast theme uses.
 .ug-render__toggle,
-.ug-docs {
+.ug-docs,
+.ug-tree__link {
   --theme-primary: var(--p-palette-orange-600);
 }
 
@@ -260,12 +261,18 @@ $narrow: 840px;
     background: var(--theme-raised);
   }
 
+  // Selected row: primary text on a light primary tint (the kit mixes theme tokens the same way), no border.
   &[aria-current='page'] {
-    background: var(--theme-raised);
+    color: var(--theme-primary);
+    background: color-mix(in srgb, var(--theme-primary) 8%, transparent);
+
+    &:hover {
+      background: color-mix(in srgb, var(--theme-primary) 9%, transparent);
+    }
   }
 
   &:focus-visible {
-    outline: var(--p-px-2) solid var(--theme-focus);
+    outline: var(--p-px-2) solid var(--theme-info);
     outline-offset: calc(var(--p-px-2) * -1);
   }
 }

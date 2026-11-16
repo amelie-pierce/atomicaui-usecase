@@ -12,7 +12,8 @@ usecase-gallery/
   kit.ts                   the ONLY file that imports the AtomicAUI kit
   apps.ts                  the app registry: key, name, label, url
   types.ts, define.ts      shared types and the define helpers
-  contexts/                one file per area: the real kit area that holds an example (dialog.tsx, table.tsx, ...)
+  contexts/                one file per area: the real kit area that holds an example (table.tsx, panel.tsx, ...)
+  mock-data.tsx            the one place for sample content (rows, fields, viewer controls) the scenes show around an example
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
   hooks/                   hash selection, copy-to-clipboard, media query
   layout/                  gallery shell and the resizable / stacked layouts
@@ -23,7 +24,8 @@ usecase-gallery/
       <component>.meta.ts  defineComponent({ id: 'Button', title: 'Button' })
       <UseCaseId>/         e.g. Button-001
         example.tsx        the rendered example AND the source shown as code
-        usecase.ts         defineUsecase({ area, title, apps, summary, where, when, how })
+        usecase.ts         defineUsecase({ area, title, apps, summary, where, when, how, cases? })
+        scenes/<case>.tsx  optional: one In context scene per case (see below)
 ```
 
 Everything under `usecases/` is discovered automatically. The tree and the docs load up front; each example and its source load on demand, so the catalog scales to many components and use cases.
@@ -79,9 +81,30 @@ export default function PanelContext({ children }: ContextProps) {
 
 Use only components exported by `kit.ts` (add an export there if the kit has the part). Portaled parts (a Dialog or Popover popup) take `container={host}`, the preview stage, and skip the backdrop and viewport, so they render open inside the card rather than as an overlay. The code pane strips these preview-only props (`open`, `modal={false}`, `initialFocus={false}`, `container={host}`, `anchor={host}`) from the copyable snippet (`PREVIEW_ONLY_PROPS` in `catalog/snippet.ts`). One context serves every use case of its area, so the example goes where that area's controls most often sit.
 
-When a use case sits elsewhere than the rest of its area (a close X in the corner of a card, not its footer), set `contextVariant` in its `usecase.ts` (for example `contextVariant: 'close'`) and add `contexts/<area-slug>-<variant>.tsx` (`walkthrough-close.tsx`, `popover-close.tsx`). That use case then renders in the variant instead of the area's context; a missing variant file fails the catalog build. Variants currently: Walkthrough close (Button-006, `walkthrough-close.tsx`) places the X in the top-right corner of the card through an inline style; Last step (Button-005, `walkthrough-last.tsx`) adds Previous before End; Help popover close (Button-003) puts the X in the card header's `Card.Action`. The dialog and walkthrough contexts follow the real hcs containers (Dialog Popup + Title + Actions with DOM order Cancel then Confirm, the coach-mark card with the counter pushed to the end); where the app needs local CSS (card position, counter push, X corner) the context uses a small inline style and the use case's `how` says so. Pixel sizes come from tokens and are unverified against the app.
+When a use case sits elsewhere than the rest of its area (the Output header's scroll helpers, a close X in a popover's intro row), set `contextVariant` in its `usecase.ts` (for example `contextVariant: 'helpers'`) and add `contexts/<area-slug>-<variant>.tsx`. That use case then renders in the variant instead of the area's context; a missing variant file fails the catalog build.
 
-An area with no context file shows its example in a plain dashed frame with a short note. Currently without a context: Toolbar, Form, Body text, Viewer, Error screen (no kit component stands for them).
+### Several cases for one use case
+
+When one use case has several In context scenes (the three dialogs of Button-001, the results strip and the error page of Button-016, Print enabled or disabled), do not stack them. List them in `usecase.ts` and put each scene in the use case folder; touch nothing else:
+
+```ts
+cases: [
+  { id: 'reset', name: 'Reset confirm' },
+  { id: 'accept', name: 'Accept licence' },
+],
+```
+
+Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ children, host }`). With more than one case the preview shows a kit `RadioGroup` of the names above the scene (default: the first; the choice survives the Component | In context toggle and resets on another use case), renders only the chosen scene and shows its code. A scene that places `{children}` gets the example spliced in; one that writes its own controls (a disabled or alternative state) is shown as written. A use case with one case, or none, shows no radio group and uses the area context. A missing scene file fails the catalog build.
+
+### Sample content
+
+Scenes put sample content around the example (result rows, selects, viewer controls) so the button sits among realistic content. Values and the small `Mock...` scenery components live in `mock-data.tsx`, in hcs wording with placeholder values only. In the copied code each `<Mock... />` becomes a one-line `{/* sample ... */}` comment, so the snippet shows the component usage, not the rows. Text that is part of the pattern (a label, a count) is written inline.
+
+### Where the app needs local CSS
+
+The scenes follow the real hcs containers (pane header action group, table header cell `actions` slot, body toolbar, accordion field column, Dialog Popup + Title + Actions, popover View). Where the app uses local CSS (the header group's push to the end, a corner-pinned close X, the viewer overlay position, the rotated chevron) the scene uses `justifyContent` or a small inline style and the use case's `how` says so. The 3D canvas and the view cube cannot be built from kit parts: they are framed stand-ins with a short note. Pixel sizes come from tokens and are unverified against the app. No scene is modal or covers the page: Dialog and Popover scenes use `modal={false}` and `container={host}`, and the column menu and View options popups are static View cards.
+
+Every area now has a context, a variant or scenes, so the dashed fallback frame only appears for a new area without one.
 
 ## Add an app
 

@@ -59,7 +59,7 @@ No registry or shell edit is needed.
 
 ## Add an app
 
-Add one entry to `apps.ts`: `{ name, label, url }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); the key becomes valid in `apps: [...]`. The `hcs` url is provisional (the repository, until the deployed app has an address).
+Add one entry to `apps.ts`: `{ name, label, url }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); the key becomes valid in `apps: [...]`.
 
 ## Add a component
 

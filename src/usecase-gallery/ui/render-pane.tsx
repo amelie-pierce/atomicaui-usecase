@@ -46,7 +46,7 @@ export function RenderPane({
             key={value}
             value={value}
             render={(props, { pressed }) => (
-              <Button {...props} aui={{ scale: 'xs', color: 'secondary', paint: pressed ? 'tonal' : 'text' }}>
+              <Button {...props} aui={{ scale: 'xs', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>
                 {label}
               </Button>
             )}

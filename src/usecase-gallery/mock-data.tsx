@@ -1,4 +1,4 @@
-import { Chip, Table, View } from './kit';
+import { Chip, Field, Table, View } from './kit';
 
 // The only mock values the In context scenes use: simple placeholders in hcs wording, no real data.
 
@@ -55,5 +55,17 @@ export function MockResultsBody() {
         </Table.Body>
       </Table>
     </View>
+  );
+}
+
+/** A labelled closed select, the shape of the Input pane's selects. */
+export function MockSelectField({ label, value, disabled }: { label: string; value: string; disabled?: boolean }) {
+  return (
+    <Field aui={{ scale: 'sm' }} disabled={disabled}>
+      <Field.Label>{label}</Field.Label>
+      <Field.Select defaultValue={value} items={[{ value, label: value }]}>
+        <Field.SelectTrigger />
+      </Field.Select>
+    </Field>
   );
 }

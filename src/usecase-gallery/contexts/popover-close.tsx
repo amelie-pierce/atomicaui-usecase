@@ -1,30 +1,57 @@
 import type { ContextProps } from '../types';
-import { Popover, Type, View } from '../kit';
+import { IconButton, Popover, Type, View } from '../kit';
+import { MOCK_DURATION_NOTES } from '../mock-data';
 
-// The help popover: an intro row with the close X at its top-right, then the notes. The popup surface is a View
-// (surface, solid, soft, elevation 4); its width is fixed here (the app clamps it to the viewport).
+// HcsDownloadDurationHelp: the circle-question trigger opens a popup above it (top, start, 8px offset). The popup is a
+// View column: an intro row with the close X at its end, then a plain list of the five duration notes. HCS sets its
+// width to min(34rem, viewport - 16px); the scene keeps min(34rem, stage) inline, since sx has no min() token.
+// The wrapper keeps stage room (inline min-block-size) above the trigger for the popup.
 export default function PopoverCloseContext({ children, host }: ContextProps) {
   return (
+    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'end' } }} style={{ minBlockSize: 'calc(var(--p-px-16) * 18)', inlineSize: 'min(100%, calc(var(--p-px-16) * 40))' }}>
     <Popover open>
+      <Popover.Trigger
+        render={
+          <IconButton
+            name="circle-question"
+            aria-label="Help with Download Duration"
+            aui={{ scale: 'sm', profile: 'contained', color: 'secondary', paint: 'text', shape: 'soft' }}
+          />
+        }
+      />
       <Popover.Portal container={host}>
-        <Popover.Positioner anchor={host}>
-          <Popover.Popup initialFocus={false}>
+        <Popover.Positioner side="top" align="start" sideOffset={8} collisionPadding={8} className="ug-anchored">
+          <Popover.Popup
+            initialFocus={false}
+            aria-label="Download Duration help"
+            style={{ inlineSize: 'min(34rem, 100%)', overflowY: 'auto' }}
+            render={
+              <View
+                aui={{ scale: 'sm', profile: 'default', color: 'surface', paint: 'solid', shape: 'soft', elevation: 4, sx: { display: 'flex', flexDirection: 'column' } }}
+              />
+            }
+          >
+            <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', alignItems: 'start' } }}>
+              <Type aui={{ sx: { flex: 'fill' } }}>
+                Duration of load adjustments as specified by the code are as follows:
+              </Type>
+              {children}
+            </View>
             <View
-              aria-label="Download duration help"
-              aui={{ scale: 'sm', color: 'surface', paint: 'solid', profile: 'default', shape: 'soft', elevation: 4, sx: { display: 'flex', flexDirection: 'column', gap: '8', width: '384' } }}
-              style={{ maxInlineSize: '100%' }}
+              as="ul"
+              aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', flexDirection: 'column' } }}
+              style={{ listStyle: 'none', margin: 0, padding: 0 }}
             >
-              <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'start', gap: '8' } }}>
-                <Type as="p" role="p3" style={{ flex: '1 1 auto' }}>Choose how long the load acts on the beam. Each option changes the allowable capacity.</Type>
-                {children}
-              </View>
-              <Type as="p" role="p3"><strong>Short term</strong> - lasts minutes to a day.</Type>
-              <Type as="p" role="p3"><strong>Normal</strong> - typical occupancy loads.</Type>
-              <Type as="p" role="p3"><strong>Permanent</strong> - constant loads for the life of the structure.</Type>
+              {MOCK_DURATION_NOTES.map(([label, description]) => (
+                <li key={label}>
+                  <strong>"{label}"</strong> – {description}
+                </li>
+              ))}
             </View>
           </Popover.Popup>
         </Popover.Positioner>
       </Popover.Portal>
     </Popover>
+    </View>
   );
 }

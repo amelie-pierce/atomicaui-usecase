@@ -134,8 +134,9 @@ $narrow: 840px;
 }
 
 // Contexts portal their popups into the stage; a Popover's positioner is released from the page so
-// the popup sits static inside the card instead of floating over the anchor.
-.ug-render__stage :has(> [data-aui-popup-motion]) {
+// the popup sits static inside the card instead of floating over the anchor. A scene whose trigger is built
+// (the column menu, the help and configure popovers) marks its positioner `ug-anchored` and floats for real.
+.ug-render__stage :has(> [data-aui-popup-motion]):not(.ug-anchored) {
   position: static !important;
   transform: none !important;
 }

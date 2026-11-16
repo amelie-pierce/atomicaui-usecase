@@ -27,7 +27,6 @@ export const MOCK_COLUMNS = [
   { name: 'Status', on: false },
 ];
 
-export const MOCK_RESULT_COUNT = 'Showing 3 of 12 results';
 
 // Scenery components: the snippet shows each `<Mock... />` as a one-line placeholder (see catalog/snippet.ts).
 

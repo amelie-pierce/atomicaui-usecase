@@ -14,10 +14,10 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
     <PaneCard label="Documentation" className="ug-docs">
       <header className="ug-docs__head">
         <h2 className="ug-docs__title">
-          <Type role="p3" as="span" weight="bold" color="primary">{usecase.id}</Type>
-          <Type role="p3" as="span" weight="bold" color="primary">{usecase.title}</Type>
+          <Type role="l3" as="span" weight="bold" color="primary">{usecase.id}</Type>
+          <Type role="l3" as="span" weight="bold" color="primary">{usecase.title}</Type>
         </h2>
-        <Type role="p3" as="p" color="muted">{usecase.summary}</Type>
+        <Type role="l3" as="p" color="muted">{usecase.summary}</Type>
         <div className="ug-docs__apps">
           <ul className="ug-docs__badges" aria-label="Used in">
             {usecase.apps.map((key) => {
@@ -44,8 +44,8 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
       <dl className="ug-docs__sections">
         {SECTIONS.map(([label, key]) => (
           <div key={key} className="ug-docs__section">
-            <Type as="dt" role="l4" weight="semi-bold" color="primary">{label}</Type>
-            <Type as="dd" role="p3">{usecase[key]}</Type>
+            <Type as="dt" role="l3" weight="semi-bold" color="primary">{label}</Type>
+            <Type as="dd" role="l3">{usecase[key]}</Type>
           </div>
         ))}
       </dl>

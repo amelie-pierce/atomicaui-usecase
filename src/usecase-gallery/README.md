@@ -93,7 +93,7 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 Every pane (tree, preview, code, docs) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre column is two stacked cards, the preview (with its mode toggle, a kit `ToggleGroup`) above the code, whose Copy button sits top-right inside the code card, separated by a draggable `Panels` handle. All text is the kit's `Type` (role, family, weight); the stylesheet sets no font values.
 
-The docs card shows the use case id and title in one box (the id never wraps; a long title wraps below it), the summary, a Used in row of app badges, then Where / When / How as a definition list; those three fields are the whole doc format.
+The docs card shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a Used in row of app badges, then Where / When / How as a definition list; those three fields are the whole doc format.
 
 ## Id rules
 

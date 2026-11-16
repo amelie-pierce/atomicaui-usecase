@@ -19,7 +19,7 @@ export const toSnippet = (source: string): string => {
   return jsx ? dedent(jsx) : body;
 };
 
-const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
+const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\sanchor=\{anchor\}|\sclassName=\"ug-anchored\"|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
 // Scenery from `mock-data.tsx` is not part of the pattern: the copied code keeps a one-line placeholder.
 const MOCK_SCENERY = /<Mock(\w+)[^>]*\/>/g;
 const CHILDREN_LINE = /^([ \t]*)\{children\}[ \t]*$/m;

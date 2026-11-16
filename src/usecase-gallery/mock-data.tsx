@@ -28,6 +28,35 @@ export const MOCK_COLUMNS = [
 ];
 
 
+// The HCS Output columns (productCheck.ts `outputColumns`): Model is locked in the configurator, the rest can be hidden.
+export const MOCK_OUTPUT_COLUMNS = [
+  { id: 'model', header: 'Model', hideable: false },
+  { id: 'status', header: 'Status', hideable: true },
+  { id: 'load', header: 'Load (lb)', hideable: true },
+  { id: 'lateral', header: 'Lateral (Tension) (lb)', hideable: true },
+  { id: 'plateThickness', header: 'Plate Thickness (PT) (in.)', hideable: true },
+  { id: 'plateDepth', header: 'Plate Depth (PD) (in.)', hideable: true },
+  { id: 'rotationBolt', header: 'Rotation Bolt (Qty) (Total)', hideable: true },
+  { id: 'lateralBolt', header: 'Lateral Bolt (Qty) (Total)', hideable: true },
+  { id: 'machineBoltSize', header: 'Machine Bolt Size (Dia x Length) (in.)', hideable: true },
+];
+
+// Result rows after the Load column menu sorts A to Z (smallest to largest): the table follows the menu's choice.
+export const MOCK_OUTPUT_ROWS_BY_LOAD = [
+  { model: 'Model C-300', status: 'Failed', load: '1,180', lateral: '620' },
+  { model: 'Model B-200', status: 'Passed', load: '2,210', lateral: '1,040' },
+  { model: 'Model A-100', status: 'Passed', load: '2,450', lateral: '1,180' },
+];
+
+// The Download Duration notes the help popover lists (HcsDownloadDurationHelp.tsx `durationNotes`).
+export const MOCK_DURATION_NOTES = [
+  ['Dead 90', '90% of design load. (Permanent)'],
+  ['Floor 100', 'no increase for duration of load'],
+  ['Snow 115', '115% of design load for 2 month duration of load.'],
+  ['Roof 125', '125% of design load for 7 day duration of load.'],
+  ['Quake/Wind 160', '160% of design load for earthquake/wind loading.'],
+];
+
 // Scenery components: the snippet shows each `<Mock... />` as a one-line placeholder (see catalog/snippet.ts).
 
 /** A few sample result rows under an Output header: model name, maker, a status chip. */

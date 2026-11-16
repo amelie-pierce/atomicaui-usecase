@@ -114,15 +114,11 @@ $narrow: 840px;
   margin: 0;
 }
 
-// Id and name share one box and flow as one line of text: the id stays whole (never wraps) and the
-// name starts beside it, wrapping under it when it is long.
+// Id and name share one box, id on its own line with the name below it; a long name wraps normally.
 .ug-docs__title {
+  display: flex;
+  flex-direction: column;
   overflow-wrap: anywhere;
-}
-
-.ug-docs__id {
-  white-space: nowrap;
-  margin-inline-end: var(--p-px-8);
 }
 
 .ug-docs__apps {
@@ -166,7 +162,8 @@ $narrow: 840px;
 }
 
 // ── Tree ────────────────────────────────────────────────────────────────────
-// Areas nest one step inside their component.
+// Each level's text sits one 16px step right of its parent's: the component panel already insets its content by
+// 8px, so areas add 8px and use cases add the full 16px.
 .ug-tree__areas {
   padding-inline-start: var(--p-px-8);
 }
@@ -174,7 +171,7 @@ $narrow: 840px;
 .ug-tree__list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding-inline-start: var(--p-px-16);
   display: flex;
   flex-direction: column;
   gap: var(--p-px-2);

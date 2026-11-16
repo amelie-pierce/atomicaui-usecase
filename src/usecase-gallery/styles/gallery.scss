@@ -112,6 +112,8 @@ $narrow: 840px;
   align-content: safe center;
   justify-content: center;
   gap: var(--p-px-16);
+  // A scene's backdrop and viewport are fixed to the viewport in the app; `layout` makes the stage their frame.
+  contain: layout;
 }
 
 // A plain labelled frame for an area the kit cannot compose.

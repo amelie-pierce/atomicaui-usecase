@@ -1,28 +1,34 @@
 import type { ContextProps } from '../../../../types';
-import { Dialog, Type } from '../../../../kit';
+import { Dialog, View } from '../../../../kit';
+import { MockLicenceText } from '../../../../mock-data';
 
-// The licence dialog: Accept stays disabled until the body is read to the end (not wired here).
+// The licence dialog after the body is read to the end: Accept is enabled (the app enables it on scroll).
 export default function AcceptScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>
       <Dialog.Portal container={host}>
-        <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }}>
-          <Dialog.Title aui={{ color: 'raised' }}>
-            Website Application License Agreement
-            <Dialog.Spacer />
-            <Dialog.Close />
-          </Dialog.Title>
-          <Dialog.Description>Review and accept to start using the prototype.</Dialog.Description>
-          <Dialog.Body aui={{ profile: 'default' }}>
-            <Type as="p" role="p3">1. This sample agreement is placeholder text for the preview.</Type>
-            <Type as="p" role="p3">2. Scroll to the end of the agreement to enable Accept.</Type>
-            <Type as="p" role="p3">3. Placeholder terms continue here.</Type>
-          </Dialog.Body>
-          <Dialog.Actions>
-            <Dialog.Button dismiss={false}>Do Not Accept</Dialog.Button>
-            <Dialog.Button dismiss={false} disabled aui={{ color: 'secondary', paint: 'solid' }}>Accept Application License Agreement</Dialog.Button>
-          </Dialog.Actions>
-        </Dialog.Popup>
+        <Dialog.Backdrop />
+        <Dialog.Viewport>
+          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: 'fill', height: 'fill' } }}>
+            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
+              Website Application License Agreement
+              <Dialog.Spacer />
+              <Dialog.Close aria-label="Close Website Application License Agreement" aui={{ scale: 'sm' }} />
+            </Dialog.Title>
+            <Dialog.Description aui={{ scale: 'sm', sx: { flex: 'none' } }}>
+              Review and accept to start using the HCS prototype.
+            </Dialog.Description>
+            <Dialog.Body aui={{ scale: 'sm' }}>
+              <View aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '12', minWidth: '0' } }}>
+                <MockLicenceText />
+              </View>
+            </Dialog.Body>
+            <Dialog.Actions aui={{ scale: 'sm' }}>
+              <Dialog.Button dismiss={false} aui={{ scale: 'sm', color: 'surface-alt', paint: 'solid', shape: 'soft' }}>Do Not Accept</Dialog.Button>
+              <Dialog.Button dismiss={false} aui={{ scale: 'sm', color: 'secondary', paint: 'solid', shape: 'soft' }}>Accept Application License Agreement</Dialog.Button>
+            </Dialog.Actions>
+          </Dialog.Popup>
+        </Dialog.Viewport>
       </Dialog.Portal>
     </Dialog>
   );

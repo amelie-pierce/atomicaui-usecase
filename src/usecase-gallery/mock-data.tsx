@@ -89,3 +89,16 @@ export function MockViewerControls() {
     </>
   );
 }
+
+// The 24 numbered paragraphs of the hcs licence text (F01Experience.tsx); the real app enables Accept at the end.
+export function MockLicenceText() {
+  return (
+    <>
+      {Array.from({ length: 24 }, (_, i) => (
+        <Type aui={{ sx: { flex: 'none' } }} key={i} role="p2">
+          {i + 1}. This is demonstration license text for the HCS usability prototype. All product information and calculated capacities are mock values. Review the terms with your organization before using engineering software. By accepting, you agree to use this prototype for evaluation and QA walkthroughs only.
+        </Type>
+      ))}
+    </>
+  );
+}

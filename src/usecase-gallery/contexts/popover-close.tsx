@@ -12,6 +12,7 @@ export default function PopoverCloseContext({ children, host }: ContextProps) {
             <View
               aria-label="Download duration help"
               aui={{ scale: 'sm', color: 'surface', paint: 'solid', profile: 'default', shape: 'soft', elevation: 4, sx: { display: 'flex', flexDirection: 'column', gap: '8', width: '384' } }}
+              style={{ maxInlineSize: '100%' }}
             >
               <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'start', gap: '8' } }}>
                 <Type as="p" role="p3" style={{ flex: '1 1 auto' }}>Choose how long the load acts on the beam. Each option changes the allowable capacity.</Type>

@@ -3,12 +3,11 @@ import { catalog, allUsecases } from '../catalog/catalog';
 import { appsWithUi, casesForApp } from '../catalog/app-views';
 import { useHashSelection } from '../hooks/use-hash-selection';
 import { useMediaQuery } from '../hooks/use-media-query';
-import { CodePane } from '../ui/code-pane';
-import { DocsPane } from '../ui/docs-pane';
+import { DetailPane } from '../ui/detail-pane';
 import { RenderPane } from '../ui/render-pane';
 import { TreePane } from '../ui/tree-pane';
 import type { AppKey } from '../apps';
-import type { PreviewMode } from '../types';
+import type { DetailMode, PreviewMode } from '../types';
 import { ResizableLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
 
@@ -23,6 +22,8 @@ export interface UsecaseGalleryProps {
 export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const narrow = useMediaQuery(NARROW);
   const [mode, setMode] = useState<PreviewMode>('component');
+  // Kept across use cases: the reader who switched to Code stays on Code while browsing.
+  const [detail, setDetail] = useState<DetailMode>('document');
   const { selectedId } = useHashSelection(
     allUsecases.map((usecase) => usecase.id),
     allUsecases[0]?.id ?? '',
@@ -40,8 +41,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const panes = {
     tree: <TreePane groups={catalog} selectedId={usecase.id} title={title} />,
     render: <RenderPane usecase={usecase} mode={mode} onModeChange={setMode} apps={apps} activeApp={activeApp} onAppChange={(app) => setChosen({ usecaseId: usecase.id, app })} cases={cases} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ usecaseId: usecase.id, app: activeApp, caseId })} />,
-    code: <CodePane key={`${usecase.id}-${mode}-${activeCase?.id}`} usecase={usecase} mode={mode} activeCase={activeCase} />,
-    docs: <DocsPane usecase={usecase} />,
+    detail: <DetailPane usecase={usecase} detail={detail} onDetailChange={setDetail} mode={mode} activeCase={activeCase} />,
   };
   return (
     <div className="ug">

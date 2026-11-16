@@ -51,6 +51,9 @@ export interface ContextProps {
 /** What the centre preview shows: the lone component, or the component inside the area that holds it. */
 export type PreviewMode = 'component' | 'context';
 
+/** What the right pane shows: the documentation or the copyable code. */
+export type DetailMode = 'document' | 'code';
+
 /** One resolved In context case: its scene and the snippet with the example placed inside it. */
 export interface UsecaseCase {
   id: string;

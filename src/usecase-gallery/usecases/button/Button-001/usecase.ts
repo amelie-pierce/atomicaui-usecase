@@ -6,17 +6,15 @@ export default defineUsecase({
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   cases: [
     { id: 'hcs-reset', name: 'Reset confirm', apps: ['hcs'], source: { hcs: 'src/components/HcsResetDialog.tsx' } },
-    { id: 'ace-reset', name: 'Reset confirm', apps: ['ace'], source: { ace: 'src/features/reset-inputs/ui/ResetInputsAction.tsx' } },
-    { id: 'adm-reset', name: 'Reset confirm', apps: ['adm'], source: { adm: 'src/features/top-navigation/components/ResetDialog.tsx' } },
+    { id: 'ace-reset', name: 'Reset confirm', apps: ['ace', 'adm'], source: { ace: 'src/features/reset-inputs/ui/ResetInputsAction.tsx', adm: 'src/features/top-navigation/components/ResetDialog.tsx' } },
     { id: 'hs-reset', name: 'Reset confirm', apps: ['hs', 'fd'], source: { hs: 'src/App.tsx', fd: 'src/App.jsx' } },
     { id: 'adc-reset', name: 'Reset confirm', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } },
     { id: 'hcs-accept', name: 'Accept licence', apps: ['hcs'], source: { hcs: 'src/components/F01Experience.tsx' } },
     { id: 'ace-accept', name: 'Accept licence', apps: ['ace'], source: { ace: 'src/features/eula/ui/EulaGate.tsx' } },
-    { id: 'pbs-accept', name: 'Accept licence', apps: ['pbs'], source: { pbs: 'src/LicenseGate.tsx' } },
     {
       id: 'adm-accept',
       name: 'Accept licence',
-      apps: ['adm', 'pfd', 'hs', 'fd', 'agpd', 'rws'],
+      apps: ['adm', 'pfd', 'hs', 'fd', 'agpd', 'rws', 'pbs'],
       label: 'Other apps',
       source: {
         adm: 'src/features/eula/components/EulaGate.tsx',
@@ -25,6 +23,7 @@ export default defineUsecase({
         fd: 'src/components/LicenseGate.jsx',
         agpd: 'src/agpd/LicenseGate.tsx',
         rws: 'src/rws/LicenseGate.tsx',
+        pbs: 'src/LicenseGate.tsx',
       },
     },
     { id: 'hcs-feedback', name: 'Send feedback', apps: ['hcs'], source: { hcs: 'src/components/F01Experience.tsx' } },
@@ -68,8 +67,8 @@ export default defineUsecase({
   when: 'Use the pair whenever a dialog asks for a decision: Confirm is the one action that commits, Cancel is the neutral way out. In brand atomic the near-black fill is color "secondary", not "primary" (orange), and gray is "surface-alt", not "secondary". Use color "error" for the Confirm of an irreversible delete. ADC is the exception: its Confirm is "primary" (orange).',
   how: 'Confirm sets color "secondary" and paint "solid" (aui scale "sm" in HCS and in every licence gate; the other dialogs inherit the popup scale). Cancel is the Dialog.Button default (color "surface-alt", paint "solid"); the licence gate spells it out with scale "sm" and shape "soft". The real dialogs use Dialog.Button or AlertDialog.Button; the preview draws every dialog, AlertDialog included, as a non-modal Dialog because the vendored AlertDialog is forced modal and would block the gallery. '
     + 'Each type is listed with its distinct UIs; an app appears in exactly one group per type, and an app a type does not list never has that dialog. Two apps share a group when the container parts (Title style, close X, Description) and the footer (buttons, props, order, placement) match; body fields, wording and the popup width or height do not count, so a size difference is only noted here. '
-    + 'Reset confirm: HCS (HcsResetDialog: 560px, raised warning Title, close X); ACE (default width, no close X); ADM (480px with a close X); HS and FD (384px, plain Title, close X, and a Spacer between Cancel and Reset); ADC (640px, three buttons: Cancel, a text error "Reset Current Design to Standard" and a solid error "Reset All Designs to Standard", with the close X in a tooltip). PFD, AGPD and RWS have no Reset confirm (Reset acts at once) and neither does PBS. '
-    + 'Accept licence: HCS (a raised sm Title with a Description, Accept enabled after the end is reached); ACE (a plain sm Title with a Description); PBS (no close X, so only Do Not Accept declines); Other apps = ADM, PFD, HS, FD, AGPD and RWS (a plain sm Title with the close X and no Description; HS and FD add a Country field, left out). ADC has no licence gate. HCS and ACE keep Accept disabled until the text is read to the end; the other apps never disable it. '
+    + 'Reset confirm: HCS (HcsResetDialog: 560px, raised warning Title, close X); ACE and ADM (raised warning Title with the close X, 480px in the scene; the ACE app is at the default width and lacks the X, which is an app gap, not another UI); HS and FD (384px, plain Title, close X, and a Spacer between Cancel and Reset); ADC (640px, three buttons: Cancel, a text error "Reset Current Design to Standard" and a solid error "Reset All Designs to Standard", with the close X in a tooltip). PFD, AGPD and RWS have no Reset confirm (Reset acts at once) and neither does PBS. '
+    + 'Accept licence: HCS (a raised sm Title with a Description, Accept enabled after the end is reached); ACE (a plain sm Title with a Description); Other apps = ADM, PFD, HS, FD, AGPD, RWS and PBS (a plain sm Title with the close X and no Description; the PBS app hides the X, an app gap, not another UI; HS and FD add a Country field, left out). ADC has no licence gate. HCS and ACE keep Accept disabled until the text is read to the end; the other apps never disable it. '
     + 'Send feedback: HCS (384px, one Submit and no Cancel); ADC (a split footer that leads with a "Send me a copy" Checkbox and ends with a disabled primary Send, 560px, close X in a tooltip); Other apps = ACE, ADM, PFD, PBS, HS, FD, AGPD and RWS (raised Title with the close X, Cancel + Send; ADM and FD set the popup to 560px, the others use the default width; PFD, PBS, AGPD and RWS label Send as Submit). '
     + 'Delete confirm: ACE and ADM (a raised warning Title, no close X; ACE at the default width, ADM capped at 480px); PBS (no Title: a header row with only the close X, then Close, a Spacer and a solid error Delete); HS and FD (a plain Title, no close X). HCS, PFD, AGPD, RWS and ADC have no delete confirm. '
     + 'Save template: ACE, ADM and HS (a raised Title with the close X, Save disabled until the name is valid; ADM caps the popup at 480px); FD (a primary Save in place of the black one; its Cancel is a plain Button that looks the same). '

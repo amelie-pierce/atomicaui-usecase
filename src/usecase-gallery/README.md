@@ -85,12 +85,12 @@ When a use case sits elsewhere than the rest of its area (the Output header's sc
 
 ### Several cases for one use case
 
-When one use case has several In context scenes (the three dialogs of Button-001, Print enabled or disabled), do not stack them. List them in `usecase.ts` and put each scene in the use case folder; touch nothing else:
+When one use case has several In context scenes (the dialog types of Button-001, Print enabled or disabled), do not stack them. List them in `usecase.ts` and put each scene in the use case folder; touch nothing else:
 
 ```ts
 cases: [
-  { id: 'reset', name: 'Reset confirm' },
-  { id: 'accept', name: 'Accept licence' },
+  { id: 'hcs-reset', name: 'Reset confirm', app: 'hcs' },
+  { id: 'hcs-accept', name: 'Accept licence', app: 'hcs' },
 ],
 ```
 
@@ -99,6 +99,8 @@ Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ childre
 ### The same use case in another app
 
 When another app (a key of `apps.ts`, listed in `apps`) has its own UI for the use case, give each such scene a case with `app: '<key>'` (`cases: [{ id: 'hcs-header', name: 'Header cell', app: 'hcs' }, ...]`). With two or more apps that have cases, the preview shows one extra row, a `ToggleGroup` of the app labels, above the radio group; the radio group then lists only the chosen app's cases, and cases without `app` appear for every app. With fewer than two, nothing is shown and the use case renders as before. The first app in `apps.ts` order is the default and the choice resets on another use case. Record the design each scene was built from with `source: { hcs: '<path>' }` (and `source` on a case when it differs); a case whose `app` is not in `apps` fails the catalog build. The agent procedure is in `.claude/skills/usecase-gallery/SKILL.md`.
+
+A scene file is named `<app>-<type>.tsx` and written from that app's own source, so the case radio keeps the same type names (Reset confirm, Accept licence, Send feedback, ...) under every app. Apps whose dialog is written the same way share one case: it is tagged with the first of them, the others stay in `apps` for their badge (they have no toggle entry), and the scene's top comment and the use case's `how` name which apps write it. An app gets its own case when its footer buttons, their props or placement, or the container parts (raised Title, close X, Description, width) differ. Button-001 (Dialog footer), Button-020 (single action) and Button-021 (header close) are built this way, from the ten apps' repos.
 
 ### Sample content
 
@@ -148,7 +150,7 @@ The docs card shows the use case id and title in one box, at the same size as th
 
 1. Copy this folder into the other app.
 2. Install the peer dependencies: `react` and `react-dom` 19, and the AtomicAUI kit with its own dependencies (`@base-ui/react`, `react-resizable-panels` 4), plus `sass`. The build must be Vite (`import.meta.glob`, `?raw`).
-3. Edit `apps.ts` for that app's registry. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Chip`, `Collapsible`, `Dialog`, `IconButton`, `Panels`, `Popover`, `Table`, `ToggleGroup` and `Type`.
+3. Edit `apps.ts` for that app's registry. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Checkbox`, `Chip`, `Collapsible`, `Dialog`, `Field`, `FileUpload`, `IconButton`, `Panels`, `Popover`, `Table`, `ToggleGroup`, `Tooltip` and `Type`.
 4. Make sure the host renders `AuiIdentityProvider` with `typeface="engineering"` and `typography="body"` and loads the AtomicAUI token stylesheet; the gallery uses its CSS variables and does not load tokens itself. Also load the icon font (see below).
 5. Render `<UsecaseGallery title="..." />` full screen: it fills the viewport.
 

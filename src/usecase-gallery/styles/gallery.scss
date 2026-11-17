@@ -413,6 +413,12 @@ $narrow: 840px;
   box-sizing: border-box;
 }
 
+// ADM, PBS, PFD and FD set their step buttons bold, and ADM, PBS and PFD also capitalise the labels, by CSS on the row's buttons (`.adm-tour-navigation > button`).
+.ug-tour__nav > button {
+  text-transform: uppercase;
+  font-weight: var(--p-weight-bold);
+}
+
 // The viewer scene (App.tsx `.scene`): the canvas fills it, the desktop controls overlay it top-right below the Reset view corner
 // (`.f02-controls-desktop`, 62px down, 12px in) and the compact View options button sits in the top-right corner (8px in).
 .ug-scene {

@@ -13,7 +13,7 @@ usecase-gallery/
   apps.ts                  the app registry: key, name, label, url
   types.ts, define.ts      shared types and the define helpers
   contexts/                one file per area: the real kit area that holds an example (panel.tsx, table-header.tsx, ...)
-  mock-data.tsx            the one place for sample content (rows, fields, viewer controls) the scenes show around an example
+  mock-data.tsx            the one place for the little sample content (a row, a field, a radio pair) the scenes show around an example
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
   hooks/                   hash selection, copy-to-clipboard, media query
   layout/                  gallery shell and the resizable / stacked layouts
@@ -62,7 +62,7 @@ No registry or shell edit is needed.
 
 ## Add an in-context view
 
-The preview has a Component | In context toggle (default Component). In context renders the example inside the real area that holds it, built only from kit parts, static and read-only; the Code view shows the context's JSX with the example inside it.
+The preview has a Component | In context toggle (default Component). In context renders the example inside the area that holds it, cut to the minimum and built only from kit parts, static and read-only; the Code view shows the context's JSX with the example inside it.
 
 To add a context for an area, create one file, `contexts/<area-slug>.tsx`, and touch nothing else. The slug is the `area` lowercased with dashes (`Body text` -> `body-text.tsx`). It default-exports a component that places `{children}` (the example) on a line of its own inside the area's JSX:
 
@@ -102,7 +102,7 @@ When another app (a key of `apps.ts`, listed in `apps`) has its own UI for the u
 
 ### Sample content
 
-Scenes put sample content around the example (result rows, selects, viewer controls) so the button sits among realistic content. Values and the small `Mock...` scenery components live in `mock-data.tsx`, in hcs wording with placeholder values only. In the copied code each `<Mock... />` becomes a one-line `{/* sample ... */}` comment, so the snippet shows the component usage, not the rows. Text that is part of the pattern (a label, a count) is written inline.
+Scenes are minimal: just enough of the container to show what it is and where the button lives (its frame, header or row, the example, a title), and nothing else. Cut extra columns, rows, fields, toolbars, helpers and sample text, even where the HCS design has them; this deliberately trades HCS 1:1 completeness for minimal code, and the container semantics and the recorded `source` path stay. Show a second row or element only when the example needs it (Button-008 has two rows because the button has two colors). What a scene leaves out is named in the use case's `how`. The few values and small `Mock...` scenery components live in `mock-data.tsx`, in hcs wording with placeholder values only. In the copied code each `<Mock... />` becomes a one-line `{/* sample ... */}` comment, so the snippet shows the component usage, not the rows. Text that is part of the pattern (a label, a count) is written inline.
 
 ### Where the app needs local CSS
 
@@ -120,7 +120,7 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 ## Layout and type
 
-Every pane (tree, preview, right pane) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre card is the preview only (its Component | In context toggle, a kit `ToggleGroup`, the app and case pickers and the stage). The right card (`ui/detail-pane.tsx`) has a Document | Code `ToggleGroup` above its content: Document (the default) is the docs, Code is the copyable snippet with its Copy button top-right. The choice is kept when another use case is selected. Draggable `Panels` handles sit between the three columns; below 840px they stack. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
+Every pane (tree, preview, right pane) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre card is the preview only (its Component | In context toggle, a kit `ToggleGroup`, the app and case pickers and the stage). The right card (`ui/detail-pane.tsx`) has a Document | Code `ToggleGroup` above its content: Code (the default) is the copyable snippet with its Copy button top-right, Document is the docs. The choice is kept when another use case is selected. Draggable `Panels` handles sit between the three columns; below 840px they stack. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
 
 | Element | Type |
 | --- | --- |

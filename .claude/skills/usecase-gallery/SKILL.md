@@ -1,6 +1,6 @@
 ---
 name: usecase-gallery
-description: Load before adding a use case to the gallery, changing an existing one (its example, docs, In context scenes, cases or apps), or adding an app to the apps registry. Covers the folder shape, the In context rules (scenes mapped 1:1 to the source design, the case radio group, the per-app toggle row) and the checks to run.
+description: Load before adding a use case to the gallery, changing an existing one (its example, docs, In context scenes, cases or apps), or adding an app to the apps registry. Covers the folder shape, the In context rules (minimal scenes, one per source design, the case radio group, the per-app toggle row) and the checks to run.
 ---
 
 # usecase-gallery
@@ -15,7 +15,7 @@ Live code wins over both: `define.ts`, `types.ts`, `apps.ts`, `catalog/build-cat
 - Discovery is automatic (`import.meta.glob` in `catalog/catalog.ts`); a new use case, component or scene needs no registry or shell edit.
 - `src/usecase-gallery/kit.ts` is the only file that imports the AtomicAUI kit. Every other file imports kit parts from it; add an export there when the kit has the part.
 - Use AtomicAUI tokens only: no raw colors or pixel values; tokens come from the kit and `--p-*` variables, with the small inline styles the README allows.
-- Examples are read-only: fixed props, no state, no controls. Keep `return` the last statement of `Example`, because the Code view of the right pane is cut from that file.
+- Examples are read-only: fixed props, no state, no controls. Keep `return` the last statement of `Example`, because the Code view of the right pane (its default mode, beside the Document toggle) is cut from that file.
 - Never hand-edit `src/vendor/atomic-aui`.
 
 ## Add a use case
@@ -28,11 +28,12 @@ Live code wins over both: `define.ts`, `types.ts`, `apps.ts`, `catalog/build-cat
 
 ## Change a use case
 
-Edit in place and keep its id. A change to `example.tsx` changes the Component preview and the Code view together; a change to a scene changes the In context preview and its code. Update `where`, `when` and `how` when the behavior they describe changes. A rename or regroup of ids is never part of a change.
+Edit in place and keep its id. A change to `example.tsx` changes the Component preview and the Code view together; a change to a scene changes the In context preview and its code. Update `where`, `when` and `how` when the behavior they describe changes. The Document is what the AI reads for context, so keep it accurate to the example and the scene. A rename or regroup of ids is never part of a change.
 
 ## In context rules
 
-1. **One scene per source design.** Each In context scene maps 1:1 to a screen or container of the source design, HCS first, and is built from the real source file, not from memory of how it looks. Record where it came from in `usecase.ts`: `source: { hcs: '<path in hcs-design-prototype>' }` for the use case, and `source` on a single case when that scene comes from another file. Do not merge two source designs into one scene or split one into several.
+0. **Minimal scenes.** An In context scene shows the least that tells the user what the container is and where the button lives: no extra columns, rows, fields, toolbars, helpers or sample text (one data row, or two only when two button types must show). Keep the container semantics and record the HCS source path; this deliberately trades HCS 1:1 completeness for minimal code. State what the scene leaves out in the use case's `how`.
+1. **One scene per source design.** Each In context scene maps 1:1 to a screen or container of the source design, HCS first, and is built from the real source file, not from memory of how it looks, then cut down to the minimal container above. Record where it came from in `usecase.ts`: `source: { hcs: '<path in hcs-design-prototype>' }` for the use case, and `source` on a single case when that scene comes from another file. Do not merge two source designs into one scene or split one into several.
 2. **Several types keep the radio group.** A use case with several types (the three dialogs of Button-001) lists them in `cases` and shows the radio group of case names, exactly as today. One case, or none, shows no radio group.
 3. **Another app's UI adds one toggle row.** When the same use case looks different in another app of `apps.ts`, add that app's scenes as cases with `app: '<key>'` and list the key in `apps`. The preview then shows one extra row, a toggle of app labels, above the radio group, and the radio group lists only the chosen app's cases. A case without `app` shows for every app.
    - The row appears only when two or more apps have cases of their own for the use case (`appsWithUi` in `catalog/app-views.ts`). An app whose UI is the same as another's gets no case and no toggle entry; it is still listed in `apps` for its badge.

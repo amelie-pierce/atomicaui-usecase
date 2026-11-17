@@ -1,14 +1,13 @@
 import type { ContextProps } from '../types';
-import { Field, Icon, IconButton, List, Popover, Switch, Type, View } from '../kit';
+import { Icon, IconButton, List, Popover, Switch, Type, View } from '../kit';
 import { MOCK_OUTPUT_COLUMNS } from '../mock-data';
 
-// ColumnVisibility: the Configure columns popover opened from its table-columns trigger in the Output header.
-// Search, a reorderable List (Model locked, Load sorted ascending), Group by model, then the footer row,
-// justifyContent: between: the reset icon at the start, Cancel and Save grouped at the end. Shown open; the
-// wrapper keeps stage room (inline min-block-size) for the popup to open below the trigger.
+// ColumnVisibility: the Configure columns popover opened from its table-columns trigger in the Output header, cut to a reorderable List of
+// three columns (Model locked, Load sorted ascending) and the footer row, justifyContent: between: the reset icon at the start, Cancel and
+// Save grouped at the end. Search and Group by model are left out. Shown open; the wrapper keeps stage room (inline min-block-size).
 export default function PopoverContext({ children, host }: ContextProps) {
   return (
-    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 32)', inlineSize: 'min(100%, calc(var(--p-px-16) * 24))' }}>
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 18)', inlineSize: 'min(100%, calc(var(--p-px-16) * 24))' }}>
       <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
         <Type as="h2" role="l3" weight="semi-bold">Output</Type>
       <Popover open>
@@ -32,12 +31,6 @@ export default function PopoverContext({ children, host }: ContextProps) {
                 />
               }
             >
-              <Field aui={{ scale: 'sm', sx: { minWidth: '0' } }}>
-                <Field.Control>
-                  <Field.Icon name="magnifying-glass" />
-                  <Field.Input aria-label="Search columns" placeholder="Search columns..." />
-                </Field.Control>
-              </Field>
               <List aria-label="Columns" reorderable>
                 {MOCK_OUTPUT_COLUMNS.map((column) => (
                   <List.Item key={column.id} id={column.id} locked={!column.hideable}>
@@ -60,9 +53,6 @@ export default function PopoverContext({ children, host }: ContextProps) {
                   </List.Item>
                 ))}
               </List>
-              <Switch aui={{ states: { selected: { color: 'primary', paint: 'solid' } } }}>
-                <Switch.Label>Group by model</Switch.Label>
-              </Switch>
               <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', minWidth: '0', justifyContent: 'between' } }}>
                 {children}
               </View>

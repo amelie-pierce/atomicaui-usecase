@@ -1,5 +1,5 @@
 import type { ContextProps } from '../types';
-import { IconButton, Symbol, Type, View } from '../kit';
+import { IconButton, Type, View } from '../kit';
 import { MockTourTarget } from '../mock-data';
 
 // Walkthrough step 3 of 6 (Beam Properties), as F01Walkthrough renders it: a spotlight around the target and the 328px card
@@ -24,7 +24,7 @@ export default function WalkthroughContext({ children }: ContextProps) {
           style={{ position: 'absolute', insetBlockStart: 4, insetInlineEnd: 4 }}
         />
         <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Beam Properties</Type>
-        <Type role="p3">Choose beam materials and dimensions. Use Reset to default to restore Fc<Symbol script="subscript">perp</Symbol>.</Type>
+        <Type role="p3">Choose beam materials and dimensions.</Type>
         <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
           {children}
           <Type as="span" role="p3" color="muted" style={{ marginInlineStart: 'auto', whiteSpace: 'nowrap' }}>3 / 6</Type>

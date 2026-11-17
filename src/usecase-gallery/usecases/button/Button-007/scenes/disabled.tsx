@@ -1,10 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Button, Type, View } from '../../../../kit';
-import { MockOutputBody } from '../../../../mock-data';
 
-// Print Output while the inputs are invalid: the app still composes the whole header and action group, but Configure columns and the
-// scroll helpers are not rendered, Print Output takes the native disabled attribute, the toolbar loses the result count and the
-// product filter is disabled, and the body is the placeholder line.
+// Print Output while the inputs are invalid: the same header as the Enabled case, with the native disabled attribute on Print Output.
 
 export default function DisabledScene(_props: ContextProps) {
   return (
@@ -23,7 +20,6 @@ export default function DisabledScene(_props: ContextProps) {
           </Button>
         </View>
       </View>
-      <MockOutputBody invalid />
     </View>
   );
 }

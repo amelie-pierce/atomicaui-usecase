@@ -5,7 +5,7 @@ import { MockViewerCanvas, MockViewerControls } from '../mock-data';
 
 // The compact 3D Viewer (side-by-side and engineering layouts, narrow screens), where the floating controls give way to one View options
 // button in the top-end corner of the scene, 8px in (the app's `.f02-mobile-options`, the `ug-scene__options` rule). The button is the
-// trigger of a Popover (side bottom, align end, offset 4) whose popup is the same controls stack as the desktop overlay, on a surface card
+// trigger of a Popover (side bottom, align end, offset 4) whose popup is the Reset view and the projection radios, on a surface card
 // (`.f02-popover`: 12px padding, 4px radius, shadow). It is shown open and floats over the canvas.
 export default function ViewerOptionsContext({ children, host }: ContextProps) {
   const anchor = useRef<HTMLSpanElement>(null);

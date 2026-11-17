@@ -1,5 +1,5 @@
 import type { ContextProps } from '../../../../types';
-import { Dialog, Field, Input, Textarea, Type, View } from '../../../../kit';
+import { Dialog, Field, Input, Textarea, View } from '../../../../kit';
 
 // The feedback dialog: one Submit, alone at the end of the footer; there is no Cancel (the title X closes it).
 export default function FeedbackScene({ host }: ContextProps) {
@@ -15,21 +15,14 @@ export default function FeedbackScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Close Send feedback" aui={{ scale: 'sm' }} />
             </Dialog.Title>
             <Dialog.Description aui={{ scale: 'sm', sx: { flex: 'none' } }}>
-              Tell us about your experience with HCS.
+              Tell us about your experience.
             </Dialog.Description>
             <Dialog.Body aui={{ scale: 'sm' }}>
               <form id="feedback-form">
                 <View aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '16', minWidth: '0' } }}>
-                  <Type>
-                    Prefer to call? <a href="tel:8009995099">800-999-5099</a>
-                  </Type>
                   <Field aui={{ scale: 'sm', sx: { flex: 'none', width: 'fill' } }}>
                     <Field.Label aui={{ scale: 'sm' }}>Email</Field.Label>
                     <Input aui={{ scale: 'sm' }} type="email" required />
-                  </Field>
-                  <Field aui={{ scale: 'sm', sx: { flex: 'none', width: 'fill' } }}>
-                    <Field.Label aui={{ scale: 'sm' }}>Summary</Field.Label>
-                    <Input aui={{ scale: 'sm' }} required />
                   </Field>
                   <Field aui={{ scale: 'sm', sx: { flex: 'none', width: 'fill' } }}>
                     <Field.Label aui={{ scale: 'sm' }}>Description</Field.Label>

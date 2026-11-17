@@ -23,7 +23,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const narrow = useMediaQuery(NARROW);
   const [mode, setMode] = useState<PreviewMode>('component');
   // Kept across use cases: the reader who switched to Code stays on Code while browsing.
-  const [detail, setDetail] = useState<DetailMode>('document');
+  const [detail, setDetail] = useState<DetailMode>('code');
   const { selectedId } = useHashSelection(
     allUsecases.map((usecase) => usecase.id),
     allUsecases[0]?.id ?? '',

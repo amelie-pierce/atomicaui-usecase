@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog, Field, View } from '../../../../kit';
 
-// ACE SaveAsTemplateDialog (HS writes the same dialog): a default-width popup with a raised Title with the close X, and a footer of the default Cancel and a secondary solid Save that stays disabled until the name is valid.
+// ACE SaveAsTemplateDialog (HS writes the same dialog and ADM the same at 480px; only the width differs): a default-width popup with a raised Title with the close X, and a footer of the default Cancel and a secondary solid Save that stays disabled until the name is valid.
 export default function AceSaveScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

@@ -2,10 +2,25 @@ import { APPS } from '../apps';
 import type { AppKey } from '../apps';
 import type { Usecase, UsecaseCase } from '../types';
 
-/** Apps (in registry order) whose cases make a distinct In context UI; the app toggle row needs two or more. */
-export const appsWithUi = ({ cases = [] }: Usecase): AppKey[] =>
-  (Object.keys(APPS) as AppKey[]).filter((key) => cases.some((candidate) => candidate.app === key));
+/** One type of case (Reset confirm, ...): its cases are the UI variants, one per group of apps, in the order written. */
+export interface CaseType {
+  name: string;
+  cases: UsecaseCase[];
+}
 
-/** The cases to show for one app: its own plus those shared by every app. With no app, all cases. */
-export const casesForApp = ({ cases = [] }: Usecase, app?: AppKey): UsecaseCase[] =>
-  app ? cases.filter((candidate) => !candidate.app || candidate.app === app) : cases;
+/** The app labels as one string: `ACE, PFD, PBS`. */
+export const appLabels = (apps: AppKey[]): string => apps.map((key) => APPS[key].label).join(', ');
+
+/** The types of a use case in the order they first appear; cases sharing a name are the variants of one type. */
+export const caseTypes = ({ cases = [] }: Pick<Usecase, 'cases'>): CaseType[] => {
+  const types = new Map<string, CaseType>();
+  for (const candidate of cases) {
+    const type = types.get(candidate.name) ?? { name: candidate.name, cases: [] };
+    type.cases.push(candidate);
+    types.set(candidate.name, type);
+  }
+  return [...types.values()];
+};
+
+/** Whether a case is the same in every app of the use case, so its group needs no toggle or caption. */
+export const isShared = ({ apps }: UsecaseCase, usecase: Pick<Usecase, 'apps'>): boolean => apps.length === usecase.apps.length;

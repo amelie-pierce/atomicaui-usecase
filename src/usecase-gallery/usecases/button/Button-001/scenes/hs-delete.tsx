@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog } from '../../../../kit';
 
-// HS TemplateDialogs delete confirm (FD writes the same dialog): an AlertDialog with a plain Title (not raised), no close X, the default Cancel and a solid error Delete.
+// HS TemplateDialogs delete confirm (FD writes the same dialog): an AlertDialog at the default width with a plain Title (not raised), no close X, the default Cancel and a solid error Delete.
 export default function HsDeleteScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

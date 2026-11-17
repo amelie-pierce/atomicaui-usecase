@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog } from '../../../../kit';
 
-// ACE dialogs (ADM, PFD, HS, FD, AGPD and RWS write the same Title): a raised Title at the default scale with the Spacer pushing the close X, which sets no aui, to the end.
+// ACE dialogs (ADM, PFD, PBS, HS, FD, AGPD and RWS write the same Title): a raised Title at the default scale with the Spacer pushing the close X, which sets no aui, to the end.
 export default function AceCloseScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

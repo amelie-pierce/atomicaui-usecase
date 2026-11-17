@@ -2,7 +2,7 @@ import type { ContextProps } from '../../../../types';
 import { Dialog, View } from '../../../../kit';
 import { MockLicenceText } from '../../../../mock-data';
 
-// ADM EulaGate (PFD, AGPD and RWS write the same dialog): a plain Title (scale sm, not raised) with the close X that also declines, no Description, and the Do Not Accept / Accept pair, Accept always enabled.
+// ADM EulaGate (PFD, HS, FD, AGPD and RWS write the same dialog; HS and FD add a Country field to the body, left out here): a plain Title (scale sm, not raised) with the close X that also declines, no Description, and the Do Not Accept / Accept pair, Accept always enabled.
 export default function AdmAcceptScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog, FileUpload } from '../../../../kit';
 
-// ACE OpenFromDeviceDialog (PFD, PBS, HS, FD, AGPD and RWS write the same footer): the footer holds one default Cancel, alone at the end, and the close X in the Title does the same.
+// ACE OpenFromDeviceDialog (PFD, PBS, HS, FD, AGPD and RWS write the same dialog; FD spells the Cancel as a plain Button, which looks the same): the footer holds one default Cancel, alone at the end, and the close X in the Title does the same.
 export default function AceUploadScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

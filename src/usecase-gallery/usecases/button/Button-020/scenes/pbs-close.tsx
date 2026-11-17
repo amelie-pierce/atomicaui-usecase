@@ -1,8 +1,8 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog, Type, View } from '../../../../kit';
 
-// AGPD "Add to Home Screen" ShellDialog (RWS and PBS write the same dialog): an info dialog whose footer is one default Close, alone at the end.
-export default function AgpdCloseScene({ host }: ContextProps) {
+// PBS HomeScreenDialog (AGPD and RWS write the same "Add to Home Screen" ShellDialog): an info dialog whose footer is one default Close, alone at the end.
+export default function PbsCloseScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>
       <Dialog.Portal container={host}>

@@ -1,7 +1,9 @@
 import { lazy } from 'react';
 import type { ComponentType } from 'react';
+import { appLabels, caseTypes } from './app-views';
 import { toContextSnippet, toSnippet } from './snippet';
-import type { AreaGroup, ComponentGroup, ComponentMeta, ContextProps, Usecase, UsecaseDoc } from '../types';
+import type { AppKey } from '../apps';
+import type { AreaGroup, ComponentGroup, ComponentMeta, ContextProps, Usecase, UsecaseCaseDoc, UsecaseDoc } from '../types';
 
 type Loader<T> = () => Promise<T>;
 
@@ -95,8 +97,13 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
     }
     if (cases && cases.length > 0) {
       const caseIds = new Set<string>();
-      usecase.cases = cases.map(({ id: caseId, name, app }) => {
-        if (app && !doc.apps.includes(app)) fail(`${id} sets the case "${caseId}" to app "${app}", which is not in its apps`);
+      usecase.cases = cases.map((raw) => {
+        const { id: caseId, name, apps = doc.apps, label, source } = raw;
+        if ('app' in raw) fail(`${id} sets "app" on the case "${caseId}"; cases take "apps: [...]" now (the apps that share the scene)`);
+        if (apps.length === 0) fail(`${id} gives the case "${caseId}" an empty apps list`);
+        for (const app of [...apps, ...Object.keys(source ?? {})] as AppKey[]) {
+          if (!apps.includes(app) || !doc.apps.includes(app)) fail(`${id} sets the case "${caseId}" to app "${app}", which is not in its apps`);
+        }
         if (caseIds.has(caseId)) fail(`${id} lists the case "${caseId}" twice`);
         caseIds.add(caseId);
         const loadScene = sceneByKey.get(`${key}/${caseId}`) ?? fail(`${id} lists the case "${caseId}" but scenes/${caseId}.tsx is missing`);
@@ -106,11 +113,13 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
         return {
           id: caseId,
           name,
-          app,
+          apps,
+          label: label ?? appLabels(apps),
           Scene,
           loadCode: () => (sceneCode ??= Promise.all([usecase.loadCode(), loadSceneSource()]).then(([snippet, source]) => toContextSnippet(source, snippet))),
         };
       });
+      checkAppGroups(usecase, cases);
     }
     group.usecases.push(usecase);
   }
@@ -119,6 +128,34 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
     .filter((group) => group.usecases.length > 0)
     .sort((a, b) => byNaturalOrder(a.title, b.title))
     .map(({ usecases, ...group }) => ({ ...group, areas: groupByArea(usecases) }));
+}
+
+/**
+ * The groups of a use case and its `apps` must say the same thing: within one type (cases sharing a name) the groups
+ * never overlap and have different chips, and every listed app appears in at least one group, so the Document badges
+ * and the In context toggle cover exactly the same apps. `docs` are the cases as written: a case without `apps` is
+ * the same in every app, so it cannot share its name with another case.
+ */
+function checkAppGroups({ id, apps, cases = [] }: Usecase, docs: UsecaseCaseDoc[]) {
+  for (const { name, cases: variants } of caseTypes({ cases })) {
+    if (variants.length < 2) continue;
+    const seen = new Map<AppKey, string>();
+    const labels = new Set<string>();
+    for (const variant of variants) {
+      if (!docs.find((doc) => doc.id === variant.id)?.apps) fail(`${id} gives the case "${variant.id}" no apps, but "${name}" has several cases; each needs its own apps`);
+      if (labels.has(variant.label)) fail(`${id} has two "${name}" cases labelled "${variant.label}"`);
+      labels.add(variant.label);
+      for (const app of variant.apps) {
+        const other = seen.get(app);
+        if (other) fail(`${id} puts "${app}" in both "${other}" and "${variant.id}" of "${name}"; a type shows an app once`);
+        seen.set(app, variant.id);
+      }
+    }
+  }
+  const shown = new Set(cases.flatMap((candidate) => candidate.apps));
+  for (const app of apps) {
+    if (!shown.has(app)) fail(`${id} lists "${app}" in apps, but no case shows it; add it to a case's apps or remove it from the use case`);
+  }
 }
 
 /** Areas appear in the order of their lowest use case id, so a new area slots in where its first use case sits. */

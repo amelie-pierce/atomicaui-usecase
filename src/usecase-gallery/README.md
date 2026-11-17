@@ -24,7 +24,7 @@ usecase-gallery/
       <component>.meta.ts  defineComponent({ id: 'Button', title: 'Button' })
       <UseCaseId>/         e.g. Button-001
         example.tsx        the rendered example AND the source shown as code
-        usecase.ts         defineUsecase({ area, title, apps, summary, where, when, how, cases? })
+        usecase.ts         defineUsecase({ area, title, apps, summary, where, when, how, cases?, source? })
         scenes/<case>.tsx  optional: one In context scene per case (see below)
 ```
 
@@ -56,7 +56,7 @@ export default defineUsecase({ area, title, apps: ['hcs'], summary, where, when,
 
 `area` is the place in a product where the component is used (`'Dialog'`, `'Walkthrough'`, `'Table'`). Use cases of one component with the same `area` share a tree group; a new area is just a new string, and areas are listed in the order of their lowest use case id. A use case is one real situation, so controls that appear together there belong in one example (the Cancel and Confirm of a dialog footer are one use case; Previous and Next of a walkthrough are one, End is another).
 
-`apps` lists the keys of the apps that use the pattern; the Document view shows one primary-style badge (kit `Chip`, `color: 'primary'`, `paint: 'solid'`) per key, in an unlabelled row (the list carries an `aria-label` of "Used in").
+`apps` lists the keys of the apps that use the pattern; the Document view shows one primary-style badge (kit `Chip`, `color: 'primary'`, `paint: 'solid'`) per key, in an unlabelled row (the list carries an `aria-label` of "Used in"). When the cases give apps their own UI (see "The same use case in another app"), the badges are drawn from the same groups instead: one block per type with one row of badges per distinct UI, so the Document and the In context toggle cannot disagree.
 
 No registry or shell edit is needed.
 
@@ -89,18 +89,33 @@ When one use case has several In context scenes (the dialog types of Button-001,
 
 ```ts
 cases: [
-  { id: 'hcs-reset', name: 'Reset confirm', app: 'hcs' },
-  { id: 'hcs-accept', name: 'Accept licence', app: 'hcs' },
+  { id: 'enabled', name: 'Enabled' },
+  { id: 'disabled', name: 'Disabled (inputs invalid)' },
 ],
 ```
 
-Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ children, host }`). With more than one case the preview shows a kit `RadioGroup` of the names above the scene (default: the first; the choice survives the Component | In context toggle and resets on another use case), renders only the chosen scene and shows its code. A scene that places `{children}` gets the example spliced in; one that writes its own controls (a disabled or alternative state) is shown as written. A use case with one case, or none, shows no radio group and uses the area context. A missing scene file fails the catalog build.
+Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ children, host }`). With more than one type name the preview shows a kit `RadioGroup` of the names above the scene (default: the first; the choice survives the Component | In context toggle and resets on another use case), renders only the chosen scene and shows its code. A scene that places `{children}` gets the example spliced in; one that writes its own controls (a disabled or alternative state) is shown as written. A use case with one case, or none, shows no radio group and uses the area context. Cases with the same name are one type with several app variants (next section). A missing scene file fails the catalog build.
 
 ### The same use case in another app
 
-When another app (a key of `apps.ts`, listed in `apps`) has its own UI for the use case, give each such scene a case with `app: '<key>'` (`cases: [{ id: 'hcs-header', name: 'Header cell', app: 'hcs' }, ...]`). With two or more apps that have cases, the preview shows one extra row, a `ToggleGroup` of the app labels, above the radio group; the radio group then lists only the chosen app's cases, and cases without `app` appear for every app. With fewer than two, nothing is shown and the use case renders as before. The first app in `apps.ts` order is the default and the choice resets on another use case. Record the design each scene was built from with `source: { hcs: '<path>' }` (and `source` on a case when it differs); a case whose `app` is not in `apps` fails the catalog build. The agent procedure is in `.claude/skills/usecase-gallery/SKILL.md`.
+Several apps often write the same pattern; the gallery shows one scene per **distinct UI** and a group of apps for each, never a scene per app. A case lists the apps that share its UI:
 
-A scene file is named `<app>-<type>.tsx` and written from that app's own source, so the case radio keeps the same type names (Reset confirm, Accept licence, Send feedback, ...) under every app. Apps whose dialog is written the same way share one case: it is tagged with the first of them, the others stay in `apps` for their badge (they have no toggle entry), and the scene's top comment and the use case's `how` name which apps write it. An app gets its own case when its footer buttons, their props or placement, or the container parts (raised Title, close X, Description, width) differ. Button-001 (Dialog footer), Button-020 (single action) and Button-021 (header close) are built this way, from the ten apps' repos.
+```ts
+apps: ['hcs', 'ace', 'adm', 'pfd'],
+cases: [
+  { id: 'hcs-reset', name: 'Reset confirm', apps: ['hcs'], source: { hcs: 'src/components/HcsResetDialog.tsx' } },
+  { id: 'ace-reset', name: 'Reset confirm', apps: ['ace', 'adm', 'pfd'], label: 'Other apps', source: { ace: '...', adm: '...', pfd: '...' } },
+],
+```
+
+- Cases that share a `name` are the variants of one type (Reset confirm, Accept licence, ...), one per group. The preview shows the radio group of the type names, and under it a `ToggleGroup` of the groups of the chosen type when it has two or more; with one group there is no toggle, and a use case whose every type has one group shows no app row.
+- A group chip reads the case's `label`, by default the app labels joined by a comma (`HS, FD`). Give a big group the label `Other apps` (or a better word) and list it last, so the named apps come first. The chip's tooltip and, under the toggle, a line `Covers ACE, ADM, PFD` list the apps of a labelled group. Switching type keeps the apps in view: it picks the group that covers an app of the group you were on.
+- Within one type an app belongs to one group; an app a type does not have gets no case in it. A case without `apps` is the same in every app of the use case and cannot share its name with another case.
+- `apps` of the use case must equal the union of the case groups. The catalog throws at startup for an app that no case shows, a case app that is not listed, an overlap inside a type, a repeated chip label, a `source` app outside the group, or the old `app: '<key>'` field. The Document badges are drawn from these groups (`ui/docs-pane.tsx`), so the badges and the toggle cover the same apps.
+- Record the file each scene was built from per app: `source: { hcs: '<path>' }` on the use case, and `source` on a case for the apps of that group.
+- Two apps share a group only when the container parts (Title style, close X, Description, width) and the footer (buttons, props, order, placement) match. Body fields and wording do not count, so `Send` and `Submit` in the same footer are one UI. Verify each merge against the apps' source, not from memory.
+
+A scene file is named `<first app of the group>-<type>.tsx` and is written from that app's own source, so the radio keeps the same type names under every app. Button-001 (Dialog footer), Button-020 (single action) and Button-021 (header close) are built this way, from the ten apps' repos; the agent procedure is in `.claude/skills/usecase-gallery/SKILL.md`.
 
 ### Sample content
 
@@ -114,7 +129,7 @@ Every area now has a context, a variant or scenes, so the dashed fallback frame 
 
 ## Add an app
 
-Add one entry to `apps.ts`: `{ name, label, url? }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); an app without a web link yet (HS, RWS) omits `url` and its badge renders without an anchor. The key becomes valid in `apps: [...]`. The registry holds ten apps, each named `<key>-design-prototype` (private repos under amelie-pierce): hcs, ace, adm, pfd, pbs, hs, fd, agpd, rws, adc; existing use cases still list only `hcs`.
+Add one entry to `apps.ts`: `{ name, label, url? }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); an app without a web link yet (HS, RWS) omits `url` and its badge renders without an anchor. The key becomes valid in `apps: [...]`. The registry holds ten apps, each named `<key>-design-prototype` (private repos under amelie-pierce): hcs, ace, adm, pfd, pbs, hs, fd, agpd, rws, adc; Button-001, 020 and 021 list the apps that have the pattern; the other use cases list `hcs` only.
 
 ## Add a component
 

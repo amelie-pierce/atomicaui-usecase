@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Button, Dialog, Field, View } from '../../../../kit';
 
-// FD save-template Modal: a raised Title with the close X, and a footer of two plain Buttons: the default Cancel and a primary (orange) Save that stays disabled until the name is filled. FD writes Button, not Dialog.Button.
+// FD save-template Modal: a raised Title with the close X, and a footer of two plain Buttons: the default Cancel and a primary (orange) Save that stays disabled until the name is filled. FD writes Button, not Dialog.Button; the Cancel looks the same, the primary Save is what sets FD apart.
 export default function FdSaveScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

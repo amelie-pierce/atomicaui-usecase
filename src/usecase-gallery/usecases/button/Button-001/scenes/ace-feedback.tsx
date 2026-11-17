@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog, Field, View } from '../../../../kit';
 
-// ACE FeedbackDialog (HS, PFD, PBS, AGPD and RWS write the same footer): a raised Title with the close X, and a footer of the default Cancel and a secondary solid Send; neither dismisses on its own.
+// ACE FeedbackDialog (PFD, PBS, HS, AGPD and RWS write the same dialog; PFD, PBS, AGPD and RWS label Send as Submit): a default-width popup with a raised Title and the close X, and a footer of the default Cancel and a secondary solid Send; neither dismisses on its own.
 export default function AceFeedbackScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

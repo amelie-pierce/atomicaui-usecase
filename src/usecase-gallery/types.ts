@@ -9,6 +9,23 @@ export interface ComponentMeta {
   title: string;
 }
 
+/** One In context case of a use case: one scene, shared by every app of its group. */
+export interface UsecaseCaseDoc {
+  /** Names the scene file `scenes/<id>.tsx`; by convention `<first app>-<type>`. */
+  id: string;
+  /** The type of situation the scene shows (Reset confirm, Accept licence, ...). Cases with the same name are the variants of one type. */
+  name: string;
+  /**
+   * The apps that share this exact UI (keys of `apps.ts`, all listed in the use case's `apps`). Within one name the
+   * groups never overlap. Omit when the scene is the same in every app of the use case.
+   */
+  apps?: AppKey[];
+  /** The group chip in the preview toggle. Defaults to the app labels joined by a comma; set it for a big group, e.g. `Other apps`. */
+  label?: string;
+  /** The source file of this scene per app of the group; overrides the use case's `source` for these apps. */
+  source?: Partial<Record<AppKey, string>>;
+}
+
 /** Written once per use case in `usecases/<component>/<UseCaseId>/usecase.ts`. */
 export interface UsecaseDoc {
   /** Where the component is used, e.g. `Dialog`, `Walkthrough`, `Table`. Use cases with the same area share a tree group. */
@@ -22,18 +39,20 @@ export interface UsecaseDoc {
   when: string;
   /** How to use it: the props and rules that matter. */
   how: string;
-  /** Keys of the apps (see `apps.ts`) that use this pattern. */
+  /**
+   * Keys of the apps (see `apps.ts`) that use this pattern. When cases name their `apps`, the list must equal the
+   * union of those groups: the catalog throws for an app no case shows or a case app that is not listed.
+   */
   apps: AppKey[];
   /** Optional: the area's context places this example elsewhere (for example `close`, the card corner); uses `contexts/<area-slug>-<variant>.tsx`. */
   contextVariant?: string;
   /**
-   * Optional: several In context cases of this use case (for example the three dialogs). Each id names a file
-   * `scenes/<id>.tsx` in the use case folder; the preview shows a radio group and renders the chosen scene
-   * instead of the area context. One entry (or none) shows no radio group. A case with `app` is that app's own UI
-   * (a key of `apps.ts`, listed in `apps`); when two or more apps have cases, the preview adds a toggle row to pick
-   * the app and the radio group lists only that app's cases (cases without `app` show for every app).
+   * Optional: several In context cases of this use case (for example the dialog types). Each id names a file
+   * `scenes/<id>.tsx` in the use case folder; the preview shows a radio group of the case names and renders the chosen
+   * scene instead of the area context. Cases that share a `name` are the UI variants of one type, one per group of apps
+   * (see `UsecaseCaseDoc`); with two or more variants the preview adds a toggle of the groups under the radio group.
    */
-  cases?: { id: string; name: string; app?: AppKey; source?: string }[];
+  cases?: UsecaseCaseDoc[];
   /**
    * Optional: the source design each app's In context scenes were built from, per app key (for HCS, the file in the
    * hcs-design-prototype repo). A case's own `source` overrides it for that scene.
@@ -58,8 +77,10 @@ export type DetailMode = 'document' | 'code';
 export interface UsecaseCase {
   id: string;
   name: string;
-  /** The app whose UI this scene shows; absent when the scene is the same in every app. */
-  app?: AppKey;
+  /** The apps that share this UI: the group of the case, or every app of the use case when the case sets none. */
+  apps: AppKey[];
+  /** The group chip text: the case's `label`, or the app labels joined by a comma. */
+  label: string;
   Scene: ComponentType<ContextProps>;
   loadCode: () => Promise<string>;
 }

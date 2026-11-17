@@ -1,6 +1,6 @@
 import { Suspense, useState } from 'react';
-import { APPS } from '../apps';
-import type { AppKey } from '../apps';
+import { appLabels } from '../catalog/app-views';
+import type { CaseType } from '../catalog/app-views';
 import { Button, Radio, RadioGroup, ToggleGroup, Type } from '../kit';
 import type { PreviewMode, Usecase, UsecaseCase } from '../types';
 import { PaneCard } from './pane-card';
@@ -27,22 +27,20 @@ export function RenderPane({
   usecase,
   mode,
   onModeChange,
-  apps,
-  activeApp,
-  onAppChange,
-  cases,
+  types,
+  activeType,
+  onTypeChange,
   activeCase,
   onCaseChange,
 }: {
   usecase: Usecase;
   mode: PreviewMode;
   onModeChange: (mode: PreviewMode) => void;
-  /** Apps with their own UI for this use case; the toggle row shows only with two or more. */
-  apps: AppKey[];
-  activeApp?: AppKey;
-  onAppChange: (app: AppKey) => void;
-  /** The cases of the active app. */
-  cases: UsecaseCase[];
+  /** The case types of the use case; the radio group shows with two or more. */
+  types: CaseType[];
+  activeType?: CaseType;
+  onTypeChange: (name: string) => void;
+  /** The chosen UI variant of the active type; its group toggle shows with two or more variants. */
   activeCase?: UsecaseCase;
   onCaseChange: (caseId: string) => void;
 }) {
@@ -70,40 +68,48 @@ export function RenderPane({
           />
         ))}
       </ToggleGroup>
-      {mode === 'context' && apps.length > 1 && (
-        <ToggleGroup
-          className="ug-render__toggle"
-          aria-label="App UI"
-          value={activeApp ? [activeApp] : []}
-          onValueChange={([next]) => next && onAppChange(next as AppKey)}
-        >
-          {apps.map((key) => (
-            <ToggleGroup.Item
-              key={key}
-              value={key}
-              render={(props, { pressed }) => (
-                <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>
-                  {APPS[key].label}
-                </Button>
-              )}
-            />
-          ))}
-        </ToggleGroup>
-      )}
-      {mode === 'context' && cases.length > 1 && (
+      {mode === 'context' && types.length > 1 && (
         <RadioGroup
           className="ug-render__cases"
           aria-label="In context case"
           direction="row"
-          value={activeCase?.id}
-          onValueChange={(next) => onCaseChange(String(next))}
+          value={activeType?.name}
+          onValueChange={(next) => onTypeChange(String(next))}
         >
-          {cases.map(({ id, name }) => (
-            <Radio key={id} value={id}>
+          {types.map(({ name }) => (
+            <Radio key={name} value={name}>
               <Radio.Label>{name}</Radio.Label>
             </Radio>
           ))}
         </RadioGroup>
+      )}
+      {mode === 'context' && activeType && activeType.cases.length > 1 && (
+        <div className="ug-render__groups">
+          <ToggleGroup
+            className="ug-render__toggle"
+            aria-label="App group"
+            value={activeCase ? [activeCase.id] : []}
+            onValueChange={([next]) => next && onCaseChange(String(next))}
+          >
+            {activeType.cases.map(({ id, label, apps }) => (
+              <ToggleGroup.Item
+                key={id}
+                value={id}
+                title={`Covers ${appLabels(apps)}`}
+                render={(props, { pressed }) => (
+                  <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>
+                    {label}
+                  </Button>
+                )}
+              />
+            ))}
+          </ToggleGroup>
+          {activeCase && activeCase.label !== appLabels(activeCase.apps) && (
+            <Type role="l3" as="p" color="muted" className="ug-render__covers">
+              Covers {appLabels(activeCase.apps)}
+            </Type>
+          )}
+        </div>
       )}
       <div className="ug-render__stage" ref={setHost}>
         <Suspense fallback={null}>

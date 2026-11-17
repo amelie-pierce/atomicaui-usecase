@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog } from '../../../../kit';
 
-// ACE NewFromTemplateDialog delete confirm (ADM writes the same dialog): an AlertDialog with a raised warning Title and no close X; the footer is the default Cancel and a solid error Delete.
+// ACE NewFromTemplateDialog delete confirm: an AlertDialog at the default width with a raised warning Title and no close X; the footer is the default Cancel and a solid error Delete.
 export default function AceDeleteScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

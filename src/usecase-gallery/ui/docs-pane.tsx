@@ -20,20 +20,27 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
         <div className="ug-docs__apps">
           <ul className="ug-docs__badges" aria-label="Used in">
             {usecase.apps.map((key) => {
-              const app = APPS[key];
+              const app = APPS[key] as { name: string; label: string; url?: string };
+              const badge = (
+                <Chip aui={{ scale: 'sm', color: 'primary', paint: 'solid' }}>
+                  <Chip.Label>{app.label}</Chip.Label>
+                </Chip>
+              );
               return (
                 <li key={key}>
-                  <a
-                    href={app.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ug-docs__badge"
-                    aria-label={`${app.label} (opens ${app.name} in a new tab)`}
-                  >
-                    <Chip aui={{ scale: 'sm' }}>
-                      <Chip.Label>{app.label}</Chip.Label>
-                    </Chip>
-                  </a>
+                  {app.url ? (
+                    <a
+                      href={app.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ug-docs__badge"
+                      aria-label={`${app.label} (opens ${app.name} in a new tab)`}
+                    >
+                      {badge}
+                    </a>
+                  ) : (
+                    badge
+                  )}
                 </li>
               );
             })}

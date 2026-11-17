@@ -10,7 +10,7 @@ The folder is self-contained. It imports only `react`, `react-dom` and its own `
 usecase-gallery/
   index.ts                 public API: <UsecaseGallery />, defineUsecase, defineComponent
   kit.ts                   the ONLY file that imports the AtomicAUI kit
-  apps.ts                  the app registry: key, name, label, url
+  apps.ts                  the app registry: key, name, label, optional url
   types.ts, define.ts      shared types and the define helpers
   contexts/                one file per area: the real kit area that holds an example (panel.tsx, table-header.tsx, ...)
   mock-data.tsx            the one place for the little sample content (a row, a field, a radio pair) the scenes show around an example
@@ -56,7 +56,7 @@ export default defineUsecase({ area, title, apps: ['hcs'], summary, where, when,
 
 `area` is the place in a product where the component is used (`'Dialog'`, `'Walkthrough'`, `'Table'`). Use cases of one component with the same `area` share a tree group; a new area is just a new string, and areas are listed in the order of their lowest use case id. A use case is one real situation, so controls that appear together there belong in one example (the Cancel and Confirm of a dialog footer are one use case; Previous and Next of a walkthrough are one, End is another).
 
-`apps` lists the keys of the apps that use the pattern; the Document view shows one badge per key, in an unlabelled row (the list carries an `aria-label` of "Used in").
+`apps` lists the keys of the apps that use the pattern; the Document view shows one primary-style badge (kit `Chip`, `color: 'primary'`, `paint: 'solid'`) per key, in an unlabelled row (the list carries an `aria-label` of "Used in").
 
 No registry or shell edit is needed.
 
@@ -112,7 +112,7 @@ Every area now has a context, a variant or scenes, so the dashed fallback frame 
 
 ## Add an app
 
-Add one entry to `apps.ts`: `{ name, label, url }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); the key becomes valid in `apps: [...]`.
+Add one entry to `apps.ts`: `{ name, label, url? }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); an app without a web link yet (HS, RWS) omits `url` and its badge renders without an anchor. The key becomes valid in `apps: [...]`. The registry holds ten apps, each named `<key>-design-prototype` (private repos under amelie-pierce): hcs, ace, adm, pfd, pbs, hs, fd, agpd, rws, adc; existing use cases still list only `hcs`.
 
 ## Add a component
 

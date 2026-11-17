@@ -37,7 +37,7 @@ Edit in place and keep its id. A change to `example.tsx` changes the Component p
 2. **Several types keep the radio group.** A use case with several types (the three dialogs of Button-001) lists them in `cases` and shows the radio group of case names, exactly as today. One case, or none, shows no radio group.
 3. **Another app's UI adds one toggle row.** When the same use case looks different in another app of `apps.ts`, add that app's scenes as cases with `app: '<key>'` and list the key in `apps`. The preview then shows one extra row, a toggle of app labels, above the radio group, and the radio group lists only the chosen app's cases. A case without `app` shows for every app.
    - The row appears only when two or more apps have cases of their own for the use case (`appsWithUi` in `catalog/app-views.ts`). An app whose UI is the same as another's gets no case and no toggle entry; it is still listed in `apps` for its badge.
-   - The apps come from `apps.ts` only; add a new app there first (see the README), never a literal in a use case.
+   - The apps come from `apps.ts` only (ten today: hcs, ace, adm, pfd, pbs, hs, fd, agpd, rws, adc; `url` is optional, HS and RWS have none); add a new app there first (see the README), never a literal in a use case. Badges render in the primary Chip style.
    - The first app in registry order is the default, and the choice resets when another use case is selected.
 
 Shape of a use case with two apps (ids and case names are examples):

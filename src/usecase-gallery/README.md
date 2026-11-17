@@ -129,7 +129,7 @@ Every area now has a context, a variant or scenes, so the dashed fallback frame 
 
 ## Add an app
 
-Add one entry to `apps.ts`: `{ name, label, url? }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); an app without a web link yet (HS, RWS) omits `url` and its badge renders without an anchor. The key becomes valid in `apps: [...]`. The registry holds ten apps, each named `<key>-design-prototype` (private repos under amelie-pierce): hcs, ace, adm, pfd, pbs, hs, fd, agpd, rws, adc; Button-001, 020 and 021 list the apps that have the pattern; the other use cases list `hcs` only.
+Add one entry to `apps.ts`: `{ name, label, url? }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); an app without a web link yet (HS, RWS) omits `url` and its badge renders without an anchor. The key becomes valid in `apps: [...]`. The registry holds ten apps, each named `<key>-design-prototype` (private repos under amelie-pierce): hcs, ace, adm, pfd, pbs, hs, fd, agpd, rws, adc; a use case lists the apps that have the pattern, grouped by distinct UI (Button-001, 007, 008, 017, 020, 021, 029 and 030 have several groups; Button-010 and 028 list apps that share one UI; the rest are still `hcs` only).
 
 ## Add a component
 

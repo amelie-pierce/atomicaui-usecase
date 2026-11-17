@@ -1,9 +1,10 @@
-import type { ContextProps } from '../types';
-import { Field, Type, View } from '../kit';
+import type { ContextProps } from '../../../../types';
+import { Button, Field, Type, View } from '../../../../kit';
 
-// The Output pane cut to its toolbar, as App.tsx composes it: one wrapping row, the search field filling the line and Reset filters after
-// it (only while a filter is active). The header actions, count, product filter, table and notes are left out.
-export default function ToolbarContext({ children }: ContextProps) {
+// The FD Output toolbar (Results.jsx): the same wrapping row, search field filling the line, but Reset filters is a secondary text Button (soft, sm, no icon scale)
+// instead of the default gray solid one, and the app renders it while a search, a status filter or a custom sort is active. This scene writes its own Button, so the
+// example is not spliced in. The header actions, the status select, the count, the table and the notes are left out.
+export default function FdToolbarScene(_props: ContextProps) {
   return (
     <View
       as="section"
@@ -18,13 +19,16 @@ export default function ToolbarContext({ children }: ContextProps) {
         <Field style={{ minWidth: 112 }} aui={{ scale: 'sm', sx: { flex: 'fill' } }}>
           <Field.Control>
             <Field.Icon name="magnifying-glass" />
-            <Field.Input aria-label="Search connector models" placeholder="Search connector models..." defaultValue="Model" />
+            <Field.Input aria-label="Search solutions" placeholder="Search" defaultValue="Model" />
             <Field.Button aria-label="Clear search">
               <Field.ButtonIcon name="xmark" />
             </Field.Button>
           </Field.Control>
         </Field>
-        {children}
+        <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm', shape: 'soft' }}>
+          <Button.Icon name="filter-circle-xmark" />
+          Reset filters
+        </Button>
       </View>
     </View>
   );

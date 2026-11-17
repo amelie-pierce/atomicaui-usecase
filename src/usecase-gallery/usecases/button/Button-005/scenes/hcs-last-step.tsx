@@ -1,11 +1,9 @@
-import type { ContextProps } from '../types';
-import { Button, IconButton, Type, View } from '../kit';
-import { MockTourTarget } from '../mock-data';
+import type { ContextProps } from '../../../../types';
+import { Button, IconButton, Type, View } from '../../../../kit';
+import { MockTourTarget } from '../../../../mock-data';
 
-// Walkthrough step 6 of 6 (File). The File menu is at the right edge, so the card does not fit to its right and the app puts it
-// to the left of the spotlight, level with its top. The last step has Previous and End and the counter reads 6 / 6.
-
-export default function WalkthroughLastContext({ children }: ContextProps) {
+// HCS F01Walkthrough step 6 of 6 (File). The File menu is at the right edge, so the card does not fit to its right and the app puts it to the left of the spotlight, level with its top. The last step has Previous and End; End carries a check after the label, mixed case, regular weight.
+export default function HcsLastStepScene({ children }: ContextProps) {
   return (
     <div className="ug-tour">
       <MockTourTarget target="file" />

@@ -1,12 +1,9 @@
-import type { ContextProps } from '../types';
-import { IconButton, Type, View } from '../kit';
-import { MockTourTarget } from '../mock-data';
+import type { ContextProps } from '../../../../types';
+import { Button, IconButton, Type, View } from '../../../../kit';
+import { MockTourTarget } from '../../../../mock-data';
 
-// Walkthrough step 3 of 6 (Beam Properties), as F01Walkthrough renders it: a spotlight around the target and the 328px card
-// beside it (to its right, level with its top). In the app both are position: fixed at measured rectangles; here they sit at
-// fixed numbers in the stage frame. Step 1 has no Previous; the last step ends with End (Button-005).
-
-export default function WalkthroughContext({ children }: ContextProps) {
+// HCS F01Walkthrough step 3 of 6 (Beam Properties): a spotlight around the target and the 328px card beside it (to its right, level with its top). In the app both are position: fixed at measured rectangles; here they sit at fixed numbers in the stage frame. Labels are mixed case (Previous, Next) at the regular weight, and the counter is pushed to the end by a CSS auto margin (inline here).
+export default function HcsStepNavScene({ children }: ContextProps) {
   return (
     <div className="ug-tour">
       <MockTourTarget target="beams" />

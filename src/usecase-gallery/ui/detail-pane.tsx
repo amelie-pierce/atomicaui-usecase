@@ -9,7 +9,7 @@ const DETAILS: { value: DetailMode; label: string }[] = [
   { value: 'code', label: 'Code' },
 ];
 
-/** The right pane: the use case documentation by default, its copyable code on the toggle. */
+/** The right pane: the copyable code by default, the use case documentation on the toggle. */
 export function DetailPane({
   usecase,
   detail,

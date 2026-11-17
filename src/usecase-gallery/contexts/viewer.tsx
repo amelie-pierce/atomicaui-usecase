@@ -1,12 +1,10 @@
 import type { ContextProps } from '../types';
 import { Type, View } from '../kit';
-import { MockViewerCanvas, MockViewerControls } from '../mock-data';
+import { MockViewerCanvas } from '../mock-data';
 
-// The 3D Viewer pane as App.tsx composes it: pane frame, the 28px header, and a body card (overflow hidden) holding the scene. The scene
-// is the live canvas (a three.js scene the kit has no part for, so a framed stand-in) with the desktop controls overlaid at the top end,
-// 62px down and 12px in (the app's `.f02-controls-desktop`, here the `ug-scene__controls` rule): Reset view first, then the projection
-// radios (Perspective selected), the Object Visibility heading and four checkboxes with the app's selected and unselected recipes.
-// Connector Detail starts unchecked.
+// The 3D Viewer pane cut to its header and scene: pane frame, the 28px header, and a body card holding the live canvas (a three.js scene
+// the kit has no part for, so a framed stand-in) with Reset view overlaid at the top end, 62px down and 12px in (the app's
+// `.f02-controls-desktop`, here the `ug-scene__controls` rule). The projection radios and visibility checkboxes under it are left out.
 export default function ViewerContext({ children }: ContextProps) {
   return (
     <View
@@ -24,7 +22,6 @@ export default function ViewerContext({ children }: ContextProps) {
             <MockViewerCanvas />
             <div className="ug-scene__controls">
               {children}
-              <MockViewerControls />
             </div>
           </div>
         </View>

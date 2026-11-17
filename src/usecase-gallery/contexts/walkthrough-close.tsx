@@ -21,7 +21,7 @@ export default function WalkthroughCloseContext({ children }: ContextProps) {
           {children}
         </span>
         <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Connection Type</Type>
-        <Type role="p3">Choose how the beams connect. You can change any input in any order.</Type>
+        <Type role="p3">Choose how the beams connect.</Type>
         <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
           <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
             Next

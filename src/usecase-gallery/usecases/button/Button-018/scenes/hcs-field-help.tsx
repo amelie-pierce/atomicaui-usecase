@@ -1,10 +1,10 @@
-import type { ContextProps } from '../types';
-import { Field, Select, View } from '../kit';
+import type { ContextProps } from '../../../../types';
+import { Field, Select, View } from '../../../../kit';
 
 // The Load Properties section of the Input pane (App.tsx lines 1131-1170) cut to the one field that carries the trigger: the Download
 // Duration label row (HcsSelectbox `labelAccessory`) is a flex row, the label then the help trigger inline after it, above the select.
 // The open help popover is Button-003.
-export default function FormLabelContext({ children }: ContextProps) {
+export default function HcsFieldHelpScene({ children }: ContextProps) {
   return (
     <View
       as="aside"

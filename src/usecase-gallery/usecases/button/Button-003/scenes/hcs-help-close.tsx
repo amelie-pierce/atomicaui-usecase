@@ -1,12 +1,12 @@
-import type { ContextProps } from '../types';
-import { IconButton, Popover, Type, View } from '../kit';
-import { MOCK_DURATION_NOTES } from '../mock-data';
+import type { ContextProps } from '../../../../types';
+import { IconButton, Popover, Type, View } from '../../../../kit';
+import { MOCK_DURATION_NOTES } from '../../../../mock-data';
 
 // HcsDownloadDurationHelp: the circle-question trigger opens a popup above it (top, start, 8px offset). The popup is a
 // View column: an intro row with the close X at its end, then a plain list of the five duration notes. HCS sets its
 // width to min(34rem, viewport - 16px); the scene keeps min(34rem, stage) inline, since sx has no min() token.
 // The wrapper keeps stage room (inline min-block-size) above the trigger for the popup.
-export default function PopoverCloseContext({ children, host }: ContextProps) {
+export default function HcsHelpCloseScene({ children, host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'end' } }} style={{ minBlockSize: 'calc(var(--p-px-16) * 18)', inlineSize: 'min(100%, calc(var(--p-px-16) * 40))' }}>
     <Popover open>

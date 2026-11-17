@@ -1,11 +1,11 @@
-import type { ContextProps } from '../types';
-import { Icon, IconButton, List, Popover, Switch, Type, View } from '../kit';
-import { MOCK_OUTPUT_COLUMNS } from '../mock-data';
+import type { ContextProps } from '../../../../types';
+import { Icon, IconButton, List, Popover, Switch, Type, View } from '../../../../kit';
+import { MOCK_OUTPUT_COLUMNS } from '../../../../mock-data';
 
 // ColumnVisibility: the Configure columns popover opened from its table-columns trigger in the Output header, cut to a reorderable List of
 // three columns (Model locked, Load sorted ascending) and the footer row, justifyContent: between: the reset icon at the start, Cancel and
 // Save grouped at the end. Search and Group by model are left out. Shown open; the wrapper keeps stage room (inline min-block-size).
-export default function PopoverContext({ children, host }: ContextProps) {
+export default function HcsConfigureColumnsScene({ children, host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 18)', inlineSize: 'min(100%, calc(var(--p-px-16) * 24))' }}>
       <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>

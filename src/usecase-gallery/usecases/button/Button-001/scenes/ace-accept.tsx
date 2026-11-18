@@ -2,7 +2,7 @@ import type { ContextProps } from '../../../../types';
 import { Dialog, View } from '../../../../kit';
 import { MockLicenceText } from '../../../../mock-data';
 
-// ACE EulaGate: the licence dialog with a plain Title (scale sm, not raised), a Description, the close X that also declines, and the Do Not Accept / Accept pair. Accept is enabled once the text is read to the end.
+// ACE EulaGate (ADM, PFD, HS, FD, AGPD, RWS and PBS render the same dialog without the Description line, which is body text; HS and FD add a Country field, left out; PBS hides the close X): the licence dialog with a plain Title (scale sm, not raised), a Description, the close X that also declines, and the Do Not Accept / Accept pair. Accept is enabled once the text is read to the end.
 export default function AceAcceptScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

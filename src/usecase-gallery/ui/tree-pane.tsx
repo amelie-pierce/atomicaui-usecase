@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { KeyboardEvent } from 'react';
 import { Collapsible, Type } from '../kit';
-import type { AreaGroup, ComponentGroup } from '../types';
+import type { AreaGroup, ComponentGroup, Usecase } from '../types';
 import { PaneCard } from './pane-card';
 
 interface TreePaneProps {
@@ -50,6 +50,26 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
     });
   }, [groups, selectedId]);
 
+  const renderList = (usecases: Usecase[]) => (
+    <ul className="ug-tree__list">
+      {usecases.map((usecase) => {
+        const selected = usecase.id === selectedId;
+        return (
+          <li key={usecase.id}>
+            <a
+              href={`#${encodeURIComponent(usecase.id)}`}
+              className="ug-tree__link"
+              aria-current={selected ? 'page' : undefined}
+            >
+              <Type role="l3" as="span" weight={selected ? 'bold' : 'regular'}>{usecase.id}</Type>
+              <Type role="l3" as="span" weight={selected ? 'bold' : 'regular'}>{usecase.title}</Type>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  );
+
   return (
     <PaneCard label="Components" className="ug-tree">
       <h1 className="ug-visually-hidden">{title}</h1>
@@ -64,7 +84,10 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
             </Collapsible.Header>
             <Collapsible.Panel>
               <div className="ug-tree__areas">
-                {group.areas.map((area) => (
+                {group.areas.map((area) => area.title === group.title ? (
+                  // An area named like its component is no real level: list its use cases directly.
+                  <div key={area.title}>{renderList(area.usecases)}</div>
+                ) : (
                   <Collapsible
                     key={area.title}
                     open={!closed.has(areaKey(group, area))}
@@ -77,23 +100,7 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
                       </Collapsible.Trigger>
                     </Collapsible.Header>
                     <Collapsible.Panel>
-                      <ul className="ug-tree__list">
-                        {area.usecases.map((usecase) => {
-                          const selected = usecase.id === selectedId;
-                          return (
-                            <li key={usecase.id}>
-                              <a
-                                href={`#${encodeURIComponent(usecase.id)}`}
-                                className="ug-tree__link"
-                                aria-current={selected ? 'page' : undefined}
-                              >
-                                <Type role="l3" as="span" weight={selected ? 'bold' : 'regular'}>{usecase.id}</Type>
-                                <Type role="l3" as="span" weight={selected ? 'bold' : 'regular'}>{usecase.title}</Type>
-                              </a>
-                            </li>
-                          );
-                        })}
-                      </ul>
+                      {renderList(area.usecases)}
                     </Collapsible.Panel>
                   </Collapsible>
                 ))}

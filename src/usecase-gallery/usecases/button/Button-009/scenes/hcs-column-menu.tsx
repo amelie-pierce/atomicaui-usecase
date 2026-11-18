@@ -3,7 +3,7 @@ import type { ContextProps } from '../../../../types';
 import { IconButton, Popover, Radio, RadioGroup, Table, View } from '../../../../kit';
 import { MOCK_OUTPUT_ROWS_BY_LOAD } from '../../../../mock-data';
 
-// F01Results header + ColumnMenu: every header cell takes its kebab through `actions`; the Load (lb) menu is open,
+// F01Results header + ColumnMenu (HS ColumnMenu renders the same; its kebab is color "secondary" while sorted, computed the same as "surface"): every header cell takes its kebab through `actions`; the Load (lb) menu is open,
 // anchored under its kebab (bottom, end, 4px offset) and floating over the rows. Load sorts A to Z, so the table
 // rows follow that choice. The scene shows two of the nine Output columns and two rows; the menu keeps only the Sort radios.
 export default function HcsColumnMenuScene({ children, host }: ContextProps) {

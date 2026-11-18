@@ -101,10 +101,10 @@ Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ childre
 Several apps often write the same pattern; the gallery shows one scene per **distinct UI** and a group of apps for each, never a scene per app. A case lists the apps that share its UI:
 
 ```ts
-apps: ['hcs', 'ace', 'adm', 'pfd'],
+apps: ['hcs', 'ace', 'adm', 'hs', 'fd'],
 cases: [
-  { id: 'hcs-reset', name: 'Reset confirm', apps: ['hcs'], source: { hcs: 'src/components/HcsResetDialog.tsx' } },
-  { id: 'ace-reset', name: 'Reset confirm', apps: ['ace', 'adm', 'pfd'], label: 'Other apps', source: { ace: '...', adm: '...', pfd: '...' } },
+  { id: 'hcs-reset', name: 'Reset confirm', apps: ['hcs', 'ace', 'adm'], source: { hcs: 'src/components/HcsResetDialog.tsx', ace: '...', adm: '...' } },
+  { id: 'hs-reset', name: 'Reset confirm', apps: ['hs', 'fd'], source: { hs: '...', fd: '...' } },
 ],
 ```
 

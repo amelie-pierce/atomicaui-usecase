@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog } from '../../../../kit';
 
-// HCS dialogs: a raised Title at scale sm with the Spacer pushing the close X to the end, also at scale sm.
+// HCS dialogs (ACE, ADM, PFD, PBS, HS, FD, AGPD and RWS render the same Title and X at the default popup width, 480px, with another aria-label): a raised Title at scale sm with the Spacer pushing the close X to the end, also at scale sm.
 export default function HcsCloseScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

@@ -11,7 +11,7 @@ export default function PfdCardNoteScene({ host }: ContextProps) {
           <Tooltip.Trigger
             render={<View as="button" aria-label="Embedded Strap" aui={{ color: 'surface', paint: 'fixed', shape: 'soft', sx: { display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', minHeight: '96', minWidth: '96', gap: '4' } }} {...{ type: 'button' }} />}
           >
-            <ContainedImage src="/images/tooltip-connection.svg" alt="" fit="contain" ratio="4:3" style={{ width: 64 }} />
+            <ContainedImage src="/images/tooltip-connection.svg" alt="" fit="contain" ratio="4:3" style={{ width: 'var(--p-px-64)' }} />
             <Type as="span" role="p3">Embedded Strap</Type>
           </Tooltip.Trigger>
           <Tooltip.Portal container={host}>

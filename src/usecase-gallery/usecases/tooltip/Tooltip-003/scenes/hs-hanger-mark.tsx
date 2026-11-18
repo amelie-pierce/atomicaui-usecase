@@ -14,7 +14,7 @@ export default function HsHangerMarkScene({ host }: ContextProps) {
               <Tooltip.Popup>
                 <View aui={{ paint: 'text', sx: { width: '160' } }}>
                   <Type as="strong" role="l4" weight="bold">Hanger A</Type>
-                  <ContainedImage src="/images/tooltip-connection.svg" alt="" fit="contain" ratio="4:3" style={{ width: 150 }} />
+                  <ContainedImage src="/images/tooltip-connection.svg" alt="" fit="contain" ratio="4:3" style={{ width: 'calc(var(--p-px-96) + var(--p-px-48) + var(--p-px-6))' }} />
                 </View>
               </Tooltip.Popup>
             </Tooltip.Positioner>

@@ -10,7 +10,6 @@ export default defineUsecase({
       id: 'adm-licence',
       name: 'Licence dialog',
       apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-      label: 'Other apps',
       source: {
         ace: 'src/features/eula/ui/EulaGate.tsx',
         adm: 'src/features/eula/components/EulaGate.tsx',

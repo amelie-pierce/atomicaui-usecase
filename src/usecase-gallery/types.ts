@@ -20,8 +20,8 @@ export interface UsecaseCaseDoc {
    * groups never overlap. Omit when the scene is the same in every app of the use case.
    */
   apps?: AppKey[];
-  /** The group chip in the preview toggle. Defaults to the app labels joined by a comma; set it for a big group, e.g. `Other apps`. */
-  label?: string;
+  /** Plain text shown below the scene: a property of this UI (label above or beside, a unit weight, ...). Never a toggle value. */
+  note?: string;
   /** The source file of this scene per app of the group; overrides the use case's `source` for these apps. */
   source?: Partial<Record<AppKey, string>>;
 }
@@ -79,8 +79,10 @@ export interface UsecaseCase {
   name: string;
   /** The apps that share this UI: the group of the case, or every app of the use case when the case sets none. */
   apps: AppKey[];
-  /** The group chip text: the case's `label`, or the app labels joined by a comma. */
+  /** The group toggle text: the app labels joined by a comma. */
   label: string;
+  /** The property note shown below the scene, when the case has one. */
+  note?: string;
   Scene: ComponentType<ContextProps>;
   loadCode: () => Promise<string>;
 }

@@ -9,7 +9,6 @@ export default defineUsecase({
       id: 'hcs-about',
       name: 'About dialog',
       apps: ['hcs', 'ace', 'adm', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-      label: 'Other apps',
       source: {
         hcs: 'src/components/HcsAboutDialog.tsx',
         ace: 'src/features/top-navigation/ui/AboutDialog.tsx',

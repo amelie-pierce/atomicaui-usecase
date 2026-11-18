@@ -25,7 +25,6 @@ export default defineUsecase({
       id: 'ace-gear-menu',
       name: 'Gear menu',
       apps: ['ace', 'hs', 'pfd', 'agpd', 'rws', 'pbs'],
-      label: 'Other apps',
       source: {
         ace: 'src/features/settings/ui/SettingsMenu.tsx',
         hs: 'src/hs/TopBar.tsx',

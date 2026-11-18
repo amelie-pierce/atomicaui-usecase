@@ -10,7 +10,6 @@ export default defineUsecase({
       id: 'pbs-help-center',
       name: 'Help Center menu',
       apps: ['ace', 'adm', 'hs', 'adc', 'pbs', 'pfd', 'rws', 'agpd'],
-      label: 'Other apps',
       source: {
         ace: 'src/features/top-navigation/ui/AceNavBar.tsx',
         adm: 'src/app/layout/NavBar/NavBar.tsx',

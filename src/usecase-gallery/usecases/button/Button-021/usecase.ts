@@ -10,7 +10,6 @@ export default defineUsecase({
       id: 'hcs-close',
       name: 'Dialog close',
       apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-      label: 'Other apps',
       source: {
         hcs: 'src/components/F01Experience.tsx',
         ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx',

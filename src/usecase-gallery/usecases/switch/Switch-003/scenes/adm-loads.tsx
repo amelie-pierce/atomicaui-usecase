@@ -3,7 +3,7 @@ import { Accordion, Type, View } from '../../../../kit';
 
 export default function AdmLoadsScene({ children }: ContextProps) {
   return (
-    <View as="aside" aria-label="Input" aui={{ color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column' } }} style={{ inlineSize: 'min(100%, 280px)' }}>
+    <View as="aside" aria-label="Input" aui={{ color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column' } }} style={{ inlineSize: 'min(100%, calc(var(--p-px-16) * 17.5))' }}>
       <Accordion defaultValue={['Load conditions']} aui={{ scale: 'sm' }}>
         <Accordion.Item value="Load conditions" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
           <Accordion.Header>
@@ -12,7 +12,9 @@ export default function AdmLoadsScene({ children }: ContextProps) {
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
-          <Accordion.Panel aui={{ profile: 'default' }}>{children}</Accordion.Panel>
+          <Accordion.Panel aui={{ profile: 'default' }}>
+            {children}
+          </Accordion.Panel>
         </Accordion.Item>
       </Accordion>
     </View>

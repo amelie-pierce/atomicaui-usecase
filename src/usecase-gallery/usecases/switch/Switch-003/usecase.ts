@@ -4,6 +4,7 @@ export default defineUsecase({
   area: 'Input panel',
   title: 'Switch at the end of a setting row',
   apps: ['adm'],
+  cases: [{ id: 'adm-loads', name: 'Load conditions', apps: ['adm'], source: { adm: 'src/features/design-inputs/components/LoadsSection/LoadConditionsFields.tsx' } }],
   source: { adm: 'src/features/design-inputs/components/LoadsSection/LoadConditionsFields.tsx' },
   summary: 'A setting row whose name sits at the start and whose switch sits at the far end.',
   where: 'ADM load conditions in the input panel: three rows, each a Type l5 name with a help icon at the start and a Switch at the end.',

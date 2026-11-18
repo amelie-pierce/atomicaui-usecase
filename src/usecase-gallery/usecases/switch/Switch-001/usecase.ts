@@ -4,6 +4,7 @@ export default defineUsecase({
   area: 'Column settings',
   title: 'Column visibility switch',
   apps: ['hcs', 'hs', 'fd'],
+  cases: [{ id: 'hcs-columns', name: 'Column visibility', apps: ['hcs', 'hs', 'fd'], source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', fd: 'src/components/ColumnSettings.jsx' } }],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', fd: 'src/components/ColumnSettings.jsx' },
   summary: 'A switch at the end of a list row that shows or hides the column the row names.',
   where: 'The Configure columns popover of the results table in HCS, HS and FD: one List row per column, the column name first and the switch in the row actions. The switch has no visible label (it carries an aria-label "Show <column>"); the row text names it.',

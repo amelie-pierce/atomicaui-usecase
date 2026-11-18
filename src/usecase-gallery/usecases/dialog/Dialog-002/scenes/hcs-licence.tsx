@@ -1,0 +1,28 @@
+import type { ContextProps } from '../../../../types';
+import { Dialog } from '../../../../kit';
+
+// HCS licence dialog (src/components/F01Experience.tsx): a popup that fills the stage (width and height fill), a raised Title with the close X (Button-021), a Description line under it that does not scroll, then the scrolling Body holding the licence text. The footer (Do Not Accept and Accept, Button-001) is left out.
+export default function HcsLicenceScene({ children, host }: ContextProps) {
+  return (
+    <Dialog open modal={false}>
+      <Dialog.Portal container={host}>
+        <Dialog.Backdrop />
+        <Dialog.Viewport>
+          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: 'fill', height: 'fill' } }}>
+            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
+              Website Application License Agreement
+              <Dialog.Spacer />
+              <Dialog.Close aria-label="Close Website Application License Agreement" aui={{ scale: 'sm' }} />
+            </Dialog.Title>
+            <Dialog.Description aui={{ scale: 'sm', sx: { flex: 'none' } }}>
+              Review and accept to start using the HCS prototype.
+            </Dialog.Description>
+            <Dialog.Body aui={{ scale: 'sm' }}>
+              {children}
+            </Dialog.Body>
+          </Dialog.Popup>
+        </Dialog.Viewport>
+      </Dialog.Portal>
+    </Dialog>
+  );
+}

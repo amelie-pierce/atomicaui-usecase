@@ -1,5 +1,16 @@
-import { ContainedIcon } from '../../../kit';
+import { Button, ContainedImage, Tooltip } from '../../../kit';
 
 export default function Example() {
-  return <ContainedIcon name="image" aria-label="Preview" />;
+  return (
+    <Tooltip.Provider>
+      <Tooltip>
+        <Tooltip.Trigger render={<Button aui={{ scale: 'sm' }} />}>Preview</Tooltip.Trigger>
+        <Tooltip.Portal>
+          <Tooltip.Positioner sideOffset={4}>
+            <Tooltip.Popup><ContainedImage src="/images/tooltip-connection.svg" alt="Connection detail" fit="contain" ratio="4:3" style={{ width: 192 }} /></Tooltip.Popup>
+          </Tooltip.Positioner>
+        </Tooltip.Portal>
+      </Tooltip>
+    </Tooltip.Provider>
+  );
 }

@@ -1,8 +1,8 @@
 import type { ContextProps } from '../../../../types';
-import { ContainedIcon, Tooltip, Type, View } from '../../../../kit';
+import { ContainedImage, Tooltip, Type, View } from '../../../../kit';
 
 // PFD CardTooltip (src/pfd/SelectionCards.tsx line 118): a selection card (a View as button, min 96px, an image over its label) is the trigger; the Provider has delay 0 so the note opens at once. The popup is the kit default,
-// at the default side with a 4px offset, up to 384px wide. The apps draw a ContainedImage; the gallery uses a kit icon. Shown open; the scene keeps one card.
+// at the default side with a 4px offset, up to 384px wide. The image is representative. Shown open; the scene keeps one card.
 export default function PfdCardNoteScene({ host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 12)', paddingBlockStart: 'calc(var(--p-px-16) * 8)' }}>
@@ -11,7 +11,7 @@ export default function PfdCardNoteScene({ host }: ContextProps) {
           <Tooltip.Trigger
             render={<View as="button" aria-label="Embedded Strap" aui={{ color: 'surface', paint: 'fixed', shape: 'soft', sx: { display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', minHeight: '96', minWidth: '96', gap: '4' } }} {...{ type: 'button' }} />}
           >
-            <ContainedIcon name="image" aria-hidden />
+            <ContainedImage src="/images/tooltip-connection.svg" alt="" fit="contain" ratio="4:3" style={{ width: 64 }} />
             <Type as="span" role="p3">Embedded Strap</Type>
           </Tooltip.Trigger>
           <Tooltip.Portal container={host}>

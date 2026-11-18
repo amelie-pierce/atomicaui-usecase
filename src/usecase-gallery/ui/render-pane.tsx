@@ -1,5 +1,4 @@
 import { Suspense, useState } from 'react';
-import { appLabels } from '../catalog/app-views';
 import type { CaseType } from '../catalog/app-views';
 import { Button, Radio, RadioGroup, ToggleGroup, Type } from '../kit';
 import type { PreviewMode, Usecase, UsecaseCase } from '../types';
@@ -84,32 +83,24 @@ export function RenderPane({
         </RadioGroup>
       )}
       {mode === 'context' && activeType && activeType.cases.length > 1 && (
-        <div className="ug-render__groups">
-          <ToggleGroup
-            className="ug-render__toggle"
-            aria-label="App group"
-            value={activeCase ? [activeCase.id] : []}
-            onValueChange={([next]) => next && onCaseChange(String(next))}
-          >
-            {activeType.cases.map(({ id, label, apps }) => (
-              <ToggleGroup.Item
-                key={id}
-                value={id}
-                title={`Covers ${appLabels(apps)}`}
-                render={(props, { pressed }) => (
-                  <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>
-                    {label}
-                  </Button>
-                )}
-              />
-            ))}
-          </ToggleGroup>
-          {activeCase && activeCase.label !== appLabels(activeCase.apps) && (
-            <Type role="l3" as="p" color="muted" className="ug-render__covers">
-              Covers {appLabels(activeCase.apps)}
-            </Type>
-          )}
-        </div>
+        <ToggleGroup
+          className="ug-render__toggle"
+          aria-label="App group"
+          value={activeCase ? [activeCase.id] : []}
+          onValueChange={([next]) => next && onCaseChange(String(next))}
+        >
+          {activeType.cases.map(({ id, label }) => (
+            <ToggleGroup.Item
+              key={id}
+              value={id}
+              render={(props, { pressed }) => (
+                <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>
+                  {label}
+                </Button>
+              )}
+            />
+          ))}
+        </ToggleGroup>
       )}
       <div className="ug-render__stage" ref={setHost}>
         <Suspense fallback={null}>
@@ -128,6 +119,11 @@ export function RenderPane({
           )}
         </Suspense>
       </div>
+      {mode === 'context' && activeCase?.note && (
+        <Type role="l3" as="p" color="muted" className="ug-render__note">
+          {activeCase.note}
+        </Type>
+      )}
     </PaneCard>
   );
 }

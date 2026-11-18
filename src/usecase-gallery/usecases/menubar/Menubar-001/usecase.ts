@@ -15,7 +15,6 @@ export default defineUsecase({
       id: 'adm-file-menu',
       name: 'File menu',
       apps: ['adm', 'ace', 'hcs', 'pbs', 'pfd', 'rws', 'agpd'],
-      label: 'Other apps',
       source: {
         adm: 'src/app/layout/NavBar/NavBar.tsx',
         ace: 'src/features/top-navigation/ui/AceNavBar.tsx',

@@ -13,7 +13,6 @@ export default defineUsecase({
       id: 'ace-accept',
       name: 'Accept licence',
       apps: ['ace', 'adm', 'pfd', 'hs', 'fd', 'agpd', 'rws', 'pbs'],
-      label: 'Other apps',
       source: {
         ace: 'src/features/eula/ui/EulaGate.tsx',
         adm: 'src/features/eula/components/EulaGate.tsx',
@@ -31,7 +30,6 @@ export default defineUsecase({
       id: 'ace-feedback',
       name: 'Send feedback',
       apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-      label: 'Other apps',
       source: {
         ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx',
         adm: 'src/features/top-navigation/components/FeedbackDialog.tsx',

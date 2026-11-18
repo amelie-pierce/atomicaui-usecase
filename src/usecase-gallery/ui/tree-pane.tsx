@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type { KeyboardEvent } from 'react';
 import { Collapsible, Type } from '../kit';
 import type { AreaGroup, ComponentGroup, Usecase } from '../types';
@@ -26,29 +26,16 @@ const moveFocus = (event: KeyboardEvent<HTMLElement>) => {
 const areaKey = (group: ComponentGroup, area: AreaGroup) => `${group.id}/${area.title}`;
 
 export function TreePane({ groups, selectedId, title }: TreePaneProps) {
-  // Components and areas are open by default; the user closes them, and choosing a use case reopens its path.
+  // Components and areas are collapsed by default, also the one holding the selected use case; the user opens them.
   // Keys are a component id, or `<component id>/<area title>` for an area.
-  const [closed, setClosed] = useState<ReadonlySet<string>>(new Set());
-  const setOpen = (key: string, open: boolean) =>
-    setClosed((current) => {
+  const [open, setOpenKeys] = useState<ReadonlySet<string>>(new Set());
+  const setOpen = (key: string, isOpen: boolean) =>
+    setOpenKeys((current) => {
       const next = new Set(current);
-      if (open) next.delete(key);
-      else next.add(key);
+      if (isOpen) next.add(key);
+      else next.delete(key);
       return next;
     });
-  useEffect(() => {
-    setClosed((current) => {
-      const next = new Set(current);
-      for (const group of groups) {
-        for (const area of group.areas) {
-          if (!area.usecases.some((usecase) => usecase.id === selectedId)) continue;
-          next.delete(group.id);
-          next.delete(areaKey(group, area));
-        }
-      }
-      return next.size === current.size ? current : next;
-    });
-  }, [groups, selectedId]);
 
   const renderList = (usecases: Usecase[]) => (
     <ul className="ug-tree__list">
@@ -75,7 +62,7 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
       <h1 className="ug-visually-hidden">{title}</h1>
       <nav aria-label="Components, areas and use cases" onKeyDown={moveFocus}>
         {groups.map((group) => (
-          <Collapsible key={group.id} open={!closed.has(group.id)} onOpenChange={(open) => setOpen(group.id, open)}>
+          <Collapsible key={group.id} open={open.has(group.id)} onOpenChange={(open) => setOpen(group.id, open)}>
             <Collapsible.Header>
               <Collapsible.Trigger>
                 <Type role="l3" as="span" weight="semi-bold">{group.title}</Type>
@@ -90,7 +77,7 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
                 ) : (
                   <Collapsible
                     key={area.title}
-                    open={!closed.has(areaKey(group, area))}
+                    open={open.has(areaKey(group, area))}
                     onOpenChange={(open) => setOpen(areaKey(group, area), open)}
                   >
                     <Collapsible.Header>

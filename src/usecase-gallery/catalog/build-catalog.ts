@@ -98,7 +98,7 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
     if (cases && cases.length > 0) {
       const caseIds = new Set<string>();
       usecase.cases = cases.map((raw) => {
-        const { id: caseId, name, apps = doc.apps, label, source } = raw;
+        const { id: caseId, name, apps = doc.apps, note, source } = raw;
         if ('app' in raw) fail(`${id} sets "app" on the case "${caseId}"; cases take "apps: [...]" now (the apps that share the scene)`);
         if (apps.length === 0) fail(`${id} gives the case "${caseId}" an empty apps list`);
         for (const app of [...apps, ...Object.keys(source ?? {})] as AppKey[]) {
@@ -114,7 +114,8 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
           id: caseId,
           name,
           apps,
-          label: label ?? appLabels(apps),
+          label: appLabels(apps),
+          note,
           Scene,
           loadCode: () => (sceneCode ??= Promise.all([usecase.loadCode(), loadSceneSource()]).then(([snippet, source]) => toContextSnippet(source, snippet))),
         };
@@ -140,11 +141,8 @@ function checkAppGroups({ id, apps, cases = [] }: Usecase, docs: UsecaseCaseDoc[
   for (const { name, cases: variants } of caseTypes({ cases })) {
     if (variants.length < 2) continue;
     const seen = new Map<AppKey, string>();
-    const labels = new Set<string>();
     for (const variant of variants) {
       if (!docs.find((doc) => doc.id === variant.id)?.apps) fail(`${id} gives the case "${variant.id}" no apps, but "${name}" has several cases; each needs its own apps`);
-      if (labels.has(variant.label)) fail(`${id} has two "${name}" cases labelled "${variant.label}"`);
-      labels.add(variant.label);
       for (const app of variant.apps) {
         const other = seen.get(app);
         if (other) fail(`${id} puts "${app}" in both "${other}" and "${variant.id}" of "${name}"; a type shows an app once`);

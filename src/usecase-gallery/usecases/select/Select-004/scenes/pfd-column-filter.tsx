@@ -24,15 +24,9 @@ export default function PfdColumnFilterScene({ host }: ContextProps) {
             <Field.SelectPositioner side="top" align="start" sideOffset={4} alignItemWithTrigger={false} className="ug-anchored">
               <Field.SelectPopup matchTriggerWidth>
                 <Field.SelectList>
-                  <Field.SelectItem value="all">
-                    <Field.SelectItemText>Select all</Field.SelectItemText>
-                  </Field.SelectItem>
-                  <Field.SelectItem value="passed">
-                    <Field.SelectItemText>Passed</Field.SelectItemText>
-                  </Field.SelectItem>
-                  <Field.SelectItem value="failed">
-                    <Field.SelectItemText>Failed</Field.SelectItemText>
-                  </Field.SelectItem>
+                  <Field.SelectItem value="all">Select all</Field.SelectItem>
+                  <Field.SelectItem value="passed">Passed</Field.SelectItem>
+                  <Field.SelectItem value="failed">Failed</Field.SelectItem>
                 </Field.SelectList>
               </Field.SelectPopup>
             </Field.SelectPositioner>

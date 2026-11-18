@@ -7,7 +7,7 @@ export default function HcsLabelledScene({ children, host }: ContextProps) {
       <Popover open>
         <Popover.Trigger render={<IconButton name="table-columns" aria-label="Configure columns" aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'contained', shape: 'soft' }} />} />
         <Popover.Portal container={host}>
-          <Popover.Positioner side="bottom" align="start" sideOffset={4} className="ug-anchored">
+          <Popover.Positioner side="bottom" align="start" style={{ paddingBlock: 'var(--p-px-4)' }} className="ug-anchored">
             <Popover.Popup initialFocus={false} aria-label="Configure columns" render={<View aui={{ color: 'surface', paint: 'solid', profile: 'default', shape: 'soft', elevation: 4, sx: { display: 'flex', flexDirection: 'column', gap: '8', width: '320' } }} />}>
               {children}
             </Popover.Popup>

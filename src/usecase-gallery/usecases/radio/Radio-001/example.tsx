@@ -1,17 +1,12 @@
 import { Radio, RadioGroup, Tooltip } from '../../../kit';
 
-const TOGGLE_STATES = {
-  unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } },
-  selected: { paint: 'solid', color: 'primary' },
-} as const;
-
 export default function Example() {
   return (
     <RadioGroup defaultValue="perspective" aria-label="View mode" aui={{ scale: 'sm', profile: 'no-padding', sx: { flexDirection: 'row', gap: '8' } }}>
       <Tooltip.Provider>
         <Tooltip>
           <Tooltip.Trigger closeOnClick={false} render={<span />}>
-            <Radio value="perspective" aui={{ scale: 'sm', states: TOGGLE_STATES }}>
+            <Radio value="perspective" aui={{ scale: 'sm', states: { unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } }, selected: { paint: 'solid', color: 'primary' } } }}>
               <Radio.Label>Perspective</Radio.Label>
             </Radio>
           </Tooltip.Trigger>
@@ -23,7 +18,7 @@ export default function Example() {
         </Tooltip>
         <Tooltip>
           <Tooltip.Trigger closeOnClick={false} render={<span />}>
-            <Radio value="ortho" aui={{ scale: 'sm', states: TOGGLE_STATES }}>
+            <Radio value="ortho" aui={{ scale: 'sm', states: { unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } }, selected: { paint: 'solid', color: 'primary' } } }}>
               <Radio.Label>Orthographic</Radio.Label>
             </Radio>
           </Tooltip.Trigger>

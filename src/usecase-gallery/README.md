@@ -113,7 +113,7 @@ cases: [
 - Within one type an app belongs to one group; an app a type does not have gets no case in it. A case without `apps` is the same in every app of the use case and cannot share its name with another case.
 - `apps` of the use case must equal the union of the case groups. The catalog throws at startup for an app that no case shows, a case app that is not listed, an overlap inside a type, a `source` app outside the group, or the old `app: '<key>'` field. The Document badges are drawn from these groups (`ui/docs-pane.tsx`), so the badges and the toggle cover the same apps.
 - Record the file each scene was built from per app: `source: { hcs: '<path>' }` on the use case, and `source` on a case for the apps of that group.
-- Two apps share a group when the container parts (Title style, close X, Description) and the footer (buttons, props, order, placement) match. Body fields, wording and the popup width or height do not count, so `Send` and `Submit` in the same footer are one UI and a 480px and a default-width popup of the same dialog are one group; note a size difference in the case comment or the `how` text, and split only for a big difference (content, structure, button set, order or position, colours or variants). Verify each merge against the apps' source, not from memory.
+- Group apps by rendered appearance and behavior measured from computed styles in a browser. Merge size-only differences and app-side defects; keep other measured distinctions, including label weight, and record the evidence. See `.claude/skills/usecase-gallery/SKILL.md` for the grouping procedure.
 
 A scene file is named `<first app of the group>-<type>.tsx` and is written from that app's own source, so the radio keeps the same type names under every app. Button-001 (Dialog footer), Button-020 (single action), Button-021 (header close) and the popover and menu use cases Button-002 (Popover footer), Button-003 (Help popover close), Button-009 (Column menu) and Button-018 (Field help trigger) are built this way, from the apps' repos (Button-022, the AGPD lock hint, has one case and no app toggle; Button-019, View options, has no counterpart in the other apps per the source scans and stays as the single HCS use case); the agent procedure is in `.claude/skills/usecase-gallery/SKILL.md`.
 
@@ -131,7 +131,7 @@ Every area now has a context, a variant or scenes, so the dashed fallback frame 
 
 ## Add an app
 
-Add one entry to `apps.ts`: `{ name, label, url? }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); an app without a web link yet (HS, RWS) omits `url` and its badge renders without an anchor. The key becomes valid in `apps: [...]`. The registry holds ten apps, each named `<key>-design-prototype` (private repos under amelie-pierce): hcs, ace, adm, pfd, pbs, hs, fd, agpd, rws, adc; a use case lists the apps that have the pattern, grouped by distinct UI (Button-001, 007, 008, 017, 020, 021, 029 and 030 have several groups; Button-010 and 028 list apps that share one UI; the rest are still `hcs` only).
+Add one entry to `apps.ts`: `{ name, label, url? }` under a short key. Its `url` is where the badge links (a new tab, `rel="noopener noreferrer"`); an app without a web link yet (HS, RWS) omits `url` and its badge renders without an anchor. The key becomes valid in `apps: [...]`. The registry holds ten apps, each named `<key>-design-prototype` (private repos under amelie-pierce): hcs, ace, adm, pfd, pbs, hs, fd, agpd, rws, adc; a use case lists the apps that have the pattern, grouped by distinct UI.
 
 ## Add a component
 
@@ -167,7 +167,7 @@ The docs card shows the use case id and title in one box, at the same size as th
 
 1. Copy this folder into the other app.
 2. Install the peer dependencies: `react` and `react-dom` 19, and the AtomicAUI kit with its own dependencies (`@base-ui/react`, `react-resizable-panels` 4), plus `sass`. The build must be Vite (`import.meta.glob`, `?raw`).
-3. Edit `apps.ts` for that app's registry. Edit `kit.ts` so its re-export points at that app's AtomicAUI package. It must provide `Button`, `Card`, `Checkbox`, `Chip`, `Collapsible`, `Dialog`, `Field`, `FileUpload`, `IconButton`, `Panels`, `Popover`, `Table`, `ToggleGroup`, `Tooltip` and `Type`.
+3. Edit `apps.ts` for that app's registry. Edit `kit.ts` so its re-export points at that app's AtomicAUI package and provides the exports listed there.
 4. Make sure the host renders `AuiIdentityProvider` with `typeface="engineering"` and `typography="body"` and loads the AtomicAUI token stylesheet; the gallery uses its CSS variables and does not load tokens itself. Also load the icon font (see below).
 5. Render `<UsecaseGallery title="..." />` full screen: it fills the viewport.
 

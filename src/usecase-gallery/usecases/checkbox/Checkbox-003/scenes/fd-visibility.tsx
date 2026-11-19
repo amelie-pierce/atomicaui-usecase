@@ -1,5 +1,5 @@
 import type { ContextProps } from '../../../../types';
-import { Checkbox, Field, Tooltip, Type, View } from '../../../../kit';
+import { Checkbox, Field, Type, View } from '../../../../kit';
 
 // FD viewer (src/components/Viewer.jsx, ControlRow): the same Field rows as ADM under an "Object visibility" title (Type l5 semi-bold, 12px), column gap 4 and Field gap 6, but the Checkbox is `scale "sm"` with the solid check (Checkbox.Icon name "check"). The scene leaves out the Reset view and the radios.
 export default function FdVisibilityScene(_props: ContextProps) {
@@ -20,29 +20,18 @@ export default function FdVisibilityScene(_props: ContextProps) {
         </Checkbox>
         <Field.Label>Base plate</Field.Label>
       </Field>
-      <Tooltip.Provider>
-        <Tooltip>
-          <Tooltip.Trigger render={<span tabIndex={0} />}>
-            <Field aui={{ scale: 'sm', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6', width: 'fill' } }}>
-              <Checkbox aria-label="Fasteners" aui={{
-                scale: 'sm',
-                states: {
-                  unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-                  selected: { color: 'primary', paint: 'solid' },
-                },
-              }}>
-                <Checkbox.Icon name="check" />
-              </Checkbox>
-              <Field.Label>Fasteners</Field.Label>
-            </Field>
-          </Tooltip.Trigger>
-          <Tooltip.Portal>
-            <Tooltip.Positioner side="left" sideOffset={8}>
-              <Tooltip.Popup aui={{ paint: 'solid', color: 'secondary', scale: 'sm' }}>Select a Model to view Fasteners</Tooltip.Popup>
-            </Tooltip.Positioner>
-          </Tooltip.Portal>
-        </Tooltip>
-      </Tooltip.Provider>
+      <Field aui={{ scale: 'sm', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6', width: 'fill' } }}>
+        <Checkbox aria-label="Fasteners" aui={{
+          scale: 'sm',
+          states: {
+            unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
+            selected: { color: 'primary', paint: 'solid' },
+          },
+        }}>
+          <Checkbox.Icon name="check" />
+        </Checkbox>
+        <Field.Label>Fasteners</Field.Label>
+      </Field>
     </View>
   );
 }

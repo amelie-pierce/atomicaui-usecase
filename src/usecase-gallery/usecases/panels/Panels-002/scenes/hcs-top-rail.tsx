@@ -3,7 +3,7 @@ import { Panels, Tooltip, Type, View } from '../../../../kit';
 // The Grid (engineering) layout of HcsSplitLayout.tsx with the Input panel collapsed: a vertical Panels group whose Input panel is collapsible and
 // rests at its 40px collapsedSize. The rail is a transparent row that holds the 28px square Panels.Trigger (angle-down, with its tooltip) at the
 // start corner, 4px in from the start edge (paddingInlineStart "4"); the Input content is a Panels.Content the collapse hides. The results panel
-// below keeps the rest of the height, reduced to its title. The 200px minimum size, the splitter drag and the contents are left out.
+// below keeps the rest of the height, reduced to its title. The 120px minSize gives the Trigger room to expand it. The 200px minimum size, the splitter drag and the contents are left out.
 export default function HcsTopRailScene() {
   return (
     <div style={{ inlineSize: 'min(100%, 560px)', blockSize: 200 }}>
@@ -13,7 +13,7 @@ export default function HcsTopRailScene() {
           collapsible
           collapsedSize="40px"
           defaultSize="40px"
-          minSize="40px"
+          minSize="120px"
           className="ug-split__panel"
           aui={{ profile: 'block-padding', scale: 'sm', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
         >

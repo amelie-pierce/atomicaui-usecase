@@ -2,6 +2,7 @@ import { MockViewerCanvas } from '../../../../mock-data';
 import type { ContextProps } from '../../../../types';
 import { Radio, RadioGroup, Type, View } from '../../../../kit';
 
+// The ADC viewer radios (src/adc/components/ConnectionModel.tsx): scale "xs", 4 gap, tonal outlined selection look.
 export default function AdcProjectionScene(_: ContextProps) {
   return (
     <View as="section" aria-label="3D Viewer" aui={{ color: 'surface-alt', paint: 'fixed', shape: 'soft', profile: 'default' }}>

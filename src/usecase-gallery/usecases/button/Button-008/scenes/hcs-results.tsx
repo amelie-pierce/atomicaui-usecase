@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Button, Table, View } from '../../../../kit';
 
-// F01Results cut to the Model column: a header and two rows, one passed (the expander is the example) and one failed (the expander in the
+// F01Results cut to the Model column, with mock model names (FD's Results.jsx shows the same chevron through Table.ExpandTrigger, without the error colour): a header and two rows, one passed (the expander is the example) and one failed (the expander in the
 // error color). Each row composes its own Model cell: expander, model name. The chevron turns 90 degrees on the icon only (`.ug-results`,
 // as `.hcs-why-not-toggle` in the app); the scene is static, so nothing responds to clicks.
 export default function ResultsScene({ children }: ContextProps) {

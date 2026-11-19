@@ -20,9 +20,10 @@ Live code wins over both: `define.ts`, `types.ts`, `apps.ts`, `catalog/build-cat
 
 ## Group by concept
 
-One use case per concept. Two use cases are one when they share the concept and the code instruction (the same parts, props and states a developer writes); they differ only by app or type (the dialog types of Button-001, the File and Help Center menus of Menubar-001). The variants then live in `cases` and are shown in In context: the type names are the radio group, the apps of a type the toggle (In context rules, below).
+One use case per concept. Compare use cases by UI (layout and appearance), never by content or data. Two use cases are one when they share the concept and the code instruction (the same parts, props and states a developer writes) and look the same; they differ only by app, type, or the content and data they show (the dialog types of Button-001, the File and Help Center menus of Menubar-001). Apps with the same UI but different content or data (HCS vs ADC) merge into one use case, and the scene shows the content and data differences with mock data, never an app's own labels or records. The variants then live in `cases` and are shown in In context: the type names are the radio group, the apps of a type the toggle (In context rules, below).
 
 - Merge into the lower id, move the other use case's scenes and cases in, rewrite `title`, `summary`, `where`, `when` and `how` once for the whole concept, and delete the other folder (its id stays retired, never reused).
+- Use cases that support different purposes of the same-looking control (Button-029: adding the chosen result vs appending an empty entry) are different types of one use case, shown in the type radio group.
 - Do not merge when the code instruction differs (another part, a wrapper, a prop or state set, a compound form), when the trigger or control is a different kind, or when only the container sounds alike. Say the reason for each kept split in the PR description.
 - Recheck this rule for the component's other use cases whenever you add or change one.
 

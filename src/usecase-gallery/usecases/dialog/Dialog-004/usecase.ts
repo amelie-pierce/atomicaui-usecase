@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Form dialog',
-  title: 'Request form dialog',
+  uiType: 'Dialog with plain title',
+  title: 'Form dialog',
   apps: ['agpd'],
   cases: [{ id: 'agpd-quote', name: 'Request a quote', apps: ['agpd'], source: { agpd: 'src/agpd/QuoteDialog.tsx' } }],
   source: { agpd: 'src/agpd/QuoteDialog.tsx' },

@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Preview',
-  title: 'Image preview tooltip',
+  uiType: 'Tooltip on a button',
+  title: 'Text button tooltip',
   apps: ['pfd', 'rws', 'hs'],
   cases: [
     { id: 'pfd-image-preview', name: 'Image preview', apps: ['pfd'], source: { pfd: 'src/pfd/ResultsTable.tsx' } },

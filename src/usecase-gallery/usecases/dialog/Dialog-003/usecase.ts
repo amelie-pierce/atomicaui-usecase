@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Templates',
-  title: 'Template picker dialog',
+  uiType: 'IconButton',
+  title: '(to merge)',
   apps: ['ace', 'adm', 'hs', 'fd'],
   cases: [
     { id: 'ace-templates', name: 'Template picker', apps: ['ace'], source: { ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx' } },

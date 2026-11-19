@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Toolbar',
-  title: 'Reset filters',
+  uiType: 'Single button',
+  title: 'Secondary solid with icon',
   apps: ['hcs', 'pfd', 'hs', 'fd'],
   source: {
     hcs: 'src/App.tsx',

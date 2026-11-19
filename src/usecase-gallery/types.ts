@@ -7,13 +7,19 @@ export interface ComponentMeta {
   id: string;
   /** Name shown in the tree. */
   title: string;
+  /**
+   * The UI types of the component in tree order, the middle level of the tree (`Single button`, `Two buttons`, ...).
+   * A type is a UI told apart by its rendered look and code, never by where it is used. Every use case names one of
+   * them in `uiType`, and every listed type has at least one use case.
+   */
+  uiTypes: string[];
 }
 
 /** One In context case of a use case: one scene, shared by every app of its group. */
 export interface UsecaseCaseDoc {
   /** Names the scene file `scenes/<id>.tsx`; by convention `<first app>-<type>`. */
   id: string;
-  /** The type of situation the scene shows (Reset confirm, Accept licence, ...). Cases with the same name are the variants of one type. */
+  /** The place of use the scene shows (Reset confirm dialog, Walkthrough card, ...). Cases with the same name are the same place, one per group of apps. */
   name: string;
   /**
    * The apps that share this exact UI (keys of `apps.ts`, all listed in the use case's `apps`). Within one name the
@@ -28,9 +34,15 @@ export interface UsecaseCaseDoc {
 
 /** Written once per use case in `usecases/<component>/<UseCaseId>/usecase.ts`. */
 export interface UsecaseDoc {
-  /** Where the component is used, e.g. `Dialog`, `Walkthrough`, `Table`. Use cases with the same area share a tree group. */
-  area: string;
+  /** The UI type this variant belongs to: one of the component's `uiTypes`. Use cases with the same type share a tree group. */
+  uiType: string;
+  /** The variant's name inside its UI type (`Secondary solid`, `Text with leading icon`); shown beside the id in the tree. */
   title: string;
+  /**
+   * The place of use of the one default In context (`contexts/<area-slug>.tsx`), for a use case without `cases`.
+   * Omit it when `cases` list the places: the scenes replace the area context.
+   */
+  area?: string;
   /** One sentence: what this use case shows. */
   summary: string;
   /** Where in a product this pattern appears. */
@@ -47,8 +59,8 @@ export interface UsecaseDoc {
   /** Optional: the area's context places this example elsewhere (for example `close`, the card corner); uses `contexts/<area-slug>-<variant>.tsx`. */
   contextVariant?: string;
   /**
-   * Optional: several In context cases of this use case (for example the dialog types). Each id names a file
-   * `scenes/<id>.tsx` in the use case folder; the preview shows a radio group of the case names and renders the chosen
+   * Optional: the places of use of this variant (for example the dialogs that hold a single button). Each id names a file
+   * `scenes/<id>.tsx` in the use case folder; the preview shows a radio group of the place names and renders the chosen
    * scene instead of the area context. Cases that share a `name` are the UI variants of one type, one per group of apps
    * (see `UsecaseCaseDoc`); with two or more variants the preview adds a toggle of the groups under the radio group.
    */
@@ -103,12 +115,12 @@ export interface Usecase extends Omit<UsecaseDoc, 'cases'> {
   cases?: UsecaseCase[];
 }
 
-/** The use cases of one component that live in the same place in a product. */
-export interface AreaGroup {
+/** The variants of one component that share a UI type. */
+export interface UiTypeGroup {
   title: string;
   usecases: Usecase[];
 }
 
 export interface ComponentGroup extends ComponentMeta {
-  areas: AreaGroup[];
+  uiTypeGroups: UiTypeGroup[];
 }

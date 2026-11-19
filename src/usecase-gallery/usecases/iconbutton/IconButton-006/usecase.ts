@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Form',
-  title: 'Field help trigger',
+  uiType: 'IconButton',
+  title: '(to merge)',
   apps: ['hcs', 'pfd', 'pbs', 'hs', 'adm', 'agpd', 'rws', 'fd'],
   cases: [
     { id: 'hcs-field-help', name: 'Field help', apps: ['hcs'], source: { hcs: 'src/App.tsx' } },

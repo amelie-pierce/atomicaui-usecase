@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Summary',
-  title: 'Calculation summary table',
+  uiType: 'Data table',
+  title: 'Summary table',
   apps: ['adm', 'adc'],
   source: { adm: 'src/features/calculation/components/shared/ResultTable.tsx', adc: 'src/adc/components/ResultTable.tsx' },
   cases: [

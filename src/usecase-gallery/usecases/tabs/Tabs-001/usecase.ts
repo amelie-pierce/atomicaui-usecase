@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Output header',
+  uiType: 'Segmented tabs',
   title: 'Pane tabs',
   apps: ['hs', 'pbs', 'fd', 'rws', 'adm', 'adc'],
   cases: [

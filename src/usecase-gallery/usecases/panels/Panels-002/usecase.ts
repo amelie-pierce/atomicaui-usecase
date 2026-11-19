@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Panel',
-  title: 'Collapsible panel',
+  uiType: 'Collapsible panel',
+  title: 'Top rail',
   apps: ['hcs', 'ace', 'adm', 'hs', 'fd', 'agpd'],
   cases: [
     {

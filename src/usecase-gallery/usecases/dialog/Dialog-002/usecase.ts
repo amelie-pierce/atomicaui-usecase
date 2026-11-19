@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Licence gate',
-  title: 'Licence dialog: full-size frame and scrolling text',
+  uiType: 'Dialog with title bar',
+  title: 'Full-size dialog',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   cases: [
     { id: 'hcs-licence', name: 'Licence dialog', apps: ['hcs'], source: { hcs: 'src/components/F01Experience.tsx' } },

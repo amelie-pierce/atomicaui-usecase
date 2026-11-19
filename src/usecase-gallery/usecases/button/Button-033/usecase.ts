@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Panel',
-  title: 'Collapsed side rail',
+  uiType: 'Icon button',
+  title: 'Ghost, 28px',
   apps: ['hcs'],
   cases: [{ id: 'hcs-rail', name: 'Collapsed rail', apps: ['hcs'], source: { hcs: 'src/components/HcsSplitLayout.tsx' } }],
   source: { hcs: 'src/components/HcsSplitLayout.tsx' },

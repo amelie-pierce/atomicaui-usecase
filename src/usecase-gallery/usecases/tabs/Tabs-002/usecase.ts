@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Phone workspace',
-  title: 'Phone workspace tabs',
+  uiType: 'IconButton',
+  title: '(to merge)',
   apps: ['pfd', 'hs', 'agpd', 'fd', 'adm', 'ace', 'pbs'],
   cases: [
     {

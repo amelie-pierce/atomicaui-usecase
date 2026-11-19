@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Card',
-  title: 'Tooltip on a card or image button',
+  uiType: 'Tooltip on a button',
+  title: 'Card button tooltip',
   apps: ['pfd', 'rws'],
   cases: [
     { id: 'pfd-card-note', name: 'Card hint', apps: ['pfd'], source: { pfd: 'src/pfd/SelectionCards.tsx' } },

@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Toolbar',
-  title: 'Download CSV',
+  uiType: 'IconButton',
+  title: '(to merge)',
   apps: ['pfd', 'hs', 'rws'],
   source: {
     pfd: 'src/pfd/ResultsTable.tsx',

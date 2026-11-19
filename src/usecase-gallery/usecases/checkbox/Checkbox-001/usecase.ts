@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Form',
-  title: 'Option with a label',
+  uiType: 'Single checkbox',
+  title: 'Checkbox with label',
   apps: ['hcs', 'ace', 'hs', 'pfd', 'pbs', 'agpd', 'rws', 'adm', 'fd', 'adc'],
   source: {
     hcs: 'src/App.tsx',

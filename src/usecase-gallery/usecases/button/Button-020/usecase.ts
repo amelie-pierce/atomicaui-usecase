@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Dialog',
-  title: 'Dialog footer: single action',
+  uiType: 'IconButton',
+  title: '(to merge)',
   apps: ['ace', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   cases: [
     {

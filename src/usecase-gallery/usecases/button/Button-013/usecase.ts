@@ -1,8 +1,9 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  uiType: 'Single button',
   area: 'Form',
-  title: 'In-form helper action',
+  title: 'Raised solid with icon',
   apps: ['hcs'],
   source: { hcs: 'src/App.tsx' },
   summary: 'A raised solid Button resets one field group to its default without leaving the form.',

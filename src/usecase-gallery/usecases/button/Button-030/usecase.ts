@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Table',
-  title: 'Row actions',
+  uiType: 'Two buttons',
+  title: 'Tonal pair',
   apps: ['hs', 'pbs', 'ace'],
   source: {
     hs: 'src/hs/OutputPane.tsx',

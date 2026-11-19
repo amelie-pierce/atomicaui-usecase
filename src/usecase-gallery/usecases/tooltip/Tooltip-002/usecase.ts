@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Viewer',
-  title: 'Viewer control tooltip',
+  uiType: 'IconButton',
+  title: '(to merge)',
   apps: ['adm', 'fd', 'pbs', 'rws'],
   cases: [
     {

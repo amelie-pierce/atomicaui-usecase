@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Table',
-  title: 'Column menu',
+  uiType: 'Icon button',
+  title: 'Ghost, 20px, small glyph',
   apps: ['hcs', 'hs', 'pfd'],
   cases: [
     { id: 'hcs-column-menu', name: 'Column menu', apps: ['hcs', 'hs'], source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx' } },

@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Details',
-  title: 'Detail table',
+  uiType: 'IconButton',
+  title: '(to merge)',
   apps: ['adc', 'fd'],
   source: { adc: 'src/adc/components/CapImportSteps.tsx', fd: 'src/components/RowExpansion.jsx' },
   cases: [

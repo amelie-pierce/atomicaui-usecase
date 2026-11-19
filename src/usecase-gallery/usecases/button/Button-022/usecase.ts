@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Popover',
-  title: 'Lock hint action',
+  uiType: 'Single button',
+  title: 'Accent text, extra small',
   apps: ['agpd'],
   cases: [{ id: 'agpd-lock-hint', name: 'Lock hint', apps: ['agpd'], source: { agpd: 'src/agpd/inputs.tsx' } }],
   source: { agpd: 'src/agpd/inputs.tsx' },

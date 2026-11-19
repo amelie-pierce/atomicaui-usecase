@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Icon button',
-  title: 'Icon button label tooltip',
+  uiType: 'Tooltip on a button',
+  title: 'Icon button tooltip',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   cases: [
     {

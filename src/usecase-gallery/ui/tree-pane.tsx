@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { KeyboardEvent } from 'react';
 import { Collapsible, Type } from '../kit';
-import type { AreaGroup, ComponentGroup, Usecase } from '../types';
+import type { ComponentGroup, UiTypeGroup, Usecase } from '../types';
 import { PaneCard } from './pane-card';
 
 interface TreePaneProps {
@@ -10,7 +10,7 @@ interface TreePaneProps {
   title: string;
 }
 
-// Up/Down move focus through the visible tree stops: each component and area toggle and the use case links.
+// Up/Down move focus through the visible tree stops: each component and UI type toggle and the use case links.
 // Closed groups unmount their panel, so their links are skipped.
 const moveFocus = (event: KeyboardEvent<HTMLElement>) => {
   if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
@@ -23,11 +23,11 @@ const moveFocus = (event: KeyboardEvent<HTMLElement>) => {
   stops[index + (event.key === 'ArrowDown' ? 1 : -1)]?.focus();
 };
 
-const areaKey = (group: ComponentGroup, area: AreaGroup) => `${group.id}/${area.title}`;
+const typeKey = (group: ComponentGroup, type: UiTypeGroup) => `${group.id}/${type.title}`;
 
 export function TreePane({ groups, selectedId, title }: TreePaneProps) {
-  // Components and areas are collapsed by default, also the one holding the selected use case; the user opens them.
-  // Keys are a component id, or `<component id>/<area title>` for an area.
+  // Components and UI types are collapsed by default, also the one holding the selected use case; the user opens them.
+  // Keys are a component id, or `<component id>/<UI type title>` for a UI type.
   const [open, setOpenKeys] = useState<ReadonlySet<string>>(new Set());
   const setOpen = (key: string, isOpen: boolean) =>
     setOpenKeys((current) => {
@@ -60,7 +60,7 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
   return (
     <PaneCard label="Components" className="ug-tree">
       <h1 className="ug-visually-hidden">{title}</h1>
-      <nav aria-label="Components, areas and use cases" onKeyDown={moveFocus}>
+      <nav aria-label="Components, UI types and use cases" onKeyDown={moveFocus}>
         {groups.map((group) => (
           <Collapsible key={group.id} open={open.has(group.id)} onOpenChange={(open) => setOpen(group.id, open)}>
             <Collapsible.Header>
@@ -70,24 +70,24 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
               </Collapsible.Trigger>
             </Collapsible.Header>
             <Collapsible.Panel>
-              <div className="ug-tree__areas">
-                {group.areas.map((area) => area.title === group.title ? (
-                  // An area named like its component is no real level: list its use cases directly.
-                  <div key={area.title}>{renderList(area.usecases)}</div>
+              <div className="ug-tree__types">
+                {group.uiTypeGroups.map((type) => type.title === group.title ? (
+                  // A UI type named like its component is no real level: list its variants directly.
+                  <div key={type.title}>{renderList(type.usecases)}</div>
                 ) : (
                   <Collapsible
-                    key={area.title}
-                    open={open.has(areaKey(group, area))}
-                    onOpenChange={(open) => setOpen(areaKey(group, area), open)}
+                    key={type.title}
+                    open={open.has(typeKey(group, type))}
+                    onOpenChange={(open) => setOpen(typeKey(group, type), open)}
                   >
                     <Collapsible.Header>
                       <Collapsible.Trigger>
-                        <Type role="l3" as="span" weight="semi-bold">{area.title}</Type>
+                        <Type role="l3" as="span" weight="semi-bold">{type.title}</Type>
                         <Collapsible.Chevron />
                       </Collapsible.Trigger>
                     </Collapsible.Header>
                     <Collapsible.Panel>
-                      {renderList(area.usecases)}
+                      {renderList(type.usecases)}
                     </Collapsible.Panel>
                   </Collapsible>
                 ))}

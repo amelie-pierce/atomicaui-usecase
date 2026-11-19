@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Error screen',
-  title: 'Retry',
+  uiType: 'Single button',
+  title: 'Secondary solid',
   apps: ['hcs'],
   source: { hcs: 'src/components/F01Results.tsx' },
   cases: [

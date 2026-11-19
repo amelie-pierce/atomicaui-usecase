@@ -1,8 +1,9 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  uiType: 'IconButton',
   area: 'Panel',
-  title: 'Panel header controls',
+  title: '(to merge)',
   apps: ['hcs'],
   source: { hcs: 'src/App.tsx' },
   summary: 'Transparent contained IconButtons in a panel header collapse, expand, configure and explain the panel.',

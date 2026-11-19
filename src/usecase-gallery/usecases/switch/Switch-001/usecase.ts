@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Column settings',
-  title: 'Column visibility switch',
+  uiType: 'Switch',
+  title: 'Switch at row end',
   apps: ['hcs', 'hs', 'fd'],
   cases: [{ id: 'hcs-columns', name: 'Column visibility', apps: ['hcs', 'hs', 'fd'], source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', fd: 'src/components/ColumnSettings.jsx' } }],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', fd: 'src/components/ColumnSettings.jsx' },

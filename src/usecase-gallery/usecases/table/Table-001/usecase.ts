@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Results',
+  uiType: 'Data table',
   title: 'Results grid',
   apps: ['hcs', 'hs', 'pfd', 'agpd', 'pbs', 'rws', 'fd', 'ace'],
   source: {

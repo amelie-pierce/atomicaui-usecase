@@ -1,8 +1,9 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  uiType: 'Icon button',
   area: 'Viewer',
-  title: 'Viewer overlay icon',
+  title: 'Outlined accent, 28px',
   apps: ['hcs'],
   source: { hcs: 'src/App.tsx' },
   summary: 'An orange icon with a thin outline floats over a 3D viewer to reset the camera.',

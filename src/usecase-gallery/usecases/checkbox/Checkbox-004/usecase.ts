@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Print',
-  title: 'Read-only option in a print summary',
+  uiType: 'Single checkbox',
+  title: 'Read-only with legend',
   apps: ['ace', 'pbs'],
   source: { ace: 'src/features/print/ui/CrackPrintReport.tsx', pbs: 'src/PrintView.tsx' },
   cases: [

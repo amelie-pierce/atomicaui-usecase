@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Viewer',
-  title: 'Camera projection radios',
+  uiType: 'Radio',
+  title: 'Inline radios',
   apps: ['hcs', 'fd', 'adc', 'pbs'],
   cases: [
     {

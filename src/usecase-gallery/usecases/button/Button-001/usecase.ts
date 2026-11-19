@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Dialog',
-  title: 'Dialog footer: Cancel and Confirm',
+  uiType: 'Two buttons',
+  title: 'Secondary and primary',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   cases: [
     { id: 'hcs-reset', name: 'Reset confirm', apps: ['hcs', 'ace', 'adm'], source: { hcs: 'src/components/HcsResetDialog.tsx', ace: 'src/features/reset-inputs/ui/ResetInputsAction.tsx', adm: 'src/features/top-navigation/components/ResetDialog.tsx' } },

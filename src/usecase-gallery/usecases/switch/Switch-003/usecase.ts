@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Input panel',
-  title: 'Switch at the end of a setting row',
+  uiType: 'IconButton',
+  title: '(to merge)',
   apps: ['adm'],
   cases: [{ id: 'adm-loads', name: 'Load conditions', apps: ['adm'], source: { adm: 'src/features/design-inputs/components/LoadsSection/LoadConditionsFields.tsx' } }],
   source: { adm: 'src/features/design-inputs/components/LoadsSection/LoadConditionsFields.tsx' },

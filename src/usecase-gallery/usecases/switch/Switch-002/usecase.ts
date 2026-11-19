@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Options',
-  title: 'Labelled switch',
+  uiType: 'Switch',
+  title: 'Switch with label',
   apps: ['hcs', 'hs', 'adm', 'pbs', 'rws', 'ace'],
   cases: [
     { id: 'hcs-labelled', name: 'Labelled switch', apps: ['hcs', 'hs'], source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx' } },

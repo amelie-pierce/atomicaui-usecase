@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'About',
-  title: 'About dialog: release history and notes',
+  uiType: 'Dialog with title bar',
+  title: 'Content dialog',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   cases: [
     {

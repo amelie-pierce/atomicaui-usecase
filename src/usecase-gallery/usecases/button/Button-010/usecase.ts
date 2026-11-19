@@ -1,9 +1,10 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  uiType: 'Single button',
   area: 'Output header',
   contextVariant: 'helpers',
-  title: 'Scroll helpers',
+  title: 'Text with leading icon',
   apps: ['hcs', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   source: {
     hcs: 'src/useOutputNavigation.tsx',

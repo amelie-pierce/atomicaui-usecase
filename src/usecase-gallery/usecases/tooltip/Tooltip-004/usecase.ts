@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Disabled control',
-  title: 'Tooltip on a disabled control',
+  uiType: 'Tooltip on a disabled control',
+  title: 'Disabled control tooltip',
   apps: ['hcs', 'fd', 'hs'],
   cases: [
     {

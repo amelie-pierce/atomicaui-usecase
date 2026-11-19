@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Tab rail',
-  title: 'Overflow list',
+  uiType: 'Dropdown with icon trigger',
+  title: 'Filled icon trigger',
   apps: ['adc'],
   cases: [{ id: 'adc-hidden-designs', name: 'Overflow list', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } }],
   source: { adc: 'src/adc/Workspace.tsx' },

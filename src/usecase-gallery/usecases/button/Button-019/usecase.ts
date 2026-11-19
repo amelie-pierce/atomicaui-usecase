@@ -1,9 +1,10 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
+  uiType: 'Single button',
   area: 'Viewer',
   contextVariant: 'options',
-  title: 'View options',
+  title: 'Tonal outlined',
   apps: ['hcs'],
   source: { hcs: 'src/App.tsx' },
   summary: 'A tonal text Button in the corner of the 3D viewer opens the camera and visibility controls in a popover.',

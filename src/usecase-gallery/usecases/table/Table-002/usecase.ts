@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Selection',
-  title: 'Row selection',
+  uiType: 'Data table',
+  title: 'Selectable rows',
   apps: ['hcs', 'hs', 'fd', 'pbs', 'rws', 'adm', 'ace'],
   source: {
     hcs: 'src/components/F01Results.tsx',

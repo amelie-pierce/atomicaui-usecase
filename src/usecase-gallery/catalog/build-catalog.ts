@@ -3,7 +3,7 @@ import type { ComponentType } from 'react';
 import { appLabels, caseTypes } from './app-views';
 import { toContextSnippet, toSnippet } from './snippet';
 import type { AppKey } from '../apps';
-import type { AreaGroup, ComponentGroup, ComponentMeta, ContextProps, Usecase, UsecaseCaseDoc, UsecaseDoc } from '../types';
+import type { ComponentGroup, ComponentMeta, ContextProps, UiTypeGroup, Usecase, UsecaseCaseDoc, UsecaseDoc } from '../types';
 
 type Loader<T> = () => Promise<T>;
 
@@ -80,7 +80,10 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
       Example: lazy(() => loadExample().then((component) => ({ default: component }))),
       loadCode: () => (code ??= loadSource().then(toSnippet)),
     };
-    const slug = doc.contextVariant ? `${areaSlug(doc.area)}-${doc.contextVariant}` : areaSlug(doc.area);
+    if (!group.uiTypes.includes(doc.uiType)) fail(`${id} sets uiType "${doc.uiType}", which is not in uiTypes of ${component}.meta.ts (${group.uiTypes.join(', ')})`);
+    if (doc.area && cases && cases.length > 0) fail(`${id} sets both "area" and "cases"; the scenes of the cases replace the area context, so drop "area"`);
+    if (!doc.area && !(cases && cases.length > 0)) fail(`${id} has neither "area" (default In context) nor "cases"`);
+    const slug = doc.area ? (doc.contextVariant ? `${areaSlug(doc.area)}-${doc.contextVariant}` : areaSlug(doc.area)) : '';
     if (doc.contextVariant && !contextBySlug.has(slug)) fail(`${id} sets contextVariant "${doc.contextVariant}" but contexts/${slug}.tsx is missing`);
     const loadContext = contextBySlug.get(slug);
     const loadContextSource = contextSourceBySlug.get(slug);
@@ -128,7 +131,7 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
   return [...groups.values()]
     .filter((group) => group.usecases.length > 0)
     .sort((a, b) => byNaturalOrder(a.title, b.title))
-    .map(({ usecases, ...group }) => ({ ...group, areas: groupByArea(usecases) }));
+    .map(({ usecases, ...group }) => ({ ...group, uiTypeGroups: groupByUiType(group, usecases) }));
 }
 
 /**
@@ -156,14 +159,14 @@ function checkAppGroups({ id, apps, cases = [] }: Usecase, docs: UsecaseCaseDoc[
   }
 }
 
-/** Areas appear in the order of their lowest use case id, so a new area slots in where its first use case sits. */
-function groupByArea(usecases: Usecase[]): AreaGroup[] {
-  const areas = new Map<string, AreaGroup>();
+/** UI types appear in the order the component's meta lists them; a listed type with no use case is a mistake. */
+function groupByUiType({ id, title, uiTypes }: ComponentMeta, usecases: Usecase[]): UiTypeGroup[] {
+  const groups = uiTypes.map((type): UiTypeGroup => ({ title: type, usecases: [] }));
   for (const usecase of [...usecases].sort((a, b) => byNaturalOrder(a.id, b.id))) {
-    const title = usecase.area.trim() || fail(`${usecase.id} has an empty area`);
-    const area = areas.get(title) ?? { title, usecases: [] };
-    area.usecases.push(usecase);
-    areas.set(title, area);
+    groups.find((group) => group.title === usecase.uiType)?.usecases.push(usecase);
   }
-  return [...areas.values()];
+  for (const group of groups) {
+    if (group.usecases.length === 0) fail(`${title} lists the UI type "${group.title}" in uiTypes, but no use case of ${id} has it`);
+  }
+  return groups;
 }

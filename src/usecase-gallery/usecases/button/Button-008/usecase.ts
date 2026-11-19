@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Table',
-  title: 'Row expander',
+  uiType: 'Icon button',
+  title: 'Expander, 24px',
   apps: ['hcs', 'hs', 'fd', 'adc'],
   source: {
     hcs: 'src/components/F01Results.tsx',

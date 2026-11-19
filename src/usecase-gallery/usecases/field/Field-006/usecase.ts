@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Input panel',
-  title: 'Field description',
+  uiType: 'Field with description',
+  title: 'Description under a field',
   apps: ['fd', 'rws', 'ace'],
   cases: [
     {

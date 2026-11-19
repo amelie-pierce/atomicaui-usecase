@@ -1,3 +1,3 @@
 import { defineComponent } from '../../define';
 
-export default defineComponent({ id: 'Button', title: 'Button' });
+export default defineComponent({ id: 'Button', title: 'Button', uiTypes: ['Single button', 'Two buttons', 'Icon button'] });

@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Cells',
+  uiType: 'Editable table',
   title: 'Cell input table',
   apps: ['adm'],
   cases: [{ id: 'adm-cell-input', name: 'Cell input table', apps: ['adm'], source: { adm: 'src/features/design-inputs/components/GeometrySection/AnchorSpacingTable.tsx' } }],

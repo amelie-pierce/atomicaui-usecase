@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Output header',
-  title: 'Print Output',
+  uiType: 'Single button',
+  title: 'Tonal outlined with icon',
   apps: ['hcs', 'adm', 'hs', 'fd'],
   source: {
     hcs: 'src/App.tsx',

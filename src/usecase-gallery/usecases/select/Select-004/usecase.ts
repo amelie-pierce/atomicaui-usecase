@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Table',
-  title: 'Column filter select',
+  uiType: 'IconButton',
+  title: '(to merge)',
   apps: ['hcs', 'hs', 'pfd'],
   cases: [
     {

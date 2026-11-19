@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Walkthrough',
-  title: 'Tutorial topic row',
+  uiType: 'Single button',
+  title: 'Outlined full-width row',
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   cases: [
     { id: 'hs-topic-row', name: 'Topic row', apps: ['hs', 'agpd', 'rws'], source: { hs: 'src/hs/Tutorials.tsx', agpd: 'src/agpd/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx' } },

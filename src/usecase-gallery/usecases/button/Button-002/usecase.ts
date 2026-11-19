@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Popover',
-  title: 'Popover footer',
+  uiType: 'Two buttons',
+  title: 'Text and primary',
   apps: ['hcs', 'hs', 'adc'],
   cases: [
     { id: 'hcs-configure-columns', name: 'Configure columns', apps: ['hcs'], source: { hcs: 'src/components/ColumnVisibility.tsx' } },

@@ -1,3 +1,3 @@
 import { defineComponent } from '../../define';
 
-export default defineComponent({ id: 'Switch', title: 'Switch' });
+export default defineComponent({ id: 'Switch', title: 'Switch', uiTypes: ['Switch'] });

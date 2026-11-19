@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Viewer',
-  title: 'Object visibility toggles',
+  uiType: 'Checkbox group',
+  title: 'Titled checkbox list',
   apps: ['hcs', 'adc', 'adm', 'fd', 'hs', 'pbs', 'agpd', 'rws'],
   source: {
     hcs: 'src/App.tsx',

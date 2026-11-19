@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Templates',
-  title: 'Template groups accordion',
+  uiType: 'Titled accordion',
+  title: 'Plain title',
   apps: ['ace', 'hs', 'fd'],
   cases: [
     { id: 'ace-template-groups', name: 'Template groups', apps: ['ace'], source: { ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx' } },

@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Output header',
+  uiType: 'Filled select',
   title: 'Status filter',
   apps: ['fd'],
   cases: [{ id: 'fd-status-filter', name: 'Status filter', apps: ['fd'], source: { fd: 'src/components/Results.jsx' } }],

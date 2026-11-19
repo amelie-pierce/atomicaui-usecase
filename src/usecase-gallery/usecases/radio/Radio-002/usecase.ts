@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Input panel',
+  uiType: 'Radio',
   title: 'Labelled radio group',
   apps: ['agpd', 'rws', 'pbs', 'fd'],
   cases: [

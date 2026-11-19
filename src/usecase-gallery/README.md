@@ -1,6 +1,6 @@
 # usecase-gallery
 
-A read-only gallery of component use cases: a tree of components, the areas where each is used (Dialog, Walkthrough, Table, ...) and use case ids (`Button-001`), the rendered example, the code to copy, and where/when/how to use it, plus which apps use it. Selection lives in the URL hash (`#Button-001`).
+A read-only gallery of component use cases: a tree of components, the UI types of each (Button: Single button, Two buttons, Icon button), the variants of a type (Single button: Secondary solid, Primary solid, ...) with their ids (`Button-016`), the rendered example, the code to copy, and where/when/how to use it, plus which apps use it. Selection lives in the URL hash (`#Button-001`).
 
 The folder is self-contained. It imports only `react`, `react-dom` and its own `kit.ts`.
 
@@ -12,7 +12,7 @@ usecase-gallery/
   kit.ts                   the ONLY file that imports the AtomicAUI kit
   apps.ts                  the app registry: key, name, label, optional url
   types.ts, define.ts      shared types and the define helpers
-  contexts/                one file per area: the real kit area that holds an example (panel.tsx, toolbar.tsx, ...)
+  contexts/                one file per place of use: the real kit area that holds an example (body-text.tsx, form.tsx, ...)
   mock-data.tsx            the one place for the little sample content (a row, a field, a radio pair) the scenes show around an example
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
   hooks/                   hash selection, copy-to-clipboard, media query
@@ -21,10 +21,10 @@ usecase-gallery/
   styles/gallery.scss      layout and chrome, tokens only
   usecases/
     <component>/
-      <component>.meta.ts  defineComponent({ id: 'Button', title: 'Button' })
+      <component>.meta.ts  defineComponent({ id: 'Button', title: 'Button', uiTypes: ['Single button', 'Two buttons', 'Icon button'] })
       <UseCaseId>/         e.g. Button-001
         example.tsx        the rendered example AND the source shown as code
-        usecase.ts         defineUsecase({ area, title, apps, summary, where, when, how, cases?, source? })
+        usecase.ts         defineUsecase({ uiType, title, area?, apps, summary, where, when, how, cases?, source? })
         scenes/<case>.tsx  optional: one In context scene per case (see below)
 ```
 
@@ -51,10 +51,12 @@ The preview renders this component, and the Code view of the right pane shows th
 ```ts
 import { defineUsecase } from '../../../define';
 
-export default defineUsecase({ area, title, apps: ['hcs'], summary, where, when, how });
+export default defineUsecase({ uiType: 'Single button', title: 'Primary solid', area: 'Dialog', apps: ['hcs'], summary, where, when, how });
 ```
 
-`area` is the place in a product where the component is used (`'Dialog'`, `'Walkthrough'`, `'Table'`). Use cases of one component with the same `area` share a tree group; a new area is just a new string, and areas are listed in the order of their lowest use case id. A use case is one real situation, so controls that appear together there belong in one example (the Cancel and Confirm of a dialog footer are one use case; Previous and Next of a walkthrough are one, End is another).
+The tree is component > UI type > variant. A **UI type** is a UI told apart by what it is made of, measured in the rendered gallery and read in the code, never by where it is used: Button has Single button, Two buttons (a main and a second CTA) and Icon button (the former IconButton component, folded in). The component's `<component>.meta.ts` lists its `uiTypes` in tree order; every use case names one in `uiType`, and the catalog throws for an unlisted type or a listed type without a use case. A **variant** is one use case inside the type, named by its look (`Secondary solid`, `Text with leading icon`), with its own id and example. A component with one UI type (title equal to the component title) lists its variants directly. A variant is one UI, so controls that appear together in it belong in one example (the Cancel and Confirm of a dialog footer are one variant of Two buttons).
+
+`area` is optional and is only the place of use of the single default In context: a variant with no `cases` sets `area` (`'Toolbar'`) and renders `contexts/<area-slug>.tsx`; a variant with `cases` lists its places there and sets no `area` (the catalog throws for both). It no longer groups the tree.
 
 `apps` lists the keys of the apps that use the pattern; the Document view shows one primary-style badge (kit `Chip`, `color: 'primary'`, `paint: 'solid'`) per key, in an unlabelled row (the list carries an `aria-label` of "Used in"). When the cases give apps their own UI (see "The same use case in another app"), the badges are drawn from the same groups instead: one block per type with one row of badges per distinct UI, so the Document and the In context toggle cannot disagree.
 
@@ -94,7 +96,7 @@ cases: [
 ],
 ```
 
-Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ children, host }`). With more than one type name the preview shows a kit `RadioGroup` of the names above the scene (default: the first; the choice survives the Component | In context toggle and resets on another use case), renders only the chosen scene and shows its code. A scene that places `{children}` gets the example spliced in; one that writes its own controls (a disabled or alternative state) is shown as written. A use case with one case, or none, shows no radio group and uses the area context. Cases with the same name are one type with several app variants (next section). A missing scene file fails the catalog build.
+Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ children, host }`). In context lists the **places of use** of the variant (the dialog, walkthrough card or popover that holds this UI): with more than one case name (a place) the preview shows a kit `RadioGroup` of the place names (not UI types: the UI type is the tree level) above the scene (default: the first; the choice survives the Component | In context toggle and resets on another use case), renders only the chosen scene and shows its code. A scene that places `{children}` gets the example spliced in; one that writes its own controls (a disabled or alternative state) is shown as written. A use case with one case, or none, shows no radio group and uses the area context. Cases with the same name are one type with several app variants (next section). A missing scene file fails the catalog build.
 
 ### The same use case in another app
 
@@ -115,9 +117,9 @@ cases: [
 - Record the file each scene was built from per app: `source: { hcs: '<path>' }` on the use case, and `source` on a case for the apps of that group.
 - Group apps by rendered appearance and behavior measured from computed styles in a browser. Merge size-only differences and app-side defects; keep other measured distinctions, including label weight, and record the evidence. See `.claude/skills/usecase-gallery/SKILL.md` for the grouping procedure.
 
-A scene file is named `<first app of the group>-<type>.tsx` and is written from that app's own source, so the radio keeps the same type names under every app. Button-001 (Dialog footer), Button-020 (single action) and the IconButton use cases IconButton-001 (Close icon: help popover, walkthrough and dialog types), IconButton-002 (Column menu) and IconButton-006 (Field help trigger), and the popover use case Button-002 (Popover footer), are built this way, from the apps' repos (Button-022, the AGPD lock hint, has one case and no app toggle; Button-019, View options, has no counterpart in the other apps per the source scans and stays as the single HCS use case); the agent procedure is in `.claude/skills/usecase-gallery/SKILL.md`.
+A scene file is named `<first app of the group>-<type>.tsx` and is written from that app's own source, so the radio keeps the same type names under every app. Button-001 (Dialog footer), Button-016 (single action) and the IconButton use cases Button-031 (Close icon: help popover, walkthrough and dialog types), Button-032 (Column menu) and Button-031/033 (Field help trigger), and the popover use case Button-002 (Popover footer), are built this way, from the apps' repos (Button-022, the AGPD lock hint, has one case and no app toggle; Button-019, View options, has no counterpart in the other apps per the source scans and stays as the single HCS use case); the agent procedure is in `.claude/skills/usecase-gallery/SKILL.md`.
 
-The walkthrough use cases follow the same rule: Button-004 (Previous and Next, three groups) and Button-005 (End, four groups) have one scene per distinct card UI, and a label's case and weight and the icon after End count as differences even when the app sets them by CSS (`.ug-tour__nav` in `gallery.scss` reproduces the bold capitals of ADM, PBS, PFD and FD). The walkthrough close X is the Walkthrough close type of IconButton-001 (the same in all nine apps with a tour, so one group and no toggle). Button-025 (tutorial topic row, four groups) is built the same way; Button-027 (HS launch general tutorial) has one group; the welcome dialog Close and Start Walkthrough (ADM and FD) is the Welcome dialog type of Button-001, because it renders as that Cancel and Confirm footer. A scene that places `{children}` shows the example as it is (the HCS wording); the others write their own controls so the capitals, weights and icons are the app's.
+The walkthrough use cases follow the same rule: Button-004 (Previous and Next, three groups) and Button-005 (End, four groups) have one scene per distinct card UI, and a label's case and weight and the icon after End count as differences even when the app sets them by CSS (`.ug-tour__nav` in `gallery.scss` reproduces the bold capitals of ADM, PBS, PFD and FD). The walkthrough close X is the Walkthrough close type of Button-031 (the same in all nine apps with a tour, so one group and no toggle). Button-025 (tutorial topic row, four groups) is built the same way; Button-027 (HS launch general tutorial) has one group; the welcome dialog Close and Start Walkthrough (ADM and FD) is the Welcome dialog type of Button-001, because it renders as that Cancel and Confirm footer. A scene that places `{children}` shows the example as it is (the HCS wording); the others write their own controls so the capitals, weights and icons are the app's.
 
 ### Sample content
 
@@ -143,7 +145,7 @@ Every pane (tree, preview, right pane) is one `PaneCard` (`ui/pane-card.tsx`): a
 
 | Element | Type |
 | --- | --- |
-| tree component and area titles | `l3` semi-bold 16/20 |
+| tree component and UI type titles | `l3` semi-bold 16/20 |
 | tree use case rows (id and name) | `l3` regular 16/20, selected row bold, primary text on a light primary tint |
 | doc id and name | `l3` bold 16/20 |
 | doc summary | `l3` muted 16/20 |
@@ -161,7 +163,7 @@ The docs card shows the use case id and title in one box, at the same size as th
 
 - A use case folder is named `<ComponentId>-<NNN>`: the `id` from the component's meta, a dash, and at least three digits (`Button-001`, `Button-012`).
 - The prefix must match the `id` in the component's meta file, and ids are unique across the gallery. A violation throws at startup with the reason.
-- Ids are never reused or renumbered once shared, because they appear in URLs. The one exception: the move to areas regrouped Button-001..014 into Button-001..016.
+- Ids are never reused or renumbered once shared, because they appear in URLs. The exceptions are the two regroupings: the move to areas regrouped Button-001..014 into Button-001..016, and the move to UI types retired merged ids and folded IconButton into Button (see the wiki note for the id mapping).
 
 ## Move it to another app
 

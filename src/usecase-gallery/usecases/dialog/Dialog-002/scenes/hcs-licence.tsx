@@ -2,7 +2,7 @@ import type { ContextProps } from '../../../../types';
 import { Dialog, View } from '../../../../kit';
 import { MockLicenceText } from '../../../../mock-data';
 
-// HCS licence dialog (src/components/F01Experience.tsx): a popup that fills the stage (width and height fill), a raised Title with the close X (Button-021), a Description line under it that does not scroll, then the scrolling Body holding the licence text. The footer (Do Not Accept and Accept, Button-001) is left out.
+// HCS licence dialog (src/components/F01Experience.tsx): a popup that fills the stage (width and height fill), a raised Title with the close X (IconButton-001), a Description line under it that does not scroll, then the scrolling Body holding the licence text. The footer (Do Not Accept and Accept, Button-001) is left out.
 export default function HcsLicenceScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

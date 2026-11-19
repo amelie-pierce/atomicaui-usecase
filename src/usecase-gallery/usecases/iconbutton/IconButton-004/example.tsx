@@ -1,4 +1,4 @@
-import { Panels, Tooltip } from '../../../kit';
+import { IconButton, Tooltip } from '../../../kit';
 
 export default function Example() {
   return (
@@ -6,8 +6,7 @@ export default function Example() {
       <Tooltip>
         <Tooltip.Trigger
           render={
-            <Panels.Trigger
-              targetId="hcs-input"
+            <IconButton
               name="angle-right"
               aria-label="Expand Input"
               aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'square', shape: 'soft' }}

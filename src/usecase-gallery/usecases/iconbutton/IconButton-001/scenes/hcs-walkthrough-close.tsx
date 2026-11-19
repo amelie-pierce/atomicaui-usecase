@@ -1,12 +1,11 @@
-import type { ContextProps } from '../types';
-import { Button, Type, View } from '../kit';
-import { MockTourTarget } from '../mock-data';
+import { Button, IconButton, Type, View } from '../../../../kit';
+import { MockTourTarget } from '../../../../mock-data';
 
 // Walkthrough step 1 of 6 (Connection Type), the first step, so the footer has only Next. The close X sits in the card's top end
 // corner, 4px in, by the app's local CSS (`.hcs-tour-close`; the kit sx has no inset axis), here an inline style; the title
 // reserves 24px at its end so its text stops short of the X.
 
-export default function WalkthroughCloseContext({ children }: ContextProps) {
+export default function HcsWalkthroughCloseScene() {
   return (
     <div className="ug-tour">
       <MockTourTarget target="connection" />
@@ -18,7 +17,7 @@ export default function WalkthroughCloseContext({ children }: ContextProps) {
         style={{ insetInlineStart: 228, insetBlockStart: 8, inlineSize: 328 }}
       >
         <span style={{ position: 'absolute', insetBlockStart: 4, insetInlineEnd: 4 }}>
-          {children}
+          <IconButton name="xmark" aria-label="Close walkthrough" aui={{ scale: 'sm', paint: 'text', color: 'surface' }} />
         </span>
         <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Connection Type</Type>
         <Type role="p3">Choose how the beams connect.</Type>

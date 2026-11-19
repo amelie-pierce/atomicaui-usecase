@@ -6,7 +6,7 @@ import { MOCK_DURATION_NOTES } from '../../../../mock-data';
 // View column: an intro row with the close X at its end, then a plain list of the five duration notes. HCS sets its
 // width to min(34rem, viewport - 16px); the scene keeps min(34rem, stage) inline, since sx has no min() token.
 // The wrapper keeps stage room (inline min-block-size) above the trigger for the popup.
-export default function HcsHelpCloseScene({ children, host }: ContextProps) {
+export default function HcsHelpCloseScene({ host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'end' } }} style={{ minBlockSize: 'calc(var(--p-px-16) * 18)', inlineSize: 'min(100%, calc(var(--p-px-16) * 40))' }}>
     <Popover open>
@@ -35,7 +35,11 @@ export default function HcsHelpCloseScene({ children, host }: ContextProps) {
               <Type aui={{ sx: { flex: 'fill' } }}>
                 Duration of load adjustments as specified by the code are as follows:
               </Type>
-              {children}
+              <IconButton
+                name="xmark"
+                aria-label="Close help"
+                aui={{ scale: 'sm', profile: 'square-compact', color: 'secondary', paint: 'text', shape: 'soft', sx: { flex: 'none' } }}
+              />
             </View>
             <View
               as="ul"

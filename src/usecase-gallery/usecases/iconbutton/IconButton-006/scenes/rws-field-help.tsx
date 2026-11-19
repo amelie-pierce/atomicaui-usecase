@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Button, ContainedIcon, Field, Popover, View } from '../../../../kit';
 
-// RWS Help (src/rws/inputs.tsx): a Button at profile "square" pinned to 20px by sx, so the label row keeps the 20px of a plain label. It opens a 320px popover; its close is Button-003.
+// RWS Help (src/rws/inputs.tsx): a Button at profile "square" pinned to 20px by sx, so the label row keeps the 20px of a plain label. It opens a 320px popover; its close is IconButton-001.
 export default function RwsFieldHelpScene({ host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 10)', inlineSize: 'min(100%, calc(var(--p-px-16) * 18))' }}>

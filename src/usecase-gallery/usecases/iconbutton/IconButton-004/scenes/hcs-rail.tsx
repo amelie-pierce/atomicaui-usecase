@@ -1,11 +1,10 @@
-import type { ContextProps } from '../types';
-import { Panels, Type, View } from '../kit';
+import { Panels, Tooltip, Type, View } from '../../../../kit';
 
 // The collapsed Input panel as HcsSplitLayout.tsx builds it: a Panels group whose Input panel is collapsible and rests at its 40px
 // collapsedSize. The rail is a transparent column that fills the panel height (`.hcs-input-rail`, height 100%) with the 28px square
-// Panels.Trigger at the top centre (here with its tooltip); the Input pane itself is a Panels.Content the collapse hides. The viewer
+// Panels.Trigger (a kit trigger that renders the IconButton, with its tooltip) at the top centre; the Input pane itself is a Panels.Content the collapse hides. The viewer
 // pane beside it keeps the rest of the width, reduced to its title (no canvas). The splitter is not draggable in the scene.
-export default function PanelRailContext({ children }: ContextProps) {
+export default function HcsRailScene() {
   return (
     <div style={{ inlineSize: 'min(100%, 560px)', blockSize: 160 }}>
       <Panels orientation="horizontal" className="ug-split" aui={{ scale: 'sm' }}>
@@ -19,7 +18,25 @@ export default function PanelRailContext({ children }: ContextProps) {
           aui={{ profile: 'block-padding', scale: 'sm', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
         >
           <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 'none' } }} style={{ height: '100%', boxSizing: 'border-box' }}>
-            {children}
+            <Tooltip.Provider>
+              <Tooltip>
+                <Tooltip.Trigger
+                  render={
+                    <Panels.Trigger
+                      targetId="hcs-input"
+                      name="angle-right"
+                      aria-label="Expand Input"
+                      aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'square', shape: 'soft' }}
+                    />
+                  }
+                />
+                <Tooltip.Portal>
+                  <Tooltip.Positioner side="bottom" sideOffset={4}>
+                    <Tooltip.Popup aui={{ scale: 'sm' }}>Expand Input</Tooltip.Popup>
+                  </Tooltip.Positioner>
+                </Tooltip.Portal>
+              </Tooltip>
+            </Tooltip.Provider>
           </View>
           <Panels.Content
             aui={{ paint: 'text', profile: 'no-padding', sx: { position: 'relative', display: 'flex', flexDirection: 'column', flex: 'fill', overflow: 'hidden', minWidth: '0', minHeight: '0' } }}

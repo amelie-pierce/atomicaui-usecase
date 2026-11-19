@@ -24,7 +24,7 @@ export default function FdVisibilityScene(_props: ContextProps) {
         <Tooltip>
           <Tooltip.Trigger render={<span tabIndex={0} />}>
             <Field aui={{ scale: 'sm', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6', width: 'fill' } }}>
-              <Checkbox aria-label="Fasteners" disabled aui={{
+              <Checkbox aria-label="Fasteners" aui={{
                 scale: 'sm',
                 states: {
                   unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },

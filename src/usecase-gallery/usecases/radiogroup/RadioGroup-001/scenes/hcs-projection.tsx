@@ -2,8 +2,7 @@ import { MockViewerCanvas } from '../../../../mock-data';
 import type { ContextProps } from '../../../../types';
 import { Radio, RadioGroup, Type, View } from '../../../../kit';
 
-// The viewer controls of HCS (src/App.tsx, the f02-controls column), FD (src/components/Viewer.jsx, the viewer-controls cluster) and ADC (src/adc/components/ConnectionModel.tsx): the projection group on its own, in the column the controls stack in.
-// ADC writes the group at scale "xs" with the tonal outlined selection look; it renders the same radios at a smaller size (14px/500 text, 20px dot, 4px gap instead of 16px/400, 22px, 8px), so it is in this group and the standard is the HCS and FD size.
+// The viewer controls of HCS (src/App.tsx, the f02-controls column), FD (src/components/Viewer.jsx, the viewer-controls cluster): the projection group on its own, in the column the controls stack in.
 // Left out: the Reset view button, the Object Visibility checkboxes; the apps show the group enabled.
 export default function HcsProjectionScene(_: ContextProps) {
   return (

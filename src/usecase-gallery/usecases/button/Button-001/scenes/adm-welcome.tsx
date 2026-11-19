@@ -2,8 +2,8 @@ import type { CSSProperties } from 'react';
 import type { ContextProps } from '../../../../types';
 import { Dialog, Type } from '../../../../kit';
 
-// ADM Welcome dialog (src/features/top-navigation/components/Tutorials.tsx): a 384px Dialog (the --aui-dialog-width variable, as the app sets it) with a Title and close X, the welcome text in the Body and the footer Close and Start Walkthrough. FD writes the same footer in its Getting Started dialog.
-export default function AdmWelcomeScene({ children, host }: ContextProps) {
+// ADM Welcome dialog (src/features/top-navigation/components/Tutorials.tsx): a 384px Dialog (the --aui-dialog-width variable, as the app sets it) with a Title and close X, the welcome text in the Body and the footer Close and Start Walkthrough. FD writes the same footer in its Getting Started dialog. The footer is the Cancel and Confirm pair: a default Dialog.Button (gray, here labelled Close) and a solid secondary one (here Start Walkthrough); the app closes the dialog itself, so both use dismiss={false}.
+export default function AdmWelcomeScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>
       <Dialog.Portal container={host}>
@@ -19,7 +19,8 @@ export default function AdmWelcomeScene({ children, host }: ContextProps) {
               <Type as="p" role="p2">Welcome to the Anchor Designer.</Type>
             </Dialog.Body>
             <Dialog.Actions aui={{ scale: 'sm' }}>
-              {children}
+              <Dialog.Button dismiss={false}>Close</Dialog.Button>
+              <Dialog.Button dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Start Walkthrough</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

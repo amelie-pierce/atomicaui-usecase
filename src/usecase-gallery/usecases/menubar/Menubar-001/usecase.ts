@@ -2,7 +2,7 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   area: 'Menubar',
-  title: 'File menu',
+  title: 'Top bar menu: File and Help Center',
   apps: ['hs', 'adc', 'adm', 'ace', 'hcs', 'pbs', 'pfd', 'rws', 'agpd'],
   cases: [
     {
@@ -25,6 +25,27 @@ export default defineUsecase({
         agpd: 'src/agpd/TopBar.tsx',
       },
     },
+    {
+      id: 'hcs-help-center',
+      name: 'Help Center menu',
+      apps: ['hcs'],
+      source: { hcs: 'src/App.tsx' },
+    },
+    {
+      id: 'pbs-help-center',
+      name: 'Help Center menu',
+      apps: ['ace', 'adm', 'hs', 'adc', 'pbs', 'pfd', 'rws', 'agpd'],
+      source: {
+        ace: 'src/features/top-navigation/ui/AceNavBar.tsx',
+        adm: 'src/app/layout/NavBar/NavBar.tsx',
+        hs: 'src/hs/TopBar.tsx',
+        adc: 'src/adc/Workspace.tsx',
+        pbs: 'src/TopBar.tsx',
+        pfd: 'src/pfd/TopBar.tsx',
+        rws: 'src/rws/TopBar.tsx',
+        agpd: 'src/agpd/TopBar.tsx',
+      },
+    },
   ],
   source: {
     hs: 'src/hs/TopBar.tsx',
@@ -37,8 +58,8 @@ export default defineUsecase({
     rws: 'src/rws/TopBar.tsx',
     agpd: 'src/agpd/TopBar.tsx',
   },
-  summary: 'The File menu on the top bar: a trigger that opens a popup of device, template and print actions.',
-  where: 'The first menu of the top menubar in nine apps, before About, Reset and the Help Center menu. FD has no File menu.',
-  when: 'Use it for the file-level actions of the open design (save, open, print), grouped under one bar trigger. A menu of one action, or a setting, is not a File menu.',
-  how: 'The menu is a Menubar.Dropdown inside a Menubar: a Menubar.DropdownTrigger "File", then Portal, Positioner (side bottom by default, align "start", sideOffset 4) and Popup at aui sx width "192", holding Menubar.DropdownItem rows. File menu, HS and ADC: after the device and template items a Menubar.DropdownSeparator and a Menubar.DropdownSubmenuRoot whose Menubar.DropdownSubmenuTrigger "Print" (a right chevron row) opens a second Popup at the default width (side "right", align "start", sideOffset 4) with the one print item. Other apps (ADM, ACE, HCS, PBS, PFD, RWS, AGPD): the same popup with plain rows, the last of them Print; the standard is ADM, five rows (Save to device, Open from device, New from template, Save as template, Print) with a separator before Print. ACE and HCS write no separator, PBS, PFD, RWS and AGPD have only Download, Upload, separator, Print, and HCS has only Open, Save, Print at the default popup width (148px instead of 192px); HCS also sets scale "sm" on every part, which renders the same as the default. Item wording is each app\'s own. Both scenes are shown open with every item enabled (the apps disable Save, Download, Print and ADC Save As Template by state); the bar\'s About, Reset and other menus are left out.',
+  summary: 'A text trigger on the top bar opens a popup of rows: the File menu of device, template and print actions and the Help Center menu of help actions, both written the same way.',
+  where: 'The top menubar of nine apps (FD has no menus): the File menu comes first, then About, Reset and the Help Center menu. Feedback and Tutorials are in every Help Center menu (HS words them "Feedback: Help us improve!" and "Contact: Request local support!" plus Tutorials), and PBS, PFD, RWS and AGPD add Add to Home Screen. The settings gear is another concept (Menubar-003).',
+  when: 'Use it for a short list of actions grouped under one text trigger of the top bar: file-level actions of the open design (save, open, print) or the few help actions of an application, where each row only runs an action or opens a dialog or panel. Use a submenu only when one row holds several choices; a menu of plain rows stays flat. A menu of one action, or a setting, is not this menu.',
+  how: 'One instruction for both menus: a Menubar.Dropdown inside a Menubar, a Menubar.DropdownTrigger with the text, then Portal, Positioner (align "start", sideOffset 4; side bottom by default) and a Menubar.DropdownPopup of Menubar.DropdownItem rows, with an aui sx width on the popup. A row that holds several choices is a Menubar.DropdownSubmenuRoot whose Menubar.DropdownSubmenuTrigger (a right chevron row) opens a second Portal, Positioner (side "right", align "start", sideOffset 4) and Popup at the default width; a Menubar.DropdownSeparator splits the rows. File menu, HS and ADC: after the device and template items a separator and a submenu trigger "Print" opening the one print item, popup width "192". File menu, Other apps (ADM, ACE, HCS, PBS, PFD, RWS, AGPD): the same popup with plain rows, the last of them Print; the standard is ADM, five rows (Save to device, Open from device, New from template, Save as template, Print) with a separator before Print. ACE and HCS write no separator, PBS, PFD, RWS and AGPD have only Download, Upload, separator, Print, and HCS has only Open, Save, Print at the default popup width (148px instead of 192px); HCS also sets scale "sm" on every part, which renders the same as the default. Help Center menu, Other apps (ACE, ADM, HS, ADC, PBS, PFD, RWS, AGPD): a Menubar at scale "sm" holds the trigger "Help Center" and a popup of plain rows: Feedback, Tutorials and Add to Home Screen. The popup width is a size difference only: 192 here (PBS, PFD, RWS, AGPD), 160 in ADM and ADC, 288 in ACE and HS. Help Center menu, HCS: the same trigger and a 288px popup whose first row is a submenu trigger "Tutorials" opening to the right with the single item "HCS: General Tutorial", and the plain item "Feedback Form" follows. Item wording is each app\'s own. Every scene is open with every item enabled (the apps disable Save, Download, Print, ADC Save As Template and ADC Tutorials by state); the app positioner z-index, the dialogs the rows open and the rest of the top bar (logo, About, Reset, gear) are left out.',
 });

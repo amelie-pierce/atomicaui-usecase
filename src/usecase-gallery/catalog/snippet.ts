@@ -9,17 +9,18 @@ const dedent = (jsx: string) => {
   return [first, ...rest.map((line) => line.slice(indent))].join('\n');
 };
 
+const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:anchor|ref)=\{anchor\}|\sclassName=\"ug-anchored\"|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
+
 /**
  * Turns an `example.tsx` source into the snippet users copy: the JSX the `Example` component returns,
- * without the kit import or the component wrapper. Falls back to the whole file when the shape differs.
+ * without the kit import, the component wrapper or the preview-only props (a Dialog example is forced open into the stage). Falls back to the whole file when the shape differs.
  */
 export const toSnippet = (source: string): string => {
   const body = source.replace(KIT_IMPORT, '').trim();
   const jsx = RETURNED_JSX.exec(body)?.[1];
-  return jsx ? dedent(jsx) : body;
+  return jsx ? dedent(jsx.replace(PREVIEW_ONLY_PROPS, '')) : body;
 };
 
-const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:anchor|ref)=\{anchor\}|\sclassName=\"ug-anchored\"|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
 // Scenery from `mock-data.tsx` is not part of the pattern: the copied code keeps a one-line placeholder.
 const MOCK_SCENERY = /<Mock(\w+)[^>]*\/>/g;
 const CHILDREN_LINE = /^([ \t]*)\{children\}[ \t]*$/m;

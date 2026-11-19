@@ -27,6 +27,10 @@ One use case per concept. Compare use cases by UI (layout and appearance), never
 - Do not merge when the code instruction differs (another part, a wrapper, a prop or state set, a compound form), when the trigger or control is a different kind, or when only the container sounds alike. Say the reason for each kept split in the PR description.
 - Recheck this rule for the component's other use cases whenever you add or change one.
 
+## Component tab shows the main-purpose component
+
+The Component tab (`example.tsx`) is the code a user copies for the use case's main purpose: the component the use case is named for. A Dialog use case's example is the Dialog (Popup, Title, close X, Body), not the Accordion, RadioGroup or form inside it. A supporting component (an Accordion in an About dialog, the Radio list of a template picker) appears only in the In context scene, which writes it in place of the `{children}` slot, to clarify how it is used there. A Dialog example is forced open into the stage with `const host = useStageHost()` and `container={host}` (preview-only props the copied snippet strips). Recheck this for every use case of the component whenever you add or change one, and state each changed and each deliberately unchanged use case, with the reason, in the PR description.
+
 ## Add a use case
 
 1. Pick the component's next free id and create the folder.

@@ -2,6 +2,7 @@ import { Suspense, useState } from 'react';
 import type { CaseType } from '../catalog/app-views';
 import { Button, Radio, RadioGroup, ToggleGroup, Type } from '../kit';
 import type { PreviewMode, Usecase, UsecaseCase } from '../types';
+import { StageHostContext } from '../hooks/use-stage-host';
 import { PaneCard } from './pane-card';
 
 const MODES: { value: PreviewMode; label: string }[] = [
@@ -105,7 +106,11 @@ export function RenderPane({
       <div className="ug-render__stage" ref={setHost}>
         <Suspense fallback={null}>
           {mode === 'component' ? (
-            <Example />
+            host && (
+              <StageHostContext.Provider value={host}>
+                <Example />
+              </StageHostContext.Provider>
+            )
           ) : Context ? (
             host && (
               <Context host={host}>

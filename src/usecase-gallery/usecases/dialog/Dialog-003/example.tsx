@@ -1,24 +1,27 @@
-import { Radio, RadioGroup, View } from '../../../kit';
-
-const SELECTION = {
-  scale: 'sm',
-  states: {
-    unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-    selected: { color: 'primary', paint: 'solid' },
-  },
-} as const;
+import { Dialog, Type } from '../../../kit';
+import { useStageHost } from '../../../hooks/use-stage-host';
 
 export default function Example() {
+  const host = useStageHost();
   return (
-    <RadioGroup defaultValue="2">
-      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '4', width: 'fill' } }}>
-        <Radio value="1" aui={SELECTION}>
-          <Radio.Label>Two-beam connection</Radio.Label>
-        </Radio>
-        <Radio value="2" aui={SELECTION}>
-          <Radio.Label>Three-beam connection</Radio.Label>
-        </Radio>
-      </View>
-    </RadioGroup>
+    <Dialog open modal={false}>
+      <Dialog.Portal container={host}>
+        <Dialog.Backdrop />
+        <Dialog.Viewport>
+          <Dialog.Popup initialFocus={false}>
+            <Dialog.Title aui={{ color: 'raised' }}>
+              Templates
+              <Dialog.Spacer />
+              <Dialog.Close aria-label="Cancel" />
+            </Dialog.Title>
+            <Dialog.Body>
+              <Type as="p" role="p3">
+                The list of templates goes here.
+              </Type>
+            </Dialog.Body>
+          </Dialog.Popup>
+        </Dialog.Viewport>
+      </Dialog.Portal>
+    </Dialog>
   );
 }

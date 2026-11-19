@@ -15,7 +15,6 @@ export default defineUsecase({
     { id: 'hcs-group', name: 'Group row', apps: ['hcs', 'adc'], source: { hcs: 'src/components/F01Results.tsx', adc: 'src/adc/components/ProductsPicker.tsx' } },
     { id: 'hs-group', name: 'Group row', apps: ['hs'], source: { hs: 'src/hs/ResultsTable.tsx' } },
   ],
-
   summary: 'A compact chevron Button expands a table row; HCS draws it as a Button (error color on failed rows), the other apps use the table\'s own expand trigger.',
   where: 'The first cell of a table row, before the name. Real site source: HCS Button-010 (the Model cell of ProductRow in src/components/F01Results.tsx; the turn is src/components/F01Results.css) and its group rows (same file); FD Results.jsx (modelCell, Table.ExpandTrigger); HS ResultsTable.tsx (group rows, Table.ExpandTrigger); ADC ProductsPicker.tsx (parent rows of the anchor tree, Table.ExpandTrigger). ACE, ADM, PFD, PBS, AGPD and RWS have no expandable rows.',
   when: 'Use it for a per-row disclosure. In HCS switch color to "error" for rows that failed so the reason stands out (shown in the second row of the scene). Always give it an aria-label (the table trigger takes it from the row\'s expansionLabel); only HCS sets aria-expanded itself.',

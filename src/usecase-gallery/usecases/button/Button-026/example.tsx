@@ -1,17 +1,10 @@
-import { IconButton } from '../../../kit';
+import { Button } from '../../../kit';
 
 export default function Example() {
   return (
-    <IconButton
-      name="ellipsis-vertical"
-      aria-label="Column options"
-      aui={{
-        color: 'surface',
-        paint: 'text',
-        profile: 'square-compact',
-        shape: 'soft',
-        scale: 'xs',
-      }}
-    />
+    <>
+      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }}>Edit</Button>
+      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }}>Duplicate</Button>
+    </>
   );
 }

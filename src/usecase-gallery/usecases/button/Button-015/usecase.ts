@@ -2,12 +2,15 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Outlined row, extra small',
-  apps: ['adc'],
-  cases: [{ id: 'adc-products', name: 'Products row', apps: ['adc'], source: { adc: 'src/adc/components/ProductsPicker.tsx' } }],
-  source: { adc: 'src/adc/components/ProductsPicker.tsx' },
-  summary: 'A full-width small Button with a border stands in for a field until the user activates it.',
-  where: 'The Products input of the ADC input pane before the picker is active; hover or focus replaces it with the picker.',
-  when: 'Use it for a field-like row that opens a picker on interaction. A row that opens a tutorial is Button-009, at the default size and without a fill.',
-  how: 'Set aui scale "xs", color "surface", paint "fixed", shape "soft" and sx width "fill", justifyContent "between". Measured: 26px high, 3px 5px padding, 14px medium text, white fill and a 1px rgb(148, 163, 184) border, where Button-009 is 30px high with 16px regular text and no fill, so the size and the fill differ. The scene keeps one row in a 288px column.',
+  title: 'Close info dialog button',
+  look: 'Dark solid',
+  apps: ['fd'],
+  cases: [
+    { id: 'fd-close', name: 'Info Close', apps: ['fd'], source: { fd: 'src/App.jsx' } },
+  ],
+  source: { fd: 'src/App.jsx' },
+  summary: 'A black Close is the lone button of an info dialog where the app wants it to stand out.',
+  where: 'The footer of the Explore More Applications dialog. Real site source: FD src/App.jsx. Other apps close their info dialogs with the gray Button-007.',
+  when: 'Use it where the app wants a black Close instead of the gray default of Button-007.',
+  how: 'A plain Button with aui color "secondary" (a black fill), not the gray Dialog.Button the other apps use. The Modal is drawn as a non-modal Dialog here; the scene keeps one paragraph of body text. One group, FD only.',
 });

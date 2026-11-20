@@ -1,21 +1,18 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Button group',
-  title: 'Tonal pair',
-  apps: ['hs', 'pbs'],
-  source: {
-    hs: 'src/hs/OutputPane.tsx',
-    pbs: 'src/ResultsSection.tsx',
-  },
+  uiType: 'Single button',
+  title: 'Go to carousel page button',
+  look: 'Pager dot',
+  apps: ['fd'],
   cases: [
-    { id: 'hs-edit', name: 'Edit and Duplicate', apps: ['hs'], source: { hs: 'src/hs/OutputPane.tsx' } },
-    { id: 'pbs-edit', name: 'Edit and Duplicate', apps: ['pbs'], source: { pbs: 'src/ResultsSection.tsx' } },
+    { id: 'fd-carousel-dots', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
   ],
-  summary: 'Two tonal labelled Buttons in the first cell of a saved-list row edit or duplicate that row.',
-  where: 'The first cell of a list of saved results (the Job List of HS, the Connection List of PBS). Real site source: HS src/hs/OutputPane.tsx (Edit and Duplicate side by side in the first cell); PBS src/ResultsSection.tsx (the same pair stacked in the first cell). The other apps have no per-row Buttons in a saved list.',
-  when: 'Use labelled tonal Buttons where a row has two actions people reach for often. Keep the destructive one apart as an icon button (Button-027, Remove) and name icon-only buttons with an aria-label that carries the row id.',
-  how: 'The example is the Edit and Duplicate pair: aui color "secondary", paint "tonal", scale "sm". The preview shows the radio group of the places, one for HS and one for PBS. '
-    + 'Edit and Duplicate: HS (the two Buttons side by side in a left-aligned first cell); PBS (the same Buttons stacked in a column, gap 8, centred in a centred cell). '
-    + 'Left out: every other column, the trash button, the totals row, the editing banner and the confirm dialogs.',
+  source: { fd: 'src/components/InputPane.jsx' },
+  summary: 'An empty solid Button is one dot of a carousel pager; the current page is the primary one.',
+  where: 'The footer of the FD input pane carousel: one dot per page of cards.',
+  when: 'Use it only as a page indicator that also jumps to its page. It has no label, so always set aria-label ("1 / 3") and aria-current on the current dot.',
+  how: 'Set aui paint "solid" and color "primary" for the current page, "surface-alt" for the others, on a Button with no children. '
+    + 'Measured with no size class: 16px by 10px, orange rgb(255, 83, 8) when current; the app sizes the dot with its own carousel-dot CSS class, which the kit cannot state, so the scene shows the kit box. '
+    + 'A Button with no label and a solid fill is not an icon button, so it stays a Single button.',
 });

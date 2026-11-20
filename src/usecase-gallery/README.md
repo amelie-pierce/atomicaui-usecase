@@ -1,6 +1,6 @@
 # usecase-gallery
 
-A read-only gallery of component use cases: a tree of components, the UI types of each (Button: Single button, Button group, Icon button), the variants of a type (Single button: Secondary solid, Primary solid, ...) with their ids (`Button-005`), the rendered example, the code to copy, and where/when/how to use it, plus which apps use it. Selection lives in the URL hash (`#Button-018`).
+A read-only gallery of component use cases: a tree of components, the UI types of each (Button: Single button, Button group, Icon button), the use cases of a type, each one business action (`Download CSV button`), with its id (`Button-002`), its look, the rendered example, the code to copy, and where/when/how to use it, plus which apps use it. Selection lives in the URL hash (`#Button-002`).
 
 The folder is self-contained. It imports only `react`, `react-dom` and its own `kit.ts`.
 
@@ -22,7 +22,7 @@ usecase-gallery/
   usecases/
     <component>/
       <component>.meta.ts  defineComponent({ id: 'Button', title: 'Button', uiTypes: ['Single button', 'Button group', 'Icon button'] })
-      <UseCaseId>/         e.g. Button-018
+      <UseCaseId>/         e.g. Button-002
         example.tsx        the rendered example AND the source shown as code
         usecase.ts         defineUsecase({ uiType, title, area?, apps, summary, where, when, how, cases?, source? })
         scenes/<case>.tsx  optional: one In context scene per case (see below)
@@ -54,9 +54,9 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({ uiType: 'Single button', title: 'Primary solid', area: 'Dialog', apps: ['hcs'], summary, where, when, how });
 ```
 
-The tree is component > UI type > variant. A **UI type** is a UI told apart by what it is made of, measured in the rendered gallery and read in the code, never by where it is used: Button has Single button, Button group (two or more Buttons shown together as one group, any mix of looks) and Icon button (the former IconButton component, folded in). The component's `<component>.meta.ts` lists its `uiTypes` in tree order; every use case names one in `uiType`, and the catalog throws for an unlisted type or a listed type without a use case. A **variant** is one use case inside the type, named by its look (`Secondary solid`, `Text with leading icon`), with its own id and example. A component with one UI type (title equal to the component title) lists its variants directly. One Button is a Single button; Buttons shown together as one group (2, 3, 4 or more, any mix of looks and kinds, main + secondary CTA being only one example) are a Button group, even where the same look also appears alone, and inside the group type the variants are split by measured look. A variant is one UI, so controls that appear together in it belong in one example (the Cancel and Confirm of a dialog footer are one variant of Button group), and each scene shows the controls of its own place: a place that renders a lone Button is a Single button variant, a place that renders a group is a Button group variant.
+The tree is component > UI type > use case. **One use case is one business action** (Submit, Download CSV, Back to top, Reset inputs, Delete template): a single button with the action Submit is the Submit button use case, and a modal that resets the inputs is one use case of the dialog component, never a place inside Button. Button keeps only the actions a button performs itself; a composite UI whose action is the whole modal (Reset confirm, Accept licence, Send feedback, Delete confirm, Save template, Welcome dialog) is a use case of Dialog or AlertDialog, whichever the apps use. The title names the action (`Download CSV button`, `Reset confirm dialog`); the **look** of the control (`Secondary solid`, `Text with leading icon`, formerly the variant) is the `look` property of the use case, shown in the Document and above the preview, never a tree level. A **UI type** is a UI told apart by what it is made of, measured in the rendered gallery and read in the code, never by where it is used: Button has Single button, Button group (two or more Buttons shown together as one group, any mix of looks) and Icon button (the former IconButton component, folded in). The component's `<component>.meta.ts` lists its `uiTypes` in tree order; every use case names one in `uiType`, and the catalog throws for an unlisted type or a listed type without a use case. A component with one UI type (title equal to the component title) lists its use cases directly. The same action drawn with a different look (another app, another size) is another use case, told apart by `look`, so every use case has one example and one look. Differences of the same action and look between apps stay inside the use case as the app toggle (HCS 560px with X, ACE without X, ADM 480px with X). Components not yet converted still name a variant by its look in `title`; they move to this rule one at a time (Button is the first, 2026-11-20).
 
-`area` is optional and is only the place of use of the single default In context: a variant with no `cases` sets `area` (`'Toolbar'`) and renders `contexts/<area-slug>.tsx`; a variant with `cases` lists its places there and sets no `area` (the catalog throws for both). It no longer groups the tree.
+`area` is optional and is only the place of use of the single default In context: a use case with no `cases` sets `area` (`'Toolbar'`) and renders `contexts/<area-slug>.tsx`; a use case with `cases` lists its scenes there and sets no `area` (the catalog throws for both). It no longer groups the tree.
 
 `apps` lists the keys of the apps that use the pattern; the Document view shows one primary-style badge (kit `Chip`, `color: 'primary'`, `paint: 'solid'`) per key, in an unlabelled row (the list carries an `aria-label` of "Used in"). When the cases give apps their own UI (see "The same use case in another app"), the badges are drawn from the same groups instead: one block per type with one row of badges per distinct UI, so the Document and the In context toggle cannot disagree.
 
@@ -87,7 +87,7 @@ When a use case sits elsewhere than the rest of its area (the Output header's sc
 
 ### Several cases for one use case
 
-When one use case has several In context scenes (the dialog types of Button-018, Print enabled or disabled), do not stack them. List them in `usecase.ts` and put each scene in the use case folder; touch nothing else:
+When one use case has several In context scenes (its app groups, or states of the one action such as Print enabled or disabled), do not stack them. List them in `usecase.ts` and put each scene in the use case folder; touch nothing else:
 
 ```ts
 cases: [
@@ -96,7 +96,7 @@ cases: [
 ],
 ```
 
-Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ children, host }`). In context lists the **places of use** of the variant (the dialog, walkthrough card or popover that holds this UI): with more than one case name (a place) the preview shows a kit `RadioGroup` of the place names (not UI types: the UI type is the tree level) above the scene (default: the first; the choice survives the Component | In context toggle and resets on another use case), renders only the chosen scene and shows its code. A scene that places `{children}` gets the example spliced in; one that writes its own controls (a disabled or alternative state) is shown as written. A use case with one case, or none, shows no radio group and uses the area context. Cases with the same name are one type with several app variants (next section). A missing scene file fails the catalog build.
+Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ children, host }`). In context lists the **places of the one action** (a state such as enabled or disabled, or a kind of row; never another action, which is another use case): with more than one case name the preview shows a kit `RadioGroup` of the names (not UI types: the UI type is the tree level) above the scene (default: the first; the choice survives the Component | In context toggle and resets on another use case), renders only the chosen scene and shows its code. A scene that places `{children}` gets the example spliced in; one that writes its own controls (a disabled or alternative state) is shown as written. A use case with one case, or none, shows no radio group and uses the area context. Cases with the same name are one scene type with several app variants (next section). A missing scene file fails the catalog build.
 
 ### The same use case in another app
 
@@ -110,16 +110,14 @@ cases: [
 ],
 ```
 
-- Cases that share a `name` are the variants of one type (Reset confirm, Accept licence, ...), one per group. The preview shows the radio group of the type names, and under it a `ToggleGroup` of the groups of the chosen type when it has two or more; with one group there is no toggle, and a use case whose every type has one group shows no app row.
+- Cases that share a `name` are the app groups of one scene type (Reset confirm, ...), one per group. The preview shows the radio group of the type names, and under it a `ToggleGroup` of the groups of the chosen type when it has two or more; with one group there is no toggle, and a use case whose every type has one group shows no app row.
 - A group toggle value is the apps of the group, the app labels joined by a comma (`HS, FD`); never a property and never `Other apps`, and there is no `Covers` line. List the named apps first. A property of the UI (label above or beside, a unit weight) is the case's `note`, plain text shown below the scene. Switching type keeps the apps in view: it picks the group that covers an app of the group you were on.
 - Within one type an app belongs to one group; an app a type does not have gets no case in it. A case without `apps` is the same in every app of the use case and cannot share its name with another case.
 - `apps` of the use case must equal the union of the case groups. The catalog throws at startup for an app that no case shows, a case app that is not listed, an overlap inside a type, a `source` app outside the group, or the old `app: '<key>'` field. The Document badges are drawn from these groups (`ui/docs-pane.tsx`), so the badges and the toggle cover the same apps.
 - Record the file each scene was built from per app: `source: { hcs: '<path>' }` on the use case, and `source` on a case for the apps of that group.
 - Group apps by rendered appearance and behavior measured from computed styles in a browser. Merge size-only differences and app-side defects; keep other measured distinctions, including label weight, and record the evidence. See `.claude/skills/usecase-gallery/SKILL.md` for the grouping procedure.
 
-A scene file is named `<first app of the group>-<type>.tsx` and is written from that app's own source, so the radio keeps the same type names under every app. Button-018 (Cancel and Confirm dialog footer), Button-005 (single action), the Icon button variants Button-025 (close X and field help trigger across help popover, walkthrough and dialog places), Button-026 (column menu) and Button-027 (field help trigger, row remove), and Button-019 (popover footer) are built this way, from the apps' repos (Button-008, the AGPD lock hint, has one case and no app toggle; Button-007, View options, has no counterpart in the other apps per the source scans and stays as the single HCS use case); the agent procedure is in `.claude/skills/usecase-gallery/SKILL.md`.
-
-The walkthrough use cases follow the same rule: Button-020 (Walkthrough navigation, with the places Step navigation, three groups, and Last step, four groups) has one scene per distinct card UI, and a label's case and weight and the icon after End count as differences even when the app sets them by CSS (`.ug-tour__nav` in `gallery.scss` reproduces the bold capitals of ADM, PBS, PFD and FD). The walkthrough close X is the Walkthrough close place of Button-025 (the same in all nine apps with a tour, so one group and no toggle). Button-009 (tutorial topic row, four groups) is built the same way; Button-010 (HS launch general tutorial) has one group; the welcome dialog Close and Start Walkthrough (ADM and FD) is the Welcome dialog place of Button-018, because it renders as that Cancel and Confirm footer. A scene that places `{children}` shows the example as it is (the HCS wording); the others write their own controls so the capitals, weights and icons are the app's.
+A scene file is named `<first app of the group>-<type>.tsx` and is written from that app's own source, so the radio keeps the same names under every app. Examples of use cases built this way, from the apps' repos: `Button-024` (Walkthrough step navigation buttons, three groups) and `Button-025` (End walkthrough buttons, four groups), where a label's case and weight and the icon after End count as differences even when the app sets them by CSS (`.ug-tour__nav` in `gallery.scss` reproduces the bold capitals of ADM, PBS, PFD and FD); `Button-011` (Start tutorial topic button, four groups); `Button-030` to `Button-033` (the close X and field help trigger across popover, walkthrough and dialog); `AlertDialog-003` (Reset confirm dialog, five groups); and `Dialog-007` (Welcome dialog). A scene that places `{children}` shows the example as it is; the others write their own controls so the capitals, weights and icons are the app's. The agent procedure is in `.claude/skills/usecase-gallery/SKILL.md`.
 
 ### Sample content
 
@@ -161,9 +159,9 @@ The docs card shows the use case id and title in one box, at the same size as th
 
 ## Id rules
 
-- A use case folder is named `<ComponentId>-<NNN>`: the `id` from the component's meta, a dash, and at least three digits (`Button-018`, `Button-012`).
+- A use case folder is named `<ComponentId>-<NNN>`: the `id` from the component's meta, a dash, and at least three digits (`Button-018`, `Dialog-004`).
 - The prefix must match the `id` in the component's meta file, and ids are unique across the gallery. A violation throws at startup with the reason.
-- Ids follow the tree: per component they run contiguously from `001` in tree order (UI types in the order of `<component>.meta.ts` `uiTypes`, then the variants of a type in id order), and components are listed A-Z by title. Adding, merging or removing a variant shifts the ids after it, so renumber the component with one old-to-new map applied to the folders and to every reference (skill, README, wiki, `usecase.ts`, scenes) and put the table in the PR description. The URL hash is the id and the gallery has no alias for old ids, so a hash shared before the 2026-11-20 reindex falls back to the first use case (the wiki note holds the old-to-new table).
+- Ids follow the tree: per component they run contiguously from `001` in tree order (UI types in the order of `<component>.meta.ts` `uiTypes`, then the use cases of a type in id order), and components are listed A-Z by title. Adding, merging or removing a use case shifts the ids after it, so renumber the component with one old-to-new map applied to the folders and to every reference (skill, README, wiki, `usecase.ts`, scenes) and put the table in the PR description. The URL hash is the id and the gallery has no alias for old ids, so a hash shared before the 2026-11-20 business-action split of Button, Dialog and AlertDialog falls back to the first use case (the wiki note holds the old-to-new table).
 
 ## Move it to another app
 

@@ -2,14 +2,17 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Text only',
-  apps: ['hs'],
+  title: 'Show locked field option button',
+  look: 'Accent text, extra small',
+  apps: ['agpd'],
   cases: [
-    { id: 'hs-launch', name: 'Launch general tutorial', apps: ['hs'], source: { hs: 'src/hs/Tutorials.tsx' } },
+    { id: 'agpd-lock-hint', name: 'Lock hint', apps: ['agpd'], source: { agpd: 'src/agpd/inputs.tsx' } },
   ],
-  source: { hs: 'src/hs/Tutorials.tsx' },
-  summary: 'A borderless text Button on the last step of a topic tour starts the General Tutorial.',
-  where: 'The coach-mark card of an HS tour, on the last step of every topic except the General Tutorial, between the step text and the Previous / End row. Real site source: HS Tutorials.tsx (launchGeneral). Only HS has it.',
-  when: 'Use it to send a reader who finished a focused tour to the general one. Do not use it as the tour exit; that is End (Button-020).',
-  how: "Set aui scale \"sm\", paint \"text\", color \"secondary\" and sx alignSelf \"start\", so the label sits at the start of the card instead of stretching. The label is typed in capitals (LAUNCH GENERAL TUTORIAL). The scene keeps the card, its close X and the one-line step text; the Previous / End row and counter are left out (Button-020 shows them), and the target is the gallery's shared stand-in.",
+  source: { agpd: 'src/agpd/inputs.tsx' },
+  summary: 'A small primary text Button in a lock popover reveals the option that controls a locked field.',
+  where: 'The popover of the lock icon after a field label in the AGPD input pane (LockHint). It exists only in AGPD; the lock trigger is a square label-row Button like Button-033 and the popover has no close X.',
+  when: 'Use it when a field is locked by another setting and the user needs a way to reach that setting: the text names the controlling option and this Button jumps to it.',
+  how: 'Set aui paint "text", color "primary" and scale "xs"; it is the only action in the popup, at the start under the explanatory line. '
+    + 'In context the lock trigger (profile "square", secondary text) opens a 288px View column (surface, solid, soft, elevation 4, gap 8) above it, shown open: the line "Controlled by Plate Option, currently ...", then this Button. '
+    + 'The hover and focus open, the 250 ms hide delay and the rest of the field are left out.',
 });

@@ -103,6 +103,11 @@ export function RenderPane({
           ))}
         </ToggleGroup>
       )}
+      {usecase.look && (
+        <Type role="l3" as="p" color="muted" className="ug-render__look">
+          Look: {usecase.look}
+        </Type>
+      )}
       <div className="ug-render__stage" ref={setHost}>
         <Suspense fallback={null}>
           {mode === 'component' ? (

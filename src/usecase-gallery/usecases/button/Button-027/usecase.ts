@@ -1,31 +1,20 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Icon button',
-  title: 'Ghost, 28px',
-  apps: ['hcs', 'hs', 'pbs', 'adm', 'pfd', 'agpd', 'fd'],
+  uiType: 'Button group',
+  title: 'Edit and Delete row link buttons',
+  look: 'Stacked text links, no padding',
+  apps: ['ace'],
   cases: [
-    { id: 'hcs-rail', name: 'Collapsed rail', apps: ['hcs'], source: { hcs: 'src/components/HcsSplitLayout.tsx' } },
-    { id: 'hs-field-help', name: 'Field help', apps: ['hs'], source: { hs: 'src/hs/InputFields.tsx' } },
-    { id: 'adm-field-help', name: 'Field help', apps: ['adm'], source: { adm: 'src/shared/lib/tooltip/AdmHelpTooltip.tsx' } },
-    { id: 'pfd-field-help', name: 'Field help', apps: ['pfd', 'agpd'], source: { pfd: 'src/pfd/fields.tsx', agpd: 'src/agpd/inputs.tsx' } },
-    { id: 'fd-carousel-arrows', name: 'Carousel arrows', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
-    { id: 'hs-remove', name: 'Remove', apps: ['hs', 'pbs'], source: { hs: 'src/hs/OutputPane.tsx', pbs: 'src/ResultsSection.tsx' } },
+    { id: 'ace-links', name: 'Edit and Delete links', apps: ['ace'], source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' } },
   ],
-  source: {
-    hcs: 'src/components/HcsSplitLayout.tsx',
-    hs: 'src/hs/InputFields.tsx',
-    pbs: 'src/ResultsSection.tsx',
-    adm: 'src/shared/lib/tooltip/AdmHelpTooltip.tsx',
-    pfd: 'src/pfd/fields.tsx',
-    agpd: 'src/agpd/inputs.tsx',
-    fd: 'src/components/InputPane.jsx',
-  },
-  summary: 'A square transparent IconButton, 28px, runs one quiet action: expand a collapsed panel, explain a field, or remove a row. The carousel arrows of FD are the same box.',
-  where: 'A collapsed side rail that stands in for a panel (angle-right expands a horizontal one, angle-down a vertical one, HCS); the circle-question after a field label that opens its help (HS and ADM as a tooltip, PFD and AGPD as a popover); and the last cell of a saved-list row (a trash that removes it, HS and PBS). Real site source: HCS and the Button scans of each app. Built from src/components/HcsSplitLayout.tsx and panelSpec.ts (the rail and its sizes).',
-  when: 'Use it as the single trigger of a collapsed panel, for an icon-only control beside a label, or for the destructive action of a row (it opens a confirm dialog, Button-018 Delete confirm). The square profile suits a rail; the expanded panel switches to the 20px header controls of Button-025. Always set aria-label, and name a row button with the row id.',
-  how: 'Set aui color "secondary", paint "text", scale "sm", shape "soft" and profile "square" (28px, unlike the 20px contained header icons) on an IconButton, with a Tooltip carrying the aria-label text. The apps that write the circle-question as a Button with a ContainedIcon child at profile "square" get the same 28px box and glyph. The preview shows the radio group of the places and a toggle of the apps where a place has two or more groups. '
-    + 'Collapsed rail: HCS only (the trigger is a Panels.Trigger, the kit trigger that renders the IconButton, whose targetId is the panel id, and a real Panels group holds the Input panel at its 40px collapsed size: the rail is a column that fills the panel height with the trigger at the top centre, beside the viewer pane, which is cut to its title (no canvas); the Input panel holds only its title; the vertical rail of the engineering layout (angle-down, trigger at the start corner) is not shown). '
-    + 'Field help: HS (a Button at profile "square" with a ContainedIcon circle-question child after the label, opening a Tooltip above it, 4px offset, up to 384px, so it has no close); ADM (the same square Button with a Tooltip above it, 8px offset, painted solid secondary at scale "sm", up to 256px); PFD and AGPD (one group: the same square Button opening a popover, top, 4px offset, a surface card up to 384px; its close is Button-025). Each help scene keeps one labelled field and one sentence of help text. '
-    + 'Carousel arrows: FD (a Button with aui paint "text" and profile "square" holding an Icon arrow-left or arrow-right, previous and next, in the input pane carousel; measured 28px square, transparent, 4px radius, the same as the other ghost 28px buttons, so it is a place of this variant; the card row and the pager are left out). Remove: HS and PBS (one trash IconButton, aui color "secondary", paint "text", scale "sm" and the default square profile, in the last cell of a saved-list row; the aria-label carries the row id, Remove <job> or <connection>; the app opens a confirm dialog from it; the other columns are left out).',
+  source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
+  summary: 'Text Buttons with no padding read as links; stacked in a column they give a table row its few actions while the table stays light.',
+  where: 'The first cell of each row of a saved-list table. Real site source: ACE src/features/calculation/ui/CalculationOutput.tsx (Edit and Delete as stacked link-like Buttons in the first cell of the Job tally). '
+    + 'The other apps have no link-like row Buttons.',
+  when: 'Use it for row actions in a table that must stay light and where the actions are few; for two often-used actions prefer the tonal pair of Button-026. '
+    + 'Unlike the inline link of Button-004 it keeps the secondary color and no underline.',
+  how: 'Set aui color "secondary", paint "text", scale "sm" and profile "no-padding". '
+    + 'In context the Buttons are stacked in a column and start-aligned in the first cell of a Job tally row; ACE hides Edit on the selected row and Delete while only one job exists. '
+    + 'The other columns and the totals row are left out.',
 });

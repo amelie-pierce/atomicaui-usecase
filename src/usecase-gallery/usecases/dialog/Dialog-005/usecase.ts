@@ -1,13 +1,18 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Dialog without title',
-  title: 'Content-only expanded dialog',
-  apps: ['hs'],
-  cases: [{ id: 'hs-expanded-output', name: 'Expanded output', source: { hs: 'src/hs/OutputTabs.tsx' } }],
-  source: { hs: 'src/hs/OutputTabs.tsx' },
-  summary: 'A dialog with no title and no close X: the popup is square, has no padding and fills the screen, and holds content that brings its own controls.',
-  where: 'HS Output panel (src/hs/OutputTabs.tsx): the expand control of the Output pane moves the same tabs and table into a full-screen dialog, and the toolbar inside the content collapses it.',
-  when: 'Use it to enlarge a panel the user is already working in to the whole screen, where the content keeps its own toolbar with the way back. If the dialog needs its own name or close X, use one with a title bar (Dialog-001, Dialog-002).',
-  how: 'A Dialog.Popup with aria-label (it has no Title to name it) and aui shape "none", profile "no-padding" and sx width "fill", height "fill" and gap "0", holding the content directly: there is no Dialog.Title, Dialog.Close or Dialog.Body. A different structure from Dialog-002, which also fills the screen but has a raised Title with a close X and a padded Body (measured: Dialog-002 has a 28px title bar, this one starts with its content at the popup edge). HS renders the content in place while the dialog is closed and inside the popup while open, so the same panel is reused. In the scene a toolbar line and one table row stand for the Output tabs; the stage caps the popup, the app uses the whole viewport.',
+  uiType: 'Dialog with title bar',
+  title: 'Save template dialog',
+  look: 'Cancel and secondary Save',
+  apps: ['ace', 'adm', 'hs', 'fd'],
+  cases: [
+    { id: 'ace-save', name: 'Save template', apps: ['ace', 'adm', 'hs'], source: { ace: 'src/features/templates/ui/SaveAsTemplateDialog.tsx', adm: 'src/features/templates/components/SaveAsTemplateDialog.tsx', hs: 'src/hs/TemplateDialogs.tsx' } },
+    { id: 'fd-save', name: 'Save template', apps: ['fd'], source: { fd: 'src/App.jsx' } },
+  ],
+  source: { ace: 'src/features/templates/ui/SaveAsTemplateDialog.tsx', adm: 'src/features/templates/components/SaveAsTemplateDialog.tsx', hs: 'src/hs/TemplateDialogs.tsx', fd: 'src/App.jsx' },
+  summary: 'A form dialog that names and saves the current inputs as a template: a Cancel and a Save that stays disabled until the name is valid.',
+  where: 'The Save as template dialog. Real site source: ACE and ADM SaveAsTemplateDialog.tsx, HS TemplateDialogs.tsx and FD src/App.jsx. HCS, PFD, PBS, AGPD, RWS and ADC have no template dialog.',
+  when: 'Use it when the user commits a name for new saved data; keep Save disabled until the name is valid.',
+  how: 'Cancel is the Dialog.Button default; Save is color "secondary", paint "solid" (FD: a primary Save in place of the black one, its Cancel a plain Button that looks the same). Two groups. '
+    + 'ACE, ADM and HS (a raised Title with the close X, Save disabled until the name is valid; ADM caps the popup at 480px). FD (a primary Save). Body fields beyond the name field are left out.',
 });

@@ -1,10 +1,13 @@
-import { Button, View } from '../../../kit';
+import { Button, IconButton, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', alignItems: 'start' } }}>
-      <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'no-padding' }}>Edit</Button>
-      <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'no-padding' }}>Delete</Button>
-    </View>
+    <>
+      <IconButton name="rotate-left" aria-label="Reset columns to default" aui={{ paint: 'text' }} />
+      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '8' } }}>
+        <Button aui={{ paint: 'text' }}>Cancel</Button>
+        <Button aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Save</Button>
+      </View>
+    </>
   );
 }

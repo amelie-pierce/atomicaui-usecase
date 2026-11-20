@@ -83,6 +83,12 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
           <Type role="l3" as="span" weight="bold" color="primary">{usecase.title}</Type>
         </h2>
         <Type role="l3" as="p" color="muted">{usecase.summary}</Type>
+        {usecase.look && (
+          <Type role="l3" as="p">
+            <Type as="span" role="l3" weight="semi-bold">Look: </Type>
+            {usecase.look}
+          </Type>
+        )}
         <div className="ug-docs__apps">
           <UsedIn usecase={usecase} />
         </div>

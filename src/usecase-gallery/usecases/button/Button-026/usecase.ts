@@ -1,16 +1,21 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Icon button',
-  title: 'Ghost, 20px, small glyph',
-  apps: ['hcs', 'hs', 'pfd'],
+  uiType: 'Button group',
+  title: 'Edit and Duplicate row buttons',
+  look: 'Tonal pair',
+  apps: ['hs', 'pbs'],
   cases: [
-    { id: 'hcs-column-menu', name: 'Column menu', apps: ['hcs', 'hs'], source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx' } },
-    { id: 'pfd-column-menu', name: 'Column menu', apps: ['pfd'], source: { pfd: 'src/pfd/ColumnMenu.tsx' } },
+    { id: 'hs-edit', name: 'Edit and Duplicate', apps: ['hs'], source: { hs: 'src/hs/OutputPane.tsx' } },
+    { id: 'pbs-edit', name: 'Edit and Duplicate', apps: ['pbs'], source: { pbs: 'src/ResultsSection.tsx' } },
   ],
-  source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx', pfd: 'src/pfd/ColumnMenu.tsx' },
-  summary: 'A small IconButton opens the menu of a table column header.',
-  where: 'The header cell of each table column, beside the column title. Real site source: HCS (the actions slot of the results header in src/components/F01Results.tsx; the menu is src/components/ColumnMenu.tsx), HS (src/hs/ColumnMenu.tsx) and PFD (src/pfd/ColumnMenu.tsx).',
-  when: 'Use it for a per-column menu where space is tight. It is smaller than the panel icon buttons and uses the surface color.',
-  how: 'HCS: set aui color "surface", paint "text", profile "square-compact", shape "soft" and scale "xs" with the ellipsis-vertical glyph, and pass it to Table.HeaderCell through the actions prop: the kit lays the header out as label then actions, so the kebab sits at the end of each cell. In context the menu is open under the Load (lb) kebab (bottom, end, 4px offset): a View card (surface, solid, soft, elevation 4, 256px) over the table with the Sort radios (Sort A to Z (Smallest to Largest), Sort Z to A (Largest to Smallest), None); Search by text and Search by option are left out. Load is sorted ascending, so its rows run from smallest to largest. The scene shows two of the nine Output columns and two rows. HS renders the same as HCS: its trigger takes color "secondary" while its column is sorted or filtered (the filter glyph while filtered), which computes to the same near-black text, no fill and the same hover as the HCS "surface" kebab, so HCS and HS are one group. PFD (own group): the horizontal ellipsis glyph, secondary while sorted, the menu opens under the trigger towards the next column (bottom, start) and starts with a Close Button (profile "square", scale "sm", secondary text, alignSelf end) above the Sort radios; Search by text and Search by option are left out.',
+  source: { hs: 'src/hs/OutputPane.tsx', pbs: 'src/ResultsSection.tsx' },
+  summary: 'Two tonal labelled Buttons in the first cell of a saved-list row edit or duplicate that row.',
+  where: 'The first cell of a list of saved results (the Job List of HS, the Connection List of PBS). '
+    + 'Real site source: HS src/hs/OutputPane.tsx (Edit and Duplicate side by side in the first cell); PBS src/ResultsSection.tsx (the same pair stacked in the first cell). '
+    + 'The other apps have no per-row Buttons in a saved list.',
+  when: 'Use labelled tonal Buttons where a row has two actions people reach for often. Keep the destructive one apart as an icon button (Button-040, Remove) and name icon-only buttons with an aria-label that carries the row id.',
+  how: 'The example is the Edit and Duplicate pair: aui color "secondary", paint "tonal", scale "sm". The preview shows the radio group of the places, one for HS and one for PBS. '
+    + 'Edit and Duplicate: HS (the two Buttons side by side in a left-aligned first cell); PBS (the same Buttons stacked in a column, gap 8, centred in a centred cell). '
+    + 'Left out: every other column, the trash button, the totals row, the editing banner and the confirm dialogs.',
 });

@@ -107,6 +107,11 @@ $narrow: 840px;
   margin: var(--p-px-8) 0 0;
 }
 
+.ug-render__look {
+  flex: none;
+  margin: 0;
+}
+
 .ug-render__cases {
   flex: none;
   flex-wrap: wrap;

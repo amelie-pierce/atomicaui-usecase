@@ -2,7 +2,7 @@ import type { ContextProps } from '../../../../types';
 import { Dialog, View } from '../../../../kit';
 import { MockLicenceText } from '../../../../mock-data';
 
-// ADM licence gate (src/features/eula/components/EulaGate.tsx; ACE, PFD, PBS, HS, FD, AGPD and RWS write the same frame): a popup that fills the stage, a plain Title (scale sm, not raised) with the close X that also declines, then the scrolling Body. ACE puts a Description line under the Title (here it is body text); HS, ACE and FD add a Country field above the text (the ACE one is Select-003), and PBS hides the close X. The footer (Button-018) is left out.
+// ADM licence gate (src/features/eula/components/EulaGate.tsx; ACE, PFD, PBS, HS, FD, AGPD and RWS write the same frame): a popup that fills the stage, a plain Title (scale sm, not raised) with the close X that also declines, then the scrolling Body. ACE puts a Description line under the Title (here it is body text); HS, ACE and FD add a Country field above the text (the ACE one is Select-003), and PBS hides the close X. The footer (Dialog-004) is left out.
 export default function AdmLicenceScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

@@ -1,5 +1,5 @@
 import { Button } from '../../../kit';
 
 export default function Example() {
-  return <Button aria-label="1 / 3" aui={{ paint: 'solid', color: 'primary' }} />;
+  return <Button aui={{ paint: 'text', color: 'primary' }}>View all</Button>;
 }

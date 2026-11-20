@@ -6,7 +6,7 @@ date: 2026-11-13
 
 # atomicaui-usecase-prototype
 
-A Vite + React page that lists AtomicAUI components and their use cases (`Button-001`, ...), each with a description, a live preview and copyable code. Source: `src/`; the feature is the self-contained `src/usecase-gallery/`.
+A Vite + React page that lists AtomicAUI components and their use cases (`Button-002`, ...), one per business action, each with a description, a live preview and copyable code. Source: `src/`; the feature is the self-contained `src/usecase-gallery/`.
 
 ## Operating mode
 

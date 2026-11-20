@@ -3,7 +3,7 @@ import { Table, View } from '../../../../kit';
 
 // The Output results table of HCS (F01Results.tsx 536-626), shared by HS, PFD, AGPD, PBS, RWS and FD: an all-cells tonal grid in a soft outlined frame,
 // raised centred sortable header, first column pinned and left-aligned, other columns centred. Cut to two columns and two rows; the selection radio,
-// expander and column menu are Table-002 and Button-024 and Button-026.
+// expander and column menu are Table-002 and Button-029 and Button-036.
 export default function HcsResultsGridScene(_props: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>

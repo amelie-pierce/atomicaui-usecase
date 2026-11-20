@@ -1,5 +1,13 @@
-import { IconButton } from '../../../kit';
+import { Button } from '../../../kit';
 
 export default function Example() {
-  return <IconButton name="xmark" aria-label="Close" aui={{ paint: 'text', profile: 'contained' }} />;
+  return (
+    <>
+      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
+        <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
+        Previous
+      </Button>
+      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>End</Button>
+    </>
+  );
 }

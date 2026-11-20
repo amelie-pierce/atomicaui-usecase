@@ -2,12 +2,21 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Button group',
-  title: 'Stacked text links, no padding',
-  apps: ['ace'],
-  source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
-  cases: [{ id: 'ace-links', name: 'Edit and Delete links', apps: ['ace'], source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' } }],
-  summary: 'Text Buttons with no padding read as links; stacked in a column they give a table row its few actions while the table stays light.',
-  where: 'The first cell of each row of a saved-list table. Real site source: ACE src/features/calculation/ui/CalculationOutput.tsx (Edit and Delete as stacked link-like Buttons in the first cell of the Job tally). The other apps have no link-like row Buttons.',
-  when: 'Use it for row actions in a table that must stay light and where the actions are few; for two often-used actions prefer the tonal pair of Button-021. Unlike the inline link of Button-004 it keeps the secondary color and no underline.',
-  how: 'Set aui color "secondary", paint "text", scale "sm" and profile "no-padding". In context the Buttons are stacked in a column and start-aligned in the first cell of a Job tally row; ACE hides Edit on the selected row and Delete while only one job exists. The other columns and the totals row are left out.',
+  title: 'Save column configuration buttons',
+  look: 'Text and primary',
+  apps: ['hcs', 'hs'],
+  cases: [
+    { id: 'hcs-configure-columns', name: 'Configure columns', apps: ['hcs'], source: { hcs: 'src/components/ColumnVisibility.tsx' } },
+    { id: 'hs-configure-columns', name: 'Configure columns', apps: ['hs'], source: { hs: 'src/hs/ColumnVisibility.tsx' } },
+  ],
+  source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx' },
+  summary: 'A reset icon, a Cancel and a solid secondary Save close the Configure columns popover.',
+  where: 'The footer of the Configure columns popover, opened from the table-columns IconButton at the end of the Output header: a reset icon at the start, then Cancel and Save. '
+    + 'Real site source: HCS src/components/ColumnVisibility.tsx and HS src/hs/ColumnVisibility.tsx. Dialogs use a gray solid Cancel instead (Dialog-005).',
+  when: 'Use it when the popover is lightweight and the Cancel should not compete with Save; the reset icon returns the columns to their default.',
+  how: 'HCS: Cancel sets aui paint "text" (default color, no fill, default scale); Save sets scale "sm", color "secondary" and paint "solid". '
+    + 'Cancel and Save sit in their own row View so the footer row can use justifyContent "between": reset icon at the start, the pair at the end. '
+    + 'The reset is an IconButton with the rotate-left glyph, aui paint "text", and needs an aria-label. '
+    + 'In context the popover is opened under the table-columns IconButton (contained profile) (bottom, end, 4px offset): a reorderable List of three Output columns, then this footer; the search field, the other columns and Group by model are left out. '
+    + 'HS (own group): the same footer, but Save has no scale (default size) and the table-columns trigger has no contained profile.',
 });

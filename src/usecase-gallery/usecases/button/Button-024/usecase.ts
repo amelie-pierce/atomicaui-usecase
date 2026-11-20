@@ -1,25 +1,22 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Icon button',
-  title: 'Expander, 24px',
-  apps: ['hcs', 'hs', 'fd', 'adc'],
-  source: {
-    hcs: 'src/components/F01Results.tsx',
-    hs: 'src/hs/ResultsTable.tsx',
-    fd: 'src/components/Results.jsx',
-    adc: 'src/adc/components/ProductsPicker.tsx',
-  },
+  uiType: 'Button group',
+  title: 'Walkthrough step navigation buttons',
+  look: 'Text with icons',
+  apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   cases: [
-    { id: 'hcs-results', name: 'Results table', apps: ['hcs', 'fd'], source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/Results.jsx' } },
-    { id: 'hcs-group', name: 'Group row', apps: ['hcs', 'adc'], source: { hcs: 'src/components/F01Results.tsx', adc: 'src/adc/components/ProductsPicker.tsx' } },
-    { id: 'hs-group', name: 'Group row', apps: ['hs'], source: { hs: 'src/hs/ResultsTable.tsx' } },
+    { id: 'hcs-step-nav', name: 'Step navigation', apps: ['hcs'], source: { hcs: 'src/components/F01Walkthrough.tsx' } },
+    { id: 'ace-step-nav', name: 'Step navigation', apps: ['ace', 'hs', 'rws', 'agpd'], source: { ace: 'src/features/top-navigation/ui/TutorialWalkthrough.tsx', hs: 'src/hs/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx', agpd: 'src/agpd/Tutorials.tsx' } },
+    { id: 'adm-step-nav', name: 'Step navigation', apps: ['adm', 'pbs', 'pfd', 'fd'], source: { adm: 'src/features/top-navigation/components/TutorialWalkthrough.tsx', pbs: 'src/PbsWalkthrough.tsx', pfd: 'src/pfd/Walkthrough.tsx', fd: 'src/components/Walkthrough.jsx' } },
   ],
-  summary: 'A compact chevron Button expands a table row; HCS draws it as a Button (error color on failed rows), the other apps use the table\'s own expand trigger.',
-  where: 'The first cell of a table row, before the name. Real site source: HCS (the Model cell of ProductRow in src/components/F01Results.tsx; the turn is src/components/F01Results.css) and its group rows (same file); FD Results.jsx (modelCell, Table.ExpandTrigger); HS ResultsTable.tsx (group rows, Table.ExpandTrigger); ADC ProductsPicker.tsx (parent rows of the anchor tree, Table.ExpandTrigger). ACE, ADM, PFD, PBS, AGPD and RWS have no expandable rows.',
-  when: 'Use it for a per-row disclosure. In HCS switch color to "error" for rows that failed so the reason stands out (shown in the second row of the scene). Always give it an aria-label (the table trigger takes it from the row\'s expansionLabel); only HCS sets aria-expanded itself.',
-  how: 'The example is the HCS Button: aui scale "sm", profile "square-compact", paint "text" and color "surface" (or "error"), with sx minWidth and minHeight "24" for a safe hit area. The glyph is angle-right (weight "solid"), shown in the closed state; the app turns only the icon 90 degrees through CSS when aria-expanded is true (the scene\'s `.ug-results` rule does the same), and the button itself never rotates. The apps are grouped by what the UI looks like, never by the content or data each app shows: every scene uses mock data, so apps with the same UI but different content (HCS and ADC) are one group. The preview groups the apps by distinct UI and the Document lists the same groups. '
-    + 'Results table (the Why Not expander of a result row): HCS and FD (the Button above, first element of the Model cell, before the name; the scene is the Model column and two rows, because the button shows in two colors). FD draws the same chevron with the library\'s Table.ExpandTrigger and has no error color, so the HCS format is the standard. '
-    + 'Group row (rows that group members under a model or a parent): HCS and ADC (Table.ExpandTrigger, then the group name in semi-bold; ADC sets the trigger to scale "xs" and gap 6 where HCS keeps the table density and gap 4, a size difference only); HS (the same row painted surface-alt solid, so the group reads as a band). '
-    + 'Left out of every scene: selection, the thumbnail, the other columns, sorting, the frozen column, the Why Not panel and the member rows.',
+  source: { hcs: 'src/components/F01Walkthrough.tsx', ace: 'src/features/top-navigation/ui/TutorialWalkthrough.tsx', adm: 'src/features/top-navigation/components/TutorialWalkthrough.tsx', pfd: 'src/pfd/Walkthrough.tsx', pbs: 'src/PbsWalkthrough.tsx', hs: 'src/hs/Tutorials.tsx', fd: 'src/components/Walkthrough.jsx', agpd: 'src/agpd/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx' },
+  summary: 'Borderless text Buttons step back and forward through a guided tour: Previous with arrow-left before it, then Next with arrow-right after it.',
+  where: 'The navigation row in the footer of the card of a coach-mark walkthrough, on every step that is not the last. Real site source: the walkthrough card of each app (the paths are in source). ADC has no walkthrough.',
+  when: 'Use it for step navigation where no single step is the primary action, so neither Button is filled. '
+    + 'Do not use it for form submission; to end the tour use Button-025, and to dismiss a tour early use the close icon (Button-031).',
+  how: 'The props are the same in every app: aui scale "sm", paint "text" and color "secondary" on every Button, Button.Icon arrow-left before the label of Previous (only when step > 0) and arrow-right after the label of Next. '
+    + 'Three groups: HCS (mixed case Previous and Next, regular weight, counter pushed to the end by a CSS margin), ACE, HS, RWS and AGPD (PREVIOUS and NEXT typed in capitals, regular weight, counter at the end by justify between) and ADM, PBS, PFD and FD (capitals at the bold weight, which the apps set by CSS on the row\'s buttons, counter pushed by a CSS margin). '
+    + 'The scenes keep the card, its close X, the title, one tip line, the navigation row and the counter, with the app\'s own step copy; the spotlight target is the gallery\'s shared stand-in, and the card and spotlight sit at fixed numbers where the app measures them. '
+    + 'Icons need the Font Awesome font to show.',
 });

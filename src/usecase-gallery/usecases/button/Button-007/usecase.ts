@@ -2,13 +2,16 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  area: 'Viewer',
-  contextVariant: 'options',
-  title: 'Tonal outlined',
-  apps: ['hcs', 'adm'],
-  source: { hcs: 'src/App.tsx', adm: 'src/features/base-plate/components/ThicknessCalculatorDialog.tsx' },
-  summary: 'A tonal text Button in the corner of the 3D viewer opens the camera and visibility controls in a popover.',
-  where: 'The top-right corner of the 3D Viewer canvas, 8px in, in compact layouts where the floating controls are hidden. It is not in the Output toolbar. ADM writes the same Button as Save image in the Thickness Calculator dialog (secondary tonal, scale "sm", shape "soft"; measured 28px high, 3px 7px padding, white fill, 1px dark border, the same as View options), a place of this variant that the preview does not draw. Real site source: HCS (View options); Print Output, its sibling tonal button, is Button-001. Built from the viewer pane in src/App.tsx (lines 1522-1651) and index.css (.f02-mobile-options, .f02-popover).',
-  when: 'Use it when the controls would crowd a small canvas. It has no icon; the popover holds the same stack as the desktop overlay (Button-028).',
-  how: 'Set aui scale "sm", color "surface" and paint "tonal". In the app it is the trigger of a Popover (side bottom, align end, offset 4). In context the scene is the compact 3D Viewer: the button sits in the top end corner of the scene, 8px in (a gallery rule for the app\'s `.f02-mobile-options`), and the popup is open below it on a surface card (12px padding, 4px radius, shadow) holding Reset view and the projection radios (the Object Visibility checkboxes are left out). The canvas is a framed stand-in.',
+  title: 'Close info dialog button',
+  look: 'Secondary solid',
+  apps: ['pbs', 'agpd', 'rws'],
+  cases: [
+    { id: 'pbs-close', name: 'Info Close', apps: ['pbs', 'agpd', 'rws'], source: { pbs: 'src/WorkspaceTools.tsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' } },
+  ],
+  source: { pbs: 'src/WorkspaceTools.tsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
+  summary: 'The default gray Close is the lone button of an info dialog that only informs.',
+  where: 'The footer of the Add to Home Screen info dialog. Real site source: PBS WorkspaceTools.tsx, AGPD and RWS ShellDialogs.tsx; PFD writes the same dialog without a footer, so it has no Close.',
+  when: 'Use one neutral button when closing is the only choice and the dialog holds nothing to decide; an app that wants a black Close uses Button-015.',
+  how: 'The example sets only aui scale "sm"; color "surface-alt" and paint "solid" are the defaults, and the Dialog.Button default is the same gray solid button that dismisses the dialog. One UI in PBS, AGPD and RWS. '
+    + 'The dialog is an AlertDialog in the apps and is drawn as a non-modal Dialog here; the scene keeps one paragraph of body text.',
 });

@@ -1,10 +1,5 @@
 import { Button } from '../../../kit';
 
 export default function Example() {
-  return (
-    <>
-      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }}>Edit</Button>
-      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }}>Duplicate</Button>
-    </>
-  );
+  return <Button aria-label="1 / 3" aui={{ paint: 'solid', color: 'primary' }} />;
 }

@@ -2,12 +2,17 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Pager dot',
+  title: 'Show all connection types button',
+  look: 'Accent text',
   apps: ['fd'],
-  cases: [{ id: 'fd-carousel-dots', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } }],
+  cases: [
+    { id: 'fd-carousel-footer', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
+  ],
   source: { fd: 'src/components/InputPane.jsx' },
-  summary: 'An empty solid Button is one dot of a carousel pager; the current page is the primary one.',
-  where: 'The footer of the FD input pane carousel: one dot per page of cards.',
-  when: 'Use it only as a page indicator that also jumps to its page. It has no label, so always set aria-label ("1 / 3") and aria-current on the current dot.',
-  how: 'Set aui paint "solid" and color "primary" for the current page, "surface-alt" for the others, on a Button with no children. Measured with no size class: 16px by 10px, orange rgb(255, 83, 8) when current; the app sizes the dot with its own carousel-dot CSS class, which the kit cannot state, so the scene shows the kit box. A Button with no label and a solid fill is not an icon button, so it stays a Single button.',
+  summary: 'A text Button in the primary colour opens the full list from the footer of a carousel.',
+  where: 'The footer of the FD input pane carousel (the connection type cards), after the pager dots.',
+  when: 'Use it for a quiet link-like action that widens the view: the carousel shows a few cards and this Button opens all of them. A neutral text action is Button-012; the small accent text in a popup is Button-010.',
+  how: 'Set aui paint "text" and color "primary" on a Button at the default scale. '
+    + 'Measured in the gallery: 28px high, 4px 8px padding, 16px regular text, no fill and no border, orange text rgb(255, 83, 8), so it differs from Button-012 (text colour dark) and from Button-010 (26px, 14px medium, scale "xs"). '
+    + 'In context it is the last item of the carousel footer after the two pager dots (Button-021). The cards, the arrows (Button-039) and the dialog it opens are left out.',
 });

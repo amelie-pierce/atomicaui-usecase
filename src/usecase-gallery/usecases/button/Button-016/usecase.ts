@@ -2,17 +2,17 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Acknowledge notice button',
-  look: 'Accent solid',
-  apps: ['adc'],
+  title: 'Show all connection types button',
+  look: 'Accent text',
+  apps: ['fd'],
   cases: [
-    { id: 'adc-ok', name: 'Info OK', apps: ['adc'], source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' } },
+    { id: 'fd-carousel-footer', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
   ],
-  source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' },
-  summary: 'A solid primary Button, orange with white text, is the lone OK that acknowledges a notice.',
-  where: 'The footer of a dialog that only informs. Real site source: ADC src/adc/components/DesignCapacityDialog.tsx (OK of the Maximum Number of Designs Reached notice); the About dialog ends the same way with Close. '
-    + 'The other apps use the gray or black single button of Button-007 and Button-015.',
-  when: 'Use it where the app colors its one dialog action with the accent. For a plain dismiss use the neutral Button-007, and keep the close X in the Title as the other way out.',
-  how: 'Set aui color "primary", paint "solid" and scale "sm" (the Dialog.Button default scale). '
-    + 'In context it is the one Dialog.Button of an AlertDialog drawn as a non-modal Dialog, as in AlertDialog-003, with a circle-xmark error icon in the raised Title, the close X inside a "Close" tooltip (top, 8px offset, solid secondary sm) and one paragraph; the real body holds more.',
+  source: { fd: 'src/components/InputPane.jsx' },
+  summary: 'A text Button in the primary colour opens the full list from the footer of a carousel.',
+  where: 'The footer of the FD input pane carousel (the connection type cards), after the pager dots.',
+  when: 'Use it for a quiet link-like action that widens the view: the carousel shows a few cards and this Button opens all of them. A neutral text action is Button-012; the small accent text in a popup is Button-010.',
+  how: 'Set aui paint "text" and color "primary" on a Button at the default scale. '
+    + 'Measured in the gallery: 28px high, 4px 8px padding, 16px regular text, no fill and no border, orange text rgb(255, 83, 8), so it differs from Button-012 (text colour dark) and from Button-010 (26px, 14px medium, scale "xs"). '
+    + 'In context it is the last item of the carousel footer after the two pager dots (Button-020). The cards, the arrows (Button-037) and the dialog it opens are left out.',
 });

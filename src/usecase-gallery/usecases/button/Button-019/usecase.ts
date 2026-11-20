@@ -2,17 +2,16 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Open products picker button',
-  look: 'Outlined row, extra small',
-  apps: ['adc'],
+  title: 'Toggle prototype controls button',
+  look: 'Elevated surface',
+  apps: ['hcs'],
   cases: [
-    { id: 'adc-products', name: 'Products row', apps: ['adc'], source: { adc: 'src/adc/components/ProductsPicker.tsx' } },
+    { id: 'hcs-prototype-controls', name: 'Prototype controls', apps: ['hcs'], source: { hcs: 'src/components/F01Experience.tsx' } },
   ],
-  source: { adc: 'src/adc/components/ProductsPicker.tsx' },
-  summary: 'A full-width small Button with a border stands in for a field until the user activates it.',
-  where: 'The Products input of the ADC input pane before the picker is active; hover or focus replaces it with the picker.',
-  when: 'Use it for a field-like row that opens a picker on interaction. A row that opens a tutorial is Button-011, at the default size and without a fill.',
-  how: 'Set aui scale "xs", color "surface", paint "fixed", shape "soft" and sx width "fill", justifyContent "between". '
-    + 'Measured: 26px high, 3px 5px padding, 14px medium text, white fill and a 1px rgb(148, 163, 184) border, where Button-011 is 30px high with 16px regular text and no fill, so the size and the fill differ. '
-    + 'The scene keeps one row in a 288px column.',
+  source: { hcs: 'src/components/F01Experience.tsx' },
+  summary: 'A surface Button lifted with a shadow floats over the page and toggles a panel of controls.',
+  where: 'The corner of the HCS prototype experience, below the prototype controls stack (a prototype-only toggle, not part of the product).',
+  when: 'Use it for a floating toggle that must stand out from the content behind it. A flat tonal button is Button-009.',
+  how: 'Set aui scale "sm", color "surface" and elevation 3 (aria-expanded for the toggle). '
+    + 'Measured: 28px high, 4px 8px padding, 16px regular text, white fill with no border and a 0 3px 8px shadow of 15% black; Button-009 has the same size with a 1px border and no shadow, so the shadow is the difference.',
 });

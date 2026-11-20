@@ -1,14 +1,21 @@
-import { Button, Icon } from '../../../kit';
+import { IconButton } from '../../../kit';
 
 export default function Example() {
   return (
-    <>
-      <Button aria-label="Previous" aui={{ paint: 'text', profile: 'square' }}>
-        <Icon name="arrow-left" />
-      </Button>
-      <Button aria-label="Next" aui={{ paint: 'text', profile: 'square' }}>
-        <Icon name="arrow-right" />
-      </Button>
-    </>
+    <IconButton
+      name="bullseye"
+      aria-label="Reset view"
+      aui={{
+        scale: 'sm',
+        color: 'primary',
+        paint: 'text',
+        shape: 'soft',
+        sx: {
+          borderWidth: '1',
+          borderStyle: 'solid',
+          borderColor: 'outlined',
+        },
+      }}
+    />
   );
 }

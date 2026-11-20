@@ -2,17 +2,17 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Open report button',
-  look: 'Info solid, extra small',
+  title: 'Open products picker button',
+  look: 'Outlined row, extra small',
   apps: ['adc'],
   cases: [
-    { id: 'adc-status-bar', name: 'Status bar', apps: ['adc'], source: { adc: 'src/adc/components/ReportFlow.tsx' } },
+    { id: 'adc-products', name: 'Products row', apps: ['adc'], source: { adc: 'src/adc/components/ProductsPicker.tsx' } },
   ],
-  source: { adc: 'src/adc/components/ReportFlow.tsx' },
-  summary: 'A small blue solid Button with a file icon tells the user a report is ready and opens it.',
-  where: 'The left slot of the ADC status bar, shown once a calculation report exists for the active design (it reads "Report is ready (outdated)" when the inputs changed since).',
-  when: 'Use it for a status that is also an action: the state is the label and the click opens the result. A neutral action is Button-005; the accent solid is Button-016.',
-  how: 'Set aui color "info", paint "solid", scale "xs" and shape "soft", with a Button.Icon "file-lines" and a span label. '
-    + 'Measured: 26px high, 4px 6px padding, 14px medium text, white on blue rgb(59, 130, 246), 4px radius, so the colour and the size differ from Button-016 (accent, 28px, 16px). '
-    + 'The generating state is the same Button as secondary text, disabled, and is left out with the rest of the bar.',
+  source: { adc: 'src/adc/components/ProductsPicker.tsx' },
+  summary: 'A full-width small Button with a border stands in for a field until the user activates it.',
+  where: 'The Products input of the ADC input pane before the picker is active; hover or focus replaces it with the picker.',
+  when: 'Use it for a field-like row that opens a picker on interaction. A row that opens a tutorial is Button-011, at the default size and without a fill.',
+  how: 'Set aui scale "xs", color "surface", paint "fixed", shape "soft" and sx width "fill", justifyContent "between". '
+    + 'Measured: 26px high, 3px 5px padding, 14px medium text, white fill and a 1px rgb(148, 163, 184) border, where Button-011 is 30px high with 16px regular text and no fill, so the size and the fill differ. '
+    + 'The scene keeps one row in a 288px column.',
 });

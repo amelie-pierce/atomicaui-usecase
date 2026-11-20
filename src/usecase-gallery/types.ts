@@ -26,6 +26,8 @@ export interface UsecaseCaseDoc {
    * groups never overlap. Omit when the scene is the same in every app of the use case.
    */
   apps?: AppKey[];
+  /** The look of the control in this group when it differs from another group of the same action (`Secondary solid`, `Dark solid`); shown in the Document row and above the preview. Omit the use case `look` when every case states one. */
+  look?: string;
   /** Plain text shown below the scene: a property of this UI (label above or beside, a unit weight, ...). Never a toggle value. */
   note?: string;
   /** The source file of this scene per app of the group; overrides the use case's `source` for these apps. */
@@ -42,7 +44,7 @@ export interface UsecaseDoc {
    * (`Secondary solid`).
    */
   title: string;
-  /** The look of the control or dialog that performs the action (`Secondary solid`, `Text with leading icon`): a property, never a tree level. Shown in the Document and above the preview. */
+  /** The look of the control or dialog that performs the action (`Secondary solid`, `Text with leading icon`): a property, never a tree level. Shown in the Document and above the preview. Omit it when every case states its own `look`. */
   look?: string;
   /**
    * The place of use of the one default In context (`contexts/<area-slug>.tsx`), for a use case without `cases`.
@@ -100,6 +102,8 @@ export interface UsecaseCase {
   apps: AppKey[];
   /** The group toggle text: the app labels joined by a comma. */
   label: string;
+  /** The look of this group, when the case states one. */
+  look?: string;
   /** The property note shown below the scene, when the case has one. */
   note?: string;
   Scene: ComponentType<ContextProps>;

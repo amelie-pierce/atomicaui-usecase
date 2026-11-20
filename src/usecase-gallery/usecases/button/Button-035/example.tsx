@@ -1,5 +1,17 @@
 import { IconButton } from '../../../kit';
 
 export default function Example() {
-  return <IconButton name="circle-info" aria-label="Column info" aui={{ color: 'secondary', paint: 'text', scale: 'xs', shape: 'soft', profile: 'contained' }} />;
+  return (
+    <IconButton
+      name="ellipsis-vertical"
+      aria-label="Column options"
+      aui={{
+        color: 'surface',
+        paint: 'text',
+        profile: 'square-compact',
+        shape: 'soft',
+        scale: 'xs',
+      }}
+    />
+  );
 }

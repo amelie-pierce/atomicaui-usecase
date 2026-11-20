@@ -1,17 +1,24 @@
-import { IconButton } from '../../../kit';
+import { IconButton, Tooltip } from '../../../kit';
 
 export default function Example() {
   return (
-    <IconButton
-      name="ellipsis-vertical"
-      aria-label="Column options"
-      aui={{
-        color: 'surface',
-        paint: 'text',
-        profile: 'square-compact',
-        shape: 'soft',
-        scale: 'xs',
-      }}
-    />
+    <Tooltip.Provider>
+      <Tooltip>
+        <Tooltip.Trigger
+          render={
+            <IconButton
+              name="angle-right"
+              aria-label="Expand Input"
+              aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'square', shape: 'soft' }}
+            />
+          }
+        />
+        <Tooltip.Portal>
+          <Tooltip.Positioner side="bottom" sideOffset={4}>
+            <Tooltip.Popup aui={{ scale: 'sm' }}>Expand Input</Tooltip.Popup>
+          </Tooltip.Positioner>
+        </Tooltip.Portal>
+      </Tooltip>
+    </Tooltip.Provider>
   );
 }

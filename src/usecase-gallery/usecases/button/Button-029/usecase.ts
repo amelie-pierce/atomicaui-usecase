@@ -2,27 +2,26 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Icon button',
-  title: 'Expand row button',
-  look: 'Expander, 24px',
-  apps: ['hcs', 'hs', 'fd', 'adc'],
+  title: 'Close popover button',
+  look: 'Ghost, 20px',
+  apps: ['hcs', 'pfd', 'pbs', 'fd', 'agpd', 'rws'],
   cases: [
-    { id: 'hcs-results', name: 'Results table', apps: ['hcs', 'fd'], source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/Results.jsx' } },
-    { id: 'hcs-group', name: 'Group row', apps: ['hcs', 'adc'], source: { hcs: 'src/components/F01Results.tsx', adc: 'src/adc/components/ProductsPicker.tsx' } },
-    { id: 'hs-group', name: 'Group row', apps: ['hs'], source: { hs: 'src/hs/ResultsTable.tsx' } },
+    { id: 'hcs-help-close', name: 'Help popover close', apps: ['hcs'], source: { hcs: 'src/components/HcsDownloadDurationHelp.tsx' } },
+    { id: 'pfd-help-close', name: 'Help popover close', apps: ['pfd'], source: { pfd: 'src/pfd/fields.tsx' } },
+    { id: 'pbs-help-close', name: 'Help popover close', apps: ['pbs'], source: { pbs: 'src/InputFields.tsx' } },
+    { id: 'agpd-help-close', name: 'Help popover close', apps: ['agpd', 'rws'], source: { agpd: 'src/agpd/inputs.tsx', rws: 'src/rws/inputs.tsx' } },
+    { id: 'fd-apps-close', name: 'Apps popover close', apps: ['fd'], source: { fd: 'src/App.jsx' } },
   ],
-  source: { hcs: 'src/components/F01Results.tsx', hs: 'src/hs/ResultsTable.tsx', fd: 'src/components/Results.jsx', adc: 'src/adc/components/ProductsPicker.tsx' },
-  summary: 'A compact chevron Button expands a table row; HCS draws it as a Button (error color on failed rows), the other apps use the table\'s own expand trigger.',
-  where: 'The first cell of a table row, before the name. '
-    + 'Real site source: HCS (the Model cell of ProductRow in src/components/F01Results.tsx; the turn is src/components/F01Results.css) and its group rows (same file); FD Results.jsx (modelCell, Table.ExpandTrigger); HS ResultsTable.tsx (group rows, Table.ExpandTrigger); ADC ProductsPicker.tsx (parent rows of the anchor tree, Table.ExpandTrigger). '
-    + 'ACE, ADM, PFD, PBS, AGPD and RWS have no expandable rows.',
-  when: 'Use it for a per-row disclosure. In HCS switch color to "error" for rows that failed so the reason stands out (shown in the second row of the scene). '
-    + 'Always give it an aria-label (the table trigger takes it from the row\'s expansionLabel); only HCS sets aria-expanded itself.',
-  how: 'The example is the HCS Button: aui scale "sm", profile "square-compact", paint "text" and color "surface" (or "error"), with sx minWidth and minHeight "24" for a safe hit area. '
-    + 'The glyph is angle-right (weight "solid"), shown in the closed state; the app turns only the icon 90 degrees through CSS when aria-expanded is true (the scene\'s `.ug-results` rule does the same), and the button itself never rotates. '
-    + 'The apps are grouped by what the UI looks like, never by the content or data each app shows: every scene uses mock data, so apps with the same UI but different content (HCS and ADC) are one group. '
-    + 'The preview groups the apps by distinct UI and the Document lists the same groups. '
-    + 'Results table (the Why Not expander of a result row): HCS and FD (the Button above, first element of the Model cell, before the name; the scene is the Model column and two rows, because the button shows in two colors). '
-    + 'FD draws the same chevron with the library\'s Table.ExpandTrigger and has no error color, so the HCS format is the standard. '
-    + 'Group row (rows that group members under a model or a parent): HCS and ADC (Table.ExpandTrigger, then the group name in semi-bold; ADC sets the trigger to scale "xs" and gap 6 where HCS keeps the table density and gap 4, a size difference only); HS (the same row painted surface-alt solid, so the group reads as a band). '
-    + 'Left out of every scene: selection, the thumbnail, the other columns, sorting, the frozen column, the Why Not panel and the member rows.',
+  source: { hcs: 'src/components/F01Experience.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
+  summary: 'A transparent icon-only IconButton, 20px square, closes a popover from its corner.',
+  where: 'The corner or title end of a popover: the help popover that opens from the circle-question trigger of a field (HCS, PFD, PBS, AGPD, RWS) and the FD apps popover. '
+    + 'The trigger that opens the help is Button-032 or Button-033.',
+  when: 'Use it to dismiss a popover without acting. Always set aria-label.',
+  how: 'The example is the shared part: an IconButton with paint "text", profile "contained" and an aria-label; the apps differ only in the glyph, the props they set and where the button sits. '
+    + 'The Popover is the supporting part the In context scene writes around it; IconButton needs the Font Awesome font to show its glyph. '
+    + 'Help popover close: HCS (an IconButton at scale "sm", profile "square-compact", color "secondary", paint "text", shape "soft", sx flex "none", at the end of an intro row in a View card, surface, solid, soft, elevation 4, up to 34rem, above the circle-question trigger; top, start, 8px offset). '
+    + 'PFD: a Button (not an IconButton) with a ContainedIcon xmark at profile "square", scale "sm", secondary, text, alone in its own row at the end above the text, in a column up to 384px. '
+    + 'PBS: an IconButton at scale "xs", paint "text", profile "square-compact", shape "soft" and no color, at the end of a row beside the help text, in a 320px popup. '
+    + 'AGPD and RWS: an IconButton with only scale "xs", right-aligned in its own row above the text, in a 320px column. The optional image or diagram of the PFD, AGPD and RWS popups is left out. '
+    + 'Apps popover close: FD only (a Button with an xmark Icon child, color "secondary", paint "text", scale "sm", at the end of the title row "Explore More Applications" in the 288px apps popover opened from the top bar grip; the grid of app links is left out).',
 });

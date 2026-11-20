@@ -1,5 +1,5 @@
 import { IconButton } from '../../../kit';
 
 export default function Example() {
-  return <IconButton name="trash" aria-label="Remove row" aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} />;
+  return <IconButton name="plus" aria-label="Add to Connection List" aui={{ color: 'secondary', paint: 'tonal', scale: 'sm', shape: 'soft' }} />;
 }

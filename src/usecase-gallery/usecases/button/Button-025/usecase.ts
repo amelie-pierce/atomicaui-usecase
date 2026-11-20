@@ -2,21 +2,20 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Button group',
-  title: 'End walkthrough buttons',
-  look: 'Text with icons',
-  apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
+  title: 'Edit and Duplicate row buttons',
+  look: 'Tonal pair',
+  apps: ['hs', 'pbs'],
   cases: [
-    { id: 'hcs-last-step', name: 'Last step', apps: ['hcs'], source: { hcs: 'src/components/F01Walkthrough.tsx' } },
-    { id: 'ace-last-step', name: 'Last step', apps: ['ace', 'hs', 'rws', 'agpd'], source: { ace: 'src/features/top-navigation/ui/TutorialWalkthrough.tsx', hs: 'src/hs/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx', agpd: 'src/agpd/Tutorials.tsx' } },
-    { id: 'adm-last-step', name: 'Last step', apps: ['adm', 'fd'], source: { adm: 'src/features/top-navigation/components/TutorialWalkthrough.tsx', fd: 'src/components/Walkthrough.jsx' } },
-    { id: 'pbs-last-step', name: 'Last step', apps: ['pbs', 'pfd'], source: { pbs: 'src/PbsWalkthrough.tsx', pfd: 'src/pfd/Walkthrough.tsx' } },
+    { id: 'hs-edit', name: 'Edit and Duplicate', apps: ['hs'], source: { hs: 'src/hs/OutputPane.tsx' } },
+    { id: 'pbs-edit', name: 'Edit and Duplicate', apps: ['pbs'], source: { pbs: 'src/ResultsSection.tsx' } },
   ],
-  source: { hcs: 'src/components/F01Walkthrough.tsx', ace: 'src/features/top-navigation/ui/TutorialWalkthrough.tsx', adm: 'src/features/top-navigation/components/TutorialWalkthrough.tsx', pfd: 'src/pfd/Walkthrough.tsx', pbs: 'src/PbsWalkthrough.tsx', hs: 'src/hs/Tutorials.tsx', fd: 'src/components/Walkthrough.jsx', agpd: 'src/agpd/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx' },
-  summary: 'Borderless text Buttons close a guided tour on its last step: Previous with arrow-left before it, and End in place of Next.',
-  where: 'The navigation row in the footer of the walkthrough card on the last step. Real site source: the walkthrough card of each app (the paths are in source). ADC has no walkthrough.',
-  when: 'Use End to close a flow that has been walked through; do not use it to dismiss a tour early, for that use the close icon (Button-031). The steps before the last use Button-024.',
-  how: 'aui scale "sm", paint "text" and color "secondary" on every Button; Previous keeps Button.Icon arrow-left, End replaces Next. '
-    + 'Four groups, told apart by the End icon and the label style: HCS (End with a check, mixed case, regular weight), ACE, HS, RWS and AGPD (END in capitals, regular weight, no icon), ADM and FD (END in capitals, bold, no icon) and PBS and PFD (END in capitals, bold, with the check). '
-    + 'The bold capitals are CSS on the row\'s buttons in ADM, PBS and PFD. '
-    + 'On the last step the target is the File menu at the right edge, so the card sits to the left of the spotlight, as the app places it when it does not fit on the right.',
+  source: { hs: 'src/hs/OutputPane.tsx', pbs: 'src/ResultsSection.tsx' },
+  summary: 'Two tonal labelled Buttons in the first cell of a saved-list row edit or duplicate that row.',
+  where: 'The first cell of a list of saved results (the Job List of HS, the Connection List of PBS). '
+    + 'Real site source: HS src/hs/OutputPane.tsx (Edit and Duplicate side by side in the first cell); PBS src/ResultsSection.tsx (the same pair stacked in the first cell). '
+    + 'The other apps have no per-row Buttons in a saved list.',
+  when: 'Use labelled tonal Buttons where a row has two actions people reach for often. Keep the destructive one apart as an icon button (Button-038, Remove) and name icon-only buttons with an aria-label that carries the row id.',
+  how: 'The example is the Edit and Duplicate pair: aui color "secondary", paint "tonal", scale "sm". The preview shows the radio group of the places, one for HS and one for PBS. '
+    + 'Edit and Duplicate: HS (the two Buttons side by side in a left-aligned first cell); PBS (the same Buttons stacked in a column, gap 8, centred in a centred cell). '
+    + 'Left out: every other column, the trash button, the totals row, the editing banner and the confirm dialogs.',
 });

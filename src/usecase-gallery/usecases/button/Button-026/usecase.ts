@@ -2,20 +2,19 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Button group',
-  title: 'Edit and Duplicate row buttons',
-  look: 'Tonal pair',
-  apps: ['hs', 'pbs'],
+  title: 'Edit and Delete row link buttons',
+  look: 'Stacked text links, no padding',
+  apps: ['ace'],
   cases: [
-    { id: 'hs-edit', name: 'Edit and Duplicate', apps: ['hs'], source: { hs: 'src/hs/OutputPane.tsx' } },
-    { id: 'pbs-edit', name: 'Edit and Duplicate', apps: ['pbs'], source: { pbs: 'src/ResultsSection.tsx' } },
+    { id: 'ace-links', name: 'Edit and Delete links', apps: ['ace'], source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' } },
   ],
-  source: { hs: 'src/hs/OutputPane.tsx', pbs: 'src/ResultsSection.tsx' },
-  summary: 'Two tonal labelled Buttons in the first cell of a saved-list row edit or duplicate that row.',
-  where: 'The first cell of a list of saved results (the Job List of HS, the Connection List of PBS). '
-    + 'Real site source: HS src/hs/OutputPane.tsx (Edit and Duplicate side by side in the first cell); PBS src/ResultsSection.tsx (the same pair stacked in the first cell). '
-    + 'The other apps have no per-row Buttons in a saved list.',
-  when: 'Use labelled tonal Buttons where a row has two actions people reach for often. Keep the destructive one apart as an icon button (Button-040, Remove) and name icon-only buttons with an aria-label that carries the row id.',
-  how: 'The example is the Edit and Duplicate pair: aui color "secondary", paint "tonal", scale "sm". The preview shows the radio group of the places, one for HS and one for PBS. '
-    + 'Edit and Duplicate: HS (the two Buttons side by side in a left-aligned first cell); PBS (the same Buttons stacked in a column, gap 8, centred in a centred cell). '
-    + 'Left out: every other column, the trash button, the totals row, the editing banner and the confirm dialogs.',
+  source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
+  summary: 'Text Buttons with no padding read as links; stacked in a column they give a table row its few actions while the table stays light.',
+  where: 'The first cell of each row of a saved-list table. Real site source: ACE src/features/calculation/ui/CalculationOutput.tsx (Edit and Delete as stacked link-like Buttons in the first cell of the Job tally). '
+    + 'The other apps have no link-like row Buttons.',
+  when: 'Use it for row actions in a table that must stay light and where the actions are few; for two often-used actions prefer the tonal pair of Button-025. '
+    + 'Unlike the inline link of Button-004 it keeps the secondary color and no underline.',
+  how: 'Set aui color "secondary", paint "text", scale "sm" and profile "no-padding". '
+    + 'In context the Buttons are stacked in a column and start-aligned in the first cell of a Job tally row; ACE hides Edit on the selected row and Delete while only one job exists. '
+    + 'The other columns and the totals row are left out.',
 });

@@ -2,17 +2,16 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Icon button',
-  title: 'Collapse all sections button',
+  title: 'Show column info button',
   look: 'Ghost, 20px',
-  apps: ['hcs'],
+  apps: ['fd'],
   cases: [
-    { id: 'hcs-panel-header', name: 'Panel header', apps: ['hcs'], source: { hcs: 'src/App.tsx' } },
+    { id: 'fd-header-info', name: 'Header info', apps: ['fd'], source: { fd: 'src/components/Results.jsx' } },
   ],
-  source: { hcs: 'src/components/F01Experience.tsx' },
-  summary: 'A transparent icon-only IconButton collapses every section of the Input pane, and expands them again when all are closed.',
-  where: 'The end of the HCS Input pane header, after the collapse chevron, the semi-bold title and a Panels.Spacer. Real site source: HCS src/App.tsx. No other app has this control.',
-  when: 'Use it for panel chrome that acts on every section at once; wrap it in a Tooltip with the same text as the aria-label.',
-  how: 'An IconButton with aui color "secondary", paint "text", scale "sm", shape "soft" and profile "contained" inside a Tooltip with the same text as the aria-label, as the app does for every icon-only button. '
-    + 'In context it sits above two accordion sections, both open and empty, so the label and glyph read Collapse all and arrows-to-line; with every section closed they read Expand all and arrows-from-line. '
-    + 'The section contents and the Galvanized card are left out. One group, HCS only.',
+  source: { fd: 'src/components/ui.jsx' },
+  summary: 'A transparent icon-only button with a circle-info opens an explanation popover from a table column header.',
+  where: 'A table column header cell. Real site source: FD src/components/Results.jsx (FastenerPatternInfo). No other app has this control.',
+  when: 'Use it to explain one column without adding permanent text; stop its click so it does not sort the column. Always set aria-label.',
+  how: 'FD writes a Button (color "secondary", paint "text", scale "xs", shape "soft") with a circle-info Button.Icon, which opens a popover below it; the scene writes that Button, the example shows the IconButton form. '
+    + 'The scene keeps one header cell and the first line of the popover. One group, FD only.',
 });

@@ -1,15 +1,15 @@
 import type { ContextProps } from '../../../../types';
 import { Button, ContainedIcon, Field, Popover, View } from '../../../../kit';
 
-// RWS Help (src/rws/inputs.tsx): a Button at profile "square" pinned to 20px by sx, so the label row keeps the 20px of a plain label. It opens a 320px popover; its close is Button-030.
-export default function RwsFieldHelpScene({ host }: ContextProps) {
+// PBS HelpPopover (src/InputFields.tsx): the trigger after each label is a Button at profile "square-compact", so a label with help keeps the height of one without. It opens a 320px popover; its close is Button-029.
+export default function PbsFieldHelpScene({ host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 10)', inlineSize: 'min(100%, calc(var(--p-px-16) * 18))' }}>
       <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
         <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', alignItems: 'center' } }}>
           <Field.Label aui={{ scale: 'sm' }}>Material</Field.Label>
           <Popover>
-            <Popover.Trigger render={<Button aria-label="Material help" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft', sx: { width: '20', height: '20', minWidth: '20', minHeight: '20' } }} />}>
+            <Popover.Trigger render={<Button aria-label="Material help" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square-compact', shape: 'soft' }} />}>
               <ContainedIcon name="circle-question" />
             </Popover.Trigger>
             <Popover.Portal container={host}>

@@ -2,16 +2,15 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Icon button',
-  title: 'Step carousel buttons',
-  look: 'Ghost, 28px',
-  apps: ['fd'],
-  cases: [
-    { id: 'fd-carousel-arrows', name: 'Carousel arrows', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
-  ],
-  source: { fd: 'src/components/InputPane.jsx' },
-  summary: 'Two square transparent Buttons, 28px, step an input pane carousel back and forward.',
-  where: 'The footer of the FD input pane carousel (the connection type cards). Real site source: FD src/components/InputPane.jsx. No other app has a carousel.',
-  when: 'Use the pair to step a carousel page by page; disable Previous on the first page and Next on the last, and set an aria-label on each.',
-  how: 'Buttons with aui paint "text" and profile "square" around an Icon arrow-left or arrow-right; measured 28px square, transparent, 4px radius, the same box as the other ghost 28px buttons. '
-    + 'The scene disables the first, as on the first page; the card row and the pager (Button-021) are left out. One group, FD only.',
+  title: 'Reset view button',
+  look: 'Outlined accent, 28px',
+  area: 'Viewer',
+  apps: ['hcs'],
+  source: { hcs: 'src/App.tsx' },
+  summary: 'An orange icon with a thin outline floats over a 3D viewer to reset the camera.',
+  where: 'A corner of a 3D viewer: Reset view. Real site source: HCS, the only live icon button in the primary color. Built from the viewer pane in src/App.tsx (lines 1403-1651) and index.css (.scene, .f02-controls).',
+  when: 'Use it for a control that sits over busy content, where the outline keeps it findable. The outline comes from sx, not from a color axis.',
+  how: 'Set aui scale "sm", color "primary", paint "text" and shape "soft", plus sx borderWidth "1", borderStyle "solid" and borderColor "outlined". '
+    + 'In context the scene is the 3D Viewer pane with Reset view overlaid at the top end, 62px down and 12px in (the app\'s `.f02-controls-desktop`, here a gallery rule, since the kit sx has no inset axis); the projection radios and the Object Visibility checkboxes under it are left out. '
+    + 'The canvas is a framed stand-in: the app draws a live three.js scene.',
 });

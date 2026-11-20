@@ -1,18 +1,22 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Single button',
-  title: 'Go to carousel page button',
-  look: 'Pager dot',
-  apps: ['fd'],
+  uiType: 'Button group',
+  title: 'Save column configuration buttons',
+  look: 'Text and primary',
+  apps: ['hcs', 'hs'],
   cases: [
-    { id: 'fd-carousel-dots', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
+    { id: 'hcs-configure-columns', name: 'Configure columns', apps: ['hcs'], source: { hcs: 'src/components/ColumnVisibility.tsx' } },
+    { id: 'hs-configure-columns', name: 'Configure columns', apps: ['hs'], source: { hs: 'src/hs/ColumnVisibility.tsx' } },
   ],
-  source: { fd: 'src/components/InputPane.jsx' },
-  summary: 'An empty solid Button is one dot of a carousel pager; the current page is the primary one.',
-  where: 'The footer of the FD input pane carousel: one dot per page of cards.',
-  when: 'Use it only as a page indicator that also jumps to its page. It has no label, so always set aria-label ("1 / 3") and aria-current on the current dot.',
-  how: 'Set aui paint "solid" and color "primary" for the current page, "surface-alt" for the others, on a Button with no children. '
-    + 'Measured with no size class: 16px by 10px, orange rgb(255, 83, 8) when current; the app sizes the dot with its own carousel-dot CSS class, which the kit cannot state, so the scene shows the kit box. '
-    + 'A Button with no label and a solid fill is not an icon button, so it stays a Single button.',
+  source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx' },
+  summary: 'A reset icon, a Cancel and a solid secondary Save close the Configure columns popover.',
+  where: 'The footer of the Configure columns popover, opened from the table-columns IconButton at the end of the Output header: a reset icon at the start, then Cancel and Save. '
+    + 'Real site source: HCS src/components/ColumnVisibility.tsx and HS src/hs/ColumnVisibility.tsx. Dialogs use a gray solid Cancel instead (Dialog-005).',
+  when: 'Use it when the popover is lightweight and the Cancel should not compete with Save; the reset icon returns the columns to their default.',
+  how: 'HCS: Cancel sets aui paint "text" (default color, no fill, default scale); Save sets scale "sm", color "secondary" and paint "solid". '
+    + 'Cancel and Save sit in their own row View so the footer row can use justifyContent "between": reset icon at the start, the pair at the end. '
+    + 'The reset is an IconButton with the rotate-left glyph, aui paint "text", and needs an aria-label. '
+    + 'In context the popover is opened under the table-columns IconButton (contained profile) (bottom, end, 4px offset): a reorderable List of three Output columns, then this footer; the search field, the other columns and Group by model are left out. '
+    + 'HS (own group): the same footer, but Save has no scale (default size) and the table-columns trigger has no contained profile.',
 });

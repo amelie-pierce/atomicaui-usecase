@@ -2,15 +2,17 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Close info dialog button',
-  look: 'Dark solid',
-  apps: ['fd'],
+  title: 'Acknowledge notice button',
+  look: 'Accent solid',
+  apps: ['adc'],
   cases: [
-    { id: 'fd-close', name: 'Info Close', apps: ['fd'], source: { fd: 'src/App.jsx' } },
+    { id: 'adc-ok', name: 'Info OK', apps: ['adc'], source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' } },
   ],
-  source: { fd: 'src/App.jsx' },
-  summary: 'A black Close is the lone button of an info dialog where the app wants it to stand out.',
-  where: 'The footer of the Explore More Applications dialog. Real site source: FD src/App.jsx. Other apps close their info dialogs with the gray Button-007.',
-  when: 'Use it where the app wants a black Close instead of the gray default of Button-007.',
-  how: 'A plain Button with aui color "secondary" (a black fill), not the gray Dialog.Button the other apps use. The Modal is drawn as a non-modal Dialog here; the scene keeps one paragraph of body text. One group, FD only.',
+  source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' },
+  summary: 'A solid primary Button, orange with white text, is the lone OK that acknowledges a notice.',
+  where: 'The footer of a dialog that only informs. Real site source: ADC src/adc/components/DesignCapacityDialog.tsx (OK of the Maximum Number of Designs Reached notice); the About dialog ends the same way with Close. '
+    + 'The other apps use the gray or black single button of Button-007 and Button-007.',
+  when: 'Use it where the app colors its one dialog action with the accent. For a plain dismiss use the neutral Button-007, and keep the close X in the Title as the other way out.',
+  how: 'Set aui color "primary", paint "solid" and scale "sm" (the Dialog.Button default scale). '
+    + 'In context it is the one Dialog.Button of an AlertDialog drawn as a non-modal Dialog, as in AlertDialog-003, with a circle-xmark error icon in the raised Title, the close X inside a "Close" tooltip (top, 8px offset, solid secondary sm) and one paragraph; the real body holds more.',
 });

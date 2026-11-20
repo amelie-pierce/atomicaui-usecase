@@ -2,7 +2,7 @@ import type { ContextProps } from '../../../../types';
 import { Table, View } from '../../../../kit';
 
 // ADM Multi design table (MultiDesignTable.tsx 49-60, 94-111): rows separated by lines, the radio in the first cell, and the selected row painted raised with a 4px
-// primary bar at its start. The family group rows (Button-029) and the Pass or fail and value columns are left out.
+// primary bar at its start. The family group rows (Button-028) and the Pass or fail and value columns are left out.
 export default function AdmSelectionScene(_props: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>

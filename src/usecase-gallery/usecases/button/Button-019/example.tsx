@@ -1,9 +1,5 @@
 import { Button } from '../../../kit';
 
 export default function Example() {
-  return (
-    <Button aui={{ scale: 'xs', color: 'surface', paint: 'fixed', shape: 'soft', sx: { width: 'fill', justifyContent: 'between' } }}>
-      Select products
-    </Button>
-  );
+  return <Button aui={{ scale: 'sm', color: 'surface', elevation: 3 }}>Prototype controls</Button>;
 }

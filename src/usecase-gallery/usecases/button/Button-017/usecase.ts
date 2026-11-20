@@ -2,17 +2,17 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Show all connection types button',
-  look: 'Accent text',
-  apps: ['fd'],
+  title: 'Open report button',
+  look: 'Info solid, extra small',
+  apps: ['adc'],
   cases: [
-    { id: 'fd-carousel-footer', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
+    { id: 'adc-status-bar', name: 'Status bar', apps: ['adc'], source: { adc: 'src/adc/components/ReportFlow.tsx' } },
   ],
-  source: { fd: 'src/components/InputPane.jsx' },
-  summary: 'A text Button in the primary colour opens the full list from the footer of a carousel.',
-  where: 'The footer of the FD input pane carousel (the connection type cards), after the pager dots.',
-  when: 'Use it for a quiet link-like action that widens the view: the carousel shows a few cards and this Button opens all of them. A neutral text action is Button-012; the small accent text in a popup is Button-010.',
-  how: 'Set aui paint "text" and color "primary" on a Button at the default scale. '
-    + 'Measured in the gallery: 28px high, 4px 8px padding, 16px regular text, no fill and no border, orange text rgb(255, 83, 8), so it differs from Button-012 (text colour dark) and from Button-010 (26px, 14px medium, scale "xs"). '
-    + 'In context it is the last item of the carousel footer after the two pager dots (Button-021). The cards, the arrows (Button-039) and the dialog it opens are left out.',
+  source: { adc: 'src/adc/components/ReportFlow.tsx' },
+  summary: 'A small blue solid Button with a file icon tells the user a report is ready and opens it.',
+  where: 'The left slot of the ADC status bar, shown once a calculation report exists for the active design (it reads "Report is ready (outdated)" when the inputs changed since).',
+  when: 'Use it for a status that is also an action: the state is the label and the click opens the result. A neutral action is Button-005; the accent solid is Button-015.',
+  how: 'Set aui color "info", paint "solid", scale "xs" and shape "soft", with a Button.Icon "file-lines" and a span label. '
+    + 'Measured: 26px high, 4px 6px padding, 14px medium text, white on blue rgb(59, 130, 246), 4px radius, so the colour and the size differ from Button-015 (accent, 28px, 16px). '
+    + 'The generating state is the same Button as secondary text, disabled, and is left out with the rest of the bar.',
 });

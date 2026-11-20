@@ -7,10 +7,7 @@ export default function Example() {
         <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
         Previous
       </Button>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
-        Next
-        <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
-      </Button>
+      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>End</Button>
     </>
   );
 }

@@ -2,21 +2,18 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Icon button',
-  title: 'Open column menu button',
-  look: 'Ghost, 20px, small glyph',
-  apps: ['hcs', 'hs', 'pfd'],
+  title: 'Expand panel button',
+  look: 'Ghost, 28px',
+  apps: ['hcs'],
   cases: [
-    { id: 'hcs-column-menu', name: 'Column menu', apps: ['hcs', 'hs'], source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx' } },
-    { id: 'pfd-column-menu', name: 'Column menu', apps: ['pfd'], source: { pfd: 'src/pfd/ColumnMenu.tsx' } },
+    { id: 'hcs-rail', name: 'Collapsed rail', apps: ['hcs'], source: { hcs: 'src/components/HcsSplitLayout.tsx' } },
   ],
-  source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx', pfd: 'src/pfd/ColumnMenu.tsx' },
-  summary: 'A small IconButton opens the menu of a table column header.',
-  where: 'The header cell of each table column, beside the column title. '
-    + 'Real site source: HCS (the actions slot of the results header in src/components/F01Results.tsx; the menu is src/components/ColumnMenu.tsx), HS (src/hs/ColumnMenu.tsx) and PFD (src/pfd/ColumnMenu.tsx).',
-  when: 'Use it for a per-column menu where space is tight. It is smaller than the panel icon buttons and uses the surface color.',
-  how: 'HCS: set aui color "surface", paint "text", profile "square-compact", shape "soft" and scale "xs" with the ellipsis-vertical glyph, and pass it to Table.HeaderCell through the actions prop: the kit lays the header out as label then actions, so the kebab sits at the end of each cell. '
-    + 'In context the menu is open under the Load (lb) kebab (bottom, end, 4px offset): a View card (surface, solid, soft, elevation 4, 256px) over the table with the Sort radios (Sort A to Z (Smallest to Largest), Sort Z to A (Largest to Smallest), None); Search by text and Search by option are left out. '
-    + 'Load is sorted ascending, so its rows run from smallest to largest. The scene shows two of the nine Output columns and two rows. '
-    + 'HS renders the same as HCS: its trigger takes color "secondary" while its column is sorted or filtered (the filter glyph while filtered), which computes to the same near-black text, no fill and the same hover as the HCS "surface" kebab, so HCS and HS are one group. '
-    + 'PFD (own group): the horizontal ellipsis glyph, secondary while sorted, the menu opens under the trigger towards the next column (bottom, start) and starts with a Close Button (profile "square", scale "sm", secondary text, alignSelf end) above the Sort radios; Search by text and Search by option are left out.',
+  source: { hcs: 'src/components/HcsSplitLayout.tsx' },
+  summary: 'A square transparent IconButton, 28px, expands a collapsed side panel from its rail.',
+  where: 'A collapsed side rail that stands in for a panel (angle-right expands a horizontal one, angle-down a vertical one). Real site source: HCS src/components/HcsSplitLayout.tsx and panelSpec.ts (the rail and its sizes). '
+    + 'No other app has a panel rail.',
+  when: 'Use it as the single trigger of a collapsed panel; the expanded panel switches to the 20px header controls of Button-033. Always set aria-label.',
+  how: 'Set aui color "secondary", paint "text", scale "sm", shape "soft" and profile "square" (28px, unlike the 20px contained header icons) on an IconButton, with a Tooltip carrying the aria-label text. '
+    + 'The trigger is a Panels.Trigger, the kit trigger that renders the IconButton, whose targetId is the panel id, and a real Panels group holds the Input panel at its 40px collapsed size: the rail is a column that fills the panel height with the trigger at the top centre, beside the viewer pane, which is cut to its title (no canvas); the Input panel holds only its title; the vertical rail of the engineering layout (angle-down, trigger at the start corner) is not shown. '
+    + 'One group, HCS only.',
 });

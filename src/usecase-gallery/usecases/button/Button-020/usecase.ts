@@ -2,16 +2,17 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Toggle prototype controls button',
-  look: 'Elevated surface',
-  apps: ['hcs'],
+  title: 'Go to carousel page button',
+  look: 'Pager dot',
+  apps: ['fd'],
   cases: [
-    { id: 'hcs-prototype-controls', name: 'Prototype controls', apps: ['hcs'], source: { hcs: 'src/components/F01Experience.tsx' } },
+    { id: 'fd-carousel-dots', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
   ],
-  source: { hcs: 'src/components/F01Experience.tsx' },
-  summary: 'A surface Button lifted with a shadow floats over the page and toggles a panel of controls.',
-  where: 'The corner of the HCS prototype experience, below the prototype controls stack (a prototype-only toggle, not part of the product).',
-  when: 'Use it for a floating toggle that must stand out from the content behind it. A flat tonal button is Button-009.',
-  how: 'Set aui scale "sm", color "surface" and elevation 3 (aria-expanded for the toggle). '
-    + 'Measured: 28px high, 4px 8px padding, 16px regular text, white fill with no border and a 0 3px 8px shadow of 15% black; Button-009 has the same size with a 1px border and no shadow, so the shadow is the difference.',
+  source: { fd: 'src/components/InputPane.jsx' },
+  summary: 'An empty solid Button is one dot of a carousel pager; the current page is the primary one.',
+  where: 'The footer of the FD input pane carousel: one dot per page of cards.',
+  when: 'Use it only as a page indicator that also jumps to its page. It has no label, so always set aria-label ("1 / 3") and aria-current on the current dot.',
+  how: 'Set aui paint "solid" and color "primary" for the current page, "surface-alt" for the others, on a Button with no children. '
+    + 'Measured with no size class: 16px by 10px, orange rgb(255, 83, 8) when current; the app sizes the dot with its own carousel-dot CSS class, which the kit cannot state, so the scene shows the kit box. '
+    + 'A Button with no label and a solid fill is not an icon button, so it stays a Single button.',
 });

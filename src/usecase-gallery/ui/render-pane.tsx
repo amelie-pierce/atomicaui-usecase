@@ -46,6 +46,7 @@ export function RenderPane({
 }) {
   const { Example } = usecase;
   const Context = activeCase?.Scene ?? usecase.Context;
+  const look = (mode === 'context' ? activeCase?.look : undefined) ?? usecase.look ?? usecase.cases?.[0]?.look;
   const [host, setHost] = useState<HTMLElement | null>(null);
   return (
     <PaneCard label="Preview" className="ug-render">
@@ -103,9 +104,9 @@ export function RenderPane({
           ))}
         </ToggleGroup>
       )}
-      {usecase.look && (
+      {look && (
         <Type role="l3" as="p" color="muted" className="ug-render__look">
-          Look: {usecase.look}
+          Look: {look}
         </Type>
       )}
       <div className="ug-render__stage" ref={setHost}>

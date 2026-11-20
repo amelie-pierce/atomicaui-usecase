@@ -1,5 +1,10 @@
 import { Button } from '../../../kit';
 
 export default function Example() {
-  return <Button aui={{ paint: 'text', color: 'primary' }}>View all</Button>;
+  return (
+    <Button aui={{ color: 'info', paint: 'solid', scale: 'xs', shape: 'soft' }}>
+      <Button.Icon name="file-lines" />
+      <span>Report is ready</span>
+    </Button>
+  );
 }

@@ -2,18 +2,16 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Icon button',
-  title: 'Expand panel button',
+  title: 'Step carousel buttons',
   look: 'Ghost, 28px',
-  apps: ['hcs'],
+  apps: ['fd'],
   cases: [
-    { id: 'hcs-rail', name: 'Collapsed rail', apps: ['hcs'], source: { hcs: 'src/components/HcsSplitLayout.tsx' } },
+    { id: 'fd-carousel-arrows', name: 'Carousel arrows', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
   ],
-  source: { hcs: 'src/components/HcsSplitLayout.tsx' },
-  summary: 'A square transparent IconButton, 28px, expands a collapsed side panel from its rail.',
-  where: 'A collapsed side rail that stands in for a panel (angle-right expands a horizontal one, angle-down a vertical one). Real site source: HCS src/components/HcsSplitLayout.tsx and panelSpec.ts (the rail and its sizes). '
-    + 'No other app has a panel rail.',
-  when: 'Use it as the single trigger of a collapsed panel; the expanded panel switches to the 20px header controls of Button-034. Always set aria-label.',
-  how: 'Set aui color "secondary", paint "text", scale "sm", shape "soft" and profile "square" (28px, unlike the 20px contained header icons) on an IconButton, with a Tooltip carrying the aria-label text. '
-    + 'The trigger is a Panels.Trigger, the kit trigger that renders the IconButton, whose targetId is the panel id, and a real Panels group holds the Input panel at its 40px collapsed size: the rail is a column that fills the panel height with the trigger at the top centre, beside the viewer pane, which is cut to its title (no canvas); the Input panel holds only its title; the vertical rail of the engineering layout (angle-down, trigger at the start corner) is not shown. '
-    + 'One group, HCS only.',
+  source: { fd: 'src/components/InputPane.jsx' },
+  summary: 'Two square transparent Buttons, 28px, step an input pane carousel back and forward.',
+  where: 'The footer of the FD input pane carousel (the connection type cards). Real site source: FD src/components/InputPane.jsx. No other app has a carousel.',
+  when: 'Use the pair to step a carousel page by page; disable Previous on the first page and Next on the last, and set an aria-label on each.',
+  how: 'Buttons with aui paint "text" and profile "square" around an Icon arrow-left or arrow-right; measured 28px square, transparent, 4px radius, the same box as the other ghost 28px buttons. '
+    + 'The scene disables the first, as on the first page; the card row and the pager (Button-020) are left out. One group, FD only.',
 });

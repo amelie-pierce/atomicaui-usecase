@@ -3,11 +3,8 @@ import { Button } from '../../../kit';
 export default function Example() {
   return (
     <>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
-        <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
-        Previous
-      </Button>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>End</Button>
+      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }}>Edit</Button>
+      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }}>Duplicate</Button>
     </>
   );
 }

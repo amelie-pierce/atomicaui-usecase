@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { KeyboardEvent } from 'react';
 import { Collapsible, Type } from '../kit';
 import type { ComponentGroup, UiTypeGroup, Usecase } from '../types';
+import { COMPONENTS_HASH } from '../hooks/use-components-route';
 import { PaneCard } from './pane-card';
 
 interface TreePaneProps {
@@ -60,6 +61,9 @@ export function TreePane({ groups, selectedId, title }: TreePaneProps) {
   return (
     <PaneCard label="Components" className="ug-tree">
       <h1 className="ug-visually-hidden">{title}</h1>
+      <a className="ug-tree__link ug-tree__all" href={COMPONENTS_HASH}>
+        <Type role="l3" as="span" weight="semi-bold">All components</Type>
+      </a>
       <nav aria-label="Components, UI types and use cases" onKeyDown={moveFocus}>
         {groups.map((group) => (
           <Collapsible key={group.id} open={open.has(group.id)} onOpenChange={(open) => setOpen(group.id, open)}>

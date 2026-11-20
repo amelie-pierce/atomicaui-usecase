@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { catalog, allUsecases } from '../catalog/catalog';
 import { caseTypes } from '../catalog/app-views';
+import { useComponentsRoute } from '../hooks/use-components-route';
 import { useHashSelection } from '../hooks/use-hash-selection';
 import { useMediaQuery } from '../hooks/use-media-query';
+import { ComponentsPage } from '../ui/components-page';
 import { DetailPane } from '../ui/detail-pane';
 import { RenderPane } from '../ui/render-pane';
 import { TreePane } from '../ui/tree-pane';
@@ -20,6 +22,7 @@ export interface UsecaseGalleryProps {
 
 export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const narrow = useMediaQuery(NARROW);
+  const componentsRoute = useComponentsRoute();
   const [mode, setMode] = useState<PreviewMode>('component');
   // Kept across use cases: the reader who switched to Code stays on Code while browsing.
   const [detail, setDetail] = useState<DetailMode>('code');
@@ -30,6 +33,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   // The In context type and variant are per use case: choosing another use case starts again at its first type and variant.
   const [chosen, setChosen] = useState<{ usecaseId: string; type?: string; caseId?: string }>();
   if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
+  if (componentsRoute) return <div className="ug"><ComponentsPage groups={catalog} title={title} /></div>;
   const usecase = allUsecases.find((candidate) => candidate.id === selectedId);
   if (!usecase) return null;
   const types = caseTypes(usecase);

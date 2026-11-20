@@ -1,9 +1,12 @@
-import { buildCatalog } from './build-catalog';
+import { buildCatalog, parentAliases } from './build-catalog';
+import type { ComponentMeta } from '../types';
 
 // Discovery: adding a use case folder, or a whole component folder, needs no registry edit.
 // Docs and metas are tiny and loaded up front for the tree; examples and sources load on demand.
+const metas = import.meta.glob<ComponentMeta>('../usecases/*/*.meta.ts', { eager: true, import: 'default' });
+export const componentAliases = parentAliases(metas);
 export const catalog = buildCatalog({
-  metas: import.meta.glob('../usecases/*/*.meta.ts', { eager: true, import: 'default' }),
+  metas,
   docs: import.meta.glob('../usecases/*/*/usecase.ts', { eager: true, import: 'default' }),
   examples: import.meta.glob('../usecases/*/*/example.tsx', { import: 'default' }),
   sources: import.meta.glob('../usecases/*/*/example.tsx', { query: '?raw', import: 'default' }),

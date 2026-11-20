@@ -16,7 +16,7 @@ export function ComponentsPage({ groups, title }: ComponentsPageProps) {
   return (
     <main className="ug-site">
       <header className="ug-site__head">
-        <Type role="h5" as="h1" weight="bold">{title}</Type>
+        <Type role="h6" as="h1" weight="bold">{title}</Type>
         <Type role="l3" as="p" color="muted">{groups.length} components. Pick one to see its use cases.</Type>
       </header>
       <ul className="ug-grid">
@@ -30,7 +30,7 @@ export function ComponentsPage({ groups, title }: ComponentsPageProps) {
                   {sample && <Thumb Example={sample.Example} />}
                   <Card.Body>
                     <Card.Content className="ug-grid__content">
-                      <Type role="h5" as="h2" weight="semi-bold">{group.title}</Type>
+                      <Type role="l2" as="h2" weight="semi-bold">{group.title}</Type>
                       <Type role="l3" as="p" color="muted">
                         {group.uiTypes.length} UI {group.uiTypes.length === 1 ? 'type' : 'types'} · {count} use {count === 1 ? 'case' : 'cases'}
                       </Type>

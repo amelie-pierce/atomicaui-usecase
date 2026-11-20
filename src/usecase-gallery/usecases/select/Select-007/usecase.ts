@@ -1,13 +1,16 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Filled select',
-  title: 'Status filter',
-  apps: ['fd'],
-  cases: [{ id: 'fd-status-filter', name: 'Status filter', apps: ['fd'], source: { fd: 'src/components/Results.jsx' } }],
-  source: { fd: 'src/components/Results.jsx' },
-  summary: 'A label-less select in the output toolbar that narrows the results by status.',
-  where: 'The FD output toolbar, beside the search field: the Product status filter, shown when the design has failed products.',
-  when: 'Use it as a toolbar filter where the visible value names the filter and no label fits. Name it with aria-label on the trigger. Use the field select (Select-001) for a design input.',
-  how: 'FD: a Field at scale "sm" (class "status-filter") around a Field.Select; the Field.SelectTrigger carries aria-label "Product status" and only `sx: { width: "full" }`, so it keeps the default kit colour and paint and fills the toolbar slot, with Field.SelectValue and Field.SelectChevron. The Field.SelectPositioner uses sideOffset 5 and the Field.SelectPopup matchTriggerWidth; each row is a Field.SelectItem with Field.SelectItemText and an empty Field.SelectItemIndicator. The scene shows the filter alone and leaves out the search field, the reset filter button and the solution count.',
+  uiType: 'Field select',
+  title: 'Options with images',
+  apps: ['rws', 'agpd'],
+  cases: [
+    { id: 'rws-option-images', name: 'Options with images', apps: ['rws'], source: { rws: 'src/rws/inputs.tsx' } },
+    { id: 'agpd-option-images', name: 'Options with images', apps: ['agpd'], source: { agpd: 'src/agpd/controls.tsx' } },
+  ],
+  source: { rws: 'src/rws/inputs.tsx', agpd: 'src/agpd/controls.tsx' },
+  summary: 'A field select whose rows lead with a picture of the option in a tonal tile, so the user picks by sight.',
+  where: 'The input panel of RWS and AGPD where an option has a drawing: the base plate and fastener choices.',
+  when: 'Use it when the options are shapes or parts the user recognises faster by picture than by name. The closed trigger shows the text only. Use the field select (Select-001) when the options have no picture.',
+  how: 'RWS: a Field at scale "sm" with the label above a Field.Select whose trigger is color "surface", paint "fixed" (28px). Each Field.SelectItem leads with a View (as span) at color "primary", paint "tonal", shape "soft" and 4 padding on every side, which holds the option picture, then Field.SelectItemText and an empty Field.SelectItemIndicator. AGPD: the same field and tile, but the Field.SelectItemIndicator of the chosen row holds a check icon (a 16px icon RWS does not draw). The apps draw a picture, and AGPD swaps it for a small image on touch; the scenes draw a kit icon in the tile and leave out the help trigger, the lock, the note and the other fields.',
 });

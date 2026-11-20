@@ -3,7 +3,7 @@ import { Table, View } from '../../../../kit';
 
 const CELL = { profile: 'no-padding', scale: 'xs', sx: { paddingInlineStart: '4', paddingInlineEnd: '4', paddingBlockStart: '6', paddingBlockEnd: '6', textAlign: 'center' } } as const;
 
-// ACE report table with its footer (print/ui/report-primitives.tsx 213-262): the dense print grid of Table-004 plus a Table.Foot row of bold cells (typographyStyle "bold", same 4px by 6px padding), used for the totals line of a printed table.
+// ACE report table with its footer (print/ui/report-primitives.tsx 213-262): the dense print grid of Table-006 plus a Table.Foot row of bold cells (typographyStyle "bold", same 4px by 6px padding), used for the totals line of a printed table.
 export default function AcePrintTotalsScene(_props: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>

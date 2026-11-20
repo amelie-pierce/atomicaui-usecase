@@ -1,6 +1,5 @@
-import { Dialog, View } from '../../../kit';
+import { Dialog, Type } from '../../../kit';
 import { useStageHost } from '../../../hooks/use-stage-host';
-import { MockLicenceText } from '../../../mock-data';
 
 export default function Example() {
   const host = useStageHost();
@@ -9,24 +8,17 @@ export default function Example() {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: 'fill', height: 'fill' } }}>
-            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-              Website Application License Agreement
+          <Dialog.Popup initialFocus={false}>
+            <Dialog.Title aui={{ color: 'raised' }}>
+              New from Template
               <Dialog.Spacer />
-              <Dialog.Close aria-label="Close Website Application License Agreement" aui={{ scale: 'sm' }} />
+              <Dialog.Close aria-label="Close" />
             </Dialog.Title>
-            <Dialog.Description aui={{ scale: 'sm', sx: { flex: 'none' } }}>
-              Review and accept to start using the HCS prototype.
-            </Dialog.Description>
-            <Dialog.Body aui={{ scale: 'sm' }}>
-              <View aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '12', minWidth: '0' } }}>
-                <MockLicenceText />
-              </View>
+            <Dialog.Body>
+              <Type as="p" role="p3">
+                The list of templates goes here.
+              </Type>
             </Dialog.Body>
-            <Dialog.Actions aui={{ scale: 'sm' }}>
-              <Dialog.Button dismiss={false} aui={{ scale: 'sm', color: 'surface-alt', paint: 'solid', shape: 'soft' }}>Do Not Accept</Dialog.Button>
-              <Dialog.Button dismiss={false} aui={{ scale: 'sm', color: 'secondary', paint: 'solid', shape: 'soft' }}>Accept Application License Agreement</Dialog.Button>
-            </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>
       </Dialog.Portal>

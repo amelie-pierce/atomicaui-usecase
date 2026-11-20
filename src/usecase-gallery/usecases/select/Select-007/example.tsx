@@ -1,34 +1,44 @@
-import { Field } from '../../../kit';
+import { ContainedIcon, Field, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <Field className="status-filter" aui={{ scale: 'sm' }}>
+    <Field aui={{ scale: 'sm', sx: { gap: '3', width: '224' } }}>
+      <Field.Label aui={{ scale: 'sm' }}>Base plate</Field.Label>
       <Field.Select
-        defaultValue="passed"
+        defaultValue="plate-a"
         items={[
-          { label: 'Passed products', value: 'passed' },
-          { label: 'Failed products', value: 'failed' },
-          { label: 'All products', value: 'all' },
+          { label: 'Plate A', value: 'plate-a' },
+          { label: 'Plate B', value: 'plate-b' },
+          { label: 'Plate C', value: 'plate-c' },
         ]}
       >
-        <Field.SelectTrigger aria-label="Product status" aui={{ sx: { width: 'full' } }}>
+        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { width: 'fill' } }}>
           <Field.SelectValue />
           <Field.SelectChevron />
         </Field.SelectTrigger>
         <Field.SelectPortal>
-          <Field.SelectPositioner sideOffset={5}>
+          <Field.SelectPositioner side="bottom" sideOffset={4}>
             <Field.SelectPopup matchTriggerWidth>
               <Field.SelectList>
-                <Field.SelectItem value="passed">
-                  <Field.SelectItemText>Passed products</Field.SelectItemText>
+                <Field.SelectItem value="plate-a">
+                  <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
+                  <ContainedIcon name="image" aria-hidden />
+                </View>
+                  <Field.SelectItemText>Plate A</Field.SelectItemText>
                   <Field.SelectItemIndicator />
                 </Field.SelectItem>
-                <Field.SelectItem value="failed">
-                  <Field.SelectItemText>Failed products</Field.SelectItemText>
+                <Field.SelectItem value="plate-b">
+                  <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
+                  <ContainedIcon name="image" aria-hidden />
+                </View>
+                  <Field.SelectItemText>Plate B</Field.SelectItemText>
                   <Field.SelectItemIndicator />
                 </Field.SelectItem>
-                <Field.SelectItem value="all">
-                  <Field.SelectItemText>All products</Field.SelectItemText>
+                <Field.SelectItem value="plate-c">
+                  <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
+                  <ContainedIcon name="image" aria-hidden />
+                </View>
+                  <Field.SelectItemText>Plate C</Field.SelectItemText>
                   <Field.SelectItemIndicator />
                 </Field.SelectItem>
               </Field.SelectList>

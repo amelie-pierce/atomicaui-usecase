@@ -1,13 +1,26 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Compact select',
-  title: 'Cell select',
-  apps: ['adc'],
-  cases: [{ id: 'adc-table-cell', name: 'Cell select', apps: ['adc'], source: { adc: 'src/adc/components/ProductsPicker.tsx' } }],
-  source: { adc: 'src/adc/components/ProductsPicker.tsx' },
-  summary: 'A compact label-less select that fills a table cell and picks one value for the row.',
-  where: 'The Hef column of the ADC Products table: each selected anchor row edits its effective embedment from a short list.',
-  when: 'Use it for a value picked inside a table row, where the column header is the label. The control is the bare Select, with no Field around it; give it an aria-label because it has no visible one.',
-  how: 'ADC: a Select with a Select.Trigger at scale "xs", color "surface", paint "fixed" and width "fill", so it takes the width of its cell; it holds Select.Value and Select.Chevron and carries aria-label "Hef". Select.Portal > Select.Positioner (side "bottom", sideOffset 4) > Select.Popup with matchTriggerWidth > Select.List holds Select.Items, each with Select.ItemText and a Select.ItemIndicator written with `{null}`. The app also shows a plain Button with a chevron in place of the select for rows that are not being edited, and opens the list on mount for the row just chosen (defaultOpen); the scene shows the open select in a fixed-width cell and leaves out the table, the other columns and the expand toggles.',
+  uiType: 'Field select',
+  title: 'Grouped options',
+  apps: ['adc', 'fd'],
+  cases: [
+    {
+      id: 'adc-grouped-options',
+      name: 'Grouped options',
+      apps: ['adc'],
+      source: { adc: 'src/adc/components/DesignField.tsx' },
+    },
+    {
+      id: 'fd-grouped-options',
+      name: 'Grouped options',
+      apps: ['fd'],
+      source: { fd: 'src/components/SettingsPopover.jsx' },
+    },
+  ],
+  source: { adc: 'src/adc/components/DesignField.tsx', fd: 'src/components/SettingsPopover.jsx' },
+  summary: 'A select whose rows are split into labelled groups: a heading above each run of related options.',
+  where: 'The design fields of the ADC input sections (a product or anchor list split by family) and the grouped lists of the FD settings popover.',
+  when: 'Use it when a long list falls into named families the user scans by heading. Use the plain field select (Select-001) for a flat list.',
+  how: 'Label beside (ADC): the Field is a row with the label (nowrap, ellipsis, flex fill, flex-basis half) and a 28px outlined trigger filling the other half; the popup matches the trigger width. Label above (FD): a Field at scale "sm" with the label above a 28px trigger (scale "sm", height 28) that leads with the chosen row\'s icon, and rows that lead with an icon. In both the Field.SelectList holds Field.SelectGroups, each with a Field.SelectGroupLabel heading and its Field.SelectItems (Field.SelectItemText plus an indicator written with `{null}`). The two differ in the label position, the widths (a 137px trigger beside the label, 280px above it) and the icons. The scenes show the enabled state and leave out the option thumbnails of ADC and the other fields of the section and settings popover; the scene uses a flag icon where FD shows its own icons.',
 });

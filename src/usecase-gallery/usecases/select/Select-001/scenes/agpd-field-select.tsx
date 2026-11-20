@@ -2,7 +2,7 @@ import type { ContextProps } from '../../../../types';
 import { Field, View } from '../../../../kit';
 
 // The Choice field of AGPD (src/agpd/controls.tsx): the label-above field of the first group (a 28px outlined trigger, popup of the trigger width, 4px below), but the chosen row ends with a check icon in its indicator,
-// where the first group's rows hold none. Built open and non-modal (container={host}, positioner ug-anchored). Left out: the help trigger and lock beside the label, the plate images of some options (Select-005)
+// where the first group's rows hold none. Built open and non-modal (container={host}, positioner ug-anchored). Left out: the help trigger and lock beside the label, the plate images of some options (Select-007)
 // and the other fields of the pane; the app disables the field when it has one option, the scene shows it enabled.
 export default function AgpdFieldSelectScene({ host }: ContextProps) {
   return (

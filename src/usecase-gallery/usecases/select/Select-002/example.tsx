@@ -2,37 +2,27 @@ import { Field } from '../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Corrosion Resistance</Field.Label>
+    <Field aui={{ scale: 'sm', sx: { gap: '4', minWidth: '0' } }}>
+      <Field.Label>Search by option</Field.Label>
       <Field.Select
-        multiple
-        defaultValue={['standard', 'galvanized']}
+        defaultValue="all"
         items={[
-          { label: 'Standard', value: 'standard' },
-          { label: 'Hot dip galvanized', value: 'galvanized' },
-          { label: 'Stainless steel', value: 'stainless' },
+          { label: 'Select all', value: 'all' },
+          { label: 'Passed', value: 'passed' },
+          { label: 'Failed', value: 'failed' },
         ]}
       >
-        <Field.SelectTrigger aui={{ scale: 'sm', color: 'surface', paint: 'fixed', sx: { width: 'fill', height: '28', minHeight: '28', paddingBlockStart: '3', paddingBlockEnd: '3', fontSize: '16', lineHeight: '20' } }}>
-          <Field.SelectValue>Standard, Hot dip galvanized</Field.SelectValue>
+        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', shape: 'soft', sx: { width: 'fill' } }}>
+          <Field.SelectValue />
           <Field.SelectChevron />
         </Field.SelectTrigger>
         <Field.SelectPortal>
-          <Field.SelectPositioner side="bottom" sideOffset={4}>
+          <Field.SelectPositioner side="bottom" align="start" sideOffset={4} alignItemWithTrigger={false}>
             <Field.SelectPopup matchTriggerWidth>
               <Field.SelectList>
-                <Field.SelectItem value="standard">
-                  <Field.SelectItemText>Standard</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
-                </Field.SelectItem>
-                <Field.SelectItem value="galvanized">
-                  <Field.SelectItemText>Hot dip galvanized</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
-                </Field.SelectItem>
-                <Field.SelectItem value="stainless">
-                  <Field.SelectItemText>Stainless steel</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
-                </Field.SelectItem>
+                <Field.SelectItem value="all">Select all</Field.SelectItem>
+                <Field.SelectItem value="passed">Passed</Field.SelectItem>
+                <Field.SelectItem value="failed">Failed</Field.SelectItem>
               </Field.SelectList>
             </Field.SelectPopup>
           </Field.SelectPositioner>

@@ -3,20 +3,8 @@ import { Button } from '../../../kit';
 export default function Example() {
   return (
     <>
-      <Button
-        aria-label="Back to top"
-        aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}
-      >
-        <Button.Icon name="arrow-up" />
-        Back to top
-      </Button>
-      <Button
-        aria-label="Jump to table notes"
-        aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}
-      >
-        <Button.Icon name="arrow-down" />
-        Table Notes
-      </Button>
+      <Button aui={{ scale: 'sm', color: 'surface-alt', paint: 'solid', shape: 'soft' }}>Cancel</Button>
+      <Button aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Reset</Button>
     </>
   );
 }

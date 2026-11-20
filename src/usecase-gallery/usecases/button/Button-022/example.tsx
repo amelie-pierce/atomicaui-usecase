@@ -1,24 +1,10 @@
-import { IconButton, Tooltip } from '../../../kit';
+import { Button, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <Tooltip.Provider>
-      <Tooltip>
-        <Tooltip.Trigger
-          render={
-            <IconButton
-              name="angle-right"
-              aria-label="Expand Input"
-              aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'square', shape: 'soft' }}
-            />
-          }
-        />
-        <Tooltip.Portal>
-          <Tooltip.Positioner side="bottom" sideOffset={4}>
-            <Tooltip.Popup aui={{ scale: 'sm' }}>Expand Input</Tooltip.Popup>
-          </Tooltip.Positioner>
-        </Tooltip.Portal>
-      </Tooltip>
-    </Tooltip.Provider>
+    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', alignItems: 'start' } }}>
+      <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'no-padding' }}>Edit</Button>
+      <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'no-padding' }}>Delete</Button>
+    </View>
   );
 }

@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Button, ContainedIcon, Field, Popover, View } from '../../../../kit';
 
-// PBS HelpPopover (src/InputFields.tsx): the trigger after each label is a Button at profile "square-compact", so a label with help keeps the height of one without. It opens a 320px popover; its close is Button-020.
+// PBS HelpPopover (src/InputFields.tsx): the trigger after each label is a Button at profile "square-compact", so a label with help keeps the height of one without. It opens a 320px popover; its close is Button-025.
 export default function PbsFieldHelpScene({ host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 10)', inlineSize: 'min(100%, calc(var(--p-px-16) * 18))' }}>

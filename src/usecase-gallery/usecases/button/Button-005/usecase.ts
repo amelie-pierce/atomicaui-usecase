@@ -44,5 +44,5 @@ export default defineUsecase({
     + 'Results error strip: HCS only (the Output error state: a solid error View with the message, then the button, with no flex props on the View, so the button sits under the message). '
     + 'Upload Cancel: one UI in ACE, PFD, PBS, HS, FD, AGPD and RWS (a raised Title with the close X, a dropzone, one default Cancel; FD spells the Cancel as a plain Button, which looks the same). '
     + 'Info Close: PBS, AGPD and RWS (the "Add to Home Screen" dialog, one default Close). PFD writes the Add to Home Screen dialog without a footer, so it has no Info Close. '
-    + 'AlertDialog dialogs are drawn as a non-modal Dialog, as in Button-013. The upload dialog keeps its dropzone and the info dialogs one paragraph; the real bodies hold more.',
+    + 'AlertDialog dialogs are drawn as a non-modal Dialog, as in Button-018. The upload dialog keeps its dropzone and the info dialogs one paragraph; the real bodies hold more.',
 });

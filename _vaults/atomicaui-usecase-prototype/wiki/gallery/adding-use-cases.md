@@ -88,3 +88,51 @@ Updated 2026-11-13: replaced the old single `registry.tsx` with the portable `sr
 - Accordion cataloged as its own component (2026-11-19, `fm/usecase-accordion`; app repos at ace 7ebdd06, adm 62d0ea8, pfd 24c220d, pbs 79cd8b1, hs 0fe8c85, fd 7451a2a, agpd dc8a202, rws 77c76ab, adc fde5ff6, hcs 323a76e): Accordion-001 Input panel section accordion (types Section list and Section cards; groups by measured look: section icon HCS, ACE, ADM, HS, ADC; no icon PBS, PFD, RWS, AGPD; upper-case FD), Accordion-002 Release notes accordion (the About notes in nine apps plus ADC's own look; the nested Other regions type for ACE, HS, FD) and Accordion-003 Template groups accordion (ACE `Type` l4 titles vs HS and FD plain titles). The Dialog-001 About and Dialog-003 picker scenes keep their Accordion as a supporting part; ADC does have an About dialog (src/adc/Workspace.tsx, Close About) that Dialog-001 does not list. Measured, not obvious: an ADC `shape: "soft"` item, a PFD `minHeight` 28 trigger and PFD's View span label render the same as the standard; AGPD's plain-text trigger title renders 16px bold instead of l4 semi-bold (an app-side defect, merged into the no-icon group); in the card grid, items without the four stated radii (ACE, HS, PBS, PFD, FD, RWS) square their inner corners (HCS, ADM and AGPD state them).
 - Panels component (2026-11-19, `fm/usecase-panels`): Panels-001 "Resizable split" (types Side by side, Stacked; one group each) and Panels-002 "Collapsible panel" (Top rail) catalogue the split, handle and collapsible Panel; the side rail and the header collapse button stay in IconButton-004 and IconButton-003, so Panels scenes cross-reference them. All ten apps render the same panes and 6px primary handle; the root padding of `profile: default` is the app page gutter and is not a split difference, and FD's 8px top-rail inset (standard 4px) is an app-side defect merged away.
 - Checkbox and Button-026 merge (2026-11-19, `fm/usecase-checkbox-merge`; measured in headless Chromium over Playwright because chrome-devtools-axi gave BRIDGE_NOT_READY): Checkbox-001 is now `Option with a label` with types Dialog option, Input panel option and Table filter; Checkbox-002 and 005 are retired (their scenes moved in, the label text is written in each scene, not taken from the shared example). Checkbox-003 (titled set, ADC 20px xs box) and 004 (`readOnly`, a click does not toggle) stay separate. Button-026 is retired: its footer measured the same as the Reset confirm footer of Button-001 (HS and FD, 384px), so it is the Welcome dialog type there.
+
+## Id reindex (2026-11-20, `fm/usecase-reindex-ids`)
+
+Ids were renumbered per component to run contiguously from 001 in tree order (UI types in `<component>.meta.ts` order, then variants by their old number; components A-Z by title). The dated entries above and in the migration list use the ids of their date; map them with the table below. There is no old-id alias: the hash is the id, so an old shared `#Button-016` now selects another use case (or the first one if the id no longer exists). Ids that did not change are not listed.
+
+| Component | Old id | New id | Variant |
+| --- | --- | --- | --- |
+| Button | Button-007 | Button-001 | Tonal outlined with icon |
+| Button | Button-010 | Button-002 | Text with leading icon |
+| Button | Button-013 | Button-003 | Raised solid with icon |
+| Button | Button-014 | Button-004 | Inline link |
+| Button | Button-016 | Button-005 | Secondary solid |
+| Button | Button-017 | Button-006 | Secondary solid with icon |
+| Button | Button-019 | Button-007 | Tonal outlined |
+| Button | Button-022 | Button-008 | Accent text, extra small |
+| Button | Button-025 | Button-009 | Outlined full-width row |
+| Button | Button-027 | Button-010 | Text only |
+| Button | Button-029 | Button-011 | Dark solid |
+| Button | Button-037 | Button-012 | Accent solid |
+| Button | Button-001 | Button-013 | Secondary and primary |
+| Button | Button-002 | Button-014 | Text and primary |
+| Button | Button-004 | Button-015 | Walkthrough navigation, text with icons |
+| Button | Button-030 | Button-016 | Tonal pair |
+| Button | Button-036 | Button-017 | Stacked text links, no padding |
+| Button | Button-038 | Button-018 | Text pair with leading icons |
+| Button | Button-008 | Button-019 | Expander, 24px |
+| Button | Button-031 | Button-020 | Ghost, 20px |
+| Button | Button-032 | Button-021 | Ghost, 20px, small glyph |
+| Button | Button-033 | Button-022 | Ghost, 28px |
+| Button | Button-034 | Button-023 | Outlined accent, 28px |
+| Button | Button-035 | Button-024 | Tonal, 28px |
+| Checkbox | Checkbox-003 | Checkbox-002 | Checkbox group under a title |
+| Dialog | Dialog-004 | Dialog-003 | Form dialog |
+| Field | Field-005 | Field-004 | Search field |
+| Field | Field-004 | Field-005 | Textarea |
+| Menubar | Menubar-003 | Menubar-002 | Settings gear menu |
+| Panels | Panels-003 | Panels-002 | Stacked |
+| Panels | Panels-002 | Panels-003 | Top rail |
+| Radio | Radio-002 | Radio-001 | Radio group |
+| Select | Select-005 | Select-004 | Grouped options |
+| Select | Select-008 | Select-005 | Options with images |
+| Switch | Switch-004 | Switch-003 | Switch with bordered off state |
+| Tabs | Tabs-003 | Tabs-002 | Tabs with status icon |
+| Tabs | Tabs-004 | Tabs-003 | Design tab rail |
+| Tooltip | Tooltip-003 | Tooltip-002 | Text button tooltip |
+| Tooltip | Tooltip-005 | Tooltip-003 | Card button tooltip |
+| Tooltip | Tooltip-006 | Tooltip-004 | Radio option tooltip |
+| Tooltip | Tooltip-004 | Tooltip-005 | Disabled control tooltip |

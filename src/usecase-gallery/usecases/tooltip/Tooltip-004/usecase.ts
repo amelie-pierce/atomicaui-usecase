@@ -1,20 +1,20 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Tooltip on a disabled control',
-  title: 'Disabled control tooltip',
-  apps: ['hcs', 'fd', 'hs'],
+  uiType: 'Tooltip on a radio',
+  title: 'Radio option tooltip',
+  apps: ['pbs', 'rws'],
   cases: [
     {
-      id: 'hcs-disabled-radio',
-      name: 'Disabled control',
-      apps: ['hcs', 'fd', 'hs'],
-      source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/Results.jsx', hs: 'src/hs/OutputPane.tsx' },
+      id: 'pbs-viewer-radio',
+      name: 'Viewer control',
+      apps: ['pbs', 'rws'],
+      source: { pbs: 'src/Viewer.tsx', rws: 'src/rws/Viewer.tsx' },
     },
   ],
-  source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/Results.jsx', hs: 'src/hs/OutputPane.tsx' },
-  summary: 'A control that cannot be used shows why in a tooltip on its wrapper.',
-  where: 'The selection radio of a failed result row (HCS F01Results, FD Results) and the Order button of the HS output pane while no result is selected.',
-  when: 'Use it when a disabled control would leave the user guessing. A disabled element receives no hover or focus, so the trigger is a wrapper around it; keep the reason to one sentence.',
-  how: 'The Tooltip.Trigger is a span (`render={<span />}` or a View as span) made focusable with tabIndex 0 and an aria-label carrying the reason, around the disabled control (a Radio with selected false and tabIndex -1 in HCS and FD, a Button in HS); the popup is the kit default (surface, scale sm). The apps are one group; no placement was measured in a browser, so none splits it. From the tooltip source, HS leaves the side at its default (top) with a 4px offset and mounts the popup only while the button is disabled; collision handling may flip the requested side when space is limited. The scene shows the control in its disabled state and leaves out the table row and the pane around it.',
+  source: { pbs: 'src/Viewer.tsx', rws: 'src/rws/Viewer.tsx' },
+  summary: 'A radio option of a group, with its label beside it, shows a short note about the option in a small tooltip on hover or keyboard focus.',
+  where: 'The view and member radios floating over the 3D viewer in PBS and RWS (the tooltip helper of Viewer).',
+  when: 'Use it for a radio option whose effect is not obvious from its short label. Do not use it for an icon-only button (Tooltip-001) and not for long help text.',
+  how: 'Compose Tooltip.Provider, a RadioGroup, Tooltip and Tooltip.Trigger with a span as render and closeOnClick off, so the arrow-key check does not close it; the Radio with its Radio.Label is the trigger child. Then Tooltip.Portal, Tooltip.Positioner and Tooltip.Popup. PBS and RWS are one group; from the tooltip source, the popup is the kit default and opens above (top) with a 4px offset and a one-line note, and RWS requests the bottom side. The app code was not run. The scene shows one radio of the group with the tooltip open and leaves out the other viewer controls and the canvas.',
 });

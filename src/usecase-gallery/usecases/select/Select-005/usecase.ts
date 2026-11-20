@@ -2,25 +2,15 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Field select',
-  title: 'Grouped options',
-  apps: ['adc', 'fd'],
+  title: 'Options with images',
+  apps: ['rws', 'agpd'],
   cases: [
-    {
-      id: 'adc-grouped-options',
-      name: 'Grouped options',
-      apps: ['adc'],
-      source: { adc: 'src/adc/components/DesignField.tsx' },
-    },
-    {
-      id: 'fd-grouped-options',
-      name: 'Grouped options',
-      apps: ['fd'],
-      source: { fd: 'src/components/SettingsPopover.jsx' },
-    },
+    { id: 'rws-option-images', name: 'Options with images', apps: ['rws'], source: { rws: 'src/rws/inputs.tsx' } },
+    { id: 'agpd-option-images', name: 'Options with images', apps: ['agpd'], source: { agpd: 'src/agpd/controls.tsx' } },
   ],
-  source: { adc: 'src/adc/components/DesignField.tsx', fd: 'src/components/SettingsPopover.jsx' },
-  summary: 'A select whose rows are split into labelled groups: a heading above each run of related options.',
-  where: 'The design fields of the ADC input sections (a product or anchor list split by family) and the grouped lists of the FD settings popover.',
-  when: 'Use it when a long list falls into named families the user scans by heading. Use the plain field select (Select-001) for a flat list.',
-  how: 'Label beside (ADC): the Field is a row with the label (nowrap, ellipsis, flex fill, flex-basis half) and a 28px outlined trigger filling the other half; the popup matches the trigger width. Label above (FD): a Field at scale "sm" with the label above a 28px trigger (scale "sm", height 28) that leads with the chosen row\'s icon, and rows that lead with an icon. In both the Field.SelectList holds Field.SelectGroups, each with a Field.SelectGroupLabel heading and its Field.SelectItems (Field.SelectItemText plus an indicator written with `{null}`). The two differ in the label position, the widths (a 137px trigger beside the label, 280px above it) and the icons. The scenes show the enabled state and leave out the option thumbnails of ADC and the other fields of the section and settings popover; the scene uses a flag icon where FD shows its own icons.',
+  source: { rws: 'src/rws/inputs.tsx', agpd: 'src/agpd/controls.tsx' },
+  summary: 'A field select whose rows lead with a picture of the option in a tonal tile, so the user picks by sight.',
+  where: 'The input panel of RWS and AGPD where an option has a drawing: the base plate and fastener choices.',
+  when: 'Use it when the options are shapes or parts the user recognises faster by picture than by name. The closed trigger shows the text only. Use the field select (Select-001) when the options have no picture.',
+  how: 'RWS: a Field at scale "sm" with the label above a Field.Select whose trigger is color "surface", paint "fixed" (28px). Each Field.SelectItem leads with a View (as span) at color "primary", paint "tonal", shape "soft" and 4 padding on every side, which holds the option picture, then Field.SelectItemText and an empty Field.SelectItemIndicator. AGPD: the same field and tile, but the Field.SelectItemIndicator of the chosen row holds a check icon (a 16px icon RWS does not draw). The apps draw a picture, and AGPD swaps it for a small image on touch; the scenes draw a kit icon in the tile and leave out the help trigger, the lock, the note and the other fields.',
 });

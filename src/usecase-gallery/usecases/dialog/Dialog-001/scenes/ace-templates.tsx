@@ -11,7 +11,7 @@ const SELECTION = {
 const ROW = { paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8', width: 'fill' } } as const;
 
 // Size: this popup is the default 480px wide, narrower than the 860px About popup; the look (raised title bar, close X) is the same.
-// ACE New from template (src/features/templates/ui/NewFromTemplateDialog.tsx): the default-width Popup with a raised Title ("Templates") and close X, and a Body holding one RadioGroup over an Accordion of two sections (Default Templates, My Templates; both open), each section title a Type l4. A row is a Radio that fills the row; the user's own templates add three text Buttons after it (Download, Delete in error, Edit), the default ones add none. Left out: more rows, the empty state, the Cancel and Create footer and the delete confirm (Button-001).
+// ACE New from template (src/features/templates/ui/NewFromTemplateDialog.tsx): the default-width Popup with a raised Title ("Templates") and close X, and a Body holding one RadioGroup over an Accordion of two sections (Default Templates, My Templates; both open), each section title a Type l4. A row is a Radio that fills the row; the user's own templates add three text Buttons after it (Download, Delete in error, Edit), the default ones add none. Left out: more rows, the empty state, the Cancel and Create footer and the delete confirm (Button-013).
 export default function AceTemplatesScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

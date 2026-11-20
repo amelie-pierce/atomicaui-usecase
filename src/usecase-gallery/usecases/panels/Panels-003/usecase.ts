@@ -1,17 +1,21 @@
 import { defineUsecase } from '../../../define';
 
-const SOURCE = { hcs: 'src/components/HcsSplitLayout.tsx', ace: 'src/pages/estimator/EstimatorPage.tsx', adm: 'src/app/layout/AppLayout.tsx', pfd: 'src/pfd/Workspace.tsx', pbs: 'src/App.tsx', hs: 'src/App.tsx', fd: 'src/App.jsx', agpd: 'src/App.tsx', rws: 'src/rws/Shell.tsx' };
-
 export default defineUsecase({
-  uiType: 'Resizable split',
-  title: 'Stacked',
-  apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
+  uiType: 'Collapsible panel',
+  title: 'Top rail',
+  apps: ['hcs', 'ace', 'adm', 'hs', 'fd', 'agpd'],
   cases: [
-    { id: 'hcs-stacked', name: 'Stacked', apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'], source: SOURCE },
+    {
+      id: 'hcs-top-rail',
+      name: 'Top rail',
+      apps: ['hcs', 'ace', 'adm', 'hs', 'fd', 'agpd'],
+      source: { hcs: 'src/components/HcsSplitLayout.tsx', ace: 'src/pages/estimator/EstimatorPage.tsx', adm: 'src/features/design-inputs/components/InputsPanel/InputsPanel.tsx', hs: 'src/App.tsx', fd: 'src/components/InputPane.jsx', agpd: 'src/App.tsx' },
+    },
   ],
-  source: SOURCE,
-  summary: 'A Panels group stacks the workspace into surface panes, Input above and the results below, that the user resizes by dragging the horizontal handle between them.',
-  where: "The Grid (engineering) layout of HCS, ACE, ADM, PFD, PBS, HS, FD, AGPD and RWS: the Input pane sits above the workbench (two panes and one handle). ADC has no stacked split. The collapse of the Input pane into a top rail is Panels-002; the header and rail buttons are Button-031 and Button-033.",
-  when: 'Use it for panes that share one workspace and that the user may want taller or shorter: a Panels group with a ResizeHandle between each pair of Panels.Panel. Stacked is the Grid layout, where Input sits above the workbench; the wide-width default is the side by side split (Panels-001). Do not use it for a fixed layout (a View row or column is enough) or for a pane that only opens and closes (a collapsible Panels.Panel, Panels-002).',
-  how: 'The example is the split itself: a Panels (orientation "vertical", aui scale "sm") holding two Panels.Panel and a Panels.ResizeHandle between them. Each Panels.Panel has an id, a defaultSize on the first one and a minSize of 40px, and takes the pane frame props (profile "block-padding", scale "sm", color "surface-alt", paint "fixed", shape "soft", a flex column with minHeight "0" so it can shrink). The Panels.ResizeHandle has color "primary" and width "6px" and an aria-label that names the two panes; being in a vertical group it is a 6px horizontal line (measured 560 x 6 in the scene). All nine apps (HCS, ACE, ADM, PFD, PBS, HS, FD, AGPD, RWS) write the same two soft surface-alt panes and the primary handle; the scene is HCS, cut to the two panes with their semi-bold titles. The scene leaves out the 200px minimum sizes of the app, the collapse props of the Input panel (Panels-002), the pane headers and contents, and the splitter drag.',
+  source: { hcs: 'src/components/HcsSplitLayout.tsx', ace: 'src/pages/estimator/EstimatorPage.tsx', adm: 'src/features/design-inputs/components/InputsPanel/InputsPanel.tsx', hs: 'src/App.tsx', fd: 'src/components/InputPane.jsx', agpd: 'src/App.tsx' },
+  summary: 'A collapsible Panels.Panel rests at a 40px rail and carries a Panels.Trigger that expands it again.',
+  where: "The Input pane of the Grid (stacked) layout: HCS (engineering), ACE (stacked), ADM (grid), HS, FD and AGPD collapse it upward into a 40px row at the top; the Output and viewer panes are fixed. The Input pane of the side by side layout collapses into a 40px column instead, which is Button-022 (the rail trigger and its rail); the header collapse button of the expanded pane is Button-020. PBS, RWS and PFD keep their Input pane open in the Grid layout, so they have no top rail.",
+  when: 'Use it for a pane the user may need out of the way: mark the Panels.Panel collapsible with a collapsedSize, and give the rail a Panels.Trigger whose targetId is the panel id; the same trigger toggles it. Keep Output and viewer panes non-collapsible. Always set aria-label on the trigger.',
+  how: 'The example is the collapsible panel: a vertical Panels group whose first Panels.Panel is collapsible with collapsedSize "40px", a defaultSize and a minSize, then a Panels.ResizeHandle and a fixed second panel; the Panels.Trigger is a wrapper kit part that the In context scene writes. '
+    + 'Top rail: HCS, ACE, ADM, HS, FD and AGPD. In context the Input panel rests at its 40px collapsedSize; the rail is a View row (flex row, alignItems "start", no padding, paddingInlineStart "4") holding the 28px square Panels.Trigger (angle-down, color "secondary", paint "text", scale "sm", profile "square", shape "soft") with a Tooltip carrying its aria-label, measured at 525 px, 4px in from the 1px panel border and 4px down; the Input content is a Panels.Content the collapse hides and the Output panel below keeps the rest of the height, cut to its title. FD sets paddingInlineStart "8" on its rail (the standard is 4, as HCS, ACE, ADM, HS and AGPD), which puts the trigger 4px further in (529 vs 525 measured); that is an app-side deviation, so FD is in the group and the scene is the standard. The 200px minimum size the apps set is replaced by a 120px minSize so the Trigger can expand the panel; the splitter drag and the pane contents are left out.',
 });

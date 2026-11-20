@@ -7,7 +7,7 @@ const subscribe = (onChange: () => void) => {
 const readHash = () => decodeURIComponent(window.location.hash.slice(1));
 
 /**
- * The selected use case id lives in the URL hash (`#Button-001`), so it survives reload and can be shared.
+ * The selected use case id lives in the URL hash (`#Button-013`), so it survives reload and can be shared.
  * An empty or unknown hash resolves to `fallback`.
  */
 export function useHashSelection(ids: readonly string[], fallback: string) {

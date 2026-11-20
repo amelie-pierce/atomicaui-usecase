@@ -15,7 +15,7 @@ export default defineUsecase({
   source: { hcs: 'src/components/F01Experience.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A transparent icon-only IconButton, 20px square, closes a popover from its corner.',
   where: 'The corner or title end of a popover: the help popover that opens from the circle-question trigger of a field (HCS, PFD, PBS, AGPD, RWS) and the FD apps popover. '
-    + 'The trigger that opens the help is Button-032 or Button-033.',
+    + 'The trigger that opens the help is Button-032.',
   when: 'Use it to dismiss a popover without acting. Always set aria-label.',
   how: 'The example is the shared part: an IconButton with paint "text", profile "contained" and an aria-label; the apps differ only in the glyph, the props they set and where the button sits. '
     + 'The Popover is the supporting part the In context scene writes around it; IconButton needs the Font Awesome font to show its glyph. '

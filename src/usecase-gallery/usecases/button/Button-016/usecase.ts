@@ -1,21 +1,13 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Button group',
-  title: 'Tonal pair',
-  apps: ['hs', 'pbs'],
-  source: {
-    hs: 'src/hs/OutputPane.tsx',
-    pbs: 'src/ResultsSection.tsx',
-  },
-  cases: [
-    { id: 'hs-edit', name: 'Edit and Duplicate', apps: ['hs'], source: { hs: 'src/hs/OutputPane.tsx' } },
-    { id: 'pbs-edit', name: 'Edit and Duplicate', apps: ['pbs'], source: { pbs: 'src/ResultsSection.tsx' } },
-  ],
-  summary: 'Two tonal labelled Buttons in the first cell of a saved-list row edit or duplicate that row.',
-  where: 'The first cell of a list of saved results (the Job List of HS, the Connection List of PBS). Real site source: HS src/hs/OutputPane.tsx (Edit and Duplicate side by side in the first cell); PBS src/ResultsSection.tsx (the same pair stacked in the first cell). The other apps have no per-row Buttons in a saved list.',
-  when: 'Use labelled tonal Buttons where a row has two actions people reach for often. Keep the destructive one apart as an icon button (Button-022, Remove) and name icon-only buttons with an aria-label that carries the row id.',
-  how: 'The example is the Edit and Duplicate pair: aui color "secondary", paint "tonal", scale "sm". The preview shows the radio group of the places, one for HS and one for PBS. '
-    + 'Edit and Duplicate: HS (the two Buttons side by side in a left-aligned first cell); PBS (the same Buttons stacked in a column, gap 8, centred in a centred cell). '
-    + 'Left out: every other column, the trash button, the totals row, the editing banner and the confirm dialogs.',
+  uiType: 'Single button',
+  title: 'Elevated surface',
+  apps: ['hcs'],
+  cases: [{ id: 'hcs-prototype-controls', name: 'Prototype controls', apps: ['hcs'], source: { hcs: 'src/components/F01Experience.tsx' } }],
+  source: { hcs: 'src/components/F01Experience.tsx' },
+  summary: 'A surface Button lifted with a shadow floats over the page and toggles a panel of controls.',
+  where: 'The corner of the HCS prototype experience, below the prototype controls stack (a prototype-only toggle, not part of the product).',
+  when: 'Use it for a floating toggle that must stand out from the content behind it. A flat tonal button is Button-007.',
+  how: 'Set aui scale "sm", color "surface" and elevation 3 (aria-expanded for the toggle). Measured: 28px high, 4px 8px padding, 16px regular text, white fill with no border and a 0 3px 8px shadow of 15% black; Button-007 has the same size with a 1px border and no shadow, so the shadow is the difference.',
 });

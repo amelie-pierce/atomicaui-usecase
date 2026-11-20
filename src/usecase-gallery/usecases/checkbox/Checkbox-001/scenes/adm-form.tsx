@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Checkbox, Dialog, Field, View } from '../../../../kit';
 
-// ADM and FD dialogs (ADM src/features/top-navigation/components/FeedbackDialog.tsx, src/features/templates/components/SaveAsTemplateDialog.tsx, src/features/base-plate/components/ThicknessCalculatorDialog.tsx and the edit modals; FD src/components/Feedback.jsx): the same last-row Checkbox, but the mark is written `<Checkbox.Icon name="check" layer="duotone" />`, which draws the check in Font Awesome Duotone (a lighter check) instead of the solid one. Left out: the Description, the upload dropzone, the size error and the footer (Button-013).
+// ADM and FD dialogs (ADM src/features/top-navigation/components/FeedbackDialog.tsx, src/features/templates/components/SaveAsTemplateDialog.tsx, src/features/base-plate/components/ThicknessCalculatorDialog.tsx and the edit modals; FD src/components/Feedback.jsx): the same last-row Checkbox, but the mark is written `<Checkbox.Icon name="check" layer="duotone" />`, which draws the check in Font Awesome Duotone (a lighter check) instead of the solid one. Left out: the Description, the upload dropzone, the size error and the footer (Button-018).
 export default function AdmFormScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

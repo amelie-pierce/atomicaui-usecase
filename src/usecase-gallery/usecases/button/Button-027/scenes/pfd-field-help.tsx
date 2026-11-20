@@ -2,7 +2,7 @@ import type { ContextProps } from '../../../../types';
 import { Button, ContainedIcon, Field, Popover, View } from '../../../../kit';
 
 // PFD Help (src/pfd/fields.tsx; AGPD writes the same trigger in src/agpd/inputs.tsx): after the label text in the Field.Label row comes a Button (not an IconButton) at profile "square", 28px, not "contained".
-// It opens a popover; its close is Button-020. The scene keeps the one labelled field.
+// It opens a popover; its close is Button-025. The scene keeps the one labelled field.
 export default function PfdFieldHelpScene({ host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 10)', inlineSize: 'min(100%, calc(var(--p-px-16) * 18))' }}>

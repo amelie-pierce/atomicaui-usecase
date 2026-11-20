@@ -137,3 +137,12 @@ Ids were renumbered per component to run contiguously from 001 in tree order (UI
 | Tooltip | Tooltip-005 | Tooltip-003 | Card button tooltip |
 | Tooltip | Tooltip-006 | Tooltip-004 | Radio option tooltip |
 | Tooltip | Tooltip-004 | Tooltip-005 | Disabled control tooltip |
+
+## Variants added from the app coverage scan (2026-11-20, `fm/usecase-missing-variants`)
+
+Nine candidate variants of existing components were measured in the running gallery (headless Chromium computed styles) against the existing variants.
+
+- Added: Menubar-003 Settings summary (a tonal `Menubar.Button` with `Menubar.Divider`s, own UI type `Menubar with summary trigger`; white fill, 1px border, 3px 7px padding against 4px 8px for Menubar-001). Dialog-003 Centered-title dialog (FD Help Center: title `justifyContent` center with 40px side padding and an absolutely placed close X) and Dialog-005 Content-only expanded dialog (HS: no Title, no close, own UI type `Dialog without title`). Table-005 Totals row (`Table.Foot`, three places: ACE and HS job tally and the ACE print footer). Button-013 to Button-017 and Button-030, Button-031 (see the app coverage list in the PR).
+- Merged as places: Menubar.Button action buttons (About, Reset) into Menubar-001 as the Action buttons case (28px high, 4px 8px padding, 4px radius, 16px regular text, surface fill, no border: same as a Menubar.DropdownTrigger; only the code instruction differs, so it is a place); ADC report preview (`Body` no-padding) and ADM `Dialog.Trigger` calculator into Dialog-001 (title bar 28px, close X 20px, body edges identical to the template picker); ADM Save image into Button-007 (28px, 3px 7px, white fill, 1px dark border); FD carousel arrows into Button-027 (28px transparent square). Accordion candidate 9 (ADC and PFD trigger `color surface, paint text, scale sm, shape none`) is the same instruction as Accordion-001 and Accordion-003, so it adds nothing.
+- Renumber maps: Menubar none (gear stays Menubar-002). Dialog-003 -> Dialog-004 (Form dialog). Table-005 -> Table-006 (Cell input table). Button-013..024 -> Button-018..029 (Button group and Icon button variants shift by five).
+- A `Dialog.Trigger` or an app-side `render` wrapper is a place, not a variant; a pager dot is a Single button because it has no glyph.

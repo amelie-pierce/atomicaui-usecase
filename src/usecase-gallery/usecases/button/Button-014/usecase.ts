@@ -1,17 +1,13 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Button group',
-  title: 'Text and primary',
-  apps: ['hcs', 'hs', 'adc'],
-  cases: [
-    { id: 'hcs-configure-columns', name: 'Configure columns', apps: ['hcs'], source: { hcs: 'src/components/ColumnVisibility.tsx' } },
-    { id: 'hs-configure-columns', name: 'Configure columns', apps: ['hs'], source: { hs: 'src/hs/ColumnVisibility.tsx' } },
-    { id: 'adc-edit-value', name: 'Edit value', apps: ['adc'], source: { adc: 'src/adc/components/InPlaceEditor.tsx' } },
-  ],
-  source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', adc: 'src/adc/components/InPlaceEditor.tsx' },
-  summary: 'A Cancel and a solid secondary Save close a popover, with an icon-only reset beside them in the column configurator.',
-  where: 'The footer of a popover form. Configure columns (HCS, HS): a reset icon at the start, then Cancel and Save. Edit value (ADC): the in-place editor popover opened from a value chip, Cancel and Save only. Dialogs use a gray solid Cancel instead (Button-013).',
-  when: 'Use it when the popover is lightweight and the Cancel should not compete with Save. Prefer the filled Cancel of Button-013 in dialogs; ADC fills its popover Cancel the same way.',
-  how: 'Configure columns, HCS: Cancel sets aui paint "text" (default color, no fill, default scale); Save sets scale "sm", color "secondary" and paint "solid". Cancel and Save sit in their own row View so the footer row can use justifyContent "between": reset icon at the start, the pair at the end. The reset is an IconButton with the rotate-left glyph, aui paint "text", and needs an aria-label. In context the popover is opened under the table-columns IconButton (contained profile) at the end of the Output header (bottom, end, 4px offset): a reorderable List of three Output columns (Model locked and always on, a switch and a drag handle on each row, an arrow-up beside Load for the sort), then this footer; the search field, the other six columns and Group by model are left out. HS (own group): the same footer, but Save has no scale (default size) and the table-columns trigger has no contained profile. Edit value, ADC: the popup opens to the right of the value chip (surface solid xs, compact; right, center, 8px offset) as a row with a number Field, then Cancel (color "surface-alt", paint "solid") and Save (color "secondary", paint "solid"), both scale "sm" with a soft shape and a 4px gap; there is no reset icon. The chip stands alone here instead of floating over the 3D model.',
+  uiType: 'Single button',
+  title: 'Info solid, extra small',
+  apps: ['adc'],
+  cases: [{ id: 'adc-status-bar', name: 'Status bar', apps: ['adc'], source: { adc: 'src/adc/components/ReportFlow.tsx' } }],
+  source: { adc: 'src/adc/components/ReportFlow.tsx' },
+  summary: 'A small blue solid Button with a file icon tells the user a report is ready and opens it.',
+  where: 'The left slot of the ADC status bar, shown once a calculation report exists for the active design (it reads "Report is ready (outdated)" when the inputs changed since).',
+  when: 'Use it for a status that is also an action: the state is the label and the click opens the result. A neutral action is Button-005; the accent solid is Button-012.',
+  how: 'Set aui color "info", paint "solid", scale "xs" and shape "soft", with a Button.Icon "file-lines" and a span label. Measured: 26px high, 4px 6px padding, 14px medium text, white on blue rgb(59, 130, 246), 4px radius, so the colour and the size differ from Button-012 (accent, 28px, 16px). The generating state is the same Button as secondary text, disabled, and is left out with the rest of the bar.',
 });

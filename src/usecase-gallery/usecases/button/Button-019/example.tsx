@@ -1,19 +1,13 @@
-import { Button } from '../../../kit';
+import { Button, IconButton, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <Button
-      aria-label="Why Not for passing model"
-      aria-expanded={false}
-      aui={{
-        scale: 'sm',
-        profile: 'square-compact',
-        color: 'surface',
-        paint: 'text',
-        sx: { minWidth: '24', minHeight: '24' },
-      }}
-    >
-      <Button.Icon name="angle-right" weight="solid" aui={{ scale: 'sm' }} />
-    </Button>
+    <>
+      <IconButton name="rotate-left" aria-label="Reset columns to default" aui={{ paint: 'text' }} />
+      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '8' } }}>
+        <Button aui={{ paint: 'text' }}>Cancel</Button>
+        <Button aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Save</Button>
+      </View>
+    </>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { catalog, allUsecases } from '../catalog/catalog';
+import { catalog, allUsecases, componentAliases } from '../catalog/catalog';
 import { caseTypes, withLook } from '../catalog/app-views';
 import { COMPONENTS_HASH, componentHash, useRoute } from '../hooks/use-route';
 import { useMediaQuery } from '../hooks/use-media-query';
@@ -23,7 +23,7 @@ export interface UsecaseGalleryProps {
 
 export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const narrow = useMediaQuery(NARROW);
-  const route = useRoute(catalog.map((group) => group.id), allUsecases.map((usecase) => usecase.id));
+  const route = useRoute(catalog.map((group) => group.id), allUsecases.map((usecase) => usecase.id), componentAliases);
   const [mode, setMode] = useState<PreviewMode>('component');
   // Kept across use cases: the reader who switched to Code stays on Code while browsing.
   const [detail, setDetail] = useState<DetailMode>('code');

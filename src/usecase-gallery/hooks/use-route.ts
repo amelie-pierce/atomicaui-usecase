@@ -19,13 +19,13 @@ const readHash = () => window.location.hash;
 
 /**
  * Reads the route from the URL hash, so every page survives reload and can be shared. An unknown component or use case
- * (and the old `#/components` hash of the grid) resolves to the components grid.
+ * (and the old `#/components` hash of the grid) resolves to the components grid; the hash of a component shown inside another (`#/AlertDialog`) opens the parent's page.
  */
-export function useRoute(componentIds: readonly string[], usecaseIds: readonly string[]): Route {
+export function useRoute(componentIds: readonly string[], usecaseIds: readonly string[], aliases: Readonly<Record<string, string>> = {}): Route {
   const hash = useSyncExternalStore(subscribe, readHash, () => '');
   const value = decodeURIComponent(hash.replace(/^#/, ''));
   if (value.startsWith('/')) {
-    const componentId = value.slice(1);
+    const componentId = aliases[value.slice(1)] ?? value.slice(1);
     return componentIds.includes(componentId) ? { page: 'component', componentId } : { page: 'components' };
   }
   return usecaseIds.includes(value) ? { page: 'usecase', usecaseId: value } : { page: 'components' };

@@ -338,6 +338,7 @@ $narrow: 840px;
   block-size: 100%;
   min-inline-size: 0;
   overflow: auto;
+  padding-block-end: var(--p-px-24);
   --theme-primary: var(--p-palette-orange-600);
 }
 
@@ -351,14 +352,39 @@ $narrow: 840px;
   }
 }
 
+.ug-site__head {
+  padding-block-end: var(--p-px-12);
+  border-block-end: var(--p-px-1) solid var(--theme-raised);
+}
+
+// A section is a bordered panel on the page: a header band with the UI type title, its count and a chevron, then the grid.
 .ug-site__section {
-  display: flex;
-  flex-direction: column;
-  gap: var(--p-px-12);
+  flex: none;
+  background: var(--theme-surface);
+  border: var(--p-px-1) solid var(--theme-raised);
+  border-radius: var(--p-px-8);
+  overflow: hidden;
 
   h2 {
     margin: 0;
   }
+
+  .ug-grid {
+    padding: var(--p-px-16);
+  }
+}
+
+.ug-site__section-head {
+  background: var(--theme-surface-alt);
+  border-block-end: var(--p-px-1) solid var(--theme-raised);
+}
+
+.ug-site__count {
+  margin-inline-end: auto;
+  padding-inline: var(--p-px-8);
+  border-radius: var(--p-px-12);
+  background: var(--theme-surface);
+  border: var(--p-px-1) solid var(--theme-raised);
 }
 
 .ug-grid {
@@ -404,6 +430,7 @@ $narrow: 840px;
   block-size: 100%;
   overflow: hidden;
   border: var(--p-px-1) solid var(--theme-raised);
+  box-shadow: 0 var(--p-px-1) var(--p-px-4) rgb(0 0 0 / 12%);
   transition: border-color 160ms ease;
 }
 

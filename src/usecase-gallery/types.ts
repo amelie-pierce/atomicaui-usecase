@@ -13,6 +13,11 @@ export interface ComponentMeta {
    * them in `uiType`, and every listed type has at least one use case.
    */
   uiTypes: string[];
+  /**
+   * Id of the component this one is shown inside (`Dialog` for AlertDialog). The component gets no card of its own: its UI
+   * types become sections of the parent's page and tree entry, and its use cases keep their ids (`AlertDialog-001`).
+   */
+  parent?: string;
 }
 
 /** One In context case of a use case: one scene, shared by every app of its group. */

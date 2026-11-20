@@ -137,11 +137,28 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
     group.usecases.push(usecase);
   }
 
-  return [...groups.values()]
+  const built = [...groups.values()]
     .filter((group) => group.usecases.length > 0)
     .sort((a, b) => byNaturalOrder(a.title, b.title))
     .map(({ usecases, ...group }) => ({ ...group, uiTypeGroups: groupByUiType(group, usecases) }));
+  return foldIntoParents(built);
 }
+
+/** A component with a `parent` is shown inside it: its UI types follow the parent's and its use cases report the parent as their component. */
+function foldIntoParents(built: ComponentGroup[]): ComponentGroup[] {
+  const top = built.filter((group) => !group.parent);
+  for (const child of built.filter((group) => group.parent)) {
+    const parent = top.find((group) => group.id === child.parent) ?? fail(`${child.id}.meta.ts sets parent "${child.parent}", which is not a component with use cases`);
+    parent.uiTypes = [...parent.uiTypes, ...child.uiTypes];
+    parent.uiTypeGroups = [...parent.uiTypeGroups, ...child.uiTypeGroups];
+    for (const type of child.uiTypeGroups) for (const usecase of type.usecases) usecase.componentId = parent.id;
+  }
+  return top;
+}
+
+/** Old component ids that now live inside another (`AlertDialog` -> `Dialog`), for links made before the grouping. */
+export const parentAliases = (metas: Record<string, ComponentMeta>): Record<string, string> =>
+  Object.fromEntries(Object.values(metas).flatMap((meta) => (meta.parent ? [[meta.id, meta.parent]] : [])));
 
 /**
  * The groups of a use case and its `apps` must say the same thing: within one type (cases sharing a name) the groups

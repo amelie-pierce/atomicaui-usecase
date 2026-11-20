@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'AlertDialog',
+  uiType: 'Alert / Confirm',
   title: 'Delete confirm dialog',
   look: 'Cancel and error Delete',
   apps: ['ace', 'adm', 'pbs', 'hs', 'fd'],

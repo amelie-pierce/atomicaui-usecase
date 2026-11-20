@@ -1,4 +1,4 @@
-import { Dialog, Type, View } from '../../../kit';
+import { Dialog, Field, View } from '../../../kit';
 import { useStageHost } from '../../../hooks/use-stage-host';
 
 export default function Example() {
@@ -8,19 +8,26 @@ export default function Example() {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false} style={{ '--aui-width': 'min(840px, 100%)' } as React.CSSProperties}>
-            <Dialog.Title aui={{ color: 'surface' }}>
-              REQUEST A QUOTE
+          <Dialog.Popup initialFocus={false}>
+            <Dialog.Title aui={{ color: 'raised' }}>
+              Save as Template
               <Dialog.Spacer />
-              <Dialog.Close aria-label="Close REQUEST A QUOTE" />
+              <Dialog.Close aria-label="Cancel" />
             </Dialog.Title>
-            <Dialog.Body aui={{ sx: { overflow: 'auto', minHeight: '0' } }}>
-              <View as="form" aui={{ paint: 'text', sx: { display: 'flex', flexWrap: 'wrap', gap: '24', alignItems: 'start' } }}>
-                <Type as="p" role="p3">
-                  The form fields go here.
-                </Type>
+            <Dialog.Body>
+              <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
+                <Field>
+                  <Field.Label>Template name</Field.Label>
+                  <Field.Control>
+                    <Field.Input type="text" placeholder="Please enter a name" />
+                  </Field.Control>
+                </Field>
               </View>
             </Dialog.Body>
+            <Dialog.Actions>
+              <Dialog.Button>Cancel</Dialog.Button>
+              <Dialog.Button dismiss={false} disabled aui={{ color: 'secondary', paint: 'solid' }}>Save</Dialog.Button>
+            </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>
       </Dialog.Portal>

@@ -8,15 +8,15 @@ export default function Example() {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: 'fill', height: 'fill' } }}>
-            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-              Website Application License Agreement
+          <Dialog.Popup initialFocus={false} style={{ '--aui-width': 'min(520px, 100%)' } as React.CSSProperties}>
+            <Dialog.Title aui={{ color: 'raised' }}>
+              Calculation Report
               <Dialog.Spacer />
-              <Dialog.Close aria-label="Close Website Application License Agreement" aui={{ scale: 'sm' }} />
+              <Dialog.Close aria-label="Close" />
             </Dialog.Title>
-            <Dialog.Body aui={{ scale: 'sm' }}>
-              <Type role="p2" aui={{ sx: { flex: 'none' } }}>
-                1. The licence text goes here; the Body scrolls when it is longer than the popup.
+            <Dialog.Body>
+              <Type as="p" role="p3">
+                The preview of the report goes here.
               </Type>
             </Dialog.Body>
           </Dialog.Popup>

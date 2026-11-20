@@ -1,18 +1,19 @@
-import { ContainedIcon, Field, View } from '../../../kit';
+import { Field } from '../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm', sx: { gap: '3', width: '224' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Base plate</Field.Label>
+    <Field aui={{ scale: 'sm', sx: { width: 'fill', minWidth: '0' } }}>
+      <Field.Label>Country</Field.Label>
       <Field.Select
-        defaultValue="plate-a"
+        defaultValue="us"
         items={[
-          { label: 'Plate A', value: 'plate-a' },
-          { label: 'Plate B', value: 'plate-b' },
-          { label: 'Plate C', value: 'plate-c' },
+          { label: 'Canada', value: 'ca' },
+          { label: 'United States', value: 'us' },
+          { label: 'Mexico', value: 'mx' },
         ]}
       >
-        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { width: 'fill' } }}>
+        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', scale: 'sm', sx: { width: 'fill', height: '28' } }}>
+          <Field.SelectIcon name="flag" aria-hidden />
           <Field.SelectValue />
           <Field.SelectChevron />
         </Field.SelectTrigger>
@@ -20,26 +21,20 @@ export default function Example() {
           <Field.SelectPositioner side="bottom" sideOffset={4}>
             <Field.SelectPopup matchTriggerWidth>
               <Field.SelectList>
-                <Field.SelectItem value="plate-a">
-                  <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
-                  <ContainedIcon name="image" aria-hidden />
-                </View>
-                  <Field.SelectItemText>Plate A</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
+                <Field.SelectItem value="ca">
+                  <Field.SelectIcon name="flag" aria-hidden />
+                  <Field.SelectItemText>Canada</Field.SelectItemText>
+                  <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
                 </Field.SelectItem>
-                <Field.SelectItem value="plate-b">
-                  <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
-                  <ContainedIcon name="image" aria-hidden />
-                </View>
-                  <Field.SelectItemText>Plate B</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
+                <Field.SelectItem value="us">
+                  <Field.SelectIcon name="flag" aria-hidden />
+                  <Field.SelectItemText>United States</Field.SelectItemText>
+                  <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
                 </Field.SelectItem>
-                <Field.SelectItem value="plate-c">
-                  <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
-                  <ContainedIcon name="image" aria-hidden />
-                </View>
-                  <Field.SelectItemText>Plate C</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
+                <Field.SelectItem value="mx">
+                  <Field.SelectIcon name="flag" aria-hidden />
+                  <Field.SelectItemText>Mexico</Field.SelectItemText>
+                  <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
                 </Field.SelectItem>
               </Field.SelectList>
             </Field.SelectPopup>

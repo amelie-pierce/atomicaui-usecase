@@ -1,4 +1,4 @@
-import { Dialog, Type, View } from '../../../kit';
+import { Dialog, Type } from '../../../kit';
 import { useStageHost } from '../../../hooks/use-stage-host';
 
 export default function Example() {
@@ -8,17 +8,16 @@ export default function Example() {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }} style={{ '--aui-width': 'min(360px, 100%)' } as React.CSSProperties}>
-            <Dialog.Title aui={{ scale: 'sm', color: 'raised', sx: { position: 'relative', justifyContent: 'center', paddingInlineStart: '40', paddingInlineEnd: '40' } }}>
-              <span>Help Center</span>
-              <Dialog.Close aria-label="Close Help Center" aui={{ scale: 'sm' }} style={{ position: 'absolute', insetInlineEnd: 'var(--p-px-8)', margin: 0 }} />
+          <Dialog.Popup initialFocus={false}>
+            <Dialog.Title aui={{ color: 'raised' }}>
+              Thickness Calculator
+              <Dialog.Spacer />
+              <Dialog.Close aria-label="Close" />
             </Dialog.Title>
-            <Dialog.Body aui={{ scale: 'sm' }}>
-              <View as="nav" aria-label="Help Center" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '8', width: 'fill' } }}>
-                <Type as="p" role="p3">
-                  Help rows go here.
-                </Type>
-              </View>
+            <Dialog.Body>
+              <Type as="p" role="p3">
+                The calculator inputs and result go here.
+              </Type>
             </Dialog.Body>
           </Dialog.Popup>
         </Dialog.Viewport>

@@ -2,39 +2,36 @@ import { Field } from '../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm', sx: { width: 'fill', minWidth: '0' } }}>
-      <Field.Label>Country</Field.Label>
+    <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
+      <Field.Label aui={{ scale: 'sm' }}>Corrosion Resistance</Field.Label>
       <Field.Select
-        defaultValue="us"
+        multiple
+        defaultValue={['standard', 'galvanized']}
         items={[
-          { label: 'Canada', value: 'ca' },
-          { label: 'United States', value: 'us' },
-          { label: 'Mexico', value: 'mx' },
+          { label: 'Standard', value: 'standard' },
+          { label: 'Hot dip galvanized', value: 'galvanized' },
+          { label: 'Stainless steel', value: 'stainless' },
         ]}
       >
-        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', scale: 'sm', sx: { width: 'fill', height: '28' } }}>
-          <Field.SelectIcon name="flag" aria-hidden />
-          <Field.SelectValue />
+        <Field.SelectTrigger aui={{ scale: 'sm', color: 'surface', paint: 'fixed', sx: { width: 'fill', height: '28', minHeight: '28', paddingBlockStart: '3', paddingBlockEnd: '3', fontSize: '16', lineHeight: '20' } }}>
+          <Field.SelectValue>Standard, Hot dip galvanized</Field.SelectValue>
           <Field.SelectChevron />
         </Field.SelectTrigger>
         <Field.SelectPortal>
           <Field.SelectPositioner side="bottom" sideOffset={4}>
             <Field.SelectPopup matchTriggerWidth>
               <Field.SelectList>
-                <Field.SelectItem value="ca">
-                  <Field.SelectIcon name="flag" aria-hidden />
-                  <Field.SelectItemText>Canada</Field.SelectItemText>
-                  <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
+                <Field.SelectItem value="standard">
+                  <Field.SelectItemText>Standard</Field.SelectItemText>
+                  <Field.SelectItemIndicator />
                 </Field.SelectItem>
-                <Field.SelectItem value="us">
-                  <Field.SelectIcon name="flag" aria-hidden />
-                  <Field.SelectItemText>United States</Field.SelectItemText>
-                  <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
+                <Field.SelectItem value="galvanized">
+                  <Field.SelectItemText>Hot dip galvanized</Field.SelectItemText>
+                  <Field.SelectItemIndicator />
                 </Field.SelectItem>
-                <Field.SelectItem value="mx">
-                  <Field.SelectIcon name="flag" aria-hidden />
-                  <Field.SelectItemText>Mexico</Field.SelectItemText>
-                  <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
+                <Field.SelectItem value="stainless">
+                  <Field.SelectItemText>Stainless steel</Field.SelectItemText>
+                  <Field.SelectItemIndicator />
                 </Field.SelectItem>
               </Field.SelectList>
             </Field.SelectPopup>

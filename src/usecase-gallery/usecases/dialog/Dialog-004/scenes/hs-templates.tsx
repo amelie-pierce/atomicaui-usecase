@@ -11,7 +11,7 @@ const SELECTION = {
 const ROW = { paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', width: 'fill' } } as const;
 
 // Size: this popup is the default 480px wide, narrower than the 860px About popup; the look (raised title bar, close X) is the same.
-// HS Templates dialog (src/hs/TemplateDialogs.tsx; FD src/components/TemplatesDialog.jsx writes the same dialog through its own shell): the default-width Popup of the shell dialog with a raised Title ("Templates") and close X, and a Body that scrolls (overflow auto) holding one RadioGroup over an Accordion of two sections whose triggers are plain text. A row is a Radio that fills the row; the user's rows end in three icon buttons (download, trash, pen) with an aria-label each. Left out: more rows, the empty state, the Cancel and Create footer and the delete confirm (Dialog-005, AlertDialog-004).
+// HS Templates dialog (src/hs/TemplateDialogs.tsx; FD src/components/TemplatesDialog.jsx writes the same dialog through its own shell): the default-width Popup of the shell dialog with a raised Title ("Templates") and close X, and a Body that scrolls (overflow auto) holding one RadioGroup over an Accordion of two sections whose triggers are plain text. A row is a Radio that fills the row; the user's rows end in three icon buttons (download, trash, pen) with an aria-label each. Left out: more rows, the empty state, the Cancel and Create footer and the delete confirm (Dialog-008, AlertDialog-004).
 export default function HsTemplatesScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>

@@ -2,16 +2,42 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Segmented tabs',
-  title: 'Tabs with status icon',
-  apps: ['hcs', 'fd'],
+  title: 'Phone workspace tabs',
+  apps: ['pfd', 'hs', 'agpd', 'fd', 'adm', 'ace', 'pbs'],
   cases: [
-    { id: 'hcs-check-tabs', name: 'Check result tabs', apps: ['hcs'], source: { hcs: 'src/components/F01Results.tsx' } },
-    { id: 'fd-check-tabs', name: 'Check result tabs', apps: ['fd'], source: { fd: 'src/components/RowExpansion.jsx' } },
+    {
+      id: 'pfd-phone-tabs',
+      name: 'Phone workspace tabs',
+      apps: ['pfd', 'hs', 'agpd', 'fd'],
+      note: 'The row fills the phone width and shrinks its tabs.',
+      source: { pfd: 'src/pfd/Workspace.tsx', hs: 'src/App.tsx', agpd: 'src/App.tsx', fd: 'src/App.jsx' },
+    },
+    {
+      id: 'adm-phone-tabs',
+      name: 'Phone workspace tabs',
+      apps: ['adm', 'ace'],
+      note: 'The row fills the phone width and shrinks its tabs; a Reset button ends the row.',
+      source: { adm: 'src/app/layout/MobileWorkbench/MobileWorkbench.tsx', ace: 'src/pages/estimator/EstimatorPage.tsx' },
+    },
+    {
+      id: 'pbs-phone-tabs',
+      name: 'Phone workspace tabs',
+      apps: ['pbs'],
+      note: 'Every tab keeps its natural width (fit) and the row scrolls sideways.',
+      source: { pbs: 'src/App.tsx' },
+    },
   ],
-  source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/RowExpansion.jsx' },
-  summary: 'Tabs that each lead with a pass or fail icon, so the tab strip is also the summary of which checks passed.',
-  where: 'Under the title of a result card: HCS lists one tab per check of a product in its Output results (Connection and each design check); FD lists one tab per check category in an expanded Output row. The Output pane tabs are Tabs-001.',
-  when: 'Use it when each tab is one check or test with an outcome the user should read before opening it: the icon shows pass or fail and the panel shows the detail. Use plain Tabs (Tabs-001) when the tabs are views with no outcome.',
-  how: 'The example is HCS: Tabs, Tabs.List and Tabs.Tab with aui scale "sm", a Tabs.Icon at the start of each Tab (check with color "success" when passed, xmark with color "error" when failed, scale "sm") and a Tabs.Panel per check, with sx gap "12" on the root. scale "sm" computes the same as the default (28px chips, 16px/400, 8px padding, measured), so the other apps leave it off. The Component tab shows the Tabs; the scene is the strip only. '
-    + 'HCS: Tabs.Icon glyphs check and xmark (17.5x14 glyphs, rgb(22, 163, 74) and rgb(231, 80, 76) measured). FD: a plain Icon child instead of Tabs.Icon with the circle-check and circle-exclamation glyphs (20x16, the same two colours once "error" is used), a List with gap "0" and no scale props; the glyph set differs, so it is its own group. FD colours the failed icon "danger", which is not a kit colour, so the app renders it in the text colour, rgb(18, 18, 18); that is an app-side defect against the red "error" of HCS and the scene uses "error". Left out of the scenes: the card title, the other checks, the panels and every selected-tab change.',
+  source: {
+    pfd: 'src/pfd/Workspace.tsx',
+    hs: 'src/App.tsx',
+    agpd: 'src/App.tsx',
+    fd: 'src/App.jsx',
+    adm: 'src/app/layout/MobileWorkbench/MobileWorkbench.tsx',
+    ace: 'src/pages/estimator/EstimatorPage.tsx',
+    pbs: 'src/App.tsx',
+  },
+  summary: 'The one top-level switch of a phone workspace: a full-width row of tab chips at the top, one tab per pane with short labels on one line.',
+  where: 'The full-width workspace row at the top of the phone layout (below 768px) in PFD, HS, AGPD, FD, ADM, ACE and PBS, above the one visible panel; HCS and RWS have no phone tab row.',
+  when: 'Use it as the one top-level switch of a phone workspace, one tab per pane. Use Tabs-001 in a pane header on desktop and tablet; use Tabs-003 when each tab reports a pass or fail.',
+  how: 'The same chips as the pane tabs (a Tabs root with a Tabs.List of Tabs.Tab chips, each Tab color "surface-alt", paint "solid", shape "soft", selected { color: "overlay", paint: "solid" }), as a full-width row (fill) at the top of the phone column, edge to edge. PFD, HS, AGPD, FD: one group. The Tabs.List has overflow "shrink" and aui sx gap "0" and flex "none", the Tab chips an aui sx whiteSpace "nowrap", inside a View.ScrollArea with no scrollbar (measured at 300px: selected 160px, others 64px, no gap). FD gives the List flex "fill" and a span around each label, which render the same; HS adds 3D VIEWER and JOB LIST tabs and AGPD disables its tabs until the licence is accepted, which is content and state; FD writes a trailing Reset IconButton beside the row, left out here. ADM, ACE: the same row with a Tabs.AddButton at the end of the List (name "rotate-right", aria-label Reset, a 28x28 square chip) that opens the Reset confirmation, so the button set differs; each label is a span. ACE leaves the List gap at the 6px default where ADM sets "0", an app-side deviation merged into the ADM standard (measured 6px against 0px). PBS: the width differs, fit instead of fill. The List has no overflow "shrink", so every tab keeps its natural width and the wrapping View scrolls the row (measured at 300px: the row stays 435px wide instead of shrinking the tabs to 64px), with the 6px List gap; PBS also puts a Refresh IconButton before the tabs, left out here. Left out of the scenes: the panel bodies and every disabled state.',
 });

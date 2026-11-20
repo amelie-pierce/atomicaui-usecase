@@ -1,4 +1,4 @@
-import { Dialog, Field, View } from '../../../kit';
+import { Dialog, Type } from '../../../kit';
 import { useStageHost } from '../../../hooks/use-stage-host';
 
 export default function Example() {
@@ -8,26 +8,17 @@ export default function Example() {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false}>
-            <Dialog.Title aui={{ color: 'raised' }}>
-              Save as Template
+          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: 'fill', height: 'fill' } }}>
+            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
+              Website Application License Agreement
               <Dialog.Spacer />
-              <Dialog.Close aria-label="Cancel" />
+              <Dialog.Close aria-label="Close Website Application License Agreement" aui={{ scale: 'sm' }} />
             </Dialog.Title>
-            <Dialog.Body>
-              <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
-                <Field>
-                  <Field.Label>Template name</Field.Label>
-                  <Field.Control>
-                    <Field.Input type="text" placeholder="Please enter a name" />
-                  </Field.Control>
-                </Field>
-              </View>
+            <Dialog.Body aui={{ scale: 'sm' }}>
+              <Type role="p2" aui={{ sx: { flex: 'none' } }}>
+                1. The licence text goes here; the Body scrolls when it is longer than the popup.
+              </Type>
             </Dialog.Body>
-            <Dialog.Actions>
-              <Dialog.Button>Cancel</Dialog.Button>
-              <Dialog.Button dismiss={false} disabled aui={{ color: 'secondary', paint: 'solid' }}>Save</Dialog.Button>
-            </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>
       </Dialog.Portal>

@@ -1,39 +1,48 @@
-import { Select } from '../../../kit';
+import { Field } from '../../../kit';
 
 export default function Example() {
   return (
-    <Select
-      defaultValue="6"
-      items={[
-        { label: '4.500', value: '4.5' },
-        { label: '6.000', value: '6' },
-        { label: '7.500', value: '7.5' },
-      ]}
-    >
-      <Select.Trigger aria-label="Hef" aui={{ scale: 'xs', color: 'surface', paint: 'fixed', sx: { width: 'fill' } }}>
-        <Select.Value />
-        <Select.Chevron />
-      </Select.Trigger>
-      <Select.Portal>
-        <Select.Positioner side="bottom" sideOffset={4}>
-          <Select.Popup matchTriggerWidth>
-            <Select.List>
-              <Select.Item value="4.5">
-                <Select.ItemText>4.500</Select.ItemText>
-                <Select.ItemIndicator>{null}</Select.ItemIndicator>
-              </Select.Item>
-              <Select.Item value="6">
-                <Select.ItemText>6.000</Select.ItemText>
-                <Select.ItemIndicator>{null}</Select.ItemIndicator>
-              </Select.Item>
-              <Select.Item value="7.5">
-                <Select.ItemText>7.500</Select.ItemText>
-                <Select.ItemIndicator>{null}</Select.ItemIndicator>
-              </Select.Item>
-            </Select.List>
-          </Select.Popup>
-        </Select.Positioner>
-      </Select.Portal>
-    </Select>
+    <Field aui={{ sx: { flexDirection: 'row', alignItems: 'center', width: 'fill' } }}>
+      <Field.Label aui={{ sx: { flex: 'fill', flexBasis: 'half', minWidth: '0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }}>Product</Field.Label>
+      <Field.Select
+        defaultValue="a1"
+        items={[
+          { label: 'Anchor A1', value: 'a1' },
+          { label: 'Anchor A2', value: 'a2' },
+          { label: 'Rod B1', value: 'b1' },
+        ]}
+      >
+        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { flex: 'fill', flexBasis: 'half', minWidth: '0' } }}>
+          <Field.SelectValue />
+          <Field.SelectChevron />
+        </Field.SelectTrigger>
+        <Field.SelectPortal>
+          <Field.SelectPositioner side="bottom" sideOffset={4}>
+            <Field.SelectPopup matchTriggerWidth>
+              <Field.SelectList>
+                <Field.SelectGroup>
+                  <Field.SelectGroupLabel>Anchors</Field.SelectGroupLabel>
+                  <Field.SelectItem value="a1">
+                    <Field.SelectItemText>Anchor A1</Field.SelectItemText>
+                    <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
+                  </Field.SelectItem>
+                  <Field.SelectItem value="a2">
+                    <Field.SelectItemText>Anchor A2</Field.SelectItemText>
+                    <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
+                  </Field.SelectItem>
+                </Field.SelectGroup>
+                <Field.SelectGroup>
+                  <Field.SelectGroupLabel>Rods</Field.SelectGroupLabel>
+                  <Field.SelectItem value="b1">
+                    <Field.SelectItemText>Rod B1</Field.SelectItemText>
+                    <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
+                  </Field.SelectItem>
+                </Field.SelectGroup>
+              </Field.SelectList>
+            </Field.SelectPopup>
+          </Field.SelectPositioner>
+        </Field.SelectPortal>
+      </Field.Select>
+    </Field>
   );
 }

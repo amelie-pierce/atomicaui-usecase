@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { KeyboardEvent } from 'react';
 import { Collapsible, Type } from '../kit';
 import type { ComponentGroup, UiTypeGroup, Usecase } from '../types';
-import { COMPONENTS_HASH } from '../hooks/use-components-route';
+import { COMPONENTS_HASH } from '../hooks/use-route';
 import { PaneCard } from './pane-card';
 
 interface TreePaneProps {

@@ -110,6 +110,19 @@ export interface UsecaseCase {
   loadCode: () => Promise<string>;
 }
 
+/**
+ * One look of a use case: the same business action drawn another way (`Dark solid` beside the default `Secondary solid`).
+ * Derived from the `look` of the cases; the first look is the use case's own `example.tsx`, every other one has
+ * `looks/<look-slug>.tsx` in the use case folder. The preview shows a select of the looks.
+ */
+export interface UsecaseLook {
+  name: string;
+  /** The apps whose cases draw this look. */
+  apps: AppKey[];
+  Example: ComponentType;
+  loadCode: () => Promise<string>;
+}
+
 export interface Usecase extends Omit<UsecaseDoc, 'cases'> {
   /** `<ComponentId>-<NNN>`; also the URL hash. */
   id: string;
@@ -124,6 +137,8 @@ export interface Usecase extends Omit<UsecaseDoc, 'cases'> {
   loadContextCode?: () => Promise<string>;
   /** The In context cases from `scenes/`; they take the place of `Context` when present. */
   cases?: UsecaseCase[];
+  /** The looks of the action when its cases state two or more; the preview shows a select, and `apps`, the cases and the example follow the chosen one. */
+  looks?: UsecaseLook[];
 }
 
 /** The use cases of one component that share a UI type. */

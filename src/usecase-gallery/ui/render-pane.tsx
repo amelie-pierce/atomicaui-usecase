@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react';
 import type { CaseType } from '../catalog/app-views';
-import { Button, Radio, RadioGroup, ToggleGroup, Type } from '../kit';
-import type { PreviewMode, Usecase, UsecaseCase } from '../types';
+import { Button, Field, Radio, RadioGroup, ToggleGroup, Type } from '../kit';
+import type { PreviewMode, Usecase, UsecaseCase, UsecaseLook } from '../types';
 import { StageHostContext } from '../hooks/use-stage-host';
 import { PaneCard } from './pane-card';
 
@@ -25,6 +25,8 @@ function FallbackFrame({ area, children }: { area: string; children: React.React
 /** Read-only: the example renders with fixed props, and there are no controls to change them. */
 export function RenderPane({
   usecase,
+  looks,
+  onLookChange,
   mode,
   onModeChange,
   types,
@@ -33,7 +35,11 @@ export function RenderPane({
   activeCase,
   onCaseChange,
 }: {
+  /** The use case as the chosen look shows it. */
   usecase: Usecase;
+  /** Every look of the use case; the select shows with two or more. The chosen one is `usecase.look`. */
+  looks?: UsecaseLook[];
+  onLookChange: (look: string) => void;
   mode: PreviewMode;
   onModeChange: (mode: PreviewMode) => void;
   /** The case types of the use case; the radio group shows with two or more. */
@@ -69,6 +75,35 @@ export function RenderPane({
           />
         ))}
       </ToggleGroup>
+      {looks && looks.length > 1 && (
+        <Field aui={{ scale: 'sm' }} className="ug-render__look-select">
+          <Field.Label aui={{ scale: 'sm' }}>Look</Field.Label>
+          <Field.Select
+            value={usecase.look}
+            onValueChange={(next) => next && onLookChange(String(next))}
+            items={looks.map(({ name }) => ({ label: name, value: name }))}
+          >
+            <Field.SelectTrigger aui={{ scale: 'sm' }} aria-label="Look">
+              <Field.SelectValue />
+              <Field.SelectChevron />
+            </Field.SelectTrigger>
+            <Field.SelectPortal>
+              <Field.SelectPositioner sideOffset={4}>
+                <Field.SelectPopup matchTriggerWidth>
+                  <Field.SelectList>
+                    {looks.map(({ name }) => (
+                      <Field.SelectItem key={name} value={name}>
+                        <Field.SelectItemText>{name}</Field.SelectItemText>
+                        <Field.SelectItemIndicator />
+                      </Field.SelectItem>
+                    ))}
+                  </Field.SelectList>
+                </Field.SelectPopup>
+              </Field.SelectPositioner>
+            </Field.SelectPortal>
+          </Field.Select>
+        </Field>
+      )}
       {mode === 'context' && types.length > 1 && (
         <RadioGroup
           className="ug-render__cases"
@@ -104,7 +139,7 @@ export function RenderPane({
           ))}
         </ToggleGroup>
       )}
-      {look && (
+      {look && !(looks && looks.length > 1) && (
         <Type role="l3" as="p" color="muted" className="ug-render__look">
           Look: {look}
         </Type>

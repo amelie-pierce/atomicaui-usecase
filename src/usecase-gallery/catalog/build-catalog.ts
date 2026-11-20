@@ -3,7 +3,7 @@ import type { ComponentType } from 'react';
 import { appLabels, caseTypes } from './app-views';
 import { toContextSnippet, toSnippet } from './snippet';
 import type { AppKey } from '../apps';
-import type { ComponentGroup, ComponentMeta, ContextProps, UiTypeGroup, Usecase, UsecaseCaseDoc, UsecaseDoc } from '../types';
+import type { ComponentGroup, ComponentMeta, ContextProps, UiTypeGroup, Usecase, UsecaseCaseDoc, UsecaseDoc, UsecaseLook } from '../types';
 
 type Loader<T> = () => Promise<T>;
 
@@ -19,6 +19,9 @@ export interface CatalogSources {
   /** `../usecases/<component>/<UseCaseId>/scenes/<case>.tsx`: the In context cases of one use case. */
   scenes?: Record<string, Loader<ComponentType<ContextProps>>>;
   sceneSources?: Record<string, Loader<string>>;
+  /** `../usecases/<component>/<UseCaseId>/looks/<look-slug>.tsx`: the example of every look after the first. */
+  looks?: Record<string, Loader<ComponentType>>;
+  lookSources?: Record<string, Loader<string>>;
 }
 
 const ID_PATTERN = /^([A-Z][A-Za-z0-9]*)-(\d{3,})$/;
@@ -38,6 +41,8 @@ const sceneKey = (path: string) => {
   const [component, id, , file] = segments(path).slice(-4);
   return `${component}/${id}/${file.replace(/\.tsx$/, '')}`;
 };
+/** `Dark solid` -> `dark-solid`: the file name of a look's example. */
+export const lookSlug = (look: string) => look.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const contextKey = (path: string) => segments(path).slice(-1)[0].replace(/\.tsx$/, '');
 
 const fail = (message: string): never => {
@@ -45,7 +50,7 @@ const fail = (message: string): never => {
 };
 
 /** Pure assembly of the catalog from glob results, so the discovery rules live in one testable place. */
-export function buildCatalog({ metas, docs, examples, sources, contexts = {}, contextSources = {}, scenes = {}, sceneSources = {} }: CatalogSources): ComponentGroup[] {
+export function buildCatalog({ metas, docs, examples, sources, contexts = {}, contextSources = {}, scenes = {}, sceneSources = {}, looks = {}, lookSources = {} }: CatalogSources): ComponentGroup[] {
   const groups = new Map<string, ComponentGroup & { usecases: Usecase[] }>();
   for (const [path, meta] of Object.entries(metas)) {
     groups.set(componentKey(path), { ...meta, usecases: [] });
@@ -57,6 +62,8 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
   const contextSourceBySlug = new Map(Object.entries(contextSources).map(([p, load]) => [contextKey(p), load]));
   const sceneByKey = new Map(Object.entries(scenes).map(([p, load]) => [sceneKey(p), load]));
   const sceneSourceByKey = new Map(Object.entries(sceneSources).map(([p, load]) => [sceneKey(p), load]));
+  const lookByKey = new Map(Object.entries(looks).map(([p, load]) => [sceneKey(p), load]));
+  const lookSourceByKey = new Map(Object.entries(lookSources).map(([p, load]) => [sceneKey(p), load]));
   const lazyContexts = new Map<string, ComponentType<ContextProps>>();
   const ids = new Set<string>();
 
@@ -125,6 +132,7 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
         };
       });
       checkAppGroups(usecase, cases);
+      usecase.looks = buildLooks(usecase, key, lookByKey, lookSourceByKey);
     }
     group.usecases.push(usecase);
   }
@@ -170,4 +178,27 @@ function groupByUiType({ id, title, uiTypes }: ComponentMeta, usecases: Usecase[
     if (group.usecases.length === 0) fail(`${title} lists the UI type "${group.title}" in uiTypes, but no use case of ${id} has it`);
   }
   return groups;
+}
+
+/**
+ * The looks of a use case are the distinct `look` values of its cases, in the order written. One look is no choice, so a
+ * use case gets `looks` only with two or more; its first look is `example.tsx`, every other one needs `looks/<look-slug>.tsx`.
+ */
+function buildLooks(usecase: Usecase, key: string, examples: Map<string, Loader<ComponentType>>, sources: Map<string, Loader<string>>): UsecaseLook[] | undefined {
+  const names = [...new Set((usecase.cases ?? []).flatMap((candidate) => (candidate.look ? [candidate.look] : [])))];
+  if (names.length < 2) return undefined;
+  return names.map((name, index) => {
+    const apps = [...new Set((usecase.cases ?? []).filter((candidate) => candidate.look === name).flatMap((candidate) => candidate.apps))];
+    if (index === 0) return { name, apps, Example: usecase.Example, loadCode: usecase.loadCode };
+    const slug = lookSlug(name);
+    const loadExample = examples.get(`${key}/${slug}`) ?? fail(`${usecase.id} has the look "${name}" but looks/${slug}.tsx is missing`);
+    const loadSource = sources.get(`${key}/${slug}`) ?? fail(`${usecase.id} has the look "${name}" but looks/${slug}.tsx is missing`);
+    let code: Promise<string> | undefined;
+    return {
+      name,
+      apps,
+      Example: lazy(() => loadExample().then((component) => ({ default: component }))),
+      loadCode: () => (code ??= loadSource().then(toSnippet)),
+    };
+  });
 }

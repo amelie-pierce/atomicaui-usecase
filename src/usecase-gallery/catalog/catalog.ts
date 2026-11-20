@@ -13,6 +13,9 @@ export const catalog = buildCatalog({
   // In context cases of one use case: `usecases/<component>/<UseCaseId>/scenes/<case>.tsx`, listed in its `usecase.ts`.
   scenes: import.meta.glob('../usecases/*/*/scenes/*.tsx', { import: 'default' }),
   sceneSources: import.meta.glob('../usecases/*/*/scenes/*.tsx', { query: '?raw', import: 'default' }),
+  // Examples of the looks after the first: `usecases/<component>/<UseCaseId>/looks/<look-slug>.tsx`.
+  looks: import.meta.glob('../usecases/*/*/looks/*.tsx', { import: 'default' }),
+  lookSources: import.meta.glob('../usecases/*/*/looks/*.tsx', { query: '?raw', import: 'default' }),
 });
 
 export const allUsecases = catalog.flatMap((group) => group.uiTypeGroups.flatMap((type) => type.usecases));

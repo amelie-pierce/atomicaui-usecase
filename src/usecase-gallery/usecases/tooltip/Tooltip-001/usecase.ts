@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Icon button',
-  title: 'Icon button label tooltip',
+  uiType: 'Tooltip on a button',
+  title: 'Icon button tooltip',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   cases: [
     {
@@ -35,8 +35,8 @@ export default defineUsecase({
     rws: 'src/rws/panel.tsx',
     adc: 'src/adc/Workspace.tsx',
   },
-  summary: 'An icon-only button shows its own label in a small tooltip on hover or keyboard focus.',
-  where: 'Every icon-only header, rail and navigation button of the ten apps (HCS HcsIconTooltip, ACE PaneIconTooltip, ADM AdmIconTooltip, ADC and FD IconTooltip, AGPD and RWS IconTip, PBS and PFD and HS output navigation). The panel standard of the apps is that an icon-only button carries an aria-label and a tooltip with the same words.',
-  when: 'Use it on every IconButton that has no visible text. Do not use it for a control whose label is already visible, and not for long help text (a help icon, IconButton-006).',
-  how: 'Compose Tooltip.Provider, Tooltip, Tooltip.Trigger with the IconButton as render, Tooltip.Portal, Tooltip.Positioner and Tooltip.Popup. All ten apps show the same label tooltip on an icon-only button, so they are one group; no popup placement or surface was measured in a browser, so none splits it. From the tooltip source, HS requests the Base UI default side (top) and RWS requests bottom, each with a 4px offset; collision handling may flip the requested side when space is limited. Scenes show one enabled button and omit the surrounding pane header.',
+  summary: 'An icon-only button shows what it does in a small tooltip on hover or keyboard focus.',
+  where: 'Every icon-only header, rail and navigation button of the ten apps (HCS HcsIconTooltip, ACE PaneIconTooltip, ADM AdmIconTooltip, ADC and FD IconTooltip, AGPD and RWS IconTip, PBS and PFD and HS output navigation). The panel standard of the apps is that an icon-only button carries an aria-label and a tooltip with the same words. Also the Reset View button floating over the 3D viewer (ADM ViewerChrome, FD Viewer).',
+  when: 'Use it on every IconButton that has no visible text, including the Reset View button over the viewer. Do not use it for a control whose label is already visible, and not for long help text (a help icon, Button-031). For a radio option, see Tooltip-006.',
+  how: 'Compose Tooltip.Provider, Tooltip, Tooltip.Trigger with the IconButton as render, Tooltip.Portal, Tooltip.Positioner and Tooltip.Popup. All ten apps show the same label tooltip on an icon-only button, so they are one group; no popup placement or surface was measured in a browser, so none splits it. From the tooltip source, HS requests the Base UI default side (top) and RWS requests bottom, each with a 4px offset; collision handling may flip the requested side when space is limited. Scenes show one enabled button and omit the surrounding pane header. Reset View (ADM, FD): the same IconButton trigger and label tooltip on a floating viewer control; ADM ViewerChrome and FD Viewer are read from the source and not run.',
 });

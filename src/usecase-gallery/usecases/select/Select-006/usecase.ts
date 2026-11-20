@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Table',
+  uiType: 'Compact select',
   title: 'Cell select',
   apps: ['adc'],
   cases: [{ id: 'adc-table-cell', name: 'Cell select', apps: ['adc'], source: { adc: 'src/adc/components/ProductsPicker.tsx' } }],

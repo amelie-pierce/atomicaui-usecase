@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Walkthrough',
-  title: 'Step navigation: Previous and Next',
+  uiType: 'Button group',
+  title: 'Previous and Next, text with icons',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   cases: [
     { id: 'hcs-step-nav', name: 'Step navigation', apps: ['hcs'], source: { hcs: 'src/components/F01Walkthrough.tsx' } },

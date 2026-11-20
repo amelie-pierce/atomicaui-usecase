@@ -118,7 +118,7 @@ export function RenderPane({
               </Context>
             )
           ) : (
-            <FallbackFrame area={usecase.area}>
+            <FallbackFrame area={usecase.area ?? usecase.uiType}>
               <Example />
             </FallbackFrame>
           )}

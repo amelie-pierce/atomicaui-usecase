@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Walkthrough',
-  title: 'Launch general tutorial',
+  uiType: 'Single button',
+  title: 'Text only',
   apps: ['hs'],
   cases: [
     { id: 'hs-launch', name: 'Launch general tutorial', apps: ['hs'], source: { hs: 'src/hs/Tutorials.tsx' } },

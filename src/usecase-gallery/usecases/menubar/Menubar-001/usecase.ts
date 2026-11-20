@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Menubar',
-  title: 'Top bar menu: File and Help Center',
+  uiType: 'Menubar with text triggers',
+  title: 'File and Help Center menus',
   apps: ['hs', 'adc', 'adm', 'ace', 'hcs', 'pbs', 'pfd', 'rws', 'agpd'],
   cases: [
     {

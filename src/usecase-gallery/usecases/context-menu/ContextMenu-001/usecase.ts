@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Tab rail',
-  title: 'Tab options',
+  uiType: 'Context menu',
+  title: 'Tab context menu',
   apps: ['adc'],
   cases: [{ id: 'adc-tab-options', name: 'Tab options', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } }],
   source: { adc: 'src/adc/Workspace.tsx' },

@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Tab rail',
+  uiType: 'Closable tab rail',
   title: 'Design tab rail',
   apps: ['adc'],
   cases: [{ id: 'adc-design-rail', name: 'Design tab rail', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } }],

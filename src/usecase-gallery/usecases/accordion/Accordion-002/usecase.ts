@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'About',
-  title: 'Release notes accordion',
+  uiType: 'Titled accordion',
+  title: 'Title with badge and count',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   cases: [
     {

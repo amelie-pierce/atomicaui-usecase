@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Output header',
-  title: 'Radio value filter',
+  uiType: 'Dropdown with text trigger',
+  title: 'Outlined text trigger',
   apps: ['hcs'],
   cases: [{ id: 'hcs-product-filter', name: 'Radio value filter', apps: ['hcs'], source: { hcs: 'src/components/HcsProductFilter.tsx' } }],
   source: { hcs: 'src/components/HcsProductFilter.tsx' },

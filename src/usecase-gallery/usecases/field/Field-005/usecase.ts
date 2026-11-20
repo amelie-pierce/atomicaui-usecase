@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Table',
+  uiType: 'Single-line field',
   title: 'Search field',
   apps: ['hcs', 'hs', 'pfd', 'fd', 'pbs', 'rws'],
   cases: [

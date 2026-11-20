@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Configuration',
-  title: 'Configuration select with icons',
+  uiType: 'Field select',
+  title: 'Select with icons',
   apps: ['hs', 'ace', 'adc', 'fd', 'pfd', 'rws'],
   cases: [
     {

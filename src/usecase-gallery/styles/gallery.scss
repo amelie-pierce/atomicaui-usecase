@@ -282,8 +282,8 @@ $narrow: 840px;
 
 // ── Tree ────────────────────────────────────────────────────────────────────
 // Each level's text sits one 16px step right of its parent's: the component panel already insets its content by
-// 8px, so areas add 8px and use cases add the full 16px.
-.ug-tree__areas {
+// 8px, so UI types add 8px and use cases add the full 16px.
+.ug-tree__types {
   padding-inline-start: var(--p-px-8);
 }
 

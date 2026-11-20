@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Results',
-  title: 'Check result tabs',
+  uiType: 'Segmented tabs',
+  title: 'Tabs with status icon',
   apps: ['hcs', 'fd'],
   cases: [
     { id: 'hcs-check-tabs', name: 'Check result tabs', apps: ['hcs'], source: { hcs: 'src/components/F01Results.tsx' } },

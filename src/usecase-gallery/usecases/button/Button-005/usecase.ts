@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Walkthrough',
-  title: 'Last step: End',
+  uiType: 'Button group',
+  title: 'Previous and End, text with icons',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   cases: [
     { id: 'hcs-last-step', name: 'Last step', apps: ['hcs'], source: { hcs: 'src/components/F01Walkthrough.tsx' } },
@@ -41,8 +41,8 @@ export default defineUsecase({
     agpd: 'src/agpd/Tutorials.tsx',
     rws: 'src/rws/Tutorials.tsx',
   },
-  summary: 'A borderless text Button finishes the guided tour; in some apps a check follows the label.',
-  where: 'The card of a coach-mark walkthrough, on the last step, where it replaces Next. Real site source: the walkthrough card of each app (the paths are in source). Earlier steps use Previous and Next (Button-004). ADC has no walkthrough.',
-  when: 'Use it to close a flow that has been walked through, not to dismiss it early; for that use the close icon (IconButton-001).',
-  how: "Set aui scale \"sm\", paint \"text\" and color \"secondary\"; the icon decides the variant, so there are four UIs, one scene each, and the preview has a toggle of the four groups: HCS (End with a check, mixed case, regular weight), ACE, HS, RWS and AGPD (END in capitals, regular weight, no icon), ADM and FD (END in capitals, bold, no icon) and PBS and PFD (END in capitals, bold, with the check). The bold capitals are CSS on the row's buttons in ADM, PBS and PFD. In context this is the last step of the app's tour; the target is the File menu at the right edge, so the card sits to the left of the spotlight, as the app places it when it does not fit on the right. The scenes keep Previous, End, the counter, the title and one tip line, with the app's own step copy, and use the gallery's shared stand-in as the spotlight target.",
+  summary: 'Previous and a borderless text End Button sit together in the card footer to finish the guided tour; in some apps a check follows the label.',
+  where: 'The footer of the card of a coach-mark walkthrough, on the last step, where End replaces Next. Real site source: the walkthrough card of each app (the paths are in source). Earlier steps use Previous and Next (Button-004). ADC has no walkthrough.',
+  when: 'Use it to close a flow that has been walked through, not to dismiss it early; for that use the close icon (Button-031).',
+  how: "Set aui scale \"sm\", paint \"text\" and color \"secondary\"; the pair is Previous (arrow-left) and End; the End icon decides the variant, so there are four UIs, one scene each, and the preview has a toggle of the four groups: HCS (End with a check, mixed case, regular weight), ACE, HS, RWS and AGPD (END in capitals, regular weight, no icon), ADM and FD (END in capitals, bold, no icon) and PBS and PFD (END in capitals, bold, with the check). The bold capitals are CSS on the row's buttons in ADM, PBS and PFD. In context this is the last step of the app's tour; the target is the File menu at the right edge, so the card sits to the left of the spotlight, as the app places it when it does not fit on the right. The scenes keep Previous, End, the counter, the title and one tip line, with the app's own step copy, and use the gallery's shared stand-in as the spotlight target.",
 });

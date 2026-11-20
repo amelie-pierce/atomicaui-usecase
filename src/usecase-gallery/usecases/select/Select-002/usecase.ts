@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Input panel',
+  uiType: 'Field select',
   title: 'Multiple select',
   apps: ['pbs', 'fd', 'pfd'],
   cases: [

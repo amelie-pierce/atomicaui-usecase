@@ -1,8 +1,8 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Print',
-  title: 'Print table',
+  uiType: 'Data table',
+  title: 'Dense print table',
   apps: ['ace', 'adm', 'hs', 'rws', 'pbs', 'pfd', 'agpd'],
   source: {
     ace: 'src/features/print/ui/report-primitives.tsx',

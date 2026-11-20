@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  area: 'Menubar',
+  uiType: 'Menubar with icon trigger',
   title: 'Settings gear menu',
   apps: ['hcs', 'adm', 'ace', 'hs', 'pfd', 'agpd', 'rws', 'pbs'],
   source: {

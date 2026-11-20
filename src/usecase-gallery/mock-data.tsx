@@ -117,3 +117,7 @@ export function MockNumberField({ label, value, unit, disabled }: { label: React
     </Field>
   );
 }
+
+// A neutral placeholder picture (a framed 4:3 shape) for the Card and CardGroup scenes; the apps show product or template images.
+export const MOCK_IMAGE_SRC =
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='120' viewBox='0 0 160 120'><rect width='160' height='120' fill='%23e6e8ec'/><rect x='40' y='30' width='80' height='60' rx='6' fill='none' stroke='%239aa1ad' stroke-width='4'/></svg>";

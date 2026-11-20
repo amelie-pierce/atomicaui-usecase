@@ -2,7 +2,7 @@ import type { ContextProps } from '../../../../types';
 import { Table, View } from '../../../../kit';
 
 // HCS Output table row (F01Results.tsx 205-288, 536-575): the first cell holds the selection radio, and the selected row keeps the surface-alt band and
-// gains a 4px secondary bar at its start. The Why Not expander before the radio is Button-024; the thumbnail, sort header and other columns are left out.
+// gains a 4px secondary bar at its start. The Why Not expander before the radio is Button-028; the thumbnail, sort header and other columns are left out.
 export default function HcsSelectionScene(_props: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>

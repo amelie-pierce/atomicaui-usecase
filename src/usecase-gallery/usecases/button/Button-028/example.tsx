@@ -1,21 +1,19 @@
-import { IconButton } from '../../../kit';
+import { Button } from '../../../kit';
 
 export default function Example() {
   return (
-    <IconButton
-      name="bullseye"
-      aria-label="Reset view"
+    <Button
+      aria-label="Why Not for passing model"
+      aria-expanded={false}
       aui={{
         scale: 'sm',
-        color: 'primary',
+        profile: 'square-compact',
+        color: 'surface',
         paint: 'text',
-        shape: 'soft',
-        sx: {
-          borderWidth: '1',
-          borderStyle: 'solid',
-          borderColor: 'outlined',
-        },
+        sx: { minWidth: '24', minHeight: '24' },
       }}
-    />
+    >
+      <Button.Icon name="angle-right" weight="solid" aui={{ scale: 'sm' }} />
+    </Button>
   );
 }

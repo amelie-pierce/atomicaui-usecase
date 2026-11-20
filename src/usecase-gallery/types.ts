@@ -26,6 +26,8 @@ export interface UsecaseCaseDoc {
    * groups never overlap. Omit when the scene is the same in every app of the use case.
    */
   apps?: AppKey[];
+  /** The look of the control in this group when it differs from another group of the same action (`Secondary solid`, `Dark solid`); shown in the Document row and above the preview. Omit the use case `look` when every case states one. */
+  look?: string;
   /** Plain text shown below the scene: a property of this UI (label above or beside, a unit weight, ...). Never a toggle value. */
   note?: string;
   /** The source file of this scene per app of the group; overrides the use case's `source` for these apps. */
@@ -34,10 +36,16 @@ export interface UsecaseCaseDoc {
 
 /** Written once per use case in `usecases/<component>/<UseCaseId>/usecase.ts`. */
 export interface UsecaseDoc {
-  /** The UI type this variant belongs to: one of the component's `uiTypes`. Use cases with the same type share a tree group. */
+  /** The UI type this use case belongs to: one of the component's `uiTypes`. Use cases with the same type share a tree group. */
   uiType: string;
-  /** The variant's name inside its UI type (`Secondary solid`, `Text with leading icon`); shown beside the id in the tree. */
+  /**
+   * The name of the use case, shown beside the id in the tree. One use case is one business action, so the title names
+   * the action (`Download CSV button`, `Reset confirm dialog`). A component not yet converted still names its variant here
+   * (`Secondary solid`).
+   */
   title: string;
+  /** The look of the control or dialog that performs the action (`Secondary solid`, `Text with leading icon`): a property, never a tree level. Shown in the Document and above the preview. Omit it when every case states its own `look`. */
+  look?: string;
   /**
    * The place of use of the one default In context (`contexts/<area-slug>.tsx`), for a use case without `cases`.
    * Omit it when `cases` list the places: the scenes replace the area context.
@@ -59,7 +67,8 @@ export interface UsecaseDoc {
   /** Optional: the area's context places this example elsewhere (for example `close`, the card corner); uses `contexts/<area-slug>-<variant>.tsx`. */
   contextVariant?: string;
   /**
-   * Optional: the places of use of this variant (for example the dialogs that hold a single button). Each id names a file
+   * Optional: the places of use of this use case (for a converted component, places of the one action, such as a row kind
+   * or a state; for an unconverted one, the dialogs that hold a single button). Each id names a file
    * `scenes/<id>.tsx` in the use case folder; the preview shows a radio group of the place names and renders the chosen
    * scene instead of the area context. Cases that share a `name` are the UI variants of one type, one per group of apps
    * (see `UsecaseCaseDoc`); with two or more variants the preview adds a toggle of the groups under the radio group.
@@ -93,6 +102,8 @@ export interface UsecaseCase {
   apps: AppKey[];
   /** The group toggle text: the app labels joined by a comma. */
   label: string;
+  /** The look of this group, when the case states one. */
+  look?: string;
   /** The property note shown below the scene, when the case has one. */
   note?: string;
   Scene: ComponentType<ContextProps>;
@@ -115,7 +126,7 @@ export interface Usecase extends Omit<UsecaseDoc, 'cases'> {
   cases?: UsecaseCase[];
 }
 
-/** The variants of one component that share a UI type. */
+/** The use cases of one component that share a UI type. */
 export interface UiTypeGroup {
   title: string;
   usecases: Usecase[];

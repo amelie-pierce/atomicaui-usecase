@@ -47,7 +47,7 @@ function AppBadges({ apps, label }: { apps: AppKey[]; label: string }) {
  * preview toggle, so each row is one distinct UI: the type, then one row of badges per variant.
  */
 function UsedIn({ usecase }: { usecase: Usecase }) {
-  if (!usecase.cases?.some((candidate) => !isShared(candidate, usecase))) {
+  if (!usecase.cases?.some((candidate) => candidate.look || !isShared(candidate, usecase))) {
     return <AppBadges apps={usecase.apps} label="Used in" />;
   }
   return (
@@ -59,8 +59,14 @@ function UsedIn({ usecase }: { usecase: Usecase }) {
         {caseTypes(usecase).map(({ name, cases }) => (
           <div key={name} className="ug-docs__type">
             <Type as="dt" role="l3" weight="semi-bold">{name}</Type>
-            {cases.map(({ id, label, apps }) => (
+            {cases.map(({ id, label, apps, look }) => (
               <dd key={id} className="ug-docs__variant">
+                {look && (
+                  <Type as="span" role="l3">
+                    <Type as="span" role="l3" weight="semi-bold">Look: </Type>
+                    {look}
+                  </Type>
+                )}
                 {label !== appLabels(apps) && (
                   <Type as="span" role="l3" color="muted">{label}</Type>
                 )}
@@ -83,6 +89,12 @@ export function DocsPane({ usecase }: { usecase: Usecase }) {
           <Type role="l3" as="span" weight="bold" color="primary">{usecase.title}</Type>
         </h2>
         <Type role="l3" as="p" color="muted">{usecase.summary}</Type>
+        {usecase.look && (
+          <Type role="l3" as="p">
+            <Type as="span" role="l3" weight="semi-bold">Look: </Type>
+            {usecase.look}
+          </Type>
+        )}
         <div className="ug-docs__apps">
           <UsedIn usecase={usecase} />
         </div>

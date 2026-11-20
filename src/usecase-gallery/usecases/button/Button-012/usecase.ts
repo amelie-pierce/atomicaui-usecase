@@ -2,12 +2,16 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Accent solid',
-  apps: ['adc'],
-  source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' },
-  cases: [{ id: 'adc-ok', name: 'Info OK', apps: ['adc'], source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' } }],
-  summary: 'A solid primary Button, orange with white text, is the lone OK that acknowledges a notice.',
-  where: 'The footer of a dialog that only informs. Real site source: ADC src/adc/components/DesignCapacityDialog.tsx (OK of the Maximum Number of Designs Reached notice); the About dialog ends the same way with Close. The other apps use the gray or black single button of Button-005 and Button-011.',
-  when: 'Use it where the app colors its one dialog action with the accent. For a plain dismiss use the neutral Button-005, and keep the close X in the Title as the other way out.',
-  how: 'Set aui color "primary", paint "solid" and scale "sm" (the Dialog.Button default scale). In context it is the one Dialog.Button of an AlertDialog drawn as a non-modal Dialog, as in Button-018, with a circle-xmark error icon in the raised Title, the close X inside a "Close" tooltip (top, 8px offset, solid secondary sm) and one paragraph; the real body holds more.',
+  title: 'Launch general tutorial button',
+  look: 'Text only',
+  apps: ['hs'],
+  cases: [
+    { id: 'hs-launch', name: 'Launch general tutorial', apps: ['hs'], source: { hs: 'src/hs/Tutorials.tsx' } },
+  ],
+  source: { hs: 'src/hs/Tutorials.tsx' },
+  summary: 'A borderless text Button on the last step of a topic tour starts the General Tutorial.',
+  where: 'The coach-mark card of an HS tour, on the last step of every topic except the General Tutorial, between the step text and the Previous / End row. Real site source: HS Tutorials.tsx (launchGeneral). Only HS has it.',
+  when: 'Use it to send a reader who finished a focused tour to the general one. Do not use it as the tour exit; that is End (Button-024).',
+  how: 'Set aui scale "sm", paint "text", color "secondary" and sx alignSelf "start", so the label sits at the start of the card instead of stretching. The label is typed in capitals (LAUNCH GENERAL TUTORIAL). '
+    + 'The scene keeps the card, its close X and the one-line step text; the Previous / End row and counter are left out (Button-024 shows them), and the target is the gallery\'s shared stand-in.',
 });

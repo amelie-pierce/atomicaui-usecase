@@ -2,12 +2,16 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Button group',
-  title: 'Stacked text links, no padding',
-  apps: ['ace'],
-  source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
-  cases: [{ id: 'ace-links', name: 'Edit and Delete links', apps: ['ace'], source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' } }],
-  summary: 'Text Buttons with no padding read as links; stacked in a column they give a table row its few actions while the table stays light.',
-  where: 'The first cell of each row of a saved-list table. Real site source: ACE src/features/calculation/ui/CalculationOutput.tsx (Edit and Delete as stacked link-like Buttons in the first cell of the Job tally). The other apps have no link-like row Buttons.',
-  when: 'Use it for row actions in a table that must stay light and where the actions are few; for two often-used actions prefer the tonal pair of Button-021. Unlike the inline link of Button-004 it keeps the secondary color and no underline.',
-  how: 'Set aui color "secondary", paint "text", scale "sm" and profile "no-padding". In context the Buttons are stacked in a column and start-aligned in the first cell of a Job tally row; ACE hides Edit on the selected row and Delete while only one job exists. The other columns and the totals row are left out.',
+  title: 'Save edited value buttons',
+  look: 'Text and primary',
+  apps: ['adc'],
+  cases: [
+    { id: 'adc-edit-value', name: 'Edit value', apps: ['adc'], source: { adc: 'src/adc/components/InPlaceEditor.tsx' } },
+  ],
+  source: { adc: 'src/adc/components/InPlaceEditor.tsx' },
+  summary: 'A filled Cancel and a solid secondary Save close the in-place editor popover of a value chip.',
+  where: 'The in-place editor popover opened from a value chip: a row with a number Field, then Cancel and Save. Real site source: ADC src/adc/components/InPlaceEditor.tsx. No other app has this popover.',
+  when: 'Use it for the commit of a small in-place edit; ADC fills the popover Cancel like a dialog Cancel (the unfilled text Cancel of Button-021 is for column configuration).',
+  how: 'Cancel sets color "surface-alt" and paint "solid", Save color "secondary" and paint "solid", both scale "sm" with a soft shape and a 4px gap; there is no reset icon. '
+    + 'The popup opens to the right of the value chip (surface solid xs, compact; right, center, 8px offset). The chip stands alone here instead of floating over the 3D model. One group, ADC only.',
 });

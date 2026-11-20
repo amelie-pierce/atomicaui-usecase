@@ -1,5 +1,9 @@
 import { Button } from '../../../kit';
 
 export default function Example() {
-  return <Button aui={{ paint: 'text', color: 'primary' }}>View all</Button>;
+  return (
+    <Button aui={{ color: 'secondary', paint: 'solid', scale: 'sm' }}>
+      Add to Job List
+    </Button>
+  );
 }

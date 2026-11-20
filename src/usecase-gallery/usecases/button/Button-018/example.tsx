@@ -2,9 +2,8 @@ import { Button } from '../../../kit';
 
 export default function Example() {
   return (
-    <>
-      <Button aui={{ scale: 'sm', color: 'surface-alt', paint: 'solid', shape: 'soft' }}>Cancel</Button>
-      <Button aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Reset</Button>
-    </>
+    <Button aui={{ scale: 'xs', color: 'surface', paint: 'fixed', shape: 'soft', sx: { width: 'fill', justifyContent: 'between' } }}>
+      Select products
+    </Button>
   );
 }

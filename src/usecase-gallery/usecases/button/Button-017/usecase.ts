@@ -2,12 +2,17 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Pager dot',
-  apps: ['fd'],
-  cases: [{ id: 'fd-carousel-dots', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } }],
-  source: { fd: 'src/components/InputPane.jsx' },
-  summary: 'An empty solid Button is one dot of a carousel pager; the current page is the primary one.',
-  where: 'The footer of the FD input pane carousel: one dot per page of cards.',
-  when: 'Use it only as a page indicator that also jumps to its page. It has no label, so always set aria-label ("1 / 3") and aria-current on the current dot.',
-  how: 'Set aui paint "solid" and color "primary" for the current page, "surface-alt" for the others, on a Button with no children. Measured with no size class: 16px by 10px, orange rgb(255, 83, 8) when current; the app sizes the dot with its own carousel-dot CSS class, which the kit cannot state, so the scene shows the kit box. A Button with no label and a solid fill is not an icon button, so it stays a Single button.',
+  title: 'Open report button',
+  look: 'Info solid, extra small',
+  apps: ['adc'],
+  cases: [
+    { id: 'adc-status-bar', name: 'Status bar', apps: ['adc'], source: { adc: 'src/adc/components/ReportFlow.tsx' } },
+  ],
+  source: { adc: 'src/adc/components/ReportFlow.tsx' },
+  summary: 'A small blue solid Button with a file icon tells the user a report is ready and opens it.',
+  where: 'The left slot of the ADC status bar, shown once a calculation report exists for the active design (it reads "Report is ready (outdated)" when the inputs changed since).',
+  when: 'Use it for a status that is also an action: the state is the label and the click opens the result. A neutral action is Button-005; the accent solid is Button-015.',
+  how: 'Set aui color "info", paint "solid", scale "xs" and shape "soft", with a Button.Icon "file-lines" and a span label. '
+    + 'Measured: 26px high, 4px 6px padding, 14px medium text, white on blue rgb(59, 130, 246), 4px radius, so the colour and the size differ from Button-015 (accent, 28px, 16px). '
+    + 'The generating state is the same Button as secondary text, disabled, and is left out with the rest of the bar.',
 });

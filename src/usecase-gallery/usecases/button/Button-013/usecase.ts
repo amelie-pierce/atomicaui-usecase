@@ -2,12 +2,16 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Accent text',
-  apps: ['fd'],
-  cases: [{ id: 'fd-carousel-footer', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } }],
-  source: { fd: 'src/components/InputPane.jsx' },
-  summary: 'A text Button in the primary colour opens the full list from the footer of a carousel.',
-  where: 'The footer of the FD input pane carousel (the connection type cards), after the pager dots.',
-  when: 'Use it for a quiet link-like action that widens the view: the carousel shows a few cards and this Button opens all of them. A neutral text action is Button-010; the small accent text in a popup is Button-008.',
-  how: 'Set aui paint "text" and color "primary" on a Button at the default scale. Measured in the gallery: 28px high, 4px 8px padding, 16px regular text, no fill and no border, orange text rgb(255, 83, 8), so it differs from Button-010 (text colour dark) and from Button-008 (26px, 14px medium, scale "xs"). In context it is the last item of the carousel footer after the two pager dots (Button-017). The cards, the arrows (Button-027) and the dialog it opens are left out.',
+  title: 'Add to Job List button',
+  look: 'Dark solid',
+  apps: ['hs'],
+  cases: [
+    { id: 'hs-button', name: 'Add selected result', apps: ['hs'], source: { hs: 'src/hs/OutputPane.tsx' } },
+  ],
+  source: { hs: 'src/hs/OutputPane.tsx' },
+  summary: 'A solid secondary Button, black with white text, adds the chosen result to the job list.',
+  where: 'The first item of the HS Output toolbar row, before the search field (ResultsTable `actions` slot from OutputPane.tsx). Real site source: HS src/hs/OutputPane.tsx. No other app has this Button.',
+  when: 'Use the labelled Button when one result is chosen elsewhere and must be added to a list; HS disables it until a result is selected or while a job is being edited.',
+  how: 'aui color "secondary", paint "solid", scale "sm", text only. In context the button is the first item of a wrapping toolbar row (gap 8). The count, Reset filters, Download CSV and the table are left out. '
+    + 'One group, HS only.',
 });

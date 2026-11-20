@@ -1,5 +1,10 @@
 import { Button } from '../../../kit';
 
 export default function Example() {
-  return <Button aria-label="1 / 3" aui={{ paint: 'solid', color: 'primary' }} />;
+  return (
+    <Button aui={{ color: 'info', paint: 'solid', scale: 'xs', shape: 'soft' }}>
+      <Button.Icon name="file-lines" />
+      <span>Report is ready</span>
+    </Button>
+  );
 }

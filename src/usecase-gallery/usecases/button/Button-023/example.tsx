@@ -3,19 +3,13 @@ import { Button } from '../../../kit';
 export default function Example() {
   return (
     <>
-      <Button
-        aria-label="Back to top"
-        aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}
-      >
-        <Button.Icon name="arrow-up" />
-        Back to top
+      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
+        <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
+        Previous
       </Button>
-      <Button
-        aria-label="Jump to table notes"
-        aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}
-      >
-        <Button.Icon name="arrow-down" />
-        Table Notes
+      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
+        Next
+        <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
       </Button>
     </>
   );

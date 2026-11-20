@@ -101,7 +101,7 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
     if (cases && cases.length > 0) {
       const caseIds = new Set<string>();
       usecase.cases = cases.map((raw) => {
-        const { id: caseId, name, apps = doc.apps, note, source } = raw;
+        const { id: caseId, name, apps = doc.apps, look, note, source } = raw;
         if ('app' in raw) fail(`${id} sets "app" on the case "${caseId}"; cases take "apps: [...]" now (the apps that share the scene)`);
         if (apps.length === 0) fail(`${id} gives the case "${caseId}" an empty apps list`);
         for (const app of [...apps, ...Object.keys(source ?? {})] as AppKey[]) {
@@ -118,6 +118,7 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
           name,
           apps,
           label: appLabels(apps),
+          look,
           note,
           Scene,
           loadCode: () => (sceneCode ??= Promise.all([usecase.loadCode(), loadSceneSource()]).then(([snippet, source]) => toContextSnippet(source, snippet))),

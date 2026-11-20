@@ -2,12 +2,17 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Outlined row, extra small',
+  title: 'Acknowledge notice button',
+  look: 'Accent solid',
   apps: ['adc'],
-  cases: [{ id: 'adc-products', name: 'Products row', apps: ['adc'], source: { adc: 'src/adc/components/ProductsPicker.tsx' } }],
-  source: { adc: 'src/adc/components/ProductsPicker.tsx' },
-  summary: 'A full-width small Button with a border stands in for a field until the user activates it.',
-  where: 'The Products input of the ADC input pane before the picker is active; hover or focus replaces it with the picker.',
-  when: 'Use it for a field-like row that opens a picker on interaction. A row that opens a tutorial is Button-009, at the default size and without a fill.',
-  how: 'Set aui scale "xs", color "surface", paint "fixed", shape "soft" and sx width "fill", justifyContent "between". Measured: 26px high, 3px 5px padding, 14px medium text, white fill and a 1px rgb(148, 163, 184) border, where Button-009 is 30px high with 16px regular text and no fill, so the size and the fill differ. The scene keeps one row in a 288px column.',
+  cases: [
+    { id: 'adc-ok', name: 'Info OK', apps: ['adc'], source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' } },
+  ],
+  source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' },
+  summary: 'A solid primary Button, orange with white text, is the lone OK that acknowledges a notice.',
+  where: 'The footer of a dialog that only informs. Real site source: ADC src/adc/components/DesignCapacityDialog.tsx (OK of the Maximum Number of Designs Reached notice); the About dialog ends the same way with Close. '
+    + 'The other apps use the gray or black single button of Button-007.',
+  when: 'Use it where the app colors its one dialog action with the accent. For a plain dismiss use the neutral Button-007, and keep the close X in the Title as the other way out.',
+  how: 'Set aui color "primary", paint "solid" and scale "sm" (the Dialog.Button default scale). '
+    + 'In context it is the one Dialog.Button of an AlertDialog drawn as a non-modal Dialog, as in AlertDialog-003, with a circle-xmark error icon in the raised Title, the close X inside a "Close" tooltip (top, 8px offset, solid secondary sm) and one paragraph; the real body holds more.',
 });

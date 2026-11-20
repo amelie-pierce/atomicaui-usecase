@@ -2,9 +2,9 @@ import { Button } from '../../../kit';
 
 export default function Example() {
   return (
-    <Button aui={{ color: 'info', paint: 'solid', scale: 'xs', shape: 'soft' }}>
-      <Button.Icon name="file-lines" />
-      <span>Report is ready</span>
+    <Button aui={{ color: 'secondary', paint: 'solid', scale: 'sm' }}>
+      <Button.Icon name="plus" aria-hidden />
+      Add job
     </Button>
   );
 }

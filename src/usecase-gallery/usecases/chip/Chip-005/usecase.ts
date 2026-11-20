@@ -27,7 +27,7 @@ export default defineUsecase({
     rws: 'src/rws/ShellDialogs.tsx',
   },
   summary: 'A default chip with a name and a dismiss X, one per file the user attached.',
-  where: 'The Feedback form of ADM, PFD, PBS, HS, AGPD and RWS, above the upload area (FileUpload-001).',
+  where: 'The Feedback form of ADM, PFD, PBS, HS, AGPD and RWS, above the upload area (FileUpload-002).',
   when: 'Use it for a value the user added and may remove. Use a Label chip for a read-only tag (Chip-001).',
   how: '`Chip` with default aui, one `Chip.Label` and `Chip.Dismiss` with an aria-label naming the file ("Remove markup.pdf"); `onClick` on the dismiss removes the file. The chips wrap in a flex row (gap 8). The six apps render the same chip, so there is one group; the scene leaves out the upload area and the size errors.',
 });

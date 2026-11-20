@@ -3,7 +3,7 @@ import type { AppKey } from './apps';
 
 /** Written once per component in `usecases/<component>/<component>.meta.ts`. */
 export interface ComponentMeta {
-  /** Id prefix shared by every use case of the component, e.g. `Button` for `Button-001`. */
+  /** Id prefix shared by every use case of the component, e.g. `Button` for `Button-013`. */
   id: string;
   /** Name shown in the tree. */
   title: string;

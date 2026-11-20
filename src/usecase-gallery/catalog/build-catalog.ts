@@ -7,7 +7,7 @@ import type { ComponentGroup, ComponentMeta, ContextProps, UiTypeGroup, Usecase,
 
 type Loader<T> = () => Promise<T>;
 
-/** Glob results keyed by path, e.g. `../usecases/button/Button-001/example.tsx`; modules are default exports. */
+/** Glob results keyed by path, e.g. `../usecases/button/Button-013/example.tsx`; modules are default exports. */
 export interface CatalogSources {
   metas: Record<string, ComponentMeta>;
   docs: Record<string, UsecaseDoc>;
@@ -63,7 +63,7 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
   for (const [path, doc] of Object.entries(docs)) {
     const [component, id] = usecaseKey(path);
     const group = groups.get(component) ?? fail(`"${component}" has use cases but no ${component}.meta.ts`);
-    const match = ID_PATTERN.exec(id) ?? fail(`"${id}" is not a valid id; use <Component>-<NNN>, e.g. Button-001`);
+    const match = ID_PATTERN.exec(id) ?? fail(`"${id}" is not a valid id; use <Component>-<NNN>, e.g. Button-013`);
     if (match[1] !== group.id) fail(`"${id}" must start with "${group.id}-" (id in ${component}.meta.ts)`);
     if (ids.has(id)) fail(`duplicate use case id "${id}"`);
     ids.add(id);

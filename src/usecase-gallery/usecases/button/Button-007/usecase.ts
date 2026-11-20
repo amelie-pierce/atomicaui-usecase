@@ -2,28 +2,13 @@ import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
   uiType: 'Single button',
-  title: 'Tonal outlined with icon',
-  apps: ['hcs', 'adm', 'hs', 'fd'],
-  source: {
-    hcs: 'src/App.tsx',
-    adm: 'src/app/layout/Workbench/Workbench.tsx',
-    hs: 'src/hs/OutputPane.tsx',
-    fd: 'src/components/Results.jsx',
-  },
-  cases: [
-    { id: 'hcs-enabled', name: 'Enabled', apps: ['hcs'], source: { hcs: 'src/App.tsx' } },
-    { id: 'hs-enabled', name: 'Enabled', apps: ['hs', 'fd'], source: { hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } },
-    { id: 'adm-enabled', name: 'Enabled', apps: ['adm'], source: { adm: 'src/app/layout/Workbench/Workbench.tsx' } },
-    { id: 'hcs-disabled', name: 'Disabled (inputs invalid)', apps: ['hcs'], source: { hcs: 'src/App.tsx' } },
-    { id: 'hs-disabled', name: 'Disabled (inputs invalid)', apps: ['hs', 'fd'], source: { hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } },
-    { id: 'adm-disabled', name: 'Disabled (inputs invalid)', apps: ['adm'], source: { adm: 'src/app/layout/Workbench/Workbench.tsx' } },
-  ],
-  summary: 'A Button with a print icon is the last item of a results pane header: quiet and tonal in HCS, a solid black Button in the tabbed headers of HS, FD and ADM.',
-  where: 'The action group at the end of the Output pane header, after the scroll helpers and Configure columns (not in the table toolbar). Real site source: HCS App.tsx (Output pane header); HS OutputPane.tsx (Print Output, after Fullscreen) and FD Results.jsx (after Column settings), both inside the tabbed header; ADM Workbench.tsx (right of the Summary and Result tabs, only on the result branch). ACE, PFD, PBS, AGPD and RWS have no Print Output Button: they print from the File menu or the phone drawer (Menubar items), and ADC has no print. View options, the other tonal button of HCS, lives in the 3D viewer (Button-019).',
-  when: 'Use it for the one print action of the results pane. HCS keeps it quieter than a solid Button (tonal surface); the apps that follow the HS 2.0 panel standard make ordinary actions secondary solid. Add the native disabled attribute while nothing can be printed (all four apps disable it while the inputs are invalid or there is no result).',
-  how: 'The example is the HCS Button: aui scale "sm", color "surface", paint "tonal", sx flex "none", with Button.Icon print before the label. The preview groups the apps by distinct UI and the Document lists the same groups. '
-    + 'HCS: the Output pane header is a title ("Output") with the action group pushed to the end by an app margin (here an inline one); Print Output is the example. '
-    + 'HS, FD: the header is a 28px tab list (HS: Output, Job List; FD: Output, Calculation Result) with the action group growing and right-aligned after it; Print Output is a Button with aui color "secondary", paint "solid", scale "sm", shape "soft" and Button.Icon print. '
-    + 'ADM: the same tabbed header (Summary, Result) with the action group pushed to the end by a margin (an inline one here); the same Button without the icon, labelled Print Summary or Print Result after the active tab. '
-    + 'Disabled (inputs invalid) is the same header with the native disabled attribute on the Button. Left out of every scene: the Configure columns trigger, the scroll helpers, HS Fullscreen, the toolbar, the results table and Table Notes; also the icon-only form FD shows in a narrow header and ADM\'s phone print row.',
+  area: 'Viewer',
+  contextVariant: 'options',
+  title: 'Tonal outlined',
+  apps: ['hcs'],
+  source: { hcs: 'src/App.tsx' },
+  summary: 'A tonal text Button in the corner of the 3D viewer opens the camera and visibility controls in a popover.',
+  where: 'The top-right corner of the 3D Viewer canvas, 8px in, in compact layouts where the floating controls are hidden. It is not in the Output toolbar. Real site source: HCS (View options); Print Output, its sibling tonal button, is Button-001. Built from the viewer pane in src/App.tsx (lines 1522-1651) and index.css (.f02-mobile-options, .f02-popover).',
+  when: 'Use it when the controls would crowd a small canvas. It has no icon; the popover holds the same stack as the desktop overlay (Button-023).',
+  how: 'Set aui scale "sm", color "surface" and paint "tonal". In the app it is the trigger of a Popover (side bottom, align end, offset 4). In context the scene is the compact 3D Viewer: the button sits in the top end corner of the scene, 8px in (a gallery rule for the app\'s `.f02-mobile-options`), and the popup is open below it on a surface card (12px padding, 4px radius, shadow) holding Reset view and the projection radios (the Object Visibility checkboxes are left out). The canvas is a framed stand-in.',
 });

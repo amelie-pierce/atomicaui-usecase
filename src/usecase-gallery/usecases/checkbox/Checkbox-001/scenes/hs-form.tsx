@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog, Field, View } from '../../../../kit';
 
-// HS, PFD, PBS, AGPD and RWS feedback and save dialogs (HS src/hs/ShellExtras.tsx and src/hs/TemplateDialogs.tsx, PFD src/pfd/ShellDialogs.tsx, PBS src/WorkspaceTools.tsx, AGPD src/agpd/ShellDialogs.tsx, RWS src/rws/ShellDialogs.tsx): the Checkbox is the last row of the Dialog.Body form, below the fields. The mark is the monotone solid check (the default mark; HS, PFD, AGPD and RWS write it as Checkbox.Icon name "check"). Left out: the Description, the upload dropzone, the size error and the footer (Button-001).
+// HS, PFD, PBS, AGPD and RWS feedback and save dialogs (HS src/hs/ShellExtras.tsx and src/hs/TemplateDialogs.tsx, PFD src/pfd/ShellDialogs.tsx, PBS src/WorkspaceTools.tsx, AGPD src/agpd/ShellDialogs.tsx, RWS src/rws/ShellDialogs.tsx): the Checkbox is the last row of the Dialog.Body form, below the fields. The mark is the monotone solid check (the default mark; HS, PFD, AGPD and RWS write it as Checkbox.Icon name "check"). Left out: the Description, the upload dropzone, the size error and the footer (Button-013).
 export default function HsFormScene({ children, host }: ContextProps) {
   return (
     <Dialog open modal={false}>

@@ -1,18 +1,18 @@
-import { Field } from '../../../kit';
+import { ContainedIcon, Field, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ sx: { flexDirection: 'row', alignItems: 'center', width: 'fill' } }}>
-      <Field.Label aui={{ sx: { flex: 'fill', flexBasis: 'half', minWidth: '0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }}>Product</Field.Label>
+    <Field aui={{ scale: 'sm', sx: { gap: '3', width: '224' } }}>
+      <Field.Label aui={{ scale: 'sm' }}>Base plate</Field.Label>
       <Field.Select
-        defaultValue="a1"
+        defaultValue="plate-a"
         items={[
-          { label: 'Anchor A1', value: 'a1' },
-          { label: 'Anchor A2', value: 'a2' },
-          { label: 'Rod B1', value: 'b1' },
+          { label: 'Plate A', value: 'plate-a' },
+          { label: 'Plate B', value: 'plate-b' },
+          { label: 'Plate C', value: 'plate-c' },
         ]}
       >
-        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { flex: 'fill', flexBasis: 'half', minWidth: '0' } }}>
+        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { width: 'fill' } }}>
           <Field.SelectValue />
           <Field.SelectChevron />
         </Field.SelectTrigger>
@@ -20,24 +20,27 @@ export default function Example() {
           <Field.SelectPositioner side="bottom" sideOffset={4}>
             <Field.SelectPopup matchTriggerWidth>
               <Field.SelectList>
-                <Field.SelectGroup>
-                  <Field.SelectGroupLabel>Anchors</Field.SelectGroupLabel>
-                  <Field.SelectItem value="a1">
-                    <Field.SelectItemText>Anchor A1</Field.SelectItemText>
-                    <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
-                  </Field.SelectItem>
-                  <Field.SelectItem value="a2">
-                    <Field.SelectItemText>Anchor A2</Field.SelectItemText>
-                    <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
-                  </Field.SelectItem>
-                </Field.SelectGroup>
-                <Field.SelectGroup>
-                  <Field.SelectGroupLabel>Rods</Field.SelectGroupLabel>
-                  <Field.SelectItem value="b1">
-                    <Field.SelectItemText>Rod B1</Field.SelectItemText>
-                    <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
-                  </Field.SelectItem>
-                </Field.SelectGroup>
+                <Field.SelectItem value="plate-a">
+                  <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
+                  <ContainedIcon name="image" aria-hidden />
+                </View>
+                  <Field.SelectItemText>Plate A</Field.SelectItemText>
+                  <Field.SelectItemIndicator />
+                </Field.SelectItem>
+                <Field.SelectItem value="plate-b">
+                  <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
+                  <ContainedIcon name="image" aria-hidden />
+                </View>
+                  <Field.SelectItemText>Plate B</Field.SelectItemText>
+                  <Field.SelectItemIndicator />
+                </Field.SelectItem>
+                <Field.SelectItem value="plate-c">
+                  <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
+                  <ContainedIcon name="image" aria-hidden />
+                </View>
+                  <Field.SelectItemText>Plate C</Field.SelectItemText>
+                  <Field.SelectItemIndicator />
+                </Field.SelectItem>
               </Field.SelectList>
             </Field.SelectPopup>
           </Field.SelectPositioner>

@@ -2,6 +2,9 @@ import { Button } from '../../../kit';
 
 export default function Example() {
   return (
-    <Button aui={{ scale: 'sm' }}>Try again</Button>
+    <>
+      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }}>Edit</Button>
+      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }}>Duplicate</Button>
+    </>
   );
 }

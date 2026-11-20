@@ -2,7 +2,7 @@ import { Panels, Type } from '../../../../kit';
 
 // The default split of HcsSplitLayout.tsx cut to its two panes: a horizontal Panels group (scale sm) of two soft surface-alt panes, each reduced to its
 // semi-bold title, and the Panels.ResizeHandle between them (primary colour, 6px). The app's 400px and 200px minimum sizes, the collapse
-// props of the Input panel (Panels-002) and the pane contents are left out; the splitter is not draggable in the scene. Written the same
+// props of the Input panel (Panels-003) and the pane contents are left out; the splitter is not draggable in the scene. Written the same
 // in all ten apps; ADC has three panes and two handles.
 export default function Scene() {
   return (

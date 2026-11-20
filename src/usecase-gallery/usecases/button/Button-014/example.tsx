@@ -1,22 +1,13 @@
-import { Button } from '../../../kit';
+import { Button, IconButton, View } from '../../../kit';
 
 export default function Example() {
   return (
     <>
-      Selecting{' '}
-      <Button
-        type="button"
-        aui={{
-          scale: 'sm',
-          profile: 'no-padding',
-          color: 'warning',
-          paint: 'text',
-          sx: { display: 'inline-flex', textDecoration: 'underline' },
-        }}
-      >
-        All Products
-      </Button>{' '}
-      to review all solutions, including the reasons each one failed.
+      <IconButton name="rotate-left" aria-label="Reset columns to default" aui={{ paint: 'text' }} />
+      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '8' } }}>
+        <Button aui={{ paint: 'text' }}>Cancel</Button>
+        <Button aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Save</Button>
+      </View>
     </>
   );
 }

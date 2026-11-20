@@ -1,18 +1,22 @@
-import { Radio, Tooltip } from '../../../kit';
+import { Radio, RadioGroup, Tooltip } from '../../../kit';
 
 export default function Example() {
   return (
     <Tooltip.Provider>
-      <Tooltip>
-        <Tooltip.Trigger render={<span />} tabIndex={0} aria-label="Selection unavailable for Model C-300" closeOnClick={false} style={{ display: 'inline-flex' }}>
-          <Radio disabled selected={false} tabIndex={-1} aria-label="Model C-300" aui={{ scale: 'sm' }} />
-        </Tooltip.Trigger>
-        <Tooltip.Portal>
-          <Tooltip.Positioner side="top" sideOffset={4}>
-            <Tooltip.Popup>Failed products can't be selected. See Why Not for the reason.</Tooltip.Popup>
-          </Tooltip.Positioner>
-        </Tooltip.Portal>
-      </Tooltip>
+      <RadioGroup aria-label="Camera projection" defaultValue="perspective" aui={{ scale: 'sm', profile: 'no-padding' }}>
+        <Tooltip>
+          <Tooltip.Trigger closeOnClick={false} render={<span />}>
+            <Radio value="perspective" aui={{ scale: 'sm' }}>
+              <Radio.Label>Perspective</Radio.Label>
+            </Radio>
+          </Tooltip.Trigger>
+          <Tooltip.Portal>
+            <Tooltip.Positioner side="top" sideOffset={4}>
+              <Tooltip.Popup>Show the model in perspective</Tooltip.Popup>
+            </Tooltip.Positioner>
+          </Tooltip.Portal>
+        </Tooltip>
+      </RadioGroup>
     </Tooltip.Provider>
   );
 }

@@ -3,10 +3,8 @@ import { Field } from '../../../kit';
 export default function Example() {
   return (
     <Field aui={{ scale: 'sm' }}>
-      <Field.Control>
-        <Field.Icon name="magnifying-glass" />
-        <Field.Input aria-label="Search Table" placeholder="Search Table" />
-      </Field.Control>
+      <Field.Label>Description</Field.Label>
+      <Field.Textarea rows={5} resizable="vertical" />
     </Field>
   );
 }

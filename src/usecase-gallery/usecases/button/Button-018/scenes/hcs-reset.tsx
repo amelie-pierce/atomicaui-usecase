@@ -1,7 +1,7 @@
 import type { ContextProps } from '../../../../types';
 import { Dialog } from '../../../../kit';
 
-// HcsResetDialog (ACE and ADM render the same dialog; only the popup width, 480px, and the close aria-label, "Close", differ): a modal Dialog, 560px wide (a scene-local inline width, since there is no 560 width token) with its backdrop and viewport.
+// HcsResetDialog: a modal Dialog at scale "sm", 560px wide (a scene-local inline width, since there is no 560 width token) with its backdrop and viewport, the raised warning Title, the close X, Cancel and a solid secondary Reset.
 export default function ResetScene({ children, host }: ContextProps) {
   return (
     <Dialog open modal={false}>

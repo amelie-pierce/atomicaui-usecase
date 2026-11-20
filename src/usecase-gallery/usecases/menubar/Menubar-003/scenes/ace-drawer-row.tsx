@@ -8,7 +8,7 @@ export default function AceDrawerRowScene({ host }: ContextProps) {
       aui={{
         paint: "text",
         profile: "no-padding",
-        sx: { display: "flex", justifyContent: "end" },
+        sx: { display: "flex", justifyContent: "end", alignItems: "start" },
       }}
       style={{
         minBlockSize: "calc(var(--p-px-16) * 28)",

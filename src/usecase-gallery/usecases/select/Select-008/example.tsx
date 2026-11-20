@@ -2,7 +2,7 @@ import { ContainedIcon, Field, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
+    <Field aui={{ scale: 'sm', sx: { gap: '3', width: '224' } }}>
       <Field.Label aui={{ scale: 'sm' }}>Base plate</Field.Label>
       <Field.Select
         defaultValue="plate-a"
@@ -12,7 +12,7 @@ export default function Example() {
           { label: 'Plate C', value: 'plate-c' },
         ]}
       >
-        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed' }}>
+        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { width: 'fill' } }}>
           <Field.SelectValue />
           <Field.SelectChevron />
         </Field.SelectTrigger>

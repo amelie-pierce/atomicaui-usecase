@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { catalog, allUsecases } from '../catalog/catalog';
-import { caseTypes } from '../catalog/app-views';
-import { useComponentsRoute } from '../hooks/use-components-route';
-import { useHashSelection } from '../hooks/use-hash-selection';
+import { caseTypes, withLook } from '../catalog/app-views';
+import { COMPONENTS_HASH, componentHash, useRoute } from '../hooks/use-route';
 import { useMediaQuery } from '../hooks/use-media-query';
+import { Breadcrumb } from '../ui/breadcrumb';
+import { ComponentPage } from '../ui/component-page';
 import { ComponentsPage } from '../ui/components-page';
 import { DetailPane } from '../ui/detail-pane';
 import { RenderPane } from '../ui/render-pane';
@@ -22,20 +23,24 @@ export interface UsecaseGalleryProps {
 
 export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const narrow = useMediaQuery(NARROW);
-  const componentsRoute = useComponentsRoute();
+  const route = useRoute(catalog.map((group) => group.id), allUsecases.map((usecase) => usecase.id));
   const [mode, setMode] = useState<PreviewMode>('component');
   // Kept across use cases: the reader who switched to Code stays on Code while browsing.
   const [detail, setDetail] = useState<DetailMode>('code');
-  const { selectedId } = useHashSelection(
-    allUsecases.map((usecase) => usecase.id),
-    allUsecases[0]?.id ?? '',
-  );
-  // The In context type and variant are per use case: choosing another use case starts again at its first type and variant.
-  const [chosen, setChosen] = useState<{ usecaseId: string; type?: string; caseId?: string }>();
+  const selectedId = route.page === 'usecase' ? route.usecaseId : '';
+  // The In context type, variant and the look are per use case: choosing another use case starts again at its first.
+  const [chosen, setChosen] = useState<{ usecaseId: string; type?: string; caseId?: string; look?: string }>();
   if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
-  if (componentsRoute) return <div className="ug"><ComponentsPage groups={catalog} title={title} /></div>;
-  const usecase = allUsecases.find((candidate) => candidate.id === selectedId);
-  if (!usecase) return null;
+  if (route.page === 'components') return <div className="ug"><ComponentsPage groups={catalog} title={title} /></div>;
+  if (route.page === 'component') {
+    const group = catalog.find((candidate) => candidate.id === route.componentId);
+    return group ? <div className="ug"><ComponentPage group={group} /></div> : null;
+  }
+  const original = allUsecases.find((candidate) => candidate.id === selectedId);
+  const group = catalog.find((candidate) => candidate.id === original?.componentId);
+  if (!original || !group) return null;
+  // The look chosen in the preview decides the example, the apps and the cases every pane shows.
+  const usecase = withLook(original, chosen?.look);
   const types = caseTypes(usecase);
   const activeType = types.find((candidate) => candidate.name === chosen?.type) ?? types[0];
   const activeCase = activeType?.cases.find((candidate) => candidate.id === chosen?.caseId) ?? activeType?.cases[0];
@@ -43,17 +48,20 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const changeType = (name: string) => {
     const next = types.find((candidate) => candidate.name === name);
     const sameApp = next?.cases.find((candidate) => candidate.apps.some((app) => activeCase?.apps.includes(app)));
-    setChosen({ usecaseId: usecase.id, type: name, caseId: sameApp?.id });
+    setChosen({ ...chosen, usecaseId: usecase.id, type: name, caseId: sameApp?.id });
   };
 
   const panes = {
     tree: <TreePane groups={catalog} selectedId={usecase.id} title={title} />,
-    render: <RenderPane usecase={usecase} mode={mode} onModeChange={setMode} types={types} activeType={activeType} onTypeChange={changeType} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ usecaseId: usecase.id, type: activeType?.name, caseId })} />,
+    render: <RenderPane usecase={usecase} looks={original.looks} onLookChange={(look) => setChosen({ usecaseId: usecase.id, look })} mode={mode} onModeChange={setMode} types={types} activeType={activeType} onTypeChange={changeType} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ ...chosen, usecaseId: usecase.id, type: activeType?.name, caseId })} />,
     detail: <DetailPane usecase={usecase} detail={detail} onDetailChange={setDetail} mode={mode} activeCase={activeCase} />,
   };
   return (
-    <div className="ug">
-      {narrow ? <StackedLayout {...panes} /> : <ResizableLayout {...panes} />}
+    <div className="ug ug--usecase">
+      <Breadcrumb crumbs={[{ label: 'Components', href: COMPONENTS_HASH }, { label: group.title, href: componentHash(group.id) }, { label: usecase.id }]} />
+      <div className="ug__body">
+        {narrow ? <StackedLayout {...panes} /> : <ResizableLayout {...panes} />}
+      </div>
     </div>
   );
 }

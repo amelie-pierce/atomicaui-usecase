@@ -24,3 +24,20 @@ export const caseTypes = ({ cases = [] }: Pick<Usecase, 'cases'>): CaseType[] =>
 
 /** Whether a case is the same in every app of the use case, so its group needs no toggle or caption. */
 export const isShared = ({ apps }: UsecaseCase, usecase: Pick<Usecase, 'apps'>): boolean => apps.length === usecase.apps.length;
+
+/**
+ * The use case as one of its looks shows it: the example, the code, `apps` and the cases follow the chosen look (a case
+ * that states no look stays). A use case with one look is returned as it is.
+ */
+export const withLook = (usecase: Usecase, lookName?: string): Usecase => {
+  const look = usecase.looks?.find((candidate) => candidate.name === lookName) ?? usecase.looks?.[0];
+  if (!look) return usecase;
+  return {
+    ...usecase,
+    look: look.name,
+    apps: look.apps,
+    Example: look.Example,
+    loadCode: look.loadCode,
+    cases: usecase.cases?.filter((candidate) => !candidate.look || candidate.look === look.name),
+  };
+};

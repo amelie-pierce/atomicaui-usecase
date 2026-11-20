@@ -1,7 +1,7 @@
 import { defineUsecase } from '../../../define';
 
 export default defineUsecase({
-  uiType: 'Two buttons',
+  uiType: 'Button group',
   title: 'Tonal pair',
   apps: ['hs', 'pbs'],
   source: {

@@ -8,7 +8,7 @@ export interface ComponentMeta {
   /** Name shown in the tree. */
   title: string;
   /**
-   * The UI types of the component in tree order, the middle level of the tree (`Single button`, `Two buttons`, ...).
+   * The UI types of the component in tree order, the middle level of the tree (`Single button`, `Button group`, ...).
    * A type is a UI told apart by its rendered look and code, never by where it is used. Every use case names one of
    * them in `uiType`, and every listed type has at least one use case.
    */

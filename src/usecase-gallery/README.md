@@ -1,6 +1,6 @@
 # usecase-gallery
 
-A read-only gallery of component use cases: a tree of components, the UI types of each (Button: Single button, Two buttons, Icon button), the variants of a type (Single button: Secondary solid, Primary solid, ...) with their ids (`Button-016`), the rendered example, the code to copy, and where/when/how to use it, plus which apps use it. Selection lives in the URL hash (`#Button-001`).
+A read-only gallery of component use cases: a tree of components, the UI types of each (Button: Single button, Button group, Icon button), the variants of a type (Single button: Secondary solid, Primary solid, ...) with their ids (`Button-016`), the rendered example, the code to copy, and where/when/how to use it, plus which apps use it. Selection lives in the URL hash (`#Button-001`).
 
 The folder is self-contained. It imports only `react`, `react-dom` and its own `kit.ts`.
 
@@ -21,7 +21,7 @@ usecase-gallery/
   styles/gallery.scss      layout and chrome, tokens only
   usecases/
     <component>/
-      <component>.meta.ts  defineComponent({ id: 'Button', title: 'Button', uiTypes: ['Single button', 'Two buttons', 'Icon button'] })
+      <component>.meta.ts  defineComponent({ id: 'Button', title: 'Button', uiTypes: ['Single button', 'Button group', 'Icon button'] })
       <UseCaseId>/         e.g. Button-001
         example.tsx        the rendered example AND the source shown as code
         usecase.ts         defineUsecase({ uiType, title, area?, apps, summary, where, when, how, cases?, source? })
@@ -54,7 +54,7 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({ uiType: 'Single button', title: 'Primary solid', area: 'Dialog', apps: ['hcs'], summary, where, when, how });
 ```
 
-The tree is component > UI type > variant. A **UI type** is a UI told apart by what it is made of, measured in the rendered gallery and read in the code, never by where it is used: Button has Single button, Two buttons (a main and a second CTA) and Icon button (the former IconButton component, folded in). The component's `<component>.meta.ts` lists its `uiTypes` in tree order; every use case names one in `uiType`, and the catalog throws for an unlisted type or a listed type without a use case. A **variant** is one use case inside the type, named by its look (`Secondary solid`, `Text with leading icon`), with its own id and example. A component with one UI type (title equal to the component title) lists its variants directly. A variant is one UI, so controls that appear together in it belong in one example (the Cancel and Confirm of a dialog footer are one variant of Two buttons).
+The tree is component > UI type > variant. A **UI type** is a UI told apart by what it is made of, measured in the rendered gallery and read in the code, never by where it is used: Button has Single button, Button group (two or more Buttons shown together as one group, any mix of looks) and Icon button (the former IconButton component, folded in). The component's `<component>.meta.ts` lists its `uiTypes` in tree order; every use case names one in `uiType`, and the catalog throws for an unlisted type or a listed type without a use case. A **variant** is one use case inside the type, named by its look (`Secondary solid`, `Text with leading icon`), with its own id and example. A component with one UI type (title equal to the component title) lists its variants directly. One Button is a Single button; Buttons shown together as one group (2, 3, 4 or more, any mix of looks and kinds, main + secondary CTA being only one example) are a Button group, even where the same look also appears alone, and inside the group type the variants are split by measured look. A variant is one UI, so controls that appear together in it belong in one example (the Cancel and Confirm of a dialog footer are one variant of Button group), and each scene shows the controls of its own place: a place that renders a lone Button is a Single button variant, a place that renders a group is a Button group variant.
 
 `area` is optional and is only the place of use of the single default In context: a variant with no `cases` sets `area` (`'Toolbar'`) and renders `contexts/<area-slug>.tsx`; a variant with `cases` lists its places there and sets no `area` (the catalog throws for both). It no longer groups the tree.
 

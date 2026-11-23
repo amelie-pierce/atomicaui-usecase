@@ -16,7 +16,7 @@ const DEFAULT_ANATOMY: Record<string, AnatomyPart[]> = {
   Button: [
     { id: 'container', name: 'Container', token: 'Button', selector: marker('button'), description: 'The interactive surface that performs the action.' },
     { id: 'icon', name: 'Icon', token: 'Button.Icon', selector: `${marker('button')} > :is(${marker('contained-icon')}, ${marker('icon')})`, description: 'The optional icon rendered inside the button.' },
-    { id: 'label', name: 'Label', token: 'Button', selector: `${marker('button')} > [data-ug-anatomy-label="button"]`, description: 'The visible text that names the action.' },
+    { id: 'label', name: 'Label', token: 'Button', selector: marker('button'), text: true, description: 'The visible text that names the action.' },
     { id: 'spinner', name: 'Spinner', token: 'Button.Spinner', selector: child('button', 'spinner'), description: 'The optional loading indicator inside the button.' },
   ],
   Card: [

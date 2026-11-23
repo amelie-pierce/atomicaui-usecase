@@ -13,29 +13,8 @@ function selectorFor(part: AnatomyPart) {
   return part.selector ?? `[data-ug-part="${CSS.escape(part.id)}"]`;
 }
 
-/**
- * Button renders plain label children directly in its host element. Give those text nodes a real,
- * preview-only element so the label can be highlighted independently from the button surface and
- * its icon. Existing element children (for example a Type or a custom label span) get the same
- * marker; AtomicAUI-owned icon/spinner parts stay separate.
- */
-function markButtonLabels(stage: HTMLElement) {
-  for (const button of stage.querySelectorAll<HTMLElement>('[class~="aui-button"]')) {
-    for (const node of [...button.childNodes]) {
-      if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) {
-        const label = document.createElement('span');
-        label.setAttribute('data-ug-anatomy-label', 'button');
-        label.textContent = node.textContent;
-        node.replaceWith(label);
-        continue;
-      }
-      if (node instanceof HTMLElement &&
-          !node.matches('[class~="aui-contained-icon"], [class~="aui-icon"], [class~="aui-spinner"]') &&
-          node.textContent?.trim()) {
-        node.setAttribute('data-ug-anatomy-label', 'button');
-      }
-    }
-  }
+function textNodesOf(element: Element) {
+  return [...element.childNodes].filter((node): node is Text => node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim());
 }
 
 function nearestPart(target: EventTarget | null, stage: HTMLElement, bindings: Map<Element, AnatomyPart>) {
@@ -48,12 +27,22 @@ function nearestPart(target: EventTarget | null, stage: HTMLElement, bindings: M
   return undefined;
 }
 
-function measure(stage: HTMLElement, target: Element | undefined): OverlayRect | null {
+function measure(stage: HTMLElement, target: Element | undefined, textOnly: boolean): OverlayRect | null {
   if (!target) return null;
-  const targetRect = target.getBoundingClientRect();
+  let targetRect: DOMRect;
+  if (textOnly) {
+    const nodes = textNodesOf(target);
+    if (!nodes.length) return null;
+    const range = document.createRange();
+    range.setStartBefore(nodes[0]);
+    range.setEndAfter(nodes[nodes.length - 1]);
+    targetRect = range.getBoundingClientRect();
+  } else {
+    targetRect = target.getBoundingClientRect();
+  }
   const stageRect = stage.getBoundingClientRect();
   if (!targetRect.width || !targetRect.height) return null;
-  const radius = getComputedStyle(target).borderRadius || '0px';
+  const radius = textOnly ? '2px' : getComputedStyle(target).borderRadius || '0px';
   return {
     left: targetRect.left - stageRect.left + stage.scrollLeft,
     top: targetRect.top - stageRect.top + stage.scrollTop,
@@ -84,7 +73,6 @@ export function usePreviewAnatomy(
     const targets = new Map<string, Element[]>();
     availablePartIds.current = undefined;
     const refreshBindings = () => {
-      markButtonLabels(stage);
       for (const element of bindings.keys()) element.removeAttribute('data-ug-anatomy-part');
       bindings.clear();
       targets.clear();
@@ -96,7 +84,9 @@ export function usePreviewAnatomy(
           // A malformed optional selector should not make a preview unusable.
           elements = [];
         }
+        if (part.text) elements = elements.filter((element) => textNodesOf(element).length > 0);
         targets.set(part.id, elements);
+        if (part.text) continue;
         for (const element of elements) {
           bindings.set(element, part);
           element.setAttribute('data-ug-anatomy-part', part.id);
@@ -177,7 +167,7 @@ export function usePreviewAnatomy(
       const target = activeElement.current && partTargets.current.get(highlightedPartId)?.includes(activeElement.current)
         ? activeElement.current
         : partTargets.current.get(highlightedPartId)?.[0];
-      setOverlay(measure(stage, target));
+      setOverlay(measure(stage, target, !!parts.find((part) => part.id === highlightedPartId)?.text));
     };
     update();
     const resize = new ResizeObserver(update);
@@ -185,7 +175,7 @@ export function usePreviewAnatomy(
     resize.observe(stage);
     const target = partTargets.current.get(highlightedPartId)?.[0];
     if (target) resize.observe(target);
-    mutation.observe(stage, { childList: true, subtree: true });
+    mutation.observe(stage, { childList: true, subtree: true, characterData: true });
     stage.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     return () => {

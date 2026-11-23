@@ -54,8 +54,8 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const onPartChange = useCallback((partId: string | undefined, expectedPartId?: string, source: 'hover' | 'focus' = 'hover') => {
     setInteractedPart((current) => {
       if (partId) return { id: partId, source };
-      if (expectedPartId) return current?.id === expectedPartId ? undefined : current;
-      return current?.source === source ? undefined : current;
+      if (current?.source !== source) return current;
+      return expectedPartId && current.id !== expectedPartId ? current : undefined;
     });
   }, []);
   const onSelectPart = useCallback((partId: string) => {

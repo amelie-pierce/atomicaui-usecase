@@ -8,16 +8,15 @@ import { ComponentPage } from '../ui/component-page';
 import { ComponentsPage } from '../ui/components-page';
 import { DetailPane } from '../ui/detail-pane';
 import { RenderPane } from '../ui/render-pane';
-import { TreePane } from '../ui/tree-pane';
 import type { DetailMode, PreviewMode } from '../types';
-import { ResizableLayout, StackedLayout } from './layouts';
+import { DetailLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
 
-/** Below this width the three resizable panes stack into one scrolling column. */
+/** Below this width the preview and detail columns stack into one scrolling column. */
 const NARROW = '(max-width: 840px)';
 
 export interface UsecaseGalleryProps {
-  /** Heading of the tree pane. */
+  /** Heading of the gallery site pages. */
   title?: string;
 }
 
@@ -52,7 +51,6 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   };
 
   const panes = {
-    tree: <TreePane groups={catalog} selectedId={usecase.id} title={title} />,
     render: <RenderPane usecase={usecase} looks={original.looks} onLookChange={(look) => setChosen({ usecaseId: usecase.id, look })} mode={mode} onModeChange={setMode} types={types} activeType={activeType} onTypeChange={changeType} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ ...chosen, usecaseId: usecase.id, type: activeType?.name, caseId })} />,
     detail: <DetailPane usecase={usecase} detail={detail} onDetailChange={setDetail} mode={mode} activeCase={activeCase} />,
   };
@@ -60,7 +58,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
     <div className="ug ug--usecase">
       <Breadcrumb crumbs={[{ label: 'Components', href: COMPONENTS_HASH }, { label: group.title, href: componentHash(group.id) }, { label: usecase.id }]} />
       <div className="ug__body">
-        {narrow ? <StackedLayout {...panes} /> : <ResizableLayout {...panes} />}
+        {narrow ? <StackedLayout {...panes} /> : <DetailLayout {...panes} />}
       </div>
     </div>
   );

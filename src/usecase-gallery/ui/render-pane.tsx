@@ -3,7 +3,6 @@ import type { CaseType } from '../catalog/app-views';
 import { Button, Field, Radio, RadioGroup, ToggleGroup, Type } from '../kit';
 import type { PreviewMode, Usecase, UsecaseCase, UsecaseLook } from '../types';
 import { StageHostContext } from '../hooks/use-stage-host';
-import { PaneCard } from './pane-card';
 
 const MODES: { value: PreviewMode; label: string }[] = [
   { value: 'component', label: 'Component' },
@@ -55,7 +54,7 @@ export function RenderPane({
   const look = (mode === 'context' ? activeCase?.look : undefined) ?? usecase.look ?? usecase.cases?.[0]?.look;
   const [host, setHost] = useState<HTMLElement | null>(null);
   return (
-    <PaneCard label="Preview" className="ug-render">
+    <section className="ug-render" role="region" aria-label="Preview">
       <ToggleGroup
         className="ug-render__toggle"
         aria-label="Preview mode"
@@ -170,6 +169,6 @@ export function RenderPane({
           {activeCase.note}
         </Type>
       )}
-    </PaneCard>
+    </section>
   );
 }

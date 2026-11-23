@@ -17,7 +17,7 @@ usecase-gallery/
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
   hooks/                   hash route (use-route.ts), copy-to-clipboard, media query
   layout/                  gallery shell and the resizable / stacked layouts
-  ui/                      the pages (components-page, component-page, breadcrumb, thumb = the live render in a card) and the panes (pane-card, tree, render, detail)
+  ui/                      the pages (components-page, component-page, breadcrumb, thumb = the live render in a card) and the panes (render, detail)
   styles/gallery.scss      layout and chrome, tokens only
   usecases/
     <component>/
@@ -140,7 +140,7 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 ## Layout and type
 
-Every pane (tree, preview, right pane) is one `PaneCard` (`ui/pane-card.tsx`): a kit `Card` with no visible header, just a scrolling `Card.Content`, named for assistive tech by its `label` (`aria-label` on the region). Change card padding or border there and in the `.ug-card*` rules, never per pane. The centre card is the preview only (its Component | In context toggle, a kit `ToggleGroup`, the app and case pickers and the stage). The right card (`ui/detail-pane.tsx`) has a Document | Code `ToggleGroup` above its content: Code (the default) is the copyable snippet with its Copy button top-right, Document is the docs. The choice is kept when another use case is selected. The three columns start at 25% (tree), 50% (preview) and 25% (right pane) of the view width, `ResizableLayout` in `layout/layouts.tsx`; draggable `Panels` handles sit between them; below 840px they stack. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
+The use case detail page removes the component tree and uses one unframed two-column layout: the preview is on the left and the document or code is on the right. The preview column is sticky below the breadcrumb while the detail column scrolls with the page. `DetailLayout` in `layout/layouts.tsx` stacks the two columns below 840px. The preview and detail regions use native semantic sections rather than kit cards; the gallery still uses kit components for all controls, type and iconography. The right region (`ui/detail-pane.tsx`) has a Document | Code `ToggleGroup` above its content: Code (the default) is the copyable snippet with its Copy button top-right, Document is the docs. The choice is kept when another use case is selected. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
 
 | Element | Type |
 | --- | --- |
@@ -156,7 +156,7 @@ Every pane (tree, preview, right pane) is one `PaneCard` (`ui/pane-card.tsx`): a
 
 The doc pane's use case id and name use `Type color="primary"`; the Where / When / How labels use the default text color; the active toggle segment is a primary solid `Button`, the inactive one a neutral secondary text `Button`. Theme primary is only about 3.2:1 on the light surface, so `.ug-docs` (id and name) and `.ug-render__toggle` and `.ug-detail__toggle` in `gallery.scss` resolve `--theme-primary` to `--p-palette-orange-600` (at least 4.7:1 as text, 5.2:1 under the white on-primary toggle text).
 
-The docs card shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a row of app badges (no visible label), then Where / When / How as a definition list; those three fields are the whole doc format.
+The docs content shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a row of app badges (no visible label), then Where / When / How as a definition list; those three fields are the whole doc format.
 
 ## Id rules
 

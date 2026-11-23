@@ -39,6 +39,34 @@ export interface UsecaseCaseDoc {
   source?: Partial<Record<AppKey, string>>;
 }
 
+/** A documented component part and the preview selector it is linked to. */
+export interface AnatomyPart {
+  id: string;
+  name: string;
+  token?: string;
+  description: string;
+  /** A selector scoped to the preview stage. Omit when the example uses data-ug-part. */
+  selector?: string;
+}
+
+export interface AccessibilityDoc {
+  keyboard?: string;
+  focus?: string;
+}
+
+export interface ApiProp {
+  name: string;
+  type: string;
+  description?: string;
+  required?: boolean;
+  defaultValue?: string;
+}
+
+export interface RelatedComponent {
+  label: string;
+  href: string;
+}
+
 /** Written once per use case in `usecases/<component>/<UseCaseId>/usecase.ts`. */
 export interface UsecaseDoc {
   /** The UI type this use case belongs to: one of the component's `uiTypes`. Use cases with the same type share a tree group. */
@@ -64,6 +92,17 @@ export interface UsecaseDoc {
   when: string;
   /** How to use it: the props and rules that matter. */
   how: string;
+  /** Optional component-facing detail content; absent sections stay out of the document. */
+  aliases?: string[];
+  anatomy?: AnatomyPart[];
+  usage?: string;
+  behavior?: string;
+  variants?: string;
+  accessibility?: AccessibilityDoc;
+  prompt?: string;
+  debugPrompt?: string;
+  api?: { props?: ApiProp[] };
+  related?: RelatedComponent[];
   /**
    * Keys of the apps (see `apps.ts`) that use this pattern. When cases name their `apps`, the list must equal the
    * union of those groups: the catalog throws for an app no case shows or a case app that is not listed.

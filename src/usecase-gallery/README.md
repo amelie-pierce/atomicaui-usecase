@@ -15,9 +15,9 @@ usecase-gallery/
   contexts/                one file per place of use: the real kit area that holds an example (body-text.tsx, form.tsx, ...)
   mock-data.tsx            the one place for the little sample content (a row, a field, a radio pair) the scenes show around an example
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
-  hooks/                   hash route (use-route.ts), copy-to-clipboard, media query
+  hooks/                   hash route (use-route.ts), copy-to-clipboard, media query, preview anatomy highlight (use-preview-anatomy.tsx)
   layout/                  gallery shell and the resizable / stacked layouts
-  ui/                      the pages (components-page, component-page, breadcrumb, thumb = the live render in a card) and the panes (render, detail)
+  ui/                      the pages (components-page, component-page, breadcrumb, thumb = the live render in a card), the panes (render, detail, docs, code) and the detail toolbar (breadcrumb + Save / Share / Copy)
   styles/gallery.scss      layout and chrome, tokens only
   usecases/
     <component>/
@@ -140,7 +140,7 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 ## Layout and type
 
-The use case detail page removes the component tree and uses one unframed two-column layout: the preview is on the left and the document or code is on the right. The preview column is sticky below the breadcrumb while the detail column scrolls with the page. `DetailLayout` in `layout/layouts.tsx` stacks the two columns below 840px. The preview and detail regions use native semantic sections rather than kit cards; the gallery still uses kit components for all controls, type and iconography. The right region (`ui/detail-pane.tsx`) has a Document | Code `ToggleGroup` above its content: Code (the default) is the copyable snippet with its Copy button top-right, Document is the docs. The choice is kept when another use case is selected. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
+The use case detail page removes the component tree and uses one unframed two-column layout: the preview is on the left and the document or code is on the right. A sticky toolbar (`ui/detail-toolbar.tsx`: breadcrumb left, Save / Share / Copy right) sits on top; above 840px the preview keeps its place and the detail column scrolls on its own, below 840px the page scrolls as one. `DetailLayout` in `layout/layouts.tsx` stacks the two columns below 840px. The preview and detail regions use native semantic sections rather than kit cards; the gallery still uses kit components for all controls, type and iconography. The right region (`ui/detail-pane.tsx`) has a Document | Code `ToggleGroup` above its content: Code (the default) is the copyable snippet with its Copy button top-right, Document is the docs. The choice is kept when another use case is selected. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
 
 | Element | Type |
 | --- | --- |
@@ -156,7 +156,7 @@ The use case detail page removes the component tree and uses one unframed two-co
 
 The doc pane's use case id and name use `Type color="primary"`; the Where / When / How labels use the default text color; the active toggle segment is a primary solid `Button`, the inactive one a neutral secondary text `Button`. Theme primary is only about 3.2:1 on the light surface, so `.ug-docs` (id and name) and `.ug-render__toggle` and `.ug-detail__toggle` in `gallery.scss` resolve `--theme-primary` to `--p-palette-orange-600` (at least 4.7:1 as text, 5.2:1 under the white on-primary toggle text).
 
-The docs content shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a row of app badges (no visible label), then Where / When / How as a definition list; those three fields are the whole doc format.
+The docs content shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a row of app badges (no visible label), then Where / When / How as a definition list. These three fields are required; the optional `UsecaseDoc` fields in `types.ts` (`aliases`, `anatomy`, `usage`, `behavior`, `variants`, `accessibility`, `prompt`, `debugPrompt`, `api`, `related`) add numbered sections to `ui/docs-pane.tsx` and a section with no data stays hidden. `anatomy` parts link by `id` to a `selector` in the preview (or `data-ug-part`, defaults in `ui/anatomy.ts`), so hovering or focusing a part highlights it on both sides.
 
 ## Id rules
 

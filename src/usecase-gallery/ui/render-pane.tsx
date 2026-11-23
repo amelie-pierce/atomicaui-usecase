@@ -38,6 +38,7 @@ export function RenderPane({
   anatomy,
   hoveredPartId,
   onPartChange,
+  onAvailablePartsChange,
 }: {
   /** The use case as the chosen look shows it. */
   usecase: Usecase;
@@ -56,6 +57,7 @@ export function RenderPane({
   anatomy: AnatomyPart[];
   hoveredPartId?: string;
   onPartChange: (partId: string | undefined) => void;
+  onAvailablePartsChange: (partIds: string[]) => void;
 }) {
   const { Example } = usecase;
   const Context = activeCase?.Scene ?? usecase.Context;
@@ -66,7 +68,7 @@ export function RenderPane({
     stageRef.current = node;
     setHost(node);
   }, []);
-  const overlay = usePreviewAnatomy(stageRef, anatomy, hoveredPartId, onPartChange);
+  const overlay = usePreviewAnatomy(stageRef, anatomy, hoveredPartId, onPartChange, onAvailablePartsChange);
   return (
     <section className="ug-render" role="region" aria-label="Preview">
       <ToggleGroup

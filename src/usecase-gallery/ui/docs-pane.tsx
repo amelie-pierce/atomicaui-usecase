@@ -41,9 +41,10 @@ function Section({ id, title, children }: { id: string; title: string; children:
   </section>;
 }
 
-function AnatomySection({ parts, hoveredPartId, onPartChange, onSelectPart }: { parts: AnatomyPart[]; hoveredPartId?: string; onPartChange: (partId: string | undefined) => void; onSelectPart: (partId: string) => void }) {
+function AnatomySection({ parts, availablePartIds, hoveredPartId, onPartChange, onSelectPart }: { parts: AnatomyPart[]; availablePartIds?: string[]; hoveredPartId?: string; onPartChange: (partId: string | undefined) => void; onSelectPart: (partId: string) => void }) {
+  const visibleParts = availablePartIds ? parts.filter((part) => availablePartIds.includes(part.id)) : parts;
   return <Section id="anatomy" title="1. Anatomy">
-    <ol className="ug-docs__anatomy">{parts.map((part, index) => <li key={part.id} id={`anatomy-${part.id}`} className={hoveredPartId === part.id ? 'is-highlighted' : undefined}>
+    <ol className="ug-docs__anatomy">{visibleParts.map((part, index) => <li key={part.id} id={`anatomy-${part.id}`} className={hoveredPartId === part.id ? 'is-highlighted' : undefined}>
       <Button className="ug-docs__anatomy-button" aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} aria-pressed={hoveredPartId === part.id}
         onMouseEnter={() => onPartChange(part.id)} onMouseLeave={() => onPartChange(undefined)} onFocus={() => onPartChange(part.id)} onBlur={() => onPartChange(undefined)} onClick={() => onSelectPart(part.id)}>
         <span className="ug-docs__anatomy-number">{String(index + 1).padStart(2, '0')}</span>
@@ -74,7 +75,7 @@ function CodeApiSection({ usecase, mode, activeCase }: { usecase: Usecase; mode:
   </Section>;
 }
 
-export function DocsPane({ usecase, componentName, mode, activeCase, hoveredPartId, onPartChange, onSelectPart }: { usecase: Usecase; componentName: string; mode: PreviewMode; activeCase?: UsecaseCase; hoveredPartId?: string; onPartChange: (partId: string | undefined) => void; onSelectPart: (partId: string) => void }) {
+export function DocsPane({ usecase, componentName, mode, activeCase, hoveredPartId, availablePartIds, onPartChange, onSelectPart }: { usecase: Usecase; componentName: string; mode: PreviewMode; activeCase?: UsecaseCase; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined) => void; onSelectPart: (partId: string) => void }) {
   const parts = anatomyFor(usecase);
   const hasAccessibility = !!usecase.accessibility?.keyboard || !!usecase.accessibility?.focus;
   const variantNames = [...new Set((usecase.cases ?? []).map((candidate) => candidate.name))];
@@ -82,7 +83,7 @@ export function DocsPane({ usecase, componentName, mode, activeCase, hoveredPart
   return <div className="ug-docs">
     <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{!!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{usecase.summary}</Type>{usecase.look && <Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">Look: </Type>{usecase.look}</Type>}<div className="ug-docs__apps"><UsedIn usecase={usecase} /></div></header>
     <div className="ug-docs__sections">
-      {parts.length > 0 && <AnatomySection parts={parts} hoveredPartId={hoveredPartId} onPartChange={onPartChange} onSelectPart={onSelectPart} />}
+      {parts.length > 0 && <AnatomySection parts={parts} availablePartIds={availablePartIds} hoveredPartId={hoveredPartId} onPartChange={onPartChange} onSelectPart={onSelectPart} />}
       <Section id="usage" title="2. Usage / Behavior"><dl className="ug-docs__definition-list"><div><Type as="dt" role="l3" weight="semi-bold">Where</Type><Type as="dd" role="l3">{usecase.where}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">When</Type><Type as="dd" role="l3">{usecase.when}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">How</Type><Type as="dd" role="l3">{usecase.usage ?? usecase.how}</Type></div>{usecase.behavior && <div><Type as="dt" role="l3" weight="semi-bold">Behavior</Type><Type as="dd" role="l3">{usecase.behavior}</Type></div>}</dl></Section>
       {hasVariants && <Section id="variants" title="3. Variants & States"><Type as="p" role="l3">{usecase.variants ?? [usecase.look, ...variantNames].filter(Boolean).join(' · ')}</Type></Section>}
       {hasAccessibility && <Section id="accessibility" title="4. Accessibility"><dl className="ug-docs__definition-list">{usecase.accessibility?.keyboard && <div><Type as="dt" role="l3" weight="semi-bold">Keyboard</Type><Type as="dd" role="l3">{usecase.accessibility.keyboard}</Type></div>}{usecase.accessibility?.focus && <div><Type as="dt" role="l3" weight="semi-bold">Focus</Type><Type as="dd" role="l3">{usecase.accessibility.focus}</Type></div>}</dl></Section>}

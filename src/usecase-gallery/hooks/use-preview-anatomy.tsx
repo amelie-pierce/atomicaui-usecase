@@ -13,6 +13,31 @@ function selectorFor(part: AnatomyPart) {
   return part.selector ?? `[data-ug-part="${CSS.escape(part.id)}"]`;
 }
 
+/**
+ * Button renders plain label children directly in its host element. Give those text nodes a real,
+ * preview-only element so the label can be highlighted independently from the button surface and
+ * its icon. Existing element children (for example a Type or a custom label span) get the same
+ * marker; AtomicAUI-owned icon/spinner parts stay separate.
+ */
+function markButtonLabels(stage: HTMLElement) {
+  for (const button of stage.querySelectorAll<HTMLElement>('[class~="aui-button"]')) {
+    for (const node of [...button.childNodes]) {
+      if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) {
+        const label = document.createElement('span');
+        label.setAttribute('data-ug-anatomy-label', 'button');
+        label.textContent = node.textContent;
+        node.replaceWith(label);
+        continue;
+      }
+      if (node instanceof HTMLElement &&
+          !node.matches('[class~="aui-contained-icon"], [class~="aui-icon"], [class~="aui-spinner"]') &&
+          node.textContent?.trim()) {
+        node.setAttribute('data-ug-anatomy-label', 'button');
+      }
+    }
+  }
+}
+
 function nearestPart(target: EventTarget | null, stage: HTMLElement, bindings: Map<Element, AnatomyPart>) {
   let element = target instanceof Element ? target : null;
   while (element && element !== stage) {
@@ -44,10 +69,12 @@ export function usePreviewAnatomy(
   parts: AnatomyPart[],
   highlightedPartId: string | undefined,
   onPartChange: (partId: string | undefined) => void,
+  onAvailablePartsChange?: (partIds: string[]) => void,
 ) {
   const [overlay, setOverlay] = useState<OverlayRect | null>(null);
   const activeElement = useRef<Element | undefined>(undefined);
   const partTargets = useRef(new Map<string, Element[]>());
+  const availablePartIds = useRef<string>();
 
   useLayoutEffect(() => {
     const stage = stageRef.current;
@@ -55,7 +82,9 @@ export function usePreviewAnatomy(
 
     const bindings = new Map<Element, AnatomyPart>();
     const targets = new Map<string, Element[]>();
+    availablePartIds.current = undefined;
     const refreshBindings = () => {
+      markButtonLabels(stage);
       for (const element of bindings.keys()) element.removeAttribute('data-ug-anatomy-part');
       bindings.clear();
       targets.clear();
@@ -73,8 +102,26 @@ export function usePreviewAnatomy(
           element.setAttribute('data-ug-anatomy-part', part.id);
         }
       }
+      const available = parts.filter((part) => (targets.get(part.id)?.length ?? 0) > 0).map((part) => part.id);
+      const availableKey = available.join('|');
+      // Suspense can leave the stage empty for the first pass. Keep the docs visible until the
+      // actual preview mounts; every default anatomy has a required root part, so a non-empty set
+      // is the first reliable availability snapshot.
+      if (available.length > 0 && availableKey !== availablePartIds.current) {
+        availablePartIds.current = availableKey;
+        onAvailablePartsChange?.(available);
+      }
     };
     refreshBindings();
+    // The example is lazy-loaded inside Suspense, so its first DOM commit can happen after the
+    // stage's layout effect and before MutationObserver receives a child-list record.
+    const delayedRefresh = window.setTimeout(refreshBindings, 100);
+    let refreshAttempts = 0;
+    const retryRefresh = window.setInterval(() => {
+      refreshBindings();
+      refreshAttempts += 1;
+      if (refreshAttempts >= 10) window.clearInterval(retryRefresh);
+    }, 100);
     partTargets.current = targets;
 
     const setFromTarget = (target: EventTarget | null) => {
@@ -109,6 +156,8 @@ export function usePreviewAnatomy(
 
     return () => {
       observer.disconnect();
+      window.clearTimeout(delayedRefresh);
+      window.clearInterval(retryRefresh);
       stage.removeEventListener('pointerover', onPointerOver);
       stage.removeEventListener('pointerout', onPointerOut);
       stage.removeEventListener('focusin', onFocusIn);
@@ -116,7 +165,7 @@ export function usePreviewAnatomy(
       for (const element of bindings.keys()) element.removeAttribute('data-ug-anatomy-part');
       partTargets.current = new Map();
     };
-  }, [parts, stageRef, onPartChange]);
+  }, [onAvailablePartsChange, onPartChange, parts, stageRef]);
 
   useLayoutEffect(() => {
     const stage = stageRef.current;

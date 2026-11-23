@@ -56,7 +56,7 @@ export function RenderPane({
   onCaseChange: (caseId: string) => void;
   anatomy: AnatomyPart[];
   hoveredPartId?: string;
-  onPartChange: (partId: string | undefined) => void;
+  onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void;
   onAvailablePartsChange: (partIds: string[]) => void;
 }) {
   const { Example } = usecase;

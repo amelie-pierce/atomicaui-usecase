@@ -18,6 +18,8 @@ Rewritten 2026-11-20 (`fm/usecase-business-action-pilot`, Button, Dialog and Ale
 
 Updated 2026-11-13: replaced the old single `registry.tsx` with the portable `src/usecase-gallery/` folder. Its own `README.md` is the how-to; this note holds the non-obvious facts.
 
+Updated 2026-11-23: route branches in `layout/usecase-gallery.tsx` must come after every hook call; returning early before a later callback hook makes navigation blank with React's "Rendered fewer hooks than expected" error. Anatomy availability is reported from the mounted preview (`hooks/use-preview-anatomy.tsx`), so absent parts are removed from the document (`ui/docs-pane.tsx`); preview and document interactions keep hover and keyboard focus as separate sources (`layout/usecase-gallery.tsx`), and text-only parts are measured from their direct-text Range (`hooks/use-preview-anatomy.tsx`).
+
 - Discovery is `import.meta.glob` in `src/usecase-gallery/catalog/catalog.ts`; the rules and validation (id pattern, prefix match, duplicates) are in `src/usecase-gallery/catalog/build-catalog.ts`. A use case is a folder with `example.tsx` and `usecase.ts`; a component is `<component>.meta.ts`. No registry edit.
 - Preview and code come from one file: `example.tsx` is rendered (lazy) and read with `?raw`; `src/usecase-gallery/catalog/snippet.ts` strips the kit import and the `Example` wrapper. It expects `return` to be the last statement of the component.
 - `src/usecase-gallery/kit.ts` is the only file that imports the vendored kit (`src/vendor/atomic-aui`, read-only).

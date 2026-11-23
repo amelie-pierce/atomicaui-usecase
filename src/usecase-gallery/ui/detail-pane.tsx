@@ -29,7 +29,7 @@ export function DetailPane({
   activeCase?: UsecaseCase;
   hoveredPartId?: string;
   availablePartIds?: string[];
-  onPartChange: (partId: string | undefined) => void;
+  onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void;
   onSelectPart: (partId: string) => void;
 }) {
   return (

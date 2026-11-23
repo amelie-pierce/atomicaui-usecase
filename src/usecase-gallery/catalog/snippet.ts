@@ -9,7 +9,7 @@ const dedent = (jsx: string) => {
   return [first, ...rest.map((line) => line.slice(indent))].join('\n');
 };
 
-const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:anchor|ref)=\{anchor\}|\sclassName=\"ug-anchored\"|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
+const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:anchor|ref)=\{anchor\}|\sclassName=\"ug-anchored\"|\sdata-ug-part=\"[^\"]*\"|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
 
 /**
  * Turns an `example.tsx` source into the snippet users copy: the JSX the `Example` component returns,

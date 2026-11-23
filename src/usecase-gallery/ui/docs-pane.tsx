@@ -5,7 +5,6 @@ import { appLabels, caseTypes, isShared } from '../catalog/app-views';
 import { useCopy } from '../hooks/use-copy';
 import { Button, Chip, Type } from '../kit';
 import type { AnatomyPart, Usecase, UsecaseCase } from '../types';
-import { anatomyFor } from './anatomy';
 
 function AppBadges({ apps, label }: { apps: AppKey[]; label: string }) {
   return (
@@ -43,15 +42,16 @@ function Section({ id, title, children }: { id: string; title: string; children:
 
 function sourceExcerpt(part: AnatomyPart, source: string) {
   if (part.code) return part.code;
+  if (!part.token) return undefined;
+  const opening = new RegExp(`<${part.token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\w.])`);
   const lines = source.split('\n');
-  const candidates = [part.token, `<${part.name}`, part.name].filter(Boolean) as string[];
-  const lineIndex = lines.findIndex((line) => candidates.some((candidate) => line.includes(candidate)));
-  if (lineIndex < 0) return `// ${part.name}\n${source}`;
-  return lines.slice(Math.max(0, lineIndex - 1), Math.min(lines.length, lineIndex + 5)).join('\n');
+  const lineIndex = lines.findIndex((line) => opening.test(line));
+  return lineIndex < 0 ? undefined : lines.slice(lineIndex, lineIndex + 6).join('\n');
 }
 
 function AnatomyCode({ part, source }: { part: AnatomyPart; source: string }) {
-  return <div className="ug-docs__anatomy-code"><CopyBlock label={`${part.name} code`} text={sourceExcerpt(part, source)} /></div>;
+  const text = sourceExcerpt(part, source);
+  return text ? <div className="ug-docs__anatomy-code"><CopyBlock label={`${part.name} code`} text={text} /></div> : null;
 }
 
 function AnatomySection({ parts, source, availablePartIds, hoveredPartId, onPartChange, onSelectPart }: { parts: AnatomyPart[]; source: string; availablePartIds?: string[]; hoveredPartId?: string; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
@@ -97,7 +97,7 @@ function CodeApiSection({ usecase, activeCase }: { usecase: Usecase; activeCase?
 }
 
 export function DocsPane({ usecase, componentName, activeCase, hoveredPartId, availablePartIds, onPartChange, onSelectPart }: { usecase: Usecase; componentName: string; activeCase?: UsecaseCase; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
-  const parts = anatomyFor(usecase);
+  const parts = usecase.anatomy;
   const code = activeCase ? activeCase.loadCode() : usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
   const hasAccessibility = !!usecase.accessibility?.keyboard || !!usecase.accessibility?.focus;
   const variantNames = [...new Set((usecase.cases ?? []).map((candidate) => candidate.name))];

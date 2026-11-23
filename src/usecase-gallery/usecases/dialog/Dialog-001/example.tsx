@@ -14,14 +14,14 @@ export default function Example() {
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
-            <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', overflow: 'hidden', minHeight: '0' } }}>
-              <View aui={{ scale: 'sm', paint: 'text', sx: { width: '224', flex: 'none', borderColor: 'outlined', borderInlineEndWidth: '1' } }}>
-                <Type as="strong" role="l4" weight="bold">
+            <View data-ug-part="body" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', overflow: 'hidden', minHeight: '0' } }}>
+              <View data-ug-part="history-column" aui={{ scale: 'sm', paint: 'text', sx: { width: '224', flex: 'none', borderColor: 'outlined', borderInlineEndWidth: '1' } }}>
+                <Type data-ug-part="history-heading" as="strong" role="l4" weight="bold">
                   Release history
                 </Type>
               </View>
-              <View aui={{ scale: 'sm', paint: 'text', sx: { flex: 'fill', minWidth: '0' } }}>
-                <Type as="p" role="p3">
+              <View data-ug-part="notes-column" aui={{ scale: 'sm', paint: 'text', sx: { flex: 'fill', minWidth: '0' } }}>
+                <Type data-ug-part="notes-text" as="p" role="p3">
                   Release notes
                 </Type>
               </View>

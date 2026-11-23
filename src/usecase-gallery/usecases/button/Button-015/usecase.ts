@@ -15,4 +15,23 @@ export default defineUsecase({
   when: 'Use it where the app colors its one dialog action with the accent. For a plain dismiss use the neutral Button-007, and keep the close X in the Title as the other way out.',
   how: 'Set aui color "primary", paint "solid" and scale "sm" (the Dialog.Button default scale). '
     + 'In context it is the one Dialog.Button of an AlertDialog drawn as a non-modal Dialog, as in AlertDialog-003, with a circle-xmark error icon in the raised Title, the close X inside a "Close" tooltip (top, 8px offset, solid secondary sm) and one paragraph; the real body holds more.',
+  anatomy: [
+    {
+      id: "container",
+      name: "Container",
+      token: "Button",
+      description: "The OK Button of an ADC notice dialog: solid primary (orange), small, the only action in the footer.",
+      selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
+      code: "<Button aui={{ color: 'primary', paint: 'solid', scale: 'sm' }}>OK</Button>",
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Button",
+      description: "The text \"OK\" that acknowledges the Maximum Number of Designs Reached notice.",
+      selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
+      text: true,
+      code: "OK",
+    },
+  ],
 });

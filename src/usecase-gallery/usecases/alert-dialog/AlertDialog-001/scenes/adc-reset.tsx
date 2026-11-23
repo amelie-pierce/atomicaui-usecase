@@ -19,9 +19,9 @@ export default function AdcResetScene({ host }: ContextProps) {
               Restore factory defaults for the current design or all designs. Project information and design names are preserved.
             </Dialog.Description>
             <Dialog.Actions align="split" aui={{ sx: { flexWrap: 'wrap' } }}>
-              <Dialog.Button>Cancel</Dialog.Button>
-              <Dialog.Button aui={{ color: 'error', paint: 'text', sx: { whiteSpace: 'nowrap' } }}>Reset Current Design to Standard</Dialog.Button>
-              <Dialog.Button aui={{ color: 'error', paint: 'solid', sx: { whiteSpace: 'nowrap' } }}>Reset All Designs to Standard</Dialog.Button>
+              <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="reset-current" aui={{ color: 'error', paint: 'text', sx: { whiteSpace: 'nowrap' } }}>Reset Current Design to Standard</Dialog.Button>
+              <Dialog.Button data-ug-part="confirm" aui={{ color: 'error', paint: 'solid', sx: { whiteSpace: 'nowrap' } }}>Reset All Designs to Standard</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

@@ -14,7 +14,7 @@ export default function AceRelaunchScene({ host }: ContextProps) {
               We can not continue without your agreement to the End User License Agreement (EULA). If you would like to proceed, relaunch the application, and accept the EULA.
             </Dialog.Description>
             <Dialog.Actions align="center">
-              <Dialog.Button dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Re-Launch</Dialog.Button>
+              <Dialog.Button data-ug-part="relaunch" dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Re-Launch</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

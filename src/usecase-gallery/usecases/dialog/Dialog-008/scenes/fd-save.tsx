@@ -15,15 +15,15 @@ export default function FdSaveScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Close Save as Template" />
             </Dialog.Title>
             <Dialog.Body aui={{ sx: { overflow: 'auto', minHeight: '0' } }}>
-              <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
+              <View data-ug-part="form-column" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
                 <Field>
                   <Field.Input placeholder="Please enter a name" aria-label="Please enter a name" />
                 </Field>
               </View>
             </Dialog.Body>
             <Dialog.Actions>
-              <Button>Cancel</Button>
-              <Button aui={{ color: 'primary' }} disabled>Save</Button>
+              <Button data-ug-part="cancel">Cancel</Button>
+              <Button data-ug-part="save" aui={{ color: 'primary' }} disabled>Save</Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

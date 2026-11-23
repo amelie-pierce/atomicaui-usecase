@@ -21,7 +21,7 @@ export default function AceLastStepScene() {
         />
         <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Step #1</Type>
         <Type role="p3">Click here for application specific tutorials.</Type>
-        <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
+        <View data-ug-part="step-nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
           <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
             <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
               <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />

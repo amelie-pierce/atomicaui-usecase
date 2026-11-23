@@ -19,7 +19,7 @@ export default function HcsLicenceScene({ host }: ContextProps) {
               Review and accept to start using the HCS prototype.
             </Dialog.Description>
             <Dialog.Body aui={{ scale: 'sm' }}>
-              <View aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '12', minWidth: '0' } }}>
+              <View data-ug-part="licence-text" aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '12', minWidth: '0' } }}>
                 <MockLicenceText />
               </View>
             </Dialog.Body>

@@ -10,4 +10,90 @@ export default defineUsecase({
   where: 'The FD output toolbar, beside the search field: the Product status filter, shown when the design has failed products.',
   when: 'Use it as a toolbar filter where the visible value names the filter and no label fits. Name it with aria-label on the trigger. Use the field select (Select-001) for a design input.',
   how: 'FD: a Field at scale "sm" (class "status-filter") around a Field.Select; the Field.SelectTrigger carries aria-label "Product status" and only `sx: { width: "full" }`, so it keeps the default kit colour and paint and fills the toolbar slot, with Field.SelectValue and Field.SelectChevron. The Field.SelectPositioner uses sideOffset 5 and the Field.SelectPopup matchTriggerWidth; each row is a Field.SelectItem with Field.SelectItemText and an empty Field.SelectItemIndicator. The scene shows the filter alone and leaves out the search field, the reset filter button and the solution count.',
+  anatomy: [
+    {
+      id: 'field',
+      name: 'Field',
+      token: 'Field',
+      selector: '[class~="aui-field"]',
+      description: 'Label-less Field at scale "sm" with the "status-filter" class that places the select in the output toolbar.',
+      code: `<Field className="status-filter" aui={{ scale: 'sm' }}>
+  {/* … */}
+</Field>`,
+    },
+    {
+      id: 'trigger',
+      name: 'Trigger',
+      token: 'Field.SelectTrigger',
+      selector: '[class~="aui-select-trigger"]',
+      description: 'Full-width trigger labelled "Product status" for assistive tech only, in the kit default style (no surface or fixed colour).',
+      code: `<Field.SelectTrigger aria-label="Product status" aui={{ sx: { width: 'full' } }}>
+  {/* … */}
+</Field.SelectTrigger>`,
+    },
+    {
+      id: 'value',
+      name: 'Value',
+      token: 'Field.SelectValue',
+      selector: '[class~="aui-select-value"]',
+      text: true,
+      description: 'Shows "Passed products", the default status filter.',
+      code: `<Field.SelectValue />`,
+    },
+    {
+      id: 'chevron',
+      name: 'Chevron',
+      token: 'Field.SelectChevron',
+      selector: '[class~="aui-select-chevron"]',
+      description: 'The chevron at the trigger end.',
+      code: `<Field.SelectChevron />`,
+    },
+    {
+      id: 'popup',
+      name: 'Popup',
+      token: 'Field.SelectPopup',
+      selector: '[class~="aui-select-popup"]',
+      description: 'Popup of the trigger width placed 5px below it, offering Passed, Failed and All products.',
+      code: `<Field.SelectPopup matchTriggerWidth>
+  {/* … */}
+</Field.SelectPopup>`,
+    },
+    {
+      id: 'list',
+      name: 'List',
+      token: 'Field.SelectList',
+      selector: '[class~="aui-select-list"]',
+      description: 'The list of the three status rows.',
+      code: `<Field.SelectList>
+  {/* … */}
+</Field.SelectList>`,
+    },
+    {
+      id: 'item',
+      name: 'Item',
+      token: 'Field.SelectItem',
+      selector: '[class~="aui-select-item"]',
+      description: 'A status row; the chosen one is marked by a raised fill.',
+      code: `<Field.SelectItem value="passed">
+  <Field.SelectItemText>Passed products</Field.SelectItemText>
+  <Field.SelectItemIndicator />
+</Field.SelectItem>`,
+    },
+    {
+      id: 'item-text',
+      name: 'Item text',
+      token: 'Field.SelectItemText',
+      selector: '[class~="aui-select-item-text"]',
+      description: 'The status wording, such as "Failed products".',
+      code: `<Field.SelectItemText>Passed products</Field.SelectItemText>`,
+    },
+    {
+      id: 'indicator',
+      name: 'Indicator',
+      token: 'Field.SelectItemIndicator',
+      selector: '[class~="aui-select-item-indicator"]',
+      description: 'Empty indicator slot at the row end.',
+      code: `<Field.SelectItemIndicator />`,
+    },
+  ],
 });

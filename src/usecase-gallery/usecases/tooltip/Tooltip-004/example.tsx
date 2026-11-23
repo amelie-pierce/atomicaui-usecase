@@ -5,7 +5,7 @@ export default function Example() {
     <Tooltip.Provider>
       <RadioGroup aria-label="Camera projection" defaultValue="perspective" aui={{ scale: 'sm', profile: 'no-padding' }}>
         <Tooltip>
-          <Tooltip.Trigger closeOnClick={false} render={<span />}>
+          <Tooltip.Trigger closeOnClick={false} render={<span data-ug-part="trigger" />}>
             <Radio value="perspective" aui={{ scale: 'sm' }}>
               <Radio.Label>Perspective</Radio.Label>
             </Radio>

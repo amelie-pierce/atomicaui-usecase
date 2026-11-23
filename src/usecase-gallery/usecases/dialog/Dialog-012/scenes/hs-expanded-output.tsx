@@ -10,7 +10,7 @@ export default function HsExpandedOutputScene({ host }: ContextProps) {
         <Dialog.Backdrop />
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false} aria-label="Expanded Output" aui={{ shape: 'none', profile: 'no-padding', sx: { width: 'fill', height: 'fill', gap: '0' } }}>
-            <Type as="p" role="p3">
+            <Type data-ug-part="content-text" as="p" role="p3">
               Output toolbar
             </Type>
             <Table aria-label="Output">

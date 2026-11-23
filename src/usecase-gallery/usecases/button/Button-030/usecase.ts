@@ -15,4 +15,23 @@ export default defineUsecase({
   how: 'All nine apps write the same IconButton with scale "sm", paint "text" and color "surface"; the glyph is xmark (the apps pass family classic and layer duotone, which is the provider default here). '
     + 'In context the X sits in the corner of the step 1 card (HCS Connection Type, so only Next in the footer), 4px in, through an inline style (the apps use a local class such as .hcs-tour-close because the kit sx has no inset axis); the title reserves 24px at its end so its text stops short of it. '
     + 'RWS hides the X on one step of its tour (a step with close set to false); that is a rule of its steps, not another UI. The footer of the scene is HCS\'s; the other apps\' footers are in Button-023.',
+  anatomy: [
+    { id: 'card', name: 'Walkthrough card', token: 'View', selector: '[role="region"][aria-label="Walkthrough"]', description: 'The 328px coach-mark card for the Connection Type step with its text and footer navigation.',
+      code: `<View
+  role="region"
+  aria-label="Walkthrough"
+  className="ug-tour__card"
+  aui={{ scale: 'sm', color: 'surface', paint: 'solid', shape: 'soft', elevation: 4, sx: { … } }}
+  style={{ insetInlineStart: 228, insetBlockStart: 8, inlineSize: 328 }}
+>` },
+    { id: 'close', name: 'Close', token: 'IconButton', selector: '[class~="aui-button"][aria-label="Close walkthrough"]', description: 'The 20px transparent xmark button pinned to the card corner (4px inset) that dismisses the HCS walkthrough; HCS wraps it in an absolute span.',
+      code: `<IconButton name="xmark" aria-label="Close walkthrough" aui={{ scale: 'sm', paint: 'text', color: 'surface' }} />` },
+    { id: 'close-icon', name: 'Close icon', token: 'IconButton', selector: '[class~="aui-button"][aria-label="Close walkthrough"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The xmark glyph inside the close button.',
+      code: `<IconButton name="xmark" aria-label="Close" aui={{ paint: 'text', profile: 'contained' }} />` },
+    { id: 'next', name: 'Next', token: 'Button', selector: '[class~="aui-button"]:not([aria-label])', description: 'The step button that is the only navigation on step 1 / 6 (Next with arrow-right); Close is the way out without finishing.',
+      code: `<Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
+  Next
+  <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
+</Button>` },
+  ],
 });

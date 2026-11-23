@@ -9,7 +9,6 @@ import { DetailPane } from '../ui/detail-pane';
 import { DetailToolbar } from '../ui/detail-toolbar';
 import { OptionBar } from '../ui/option-bar';
 import { RenderPane } from '../ui/render-pane';
-import { anatomyFor } from '../ui/anatomy';
 import { DetailLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
 
@@ -37,7 +36,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   // A selection-based use case (`options`) follows its chosen option instead of the look and the case: one control picks them all.
   const looked = original && group ? withLook(original, chosenForRoute?.look) : undefined;
   const { usecase, option } = looked ? withOption(looked, chosenForRoute?.optionId) : { usecase: undefined, option: undefined };
-  const anatomy = useMemo(() => usecase ? anatomyFor(usecase) : [], [usecase?.id, usecase?.look]);
+  const anatomy = useMemo(() => usecase?.anatomy ?? [], [usecase?.id, usecase?.look]);
   const activePartId = interactedPart?.id ?? selectedPartId;
   const types = usecase ? caseTypes(usecase) : [];
   const activeType = types.find((candidate) => candidate.name === chosenForRoute?.type) ?? types[0];

@@ -16,12 +16,12 @@ export default function Example() {
                 aria-label="Configure columns"
                 render={<View aui={{ color: 'surface', paint: 'solid', profile: 'default', shape: 'soft', elevation: 4, sx: { display: 'flex', flexDirection: 'column', minHeight: '0', minWidth: '0', gap: '8', width: '320' } }} />}
               >
-                <Type as="p" role="p3">Columns</Type>
-                <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', minWidth: '0', justifyContent: 'between' } }}>
-                  <IconButton name="rotate-left" aria-label="Reset columns to default" aui={{ paint: 'text' }} />
+                <Type data-ug-part="popup-heading" as="p" role="p3">Columns</Type>
+                <View data-ug-part="footer" aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', minWidth: '0', justifyContent: 'between' } }}>
+                  <IconButton data-ug-part="reset" name="rotate-left" aria-label="Reset columns to default" aui={{ paint: 'text' }} />
                   <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', minWidth: '0' } }}>
-                    <Button aui={{ paint: 'text' }}>Cancel</Button>
-                    <Button aui={{ color: 'secondary', paint: 'solid' }}>Save</Button>
+                    <Button data-ug-part="cancel" aui={{ paint: 'text' }}>Cancel</Button>
+                    <Button data-ug-part="save" aui={{ color: 'secondary', paint: 'solid' }}>Save</Button>
                   </View>
                 </View>
               </Popover.Popup>

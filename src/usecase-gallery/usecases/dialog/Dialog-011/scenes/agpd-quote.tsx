@@ -23,8 +23,8 @@ export default function AgpdQuoteScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Close REQUEST A QUOTE" />
             </Dialog.Title>
             <Dialog.Body aui={{ sx: { overflow: 'auto', minHeight: '0' } }}>
-              <View as="form" aui={{ paint: 'text', sx: { display: 'flex', flexWrap: 'wrap', gap: '24', alignItems: 'start' } }}>
-                <View aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '12', flex: 'fill', minWidth: '256' } }}>
+              <View data-ug-part="form" as="form" aui={{ paint: 'text', sx: { display: 'flex', flexWrap: 'wrap', gap: '24', alignItems: 'start' } }}>
+                <View data-ug-part="form-column" aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '12', flex: 'fill', minWidth: '256' } }}>
                   <RadioGroup defaultValue="no" direction="row" aui={{ scale: 'sm', profile: 'no-padding', sx: { flexWrap: 'wrap' } }}>
                     <RadioGroup.Label aui={{ sx: { flexBasis: 'full' } }}>Are you a Simpson Strong-Tie Dealer ?</RadioGroup.Label>
                     <Radio value="yes" aui={SELECTION}>
@@ -43,7 +43,7 @@ export default function AgpdQuoteScene({ host }: ContextProps) {
                     <Field.Textarea rows={4} placeholder=" Add project notes and other part requests" aria-label="Add project notes and other part requests" />
                   </Field>
                   <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8', justifyContent: 'end' } }}>
-                    <Button type="submit" aui={{ color: 'secondary', paint: 'solid', scale: 'sm', shape: 'soft' }}>
+                    <Button data-ug-part="submit" type="submit" aui={{ color: 'secondary', paint: 'solid', scale: 'sm', shape: 'soft' }}>
                       SUBMIT
                     </Button>
                   </View>

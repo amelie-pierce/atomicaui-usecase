@@ -25,4 +25,31 @@ export default defineUsecase({
     + 'Black button without icon (ADM): the same tabbed header (Summary, Result) with the action group pushed to the end by a margin (an inline one here); the same Button without the icon, labelled Print Summary or Print Result after the active tab. '
     + 'Disabled button is the HCS header with the native disabled attribute on the Button; HS, FD and ADM disable theirs the same way. '
     + 'Left out of every scene: the Configure columns trigger, the scroll helpers, HS Fullscreen, the toolbar, the results table and Table Notes; also the icon-only form FD shows in a narrow header and ADM\'s phone print row.',
+  anatomy: [
+    {
+      id: "container",
+      name: "Container",
+      token: "Button",
+      description: "The Print Output Button: scale \"sm\", surface color with tonal paint and flex \"none\" so it keeps its width at the end of the results pane header (HCS look; HS, FD and ADM scenes swap in a solid secondary black Button).",
+      selector: "[class~=\"aui-button\"]",
+      code: "<Button aui={{ scale: 'sm', color: 'surface', paint: 'tonal', sx: { flex: 'none' } }}>\n  …\n</Button>",
+    },
+    {
+      id: "icon",
+      name: "Icon",
+      token: "Button.Icon",
+      description: "The print glyph before the label, at scale \"sm\" so it matches the small Button.",
+      selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
+      code: "<Button.Icon name=\"print\" aui={{ scale: 'sm' }} />",
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Button",
+      description: "The text \"Print Output\" that names the action of printing the results.",
+      selector: "[class~=\"aui-button\"]",
+      text: true,
+      code: "Print Output",
+    },
+  ],
 });

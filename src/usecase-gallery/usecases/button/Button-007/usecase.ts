@@ -15,4 +15,23 @@ export default defineUsecase({
   how: 'Secondary solid (PBS, AGPD, RWS): the example sets only aui scale "sm"; color "surface-alt" and paint "solid" are the defaults, and the Dialog.Button default is the same gray solid button that dismisses the dialog. '
     + 'Dark solid (FD): a plain Button with aui color "secondary" (a black fill) instead of the gray Dialog.Button; the scene writes it. '
     + 'The dialog is an AlertDialog or Modal in the apps and is drawn as a non-modal Dialog here; each scene keeps one paragraph of body text.',
+  anatomy: [
+    {
+      id: "container",
+      name: "Container",
+      token: "Button",
+      description: "The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill.",
+      selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
+      code: "<Button aui={{ scale: 'sm' }}>Close</Button>",
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Button",
+      description: "The text \"Close\" that dismisses the info dialog, the only choice it offers.",
+      selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
+      text: true,
+      code: "Close",
+    },
+  ],
 });

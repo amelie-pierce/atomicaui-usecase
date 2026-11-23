@@ -54,9 +54,9 @@ export default function HsTemplatesScene({ host }: ContextProps) {
                         <Radio value="2" aui={{ ...SELECTION, sx: { flex: 'fill' } }}>
                           <Radio.Label>Three-beam connection</Radio.Label>
                         </Radio>
-                        <IconButton name="download" aria-label="Download Three-beam connection" />
-                        <IconButton name="trash" aria-label="Delete Three-beam connection" />
-                        <IconButton name="pen" aria-label="Edit Three-beam connection" />
+                        <IconButton data-ug-part="row-action" name="download" aria-label="Download Three-beam connection" />
+                        <IconButton data-ug-part="row-action" name="trash" aria-label="Delete Three-beam connection" />
+                        <IconButton data-ug-part="row-action" name="pen" aria-label="Edit Three-beam connection" />
                       </View>
                     </Accordion.Panel>
                   </Accordion.Item>

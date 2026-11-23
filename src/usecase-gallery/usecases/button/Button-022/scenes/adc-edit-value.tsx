@@ -24,7 +24,7 @@ export default function AdcEditValueScene({ host }: ContextProps) {
               }
             >
               <MockNumberField label="Width" value="12" unit="in" />
-              <View aui={{ paint: 'text', profile: 'no-padding', scale: 'sm', sx: { display: 'flex', gap: '4', alignItems: 'center', flex: 'none' } }}>
+              <View data-ug-part="edit-actions" aui={{ paint: 'text', profile: 'no-padding', scale: 'sm', sx: { display: 'flex', gap: '4', alignItems: 'center', flex: 'none' } }}>
                 <Button aui={{ color: 'surface-alt', paint: 'solid', scale: 'sm', shape: 'soft' }}>Cancel</Button>
                 <Button aui={{ color: 'secondary', paint: 'solid', scale: 'sm', shape: 'soft' }}>Save</Button>
               </View>

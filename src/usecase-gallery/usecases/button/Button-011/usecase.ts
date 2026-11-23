@@ -21,4 +21,31 @@ export default defineUsecase({
     + 'ADM and PBS style the row with a class (.adm-help-link, .pbs-help-link); the scenes write the same border and layout as sx, as PFD and FD do. '
     + 'The docks are pinned bottom-right (420px) with a centred title by local CSS in the apps; the scenes show the plain dock Popup. '
     + 'Each scene keeps the Title with its close X and one topic row; the real lists hold one to nine topics.',
+  anatomy: [
+    {
+      id: "container",
+      name: "Container",
+      token: "Button",
+      description: "One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent \"between\"), outlined by a 1px border on all four sides from sx.",
+      selector: "[class~=\"aui-button\"]",
+      code: "<Button\n  aui={{\n    scale: 'sm',\n    paint: 'text',\n    sx: {\n      width: 'fill',\n      justifyContent: 'between',\n      textAlign: 'start',\n      whiteSpace: 'normal',\n      borderStyle: 'solid',\n      borderColor: 'outlined',\n      …\n    },\n  }}\n>\n  …\n</Button>",
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Button",
+      description: "The topic name, \"HS: General Tutorial\" in the example, wrapping onto several lines when long.",
+      selector: "[class~=\"aui-button\"]",
+      text: true,
+      code: "HS: General Tutorial",
+    },
+    {
+      id: "icon",
+      name: "Icon",
+      token: "Button.Icon",
+      description: "The right arrow at the end of the row that signals starting the tour, at scale \"sm\".",
+      selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
+      code: "<Button.Icon name=\"arrow-right\" aui={{ scale: 'sm' }} />",
+    },
+  ],
 });

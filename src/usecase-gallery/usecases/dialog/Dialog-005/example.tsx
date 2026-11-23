@@ -15,7 +15,7 @@ export default function Example() {
               <Dialog.Close aria-label="Close Website Application License Agreement" aui={{ scale: 'sm' }} />
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
-              <Type role="p2" aui={{ sx: { flex: 'none' } }}>
+              <Type data-ug-part="licence-text" role="p2" aui={{ sx: { flex: 'none' } }}>
                 1. The licence text goes here; the Body scrolls when it is longer than the popup.
               </Type>
             </Dialog.Body>

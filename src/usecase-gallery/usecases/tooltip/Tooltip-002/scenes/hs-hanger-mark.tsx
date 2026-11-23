@@ -8,12 +8,12 @@ export default function HsHangerMarkScene({ host }: ContextProps) {
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 14)', paddingBlockStart: 'calc(var(--p-px-16) * 10)' }}>
       <Tooltip.Provider>
         <Tooltip open>
-          <Tooltip.Trigger render={<Button aria-label="Hanger mark A" aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }} />}>A</Tooltip.Trigger>
+          <Tooltip.Trigger render={<Button data-ug-part="trigger" aria-label="Hanger mark A" aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }} />}>A</Tooltip.Trigger>
           <Tooltip.Portal container={host}>
             <Tooltip.Positioner sideOffset={4} className="ug-anchored">
               <Tooltip.Popup>
                 <View aui={{ paint: 'text', sx: { width: '160' } }}>
-                  <Type as="strong" role="l4" weight="bold">Hanger A</Type>
+                  <Type data-ug-part="preview-title" as="strong" role="l4" weight="bold">Hanger A</Type>
                   <svg viewBox="0 0 192 128" role="img" aria-label="Hanger A connection preview" style={{ width: 'calc(var(--p-px-96) + var(--p-px-48) + var(--p-px-6))', aspectRatio: '4 / 3' }}>
               <rect width="192" height="128" fill="var(--theme-surface-alt)" />
               <path d="M24 20h144v18H24zM36 38h120v18H36z" fill="var(--theme-muted)" stroke="var(--theme-secondary)" strokeWidth="2" />

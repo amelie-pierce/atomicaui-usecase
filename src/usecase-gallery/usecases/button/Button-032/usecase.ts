@@ -23,4 +23,22 @@ export default defineUsecase({
     + 'Ghost, 28px (HS, ADM, PFD, AGPD): aui color "secondary", paint "text", scale "sm", shape "soft" and profile "square" on an IconButton; the apps that write the circle-question as a Button with a ContainedIcon child at profile "square" get the same 28px box and glyph, and the scene writes that control. '
     + 'HS: a Tooltip above it, 4px offset, up to 384px, so it has no close. ADM: the same square Button with a Tooltip above it, 8px offset, painted solid secondary at scale "sm", up to 256px. PFD and AGPD (one group): the same square Button opening a popover, top, 4px offset, a surface card up to 384px. '
     + 'Each help scene keeps one labelled field and one sentence of help text.',
+  anatomy: [
+    { id: 'help', name: 'Help button', token: 'IconButton', selector: '[class~="aui-button"][aria-label*="elp"]', description: 'The 20px transparent secondary circle-question button that sits beside the field label; the Look select swaps it for the 28px ghost version. In scenes it is a Button around a ContainedIcon (square or square-compact, RWS fixed at 20px).',
+      code: `<IconButton name="circle-question" aria-label="Help" aui={{ scale: 'sm', profile: 'contained', color: 'secondary', paint: 'text', shape: 'soft' }} />` },
+    { id: 'help-icon', name: 'Help icon', token: 'ContainedIcon', selector: '[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The circle-question glyph centred in the help button.',
+      code: `<ContainedIcon name="circle-question" />` },
+    { id: 'label', name: 'Field label', token: 'Field.Label', selector: '[class~="aui-field-label"]', description: 'The label (Material, or Download Duration in HCS) that names the control the help explains.',
+      code: `<Field.Label aui={{ scale: 'sm' }}>Material</Field.Label>` },
+    { id: 'control', name: 'Field control', token: 'Field.Control', selector: '[class~="aui-field-control"]', description: 'The input (Steel) in ADM, HS, PBS, PFD and RWS scenes that the help text describes.',
+      code: `<Field.Control aui={{ scale: 'sm' }} aria-label="Material" defaultValue="Steel" />` },
+    { id: 'tooltip', name: 'Help tooltip', token: 'Tooltip.Popup', selector: '[class~="aui-tooltip-popup"]', description: 'ADM and HS open the explanation as a tooltip above the button, up to 256px (ADM) or 384px (HS) wide.',
+      code: `<Tooltip.Popup aui={{ paint: 'solid', color: 'secondary', scale: 'sm', sx: { maxWidth: '256' } }}>Select the base material of the member.</Tooltip.Popup>` },
+    { id: 'popover', name: 'Help popover', token: 'Popover.Popup', selector: '[data-aui-popup-motion][role="dialog"]', description: 'PBS, PFD and RWS open the explanation in a solid popover (320px or 384px max) above the button.',
+      code: `<Popover.Popup aria-label="Material help" render={<View aui={{ color: 'surface', paint: 'solid', profile: 'default', shape: 'soft', elevation: 4, sx: { width: '320' } }} />}>
+  Select the base material of the member.
+</Popover.Popup>` },
+    { id: 'select', name: 'Select trigger', token: 'Select.Trigger', selector: '[class~="aui-select-trigger"]', description: 'HCS only: the Snow (115) select under the Download Duration label.',
+      code: `<Select.Trigger aria-label="Download Duration" aui={{ … }} style={{ inlineSize: '100%', minInlineSize: 0 }}>` },
+  ],
 });

@@ -15,7 +15,7 @@ export default function AceFeedbackScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Cancel" />
             </Dialog.Title>
             <Dialog.Body>
-              <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
+              <View data-ug-part="form-column" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
                 <Field>
                   <Field.Label>Email</Field.Label>
                   <Field.Control>
@@ -29,8 +29,8 @@ export default function AceFeedbackScene({ host }: ContextProps) {
               </View>
             </Dialog.Body>
             <Dialog.Actions>
-              <Dialog.Button dismiss={false}>Cancel</Dialog.Button>
-              <Dialog.Button dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Send</Dialog.Button>
+              <Dialog.Button data-ug-part="cancel" dismiss={false}>Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="send" dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Send</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

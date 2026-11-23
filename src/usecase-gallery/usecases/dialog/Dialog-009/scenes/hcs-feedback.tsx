@@ -19,7 +19,7 @@ export default function FeedbackScene({ host }: ContextProps) {
             </Dialog.Description>
             <Dialog.Body aui={{ scale: 'sm' }}>
               <form id="feedback-form">
-                <View aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '16', minWidth: '0' } }}>
+                <View data-ug-part="form-column" aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '16', minWidth: '0' } }}>
                   <Field aui={{ scale: 'sm', sx: { flex: 'none', width: 'fill' } }}>
                     <Field.Label aui={{ scale: 'sm' }}>Email</Field.Label>
                     <Input aui={{ scale: 'sm' }} type="email" required />
@@ -32,7 +32,7 @@ export default function FeedbackScene({ host }: ContextProps) {
               </form>
             </Dialog.Body>
             <Dialog.Actions aui={{ scale: 'sm' }}>
-              <Dialog.Button dismiss={false} type="submit" form="feedback-form" aui={{ scale: 'sm', color: 'secondary' }}>Submit</Dialog.Button>
+              <Dialog.Button data-ug-part="send" dismiss={false} type="submit" form="feedback-form" aui={{ scale: 'sm', color: 'secondary' }}>Submit</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

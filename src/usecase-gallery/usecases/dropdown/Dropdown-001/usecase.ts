@@ -10,4 +10,105 @@ export default defineUsecase({
   where: 'The HCS output toolbar, at the end of the row beside the "Showing N of M results" text: the Product filter that narrows the results to Passed, Failed or All Products.',
   when: 'Use it to pick one value from a short fixed list where the current value must stay visible in the trigger. The trigger is the outlined text form (surface, fixed, a 1px outlined border), not an icon button, and the chosen row is marked by the selected fill.',
   how: 'HCS: a Dropdown at scale "sm" whose Dropdown.Trigger shows the chosen option label with its count (for example "Passed Products (9)") and a Dropdown.Chevron, with aria-label "Product filter", color "surface", paint "fixed" and a 1px border on all four sides in the "outlined" colour (sx whiteSpace "nowrap"). The popup is a Dropdown.Popup with matchTriggerWidth at scale "sm", placed 4px below the trigger and aligned to its start. It holds one Dropdown.RadioGroup of three RadioItems (Passed Products, Failed Products, All Products), each with closeOnClick, its label and count, and a composed Dropdown.RadioItemIndicator (the kit draws it as an empty transparent span, so the chosen row is marked by its raised fill, not a glyph). The app drops the counts and disables the trigger while the design is invalid; the scene shows the enabled state with counts. The scene is shown open and keeps only the filter: the search field, Reset filters button and results count of the toolbar are left out.',
+  anatomy: [
+    {
+      id: 'trigger',
+      name: 'Trigger',
+      token: 'Dropdown.Trigger',
+      selector: '[class~="aui-dropdown-trigger"]',
+      description: 'Outlined text trigger (color "surface", paint "fixed", 1px "outlined" border on all four sides, nowrap) labelled "Product filter" for assistive tech.',
+      code: `<Dropdown.Trigger
+  aria-label="Product filter"
+  aui={{
+    scale: 'sm',
+    color: 'surface',
+    paint: 'fixed',
+    sx: {
+      whiteSpace: 'nowrap',
+      borderColor: 'outlined',
+      borderBlockStartWidth: '1',
+      borderBlockEndWidth: '1',
+      borderInlineStartWidth: '1',
+      borderInlineEndWidth: '1',
+    },
+  }}
+>
+  {/* … */}
+</Dropdown.Trigger>`,
+    },
+    {
+      id: 'trigger-label',
+      name: 'Trigger label',
+      token: 'Dropdown.Trigger',
+      selector: '[class~="aui-dropdown-trigger"]',
+      text: true,
+      description: 'The chosen option with its count, "Passed Products (9)", written as the trigger text.',
+      code: `<Dropdown.Trigger
+  aria-label="Product filter"
+  aui={{
+    scale: 'sm',
+    color: 'surface',
+    paint: 'fixed',
+    sx: {
+      whiteSpace: 'nowrap',
+      borderColor: 'outlined',
+      borderBlockStartWidth: '1',
+      borderBlockEndWidth: '1',
+      borderInlineStartWidth: '1',
+      borderInlineEndWidth: '1',
+    },
+  }}
+>
+  Passed Products (9)
+  <Dropdown.Chevron aui={{ scale: 'sm' }} />
+</Dropdown.Trigger>`,
+    },
+    {
+      id: 'chevron',
+      name: 'Chevron',
+      token: 'Dropdown.Chevron',
+      selector: '[class~="aui-dropdown-chevron"]',
+      description: 'The chevron at the end of the trigger at scale "sm".',
+      code: `<Dropdown.Chevron aui={{ scale: 'sm' }} />`,
+    },
+    {
+      id: 'popup',
+      name: 'Popup',
+      token: 'Dropdown.Popup',
+      selector: '[class~="aui-dropdown-popup"]',
+      description: 'Popup at scale "sm" that matches the trigger width, 4px below it and aligned to its start.',
+      code: `<Dropdown.Popup matchTriggerWidth aui={{ scale: 'sm' }}>
+  {/* … */}
+</Dropdown.Popup>`,
+    },
+    {
+      id: 'radio-group',
+      name: 'Radio group',
+      token: 'Dropdown.RadioGroup',
+      selector: '[class~="aui-dropdown-radio-group"]',
+      description: 'The group with value "passed" that makes exactly one of the three filters current.',
+      code: `<Dropdown.RadioGroup value="passed">
+  {/* … */}
+</Dropdown.RadioGroup>`,
+    },
+    {
+      id: 'radio-item',
+      name: 'Radio item',
+      token: 'Dropdown.RadioItem',
+      selector: '[class~="aui-dropdown-radio-item"]',
+      description: 'A filter row with its label and count (Passed Products (9), Failed Products (3), All Products (12)); closeOnClick closes the list after a choice.',
+      code: `<Dropdown.RadioItem value="passed" closeOnClick aui={{ scale: 'sm' }}>
+  Passed Products (9)
+  <Dropdown.RadioItemIndicator />
+</Dropdown.RadioItem>`,
+    },
+    {
+      id: 'indicator',
+      name: 'Indicator',
+      token: 'Dropdown.RadioItemIndicator',
+      selector: '[class~="aui-dropdown-radio-item-indicator"]',
+      description: 'Empty transparent span at the row end; the chosen row shows by its raised fill, not a glyph.',
+      code: `<Dropdown.RadioItemIndicator />`,
+    },
+  ],
 });

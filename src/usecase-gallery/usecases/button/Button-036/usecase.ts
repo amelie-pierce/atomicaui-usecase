@@ -16,4 +16,33 @@ export default defineUsecase({
   how: 'Set aui color "secondary", paint "text", scale "sm", shape "soft" and profile "square" (28px, unlike the 20px contained header icons) on an IconButton, with a Tooltip carrying the aria-label text. '
     + 'The trigger is a Panels.Trigger, the kit trigger that renders the IconButton, whose targetId is the panel id, and a real Panels group holds the Input panel at its 40px collapsed size: the rail is a column that fills the panel height with the trigger at the top centre, beside the viewer pane, which is cut to its title (no canvas); the Input panel holds only its title; the vertical rail of the engineering layout (angle-down, trigger at the start corner) is not shown. '
     + 'One group, HCS only.',
+  anatomy: [
+    { id: 'expand', name: 'Expand Input', token: 'IconButton', selector: '[class~="aui-button"][aria-label="Expand Input"]:not([class~="aui-panels-trigger"])', description: 'The 28px square transparent secondary angle-right button that reopens the collapsed Input panel.',
+      code: `<IconButton
+  name="angle-right"
+  aria-label="Expand Input"
+  aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'square', shape: 'soft' }}
+/>` },
+    { id: 'trigger', name: 'Panel trigger', token: 'Panels.Trigger', selector: '[class~="aui-panels-trigger"]', description: 'HCS rail: the same button rendered as a Panels.Trigger that targets the hcs-input panel from the 40px collapsed rail.',
+      code: `<Panels.Trigger
+  targetId="hcs-input"
+  name="angle-right"
+  aria-label="Expand Input"
+  aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'square', shape: 'soft' }}
+/>` },
+    { id: 'tooltip', name: 'Tooltip', token: 'Tooltip.Popup', selector: '[class~="aui-tooltip-popup"]', description: 'The Expand Input label shown below the button.',
+      code: `<Tooltip.Popup aui={{ scale: 'sm' }}>Expand Input</Tooltip.Popup>` },
+    { id: 'panel', name: 'Panel', token: 'Panels.Panel', selector: '[class~="aui-panels-panel"]', description: 'The Input panel, collapsible to 40px (minSize 400px when open), next to the 3D Viewer panel.',
+      code: `<Panels.Panel
+  id="hcs-input"
+  collapsible
+  collapsedSize="40px"
+  defaultSize="40px"
+  minSize="400px"
+  className="ug-split__panel"
+  aui={{ … }}
+>` },
+    { id: 'handle', name: 'Resize handle', token: 'Panels.ResizeHandle', selector: '[class~="aui-panels-resize-handle"]', description: 'The 8px primary handle between the Input and 3D Viewer panels.',
+      code: `<Panels.ResizeHandle aria-label="Resize Input and 3D Viewer panels" color="primary" width="8px" />` },
+  ],
 });

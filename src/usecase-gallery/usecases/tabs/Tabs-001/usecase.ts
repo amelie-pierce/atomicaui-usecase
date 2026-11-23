@@ -36,4 +36,43 @@ export default defineUsecase({
   where: 'The title spot of the Output pane header on desktop and tablet: HS (Output, Job List), PBS (Output, Connection List), FD (Output, Calculation Result), RWS (Output) and ADM (Summary, Result), each followed by the header\'s action group (Button-001, Button-002). ADC writes the same control above its 3D-Model and Design information panels. The ADC design tab rail is Tabs-004.',
   when: 'Use it to switch one pane between a few views of the same result, with one view visible at a time and the tabs always on screen. Use Tabs-002 for the top-level switch of a phone workspace; use Tabs-003 when each tab reports a pass or fail. Do not use it for actions: those are Buttons in the header\'s action group.',
   how: 'The example is the shared part: a Tabs root (profile "no-padding") holding a Tabs.List with Tabs.Tab chips and a Tabs.Panel per tab; each Tab takes color "surface-alt", paint "solid", shape "soft" and states selected { color: "overlay", paint: "solid" }, which renders a 28px chip with an 8px inline padding, a 6px gap between chips, a slate-100 fill and a slate-300 fill when selected, with no border. The pane frame and its 28px header band (a View with display flex, flexWrap wrap, minHeight 28 and zero block padding, which wraps the actions to a second row when narrow) are what the In context scene writes around it. HS, PBS, FD, RWS and ADM: one group. They render the same chips (measured in the browser: 28px high, 8px padding, selected rgb(203, 213, 225), others rgb(241, 245, 249), radius 4px, 16px/400, no border); HS writes no aui on the Tab because the default tab already computes to this fill, the others write the props above (TAB_IN_PANE_AUI). FD adds whiteSpace "nowrap" and PBS and FD a flexWrap "wrap" on the List, which only change how a narrow header wraps. A disabled tab differs by app (HS and FD paint it "text", so it has no fill; PBS keeps the filled chip, rgb(224, 224, 224)); the scenes show the enabled state. ADC: its tab strip sits outside a bordered pane, so it writes CHIP_AUI (the selected tab is a raised tonal chip, rgb(226, 232, 240) with a 1px dark border, against the flat slate-300 fill of the group above). The List wraps so the Save action drops to a right-aligned second row. Left out of the scenes: the header action group, the panel bodies, the Save button and every disabled state.',
+  anatomy: [
+    {
+      id: 'tabs',
+      name: 'Tabs',
+      token: 'Tabs',
+      selector: '[class~="aui-tabs"]',
+      description: 'Root that switches the pane between its views; Summary is selected first through defaultValue="summary". ADC lists Model and Information, HS lists Summary and Result.',
+      code: `<Tabs defaultValue="summary" aui={{ profile: 'no-padding' }}>`,
+    },
+    {
+      id: 'list',
+      name: 'List',
+      token: 'Tabs.List',
+      selector: '[class~="aui-tabs-list"]',
+      description: 'The chip row in the pane header; ADC lets it wrap with flexWrap.',
+      code: `<Tabs.List>
+  <Tabs.Tab value="summary" …>Summary</Tabs.Tab>
+  <Tabs.Tab value="result" …>Result</Tabs.Tab>
+</Tabs.List>`,
+    },
+    {
+      id: 'tab',
+      name: 'Tab',
+      token: 'Tabs.Tab',
+      selector: '[class~="aui-tabs-tab"]',
+      description: 'A 28px soft chip: surface-alt solid when idle and overlay solid when selected.',
+      code: `<Tabs.Tab value="summary" aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'overlay', paint: 'solid' } } }}>
+  Summary
+</Tabs.Tab>`,
+    },
+    {
+      id: 'panel',
+      name: 'Panel',
+      token: 'Tabs.Panel',
+      selector: '[class~="aui-tabs-panel"]',
+      description: 'Content of the selected view, "Summary content" or "Result content" in the example.',
+      code: `<Tabs.Panel value="summary">Summary content</Tabs.Panel>`,
+    },
+  ],
 });

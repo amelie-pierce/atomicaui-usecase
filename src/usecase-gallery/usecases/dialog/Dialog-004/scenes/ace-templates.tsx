@@ -57,9 +57,9 @@ export default function AceTemplatesScene({ host }: ContextProps) {
                           <Radio value="2" aui={{ ...SELECTION, sx: { flex: 'fill' } }}>
                             <Radio.Label>Three-beam connection</Radio.Label>
                           </Radio>
-                          <Button>Download</Button>
-                          <Button aui={{ color: 'error' }}>Delete</Button>
-                          <Button>Edit</Button>
+                          <Button data-ug-part="row-action">Download</Button>
+                          <Button data-ug-part="row-action" aui={{ color: 'error' }}>Delete</Button>
+                          <Button data-ug-part="row-action">Edit</Button>
                         </View>
                       </View>
                     </Accordion.Panel>

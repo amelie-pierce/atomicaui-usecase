@@ -9,16 +9,16 @@ export default function PbsDeleteScene({ host }: ContextProps) {
         <Dialog.Backdrop />
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false}>
-            <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', justifyContent: 'end' } }}>
+            <View data-ug-part="close-row" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', justifyContent: 'end' } }}>
               <Dialog.Close aria-label="Close" />
             </View>
             <Dialog.Body>
               <Dialog.Description>Are you sure you want to delete Connection 1</Dialog.Description>
             </Dialog.Body>
             <Dialog.Actions>
-              <Dialog.Button>Close</Dialog.Button>
+              <Dialog.Button data-ug-part="cancel">Close</Dialog.Button>
               <Dialog.Spacer />
-              <Dialog.Button aui={{ color: 'error', paint: 'solid' }}>Delete</Dialog.Button>
+              <Dialog.Button data-ug-part="delete" aui={{ color: 'error', paint: 'solid' }}>Delete</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

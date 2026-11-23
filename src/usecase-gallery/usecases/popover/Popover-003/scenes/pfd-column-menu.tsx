@@ -37,7 +37,7 @@ export default function PfdColumnMenuScene({ host }: ContextProps) {
                 />
               }
             >
-              <Button aria-label="Close" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft', sx: { alignSelf: 'end' } }}>
+              <Button data-ug-part="close" aria-label="Close" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft', sx: { alignSelf: 'end' } }}>
                 <ContainedIcon name="xmark" />
               </Button>
               <RadioGroup defaultValue="asc">

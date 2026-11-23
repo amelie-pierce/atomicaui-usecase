@@ -21,7 +21,7 @@ export default function HcsLastStepScene() {
         />
         <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>File</Type>
         <Type role="p3">Use File to open or save a project.</Type>
-        <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
+        <View data-ug-part="step-nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
           <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
             <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
             Previous

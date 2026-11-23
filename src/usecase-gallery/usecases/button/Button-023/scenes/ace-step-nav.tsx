@@ -21,7 +21,7 @@ export default function AceStepNavScene() {
         />
         <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Split-Pane Slider</Type>
         <Type role="p3">Need more space on the input side or the output? Drag the slider.</Type>
-        <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
+        <View data-ug-part="step-nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
           <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
             <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
               <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />

@@ -15,4 +15,23 @@ export default defineUsecase({
   how: 'Set aui scale "xs", color "surface", paint "fixed", shape "soft" and sx width "fill", justifyContent "between". '
     + 'Measured: 26px high, 3px 5px padding, 14px medium text, white fill and a 1px rgb(148, 163, 184) border, where Button-011 is 30px high with 16px regular text and no fill, so the size and the fill differ. '
     + 'The scene keeps one row in a 288px column.',
+  anatomy: [
+    {
+      id: "container",
+      name: "Container",
+      token: "Button",
+      description: "The Select products Button that stands in for the Products field: extra small, surface color with fixed (bordered) paint, soft shape and full width with content at the start.",
+      selector: "[class~=\"aui-button\"]",
+      code: "<Button aui={{ scale: 'xs', color: 'surface', paint: 'fixed', shape: 'soft', sx: { width: 'fill', justifyContent: 'between' } }}>\n  Select products\n</Button>",
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Button",
+      description: "The placeholder text \"Select products\" shown until hover or focus swaps in the picker.",
+      selector: "[class~=\"aui-button\"]",
+      text: true,
+      code: "Select products",
+    },
+  ],
 });

@@ -115,7 +115,7 @@ export interface UsecaseDoc {
   how: string;
   /** Optional component-facing detail content; absent sections stay out of the document. */
   aliases?: string[];
-  anatomy?: AnatomyPart[];
+  anatomy: AnatomyPart[];
   usage?: string;
   behavior?: string;
   variants?: string;

@@ -16,7 +16,7 @@ export default function PbsEditScene({ children }: ContextProps) {
         <Table.Body>
           <Table.Row>
             <Table.Cell aui={{ sx: { textAlign: 'center' } }}>
-              <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '8', alignItems: 'center' } }}>
+              <View data-ug-part="row-actions" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '8', alignItems: 'center' } }}>
                 {children}
               </View>
             </Table.Cell>

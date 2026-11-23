@@ -47,4 +47,68 @@ export default defineUsecase({
   where: 'The feedback dialog of eight apps (HS src/hs/ShellExtras.tsx, PFD src/pfd/ShellDialogs.tsx, PBS src/WorkspaceTools.tsx, AGPD src/agpd/ShellDialogs.tsx, RWS src/rws/ShellDialogs.tsx, ADM src/features/top-navigation/components/FeedbackDialog.tsx, FD src/components/Feedback.jsx, ADC src/adc/Workspace.tsx), the Save as template dialog (HS src/hs/TemplateDialogs.tsx, ADM src/features/templates/components/SaveAsTemplateDialog.tsx) and the ADM Thickness calculator and edit modals.',
   when: 'Use it for an optional choice that is on or off, has no unit and travels with a form the user submits once. Do not use it for an exclusive choice (a RadioGroup, or a Field.Select when there are many), an on and off setting that applies at once (a Switch) or to select a row (Table-002). The Dialog footer, close and Cancel and Send buttons are Dialog-009 (Send feedback) and Button-031 and are not repeated here.',
   how: 'The Checkbox has aui scale "sm" (22px box, a 14px mark, radius 4px) and per-state appearance in states: unselected color "surface" paint "tonal" with sx borderColor "outlined" (a white box with a 1px border), selected color "primary" paint "solid" (no border). Checkbox.Icon name "check" is the mark and Checkbox.Label is the caption on its right with an 8px gap: 16px regular. The box is a bare child of the Dialog.Body form column (View, flex column, gap 16), as the last row. ADM and FD: the same row, but the mark is Checkbox.Icon layer "duotone", which draws the check in Font Awesome 7 Duotone, visibly lighter than the solid check in Font Awesome 7 Pro (ADM writes it on every Checkbox; FD only in this dialog). HS, PFD, PBS, AGPD, RWS: the solid check; PBS and RWS omit scale, which renders the same 22px box. ADC: the Checkbox leads the split Dialog.Actions footer, before Cancel and Send, with no Icon (the same solid mark); the full dialog is Dialog-009 Send feedback. The scenes leave out the Description, the file dropzone and its size error, and show the enabled state and a Send that the app keeps disabled until the form is valid.',
+  anatomy: [
+    {
+      id: "checkbox",
+      name: "Checkbox",
+      token: "Checkbox",
+      selector: "[class~=\"aui-checkbox\"]",
+      description: "The checkable control, at scale \"sm\", checked by default: a surface-tonal box with an outlined border when off and a solid primary box when on.",
+      code: [
+        "<Checkbox defaultSelected aui={{",
+        "  scale: 'sm',",
+        "  states: {",
+        "    unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },",
+        "    selected: { color: 'primary', paint: 'solid' },",
+        "  },",
+        "}}>",
+        "  …",
+        "</Checkbox>",
+      ].join("\n"),
+    },
+    {
+      id: "indicator",
+      name: "Indicator",
+      selector: "[class~=\"aui-checkbox-indicator\"]",
+      description: "The small box that shows the checked state for the optional copy of the feedback responses.",
+      code: [
+        "<Checkbox defaultSelected aui={{ … }}>",
+        "  …",
+        "</Checkbox>",
+      ].join("\n"),
+    },
+    {
+      id: "icon",
+      name: "Icon",
+      token: "Checkbox.Icon",
+      selector: "[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]",
+      description: "The \"check\" mark inside the indicator; the HS, PFD, PBS, AGPD, RWS, ADM and FD feedback dialogs show it when the option is on.",
+      code: [
+        "<Checkbox.Icon name=\"check\" />",
+      ].join("\n"),
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Checkbox.Label",
+      selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
+      description: "The caption \"Send me a copy of my responses\" beside the box, answering the optional yes or no question at the end of the form.",
+      code: [
+        "<Checkbox.Label>Send me a copy of my responses</Checkbox.Label>",
+      ].join("\n"),
+    },
+    {
+      id: "form-field",
+      name: "Form field",
+      token: "Field",
+      selector: "[class~=\"aui-field\"]",
+      description: "The feedback-form text fields (name, email, subject) above the checkbox in the dialog scenes, each a Field with a label and an input.",
+      code: [
+        "<Field>",
+        "  <Field.Label>…</Field.Label>",
+        "  <Field.Control><Field.Input … /></Field.Control>",
+        "</Field>",
+      ].join("\n"),
+    },
+  ],
 });

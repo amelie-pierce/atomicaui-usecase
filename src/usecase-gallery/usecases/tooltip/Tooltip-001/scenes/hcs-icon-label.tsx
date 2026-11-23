@@ -6,7 +6,7 @@ export default function HcsIconLabelScene({ host }: ContextProps) {
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 6)' }}>
       <Tooltip.Provider>
         <Tooltip open>
-          <Tooltip.Trigger render={<IconButton name="gear" aria-label="Settings" aui={{ scale: 'sm', paint: 'text', color: 'secondary' }} />} />
+          <Tooltip.Trigger render={<IconButton data-ug-part="trigger" name="gear" aria-label="Settings" aui={{ scale: 'sm', paint: 'text', color: 'secondary' }} />} />
           <Tooltip.Portal container={host}>
             <Tooltip.Positioner side="bottom" sideOffset={4} className="ug-anchored">
               <Tooltip.Popup aui={{ scale: 'sm' }}>Settings</Tooltip.Popup>

@@ -23,10 +23,10 @@ export default function PfdHelpScene({ host }: ContextProps) {
                 />
               }
             >
-              <Button aria-label="Close" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft', sx: { alignSelf: 'end' } }}>
+              <Button data-ug-part="close" aria-label="Close" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft', sx: { alignSelf: 'end' } }}>
                 <ContainedIcon name="xmark" />
               </Button>
-              <Type as="div" role="p3">Select the base material of the member.</Type>
+              <Type data-ug-part="help-text" as="div" role="p3">Select the base material of the member.</Type>
             </Popover.Popup>
           </Popover.Positioner>
         </Popover.Portal>

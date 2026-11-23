@@ -27,8 +27,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const [mode, setMode] = useState<PreviewMode>('component');
   // Kept across use cases: the reader who switched to Code stays on Code while browsing.
   const [detail, setDetail] = useState<DetailMode>('code');
-  const [hoveredPartId, setHoveredPartId] = useState<string>();
-  const [focusedPartId, setFocusedPartId] = useState<string>();
+  const [interactedPart, setInteractedPart] = useState<{ id: string; source: 'hover' | 'focus' }>();
   const [availableParts, setAvailableParts] = useState<{ key: string; ids: string[] }>();
   const [selectedPart, setSelectedPart] = useState<{ usecaseId: string; partId: string }>();
   const selectedId = route.page === 'usecase' ? route.usecaseId : '';
@@ -40,7 +39,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const group = catalog.find((candidate) => candidate.id === original?.componentId);
   const usecase = original && group ? withLook(original, chosenForRoute?.look) : undefined;
   const anatomy = useMemo(() => usecase ? anatomyFor(usecase) : [], [usecase?.id, usecase?.look]);
-  const activePartId = focusedPartId ?? hoveredPartId ?? selectedPartId;
+  const activePartId = interactedPart?.id ?? selectedPartId;
   const types = usecase ? caseTypes(usecase) : [];
   const activeType = types.find((candidate) => candidate.name === chosenForRoute?.type) ?? types[0];
   const activeCase = activeType?.cases.find((candidate) => candidate.id === chosenForRoute?.caseId) ?? activeType?.cases[0];
@@ -50,12 +49,14 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
     if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
   }, [chosen, selectedId, selectedPart]);
   useEffect(() => {
-    setHoveredPartId(undefined);
-    setFocusedPartId(undefined);
+    setInteractedPart(undefined);
   }, [previewKey]);
   const onPartChange = useCallback((partId: string | undefined, expectedPartId?: string, source: 'hover' | 'focus' = 'hover') => {
-    const setPart = source === 'focus' ? setFocusedPartId : setHoveredPartId;
-    setPart((current) => expectedPartId && current !== expectedPartId ? current : partId);
+    setInteractedPart((current) => {
+      if (partId) return { id: partId, source };
+      if (expectedPartId) return current?.id === expectedPartId ? undefined : current;
+      return current?.source === source ? undefined : current;
+    });
   }, []);
   const onSelectPart = useCallback((partId: string) => {
     if (window.matchMedia('(pointer: coarse)').matches) setSelectedPart((current) => current?.partId === partId ? undefined : { usecaseId: selectedId, partId });

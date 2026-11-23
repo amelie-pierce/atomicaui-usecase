@@ -31,46 +31,44 @@ $narrow: 840px;
   white-space: nowrap;
 }
 
-// ── Resizable shell ─────────────────────────────────────────────────────────
+// ── Use case shell ──────────────────────────────────────────────────────────
 .ug-layout {
-  inline-size: 100%;
-  block-size: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--p-px-24);
+  flex: none;
+  min-inline-size: 0;
+  min-block-size: 100%;
 }
 
-.ug-layout__panel {
+.ug-layout__column {
   display: flex;
   flex-direction: column;
   min-inline-size: 0;
-  min-block-size: 0;
-  block-size: 100%;
-  overflow: hidden;
-  // Panels paint a surface by default; the panes below are the cards, so the panel itself stays clear.
-  background: transparent;
+  min-block-size: 100%;
 }
 
-// ── Card: the one frame every pane shares ───────────────────────────────────
-.ug-card {
+.ug-layout__column--render {
+  align-self: stretch;
+}
+
+.ug-render {
+  position: sticky;
+  inset-block-start: 0;
   display: flex;
   flex-direction: column;
-  inline-size: 100%;
-  block-size: 100%;
+  block-size: fit-content;
+  max-block-size: calc(100dvh - var(--p-px-64));
   min-inline-size: 0;
   min-block-size: 0;
   overflow: hidden;
-  border: var(--p-px-1) solid var(--theme-raised);
+  background: var(--theme-surface-alt);
 }
 
-.ug-card__body {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  min-block-size: 0;
-}
-
-.ug-card__content {
-  flex: 1 1 auto;
-  min-block-size: 0;
-  overflow: auto;
+.ug-detail {
+  min-inline-size: 0;
+  padding-block-end: var(--p-px-24);
 }
 
 // ── Pane content ────────────────────────────────────────────────────────────
@@ -88,11 +86,6 @@ $narrow: 840px;
   flex: none;
   inline-size: fit-content;
   margin-block-end: var(--p-px-16);
-}
-
-.ug-render .ug-card__content {
-  display: flex;
-  flex-direction: column;
 }
 
 .ug-detail__toggle {
@@ -121,7 +114,7 @@ $narrow: 840px;
 .ug-render__stage {
   flex: 1 1 auto;
   // A tall scene scrolls inside the stage instead of pushing the toggle and the case picker out of the pane.
-  min-block-size: 0;
+  min-block-size: var(--p-px-320);
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
@@ -505,7 +498,7 @@ $narrow: 840px;
   }
 }
 
-// The use case page: breadcrumb above the three panes.
+// The use case page: breadcrumb above the two-column detail layout.
 .ug--usecase {
   display: flex;
   flex-direction: column;
@@ -514,7 +507,11 @@ $narrow: 840px;
 
 .ug__body {
   flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
   min-block-size: 0;
+  overflow: auto;
 }
 
 .ug-render__look-select {
@@ -538,19 +535,26 @@ $narrow: 840px;
     overflow: visible;
   }
 
-  .ug-card {
+  .ug-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--p-px-16);
+  }
+
+  .ug-layout__column {
+    min-block-size: auto;
+  }
+
+  .ug-render {
+    position: static;
     block-size: auto;
-  }
-
-  .ug-tree .ug-card__content {
-    max-block-size: calc(var(--p-px-16) * 14);
-  }
-
-  .ug-render .ug-card__content {
     min-block-size: var(--p-px-160);
   }
 
-  .ug-detail .ug-card__content {
+  .ug-render__stage {
+    min-block-size: var(--p-px-160);
+  }
+
+  .ug-detail {
     min-block-size: var(--p-px-128);
   }
 }

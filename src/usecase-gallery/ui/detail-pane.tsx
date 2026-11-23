@@ -2,7 +2,6 @@ import { Button, ToggleGroup } from '../kit';
 import type { DetailMode, PreviewMode, Usecase, UsecaseCase } from '../types';
 import { CodePane } from './code-pane';
 import { DocsPane } from './docs-pane';
-import { PaneCard } from './pane-card';
 
 const DETAILS: { value: DetailMode; label: string }[] = [
   { value: 'document', label: 'Document' },
@@ -24,7 +23,7 @@ export function DetailPane({
   activeCase?: UsecaseCase;
 }) {
   return (
-    <PaneCard label={detail === 'code' ? 'Code' : 'Documentation'} className="ug-detail">
+    <section className="ug-detail" role="region" aria-label={detail === 'code' ? 'Code' : 'Documentation'}>
       <ToggleGroup
         className="ug-detail__toggle"
         aria-label="Right pane"
@@ -49,6 +48,6 @@ export function DetailPane({
       ) : (
         <DocsPane usecase={usecase} />
       )}
-    </PaneCard>
+    </section>
   );
 }

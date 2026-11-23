@@ -28,8 +28,10 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   // Kept across use cases: the reader who switched to Code stays on Code while browsing.
   const [detail, setDetail] = useState<DetailMode>('code');
   const [hoveredPartId, setHoveredPartId] = useState<string>();
-  const [selectedPartId, setSelectedPartId] = useState<string>();
+  const [selectedPart, setSelectedPart] = useState<{ usecaseId: string; partId: string }>();
   const selectedId = route.page === 'usecase' ? route.usecaseId : '';
+  if (selectedPart && selectedPart.usecaseId !== selectedId) setSelectedPart(undefined);
+  const selectedPartId = selectedPart?.partId;
   // The In context type, variant and the look are per use case: choosing another use case starts again at its first.
   const [chosen, setChosen] = useState<{ usecaseId: string; type?: string; caseId?: string; look?: string }>();
   if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
@@ -40,9 +42,9 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const activePartId = hoveredPartId ?? selectedPartId;
   const onPartChange = useCallback((partId: string | undefined) => setHoveredPartId(partId), []);
   const onSelectPart = useCallback((partId: string) => {
-    setSelectedPartId((current) => current === partId ? undefined : partId);
+    if (window.matchMedia('(pointer: coarse)').matches) setSelectedPart((current) => current?.partId === partId ? undefined : { usecaseId: selectedId, partId });
     requestAnimationFrame(() => document.getElementById(`anatomy-${partId}`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
-  }, []);
+  }, [selectedId]);
   if (route.page === 'components') return <div className="ug"><ComponentsPage groups={catalog} title={title} /></div>;
   if (route.page === 'component') {
     const group = catalog.find((candidate) => candidate.id === route.componentId);

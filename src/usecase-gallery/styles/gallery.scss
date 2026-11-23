@@ -86,22 +86,14 @@ $narrow: 840px;
 }
 
 // ── Pane content ────────────────────────────────────────────────────────────
-// The theme primary is too light for small text (about 3.2:1 on white); where the gallery uses primary for
-// titles and the active toggle segment, resolve it to the palette's darker orange (at least 4.7:1 on the
-// surfaces, 5.2:1 with its white on-primary), the same step the high-contrast theme uses.
+// The theme primary is too light for small text (about 3.2:1 on white); resolve documentation links and
+// the active app-group segment to the palette's darker orange, the same step the high-contrast theme uses.
 .ug-render__toggle,
-.ug-detail__toggle,
 .ug-docs {
   --theme-primary: var(--p-palette-orange-600);
 }
 
 .ug-render__toggle {
-  flex: none;
-  inline-size: fit-content;
-  margin-block-end: var(--p-px-16);
-}
-
-.ug-detail__toggle {
   flex: none;
   inline-size: fit-content;
   margin-block-end: var(--p-px-16);
@@ -218,22 +210,6 @@ $narrow: 840px;
 .ug-render__stage .aui-card,
 .ug-render__stage > .aui-table {
   inline-size: min(100%, calc(var(--p-px-16) * 24));
-}
-
-// The Copy button sits top-right of the code view and stays in view while the snippet scrolls.
-.ug-code__bar {
-  position: sticky;
-  inset-block-start: 0;
-  z-index: 1;
-  display: flex;
-  justify-content: flex-end;
-  padding-block-end: var(--p-px-8);
-}
-
-.ug-code__pre {
-  margin: 0;
-  white-space: pre;
-  tab-size: 2;
 }
 
 .ug-docs__head,
@@ -375,6 +351,11 @@ $narrow: 840px;
 .ug-docs__anatomy > li.is-highlighted {
   background: color-mix(in srgb, var(--p-palette-orange-600) 10%, transparent);
   box-shadow: inset 0 0 0 var(--p-px-2) color-mix(in srgb, var(--p-palette-orange-600) 24%, transparent);
+}
+
+.ug-docs__anatomy-code {
+  margin-inline-start: calc(var(--p-px-16) * 2);
+  margin-block-start: var(--p-px-4);
 }
 
 .ug-docs__anatomy-button {

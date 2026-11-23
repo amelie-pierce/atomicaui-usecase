@@ -9,7 +9,6 @@ import { DetailPane } from '../ui/detail-pane';
 import { DetailToolbar } from '../ui/detail-toolbar';
 import { RenderPane } from '../ui/render-pane';
 import { anatomyFor } from '../ui/anatomy';
-import type { DetailMode, PreviewMode } from '../types';
 import { DetailLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
 
@@ -24,9 +23,6 @@ export interface UsecaseGalleryProps {
 export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const narrow = useMediaQuery(NARROW);
   const route = useRoute(catalog.map((group) => group.id), allUsecases.map((usecase) => usecase.id), componentAliases);
-  const [mode, setMode] = useState<PreviewMode>('component');
-  // Kept across use cases: the reader who switched to Code stays on Code while browsing.
-  const [detail, setDetail] = useState<DetailMode>('code');
   const [interactedPart, setInteractedPart] = useState<{ id: string; source: 'hover' | 'focus' }>();
   const [availableParts, setAvailableParts] = useState<{ key: string; ids: string[] }>();
   const [selectedPart, setSelectedPart] = useState<{ usecaseId: string; partId: string }>();
@@ -43,7 +39,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const types = usecase ? caseTypes(usecase) : [];
   const activeType = types.find((candidate) => candidate.name === chosenForRoute?.type) ?? types[0];
   const activeCase = activeType?.cases.find((candidate) => candidate.id === chosenForRoute?.caseId) ?? activeType?.cases[0];
-  const previewKey = `${selectedId}:${mode}:${activeCase?.id ?? ''}:${usecase?.look ?? ''}`;
+  const previewKey = `${selectedId}:${activeCase?.id ?? ''}:${usecase?.look ?? ''}`;
   useEffect(() => {
     if (selectedPart && selectedPart.usecaseId !== selectedId) setSelectedPart(undefined);
     if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
@@ -78,12 +74,12 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   };
 
   const panes = {
-    render: <RenderPane usecase={usecase} looks={original.looks} onLookChange={(look) => setChosen({ ...chosenForRoute, usecaseId: usecase.id, look })} mode={mode} onModeChange={setMode} types={types} activeType={activeType} onTypeChange={changeType} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ ...chosenForRoute, usecaseId: usecase.id, type: activeType?.name, caseId })} anatomy={anatomy} hoveredPartId={activePartId} onPartChange={onPartChange} onAvailablePartsChange={onAvailablePartsChange} />,
-    detail: <DetailPane usecase={usecase} componentName={group.title} detail={detail} onDetailChange={setDetail} mode={mode} activeCase={activeCase} hoveredPartId={activePartId} availablePartIds={availableParts?.key === previewKey ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} />,
+    render: <RenderPane usecase={usecase} looks={original.looks} onLookChange={(look) => setChosen({ ...chosenForRoute, usecaseId: usecase.id, look })} types={types} activeType={activeType} onTypeChange={changeType} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ ...chosenForRoute, usecaseId: usecase.id, type: activeType?.name, caseId })} anatomy={anatomy} hoveredPartId={activePartId} onPartChange={onPartChange} onAvailablePartsChange={onAvailablePartsChange} />,
+    detail: <DetailPane usecase={usecase} componentName={group.title} activeCase={activeCase} hoveredPartId={activePartId} availablePartIds={availableParts?.key === previewKey ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} />,
   };
   return (
     <div className="ug ug--usecase">
-      <DetailToolbar crumbs={[{ label: 'Components', href: COMPONENTS_HASH }, { label: group.title, href: componentHash(group.id) }, { label: usecase.id }]} usecase={usecase} mode={mode} activeCase={activeCase} />
+      <DetailToolbar crumbs={[{ label: 'Components', href: COMPONENTS_HASH }, { label: group.title, href: componentHash(group.id) }, { label: usecase.id }]} usecase={usecase} activeCase={activeCase} />
       <div className="ug__body">
         {narrow ? <StackedLayout {...panes} /> : <DetailLayout {...panes} />}
       </div>

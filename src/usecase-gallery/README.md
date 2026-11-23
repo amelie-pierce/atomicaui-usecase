@@ -1,6 +1,6 @@
 # usecase-gallery
 
-A read-only gallery of component use cases: a tree of components, the UI types of each (Button: Single button, Button group, Icon button), the use cases of a type, each one business action (`Download CSV button`), with its id (`Button-002`), its look, the rendered example, the code to copy, and where/when/how to use it, plus which apps use it. The pages live in the URL hash: `#/` the components grid (a card per component with a live render of its first use case), `#/Button` a component page (breadcrumb, a section per UI type, a grid of use case cards with id, name and live render), `#Button-002` a use case (Component and In context preview, Document and Code, the apps that use it, a Look select when it has several looks).
+ A read-only gallery of component use cases: a tree of components, the UI types of each (Button: Single button, Button group, Icon button), the use cases of a type, each one business action (`Download CSV button`), with its id (`Button-002`), its look, the rendered In context example, the complete document (including copyable code/API), and where/when/how to use it, plus which apps use it. The pages live in the URL hash: `#/` the components grid (a card per component with a live render of its first use case), `#/Button` a component page (breadcrumb, a section per UI type, a grid of use case cards with id, name and live render), `#Button-002` a use case (In context preview, complete document, the apps that use it, a Look select when it has several looks).
 
 The folder is self-contained. It imports only `react`, `react-dom` and its own `kit.ts`.
 
@@ -65,7 +65,7 @@ No registry or shell edit is needed.
 
 ## Add an in-context view
 
-The preview has a Component | In context toggle (default Component). In context renders the example inside the area that holds it, cut to the minimum and built only from kit parts, static and read-only; the Code view shows the context's JSX with the example inside it.
+The preview always renders In context: the example sits inside the area that holds it, cut to the minimum and built only from kit parts, static and read-only. The complete document includes the context's JSX with the example inside it.
 
 To add a context for an area, create one file, `contexts/<area-slug>.tsx`, and touch nothing else. The slug is the `area` lowercased with dashes (`Body text` -> `body-text.tsx`). It default-exports a component that places `{children}` (the example) on a line of its own inside the area's JSX:
 
@@ -97,7 +97,7 @@ cases: [
 ],
 ```
 
-Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ children, host }`). In context lists the **places of the one action** (a state such as enabled or disabled, or a kind of row; never another action, which is another use case): with more than one case name the preview shows a kit `RadioGroup` of the names (not UI types: the UI type is the tree level) above the scene (default: the first; the choice survives the Component | In context toggle and resets on another use case), renders only the chosen scene and shows its code. A scene that places `{children}` gets the example spliced in; one that writes its own controls (a disabled or alternative state) is shown as written. A use case with one case, or none, shows no radio group and uses the area context. Cases with the same name are one scene type with several app variants (next section). A missing scene file fails the catalog build.
+Each id is a file `scenes/<id>.tsx` with the same shape as a context (`{ children, host }`). In context lists the **places of the one action** (a state such as enabled or disabled, or a kind of row; never another action, which is another use case): with more than one case name the preview shows a kit `RadioGroup` of the names (not UI types: the UI type is the tree level) above the scene (default: the first; the choice resets on another use case), renders only the chosen scene and shows its code inside the document. A scene that places `{children}` gets the example spliced in; one that writes its own controls (a disabled or alternative state) is shown as written. A use case with one case, or none, shows no radio group and uses the area context. Cases with the same name are one scene type with several app variants (next section). A missing scene file fails the catalog build.
 
 ### The same use case in another app
 
@@ -140,7 +140,7 @@ Create `usecases/<component>/<component>.meta.ts` with `defineComponent({ id, ti
 
 ## Layout and type
 
-The use case detail page removes the component tree and uses one unframed two-column layout: the preview is on the left and the document or code is on the right. A sticky toolbar (`ui/detail-toolbar.tsx`: breadcrumb left, Save / Share / Copy right) sits on top; above 840px the preview keeps its place and the detail column scrolls on its own, below 840px the page scrolls as one. `DetailLayout` in `layout/layouts.tsx` stacks the two columns below 840px. The preview and detail regions use native semantic sections rather than kit cards; the gallery still uses kit components for all controls, type and iconography. The right region (`ui/detail-pane.tsx`) has a Document | Code `ToggleGroup` above its content: Code (the default) is the copyable snippet with its Copy button top-right, Document is the docs. The choice is kept when another use case is selected. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
+The use case detail page removes the component tree and uses one unframed two-column layout: the In context preview is on the left and the complete document (including code/API) is on the right. A sticky toolbar (`ui/detail-toolbar.tsx`: breadcrumb left, Save / Share / Copy right) sits on top; above 840px the preview keeps its place and the detail column scrolls on its own, below 840px the page scrolls as one. `DetailLayout` in `layout/layouts.tsx` stacks the two columns below 840px. The preview and detail regions use native semantic sections rather than kit cards; the gallery still uses kit components for all controls, type and iconography. One size for all text: hcs body, `sm` = 16/20 (weight, not size, separates headings from body). All text is the kit's `Type` (role, family, weight) or a kit part at `scale: 'sm'`; the stylesheet sets only the root size and line height (`.ug`: 16px, 1.35), as hcs does. The sizes follow the hcs typography (Inter 16/20 unless noted):
 
 | Element | Type |
 | --- | --- |
@@ -154,7 +154,7 @@ The use case detail page removes the component tree and uses one unframed two-co
 | badges, toggle labels, Copy | kit part at `sm`, 16/20 |
 | fallback frame note | `l3` muted |
 
-The doc pane's use case id and name use `Type color="primary"`; the Where / When / How labels use the default text color; the active toggle segment is a primary solid `Button`, the inactive one a neutral secondary text `Button`. Theme primary is only about 3.2:1 on the light surface, so `.ug-docs` (id and name) and `.ug-render__toggle` and `.ug-detail__toggle` in `gallery.scss` resolve `--theme-primary` to `--p-palette-orange-600` (at least 4.7:1 as text, 5.2:1 under the white on-primary toggle text).
+The doc pane's use case id and name use `Type color="primary"`; the Where / When / How labels use the default text color. Theme primary is only about 3.2:1 on the light surface, so `.ug-docs` (id and name) and `.ug-render__toggle` in `gallery.scss` resolve `--theme-primary` to `--p-palette-orange-600` (at least 4.7:1 as text, 5.2:1 under the white on-primary toggle text).
 
 The docs content shows the use case id and title in one box, at the same size as the other doc text and set apart by bold weight (the id never wraps; a long title wraps below it), the summary, a row of app badges (no visible label), then Where / When / How as a definition list. These three fields are required; the optional `UsecaseDoc` fields in `types.ts` (`aliases`, `anatomy`, `usage`, `behavior`, `variants`, `accessibility`, `prompt`, `debugPrompt`, `api`, `related`) add numbered sections to `ui/docs-pane.tsx` and a section with no data stays hidden. `anatomy` parts link by `id` to a `selector` in the preview (or `data-ug-part`, defaults in `ui/anatomy.ts`, split into the component's real sub-parts such as icon and label; `text: true` highlights only the element's direct text, measured with a Range and no DOM change), so hovering or focusing a part highlights it on both sides.
 

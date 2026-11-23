@@ -168,7 +168,7 @@ $narrow: 840px;
 
 .ug-anatomy-overlay {
   position: absolute;
-  z-index: var(--aui-dialog-z, 1000);
+  z-index: calc(var(--aui-dialog-z, 1000) + 2);
   pointer-events: none;
   border: var(--p-px-2) solid var(--p-palette-orange-600);
   background: color-mix(in srgb, var(--p-palette-orange-600) 16%, transparent);

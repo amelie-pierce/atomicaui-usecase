@@ -114,9 +114,7 @@ export function usePreviewAnatomy(
       }
       const available = parts.filter((part) => (targets.get(part.id)?.length ?? 0) > 0).map((part) => part.id);
       const availableKey = available.join('|');
-      // Report the snapshot even when no authored part is present. This lets the document hide
-      // optional or unsupported anatomy instead of retaining the previous use case's list.
-      if (availableKey !== availablePartIds.current) {
+      if (stage.childElementCount > 0 && availableKey !== availablePartIds.current) {
         availablePartIds.current = availableKey;
         onAvailablePartsChange?.(available);
       }

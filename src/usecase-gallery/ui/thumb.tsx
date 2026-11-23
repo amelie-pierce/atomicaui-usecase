@@ -37,6 +37,9 @@ export function Thumb({ Example }: ThumbProps) {
         right = Math.max(right, (rect.right - origin.left) / applied);
         bottom = Math.max(bottom, (rect.bottom - origin.top) / applied);
       }
+      // Bare text beside an element is no element, so its overflow only shows in the stage's scroll size.
+      if (stageEl.scrollWidth > stageEl.clientWidth) right = Math.max(right, stageEl.scrollWidth);
+      if (stageEl.scrollHeight > stageEl.clientHeight) bottom = Math.max(bottom, stageEl.scrollHeight);
       // Floored: content sized in percent of the stage (a Card) grows with the stage, so an unbounded fit would shrink it to nothing.
       const next = Math.max(0.5, Math.min(1, width / right, height / bottom));
       if (Math.abs(next - applied) < 0.005 && width === size.current.width && height === size.current.height) return;
@@ -64,7 +67,11 @@ export function Thumb({ Example }: ThumbProps) {
           stage.current = element;
           setHost(element);
         }}
-        style={{ inlineSize: fit.width / fit.scale || undefined, blockSize: fit.height / fit.scale || undefined, transform: `scale(${fit.scale})` }}
+        style={{
+          inlineSize: fit.width / fit.scale || undefined,
+          blockSize: fit.height / fit.scale || undefined,
+          transform: `translate(-50%, -50%) scale(${fit.scale})`,
+        }}
       >
         <Suspense fallback={null}>
           {host && (

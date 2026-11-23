@@ -17,7 +17,7 @@ usecase-gallery/
   catalog/                 discovery (import.meta.glob), validation, snippet extraction
   hooks/                   hash route (use-route.ts), copy-to-clipboard, media query
   layout/                  gallery shell and the resizable / stacked layouts
-  ui/                      the pages (components-page, component-page, breadcrumb, thumb = the live render in a card) and the panes (pane-card, tree, render, detail)
+  ui/                      the pages (components-page, component-page, breadcrumb, thumb = the live render in a card) and the panes (render, detail)
   styles/gallery.scss      layout and chrome, tokens only
   usecases/
     <component>/

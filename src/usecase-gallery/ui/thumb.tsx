@@ -64,7 +64,11 @@ export function Thumb({ Example }: ThumbProps) {
           stage.current = element;
           setHost(element);
         }}
-        style={{ inlineSize: fit.width / fit.scale || undefined, blockSize: fit.height / fit.scale || undefined, transform: `scale(${fit.scale})` }}
+        style={{
+          inlineSize: fit.width / fit.scale || undefined,
+          blockSize: fit.height / fit.scale || undefined,
+          transform: `translate(-50%, -50%) scale(${fit.scale})`,
+        }}
       >
         <Suspense fallback={null}>
           {host && (

@@ -77,7 +77,7 @@ function CodeApiSection({ usecase, mode, activeCase }: { usecase: Usecase; mode:
   </Section>;
 }
 
-export function DocsPane({ usecase, componentName, mode, activeCase, hoveredPartId, availablePartIds, onPartChange, onSelectPart }: { usecase: Usecase; componentName: string; mode: PreviewMode; activeCase?: UsecaseCase; hoveredPartId?: string; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
+export function DocsPane({ usecase, componentName, mode, activeCase, hoveredPartId, availablePartIds, onPartChange, onSelectPart }: { usecase: Usecase; componentName: string; mode: PreviewMode; activeCase?: UsecaseCase; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
   const parts = anatomyFor(usecase);
   const hasAccessibility = !!usecase.accessibility?.keyboard || !!usecase.accessibility?.focus;
   const variantNames = [...new Set((usecase.cases ?? []).map((candidate) => candidate.name))];

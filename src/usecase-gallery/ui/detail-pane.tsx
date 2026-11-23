@@ -11,16 +11,24 @@ const DETAILS: { value: DetailMode; label: string }[] = [
 /** The right pane: the copyable code by default, the use case documentation on the toggle. */
 export function DetailPane({
   usecase,
+  componentName,
   detail,
   onDetailChange,
   mode,
   activeCase,
+  hoveredPartId,
+  onPartChange,
+  onSelectPart,
 }: {
   usecase: Usecase;
+  componentName: string;
   detail: DetailMode;
   onDetailChange: (detail: DetailMode) => void;
   mode: PreviewMode;
   activeCase?: UsecaseCase;
+  hoveredPartId?: string;
+  onPartChange: (partId: string | undefined) => void;
+  onSelectPart: (partId: string) => void;
 }) {
   return (
     <section className="ug-detail" role="region" aria-label={detail === 'code' ? 'Code' : 'Documentation'}>
@@ -46,7 +54,7 @@ export function DetailPane({
       {detail === 'code' ? (
         <CodePane key={`${usecase.id}-${mode}-${activeCase?.id}`} usecase={usecase} mode={mode} activeCase={activeCase} />
       ) : (
-        <DocsPane usecase={usecase} />
+        <DocsPane usecase={usecase} componentName={componentName} mode={mode} activeCase={activeCase} hoveredPartId={hoveredPartId} onPartChange={onPartChange} onSelectPart={onSelectPart} />
       )}
     </section>
   );

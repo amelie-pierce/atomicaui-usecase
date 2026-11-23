@@ -1,8 +1,10 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useCallback, useRef, useState } from 'react';
 import type { CaseType } from '../catalog/app-views';
 import { Button, Field, Radio, RadioGroup, ToggleGroup, Type } from '../kit';
 import type { PreviewMode, Usecase, UsecaseCase, UsecaseLook } from '../types';
 import { StageHostContext } from '../hooks/use-stage-host';
+import type { AnatomyPart } from '../types';
+import { AnatomyOverlay, usePreviewAnatomy } from '../hooks/use-preview-anatomy';
 
 const MODES: { value: PreviewMode; label: string }[] = [
   { value: 'component', label: 'Component' },
@@ -33,6 +35,9 @@ export function RenderPane({
   onTypeChange,
   activeCase,
   onCaseChange,
+  anatomy,
+  hoveredPartId,
+  onPartChange,
 }: {
   /** The use case as the chosen look shows it. */
   usecase: Usecase;
@@ -48,11 +53,20 @@ export function RenderPane({
   /** The chosen UI variant of the active type; its group toggle shows with two or more variants. */
   activeCase?: UsecaseCase;
   onCaseChange: (caseId: string) => void;
+  anatomy: AnatomyPart[];
+  hoveredPartId?: string;
+  onPartChange: (partId: string | undefined) => void;
 }) {
   const { Example } = usecase;
   const Context = activeCase?.Scene ?? usecase.Context;
   const look = (mode === 'context' ? activeCase?.look : undefined) ?? usecase.look ?? usecase.cases?.[0]?.look;
   const [host, setHost] = useState<HTMLElement | null>(null);
+  const stageRef = useRef<HTMLDivElement | null>(null);
+  const setStage = useCallback((node: HTMLDivElement | null) => {
+    stageRef.current = node;
+    setHost(node);
+  }, []);
+  const overlay = usePreviewAnatomy(stageRef, anatomy, hoveredPartId, onPartChange);
   return (
     <section className="ug-render" role="region" aria-label="Preview">
       <ToggleGroup
@@ -143,7 +157,7 @@ export function RenderPane({
           Look: {look}
         </Type>
       )}
-      <div className="ug-render__stage" ref={setHost}>
+      <div className="ug-render__stage" ref={setStage}>
         <Suspense fallback={null}>
           {mode === 'component' ? (
             host && (
@@ -163,6 +177,7 @@ export function RenderPane({
             </FallbackFrame>
           )}
         </Suspense>
+        <AnatomyOverlay rect={overlay} />
       </div>
       {mode === 'context' && activeCase?.note && (
         <Type role="l3" as="p" color="muted" className="ug-render__note">

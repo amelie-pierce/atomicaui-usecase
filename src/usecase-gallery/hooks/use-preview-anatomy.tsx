@@ -9,6 +9,8 @@ interface OverlayRect {
   radius: string;
 }
 
+type PartChangeSource = 'hover' | 'focus';
+
 function selectorFor(part: AnatomyPart) {
   return part.selector ?? `[data-ug-part="${CSS.escape(part.id)}"]`;
 }
@@ -17,11 +19,28 @@ function textNodesOf(element: Element) {
   return [...element.childNodes].filter((node): node is Text => node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim());
 }
 
-function nearestPart(target: EventTarget | null, stage: HTMLElement, bindings: Map<Element, AnatomyPart>) {
+function textRectContains(element: Element, event: PointerEvent) {
+  const nodes = textNodesOf(element);
+  if (!nodes.length) return false;
+  const range = document.createRange();
+  range.setStartBefore(nodes[0]);
+  range.setEndAfter(nodes[nodes.length - 1]);
+  return [...range.getClientRects()].some((rect) => event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom);
+}
+
+function isAnatomyTarget(target: EventTarget | null): target is Element {
+  return target instanceof Element && !!target.closest('.ug-docs__anatomy-button');
+}
+
+function nearestPart(target: EventTarget | null, stage: HTMLElement, bindings: Map<Element, AnatomyPart[]>, pointer?: PointerEvent) {
   let element = target instanceof Element ? target : null;
   while (element && element !== stage) {
-    const part = bindings.get(element);
-    if (part) return { element, part };
+    const parts = bindings.get(element);
+    if (parts?.length) {
+      const textPart = pointer && parts.find((part) => part.text && textRectContains(element, pointer));
+      const part = textPart ?? parts.find((candidate) => !candidate.text) ?? parts[0];
+      return { element, part };
+    }
     element = element.parentElement;
   }
   return undefined;
@@ -57,11 +76,13 @@ export function usePreviewAnatomy(
   stageRef: RefObject<HTMLElement | null>,
   parts: AnatomyPart[],
   highlightedPartId: string | undefined,
-  onPartChange: (partId: string | undefined) => void,
+  onPartChange: (partId: string | undefined, expectedPartId?: string, source?: PartChangeSource) => void,
   onAvailablePartsChange?: (partIds: string[]) => void,
 ) {
   const [overlay, setOverlay] = useState<OverlayRect | null>(null);
   const activeElement = useRef<Element | undefined>(undefined);
+  const activePartId = useRef<string>();
+  const activePartSource = useRef<PartChangeSource>();
   const partTargets = useRef(new Map<string, Element[]>());
   const availablePartIds = useRef<string>();
 
@@ -69,7 +90,7 @@ export function usePreviewAnatomy(
     const stage = stageRef.current;
     if (!stage) return;
 
-    const bindings = new Map<Element, AnatomyPart>();
+    const bindings = new Map<Element, AnatomyPart[]>();
     const targets = new Map<string, Element[]>();
     availablePartIds.current = undefined;
     const refreshBindings = () => {
@@ -86,21 +107,20 @@ export function usePreviewAnatomy(
         }
         if (part.text) elements = elements.filter((element) => textNodesOf(element).length > 0);
         targets.set(part.id, elements);
-        if (part.text) continue;
         for (const element of elements) {
-          bindings.set(element, part);
-          element.setAttribute('data-ug-anatomy-part', part.id);
+          bindings.set(element, [...(bindings.get(element) ?? []), part]);
+          if (!part.text && !element.hasAttribute('data-ug-anatomy-part')) element.setAttribute('data-ug-anatomy-part', part.id);
         }
       }
       const available = parts.filter((part) => (targets.get(part.id)?.length ?? 0) > 0).map((part) => part.id);
       const availableKey = available.join('|');
-      // Suspense can leave the stage empty for the first pass. Keep the docs visible until the
-      // actual preview mounts; every default anatomy has a required root part, so a non-empty set
-      // is the first reliable availability snapshot.
-      if (available.length > 0 && availableKey !== availablePartIds.current) {
+      // Report the snapshot even when no authored part is present. This lets the document hide
+      // optional or unsupported anatomy instead of retaining the previous use case's list.
+      if (availableKey !== availablePartIds.current) {
         availablePartIds.current = availableKey;
         onAvailablePartsChange?.(available);
       }
+      partTargets.current = targets;
     };
     refreshBindings();
     // The example is lazy-loaded inside Suspense, so its first DOM commit can happen after the
@@ -114,28 +134,40 @@ export function usePreviewAnatomy(
     }, 100);
     partTargets.current = targets;
 
-    const setFromTarget = (target: EventTarget | null) => {
-      const match = nearestPart(target, stage, bindings);
+    const clearActivePart = (source: PartChangeSource) => {
+      if (activePartSource.current !== source) {
+        onPartChange(undefined, undefined, source);
+        return;
+      }
+      const previousPartId = activePartId.current;
+      activeElement.current = undefined;
+      activePartId.current = undefined;
+      activePartSource.current = undefined;
+      onPartChange(undefined, previousPartId, source);
+    };
+    const setFromTarget = (target: EventTarget | null, source: PartChangeSource, pointer?: PointerEvent) => {
+      const match = nearestPart(target, stage, bindings, pointer);
       if (match) {
         activeElement.current = match.element;
-        onPartChange(match.part.id);
+        activePartId.current = match.part.id;
+        activePartSource.current = source;
+        onPartChange(match.part.id, undefined, source);
+        return true;
       }
+      clearActivePart(source);
+      return false;
     };
-    const onPointerOver = (event: PointerEvent) => setFromTarget(event.target);
+    const onPointerOver = (event: PointerEvent) => setFromTarget(event.target, 'hover', event);
     const onPointerOut = (event: PointerEvent) => {
-      if (!event.relatedTarget || !(event.relatedTarget instanceof Node) || !stage.contains(event.relatedTarget)) {
-        activeElement.current = undefined;
-        onPartChange(undefined);
-      } else {
-        setFromTarget(event.relatedTarget);
-      }
+      if (isAnatomyTarget(event.relatedTarget)) return;
+      if (!event.relatedTarget || !(event.relatedTarget instanceof Node) || !stage.contains(event.relatedTarget)) return clearActivePart('hover');
+      setFromTarget(event.relatedTarget, 'hover', event);
     };
-    const onFocusIn = (event: FocusEvent) => setFromTarget(event.target);
+    const onFocusIn = (event: FocusEvent) => setFromTarget(event.target, 'focus');
     const onFocusOut = (event: FocusEvent) => {
-      if (!event.relatedTarget || !(event.relatedTarget instanceof Node) || !stage.contains(event.relatedTarget)) {
-        activeElement.current = undefined;
-        onPartChange(undefined);
-      }
+      if (isAnatomyTarget(event.relatedTarget)) return;
+      if (!event.relatedTarget || !(event.relatedTarget instanceof Node) || !stage.contains(event.relatedTarget)) return clearActivePart('focus');
+      setFromTarget(event.relatedTarget, 'focus');
     };
     stage.addEventListener('pointerover', onPointerOver);
     stage.addEventListener('pointerout', onPointerOut);
@@ -153,6 +185,9 @@ export function usePreviewAnatomy(
       stage.removeEventListener('focusin', onFocusIn);
       stage.removeEventListener('focusout', onFocusOut);
       for (const element of bindings.keys()) element.removeAttribute('data-ug-anatomy-part');
+      activeElement.current = undefined;
+      activePartId.current = undefined;
+      activePartSource.current = undefined;
       partTargets.current = new Map();
     };
   }, [onAvailablePartsChange, onPartChange, parts, stageRef]);
@@ -173,8 +208,7 @@ export function usePreviewAnatomy(
     const resize = new ResizeObserver(update);
     const mutation = new MutationObserver(update);
     resize.observe(stage);
-    const target = partTargets.current.get(highlightedPartId)?.[0];
-    if (target) resize.observe(target);
+    for (const target of partTargets.current.get(highlightedPartId) ?? []) resize.observe(target);
     mutation.observe(stage, { childList: true, subtree: true, characterData: true });
     stage.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);

@@ -19,7 +19,7 @@ export default function AdmCalculatorScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Close" />
             </Dialog.Title>
             <Dialog.Body>
-              <Type as="p" role="p3">
+              <Type data-ug-part="calculator-text" as="p" role="p3">
                 The calculator result goes here.
               </Type>
             </Dialog.Body>

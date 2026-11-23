@@ -21,7 +21,7 @@ export default function AdmLastStepScene() {
         />
         <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>3D Viewer</Type>
         <Type role="p3">Use the 3D Viewer to explore the spatial layout.</Type>
-        <View className="ug-tour__nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
+        <View data-ug-part="step-nav" className="ug-tour__nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
           <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
             <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
             Previous

@@ -4,7 +4,7 @@ export default function Example() {
   return (
     <Tooltip.Provider>
       <Tooltip>
-        <Tooltip.Trigger render={<span />} tabIndex={0} aria-label="Selection unavailable for Model C-300" closeOnClick={false} style={{ display: 'inline-flex' }}>
+        <Tooltip.Trigger render={<span data-ug-part="trigger" />} tabIndex={0} aria-label="Selection unavailable for Model C-300" closeOnClick={false} style={{ display: 'inline-flex' }}>
           <Radio disabled selected={false} tabIndex={-1} aria-label="Model C-300" aui={{ scale: 'sm' }} />
         </Tooltip.Trigger>
         <Tooltip.Portal>

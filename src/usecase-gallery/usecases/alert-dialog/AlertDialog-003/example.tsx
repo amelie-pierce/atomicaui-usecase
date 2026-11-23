@@ -19,8 +19,8 @@ export default function Example() {
               You are about to reset all input fields. This will erase all of your project configurations and cannot be undone.
             </Dialog.Description>
             <Dialog.Actions aui={{ scale: 'sm' }}>
-              <Dialog.Button aui={{ scale: 'sm' }}>Cancel</Dialog.Button>
-              <Dialog.Button aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Reset</Dialog.Button>
+              <Dialog.Button data-ug-part="cancel" aui={{ scale: 'sm' }}>Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="confirm" aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Reset</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

@@ -16,7 +16,7 @@ export default function AdmLicenceScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Do Not Accept" aui={{ scale: 'sm' }} />
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
-              <View aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '12', minWidth: '0' } }}>
+              <View data-ug-part="licence-text" aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '12', minWidth: '0' } }}>
                 <MockLicenceText />
               </View>
             </Dialog.Body>

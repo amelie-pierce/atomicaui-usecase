@@ -39,4 +39,38 @@ export default defineUsecase({
   where: 'Every icon-only header, rail and navigation button of the ten apps (HCS HcsIconTooltip, ACE PaneIconTooltip, ADM AdmIconTooltip, ADC and FD IconTooltip, AGPD and RWS IconTip, PBS and PFD and HS output navigation). The panel standard of the apps is that an icon-only button carries an aria-label and a tooltip with the same words. Also the Reset View button floating over the 3D viewer (ADM ViewerChrome, FD Viewer).',
   when: 'Use it on every IconButton that has no visible text, including the Reset View button over the viewer. Do not use it for a control whose label is already visible, and not for long help text (a help icon, Button-032). For a radio option, see Tooltip-004.',
   how: 'Compose Tooltip.Provider, Tooltip, Tooltip.Trigger with the IconButton as render, Tooltip.Portal, Tooltip.Positioner and Tooltip.Popup. All ten apps show the same label tooltip on an icon-only button, so they are one group; no popup placement or surface was measured in a browser, so none splits it. From the tooltip source, HS requests the Base UI default side (top) and RWS requests bottom, each with a 4px offset; collision handling may flip the requested side when space is limited. Scenes show one enabled button and omit the surrounding pane header. Reset View (ADM, FD): the same IconButton trigger and label tooltip on a floating viewer control; ADM ViewerChrome and FD Viewer are read from the source and not run.',
+  anatomy: [
+    {
+      id: 'trigger',
+      name: 'Trigger',
+      token: 'Tooltip.Trigger',
+      description: 'The icon-only gear IconButton labelled "Settings" (scale "sm", text paint, secondary colour) that the tooltip names; it is passed to the trigger through render.',
+      code: `<Tooltip.Trigger render={<IconButton data-ug-part="trigger" name="gear" aria-label="Settings" aui={{ scale: 'sm', paint: 'text', color: 'secondary' }} />} />`,
+    },
+    {
+      id: 'positioner',
+      name: 'Positioner',
+      token: 'Tooltip.Positioner',
+      selector: '[class~="aui-tooltip-positioner"]',
+      description: 'Places the label below the gear button with a 4px offset (side="bottom"); the HS app requests the default top side and RWS the bottom.',
+      code: `<Tooltip.Positioner side="bottom" sideOffset={4}>`,
+    },
+    {
+      id: 'popup',
+      name: 'Popup',
+      token: 'Tooltip.Popup',
+      selector: '[class~="aui-tooltip-popup"]',
+      description: 'The small tooltip surface that holds the one-word label.',
+      code: `<Tooltip.Popup>Settings</Tooltip.Popup>`,
+    },
+    {
+      id: 'label',
+      name: 'Label',
+      token: 'Tooltip.Popup',
+      selector: '[class~="aui-tooltip-popup"]',
+      text: true,
+      description: 'The text "Settings", repeating the button\'s accessible name so sighted users can read it.',
+      code: `<Tooltip.Popup>Settings</Tooltip.Popup>`,
+    },
+  ],
 });

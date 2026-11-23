@@ -8,7 +8,7 @@ export default function RwsShowIn3dScene({ host }: ContextProps) {
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 8)' }}>
       <Tooltip.Provider>
         <Tooltip open>
-          <Tooltip.Trigger render={<Button aria-label="Show in 3D" aria-pressed={false} aui={{ color: 'surface', paint: 'text', shape: 'soft', sx: { width: '96', height: '80', paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }} />}>
+          <Tooltip.Trigger render={<Button data-ug-part="trigger" aria-label="Show in 3D" aria-pressed={false} aui={{ color: 'surface', paint: 'text', shape: 'soft', sx: { width: '96', height: '80', paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }} />}>
             <svg viewBox="0 0 192 128" aria-hidden="true" style={{ width: '100%', aspectRatio: '4 / 3' }}>
               <rect width="192" height="128" fill="var(--theme-surface-alt)" />
               <path d="M24 20h144v18H24zM36 38h120v18H36z" fill="var(--theme-muted)" stroke="var(--theme-secondary)" strokeWidth="2" />

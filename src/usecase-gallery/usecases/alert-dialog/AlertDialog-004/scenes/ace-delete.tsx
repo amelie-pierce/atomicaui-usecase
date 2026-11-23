@@ -17,8 +17,8 @@ export default function AceDeleteScene({ host }: ContextProps) {
               You are about to delete a template and this action cannot be undone. Please confirm before proceeding.
             </Dialog.Description>
             <Dialog.Actions>
-              <Dialog.Button>Cancel</Dialog.Button>
-              <Dialog.Button aui={{ color: 'error', paint: 'solid' }}>Delete</Dialog.Button>
+              <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="delete" aui={{ color: 'error', paint: 'solid' }}>Delete</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

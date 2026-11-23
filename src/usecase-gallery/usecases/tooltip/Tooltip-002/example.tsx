@@ -4,7 +4,7 @@ export default function Example() {
   return (
     <Tooltip.Provider>
       <Tooltip>
-        <Tooltip.Trigger render={<Button aui={{ scale: 'sm' }} />}>Preview</Tooltip.Trigger>
+        <Tooltip.Trigger render={<Button data-ug-part="trigger" aui={{ scale: 'sm' }} />}>Preview</Tooltip.Trigger>
         <Tooltip.Portal>
           <Tooltip.Positioner sideOffset={4}>
             <Tooltip.Popup><svg viewBox="0 0 192 128" role="img" aria-label="Connection detail" style={{ width: 'var(--p-px-192)', aspectRatio: '4 / 3' }}>

@@ -25,7 +25,7 @@ export default function AdcReportScene({ host }: ContextProps) {
               </Tooltip.Provider>
             </Dialog.Title>
             <Dialog.Body aui={{ profile: 'no-padding' }}>
-              <View
+              <View data-ug-part="document"
                 role="document"
                 aria-label="Calculation report preview"
                 aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8', flex: 'fill' } }}

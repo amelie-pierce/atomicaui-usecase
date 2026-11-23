@@ -21,7 +21,7 @@ export default function AdmStepNavScene() {
         />
         <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Multi Design</Type>
         <Type role="p3">Explore which products meet design requirements.</Type>
-        <View className="ug-tour__nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
+        <View data-ug-part="step-nav" className="ug-tour__nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
           <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
             <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
             Previous

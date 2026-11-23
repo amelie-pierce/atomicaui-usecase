@@ -28,21 +28,21 @@ export default function AdmTemplatesScene({ host }: ContextProps) {
             <Dialog.Body>
               <RadioGroup defaultValue="2">
                 <View aui={{ sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
-                  <View aui={SECTION}>
-                    <Type color="muted">Default Templates</Type>
+                  <View data-ug-part="section" aui={SECTION}>
+                    <Type data-ug-part="section-heading" color="muted">Default Templates</Type>
                     <Radio value="1" aui={SELECTION}>
                       <Radio.Label>Two-beam connection</Radio.Label>
                     </Radio>
                   </View>
-                  <View aui={SECTION}>
-                    <Type color="muted">My Templates</Type>
+                  <View data-ug-part="section" aui={SECTION}>
+                    <Type data-ug-part="section-heading" color="muted">My Templates</Type>
                     <View aui={ROW}>
                       <Radio value="2" aui={{ ...SELECTION, sx: { flex: 'fill' } }}>
                         <Radio.Label>Three-beam connection</Radio.Label>
                       </Radio>
-                      <Button>Download</Button>
-                      <Button aui={{ color: 'error' }}>Delete</Button>
-                      <Button>Edit</Button>
+                      <Button data-ug-part="row-action">Download</Button>
+                      <Button data-ug-part="row-action" aui={{ color: 'error' }}>Delete</Button>
+                      <Button data-ug-part="row-action">Edit</Button>
                     </View>
                   </View>
                 </View>

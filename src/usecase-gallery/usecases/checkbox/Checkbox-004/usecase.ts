@@ -50,4 +50,67 @@ export default defineUsecase({
   where: 'The 3D viewer controls of eight apps: HCS src/App.tsx, ADC src/adc/components/ConnectionModel.tsx, ADM src/features/viewer/components/ViewerChrome.tsx, FD src/components/Viewer.jsx, and the wrapped control row of HS src/hs/ViewerPane.tsx, PBS src/Viewer.tsx, AGPD src/agpd/Viewer.tsx and RWS src/rws/Viewer.tsx.',
   when: 'Use it to toggle independent parts of one drawing; each toggle is a Checkbox because several can be on. Do not use it for the camera choice (Perspective and Orthographic are a RadioGroup) or the Reset view button (Button-039 and the viewer buttons).',
   how: 'Every box is the 22px Checkbox (scale "sm" or none), selected color "primary" paint "solid", unselected color "surface" paint "tonal" with borderColor "outlined", the label 16px regular, except where noted. Five viewer groups, measured in headless Chromium. HCS: a column (gap 8) under a Type l3 semi-bold title (16px, weight 600) with Checkbox.Label at scale "sm". ADC: a column (gap 4) under a Type l5 bold title (12px, 700), the Checkboxes at scale "xs" and shape "soft": a 20px box, a 12px mark and a 14px weight 500 label, so it is the smallest. ADM: a compact column (gap 4) under a Type l5 semi-bold title (12px, 600), each row a Field (gap 6) with an icon-only Checkbox (aria-label, mark layer "duotone") and a Field.Label after it, 28px from the box start. FD: the same Field rows and title as ADM with the solid check (Checkbox.Icon name "check", Font Awesome 7 Pro instead of Duotone); FD disables Fasteners when the design does not pass and shows a "Select a Model to view Fasteners" tooltip, while the scene keeps it enabled without the tooltip. HS, PBS, AGPD, RWS: one wrapped row (gap 8) of Checkbox.Label boxes under the 3D view; PBS, AGPD and RWS lead it with an Object Visibility Type l4 semi-bold title (14px, 600) and HS has no title, so HS is merged with them. The group title is visible text here (a Type title or a Fieldset.Legend), where Checkbox-001 labels one option; a visible title against an aria-label, and `disabled`, are differences of the place inside this use case, not a split. The scenes leave out the results tables, the Reset view button, the camera radios, the 3D canvas and the Connection toggles that PBS, RWS and HCS disable until a model is chosen.',
+  anatomy: [
+    {
+      id: "title",
+      name: "Group title",
+      token: "Type",
+      selector: "[data-aui-typeface]",
+      description: "The \"Object Visibility\" title, a Type role \"l4\" at semi-bold weight, that names the group of visibility checkboxes; some apps write it as a Field.Label.",
+      code: [
+        "<Type as=\"span\" role=\"l4\" weight=\"semi-bold\">",
+        "  Object Visibility",
+        "</Type>",
+      ].join("\n"),
+    },
+    {
+      id: "checkbox",
+      name: "Checkbox",
+      token: "Checkbox",
+      selector: "[class~=\"aui-checkbox\"]",
+      description: "One of the visibility checkboxes (Wall, Roof, and Base plate or Anchors in the scenes) that shows or hides that part of the 3D model; checked by default.",
+      code: [
+        "<Checkbox defaultSelected aui={{",
+        "  scale: 'sm',",
+        "  states: {",
+        "    unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },",
+        "    selected: { color: 'primary', paint: 'solid' },",
+        "  },",
+        "}}>",
+        "  <Checkbox.Label>Wall</Checkbox.Label>",
+        "</Checkbox>",
+      ].join("\n"),
+    },
+    {
+      id: "indicator",
+      name: "Indicator",
+      selector: "[class~=\"aui-checkbox-indicator\"]",
+      description: "The box that shows whether the model part is visible.",
+      code: [
+        "<Checkbox defaultSelected aui={{ … }}>",
+        "  …",
+        "</Checkbox>",
+      ].join("\n"),
+    },
+    {
+      id: "icon",
+      name: "Icon",
+      token: "Checkbox.Icon",
+      selector: "[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]",
+      description: "The \"check\" mark used in the ADC, ADM, FD, HCS and HS scenes; the compact example draws the box without one.",
+      code: [
+        "<Checkbox.Icon name=\"check\" />",
+      ].join("\n"),
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Checkbox.Label",
+      selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
+      description: "The part name beside the box, such as Wall or Roof, in the wrapped row of the 3D viewer controls.",
+      code: [
+        "<Checkbox.Label>Wall</Checkbox.Label>",
+      ].join("\n"),
+    },
+  ],
 });

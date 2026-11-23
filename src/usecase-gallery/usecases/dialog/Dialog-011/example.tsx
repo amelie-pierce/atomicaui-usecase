@@ -15,8 +15,8 @@ export default function Example() {
               <Dialog.Close aria-label="Close REQUEST A QUOTE" />
             </Dialog.Title>
             <Dialog.Body aui={{ sx: { overflow: 'auto', minHeight: '0' } }}>
-              <View as="form" aui={{ paint: 'text', sx: { display: 'flex', flexWrap: 'wrap', gap: '24', alignItems: 'start' } }}>
-                <Type as="p" role="p3">
+              <View data-ug-part="form" as="form" aui={{ paint: 'text', sx: { display: 'flex', flexWrap: 'wrap', gap: '24', alignItems: 'start' } }}>
+                <Type data-ug-part="form-text" as="p" role="p3">
                   The form fields go here.
                 </Type>
               </View>

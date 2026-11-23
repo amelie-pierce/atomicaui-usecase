@@ -21,7 +21,7 @@ export default function PbsLastStepScene() {
         />
         <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Product Notes</Type>
         <Type role="p3">The notes column contains additional information.</Type>
-        <View className="ug-tour__nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
+        <View data-ug-part="step-nav" className="ug-tour__nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
           <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
             <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
             Previous

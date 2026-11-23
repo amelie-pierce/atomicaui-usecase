@@ -29,4 +29,79 @@ export default defineUsecase({
   where: 'The Search by option field of the column menu popover of the Output table in HCS, HS and PFD, under the Search by text field.',
   when: 'Use it in a table column menu to filter a column to one of its known values; use the text search field above it for free text. Use the field select (Select-001) for an input of a form.',
   how: 'Column filter (HCS, HS): a Field at scale "sm" (gap 4, minWidth 0) with the label "Search by option" and a Field.Select whose trigger is color "surface", paint "fixed", shape "soft" and width fill, the same trigger as the field select; the Field.SelectPositioner is side "bottom", align "start", sideOffset 4 with alignItemWithTrigger off, so the list sits under the trigger, and the rows are bare Field.SelectItems (Select all first) with no indicator. Column filter (PFD): the same field with side "top", so the list opens above the trigger (measured 36px below the trigger against 92px above). Those scenes show the enabled state (HCS disables the field with fewer than two options, HS with none) and leave out the column menu Popover, the sort buttons and the text search field.',
+  anatomy: [
+    {
+      id: 'field',
+      name: 'Field',
+      token: 'Field',
+      selector: '[class~="aui-field"]',
+      description: 'Field at scale "sm" with a 4 gap and zero minimum width so the filter can shrink inside the column menu.',
+      code: `<Field aui={{ scale: 'sm', sx: { gap: '4', minWidth: '0' } }}>
+  {/* … */}
+</Field>`,
+    },
+    {
+      id: 'label',
+      name: 'Label',
+      token: 'Field.Label',
+      selector: '[class~="aui-field-label"]',
+      description: 'The "Search by option" label above the filter trigger.',
+      code: `<Field.Label>Search by option</Field.Label>`,
+    },
+    {
+      id: 'trigger',
+      name: 'Trigger',
+      token: 'Field.SelectTrigger',
+      selector: '[class~="aui-select-trigger"]',
+      description: 'Full-width outlined trigger with the "soft" shape and no height override, so it takes the scale default.',
+      code: `<Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', shape: 'soft', sx: { width: 'fill' } }}>
+  {/* … */}
+</Field.SelectTrigger>`,
+    },
+    {
+      id: 'value',
+      name: 'Value',
+      token: 'Field.SelectValue',
+      selector: '[class~="aui-select-value"]',
+      text: true,
+      description: 'Shows the current filter value, "Select all" by default.',
+      code: `<Field.SelectValue />`,
+    },
+    {
+      id: 'chevron',
+      name: 'Chevron',
+      token: 'Field.SelectChevron',
+      selector: '[class~="aui-select-chevron"]',
+      description: 'The chevron that tells the user the trigger opens a list of column values.',
+      code: `<Field.SelectChevron />`,
+    },
+    {
+      id: 'popup',
+      name: 'Popup',
+      token: 'Field.SelectPopup',
+      selector: '[class~="aui-select-popup"]',
+      description: 'Popup that opens below the trigger, aligned to its start with alignItemWithTrigger off, at the trigger width.',
+      code: `<Field.SelectPopup matchTriggerWidth>
+  {/* … */}
+</Field.SelectPopup>`,
+    },
+    {
+      id: 'list',
+      name: 'List',
+      token: 'Field.SelectList',
+      selector: '[class~="aui-select-list"]',
+      description: 'The list holding the Select all, Passed and Failed rows.',
+      code: `<Field.SelectList>
+  {/* … */}
+</Field.SelectList>`,
+    },
+    {
+      id: 'item',
+      name: 'Item',
+      token: 'Field.SelectItem',
+      selector: '[class~="aui-select-item"]',
+      description: 'A filter row whose label is written straight into the item; "Select all" clears the column filter.',
+      code: `<Field.SelectItem value="all">Select all</Field.SelectItem>`,
+    },
+  ],
 });

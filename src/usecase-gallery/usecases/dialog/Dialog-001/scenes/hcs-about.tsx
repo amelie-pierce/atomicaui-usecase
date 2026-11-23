@@ -14,10 +14,10 @@ export default function HcsAboutScene({ host }: ContextProps) {
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
-            <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', overflow: 'hidden', minHeight: '0' } }}>
-              <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', width: '224', flex: 'none', minHeight: '0', borderColor: 'outlined', borderInlineEndWidth: '1' } }}>
-                <View aui={{ scale: 'sm', paint: 'text', profile: 'default', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8', borderColor: 'outlined', borderBlockEndWidth: '1' } }}>
-                  <Type as="strong" role="l4" weight="bold">
+            <View data-ug-part="body" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', overflow: 'hidden', minHeight: '0' } }}>
+              <View data-ug-part="history-column" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', width: '224', flex: 'none', minHeight: '0', borderColor: 'outlined', borderInlineEndWidth: '1' } }}>
+                <View data-ug-part="history-header" aui={{ scale: 'sm', paint: 'text', profile: 'default', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8', borderColor: 'outlined', borderBlockEndWidth: '1' } }}>
+                  <Type data-ug-part="history-heading" as="strong" role="l4" weight="bold">
                     Release history
                   </Type>
                   <Type as="span" role="l6" color="muted">
@@ -44,7 +44,7 @@ export default function HcsAboutScene({ host }: ContextProps) {
                     <List.ItemText>
                       <View as="span" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '4' } }}>
                         <View as="span" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', flexWrap: 'wrap', gap: '8' } }}>
-                          <Type as="strong" role="l3" weight="bold">
+                          <Type data-ug-part="version" as="strong" role="l3" weight="bold">
                             1.0.0
                           </Type>
                           <Chip aui={{ scale: 'sm', color: 'primary', paint: 'tonal' }}>
@@ -56,8 +56,8 @@ export default function HcsAboutScene({ host }: ContextProps) {
                   </List.Item>
                 </List>
               </View>
-              <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', flex: 'fill', minHeight: '0', minWidth: '0' } }}>
-                <View as="header" aui={{ scale: 'sm', paint: 'text', profile: 'default', sx: { display: 'flex', flexDirection: 'column', gap: '8', flex: 'none', borderColor: 'outlined', borderBlockEndWidth: '1' } }}>
+              <View data-ug-part="notes-column" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', flex: 'fill', minHeight: '0', minWidth: '0' } }}>
+                <View data-ug-part="notes-header" as="header" aui={{ scale: 'sm', paint: 'text', profile: 'default', sx: { display: 'flex', flexDirection: 'column', gap: '8', flex: 'none', borderColor: 'outlined', borderBlockEndWidth: '1' } }}>
                   <Type as="h2" role="h5">
                     Hinge Connector Selector
                   </Type>

@@ -15,7 +15,7 @@ export default function Example() {
               <Dialog.Close aria-label="Close" />
             </Dialog.Title>
             <Dialog.Body>
-              <Type as="p" role="p3">
+              <Type data-ug-part="calculator-text" as="p" role="p3">
                 The calculator inputs and result go here.
               </Type>
             </Dialog.Body>

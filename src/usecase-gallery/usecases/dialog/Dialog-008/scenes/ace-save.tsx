@@ -15,7 +15,7 @@ export default function AceSaveScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Cancel" />
             </Dialog.Title>
             <Dialog.Body>
-              <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
+              <View data-ug-part="form-column" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
                 <Field>
                   <Field.Label>Template name</Field.Label>
                   <Field.Control>
@@ -25,8 +25,8 @@ export default function AceSaveScene({ host }: ContextProps) {
               </View>
             </Dialog.Body>
             <Dialog.Actions>
-              <Dialog.Button>Cancel</Dialog.Button>
-              <Dialog.Button dismiss={false} disabled aui={{ color: 'secondary', paint: 'solid' }}>Save</Dialog.Button>
+              <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="save" dismiss={false} disabled aui={{ color: 'secondary', paint: 'solid' }}>Save</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

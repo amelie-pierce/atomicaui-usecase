@@ -16,8 +16,8 @@ export default function Example() {
               aria-label="Material help"
               render={<View aui={{ color: 'surface', paint: 'solid', profile: 'default', shape: 'soft', elevation: 4, sx: { display: 'flex', alignItems: 'start', gap: '8', width: '320' } }} />}
             >
-              <Type as="p" role="p3" aui={{ sx: { flex: 'fill' } }}>Select the base material of the member.</Type>
-              <IconButton name="xmark" aria-label="Close" aui={{ scale: 'xs', paint: 'text', profile: 'square-compact', shape: 'soft' }} />
+              <Type data-ug-part="help-text" as="p" role="p3" aui={{ sx: { flex: 'fill' } }}>Select the base material of the member.</Type>
+              <IconButton data-ug-part="close" name="xmark" aria-label="Close" aui={{ scale: 'xs', paint: 'text', profile: 'square-compact', shape: 'soft' }} />
             </Popover.Popup>
           </Popover.Positioner>
         </Popover.Portal>

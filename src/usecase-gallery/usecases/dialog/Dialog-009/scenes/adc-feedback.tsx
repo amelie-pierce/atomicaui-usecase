@@ -25,7 +25,7 @@ export default function AdcFeedbackScene({ host }: ContextProps) {
               </Tooltip.Provider>
             </Dialog.Title>
             <Dialog.Body>
-              <View aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '16' } }}>
+              <View data-ug-part="form-column" aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '16' } }}>
                 <Field>
                   <Field.Label>Email</Field.Label>
                   <Field.Control>
@@ -42,8 +42,8 @@ export default function AdcFeedbackScene({ host }: ContextProps) {
               <Checkbox aui={{ states: { unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } }, selected: { paint: 'solid', color: 'primary' } } }}>
                 <Checkbox.Label>Send me a copy of my responses</Checkbox.Label>
               </Checkbox>
-              <Dialog.Button>Cancel</Dialog.Button>
-              <Dialog.Button aui={{ color: 'primary', paint: 'solid' }} disabled>Send</Dialog.Button>
+              <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="send" aui={{ color: 'primary', paint: 'solid' }} disabled>Send</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

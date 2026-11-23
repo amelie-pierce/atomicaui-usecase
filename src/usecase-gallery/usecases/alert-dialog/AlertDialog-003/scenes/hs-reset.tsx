@@ -21,9 +21,9 @@ export default function HsResetScene({ host }: ContextProps) {
               </Dialog.Description>
             </Dialog.Body>
             <Dialog.Actions>
-              <Dialog.Button>Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
               <Dialog.Spacer />
-              <Dialog.Button aui={{ color: 'secondary', paint: 'solid' }}>Reset</Dialog.Button>
+              <Dialog.Button data-ug-part="confirm" aui={{ color: 'secondary', paint: 'solid' }}>Reset</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

@@ -53,11 +53,11 @@ export default function HcsConfigureColumnsScene({ host }: ContextProps) {
                   </List.Item>
                 ))}
               </List>
-              <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', minWidth: '0', justifyContent: 'between' } }}>
-                <IconButton name="rotate-left" aria-label="Reset columns to default" aui={{ paint: 'text' }} />
+              <View data-ug-part="footer" aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', minWidth: '0', justifyContent: 'between' } }}>
+                <IconButton data-ug-part="reset" name="rotate-left" aria-label="Reset columns to default" aui={{ paint: 'text' }} />
                 <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', minWidth: '0' } }}>
-                  <Button aui={{ paint: 'text' }}>Cancel</Button>
-                  <Button aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Save</Button>
+                  <Button data-ug-part="cancel" aui={{ paint: 'text' }}>Cancel</Button>
+                  <Button data-ug-part="save" aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Save</Button>
                 </View>
               </View>
             </Popover.Popup>

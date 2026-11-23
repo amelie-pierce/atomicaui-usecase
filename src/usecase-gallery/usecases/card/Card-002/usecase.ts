@@ -10,4 +10,32 @@ export default defineUsecase({
   where: 'The Explore More Applications dialog and the phone drawer of ADM (src/features/applications/components/RelatedAppsGrid.tsx).',
   when: 'Use it when the image is the whole content and a link around it is the control. Use the product card (Card-001) when the item needs a name.',
   how: '`Card` with `paint: "text"`, `profile: "no-padding"`, `shape: "soft"`, `sx: { width: "96", height: "96" }` (`width: "fill"` on the phone drawer), `Card.ImageContainer` filling it and `Card.Image` with `fit="contain"` and `ratio="1:1"`. The card is display-only; the link around it is the interactive element. The scene shows one tile of the three-column grid.',
+  anatomy: [
+    {
+      id: 'card',
+      name: 'Card',
+      token: 'Card',
+      selector: '[class~="aui-card"]',
+      description: 'Square 96 by 96 soft tile with no padding; ADM lays three of them across under Explore More Applications.',
+      code: `<Card aui={{ paint: 'text', profile: 'no-padding', scale: 'sm', shape: 'soft', sx: { width: '96', height: '96' } }}>`,
+    },
+    {
+      id: 'image-container',
+      name: 'Image container',
+      token: 'Card.ImageContainer',
+      selector: '[class~="aui-card-image-container"]',
+      description: 'Fills the whole card (width and height "fill"), so the picture is the entire tile.',
+      code: `<Card.ImageContainer aui={{ profile: 'no-padding', sx: { width: 'fill', height: 'fill' } }}>
+  <Card.Image … />
+</Card.ImageContainer>`,
+    },
+    {
+      id: 'image',
+      name: 'Image',
+      token: 'Card.Image',
+      selector: '[class~="aui-card-image"]',
+      description: 'The application picture with alt "Application", a 1:1 ratio and fit="contain".',
+      code: `<Card.Image src={MOCK_IMAGE_SRC} alt="Application" fit="contain" ratio="1:1" />`,
+    },
+  ],
 });

@@ -14,7 +14,7 @@ export default function Example() {
               We can not continue without your agreement. To proceed, relaunch the application and accept the agreement.
             </Dialog.Description>
             <Dialog.Actions align="center">
-              <Dialog.Button dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Re-Launch</Dialog.Button>
+              <Dialog.Button data-ug-part="relaunch" dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Re-Launch</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

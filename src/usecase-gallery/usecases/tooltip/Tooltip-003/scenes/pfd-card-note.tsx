@@ -9,7 +9,7 @@ export default function PfdCardNoteScene({ host }: ContextProps) {
       <Tooltip.Provider delay={0}>
         <Tooltip open>
           <Tooltip.Trigger
-            render={<View as="button" aria-label="Embedded Strap" aui={{ color: 'surface', paint: 'fixed', shape: 'soft', sx: { display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', minHeight: '96', minWidth: '96', gap: '4' } }} {...{ type: 'button' }} />}
+            render={<View data-ug-part="trigger" as="button" aria-label="Embedded Strap" aui={{ color: 'surface', paint: 'fixed', shape: 'soft', sx: { display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', minHeight: '96', minWidth: '96', gap: '4' } }} {...{ type: 'button' }} />}
           >
             <svg viewBox="0 0 192 128" aria-hidden="true" style={{ width: 'var(--p-px-64)', aspectRatio: '4 / 3' }}>
               <rect width="192" height="128" fill="var(--theme-surface-alt)" />
@@ -17,7 +17,7 @@ export default function PfdCardNoteScene({ host }: ContextProps) {
               <path d="M66 56v46h60V56M75 56v37h42V56" fill="var(--theme-surface)" stroke="var(--theme-secondary)" strokeWidth="3" />
               <path d="M48 29a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M138 29a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M82 74a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M104 74a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" fill="var(--theme-secondary)" />
             </svg>
-            <Type as="span" role="p3">Embedded Strap</Type>
+            <Type data-ug-part="card-label" as="span" role="p3">Embedded Strap</Type>
           </Tooltip.Trigger>
           <Tooltip.Portal container={host}>
             <Tooltip.Positioner sideOffset={4} className="ug-anchored">

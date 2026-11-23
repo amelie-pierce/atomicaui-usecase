@@ -36,4 +36,29 @@ export default defineUsecase({
   where: 'The release notes of the About dialog in the nine apps that have one (ADC has no About dialog). Real source: the About dialog of each app (the paths are in source).',
   when: 'Use it to tag an item with a short word in a list. Use a tonal Status chip for a state (Chip-003) and a Dismissible chip for a value the user can remove (Chip-005).',
   how: '`Chip` at `scale: "sm"`, `color` by meaning (`success`, `warning`) and `paint: "solid"`, with one `Chip.Label` in capitals. It sits in a 160px start column so the labels of every row line up with the text beside them. All nine apps write the same Chip (apps differ only in the column width, 96px in HS and 160px in HCS, a size); the scene is the HCS one and leaves out the Accordion around the rows.',
+  anatomy: [
+    {
+      id: "chip",
+      name: "Chip",
+      token: "Chip",
+      selector: "[class~=\"aui-chip\"]",
+      description: "The solid success chip at scale \"sm\" that tags a release-note entry as a feature (the warning colour is used for an improvement).",
+      code: [
+        "<Chip aui={{ scale: 'sm', color: 'success', paint: 'solid' }}>",
+        "  …",
+        "</Chip>",
+      ].join("\n"),
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Chip.Label",
+      selector: "[class~=\"aui-chip-label\"]",
+      text: true,
+      description: "The uppercase kind name FEATURE.",
+      code: [
+        "<Chip.Label>FEATURE</Chip.Label>",
+      ].join("\n"),
+    },
+  ],
 });

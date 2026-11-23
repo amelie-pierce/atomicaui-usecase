@@ -7,14 +7,14 @@ export default function PfdImagePreviewScene({ host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 12)', paddingBlockStart: 'calc(var(--p-px-16) * 8)' }}>
       <Tooltip open>
-        <Tooltip.Trigger render={<View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '8', minHeight: '32' } }} />}>
+        <Tooltip.Trigger render={<View data-ug-part="trigger" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '8', minHeight: '32' } }} />}>
           <svg viewBox="0 0 192 128" aria-hidden="true" style={{ width: 'var(--p-px-32)', aspectRatio: '4 / 3' }}>
               <rect width="192" height="128" fill="var(--theme-surface-alt)" />
               <path d="M24 20h144v18H24zM36 38h120v18H36z" fill="var(--theme-muted)" stroke="var(--theme-secondary)" strokeWidth="2" />
               <path d="M66 56v46h60V56M75 56v37h42V56" fill="var(--theme-surface)" stroke="var(--theme-secondary)" strokeWidth="3" />
               <path d="M48 29a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M138 29a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M82 74a3 3 0 1 0 6 0a3 3 0 1 0 -6 0M104 74a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" fill="var(--theme-secondary)" />
             </svg>
-          <Type as="a" role="l4" color="secondary" href="#" onClick={(event) => event.preventDefault()} aui={{ sx: { textDecoration: 'underline' } }}>Model C-300</Type>
+          <Type data-ug-part="product-link" as="a" role="l4" color="secondary" href="#" onClick={(event) => event.preventDefault()} aui={{ sx: { textDecoration: 'underline' } }}>Model C-300</Type>
         </Tooltip.Trigger>
         <Tooltip.Portal container={host}>
           <Tooltip.Positioner side="top" sideOffset={4} className="ug-anchored">

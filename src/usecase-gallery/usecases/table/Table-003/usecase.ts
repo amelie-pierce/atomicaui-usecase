@@ -26,4 +26,81 @@ export default defineUsecase({
   where: 'The calculation summary and result detail tables: ADM shared/ResultTable.tsx (used by LimitStateTable, GoverningRatioTable and InteractionTable, with StatusCell) and ADC ResultTable.tsx (the calculation summary).',
   when: 'Use it for a few labelled rows that the user reads but does not select or sort. For a scrolling, sortable grid use the Results grid (Table-001); for a paper copy use the Print table (Table-006). A data preview is Table-004 and a list of check messages is Table-005.',
   how: 'Table with a raised header band (headerCellAui color "raised"; a Table.HeaderCell with its own aui replaces headerCellAui, so each one repeats color "raised"), aui shape "soft" and a 1px outlined frame (the four border widths, borderColor "outlined"). Two groups, one scene each, measured in headless Chromium: ADM (border "between-rows", overflow "hidden") centres headers and cells (text-align center) with the first column left, puts a full-width title band (colSpan) above the column headers, and leads the Ratio cell with a coloured status dot Symbol (success below 100%, error from 100%, muted for N/A); ADC summary (the same between-rows frame) right-aligns every header and cell (text-align right) with the first column left, and sets a bracketed unit in the header in the Symbol font. The scenes leave out the other tables of the tabs, the dot colours other than success and the other data rows.',
+  anatomy: [
+    {
+      id: 'table',
+      name: 'Table',
+      token: 'Table',
+      selector: '[class~="aui-table"]',
+      description: 'Short summary table: border "between-rows" in a soft 1px outlined frame, overflow hidden and text right-aligned so the numbers line up.',
+      code: `<Table
+  aria-label="Governing ratios"
+  border="between-rows"
+  aui={{ shape: 'soft', sx: { textAlign: 'right', borderColor: 'outlined', …, overflow: 'hidden' } }}
+  headerCellAui={{ color: 'raised' }}
+>`,
+    },
+    {
+      id: 'head',
+      name: 'Header',
+      token: 'Table.Head',
+      selector: '[class~="aui-table-head"]',
+      description: 'Raised band with the Limit state, Demand (lb) and Capacity (lb) headings; ADM adds a full-width Limit states title row above them.',
+      code: `<Table.Head>
+  <Table.Row>
+    <Table.HeaderCell aui={{ color: 'raised', sx: { textAlign: 'left' } }}>Limit state</Table.HeaderCell>
+    …
+  </Table.Row>
+</Table.Head>`,
+    },
+    {
+      id: 'header-cell',
+      name: 'Header cell',
+      token: 'Table.HeaderCell',
+      selector: '[class~="aui-table-header-cell"]',
+      description: 'Column heading; the first, Limit state, is left-aligned while the numeric headings follow the right-aligned table.',
+      code: `<Table.HeaderCell>Demand (lb)</Table.HeaderCell>`,
+    },
+    {
+      id: 'body',
+      name: 'Body',
+      token: 'Table.Body',
+      selector: '[class~="aui-table-body"]',
+      description: 'Rows for Steel tension (2,210 / 5,400) and Concrete breakout (1,180 / 3,060), separated by hairlines.',
+      code: `<Table.Body>
+  <Table.Row>…</Table.Row>
+  <Table.Row>…</Table.Row>
+</Table.Body>`,
+    },
+    {
+      id: 'row',
+      name: 'Row',
+      token: 'Table.Row',
+      selector: '[class~="aui-table-row"]',
+      description: 'One limit state with its demand and capacity values.',
+      code: `<Table.Row>
+  <Table.Cell aui={{ sx: { textAlign: 'left' } }}>Steel tension</Table.Cell>
+  <Table.Cell>2,210</Table.Cell>
+  <Table.Cell>5,400</Table.Cell>
+</Table.Row>`,
+    },
+    {
+      id: 'cell',
+      name: 'Cell',
+      token: 'Table.Cell',
+      selector: '[class~="aui-table-cell"]',
+      description: 'Value cell; the limit state name is left-aligned through its own aui, the figures stay right-aligned.',
+      code: `<Table.Cell aui={{ sx: { textAlign: 'left' } }}>Concrete breakout</Table.Cell>`,
+    },
+    {
+      id: 'status-dot',
+      name: 'Status dot',
+      token: 'Symbol',
+      selector: '[class~="aui-table-cell"] [class~="aui-symbol"]',
+      description: 'ADM only: the Ratio cell leads with a coloured success dot before the 41% value.',
+      code: `<Table.Cell>
+  <Symbol color="success" aria-hidden>●</Symbol> 41%
+</Table.Cell>`,
+    },
+  ],
 });

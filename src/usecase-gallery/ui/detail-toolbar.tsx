@@ -3,16 +3,16 @@ import { useCopy } from '../hooks/use-copy';
 import { Button } from '../kit';
 import type { Crumb } from './breadcrumb';
 import { Breadcrumb } from './breadcrumb';
-import type { PreviewMode, Usecase, UsecaseCase } from '../types';
+import type { Usecase, UsecaseCase } from '../types';
 
 type SaveStatus = 'idle' | 'saved' | 'failed';
 
-export function DetailToolbar({ crumbs, usecase, mode, activeCase }: { crumbs: Crumb[]; usecase: Usecase; mode: PreviewMode; activeCase?: UsecaseCase }) {
+export function DetailToolbar({ crumbs, usecase, activeCase }: { crumbs: Crumb[]; usecase: Usecase; activeCase?: UsecaseCase }) {
   const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
   const saveTimer = useRef<ReturnType<typeof setTimeout>>();
   const share = useCopy();
   const copy = useCopy();
-  const code = mode === 'context' && activeCase ? activeCase.loadCode() : mode === 'context' && usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
+  const code = activeCase ? activeCase.loadCode() : usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
 
   useEffect(() => () => clearTimeout(saveTimer.current), []);
 
@@ -22,7 +22,7 @@ export function DetailToolbar({ crumbs, usecase, mode, activeCase }: { crumbs: C
       const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
       const link = document.createElement('a');
       link.href = url;
-      link.download = `${usecase.id.toLowerCase()}-${mode}.tsx`;
+      link.download = `${usecase.id.toLowerCase()}-in-context.tsx`;
       link.click();
       URL.revokeObjectURL(url);
       setSaveStatus('saved');

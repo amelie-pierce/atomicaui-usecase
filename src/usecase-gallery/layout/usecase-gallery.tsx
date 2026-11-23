@@ -28,6 +28,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   // Kept across use cases: the reader who switched to Code stays on Code while browsing.
   const [detail, setDetail] = useState<DetailMode>('code');
   const [hoveredPartId, setHoveredPartId] = useState<string>();
+  const [availableParts, setAvailableParts] = useState<{ key: string; ids: string[] }>();
   const [selectedPart, setSelectedPart] = useState<{ usecaseId: string; partId: string }>();
   const selectedId = route.page === 'usecase' ? route.usecaseId : '';
   if (selectedPart && selectedPart.usecaseId !== selectedId) setSelectedPart(undefined);
@@ -38,7 +39,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const original = allUsecases.find((candidate) => candidate.id === selectedId);
   const group = catalog.find((candidate) => candidate.id === original?.componentId);
   const usecase = original && group ? withLook(original, chosen?.look) : undefined;
-  const anatomy = useMemo(() => usecase ? anatomyFor(usecase) : [], [usecase]);
+  const anatomy = useMemo(() => usecase ? anatomyFor(usecase) : [], [usecase?.id, usecase?.look]);
   const activePartId = hoveredPartId ?? selectedPartId;
   const onPartChange = useCallback((partId: string | undefined) => setHoveredPartId(partId), []);
   const onSelectPart = useCallback((partId: string) => {
@@ -55,6 +56,8 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const types = caseTypes(usecase);
   const activeType = types.find((candidate) => candidate.name === chosen?.type) ?? types[0];
   const activeCase = activeType?.cases.find((candidate) => candidate.id === chosen?.caseId) ?? activeType?.cases[0];
+  const previewKey = `${selectedId}:${mode}:${activeCase?.id ?? ''}:${usecase.look ?? ''}`;
+  const onAvailablePartsChange = useCallback((ids: string[]) => setAvailableParts({ key: previewKey, ids }), [previewKey]);
   // Switching type keeps the apps in view: pick the variant that covers one of the apps of the current one.
   const changeType = (name: string) => {
     const next = types.find((candidate) => candidate.name === name);
@@ -63,8 +66,8 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   };
 
   const panes = {
-    render: <RenderPane usecase={usecase} looks={original.looks} onLookChange={(look) => setChosen({ usecaseId: usecase.id, look })} mode={mode} onModeChange={setMode} types={types} activeType={activeType} onTypeChange={changeType} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ ...chosen, usecaseId: usecase.id, type: activeType?.name, caseId })} anatomy={anatomy} hoveredPartId={activePartId} onPartChange={onPartChange} />,
-    detail: <DetailPane usecase={usecase} componentName={group.title} detail={detail} onDetailChange={setDetail} mode={mode} activeCase={activeCase} hoveredPartId={activePartId} onPartChange={onPartChange} onSelectPart={onSelectPart} />,
+    render: <RenderPane usecase={usecase} looks={original.looks} onLookChange={(look) => setChosen({ usecaseId: usecase.id, look })} mode={mode} onModeChange={setMode} types={types} activeType={activeType} onTypeChange={changeType} activeCase={activeCase} onCaseChange={(caseId) => setChosen({ ...chosen, usecaseId: usecase.id, type: activeType?.name, caseId })} anatomy={anatomy} hoveredPartId={activePartId} onPartChange={onPartChange} onAvailablePartsChange={onAvailablePartsChange} />,
+    detail: <DetailPane usecase={usecase} componentName={group.title} detail={detail} onDetailChange={setDetail} mode={mode} activeCase={activeCase} hoveredPartId={activePartId} availablePartIds={availableParts?.key === previewKey ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} />,
   };
   return (
     <div className="ug ug--usecase">

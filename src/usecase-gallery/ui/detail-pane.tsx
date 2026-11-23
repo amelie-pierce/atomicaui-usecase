@@ -17,6 +17,7 @@ export function DetailPane({
   mode,
   activeCase,
   hoveredPartId,
+  availablePartIds,
   onPartChange,
   onSelectPart,
 }: {
@@ -27,6 +28,7 @@ export function DetailPane({
   mode: PreviewMode;
   activeCase?: UsecaseCase;
   hoveredPartId?: string;
+  availablePartIds?: string[];
   onPartChange: (partId: string | undefined) => void;
   onSelectPart: (partId: string) => void;
 }) {
@@ -54,7 +56,7 @@ export function DetailPane({
       {detail === 'code' ? (
         <CodePane key={`${usecase.id}-${mode}-${activeCase?.id}`} usecase={usecase} mode={mode} activeCase={activeCase} />
       ) : (
-        <DocsPane usecase={usecase} componentName={componentName} mode={mode} activeCase={activeCase} hoveredPartId={hoveredPartId} onPartChange={onPartChange} onSelectPart={onSelectPart} />
+        <DocsPane usecase={usecase} componentName={componentName} mode={mode} activeCase={activeCase} hoveredPartId={hoveredPartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} />
       )}
     </section>
   );

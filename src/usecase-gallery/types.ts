@@ -47,6 +47,8 @@ export interface AnatomyPart {
   description: string;
   /** A selector scoped to the preview stage. Omit when the example uses data-ug-part. */
   selector?: string;
+  /** Highlight only the direct text of the selected element, measured without touching the DOM. */
+  text?: boolean;
 }
 
 export interface AccessibilityDoc {

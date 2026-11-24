@@ -24,9 +24,9 @@ export default defineUsecase({
   aui={{ scale: 'sm', color: 'surface', paint: 'solid', shape: 'soft', elevation: 4, sx: { … } }}
   style={{ insetInlineStart: 228, insetBlockStart: 8, inlineSize: 328 }}
 >` },
-    { id: 'close', name: 'Close', token: 'IconButton', selector: '[class~="aui-button"][aria-label="Close walkthrough"]', description: 'The 20px transparent xmark button pinned to the card corner (4px inset) that dismisses the HCS walkthrough; HCS wraps it in an absolute span.',
+    { id: 'close', name: 'Close', token: 'IconButton', selector: '[class~="aui-button"][aria-label^="Close"]', description: 'The 20px transparent xmark button pinned to the card corner (4px inset) that dismisses the HCS walkthrough; HCS wraps it in an absolute span.',
       code: `<IconButton name="xmark" aria-label="Close walkthrough" aui={{ scale: 'sm', paint: 'text', color: 'surface' }} />` },
-    { id: 'close-icon', name: 'Close icon', token: 'IconButton', selector: '[class~="aui-button"][aria-label="Close walkthrough"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The xmark glyph inside the close button.',
+    { id: 'close-icon', name: 'Close icon', token: 'IconButton', selector: '[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The xmark glyph inside the close button.',
       code: `<IconButton name="xmark" aria-label="Close" aui={{ paint: 'text', profile: 'contained' }} />` },
     { id: 'next', name: 'Next', token: 'Button', selector: '[class~="aui-button"]:not([aria-label])', description: 'The step button that is the only navigation on step 1 / 6 (Next with arrow-right); Close is the way out without finishing.',
       code: `<Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>

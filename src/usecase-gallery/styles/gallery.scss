@@ -129,6 +129,32 @@ $narrow: 840px;
   gap: var(--p-px-4);
 }
 
+// The selection control of a selection-based use case, at the top of the page under the breadcrumb.
+.ug-options {
+  flex: none;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+// Both UIs of the chosen option stack in the left pane, each in a stage of its own; the pane scrolls when they do not fit.
+.ug-render--split {
+  overflow: auto;
+}
+
+.ug-render--split .ug-render__stage {
+  flex: none;
+  min-block-size: var(--p-px-160);
+}
+
+.ug-render__heading {
+  flex: none;
+  margin: 0 0 var(--p-px-8);
+}
+
+.ug-render--split .ug-render__stage + .ug-render__heading {
+  margin-block-start: var(--p-px-16);
+}
+
 // The property note of the chosen group, plain text below the scene.
 .ug-render__note {
   flex: none;
@@ -226,8 +252,16 @@ $narrow: 840px;
   inset-block-start: 0;
   z-index: 1;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: var(--p-px-8);
   padding-block-end: var(--p-px-8);
+  background: var(--theme-surface-alt);
+}
+
+// A selection-based use case labels each block of code; the label stays at the start of the bar.
+.ug-code__label {
+  margin: 0 auto 0 0;
 }
 
 .ug-code__pre {

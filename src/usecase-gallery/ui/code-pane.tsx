@@ -13,16 +13,15 @@ function Snippet({ code }: { code: Promise<string> }) {
   );
 }
 
-export function CodePane({ usecase, mode, activeCase }: { usecase: Usecase; mode: PreviewMode; activeCase?: UsecaseCase }) {
-  const code =
-    mode === 'context' && activeCase ? activeCase.loadCode() : mode === 'context' && usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
+function CodeBlock({ usecase, code, label }: { usecase: Usecase; code: Promise<string>; label?: string }) {
   const { status, copy } = useCopy();
   return (
     <div className="ug-code">
       <div className="ug-code__bar">
+        {label && <Type as="h3" role="l3" weight="semi-bold" className="ug-code__label">{label}</Type>}
         <Button
           aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }}
-          aria-label={`Copy code for ${usecase.id}`}
+          aria-label={`Copy ${label ? `${label} ` : ''}code for ${usecase.id}`}
           onClick={() => code.then(copy)}
         >
           {LABEL[status]}
@@ -36,4 +35,19 @@ export function CodePane({ usecase, mode, activeCase }: { usecase: Usecase; mode
       </Suspense>
     </div>
   );
+}
+
+/** `bothUis`: a selection-based use case shows the code of its Component UI and of its In context UI. */
+export function CodePane({ usecase, mode, activeCase, bothUis }: { usecase: Usecase; mode: PreviewMode; activeCase?: UsecaseCase; bothUis?: boolean }) {
+  if (bothUis) {
+    return (
+      <>
+        <CodeBlock usecase={usecase} label="Component UI" code={usecase.loadCode()} />
+        <CodeBlock usecase={usecase} label="In context UI" code={activeCase ? activeCase.loadCode() : usecase.loadCode()} />
+      </>
+    );
+  }
+  const code =
+    mode === 'context' && activeCase ? activeCase.loadCode() : mode === 'context' && usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
+  return <CodeBlock usecase={usecase} code={code} />;
 }

@@ -1,6 +1,6 @@
 import { APPS } from '../apps';
 import type { AppKey } from '../apps';
-import type { Usecase, UsecaseCase } from '../types';
+import type { Usecase, UsecaseCase, UsecaseOption } from '../types';
 
 /** One type of case (Reset confirm, ...): its cases are the UI variants, one per group of apps, in the order written. */
 export interface CaseType {
@@ -40,4 +40,14 @@ export const withLook = (usecase: Usecase, lookName?: string): Usecase => {
     loadCode: look.loadCode,
     cases: usecase.cases?.filter((candidate) => !candidate.look || candidate.look === look.name),
   };
+};
+
+/**
+ * The use case as one of its options shows it: the example, its code, `apps` and the look follow the chosen option (the first
+ * when the id is unknown). The option itself is the In context case to render. A use case without options is returned as it is.
+ */
+export const withOption = (usecase: Usecase, optionId?: string): { usecase: Usecase; option?: UsecaseOption } => {
+  const option = usecase.options?.find((candidate) => candidate.id === optionId) ?? usecase.options?.[0];
+  if (!option) return { usecase };
+  return { usecase: { ...usecase, look: option.name, apps: option.apps, Example: option.Example, loadCode: option.loadExampleCode }, option };
 };

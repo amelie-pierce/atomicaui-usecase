@@ -3,7 +3,7 @@ import type { ComponentType } from 'react';
 import { appLabels, caseTypes } from './app-views';
 import { toContextSnippet, toSnippet } from './snippet';
 import type { AppKey } from '../apps';
-import type { ComponentGroup, ComponentMeta, ContextProps, UiTypeGroup, Usecase, UsecaseCaseDoc, UsecaseDoc, UsecaseLook } from '../types';
+import type { ComponentGroup, ComponentMeta, ContextProps, UiTypeGroup, Usecase, UsecaseCaseDoc, UsecaseDoc, UsecaseLook, UsecaseOption, UsecaseOptionDoc } from '../types';
 
 type Loader<T> = () => Promise<T>;
 
@@ -20,6 +20,9 @@ export interface CatalogSources {
   scenes?: Record<string, Loader<ComponentType<ContextProps>>>;
   sceneSources?: Record<string, Loader<string>>;
   /** `../usecases/<component>/<UseCaseId>/looks/<look-slug>.tsx`: the example of every look after the first. */
+  /** `../usecases/<component>/<UseCaseId>/options/<option-id>/{scene,example}.tsx`: the options of a selection-based use case. */
+  options?: Record<string, Loader<ComponentType<ContextProps> | ComponentType>>;
+  optionSources?: Record<string, Loader<string>>;
   looks?: Record<string, Loader<ComponentType>>;
   lookSources?: Record<string, Loader<string>>;
 }
@@ -43,6 +46,11 @@ const sceneKey = (path: string) => {
 };
 /** `Dark solid` -> `dark-solid`: the file name of a look's example. */
 export const lookSlug = (look: string) => look.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+/** `.../usecases/<component>/<UseCaseId>/options/<option-id>/<file>.tsx` -> `<component>/<UseCaseId>/<option-id>/<file>`. */
+const optionKey = (path: string) => {
+  const [component, id, , option, file] = segments(path).slice(-5);
+  return `${component}/${id}/${option}/${file.replace(/\.tsx$/, '')}`;
+};
 const contextKey = (path: string) => segments(path).slice(-1)[0].replace(/\.tsx$/, '');
 
 const fail = (message: string): never => {
@@ -50,7 +58,7 @@ const fail = (message: string): never => {
 };
 
 /** Pure assembly of the catalog from glob results, so the discovery rules live in one testable place. */
-export function buildCatalog({ metas, docs, examples, sources, contexts = {}, contextSources = {}, scenes = {}, sceneSources = {}, looks = {}, lookSources = {} }: CatalogSources): ComponentGroup[] {
+export function buildCatalog({ metas, docs, examples, sources, contexts = {}, contextSources = {}, scenes = {}, sceneSources = {}, options = {}, optionSources = {}, looks = {}, lookSources = {} }: CatalogSources): ComponentGroup[] {
   const groups = new Map<string, ComponentGroup & { usecases: Usecase[] }>();
   for (const [path, meta] of Object.entries(metas)) {
     groups.set(componentKey(path), { ...meta, usecases: [] });
@@ -62,6 +70,8 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
   const contextSourceBySlug = new Map(Object.entries(contextSources).map(([p, load]) => [contextKey(p), load]));
   const sceneByKey = new Map(Object.entries(scenes).map(([p, load]) => [sceneKey(p), load]));
   const sceneSourceByKey = new Map(Object.entries(sceneSources).map(([p, load]) => [sceneKey(p), load]));
+  const optionByKey = new Map(Object.entries(options).map(([p, load]) => [optionKey(p), load]));
+  const optionSourceByKey = new Map(Object.entries(optionSources).map(([p, load]) => [optionKey(p), load]));
   const lookByKey = new Map(Object.entries(looks).map(([p, load]) => [sceneKey(p), load]));
   const lookSourceByKey = new Map(Object.entries(lookSources).map(([p, load]) => [sceneKey(p), load]));
   const lazyContexts = new Map<string, ComponentType<ContextProps>>();
@@ -79,7 +89,7 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
     const loadExample = exampleByPath.get(key) ?? fail(`${id} is missing example.tsx`);
     const loadSource = sourceByPath.get(key) ?? fail(`${id} is missing example.tsx`);
     let code: Promise<string> | undefined;
-    const { cases, ...docFields } = doc;
+    const { cases, options: optionDocs, ...docFields } = doc;
     const usecase: Usecase = {
       ...docFields,
       id,
@@ -89,7 +99,8 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
     };
     if (!group.uiTypes.includes(doc.uiType)) fail(`${id} sets uiType "${doc.uiType}", which is not in uiTypes of ${component}.meta.ts (${group.uiTypes.join(', ')})`);
     if (doc.area && cases && cases.length > 0) fail(`${id} sets both "area" and "cases"; the scenes of the cases replace the area context, so drop "area"`);
-    if (!doc.area && !(cases && cases.length > 0)) fail(`${id} has neither "area" (default In context) nor "cases"`);
+    if (optionDocs && optionDocs.length > 0 && (cases?.length || doc.area || doc.look)) fail(`${id} sets "options" with "cases", "area" or "look"; each option is its own look and scene, so drop them`);
+    if (!doc.area && !(cases && cases.length > 0) && !(optionDocs && optionDocs.length > 0)) fail(`${id} has none of "area" (default In context), "cases" or "options"`);
     const slug = doc.area ? (doc.contextVariant ? `${areaSlug(doc.area)}-${doc.contextVariant}` : areaSlug(doc.area)) : '';
     if (doc.contextVariant && !contextBySlug.has(slug)) fail(`${id} sets contextVariant "${doc.contextVariant}" but contexts/${slug}.tsx is missing`);
     const loadContext = contextBySlug.get(slug);
@@ -105,6 +116,7 @@ export function buildCatalog({ metas, docs, examples, sources, contexts = {}, co
           toContextSnippet(source, snippet),
         ));
     }
+    if (optionDocs && optionDocs.length > 0) usecase.options = buildOptions(usecase, optionDocs, key, optionByKey, optionSourceByKey);
     if (cases && cases.length > 0) {
       const caseIds = new Set<string>();
       usecase.cases = cases.map((raw) => {
@@ -195,6 +207,55 @@ function groupByUiType({ id, title, uiTypes }: ComponentMeta, usecases: Usecase[
     if (group.usecases.length === 0) fail(`${title} lists the UI type "${group.title}" in uiTypes, but no use case of ${id} has it`);
   }
   return groups;
+}
+
+/**
+ * The options of a use case: every option names the apps that draw it and has its own scene; the first option's example is
+ * the use case's `example.tsx`, every other option brings `options/<id>/example.tsx`. The apps of the options must be
+ * exactly the apps of the use case, so the Document badges and the control say the same thing.
+ */
+function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, files: Map<string, Loader<ComponentType<ContextProps> | ComponentType>>, sources: Map<string, Loader<string>>): UsecaseOption[] {
+  const { id } = usecase;
+  const ids = new Set<string>();
+  const options = docs.map((raw, index): UsecaseOption => {
+    const { id: optionId, name, apps = usecase.apps, note, source } = raw;
+    for (const app of [...apps, ...Object.keys(source ?? {})] as AppKey[]) {
+      if (!apps.includes(app) || !usecase.apps.includes(app)) fail(`${id} sets the option "${optionId}" to app "${app}", which is not in its apps`);
+    }
+    if (apps.length === 0) fail(`${id} gives the option "${optionId}" an empty apps list`);
+    if (ids.has(optionId)) fail(`${id} lists the option "${optionId}" twice`);
+    ids.add(optionId);
+    const loadScene = files.get(`${key}/${optionId}/scene`) ?? fail(`${id} lists the option "${optionId}" but options/${optionId}/scene.tsx is missing`);
+    const loadSceneSource = sources.get(`${key}/${optionId}/scene`) ?? fail(`${id} lists the option "${optionId}" but options/${optionId}/scene.tsx is missing`);
+    const Scene = lazy(() => (loadScene() as Promise<ComponentType<ContextProps>>).then((component) => ({ default: component })));
+    let exampleCode: Promise<string> | undefined;
+    let sceneCode: Promise<string> | undefined;
+    let Example = usecase.Example;
+    let loadExampleCode = usecase.loadCode;
+    if (index > 0) {
+      const loadExample = files.get(`${key}/${optionId}/example`) ?? fail(`${id} lists the option "${optionId}" but options/${optionId}/example.tsx is missing`);
+      const loadExampleSource = sources.get(`${key}/${optionId}/example`) ?? fail(`${id} lists the option "${optionId}" but options/${optionId}/example.tsx is missing`);
+      Example = lazy(() => (loadExample() as Promise<ComponentType>).then((component) => ({ default: component })));
+      loadExampleCode = () => (exampleCode ??= loadExampleSource().then(toSnippet));
+    }
+    return {
+      id: optionId,
+      name,
+      apps,
+      label: appLabels(apps),
+      look: name,
+      note,
+      Scene,
+      Example,
+      loadExampleCode,
+      loadCode: () => (sceneCode ??= Promise.all([loadExampleCode(), loadSceneSource()]).then(([snippet, sceneSource]) => toContextSnippet(sceneSource, snippet))),
+    };
+  });
+  const shown = new Set(options.flatMap((option) => option.apps));
+  for (const app of usecase.apps) {
+    if (!shown.has(app)) fail(`${id} lists "${app}" in apps, but no option shows it; add it to an option's apps or remove it from the use case`);
+  }
+  return options;
 }
 
 /**

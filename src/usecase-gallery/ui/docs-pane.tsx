@@ -81,13 +81,14 @@ export function DocsPane({ usecase, componentName, mode, activeCase, hoveredPart
   const parts = anatomyFor(usecase);
   const hasAccessibility = !!usecase.accessibility?.keyboard || !!usecase.accessibility?.focus;
   const variantNames = [...new Set((usecase.cases ?? []).map((candidate) => candidate.name))];
-  const hasVariants = !!usecase.variants || !!usecase.look || variantNames.length > 0;
+  const optionNames = (usecase.options ?? []).map((option) => option.name);
+  const hasVariants = !!usecase.variants || !!usecase.look || variantNames.length > 0 || optionNames.length > 0;
   return <div className="ug-docs">
     <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{!!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{usecase.summary}</Type>{usecase.look && <Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">Look: </Type>{usecase.look}</Type>}<div className="ug-docs__apps"><UsedIn usecase={usecase} /></div></header>
     <div className="ug-docs__sections">
       {parts.length > 0 && <AnatomySection parts={parts} availablePartIds={availablePartIds} hoveredPartId={hoveredPartId} onPartChange={onPartChange} onSelectPart={onSelectPart} />}
       <Section id="usage" title="2. Usage / Behavior"><dl className="ug-docs__definition-list"><div><Type as="dt" role="l3" weight="semi-bold">Where</Type><Type as="dd" role="l3">{usecase.where}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">When</Type><Type as="dd" role="l3">{usecase.when}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">How</Type><Type as="dd" role="l3">{usecase.usage ?? usecase.how}</Type></div>{usecase.behavior && <div><Type as="dt" role="l3" weight="semi-bold">Behavior</Type><Type as="dd" role="l3">{usecase.behavior}</Type></div>}</dl></Section>
-      {hasVariants && <Section id="variants" title="3. Variants & States"><Type as="p" role="l3">{usecase.variants ?? [usecase.look, ...variantNames].filter(Boolean).join(' · ')}</Type></Section>}
+      {hasVariants && <Section id="variants" title="3. Variants & States"><Type as="p" role="l3">{usecase.variants ?? (optionNames.length ? optionNames : [usecase.look, ...variantNames]).filter(Boolean).join(' · ')}</Type></Section>}
       {hasAccessibility && <Section id="accessibility" title="4. Accessibility"><dl className="ug-docs__definition-list">{usecase.accessibility?.keyboard && <div><Type as="dt" role="l3" weight="semi-bold">Keyboard</Type><Type as="dd" role="l3">{usecase.accessibility.keyboard}</Type></div>}{usecase.accessibility?.focus && <div><Type as="dt" role="l3" weight="semi-bold">Focus</Type><Type as="dd" role="l3">{usecase.accessibility.focus}</Type></div>}</dl></Section>}
       {(usecase.prompt || usecase.debugPrompt) && <Section id="prompts" title="5. Prompt / Debug prompt">{usecase.prompt && <CopyBlock label="Prompt" text={usecase.prompt} />}{usecase.debugPrompt && <CopyBlock label="Debug prompt" text={usecase.debugPrompt} />}</Section>}
       <CodeApiSection usecase={usecase} mode={mode} activeCase={activeCase} />

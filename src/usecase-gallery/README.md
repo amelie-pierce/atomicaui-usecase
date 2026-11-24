@@ -25,7 +25,8 @@ usecase-gallery/
       <UseCaseId>/         e.g. Button-002
         example.tsx        the rendered example AND the source shown as code
         usecase.ts         defineUsecase({ uiType, title, area?, apps, summary, where, when, how, cases?, source? })
-        scenes/<case>.tsx  optional: one In context scene per case (see below)
+        options/<id>/      the selection-based detail page: scene.tsx (In context UI) and, after the first option, example.tsx (Component UI) per option (see Options)
+        scenes/<case>.tsx  optional: one In context scene per case (see below); a use case not yet moved to options
         looks/<look>.tsx   one example per look after the first, when the cases state two or more looks (`Dark solid` -> `dark-solid.tsx`)
 ```
 
@@ -62,6 +63,27 @@ The tree is component > UI type > use case. **One use case is one business actio
 `apps` lists the keys of the apps that use the pattern; the Document view shows one primary-style badge (kit `Chip`, `color: 'primary'`, `paint: 'solid'`) per key, in an unlabelled row (the list carries an `aria-label` of "Used in"). When the cases give apps their own UI (see "The same use case in another app"), the badges are drawn from the same groups instead: one block per type with one row of badges per distinct UI, so the Document and the In context toggle cannot disagree.
 
 No registry or shell edit is needed.
+
+## Options: the selection-based detail page
+
+Every use case follows this pattern; `Button-001` is the reference and the rest move to it one by one (a use case that still lists `cases` keeps the Component | In context toggle until then). The detail page has **one selection control at the top** (a radio group of option names), and the choice drives the whole page: below the control the **Component UI** and the **In context UI** of the chosen option are shown one above the other, and the **Document** and **Code** panels update to the same option. There is no Component | In context toggle, no case radio group and no app-group toggle.
+
+An option is one UI of the business action: every look and every state is one entry of one list (for `Button-001`: `White button with icon`, `Black button with icon`, `Black button without icon`, `Disabled button`). Enabled and disabled are options of the same list, never two sets.
+
+```ts
+apps: ['hcs', 'adm', 'hs', 'fd'],
+options: [
+  { id: 'white-icon', name: 'White button with icon', apps: ['hcs'], source: { hcs: 'src/App.tsx' } },
+  { id: 'black-icon', name: 'Black button with icon', apps: ['hs', 'fd'], source: { hs: '...', fd: '...' } },
+  { id: 'disabled', name: 'Disabled button', apps: ['hcs', 'adm', 'hs', 'fd'] },
+],
+```
+
+- Each option is a folder `options/<id>/`: `scene.tsx` is its In context UI (same shape as a scene, `{ children, host }`), and `example.tsx` is its Component UI. The first option's Component UI is the use case's `example.tsx`, so `options/<first id>/` holds only `scene.tsx`.
+- The option's `apps` are the apps that draw exactly this UI; their union must equal the use case's `apps` (the catalog throws otherwise). The chosen option's apps are the Document badges; the Document head names the chosen option as its look.
+- `options` replaces `cases`, `area` and the use case `look`: each option name is the look. Option names say what the UI is (`Black button without icon`), never an app.
+- The Code panel shows the Component UI code and the In context UI code of the chosen option; Save and Copy in the toolbar use the In context code.
+- The generic code is `options` in `types.ts`, `buildOptions` in `catalog/build-catalog.ts`, `withOption` in `catalog/app-views.ts`, `ui/option-bar.tsx` and the `split` branch of `ui/render-pane.tsx`; converting a use case is data only.
 
 ## Add an in-context view
 

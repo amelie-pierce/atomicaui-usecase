@@ -16,6 +16,7 @@ export function DetailPane({
   onDetailChange,
   mode,
   activeCase,
+  bothUis,
   hoveredPartId,
   availablePartIds,
   onPartChange,
@@ -27,6 +28,8 @@ export function DetailPane({
   onDetailChange: (detail: DetailMode) => void;
   mode: PreviewMode;
   activeCase?: UsecaseCase;
+  /** A selection-based use case: the Code view shows the Component UI and the In context UI of the chosen option. */
+  bothUis?: boolean;
   hoveredPartId?: string;
   availablePartIds?: string[];
   onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void;
@@ -54,7 +57,7 @@ export function DetailPane({
         ))}
       </ToggleGroup>
       {detail === 'code' ? (
-        <CodePane key={`${usecase.id}-${mode}-${activeCase?.id}`} usecase={usecase} mode={mode} activeCase={activeCase} />
+        <CodePane key={`${usecase.id}-${mode}-${activeCase?.id}`} usecase={usecase} mode={mode} activeCase={activeCase} bothUis={bothUis} />
       ) : (
         <DocsPane usecase={usecase} componentName={componentName} mode={mode} activeCase={activeCase} hoveredPartId={hoveredPartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} />
       )}

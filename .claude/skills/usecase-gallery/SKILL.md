@@ -1,6 +1,6 @@
 ---
 name: usecase-gallery
-description: Load before adding a use case to the gallery, changing an existing one (its example, docs, In context scenes, cases or apps), or adding an app to the apps registry. Covers the rule one use case = one business action, the tree (component > UI type > use case), the folder shape, the In context rules (minimal scenes, one per source design, the state radio group, the app-group toggle) and the checks to run.
+description: Load before adding a use case to the gallery, changing an existing one (its example, docs, In context scenes, cases or apps), or adding an app to the apps registry. Covers the rule one use case = one business action, the tree (component > UI type > use case), the folder shape, the In context rules (minimal scenes, one per source design, the options selection, and for use cases not yet converted the state radio group and the app-group toggle) and the checks to run.
 ---
 
 # usecase-gallery
@@ -54,6 +54,17 @@ The Component tab (`example.tsx`) is the code a user copies for the use case's m
 ## Change a use case
 
 Edit in place and keep its id. A change to `example.tsx` changes the Component preview and the Code view together; a change to a scene changes the In context preview and its code. Update `where`, `when` and `how` when the behavior they describe changes. The Document is what the AI reads for context, so keep it accurate to the example and the scene. A change keeps its id; renumbering happens only when a use case is added, merged or removed.
+
+## Detail page = one selection of options
+
+Every use case is built as options (`options` in `usecase.ts`; the README section "Options" has the shape). The detail page shows one selection control at the top; the chosen option decides the Component UI and the In context UI shown below it and the Document and Code panels. `Button-001` is the reference.
+
+- List every distinct UI of the one action as one option, enabled and disabled states in the same list (a look with an icon, a look without, a disabled button). Name the option for what the UI is, never the app; apps are the `apps` of the option and its Document badges.
+- Each option has `options/<id>/scene.tsx` (In context UI, minimal, from the real source) and a Component UI: the first option is `example.tsx`, every other option has `options/<id>/example.tsx`. The Component UI is the control of that exact option (its look, its icon or lack of it, `disabled`).
+- Do not add the radio > toggle split: no case radio group, no app-group toggle, no Component | In context tabs. A use case that still lists `cases` is not converted yet; convert it by turning each distinct UI, state and look into an option (derive them from its cases, do not invent UI), moving its scene to `options/<id>/scene.tsx`, and dropping `cases`, `area` and `look` (and `looks/`).
+- The union of the options' `apps` must equal the use case `apps`; the catalog validates it.
+- Check each option in the browser: the control, both UIs, and the Document and Code panels all change together, with no console errors.
+- The In context rules below still apply to each option's scene; where they speak of cases, groups, the state radio group or the app-group toggle, read option for a converted use case.
 
 ## In context rules
 

@@ -23,6 +23,24 @@ function FallbackFrame({ area, children }: { area: string; children: React.React
   );
 }
 
+/** The In context UI of a selection-based use case: the chosen option's scene with the example placed in it, in a stage of its own. */
+function ContextStage({ usecase, option }: { usecase: Usecase; option?: UsecaseCase }) {
+  const [host, setHost] = useState<HTMLElement | null>(null);
+  const { Example } = usecase;
+  const Scene = option?.Scene;
+  return (
+    <div className="ug-render__stage" ref={setHost}>
+      <Suspense fallback={null}>
+        {host && Scene && (
+          <Scene host={host}>
+            <Example />
+          </Scene>
+        )}
+      </Suspense>
+    </div>
+  );
+}
+
 /** Read-only: the example renders with fixed props, and there are no controls to change them. */
 export function RenderPane({
   usecase,
@@ -61,17 +79,18 @@ export function RenderPane({
 }) {
   const { Example } = usecase;
   const Context = activeCase?.Scene ?? usecase.Context;
-  const look = (mode === 'context' ? activeCase?.look : undefined) ?? usecase.look ?? usecase.cases?.[0]?.look;
+  const look = usecase.options ? undefined : (mode === 'context' ? activeCase?.look : undefined) ?? usecase.look ?? usecase.cases?.[0]?.look;
   const [host, setHost] = useState<HTMLElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const setStage = useCallback((node: HTMLDivElement | null) => {
     stageRef.current = node;
     setHost(node);
   }, []);
+  const split = !!usecase.options;
   const overlay = usePreviewAnatomy(stageRef, anatomy, hoveredPartId, onPartChange, onAvailablePartsChange);
   return (
-    <section className="ug-render" role="region" aria-label="Preview">
-      <ToggleGroup
+    <section className={split ? 'ug-render ug-render--split' : 'ug-render'} role="region" aria-label="Preview">
+      {!split && <ToggleGroup
         className="ug-render__toggle"
         aria-label="Preview mode"
         value={[mode]}
@@ -89,7 +108,7 @@ export function RenderPane({
             )}
           />
         ))}
-      </ToggleGroup>
+      </ToggleGroup>}
       {looks && looks.length > 1 && (
         <Field aui={{ scale: 'sm' }} className="ug-render__look-select">
           <Field.Label aui={{ scale: 'sm' }}>Look</Field.Label>
@@ -159,9 +178,10 @@ export function RenderPane({
           Look: {look}
         </Type>
       )}
+      {split && <Type as="h2" role="l3" weight="semi-bold" className="ug-render__heading">Component UI</Type>}
       <div className="ug-render__stage" ref={setStage}>
         <Suspense fallback={null}>
-          {mode === 'component' ? (
+          {mode === 'component' || split ? (
             host && (
               <StageHostContext.Provider value={host}>
                 <Example />
@@ -181,7 +201,9 @@ export function RenderPane({
         </Suspense>
         <AnatomyOverlay rect={overlay} />
       </div>
-      {mode === 'context' && activeCase?.note && (
+      {split && <Type as="h2" role="l3" weight="semi-bold" className="ug-render__heading">In context UI</Type>}
+      {split && <ContextStage usecase={usecase} option={activeCase} />}
+      {(mode === 'context' || split) && activeCase?.note && (
         <Type role="l3" as="p" color="muted" className="ug-render__note">
           {activeCase.note}
         </Type>

@@ -35,13 +35,13 @@ One use case per business action and look. Compare use cases by UI (layout and a
 
 - Merge into the lower id, move the other use case's scenes and cases in, rewrite `title`, `summary`, `where`, `when` and `how` once, and delete the other folder (then renumber the component).
 - The area name and the context never split a use case, and never merge two actions: the same Close X in a help popover, a walkthrough card and a dialog is the same measured control but three actions (Close popover, Close walkthrough, Close dialog) and so three use cases; a state such as `readOnly` or `disabled` is a place of the action, not another use case. A split needs a different action, a measured difference in the control's rendered look or a different structure; a label, container or spacing difference does not split.
-- An icon-only control (a close X, a kebab, a help trigger) is a use case of Button's `Icon button` type, and its Component tab shows the IconButton kit part; a trigger or wrapper kit part (`Panels.Trigger`, `Dialog.Close`) is written in the In context scene, not the example.
+- An icon-only control (a close X, a kebab, a help trigger) is a use case of Button's `Icon button` type, and its `example.tsx` is the IconButton kit part; a trigger or wrapper kit part (`Panels.Trigger`, `Dialog.Close`) is written in the In context scene, not the example.
 - Do not merge when the code instruction differs (another part, a wrapper, a compound form; not a state such as `readOnly` or `disabled`), when the trigger or control is a different kind, or when only the container sounds alike. Say the reason for each kept split in the PR description.
 - Recheck this rule for the component's other use cases whenever you add or change one.
 
-## Component tab shows the main-purpose component
+## The example is the main-purpose component
 
-The Component tab (`example.tsx`) is the code a user copies for the use case's main purpose: the component the use case is named for. A Dialog use case's example is the Dialog (Popup, Title, close X, Body), not the Accordion, RadioGroup or form inside it. A supporting component (an Accordion in an About dialog, the Radio list of a template picker) appears only in the In context scene, which writes it in place of the `{children}` slot, to clarify how it is used there. A Dialog example is forced open into the stage with `const host = useStageHost()` and `container={host}` (preview-only props the copied snippet strips). Recheck this for every use case of the component whenever you add or change one, and state each changed and each deliberately unchanged use case, with the reason, in the PR description.
+The `example.tsx` (shown in the document's Code/API and Anatomy, not a separate tab) is the code a user copies for the use case's main purpose: the component the use case is named for. A Dialog use case's example is the Dialog (Popup, Title, close X, Body), not the Accordion, RadioGroup or form inside it. A supporting component (an Accordion in an About dialog, the Radio list of a template picker) appears only in the In context scene, which writes it in place of the `{children}` slot, to clarify how it is used there. A Dialog example is forced open into the stage with `const host = useStageHost()` and `container={host}` (preview-only props the copied snippet strips). Recheck this for every use case of the component whenever you add or change one, and state each changed and each deliberately unchanged use case, with the reason, in the PR description.
 
 ## Add a use case
 
@@ -53,7 +53,7 @@ The Component tab (`example.tsx`) is the code a user copies for the use case's m
 
 ## Change a use case
 
-Edit in place and keep its id. A change to `example.tsx` changes the Component preview and the Code view together; a change to a scene changes the In context preview and its code. Update `where`, `when` and `how` when the behavior they describe changes. The Document is what the AI reads for context, so keep it accurate to the example and the scene. A change keeps its id; renumbering happens only when a use case is added, merged or removed.
+Edit in place and keep its id. A change to `example.tsx` changes the document's Code/API and Anatomy code together; a change to a scene changes the In context preview and its code. Update `where`, `when` and `how` when the behavior they describe changes. The Document is what the AI reads for context, so keep it accurate to the example and the scene. A change keeps its id; renumbering happens only when a use case is added, merged or removed.
 
 ## Detail page = one selection of options
 
@@ -115,5 +115,5 @@ Ids are `<Component>-<NNN>`, contiguous from 001 per component in tree order (co
 ## Check the work
 
 1. `npm run build` passes; the component page of the component renders a card for every use case; the catalog validation throws at startup for a bad id, a missing scene, or app groups that disagree with `apps` (rule 3). To run the validation without a browser, load `catalog/catalog.ts` through Vite's `ssrLoadModule` in a small node script and print each use case's types and groups.
-2. Open the page (`npm run dev`) and check the use case in Component and In context modes, every type and every group, and the Document badges against the toggle chips (same apps, same rows). A use case with one group per type, or one app, shows no toggle row.
+2. Open the page (`npm run dev`) and check the use case in the In context view (no Component tab), every type and every group, and the Document badges against the toggle chips (same apps, same rows). A use case with one group per type, or one app, shows no toggle row.
 3. Update the vault note `_vaults/atomicaui-usecase-prototype/wiki/gallery/adding-use-cases.md` only for what the task taught, and register any new note in its folder index.

@@ -66,7 +66,7 @@ No registry or shell edit is needed.
 
 ## Options: the selection-based detail page
 
-Every use case follows this pattern; `Button-001` is the reference and the rest move to it one by one (a use case that still lists `cases` keeps the Component | In context toggle until then). The detail page has **one selection control at the top** (a radio group of option names), and the choice drives the whole page: below the control the **Component UI** and the **In context UI** of the chosen option are shown one above the other, and the **Document** and **Code** panels update to the same option. There is no Component | In context toggle, no case radio group and no app-group toggle.
+Every use case follows this pattern; `Button-001` is the reference and the rest move to it one by one (a use case that still lists `cases` shows only the In context UI until then). The detail page has **one selection control at the top** (a radio group of option names), and the choice drives the whole page: below the control the **Component UI** and the **In context UI** of the chosen option are shown one above the other, and the single **Document** (code included) updates to the same option. There is no Component | In context toggle, no case radio group and no app-group toggle.
 
 An option is one UI of the business action: every look and every state is one entry of one list (for `Button-001`: `White button with icon`, `Black button with icon`, `Black button without icon`, `Disabled button`). Enabled and disabled are options of the same list, never two sets.
 
@@ -82,7 +82,7 @@ options: [
 - Each option is a folder `options/<id>/`: `scene.tsx` is its In context UI (same shape as a scene, `{ children, host }`), and `example.tsx` is its Component UI. The first option's Component UI is the use case's `example.tsx`, so `options/<first id>/` holds only `scene.tsx`.
 - The option's `apps` are the apps that draw exactly this UI; their union must equal the use case's `apps` (the catalog throws otherwise). The chosen option's apps are the Document badges; the Document head names the chosen option as its look.
 - `options` replaces `cases`, `area` and the use case `look`: each option name is the look. Option names say what the UI is (`Black button without icon`), never an app.
-- The Code panel shows the Component UI code and the In context UI code of the chosen option; Save and Copy in the toolbar use the In context code.
+- The document's Code/API section shows the Component UI code and the In context UI code of the chosen option; Save and Copy in the toolbar use the In context code.
 - The generic code is `options` in `types.ts`, `buildOptions` in `catalog/build-catalog.ts`, `withOption` in `catalog/app-views.ts`, `ui/option-bar.tsx` and the `split` branch of `ui/render-pane.tsx`; converting a use case is data only.
 
 ## Add an in-context view

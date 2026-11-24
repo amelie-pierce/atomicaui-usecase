@@ -11,6 +11,8 @@ const dedent = (jsx: string) => {
 
 const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:anchor|ref)=\{anchor\}|\sclassName=\"ug-anchored\"|\sdata-ug-part=\"[^\"]*\"|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
 
+export const stripPreviewProps = (code: string): string => code.replace(PREVIEW_ONLY_PROPS, '');
+
 /**
  * Turns an `example.tsx` source into the snippet users copy: the JSX the `Example` component returns,
  * without the kit import, the component wrapper or the preview-only props (a Dialog example is forced open into the stage). Falls back to the whole file when the shape differs.

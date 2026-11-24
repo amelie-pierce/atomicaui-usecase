@@ -1,5 +1,5 @@
-import type { ContextProps } from '../../../../types';
-import { Type, View } from '../../../../kit';
+import type { ContextProps } from '../../../../../types';
+import { Type, View } from '../../../../../kit';
 
 // Print Output enabled, as the HCS Output pane composes it, cut to the header: pane frame, wrapping header (title, then the action group
 // pushed to the end by the app's `.hcs-output-actions` margin, here an inline one). The toolbar, table and notes are left out.

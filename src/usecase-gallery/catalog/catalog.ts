@@ -17,6 +17,9 @@ export const catalog = buildCatalog({
   scenes: import.meta.glob('../usecases/*/*/scenes/*.tsx', { import: 'default' }),
   sceneSources: import.meta.glob('../usecases/*/*/scenes/*.tsx', { query: '?raw', import: 'default' }),
   // Examples of the looks after the first: `usecases/<component>/<UseCaseId>/looks/<look-slug>.tsx`.
+  // Options of a selection-based use case: `usecases/<component>/<UseCaseId>/options/<option-id>/{scene,example}.tsx`.
+  options: import.meta.glob('../usecases/*/*/options/*/*.tsx', { import: 'default' }),
+  optionSources: import.meta.glob('../usecases/*/*/options/*/*.tsx', { query: '?raw', import: 'default' }),
   looks: import.meta.glob('../usecases/*/*/looks/*.tsx', { import: 'default' }),
   lookSources: import.meta.glob('../usecases/*/*/looks/*.tsx', { query: '?raw', import: 'default' }),
 });

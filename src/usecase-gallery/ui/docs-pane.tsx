@@ -3,6 +3,7 @@ import { APPS } from '../apps';
 import type { AppKey } from '../apps';
 import { appLabels, caseTypes, isShared } from '../catalog/app-views';
 import { useCopy } from '../hooks/use-copy';
+import { stripPreviewProps } from '../catalog/snippet';
 import { Button, Chip, Type } from '../kit';
 import type { AnatomyPart, Usecase, UsecaseCase } from '../types';
 
@@ -41,12 +42,12 @@ function Section({ id, title, children }: { id: string; title: string; children:
 }
 
 function sourceExcerpt(part: AnatomyPart, source: string) {
-  if (part.code) return part.code;
+  if (part.code) return stripPreviewProps(part.code);
   if (!part.token) return undefined;
   const opening = new RegExp(`<${part.token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\w.])`);
   const lines = source.split('\n');
   const lineIndex = lines.findIndex((line) => opening.test(line));
-  return lineIndex < 0 ? undefined : lines.slice(lineIndex, lineIndex + 6).join('\n');
+  return lineIndex < 0 ? undefined : stripPreviewProps(lines.slice(lineIndex, lineIndex + 6).join('\n'));
 }
 
 function AnatomyCode({ part, source }: { part: AnatomyPart; source: string }) {
@@ -78,14 +79,20 @@ function CopyBlock({ label, text }: { label: string; text: string }) {
   </div>;
 }
 
-function CodeApiSection({ usecase, activeCase }: { usecase: Usecase; activeCase?: UsecaseCase }) {
-  const code = activeCase ? activeCase.loadCode() : usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
+function CodeBlock({ code, label }: { code: Promise<string>; label: string }) {
   const { status, copy } = useCopy();
+  return <div className="ug-docs__copy-block"><div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{label}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => code.then(copy)}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
+    <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><Type as="pre" role="l3" family="mono" className="ug-docs__code" tabIndex={0}><code>{use(code)}</code></Type></Suspense>
+    <span role="status" className="ug-visually-hidden">{status === 'copied' ? 'Code copied' : status === 'failed' ? 'Code copy failed' : ''}</span>
+  </div>;
+}
+
+function CodeApiSection({ usecase, activeCase }: { usecase: Usecase; activeCase?: UsecaseCase }) {
+  const hasContext = !!(usecase.options || activeCase || usecase.loadContextCode);
+  const code = activeCase ? activeCase.loadCode() : usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
   return <Section id="code-api" title="6. Code / API">
-    <div className="ug-docs__copy-block"><div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">Example</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => code.then(copy)}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
-      <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><Type as="pre" role="l3" family="mono" className="ug-docs__code" tabIndex={0}><code>{use(code)}</code></Type></Suspense>
-      <span role="status" className="ug-visually-hidden">{status === 'copied' ? 'Code copied' : status === 'failed' ? 'Code copy failed' : ''}</span>
-    </div>
+    {hasContext && <CodeBlock label="Component UI" code={usecase.loadCode()} />}
+    <CodeBlock label={hasContext ? 'In context UI' : 'Example'} code={code} />
     {!!usecase.api?.props?.length && <div className="ug-docs__props-wrap"><Type as="h4" role="l3" weight="semi-bold">Props</Type><div className="ug-docs__table-scroll"><table className="ug-docs__props"><thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead><tbody>{usecase.api.props.map((prop) => <tr key={prop.name}><th scope="row"><code>{prop.name}</code>{prop.required && ' *'}</th><td><code>{prop.type}</code></td><td>{prop.description ?? '—'}</td></tr>)}</tbody></table></div></div>}
   </Section>;
 }
@@ -95,13 +102,14 @@ export function DocsPane({ usecase, componentName, activeCase, hoveredPartId, av
   const code = activeCase ? activeCase.loadCode() : usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
   const hasAccessibility = !!usecase.accessibility?.keyboard || !!usecase.accessibility?.focus;
   const variantNames = [...new Set((usecase.cases ?? []).map((candidate) => candidate.name))];
-  const hasVariants = !!usecase.variants || !!usecase.look || variantNames.length > 0;
+  const optionNames = (usecase.options ?? []).map((option) => option.name);
+  const hasVariants = !!usecase.variants || !!usecase.look || variantNames.length > 0 || optionNames.length > 0;
   return <div className="ug-docs">
     <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{!!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{usecase.summary}</Type>{usecase.look && <Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">Look: </Type>{usecase.look}</Type>}<div className="ug-docs__apps"><UsedIn usecase={usecase} /></div></header>
     <div className="ug-docs__sections">
       {parts.length > 0 && <Suspense fallback={null}><AnatomyCodeSource parts={parts} code={code} availablePartIds={availablePartIds} hoveredPartId={hoveredPartId} onPartChange={onPartChange} onSelectPart={onSelectPart} /></Suspense>}
       <Section id="usage" title="2. Usage / Behavior"><dl className="ug-docs__definition-list"><div><Type as="dt" role="l3" weight="semi-bold">Where</Type><Type as="dd" role="l3">{usecase.where}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">When</Type><Type as="dd" role="l3">{usecase.when}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">How</Type><Type as="dd" role="l3">{usecase.usage ?? usecase.how}</Type></div>{usecase.behavior && <div><Type as="dt" role="l3" weight="semi-bold">Behavior</Type><Type as="dd" role="l3">{usecase.behavior}</Type></div>}</dl></Section>
-      {hasVariants && <Section id="variants" title="3. Variants & States"><Type as="p" role="l3">{usecase.variants ?? [usecase.look, ...variantNames].filter(Boolean).join(' · ')}</Type></Section>}
+      {hasVariants && <Section id="variants" title="3. Variants & States"><Type as="p" role="l3">{usecase.variants ?? (optionNames.length ? optionNames : [usecase.look, ...variantNames]).filter(Boolean).join(' · ')}</Type></Section>}
       {hasAccessibility && <Section id="accessibility" title="4. Accessibility"><dl className="ug-docs__definition-list">{usecase.accessibility?.keyboard && <div><Type as="dt" role="l3" weight="semi-bold">Keyboard</Type><Type as="dd" role="l3">{usecase.accessibility.keyboard}</Type></div>}{usecase.accessibility?.focus && <div><Type as="dt" role="l3" weight="semi-bold">Focus</Type><Type as="dd" role="l3">{usecase.accessibility.focus}</Type></div>}</dl></Section>}
       {(usecase.prompt || usecase.debugPrompt) && <Section id="prompts" title="5. Prompt / Debug prompt">{usecase.prompt && <CopyBlock label="Prompt" text={usecase.prompt} />}{usecase.debugPrompt && <CopyBlock label="Debug prompt" text={usecase.debugPrompt} />}</Section>}
       <Suspense fallback={<Section id="code-api" title="6. Code / API"><Type as="p" role="l3" color="muted">Loading code…</Type></Section>}><CodeApiSection usecase={usecase} activeCase={activeCase} /></Suspense>

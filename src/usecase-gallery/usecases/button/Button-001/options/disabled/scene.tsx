@@ -1,5 +1,5 @@
-import type { ContextProps } from '../../../../types';
-import { Button, Type, View } from '../../../../kit';
+import type { ContextProps } from '../../../../../types';
+import { Button, Type, View } from '../../../../../kit';
 
 // Print Output while the inputs are invalid: the same header as the Enabled case, with the native disabled attribute on Print Output.
 

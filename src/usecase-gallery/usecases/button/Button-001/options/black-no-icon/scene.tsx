@@ -1,5 +1,5 @@
-import type { ContextProps } from '../../../../types';
-import { Button, Tabs, View } from '../../../../kit';
+import type { ContextProps } from '../../../../../types';
+import { Button, Tabs, View } from '../../../../../kit';
 
 // ADM Output header (Workbench.tsx): the same tabbed header, but the action group is pushed to the end by the app's `.adm-header-actions` margin (here an inline one)
 // and Print is text only (the label follows the tab: Print Summary or Print Result). Enabled.

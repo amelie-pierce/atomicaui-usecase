@@ -39,6 +39,23 @@ export interface UsecaseCaseDoc {
   source?: Partial<Record<AppKey, string>>;
 }
 
+/**
+ * One option of a use case: one UI to view, chosen from a single control at the top of the detail page. The Component UI
+ * and the In context UI below the control, and the Document and Code panels, all follow the chosen option.
+ */
+export interface UsecaseOptionDoc {
+  /** Names the folder `options/<id>/` holding `scene.tsx` (the In context UI) and, after the first option, `example.tsx` (the Component UI). */
+  id: string;
+  /** The label of the option in the control (`White button with icon`, `Disabled button`). */
+  name: string;
+  /** The apps that draw this exact UI (keys of `apps.ts`, all listed in the use case's `apps`). Omit when it is the same in every app. */
+  apps?: AppKey[];
+  /** Plain text shown below the In context UI: a property of this UI. Never a toggle value. */
+  note?: string;
+  /** The source file of the scene per app of the option; overrides the use case's `source` for these apps. */
+  source?: Partial<Record<AppKey, string>>;
+}
+
 /** A documented component part and the preview selector it is linked to. */
 export interface AnatomyPart {
   id: string;
@@ -123,6 +140,14 @@ export interface UsecaseDoc {
    */
   cases?: UsecaseCaseDoc[];
   /**
+   * Optional: the selection-based detail page. Every UI of the action (each look and state, enabled or disabled) is one
+   * option of one list; the page shows a single control of the option names at the top, and below it the Component UI and
+   * the In context UI of the chosen option, while the Document and Code panels follow it. The first option's example is
+   * `example.tsx`; every other option has `options/<id>/example.tsx`, and every option has `options/<id>/scene.tsx`.
+   * Replaces `cases` and the use case `look`: set one or the other. A use case without `options` keeps the Component and In context tabs.
+   */
+  options?: UsecaseOptionDoc[];
+  /**
    * Optional: the source design each app's In context scenes were built from, per app key (for HCS, the file in the
    * hcs-design-prototype repo). A case's own `source` overrides it for that scene.
    */
@@ -153,6 +178,13 @@ export interface UsecaseCase {
   loadCode: () => Promise<string>;
 }
 
+/** One resolved option: the In context case of the option, plus its Component UI and the code of it. */
+export interface UsecaseOption extends UsecaseCase {
+  Example: ComponentType;
+  /** The snippet of the option's own example (the Component UI); `loadCode` is the snippet with the example placed in the scene. */
+  loadExampleCode: () => Promise<string>;
+}
+
 /**
  * One look of a use case: the same business action drawn another way (`Dark solid` beside the default `Secondary solid`).
  * Derived from the `look` of the cases; the first look is the use case's own `example.tsx`, every other one has
@@ -166,7 +198,7 @@ export interface UsecaseLook {
   loadCode: () => Promise<string>;
 }
 
-export interface Usecase extends Omit<UsecaseDoc, 'cases'> {
+export interface Usecase extends Omit<UsecaseDoc, 'cases' | 'options'> {
   /** `<ComponentId>-<NNN>`; also the URL hash. */
   id: string;
   componentId: string;
@@ -182,6 +214,8 @@ export interface Usecase extends Omit<UsecaseDoc, 'cases'> {
   cases?: UsecaseCase[];
   /** The looks of the action when its cases state two or more; the preview shows a select, and `apps`, the cases and the example follow the chosen one. */
   looks?: UsecaseLook[];
+  /** The options from `options/`: the selection-based page. `Example`, `loadCode` and `apps` follow the chosen option (see `withOption`). */
+  options?: UsecaseOption[];
 }
 
 /** The use cases of one component that share a UI type. */

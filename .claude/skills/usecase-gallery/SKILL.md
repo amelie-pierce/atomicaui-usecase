@@ -1,6 +1,6 @@
 ---
 name: usecase-gallery
-description: Load before adding a use case to the gallery, changing an existing one (its example, docs, In context scenes, cases or apps), or adding an app to the apps registry. Covers the rule one use case = one business action, the tree (component > UI type > use case), the folder shape, the In context rules (minimal scenes, one per source design, the state radio group, the app-group toggle) and the checks to run.
+description: Load before adding a use case to the gallery, changing an existing one (its example, docs, In context scenes, cases or apps), or adding an app to the apps registry. Covers the rule one use case = one business action, the tree (component > UI type > use case), the folder shape, the In context rules (minimal scenes, one per source design, the options selection, and for use cases not yet converted the state radio group and the app-group toggle) and the checks to run.
 ---
 
 # usecase-gallery
@@ -15,7 +15,7 @@ Live code wins over both: `define.ts`, `types.ts`, `apps.ts`, `catalog/build-cat
 - Discovery is automatic (`import.meta.glob` in `catalog/catalog.ts`); a new use case, component or scene needs no registry or shell edit.
 - `src/usecase-gallery/kit.ts` is the only file that imports the AtomicAUI kit. Every other file imports kit parts from it; add an export there when the kit has the part.
 - Use AtomicAUI tokens only: no raw colors or pixel values; tokens come from the kit and `--p-*` variables, with the small inline styles the README allows.
-- Examples are read-only: fixed props, no state, no controls. Keep `return` the last statement of `Example`, because the Code view of the right pane (its default mode, beside the Document toggle) is cut from that file.
+- Examples are read-only: fixed props, no state, no controls. Keep `return` the last statement of `Example`, because the document's Code/API section is cut from that file.
 - Never hand-edit `src/vendor/atomic-aui`.
 
 ## One use case = one business action
@@ -35,13 +35,13 @@ One use case per business action and look. Compare use cases by UI (layout and a
 
 - Merge into the lower id, move the other use case's scenes and cases in, rewrite `title`, `summary`, `where`, `when` and `how` once, and delete the other folder (then renumber the component).
 - The area name and the context never split a use case, and never merge two actions: the same Close X in a help popover, a walkthrough card and a dialog is the same measured control but three actions (Close popover, Close walkthrough, Close dialog) and so three use cases; a state such as `readOnly` or `disabled` is a place of the action, not another use case. A split needs a different action, a measured difference in the control's rendered look or a different structure; a label, container or spacing difference does not split.
-- An icon-only control (a close X, a kebab, a help trigger) is a use case of Button's `Icon button` type, and its Component tab shows the IconButton kit part; a trigger or wrapper kit part (`Panels.Trigger`, `Dialog.Close`) is written in the In context scene, not the example.
+- An icon-only control (a close X, a kebab, a help trigger) is a use case of Button's `Icon button` type, and its `example.tsx` is the IconButton kit part; a trigger or wrapper kit part (`Panels.Trigger`, `Dialog.Close`) is written in the In context scene, not the example.
 - Do not merge when the code instruction differs (another part, a wrapper, a compound form; not a state such as `readOnly` or `disabled`), when the trigger or control is a different kind, or when only the container sounds alike. Say the reason for each kept split in the PR description.
 - Recheck this rule for the component's other use cases whenever you add or change one.
 
-## Component tab shows the main-purpose component
+## The example is the main-purpose component
 
-The Component tab (`example.tsx`) is the code a user copies for the use case's main purpose: the component the use case is named for. A Dialog use case's example is the Dialog (Popup, Title, close X, Body), not the Accordion, RadioGroup or form inside it. A supporting component (an Accordion in an About dialog, the Radio list of a template picker) appears only in the In context scene, which writes it in place of the `{children}` slot, to clarify how it is used there. A Dialog example is forced open into the stage with `const host = useStageHost()` and `container={host}` (preview-only props the copied snippet strips). Recheck this for every use case of the component whenever you add or change one, and state each changed and each deliberately unchanged use case, with the reason, in the PR description.
+The `example.tsx` (shown in the document's Code/API and Anatomy, not a separate tab) is the code a user copies for the use case's main purpose: the component the use case is named for. A Dialog use case's example is the Dialog (Popup, Title, close X, Body), not the Accordion, RadioGroup or form inside it. A supporting component (an Accordion in an About dialog, the Radio list of a template picker) appears only in the In context scene, which writes it in place of the `{children}` slot, to clarify how it is used there. A Dialog example is forced open into the stage with `const host = useStageHost()` and `container={host}` (preview-only props the copied snippet strips). Recheck this for every use case of the component whenever you add or change one, and state each changed and each deliberately unchanged use case, with the reason, in the PR description.
 
 ## Add a use case
 
@@ -53,7 +53,18 @@ The Component tab (`example.tsx`) is the code a user copies for the use case's m
 
 ## Change a use case
 
-Edit in place and keep its id. A change to `example.tsx` changes the Component preview and the Code view together; a change to a scene changes the In context preview and its code. Update `where`, `when` and `how` when the behavior they describe changes. The Document is what the AI reads for context, so keep it accurate to the example and the scene. A change keeps its id; renumbering happens only when a use case is added, merged or removed.
+Edit in place and keep its id. A change to `example.tsx` changes the document's Code/API and Anatomy code together; a change to a scene changes the In context preview and its code. Update `where`, `when` and `how` when the behavior they describe changes. The Document is what the AI reads for context, so keep it accurate to the example and the scene. A change keeps its id; renumbering happens only when a use case is added, merged or removed.
+
+## Detail page = one selection of options
+
+Every use case is built as options (`options` in `usecase.ts`; the README section "Options" has the shape). The detail page shows one selection control at the top; the chosen option decides the In context UI and the document (Anatomy, Code/API). `Button-001` is the reference.
+
+- List every distinct UI of the one action as one option, enabled and disabled states in the same list (a look with an icon, a look without, a disabled button). Name the option for what the UI is, never the app; apps are the `apps` of the option and its Document badges.
+- Each option has `options/<id>/scene.tsx` (In context UI, minimal, from the real source) and a Component UI: the first option is `example.tsx`, every other option has `options/<id>/example.tsx`. The Component UI is the control of that exact option (its look, its icon or lack of it, `disabled`).
+- Do not add the radio > toggle split: no case radio group, no app-group toggle, no Component | In context tabs. A use case that still lists `cases` is not converted yet; convert it by turning each distinct UI, state and look into an option (derive them from its cases, do not invent UI), moving its scene to `options/<id>/scene.tsx`, and dropping `cases`, `area` and `look` (and `looks/`).
+- The union of the options' `apps` must equal the use case `apps`; the catalog validates it.
+- Check each option in the browser: the control, the In context UI and the document all change together, with no console errors.
+- The In context rules below still apply to each option's scene; where they speak of cases, groups, the state radio group or the app-group toggle, read option for a converted use case.
 
 ## In context rules
 
@@ -104,5 +115,5 @@ Ids are `<Component>-<NNN>`, contiguous from 001 per component in tree order (co
 ## Check the work
 
 1. `npm run build` passes; the component page of the component renders a card for every use case; the catalog validation throws at startup for a bad id, a missing scene, or app groups that disagree with `apps` (rule 3). To run the validation without a browser, load `catalog/catalog.ts` through Vite's `ssrLoadModule` in a small node script and print each use case's types and groups.
-2. Open the page (`npm run dev`) and check the use case in Component and In context modes, every type and every group, and the Document badges against the toggle chips (same apps, same rows). A use case with one group per type, or one app, shows no toggle row.
+2. Open the page (`npm run dev`) and check the use case in the In context preview, every type and every group, and the document badges against the toggle chips (same apps, same rows). A use case with one group per type, or one app, shows no toggle row.
 3. Update the vault note `_vaults/atomicaui-usecase-prototype/wiki/gallery/adding-use-cases.md` only for what the task taught, and register any new note in its folder index.

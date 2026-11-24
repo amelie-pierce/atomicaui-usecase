@@ -88,11 +88,11 @@ function CodeBlock({ code, label }: { code: Promise<string>; label: string }) {
 }
 
 function CodeApiSection({ usecase, activeCase }: { usecase: Usecase; activeCase?: UsecaseCase }) {
+  const hasContext = !!(usecase.options || activeCase || usecase.loadContextCode);
   const code = activeCase ? activeCase.loadCode() : usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
   return <Section id="code-api" title="6. Code / API">
-    {/* A selection-based use case documents the code of its Component UI and of its In context UI. */}
-    {usecase.options && <CodeBlock label="Component UI" code={usecase.loadCode()} />}
-    <CodeBlock label={usecase.options ? 'In context UI' : 'Example'} code={code} />
+    {hasContext && <CodeBlock label="Component UI" code={usecase.loadCode()} />}
+    <CodeBlock label={hasContext ? 'In context UI' : 'Example'} code={code} />
     {!!usecase.api?.props?.length && <div className="ug-docs__props-wrap"><Type as="h4" role="l3" weight="semi-bold">Props</Type><div className="ug-docs__table-scroll"><table className="ug-docs__props"><thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead><tbody>{usecase.api.props.map((prop) => <tr key={prop.name}><th scope="row"><code>{prop.name}</code>{prop.required && ' *'}</th><td><code>{prop.type}</code></td><td>{prop.description ?? '—'}</td></tr>)}</tbody></table></div></div>}
   </Section>;
 }

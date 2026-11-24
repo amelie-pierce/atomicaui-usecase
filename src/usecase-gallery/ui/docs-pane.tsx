@@ -3,6 +3,7 @@ import { APPS } from '../apps';
 import type { AppKey } from '../apps';
 import { appLabels, caseTypes, isShared } from '../catalog/app-views';
 import { useCopy } from '../hooks/use-copy';
+import { stripPreviewProps } from '../catalog/snippet';
 import { Button, Chip, Type } from '../kit';
 import type { AnatomyPart, Usecase, UsecaseCase } from '../types';
 
@@ -41,12 +42,12 @@ function Section({ id, title, children }: { id: string; title: string; children:
 }
 
 function sourceExcerpt(part: AnatomyPart, source: string) {
-  if (part.code) return part.code;
+  if (part.code) return stripPreviewProps(part.code);
   if (!part.token) return undefined;
   const opening = new RegExp(`<${part.token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\w.])`);
   const lines = source.split('\n');
   const lineIndex = lines.findIndex((line) => opening.test(line));
-  return lineIndex < 0 ? undefined : lines.slice(lineIndex, lineIndex + 6).join('\n');
+  return lineIndex < 0 ? undefined : stripPreviewProps(lines.slice(lineIndex, lineIndex + 6).join('\n'));
 }
 
 function AnatomyCode({ part, source }: { part: AnatomyPart; source: string }) {

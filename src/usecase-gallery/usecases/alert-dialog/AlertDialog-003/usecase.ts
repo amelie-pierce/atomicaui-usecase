@@ -3,14 +3,14 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Alert / Confirm',
   title: 'Reset confirm dialog',
-  look: 'Cancel and secondary Reset',
+
   apps: ['hcs', 'ace', 'adm', 'hs', 'fd', 'adc'],
-  cases: [
-    { id: 'hcs-reset', name: 'Reset confirm', apps: ['hcs'], source: { hcs: 'src/components/HcsResetDialog.tsx' } },
-    { id: 'ace-reset', name: 'Reset confirm', apps: ['ace'], source: { ace: 'src/features/reset-inputs/ui/ResetInputsAction.tsx' } },
-    { id: 'adm-reset', name: 'Reset confirm', apps: ['adm'], source: { adm: 'src/features/top-navigation/components/ResetDialog.tsx' } },
-    { id: 'hs-reset', name: 'Reset confirm', apps: ['hs', 'fd'], source: { hs: 'src/App.tsx', fd: 'src/App.jsx' } },
-    { id: 'adc-reset', name: 'Reset confirm', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } },
+  options: [
+    { id: "hcs-reset", name: "Reset confirm", apps: ["hcs"], source: {"hcs":"src/components/HcsResetDialog.tsx"} },
+    { id: "ace-reset", name: "Reset confirm — UI variant 2", apps: ["ace"], source: {"ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx"} },
+    { id: "adm-reset", name: "Reset confirm — UI variant 3", apps: ["adm"], source: {"adm":"src/features/top-navigation/components/ResetDialog.tsx"} },
+    { id: "hs-reset", name: "Reset confirm — UI variant 4", apps: ["hs","fd"], source: {"hs":"src/App.tsx","fd":"src/App.jsx"} },
+    { id: "adc-reset", name: "Reset confirm — UI variant 5", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: { hcs: 'src/components/HcsResetDialog.tsx', ace: 'src/features/reset-inputs/ui/ResetInputsAction.tsx', adm: 'src/features/top-navigation/components/ResetDialog.tsx', hs: 'src/App.tsx', fd: 'src/App.jsx', adc: 'src/adc/Workspace.tsx' },
   summary: 'A confirmation that asks before every input is reset: a warning title, a description of what is lost, and a Cancel next to a solid Reset.',

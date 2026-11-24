@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Add to Job List button',
-  look: 'Dark solid',
+
   apps: ['hs'],
-  cases: [
-    { id: 'hs-button', name: 'Add selected result', apps: ['hs'], source: { hs: 'src/hs/OutputPane.tsx' } },
+  options: [
+    { id: "hs-button", name: "Add selected result", apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} },
   ],
   source: { hs: 'src/hs/OutputPane.tsx' },
   summary: 'A solid secondary Button, black with white text, adds the chosen result to the job list.',

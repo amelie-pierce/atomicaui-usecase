@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Combobox',
   title: 'Searchable select',
   apps: ['fd'],
-  cases: [{ id: 'fd-license-country', name: 'Country picker', source: { fd: 'src/components/LicenseGate.jsx' } }],
+  options: [
+    { id: "fd-license-country", name: "Country picker", source: {"fd":"src/components/LicenseGate.jsx"} },
+  ],
   source: { fd: 'src/components/LicenseGate.jsx' },
   summary: 'A select you can type into: the text field filters the list, a chevron opens it, and the chosen option is ticked.',
   where: 'The country picker of the FD licence gate (src/components/LicenseGate.jsx).',

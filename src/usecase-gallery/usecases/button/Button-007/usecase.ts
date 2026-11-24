@@ -4,9 +4,9 @@ export default defineUsecase({
   uiType: 'Single button',
   title: 'Close info dialog button',
   apps: ['pbs', 'agpd', 'rws', 'fd'],
-  cases: [
-    { id: 'pbs-close', name: 'Info Close', apps: ['pbs', 'agpd', 'rws'], look: 'Secondary solid', source: { pbs: 'src/WorkspaceTools.tsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' } },
-    { id: 'fd-close', name: 'Info Close', apps: ['fd'], look: 'Dark solid', source: { fd: 'src/App.jsx' } },
+  options: [
+    { id: "pbs-close", name: "Secondary solid", apps: ["pbs","agpd","rws"], source: {"pbs":"src/WorkspaceTools.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    { id: "fd-close", name: "Dark solid", apps: ["fd"], source: {"fd":"src/App.jsx"} },
   ],
   source: { pbs: 'src/WorkspaceTools.tsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx', fd: 'src/App.jsx' },
   summary: 'Close is the lone button of an info dialog that only informs; its first look, the default gray one, is the example; the Look select shows the other.',

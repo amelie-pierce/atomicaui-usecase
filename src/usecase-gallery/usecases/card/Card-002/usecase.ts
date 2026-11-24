@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Card',
   title: 'Image tile',
   apps: ['adm'],
-  cases: [{ id: 'adm-related-apps', name: 'Related applications', source: { adm: 'src/features/applications/components/RelatedAppsGrid.tsx' } }],
+  options: [
+    { id: "adm-related-apps", name: "Related applications", source: {"adm":"src/features/applications/components/RelatedAppsGrid.tsx"} },
+  ],
   source: { adm: 'src/features/applications/components/RelatedAppsGrid.tsx' },
   summary: 'An image-only card, 96 by 96, used as the visual of a link in a grid.',
   where: 'The Explore More Applications dialog and the phone drawer of ADM (src/features/applications/components/RelatedAppsGrid.tsx).',

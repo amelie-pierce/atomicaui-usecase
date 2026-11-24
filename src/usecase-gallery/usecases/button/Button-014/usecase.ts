@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Add job button',
-  look: 'Dark solid',
+
   apps: ['ace'],
-  cases: [
-    { id: 'ace-button', name: 'Add new entry', apps: ['ace'], source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' } },
+  options: [
+    { id: "ace-button", name: "Add new entry", apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
   ],
   source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
   summary: 'A solid secondary Button with a plus icon appends an empty job entry under the Job tally table.',

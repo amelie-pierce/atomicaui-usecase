@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Step carousel buttons',
-  look: 'Ghost, 28px',
+
   apps: ['fd'],
-  cases: [
-    { id: 'fd-carousel-arrows', name: 'Carousel arrows', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
+  options: [
+    { id: "fd-carousel-arrows", name: "Carousel arrows", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
   ],
   source: { fd: 'src/components/InputPane.jsx' },
   summary: 'Two square transparent Buttons, 28px, step an input pane carousel back and forward.',

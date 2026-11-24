@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Back to top and Table Notes buttons',
-  look: 'Text pair with leading icons',
+
   apps: ['hcs', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  cases: [
-    { id: 'hcs-output-header', name: 'Output header', apps: ['hcs', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'], source: { hcs: 'src/useOutputNavigation.tsx', pfd: 'src/pfd/useOutputNavigation.tsx', pbs: 'src/useOutputNavigation.tsx', hs: 'src/hs/useOutputNavigation.tsx', fd: 'src/components/useOutputNavigation.jsx', agpd: 'src/agpd/outputNavigation.tsx', rws: 'src/rws/outputNavigation.tsx' } },
+  options: [
+    { id: "hcs-output-header", name: "Output header", apps: ["hcs","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/useOutputNavigation.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/useOutputNavigation.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/useOutputNavigation.jsx","agpd":"src/agpd/outputNavigation.tsx","rws":"src/rws/outputNavigation.tsx"} },
   ],
   source: { hcs: 'src/useOutputNavigation.tsx', pfd: 'src/pfd/useOutputNavigation.tsx', pbs: 'src/useOutputNavigation.tsx', hs: 'src/hs/useOutputNavigation.tsx', fd: 'src/components/useOutputNavigation.jsx', agpd: 'src/agpd/outputNavigation.tsx', rws: 'src/rws/outputNavigation.tsx' },
   summary: 'Two quiet text Buttons with a leading icon sit together in a header: an arrow jumps to the top of a long table and another down to its notes.',

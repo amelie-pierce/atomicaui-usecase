@@ -4,12 +4,8 @@ export default defineUsecase({
   uiType: 'Menubar with text triggers',
   title: 'Top bar action button',
   apps: ['hs', 'adc', 'adm', 'ace', 'hcs', 'pbs', 'pfd', 'rws', 'agpd'],
-  cases: [
-    {
-      id: 'hs-top-bar',
-      name: 'Action buttons',
-      source: { hs: 'src/hs/TopBar.tsx' },
-    },
+  options: [
+    { id: "hs-top-bar", name: "Action buttons", source: {"hs":"src/hs/TopBar.tsx"} },
   ],
   source: {
     hs: 'src/hs/TopBar.tsx',

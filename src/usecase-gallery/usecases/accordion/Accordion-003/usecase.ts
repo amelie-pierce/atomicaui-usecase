@@ -4,9 +4,9 @@ export default defineUsecase({
   uiType: 'Titled accordion',
   title: 'Plain title',
   apps: ['ace', 'hs', 'fd'],
-  cases: [
-    { id: 'ace-template-groups', name: 'Template groups', apps: ['ace'], source: { ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx' } },
-    { id: 'hs-template-groups', name: 'Template groups', apps: ['hs', 'fd'], source: { hs: 'src/hs/TemplateDialogs.tsx', fd: 'src/components/TemplatesDialog.jsx' } },
+  options: [
+    { id: "ace-template-groups", name: "Template groups", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} },
+    { id: "hs-template-groups", name: "Template groups — UI variant 2", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} },
   ],
   source: {
     ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx',

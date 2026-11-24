@@ -4,23 +4,8 @@ export default defineUsecase({
   uiType: 'Toast',
   title: 'Status toast',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  cases: [
-    {
-      id: 'hcs-viewport',
-      name: 'App viewport',
-      source: {
-        hcs: 'src/App.tsx',
-        ace: 'src/app/providers/ProviderCore.tsx',
-        adm: 'src/app/providers/AppProviders.tsx',
-        pfd: 'src/App.tsx',
-        pbs: 'src/App.tsx',
-        hs: 'src/App.tsx',
-        fd: 'src/App.jsx',
-        agpd: 'src/App.tsx',
-        rws: 'src/rws/Shell.tsx',
-        adc: 'src/adc/components/ReportFlow.tsx',
-      },
-    },
+  options: [
+    { id: "hcs-viewport", name: "App viewport", source: {"hcs":"src/App.tsx","ace":"src/app/providers/ProviderCore.tsx","adm":"src/app/providers/AppProviders.tsx","pfd":"src/App.tsx","pbs":"src/App.tsx","hs":"src/App.tsx","fd":"src/App.jsx","agpd":"src/App.tsx","rws":"src/rws/Shell.tsx","adc":"src/adc/components/ReportFlow.tsx"} },
   ],
   source: {
     hcs: 'src/App.tsx',

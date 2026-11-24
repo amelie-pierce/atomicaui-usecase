@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Alert / Confirm',
   title: 'Single centered action',
   apps: ['ace', 'hs'],
-  cases: [
-    {
-      id: 'ace-relaunch',
-      name: 'Relaunch notice',
-      apps: ['ace', 'hs'],
-      source: { ace: 'src/features/eula/ui/EulaGate.tsx', hs: 'src/hs/LicenseGate.tsx' },
-    },
+  options: [
+    { id: "ace-relaunch", name: "Relaunch notice", apps: ["ace","hs"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","hs":"src/hs/LicenseGate.tsx"} },
   ],
   source: { ace: 'src/features/eula/ui/EulaGate.tsx', hs: 'src/hs/LicenseGate.tsx' },
   summary: 'A blocking notice with no close X and one solid button centred in the footer, the only way forward.',

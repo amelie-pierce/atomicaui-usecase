@@ -3,12 +3,12 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Expand row button',
-  look: 'Expander, 24px',
+
   apps: ['hcs', 'hs', 'fd', 'adc'],
-  cases: [
-    { id: 'hcs-results', name: 'Results table', apps: ['hcs', 'fd'], source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/Results.jsx' } },
-    { id: 'hcs-group', name: 'Group row', apps: ['hcs', 'adc'], source: { hcs: 'src/components/F01Results.tsx', adc: 'src/adc/components/ProductsPicker.tsx' } },
-    { id: 'hs-group', name: 'Group row', apps: ['hs'], source: { hs: 'src/hs/ResultsTable.tsx' } },
+  options: [
+    { id: "hcs-results", name: "Results table", apps: ["hcs","fd"], source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx"} },
+    { id: "hcs-group", name: "Group row", apps: ["hcs","adc"], source: {"hcs":"src/components/F01Results.tsx","adc":"src/adc/components/ProductsPicker.tsx"} },
+    { id: "hs-group", name: "Group row — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ResultsTable.tsx"} },
   ],
   source: { hcs: 'src/components/F01Results.tsx', hs: 'src/hs/ResultsTable.tsx', fd: 'src/components/Results.jsx', adc: 'src/adc/components/ProductsPicker.tsx' },
   summary: 'A compact chevron Button expands a table row; HCS draws it as a Button (error color on failed rows), the other apps use the table\'s own expand trigger.',

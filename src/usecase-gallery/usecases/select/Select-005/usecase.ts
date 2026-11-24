@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Field select',
   title: 'Licence gate country select',
   apps: ['ace'],
-  cases: [
-    {
-      id: 'ace-licence-country',
-      name: 'Licence gate country',
-      apps: ['ace'],
-      source: { ace: 'src/features/eula/ui/EulaGate.tsx' },
-    },
+  options: [
+    { id: "ace-licence-country", name: "Licence gate country", apps: ["ace"], source: {"ace":"src/features/eula/ui/EulaGate.tsx"} },
   ],
   source: {
     ace: 'src/features/eula/ui/EulaGate.tsx',

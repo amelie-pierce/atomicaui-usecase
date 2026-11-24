@@ -4,21 +4,9 @@ export default defineUsecase({
   uiType: 'Single-line field',
   title: 'Text field',
   apps: ['hcs', 'hs', 'pbs', 'pfd', 'fd', 'rws', 'agpd', 'adm', 'ace', 'adc'],
-  cases: [
-    {
-      id: 'hs-text',
-      name: 'Text field',
-      apps: ['hcs', 'hs', 'pbs', 'pfd', 'fd', 'rws', 'agpd', 'adm', 'ace'],
-      note: 'Label above.',
-      source: { hcs: 'src/components/F01Experience.tsx', hs: 'src/hs/InputFields.tsx', pbs: 'src/InputFields.tsx', pfd: 'src/pfd/ShellDialogs.tsx', fd: 'src/components/Feedback.jsx', rws: 'src/rws/ShellDialogs.tsx', agpd: 'src/agpd/ShellDialogs.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx' },
-    },
-    {
-      id: 'adc-text-beside',
-      name: 'Text field',
-      apps: ['adc'],
-      note: 'Label beside: a 96px end-aligned label, the control fills the rest of the row.',
-      source: { adc: 'src/adc/Workspace.tsx' },
-    },
+  options: [
+    { id: "hs-text", name: "Text field", apps: ["hcs","hs","pbs","pfd","fd","rws","agpd","adm","ace"], note: "Label above.", source: {"hcs":"src/components/F01Experience.tsx","hs":"src/hs/InputFields.tsx","pbs":"src/InputFields.tsx","pfd":"src/pfd/ShellDialogs.tsx","fd":"src/components/Feedback.jsx","rws":"src/rws/ShellDialogs.tsx","agpd":"src/agpd/ShellDialogs.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","ace":"src/features/top-navigation/ui/FeedbackDialog.tsx"} },
+    { id: "adc-text-beside", name: "Text field — UI variant 2", apps: ["adc"], note: "Label beside: a 96px end-aligned label, the control fills the rest of the row.", source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', hs: 'src/hs/InputFields.tsx', pbs: 'src/InputFields.tsx', pfd: 'src/pfd/ShellDialogs.tsx', fd: 'src/components/Feedback.jsx', rws: 'src/rws/ShellDialogs.tsx', agpd: 'src/agpd/ShellDialogs.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx', adc: 'src/adc/components/ProjectInfoField.tsx' },
   summary: 'A labelled field with one outlined control for a line of text.',

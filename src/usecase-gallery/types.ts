@@ -20,37 +20,18 @@ export interface ComponentMeta {
   parent?: string;
 }
 
-/** One In context case of a use case: one scene, shared by every app of its group. */
-export interface UsecaseCaseDoc {
-  /** Names the scene file `scenes/<id>.tsx`; by convention `<first app>-<type>`. */
-  id: string;
-  /** The place of use the scene shows (Reset confirm dialog, Walkthrough card, ...). Cases with the same name are the same place, one per group of apps. */
-  name: string;
-  /**
-   * The apps that share this exact UI (keys of `apps.ts`, all listed in the use case's `apps`). Within one name the
-   * groups never overlap. Omit when the scene is the same in every app of the use case.
-   */
-  apps?: AppKey[];
-  /** The look of the control in this group when it differs from another group of the same action (`Secondary solid`, `Dark solid`); shown in the Document row and above the preview. Omit the use case `look` when every case states one. */
-  look?: string;
-  /** Plain text shown below the scene: a property of this UI (label above or beside, a unit weight, ...). Never a toggle value. */
-  note?: string;
-  /** The source file of this scene per app of the group; overrides the use case's `source` for these apps. */
-  source?: Partial<Record<AppKey, string>>;
-}
-
 /**
  * One option of a use case: one UI to view, chosen from a single control at the top of the detail page. The Component UI
- * and the In context UI below the control, and the Document and Code panels, all follow the chosen option.
+ * and the In context UI below the control, plus the complete document, all follow the chosen option.
  */
 export interface UsecaseOptionDoc {
   /** Names the folder `options/<id>/` holding `scene.tsx` (the In context UI) and, after the first option, `example.tsx` (the Component UI). */
   id: string;
   /** The label of the option in the control (`White button with icon`, `Disabled button`). */
   name: string;
-  /** The apps that draw this exact UI (keys of `apps.ts`, all listed in the use case's `apps`). Omit when it is the same in every app. */
+  /** The apps that draw this exact UI (keys of `apps.ts`, all listed in the use case's `apps`). */
   apps?: AppKey[];
-  /** Plain text shown below the In context UI: a property of this UI. Never a toggle value. */
+  /** Plain text shown below the In context UI when this UI needs a specific measured note. */
   note?: string;
   /** The source file of the scene per app of the option; overrides the use case's `source` for these apps. */
   source?: Partial<Record<AppKey, string>>;
@@ -94,17 +75,9 @@ export interface UsecaseDoc {
   uiType: string;
   /**
    * The name of the use case, shown beside the id in the tree. One use case is one business action, so the title names
-   * the action (`Download CSV button`, `Reset confirm dialog`). A component not yet converted still names its variant here
-   * (`Secondary solid`).
+   * the action (`Download CSV button`, `Reset confirm dialog`).
    */
   title: string;
-  /** The look of the control or dialog that performs the action (`Secondary solid`, `Text with leading icon`): a property, never a tree level. Shown in the Document and above the preview. Omit it when every case states its own `look`. */
-  look?: string;
-  /**
-   * The place of use of the one default In context (`contexts/<area-slug>.tsx`), for a use case without `cases`.
-   * Omit it when `cases` list the places: the scenes replace the area context.
-   */
-  area?: string;
   /** One sentence: what this use case shows. */
   summary: string;
   /** Where in a product this pattern appears. */
@@ -125,31 +98,19 @@ export interface UsecaseDoc {
   api?: { props?: ApiProp[] };
   related?: RelatedComponent[];
   /**
-   * Keys of the apps (see `apps.ts`) that use this pattern. When cases name their `apps`, the list must equal the
-   * union of those groups: the catalog throws for an app no case shows or a case app that is not listed.
+   * Keys of the apps (see `apps.ts`) that use this pattern. The list must equal the union of the options' apps.
    */
   apps: AppKey[];
-  /** Optional: the area's context places this example elsewhere (for example `close`, the card corner); uses `contexts/<area-slug>-<variant>.tsx`. */
-  contextVariant?: string;
   /**
-   * Optional: the places of use of this use case (for a converted component, places of the one action, such as a row kind
-   * or a state; for an unconverted one, the dialogs that hold a single button). Each id names a file
-   * `scenes/<id>.tsx` in the use case folder; the preview shows a radio group of the place names and renders the chosen
-   * scene instead of the area context. Cases that share a `name` are the UI variants of one type, one per group of apps
-   * (see `UsecaseCaseDoc`); with two or more variants the preview adds a toggle of the groups under the radio group.
+   * The selection-based detail page. Every UI of the action (each look and state, enabled or disabled) is one option of one
+   * list; the page shows one control at the top, and below it the Component UI, In context UI and complete document of the
+   * chosen option. The first option's example is `example.tsx`; every other option has `options/<id>/example.tsx`, and every
+   * option has `options/<id>/scene.tsx`.
    */
-  cases?: UsecaseCaseDoc[];
+  options: UsecaseOptionDoc[];
   /**
-   * Optional: the selection-based detail page. Every UI of the action (each look and state, enabled or disabled) is one
-   * option of one list; the page shows a single control of the option names at the top, and below it the Component UI and
-   * the In context UI of the chosen option, while the Document and Code panels follow it. The first option's example is
-   * `example.tsx`; every other option has `options/<id>/example.tsx`, and every option has `options/<id>/scene.tsx`.
-   * Replaces `cases` and the use case `look`: set one or the other. A use case without `options` keeps the Component and In context tabs.
-   */
-  options?: UsecaseOptionDoc[];
-  /**
-   * Optional: the source design each app's In context scenes were built from, per app key (for HCS, the file in the
-   * hcs-design-prototype repo). A case's own `source` overrides it for that scene.
+   * Optional: the source design each app's In context scene was built from, per app key (for HCS, the file in the
+   * hcs-design-prototype repo). An option's own `source` overrides it for that scene.
    */
   source?: Partial<Record<AppKey, string>>;
 }
@@ -161,44 +122,20 @@ export interface ContextProps {
   host: HTMLElement;
 }
 
-/** What the centre preview shows: the lone component, or the component inside the area that holds it. */
-/** One resolved In context case: its scene and the snippet with the example placed inside it. */
-export interface UsecaseCase {
+/** One resolved option: its Component UI, In context UI and the code of both. */
+export interface UsecaseOption {
   id: string;
   name: string;
-  /** The apps that share this UI: the group of the case, or every app of the use case when the case sets none. */
   apps: AppKey[];
-  /** The group toggle text: the app labels joined by a comma. */
   label: string;
-  /** The look of this group, when the case states one. */
-  look?: string;
-  /** The property note shown below the scene, when the case has one. */
   note?: string;
   Scene: ComponentType<ContextProps>;
-  loadCode: () => Promise<string>;
-}
-
-/** One resolved option: the In context case of the option, plus its Component UI and the code of it. */
-export interface UsecaseOption extends UsecaseCase {
   Example: ComponentType;
-  /** The snippet of the option's own example (the Component UI); `loadCode` is the snippet with the example placed in the scene. */
   loadExampleCode: () => Promise<string>;
-}
-
-/**
- * One look of a use case: the same business action drawn another way (`Dark solid` beside the default `Secondary solid`).
- * Derived from the `look` of the cases; the first look is the use case's own `example.tsx`, every other one has
- * `looks/<look-slug>.tsx` in the use case folder. The preview shows a select of the looks.
- */
-export interface UsecaseLook {
-  name: string;
-  /** The apps whose cases draw this look. */
-  apps: AppKey[];
-  Example: ComponentType;
   loadCode: () => Promise<string>;
 }
 
-export interface Usecase extends Omit<UsecaseDoc, 'cases' | 'options'> {
+export interface Usecase extends UsecaseDoc {
   /** `<ComponentId>-<NNN>`; also the URL hash. */
   id: string;
   componentId: string;
@@ -206,16 +143,7 @@ export interface Usecase extends Omit<UsecaseDoc, 'cases' | 'options'> {
   Example: ComponentType;
   /** Resolves to the copyable snippet, derived from the same `example.tsx` that renders. */
   loadCode: () => Promise<string>;
-  /** The real area that holds the example (`contexts/<area>.tsx`); absent when the kit cannot compose it. */
-  Context?: ComponentType<ContextProps>;
-  /** Resolves to the snippet with the example placed inside the context's JSX; present with `Context`. */
-  loadContextCode?: () => Promise<string>;
-  /** The In context cases from `scenes/`; they take the place of `Context` when present. */
-  cases?: UsecaseCase[];
-  /** The looks of the action when its cases state two or more; the preview shows a select, and `apps`, the cases and the example follow the chosen one. */
-  looks?: UsecaseLook[];
-  /** The options from `options/`: the selection-based page. `Example`, `loadCode` and `apps` follow the chosen option (see `withOption`). */
-  options?: UsecaseOption[];
+  options: UsecaseOption[];
 }
 
 /** The use cases of one component that share a UI type. */

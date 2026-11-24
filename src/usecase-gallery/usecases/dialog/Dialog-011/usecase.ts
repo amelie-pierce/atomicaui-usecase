@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Dialog with plain title',
   title: 'Form dialog',
   apps: ['agpd'],
-  cases: [{ id: 'agpd-quote', name: 'Request a quote', apps: ['agpd'], source: { agpd: 'src/agpd/QuoteDialog.tsx' } }],
+  options: [
+    { id: "agpd-quote", name: "Request a quote", apps: ["agpd"], source: {"agpd":"src/agpd/QuoteDialog.tsx"} },
+  ],
   source: { agpd: 'src/agpd/QuoteDialog.tsx' },
   summary: 'A wide dialog whose Body is one form: a yes/no question, short text fields, a notes Textarea and a SUBMIT button at the end of the row.',
   where: 'The Request a quote dialog of AGPD, opened from the plate selection. No other app has a request form of this kind; the feedback form the other apps open is Dialog-009 (Send feedback). Real site source: src/agpd/QuoteDialog.tsx.',

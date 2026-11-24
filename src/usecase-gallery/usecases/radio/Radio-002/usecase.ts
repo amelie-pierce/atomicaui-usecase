@@ -4,25 +4,10 @@ export default defineUsecase({
   uiType: 'Radio',
   title: 'Camera projection radio group',
   apps: ['hcs', 'fd', 'adc', 'pbs'],
-  cases: [
-    {
-      id: 'hcs-projection',
-      name: 'Projection',
-      apps: ['hcs', 'fd'],
-      source: { hcs: 'src/App.tsx', fd: 'src/components/Viewer.jsx' },
-    },
-    {
-      id: 'adc-projection',
-      name: 'Projection',
-      apps: ['adc'],
-      source: { adc: 'src/adc/components/ConnectionModel.tsx' },
-    },
-    {
-      id: 'pbs-projection-tooltip',
-      name: 'Projection',
-      apps: ['pbs'],
-      source: { pbs: 'src/Viewer.tsx' },
-    },
+  options: [
+    { id: "hcs-projection", name: "Projection", apps: ["hcs","fd"], source: {"hcs":"src/App.tsx","fd":"src/components/Viewer.jsx"} },
+    { id: "adc-projection", name: "Projection — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} },
+    { id: "pbs-projection-tooltip", name: "Projection — UI variant 3", apps: ["pbs"], source: {"pbs":"src/Viewer.tsx"} },
   ],
   source: {
     hcs: 'src/App.tsx',

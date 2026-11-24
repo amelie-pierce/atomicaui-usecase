@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Compact select',
   title: 'Cell select',
   apps: ['adc'],
-  cases: [{ id: 'adc-table-cell', name: 'Cell select', apps: ['adc'], source: { adc: 'src/adc/components/ProductsPicker.tsx' } }],
+  options: [
+    { id: "adc-table-cell", name: "Cell select", apps: ["adc"], source: {"adc":"src/adc/components/ProductsPicker.tsx"} },
+  ],
   source: { adc: 'src/adc/components/ProductsPicker.tsx' },
   summary: 'A compact label-less select that fills a table cell and picks one value for the row.',
   where: 'The Hef column of the ADC Products table: each selected anchor row edits its effective embedment from a short list.',

@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Dropdown with text trigger',
   title: 'Outlined text trigger',
   apps: ['hcs'],
-  cases: [{ id: 'hcs-product-filter', name: 'Radio value filter', apps: ['hcs'], source: { hcs: 'src/components/HcsProductFilter.tsx' } }],
+  options: [
+    { id: "hcs-product-filter", name: "Radio value filter", apps: ["hcs"], source: {"hcs":"src/components/HcsProductFilter.tsx"} },
+  ],
   source: { hcs: 'src/components/HcsProductFilter.tsx' },
   summary: 'A text trigger with a chevron opens a short list of radio rows; the chosen row names the trigger and closes the list.',
   where: 'The HCS output toolbar, at the end of the row beside the "Showing N of M results" text: the Product filter that narrows the results to Passed, Failed or All Products.',

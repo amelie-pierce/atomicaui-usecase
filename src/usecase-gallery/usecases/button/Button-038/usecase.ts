@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Remove row button',
-  look: 'Ghost, 28px',
+
   apps: ['hs', 'pbs'],
-  cases: [
-    { id: 'hs-remove', name: 'Remove', apps: ['hs', 'pbs'], source: { hs: 'src/hs/OutputPane.tsx', pbs: 'src/ResultsSection.tsx' } },
+  options: [
+    { id: "hs-remove", name: "Remove", apps: ["hs","pbs"], source: {"hs":"src/hs/OutputPane.tsx","pbs":"src/ResultsSection.tsx"} },
   ],
   source: { hs: 'src/hs/InputFields.tsx', pbs: 'src/ResultsSection.tsx' },
   summary: 'A square transparent trash IconButton, 28px, removes a row from a saved list after a confirmation.',

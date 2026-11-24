@@ -3,12 +3,12 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Send feedback dialog',
-  look: 'Cancel and secondary Send',
+
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  cases: [
-    { id: 'hcs-feedback', name: 'Send feedback', apps: ['hcs'], source: { hcs: 'src/components/F01Experience.tsx' } },
-    { id: 'adc-feedback', name: 'Send feedback', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } },
-    { id: 'ace-feedback', name: 'Send feedback', apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'], source: { ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/WorkspaceTools.tsx', hs: 'src/hs/ShellExtras.tsx', fd: 'src/components/Feedback.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' } },
+  options: [
+    { id: "hcs-feedback", name: "Send feedback", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"} },
+    { id: "adc-feedback", name: "Send feedback — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "ace-feedback", name: "Send feedback — UI variant 3", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/top-navigation/ui/FeedbackDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/components/Feedback.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', adc: 'src/adc/Workspace.tsx', ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/WorkspaceTools.tsx', hs: 'src/hs/ShellExtras.tsx', fd: 'src/components/Feedback.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A form dialog that sends the user\'s feedback: a Cancel and a solid Send (Submit).',

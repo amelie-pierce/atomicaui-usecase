@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Label chip',
   title: 'Compact soft label',
   apps: ['adc'],
-  cases: [{ id: 'adc-beta', name: 'Beta notice', source: { adc: 'src/adc/Workspace.tsx' } }],
+  options: [
+    { id: "adc-beta", name: "Beta notice", source: {"adc":"src/adc/Workspace.tsx"} },
+  ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A compact label with soft corners that marks a state of the whole app: BETA in the notice banner, the version beside the menu.',
   where: 'The beta notice and the version label of the ADC Workspace (src/adc/Workspace.tsx).',

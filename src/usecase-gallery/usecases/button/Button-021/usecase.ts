@@ -3,11 +3,11 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Save column configuration buttons',
-  look: 'Text and primary',
+
   apps: ['hcs', 'hs'],
-  cases: [
-    { id: 'hcs-configure-columns', name: 'Configure columns', apps: ['hcs'], source: { hcs: 'src/components/ColumnVisibility.tsx' } },
-    { id: 'hs-configure-columns', name: 'Configure columns', apps: ['hs'], source: { hs: 'src/hs/ColumnVisibility.tsx' } },
+  options: [
+    { id: "hcs-configure-columns", name: "Configure columns", apps: ["hcs"], source: {"hcs":"src/components/ColumnVisibility.tsx"} },
+    { id: "hs-configure-columns", name: "Configure columns — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ColumnVisibility.tsx"} },
   ],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx' },
   summary: 'A reset icon, a Cancel and a solid secondary Save close the Configure columns popover.',

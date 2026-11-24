@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Closable tab rail',
   title: 'Design tab rail',
   apps: ['adc'],
-  cases: [{ id: 'adc-design-rail', name: 'Design tab rail', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } }],
+  options: [
+    { id: "adc-design-rail", name: "Design tab rail", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+  ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A rail of closable tab chips, one per open design, ending in an add button, with an error dot on a tab whose design has a problem.',
   where: 'The top of the ADC workspace, above the designer: one tab per open design (renamed by double-click, reordered by drag, opened from the hidden-designs menu when they do not fit), the add button at the end of the rail.',

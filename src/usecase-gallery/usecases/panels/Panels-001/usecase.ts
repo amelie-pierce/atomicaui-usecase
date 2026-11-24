@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Resizable split',
   title: 'Side by side',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  cases: [
-    {
-      id: 'hcs-side-by-side',
-      name: 'Side by side',
-      apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-      source: { hcs: 'src/components/HcsSplitLayout.tsx', ace: 'src/pages/estimator/EstimatorPage.tsx', adm: 'src/app/layout/AppLayout.tsx', pfd: 'src/pfd/Workspace.tsx', pbs: 'src/App.tsx', hs: 'src/App.tsx', fd: 'src/App.jsx', agpd: 'src/App.tsx', rws: 'src/rws/Shell.tsx', adc: 'src/adc/Workspace.tsx' },
-    },
+  options: [
+    { id: "hcs-side-by-side", name: "Side by side", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws","adc"], source: {"hcs":"src/components/HcsSplitLayout.tsx","ace":"src/pages/estimator/EstimatorPage.tsx","adm":"src/app/layout/AppLayout.tsx","pfd":"src/pfd/Workspace.tsx","pbs":"src/App.tsx","hs":"src/App.tsx","fd":"src/App.jsx","agpd":"src/App.tsx","rws":"src/rws/Shell.tsx","adc":"src/adc/Workspace.tsx"} },
   ],
   source: { hcs: 'src/components/HcsSplitLayout.tsx', ace: 'src/pages/estimator/EstimatorPage.tsx', adm: 'src/app/layout/AppLayout.tsx', pfd: 'src/pfd/Workspace.tsx', pbs: 'src/App.tsx', hs: 'src/App.tsx', fd: 'src/App.jsx', agpd: 'src/App.tsx', rws: 'src/rws/Shell.tsx', adc: 'src/adc/Workspace.tsx' },
   summary: 'A Panels group splits the workspace into surface panes side by side that the user resizes by dragging the vertical handle between them.',

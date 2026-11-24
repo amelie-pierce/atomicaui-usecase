@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Menubar with summary trigger',
   title: 'Settings summary',
   apps: ['hs', 'fd', 'ace'],
-  cases: [{ id: 'hs-settings', name: 'Top bar', source: { hs: 'src/hs/TopBar.tsx' } }],
+  options: [
+    { id: "hs-settings", name: "Top bar", source: {"hs":"src/hs/TopBar.tsx"} },
+  ],
   source: { hs: 'src/hs/TopBar.tsx', fd: 'src/components/SettingsPopover.jsx', ace: 'src/features/top-navigation/ui/AceNavBar.tsx' },
   summary: 'A tonal Menubar.Button that sums up the current region, language and design code in one line, separated by dividers, and opens the settings popover.',
   where: 'The right side of the top bar in HS (country, EU purchase country, language, design code and design method, Popover.Trigger), FD (country, language and design code, Popover.Trigger) and ACE (country flag and language, the app configuration button).',

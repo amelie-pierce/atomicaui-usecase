@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Context menu',
   title: 'Tab context menu',
   apps: ['adc'],
-  cases: [{ id: 'adc-tab-options', name: 'Tab options', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } }],
+  options: [
+    { id: "adc-tab-options", name: "Tab options", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+  ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A right-click on a tab opens a menu of actions for that tab: close, close the others, rename, duplicate and move.',
   where: 'The ADC design tab rail: each design tab is the right-click area of its own context menu, labelled "Tab options" (double-click on the tab also renames).',

@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Dialog without title',
   title: 'Content-only expanded dialog',
   apps: ['hs'],
-  cases: [{ id: 'hs-expanded-output', name: 'Expanded output', source: { hs: 'src/hs/OutputTabs.tsx' } }],
+  options: [
+    { id: "hs-expanded-output", name: "Expanded output", source: {"hs":"src/hs/OutputTabs.tsx"} },
+  ],
   source: { hs: 'src/hs/OutputTabs.tsx' },
   summary: 'A dialog with no title and no close X: the popup is square, has no padding and fills the screen, and holds content that brings its own controls.',
   where: 'HS Output panel (src/hs/OutputTabs.tsx): the expand control of the Output pane moves the same tabs and table into a full-screen dialog, and the toolbar inside the content collapses it.',

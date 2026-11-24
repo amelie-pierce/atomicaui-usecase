@@ -3,11 +3,11 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Open column menu button',
-  look: 'Ghost, 20px, small glyph',
+
   apps: ['hcs', 'hs', 'pfd'],
-  cases: [
-    { id: 'hcs-column-menu', name: 'Column menu', apps: ['hcs', 'hs'], source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx' } },
-    { id: 'pfd-column-menu', name: 'Column menu', apps: ['pfd'], source: { pfd: 'src/pfd/ColumnMenu.tsx' } },
+  options: [
+    { id: "hcs-column-menu", name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} },
+    { id: "pfd-column-menu", name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} },
   ],
   source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx', pfd: 'src/pfd/ColumnMenu.tsx' },
   summary: 'A small IconButton opens the menu of a table column header.',

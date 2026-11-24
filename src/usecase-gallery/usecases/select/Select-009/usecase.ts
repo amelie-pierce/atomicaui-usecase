@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Filled select',
   title: 'Status filter',
   apps: ['fd'],
-  cases: [{ id: 'fd-status-filter', name: 'Status filter', apps: ['fd'], source: { fd: 'src/components/Results.jsx' } }],
+  options: [
+    { id: "fd-status-filter", name: "Status filter", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
+  ],
   source: { fd: 'src/components/Results.jsx' },
   summary: 'A label-less select in the output toolbar that narrows the results by status.',
   where: 'The FD output toolbar, beside the search field: the Product status filter, shown when the design has failed products.',

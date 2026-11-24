@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Launch general tutorial button',
-  look: 'Text only',
+
   apps: ['hs'],
-  cases: [
-    { id: 'hs-launch', name: 'Launch general tutorial', apps: ['hs'], source: { hs: 'src/hs/Tutorials.tsx' } },
+  options: [
+    { id: "hs-launch", name: "Launch general tutorial", apps: ["hs"], source: {"hs":"src/hs/Tutorials.tsx"} },
   ],
   source: { hs: 'src/hs/Tutorials.tsx' },
   summary: 'A borderless text Button on the last step of a topic tour starts the General Tutorial.',

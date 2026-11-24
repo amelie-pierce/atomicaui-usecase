@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Call dealer button',
-  look: 'Accent solid pill, 28px',
+
   apps: ['agpd'],
-  cases: [
-    { id: 'agpd-dealer-contact', name: 'Dealer contact', apps: ['agpd'], source: { agpd: 'src/agpd/QuoteDialog.tsx' } },
+  options: [
+    { id: "agpd-dealer-contact", name: "Dealer contact", apps: ["agpd"], source: {"agpd":"src/agpd/QuoteDialog.tsx"} },
   ],
   source: { agpd: 'src/agpd/QuoteDialog.tsx' },
   summary: 'A round filled accent IconButton calls the dealer.',

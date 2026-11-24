@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'ToggleGroup',
   title: 'Hugging segments',
   apps: ['agpd'],
-  cases: [{ id: 'agpd-fastener', name: 'Fastener switch', source: { agpd: 'src/agpd/inputs.tsx' } }],
+  options: [
+    { id: "agpd-fastener", name: "Fastener switch", source: {"agpd":"src/agpd/inputs.tsx"} },
+  ],
   source: { agpd: 'src/agpd/inputs.tsx' },
   summary: 'Two segments sized to their labels with no outline of their own, switching the field they sit above.',
   where: 'The fastener switch (STN22 or SDWB) over the Diameter / Style field of AGPD (src/agpd/inputs.tsx).',

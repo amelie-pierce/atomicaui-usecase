@@ -4,8 +4,8 @@ export default defineUsecase({
   uiType: 'Switch',
   title: 'Switch at row end',
   apps: ['hcs', 'hs', 'fd'],
-  cases: [
-    { id: 'hcs-columns', name: 'Column visibility', apps: ['hcs', 'hs', 'fd'], source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', fd: 'src/components/ColumnSettings.jsx' } },
+  options: [
+    { id: "hcs-columns", name: "Column visibility", apps: ["hcs","hs","fd"], source: {"hcs":"src/components/ColumnVisibility.tsx","hs":"src/hs/ColumnVisibility.tsx","fd":"src/components/ColumnSettings.jsx"} },
   ],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', fd: 'src/components/ColumnSettings.jsx' },
   summary: 'A switch at the end of a row, with the row\'s name at the start, turns the setting the row names on or off.',

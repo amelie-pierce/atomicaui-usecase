@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Collapsible panel',
   title: 'Top rail',
   apps: ['hcs', 'ace', 'adm', 'hs', 'fd', 'agpd'],
-  cases: [
-    {
-      id: 'hcs-top-rail',
-      name: 'Top rail',
-      apps: ['hcs', 'ace', 'adm', 'hs', 'fd', 'agpd'],
-      source: { hcs: 'src/components/HcsSplitLayout.tsx', ace: 'src/pages/estimator/EstimatorPage.tsx', adm: 'src/features/design-inputs/components/InputsPanel/InputsPanel.tsx', hs: 'src/App.tsx', fd: 'src/components/InputPane.jsx', agpd: 'src/App.tsx' },
-    },
+  options: [
+    { id: "hcs-top-rail", name: "Top rail", apps: ["hcs","ace","adm","hs","fd","agpd"], source: {"hcs":"src/components/HcsSplitLayout.tsx","ace":"src/pages/estimator/EstimatorPage.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx","fd":"src/components/InputPane.jsx","agpd":"src/App.tsx"} },
   ],
   source: { hcs: 'src/components/HcsSplitLayout.tsx', ace: 'src/pages/estimator/EstimatorPage.tsx', adm: 'src/features/design-inputs/components/InputsPanel/InputsPanel.tsx', hs: 'src/App.tsx', fd: 'src/components/InputPane.jsx', agpd: 'src/App.tsx' },
   summary: 'A collapsible Panels.Panel rests at a 40px rail and carries a Panels.Trigger that expands it again.',

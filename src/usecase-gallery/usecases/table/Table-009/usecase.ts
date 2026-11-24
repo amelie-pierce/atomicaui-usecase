@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Editable table',
   title: 'Cell input table',
   apps: ['adm'],
-  cases: [{ id: 'adm-cell-input', name: 'Cell input table', apps: ['adm'], source: { adm: 'src/features/design-inputs/components/GeometrySection/AnchorSpacingTable.tsx' } }],
+  options: [
+    { id: "adm-cell-input", name: "Cell input table", apps: ["adm"], source: {"adm":"src/features/design-inputs/components/GeometrySection/AnchorSpacingTable.tsx"} },
+  ],
   source: { adm: 'src/features/design-inputs/components/GeometrySection/AnchorSpacingTable.tsx' },
   summary: 'A table whose cells hold inputs: each spacing value is edited in its own number field.',
   where: 'ADM Design inputs, Geometry section: AnchorSpacingTable.tsx, the Anchor Spacing table with one row per anchor and a Column and a Row spacing cell.',

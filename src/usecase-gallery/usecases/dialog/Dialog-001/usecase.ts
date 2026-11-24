@@ -4,28 +4,9 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'About dialog',
   apps: ['hcs', 'ace', 'adm', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'pfd'],
-  cases: [
-    {
-      id: 'hcs-about',
-      name: 'About dialog',
-      apps: ['hcs', 'ace', 'adm', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-      source: {
-        hcs: 'src/components/HcsAboutDialog.tsx',
-        ace: 'src/features/top-navigation/ui/AboutDialog.tsx',
-        adm: 'src/features/top-navigation/components/AboutDialog.tsx',
-        pbs: 'src/AboutDialog.tsx',
-        hs: 'src/hs/AboutDialog.tsx',
-        fd: 'src/components/AboutDialog.jsx',
-        agpd: 'src/agpd/AboutDialog.tsx',
-        rws: 'src/rws/AboutDialog.tsx',
-      },
-    },
-    {
-      id: 'pfd-about',
-      name: 'About dialog',
-      apps: ['pfd'],
-      source: { pfd: 'src/pfd/AboutDialog.tsx' },
-    },
+  options: [
+    { id: "hcs-about", name: "About dialog", apps: ["hcs","ace","adm","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"} },
+    { id: "pfd-about", name: "About dialog — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/AboutDialog.tsx"} },
   ],
   source: {
     hcs: 'src/components/HcsAboutDialog.tsx',

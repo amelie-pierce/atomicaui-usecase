@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Spinner',
   title: 'Small pane spinner',
   apps: ['hcs', 'pfd'],
-  cases: [{ id: 'pfd-updating', name: 'Updating results', source: { hcs: 'src/components/F01Results.tsx', pfd: 'src/pfd/OutputPane.tsx' } }],
+  options: [
+    { id: "pfd-updating", name: "Updating results", source: {"hcs":"src/components/F01Results.tsx","pfd":"src/pfd/OutputPane.tsx"} },
+  ],
   source: { hcs: 'src/components/F01Results.tsx', pfd: 'src/pfd/OutputPane.tsx' },
   summary: 'A small default-colour spinner centred in a pane while its results load.',
   where: 'The Output pane while results are checked (HCS F01Results.tsx, PFD OutputPane.tsx).',

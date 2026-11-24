@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Card',
   title: 'Product card',
   apps: ['ace'],
-  cases: [{ id: 'ace-related-products', name: 'Related products', source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' } }],
+  options: [
+    { id: "ace-related-products", name: "Related products", source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
+  ],
   source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
   summary: 'A fixed 128 by 160 card with a contained image above a centred, wrapping title.',
   where: 'The related products row at the end of the ACE calculation output (src/features/calculation/ui/CalculationOutput.tsx).',

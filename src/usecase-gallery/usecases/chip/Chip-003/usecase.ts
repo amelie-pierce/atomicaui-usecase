@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Status chip',
   title: 'Tonal status with icon',
   apps: ['hcs'],
-  cases: [{ id: 'hcs-results-status', name: 'Results status', source: { hcs: 'src/components/F01Results.tsx' } }],
+  options: [
+    { id: "hcs-results-status", name: "Results status", source: {"hcs":"src/components/F01Results.tsx"} },
+  ],
   source: { hcs: 'src/components/F01Results.tsx' },
   summary: 'A tonal chip with a leading icon that states a result: success and a check for Passed, error and a cross for Failed.',
   where: 'The Status column of the HCS results table (src/components/F01Results.tsx). FD shows the status as a smaller chip with no icon (not catalogued).',

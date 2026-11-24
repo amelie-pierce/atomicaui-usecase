@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Show column info button',
-  look: 'Ghost, 20px',
+
   apps: ['fd'],
-  cases: [
-    { id: 'fd-header-info', name: 'Header info', apps: ['fd'], source: { fd: 'src/components/Results.jsx' } },
+  options: [
+    { id: "fd-header-info", name: "Header info", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
   ],
   source: { fd: 'src/components/ui.jsx' },
   summary: 'A transparent icon-only button with a circle-info opens an explanation popover from a table column header.',

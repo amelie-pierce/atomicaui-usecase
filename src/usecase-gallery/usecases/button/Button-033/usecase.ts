@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Collapse all sections button',
-  look: 'Ghost, 20px',
+
   apps: ['hcs'],
-  cases: [
-    { id: 'hcs-panel-header', name: 'Panel header', apps: ['hcs'], source: { hcs: 'src/App.tsx' } },
+  options: [
+    { id: "hcs-panel-header", name: "Panel header", apps: ["hcs"], source: {"hcs":"src/App.tsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx' },
   summary: 'A transparent icon-only IconButton collapses every section of the Input pane, and expands them again when all are closed.',

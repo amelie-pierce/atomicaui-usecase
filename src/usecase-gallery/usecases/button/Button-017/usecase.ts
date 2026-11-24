@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Open report button',
-  look: 'Info solid, extra small',
+
   apps: ['adc'],
-  cases: [
-    { id: 'adc-status-bar', name: 'Status bar', apps: ['adc'], source: { adc: 'src/adc/components/ReportFlow.tsx' } },
+  options: [
+    { id: "adc-status-bar", name: "Status bar", apps: ["adc"], source: {"adc":"src/adc/components/ReportFlow.tsx"} },
   ],
   source: { adc: 'src/adc/components/ReportFlow.tsx' },
   summary: 'A small blue solid Button with a file icon tells the user a report is ready and opens it.',

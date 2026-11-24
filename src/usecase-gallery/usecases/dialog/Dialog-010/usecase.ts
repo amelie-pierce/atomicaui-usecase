@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Welcome dialog',
-  look: 'Close and Start Walkthrough',
+
   apps: ['adm', 'fd'],
-  cases: [
-    { id: 'adm-welcome', name: 'Welcome dialog', apps: ['adm', 'fd'], source: { adm: 'src/features/top-navigation/components/Tutorials.tsx', fd: 'src/components/HelpCenter.jsx' } },
+  options: [
+    { id: "adm-welcome", name: "Welcome dialog", apps: ["adm","fd"], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","fd":"src/components/HelpCenter.jsx"} },
   ],
   source: { adm: 'src/features/top-navigation/components/Tutorials.tsx', fd: 'src/components/HelpCenter.jsx' },
   summary: 'A welcome dialog that offers the guided tour: a gray Close and a solid Start Walkthrough.',

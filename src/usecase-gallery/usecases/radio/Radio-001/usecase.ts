@@ -4,19 +4,9 @@ export default defineUsecase({
   uiType: 'Radio',
   title: 'Option radio group',
   apps: ['agpd', 'rws', 'pbs', 'fd'],
-  cases: [
-    {
-      id: 'agpd-inline',
-      name: 'Labelled group',
-      apps: ['agpd', 'rws', 'pbs'],
-      source: { agpd: 'src/agpd/inputs.tsx', rws: 'src/rws/inputs.tsx', pbs: 'src/InputFields.tsx' },
-    },
-    {
-      id: 'fd-settings',
-      name: 'Labelled group',
-      apps: ['fd'],
-      source: { fd: 'src/App.jsx' },
-    },
+  options: [
+    { id: "agpd-inline", name: "Labelled group", apps: ["agpd","rws","pbs"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx","pbs":"src/InputFields.tsx"} },
+    { id: "fd-settings", name: "Labelled group — UI variant 2", apps: ["fd"], source: {"fd":"src/App.jsx"} },
   ],
   source: {
     agpd: 'src/agpd/inputs.tsx',

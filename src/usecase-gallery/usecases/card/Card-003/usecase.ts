@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Card',
   title: 'Preview card',
   apps: ['hcs'],
-  cases: [{ id: 'hcs-preview', name: 'Option preview', source: { hcs: 'src/components/HcsBeamTypeSelect.tsx' } }],
+  options: [
+    { id: "hcs-preview", name: "Option preview", source: {"hcs":"src/components/HcsBeamTypeSelect.tsx"} },
+  ],
   source: { hcs: 'src/components/HcsBeamTypeSelect.tsx' },
   summary: 'A raised surface card with a title above an illustration, shown beside an option list to preview the highlighted option.',
   where: 'The Type and Supported type selects of HCS (src/components/HcsBeamTypeSelect.tsx): hovering or arrowing to an option previews it.',

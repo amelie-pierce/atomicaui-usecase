@@ -3,11 +3,11 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Reset filters button',
-  look: 'Secondary solid with icon',
+
   apps: ['hcs', 'pfd', 'hs', 'fd'],
-  cases: [
-    { id: 'hcs-toolbar', name: 'Toolbar', apps: ['hcs', 'pfd', 'hs'], source: { hcs: 'src/App.tsx', pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx' } },
-    { id: 'fd-toolbar', name: 'Toolbar', apps: ['fd'], source: { fd: 'src/components/Results.jsx' } },
+  options: [
+    { id: "hcs-toolbar", name: "Toolbar", apps: ["hcs","pfd","hs"], source: {"hcs":"src/App.tsx","pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx"} },
+    { id: "fd-toolbar", name: "Toolbar — UI variant 2", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
   ],
   source: { hcs: 'src/App.tsx', pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx', fd: 'src/components/Results.jsx' },
   summary: 'A neutral default Button clears the active filters of a results table; FD draws it as a quiet text Button.',

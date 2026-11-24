@@ -4,25 +4,10 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Template picker dialog',
   apps: ['ace', 'adm', 'hs', 'fd'],
-  cases: [
-    {
-      id: 'ace-templates',
-      name: 'Template picker',
-      apps: ['ace'],
-      source: { ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx' },
-    },
-    {
-      id: 'adm-templates',
-      name: 'Template picker',
-      apps: ['adm'],
-      source: { adm: 'src/features/templates/components/NewFromTemplateDialog.tsx' },
-    },
-    {
-      id: 'hs-templates',
-      name: 'Template picker',
-      apps: ['hs', 'fd'],
-      source: { hs: 'src/hs/TemplateDialogs.tsx', fd: 'src/components/TemplatesDialog.jsx' },
-    },
+  options: [
+    { id: "ace-templates", name: "Template picker", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} },
+    { id: "adm-templates", name: "Template picker — UI variant 2", apps: ["adm"], source: {"adm":"src/features/templates/components/NewFromTemplateDialog.tsx"} },
+    { id: "hs-templates", name: "Template picker — UI variant 3", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} },
   ],
   source: {
     ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx',

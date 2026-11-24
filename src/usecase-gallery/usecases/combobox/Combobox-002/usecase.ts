@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Combobox',
   title: 'Select with option preview',
   apps: ['hcs'],
-  cases: [{ id: 'hcs-beam-type', name: 'Beam type', source: { hcs: 'src/components/HcsBeamTypeSelect.tsx' } }],
+  options: [
+    { id: "hcs-beam-type", name: "Beam type", source: {"hcs":"src/components/HcsBeamTypeSelect.tsx"} },
+  ],
   source: { hcs: 'src/components/HcsBeamTypeSelect.tsx' },
   summary: 'A compact Combobox whose open list previews the highlighted option in a card beside it.',
   where: 'The Type and Supported type fields of the HCS Input pane (src/components/HcsBeamTypeSelect.tsx).',

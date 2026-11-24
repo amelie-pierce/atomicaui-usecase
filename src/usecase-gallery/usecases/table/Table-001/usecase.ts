@@ -14,22 +14,8 @@ export default defineUsecase({
     fd: 'src/components/Results.jsx',
     ace: 'src/features/calculation/ui/CalculationOutput.tsx',
   },
-  cases: [
-    {
-      id: 'hcs-results-grid',
-      name: 'Results grid',
-      apps: ['hcs', 'hs', 'pfd', 'agpd', 'pbs', 'rws', 'fd', 'ace'],
-      source: {
-        hcs: 'src/components/F01Results.tsx',
-        hs: 'src/hs/ResultsTable.tsx',
-        pfd: 'src/pfd/ResultsTable.tsx',
-        agpd: 'src/agpd/Results.tsx',
-        pbs: 'src/ResultsSection.tsx',
-        rws: 'src/rws/output.tsx',
-        fd: 'src/components/Results.jsx',
-        ace: 'src/features/calculation/ui/CalculationOutput.tsx',
-      },
-    },
+  options: [
+    { id: "hcs-results-grid", name: "Results grid", apps: ["hcs","hs","pfd","agpd","pbs","rws","fd","ace"], source: {"hcs":"src/components/F01Results.tsx","hs":"src/hs/ResultsTable.tsx","pfd":"src/pfd/ResultsTable.tsx","agpd":"src/agpd/Results.tsx","pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx","fd":"src/components/Results.jsx","ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
   ],
   summary: 'The results table of the Output pane: a framed all-cells grid with a raised sortable header, the first column pinned and left-aligned, and the other columns centred.',
   where: 'The Output pane of every calculator that lists candidate products: HCS F01Results.tsx (Connector calculation results), HS ResultsTable.tsx, PFD ResultsTable.tsx, AGPD Results.tsx (Gable plate results), PBS ResultsSection.tsx, RWS output.tsx and FD Results.jsx (Fastener solutions). ACE writes its Output tables the same way in CalculationOutput.tsx. Row selection, the expander and the column menu inside it are Table-002, Button-028 and Button-035.',

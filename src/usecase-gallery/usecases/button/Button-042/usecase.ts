@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Recalculate button',
-  look: 'Warning solid, 26px',
+
   apps: ['adc'],
-  cases: [
-    { id: 'adc-recalculate', name: 'Results header', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } },
+  options: [
+    { id: "adc-recalculate", name: "Results header", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A small amber solid IconButton re-runs the calculation when the inputs have changed.',

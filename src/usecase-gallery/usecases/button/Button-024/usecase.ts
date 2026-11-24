@@ -3,13 +3,13 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Button group',
   title: 'End walkthrough buttons',
-  look: 'Text with icons',
+
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  cases: [
-    { id: 'hcs-last-step', name: 'Last step', apps: ['hcs'], source: { hcs: 'src/components/F01Walkthrough.tsx' } },
-    { id: 'ace-last-step', name: 'Last step', apps: ['ace', 'hs', 'rws', 'agpd'], source: { ace: 'src/features/top-navigation/ui/TutorialWalkthrough.tsx', hs: 'src/hs/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx', agpd: 'src/agpd/Tutorials.tsx' } },
-    { id: 'adm-last-step', name: 'Last step', apps: ['adm', 'fd'], source: { adm: 'src/features/top-navigation/components/TutorialWalkthrough.tsx', fd: 'src/components/Walkthrough.jsx' } },
-    { id: 'pbs-last-step', name: 'Last step', apps: ['pbs', 'pfd'], source: { pbs: 'src/PbsWalkthrough.tsx', pfd: 'src/pfd/Walkthrough.tsx' } },
+  options: [
+    { id: "hcs-last-step", name: "Last step", apps: ["hcs"], source: {"hcs":"src/components/F01Walkthrough.tsx"} },
+    { id: "ace-last-step", name: "Last step — UI variant 2", apps: ["ace","hs","rws","agpd"], source: {"ace":"src/features/top-navigation/ui/TutorialWalkthrough.tsx","hs":"src/hs/Tutorials.tsx","rws":"src/rws/Tutorials.tsx","agpd":"src/agpd/Tutorials.tsx"} },
+    { id: "adm-last-step", name: "Last step — UI variant 3", apps: ["adm","fd"], source: {"adm":"src/features/top-navigation/components/TutorialWalkthrough.tsx","fd":"src/components/Walkthrough.jsx"} },
+    { id: "pbs-last-step", name: "Last step — UI variant 4", apps: ["pbs","pfd"], source: {"pbs":"src/PbsWalkthrough.tsx","pfd":"src/pfd/Walkthrough.tsx"} },
   ],
   source: { hcs: 'src/components/F01Walkthrough.tsx', ace: 'src/features/top-navigation/ui/TutorialWalkthrough.tsx', adm: 'src/features/top-navigation/components/TutorialWalkthrough.tsx', pfd: 'src/pfd/Walkthrough.tsx', pbs: 'src/PbsWalkthrough.tsx', hs: 'src/hs/Tutorials.tsx', fd: 'src/components/Walkthrough.jsx', agpd: 'src/agpd/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx' },
   summary: 'Borderless text Buttons close a guided tour on its last step: Previous with arrow-left before it, and End in place of Next.',

@@ -4,8 +4,8 @@ export default defineUsecase({
   uiType: 'Switch',
   title: 'Switch with bordered off state',
   apps: ['adm'],
-  cases: [
-    { id: 'adm-loads', name: 'Load conditions', apps: ['adm'], source: { adm: 'src/features/design-inputs/components/LoadsSection/LoadConditionsFields.tsx' } },
+  options: [
+    { id: "adm-loads", name: "Load conditions", apps: ["adm"], source: {"adm":"src/features/design-inputs/components/LoadsSection/LoadConditionsFields.tsx"} },
   ],
   source: { adm: 'src/features/design-inputs/components/LoadsSection/LoadConditionsFields.tsx' },
   summary: 'A switch at the end of a form row, with the row\'s name at the start, turns the setting on or off; its off state is a white track with a thin border.',

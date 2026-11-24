@@ -4,28 +4,10 @@ export default defineUsecase({
   uiType: 'Single checkbox',
   title: 'Input panel option checkbox',
   apps: ['hcs', 'hs', 'fd', 'adc', 'ace', 'pbs', 'agpd', 'adm'],
-  cases: [
-    {
-      id: 'hcs-option',
-      name: 'Input panel option',
-      note: 'A bare checkbox without a title.',
-      apps: ['hcs', 'hs', 'fd', 'adc'],
-      source: { hcs: 'src/App.tsx', hs: 'src/hs/InputFields.tsx', fd: 'src/components/InputPane.jsx', adc: 'src/adc/components/InputSections.tsx' },
-    },
-    {
-      id: 'ace-titled',
-      name: 'Input panel option',
-      note: 'A title sits above the checkbox; PBS and AGPD use a smaller gap than ACE.',
-      apps: ['ace', 'pbs', 'agpd'],
-      source: { ace: 'src/features/estimator/ui/EstimatorInputPanel.tsx', pbs: 'src/InputFields.tsx', agpd: 'src/agpd/inputs.tsx' },
-    },
-    {
-      id: 'adm-label-first',
-      name: 'Input panel option',
-      note: 'The label precedes the right-aligned checkbox.',
-      apps: ['adm'],
-      source: { adm: 'src/features/design-inputs/components/GeometrySection/JointDistanceFields.tsx' },
-    },
+  options: [
+    { id: "hcs-option", name: "Input panel option", apps: ["hcs","hs","fd","adc"], note: "A bare checkbox without a title.", source: {"hcs":"src/App.tsx","hs":"src/hs/InputFields.tsx","fd":"src/components/InputPane.jsx","adc":"src/adc/components/InputSections.tsx"} },
+    { id: "ace-titled", name: "Input panel option — UI variant 2", apps: ["ace","pbs","agpd"], note: "A title sits above the checkbox; PBS and AGPD use a smaller gap than ACE.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","pbs":"src/InputFields.tsx","agpd":"src/agpd/inputs.tsx"} },
+    { id: "adm-label-first", name: "Input panel option — UI variant 3", apps: ["adm"], note: "The label precedes the right-aligned checkbox.", source: {"adm":"src/features/design-inputs/components/GeometrySection/JointDistanceFields.tsx"} },
   ],
   source: {
     hcs: 'src/App.tsx',

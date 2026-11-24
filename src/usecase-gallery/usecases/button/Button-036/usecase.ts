@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Expand panel button',
-  look: 'Ghost, 28px',
+
   apps: ['hcs'],
-  cases: [
-    { id: 'hcs-rail', name: 'Collapsed rail', apps: ['hcs'], source: { hcs: 'src/components/HcsSplitLayout.tsx' } },
+  options: [
+    { id: "hcs-rail", name: "Collapsed rail", apps: ["hcs"], source: {"hcs":"src/components/HcsSplitLayout.tsx"} },
   ],
   source: { hcs: 'src/components/HcsSplitLayout.tsx' },
   summary: 'A square transparent IconButton, 28px, expands a collapsed side panel from its rail.',

@@ -4,19 +4,8 @@ export default defineUsecase({
   uiType: 'Dismissible chip',
   title: 'Attachment chip',
   apps: ['adm', 'pfd', 'pbs', 'hs', 'agpd', 'rws'],
-  cases: [
-    {
-      id: 'adm-attachments',
-      name: 'Feedback attachments',
-      source: {
-        adm: 'src/features/top-navigation/components/FeedbackDialog.tsx',
-        pfd: 'src/pfd/ShellDialogs.tsx',
-        pbs: 'src/WorkspaceTools.tsx',
-        hs: 'src/hs/ShellExtras.tsx',
-        agpd: 'src/agpd/ShellDialogs.tsx',
-        rws: 'src/rws/ShellDialogs.tsx',
-      },
-    },
+  options: [
+    { id: "adm-attachments", name: "Feedback attachments", source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
   ],
   source: {
     adm: 'src/features/top-navigation/components/FeedbackDialog.tsx',

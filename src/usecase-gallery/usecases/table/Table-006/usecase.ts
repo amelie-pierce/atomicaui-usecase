@@ -13,12 +13,12 @@ export default defineUsecase({
     pfd: 'src/pfd/PrintView.tsx',
     agpd: 'src/App.tsx',
   },
-  cases: [
-    { id: 'ace-print', name: 'Print table', apps: ['ace'], source: { ace: 'src/features/print/ui/report-primitives.tsx' } },
-    { id: 'adm-print', name: 'Print table', apps: ['adm'], source: { adm: 'src/features/print/components/InputDataPrintPage.tsx' } },
-    { id: 'hs-print', name: 'Print table', apps: ['hs'], source: { hs: 'src/hs/PrintView.tsx' } },
-    { id: 'rws-print', name: 'Print table', apps: ['rws'], source: { rws: 'src/legacy/src/apps/rws/containers/PrintView/components/PrintTable.jsx' } },
-    { id: 'pbs-print', name: 'Print table', apps: ['pbs', 'pfd', 'agpd'], source: { pbs: 'src/PrintView.tsx', pfd: 'src/pfd/PrintView.tsx', agpd: 'src/App.tsx' } },
+  options: [
+    { id: "ace-print", name: "Print table", apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} },
+    { id: "adm-print", name: "Print table — UI variant 2", apps: ["adm"], source: {"adm":"src/features/print/components/InputDataPrintPage.tsx"} },
+    { id: "hs-print", name: "Print table — UI variant 3", apps: ["hs"], source: {"hs":"src/hs/PrintView.tsx"} },
+    { id: "rws-print", name: "Print table — UI variant 4", apps: ["rws"], source: {"rws":"src/legacy/src/apps/rws/containers/PrintView/components/PrintTable.jsx"} },
+    { id: "pbs-print", name: "Print table — UI variant 5", apps: ["pbs","pfd","agpd"], source: {"pbs":"src/PrintView.tsx","pfd":"src/pfd/PrintView.tsx","agpd":"src/App.tsx"} },
   ],
   summary: 'The paper copy of a table: a flat all-cells grid with no sorting or selection, printed in the report.',
   where: 'Print views: ACE print/ui/report-primitives.tsx (ReportTable), ADM print/components/InputDataPrintPage.tsx, HS PrintView.tsx, RWS PrintView PrintTable.jsx, PBS PrintView.tsx, PFD PrintView.tsx and AGPD App.tsx (the print table).',

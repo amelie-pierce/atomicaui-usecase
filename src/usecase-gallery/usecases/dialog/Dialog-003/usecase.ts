@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Calculator dialog',
   apps: ['adm'],
-  cases: [
-    {
-      id: 'adm-calculator',
-      name: 'Calculator dialog',
-      apps: ['adm'],
-      source: { adm: 'src/features/base-plate/components/ThicknessCalculatorDialog.tsx' },
-    },
+  options: [
+    { id: "adm-calculator", name: "Calculator dialog", apps: ["adm"], source: {"adm":"src/features/base-plate/components/ThicknessCalculatorDialog.tsx"} },
   ],
   source: {
     adm: 'src/features/base-plate/components/ThicknessCalculatorDialog.tsx',

@@ -4,11 +4,11 @@ export default defineUsecase({
   uiType: 'Switch',
   title: 'Switch with label',
   apps: ['hcs', 'hs', 'adm', 'pbs', 'rws', 'ace'],
-  cases: [
-    { id: 'hcs-labelled', name: 'Labelled switch', apps: ['hcs', 'hs'], source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx' } },
-    { id: 'adm-labelled', name: 'Labelled switch', apps: ['adm'], source: { adm: 'src/features/viewer/components/EditModals/BasePlateModal.tsx' } },
-    { id: 'pbs-labelled', name: 'Labelled switch', apps: ['pbs', 'rws'], source: { pbs: 'src/ResultsSection.tsx', rws: 'src/rws/output.tsx' } },
-    { id: 'ace-labelled', name: 'Labelled switch', apps: ['ace'], source: { ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx' } },
+  options: [
+    { id: "hcs-labelled", name: "Labelled switch", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnVisibility.tsx","hs":"src/hs/ColumnVisibility.tsx"} },
+    { id: "adm-labelled", name: "Labelled switch — UI variant 2", apps: ["adm"], source: {"adm":"src/features/viewer/components/EditModals/BasePlateModal.tsx"} },
+    { id: "pbs-labelled", name: "Labelled switch — UI variant 3", apps: ["pbs","rws"], source: {"pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx"} },
+    { id: "ace-labelled", name: "Labelled switch — UI variant 4", apps: ["ace"], source: {"ace":"src/features/top-navigation/ui/FeedbackDialog.tsx"} },
   ],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', adm: 'src/features/viewer/components/EditModals/BasePlateModal.tsx', pbs: 'src/ResultsSection.tsx', rws: 'src/rws/output.tsx', ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx' },
   summary: 'A switch with its own text beside it that turns one option on or off.',

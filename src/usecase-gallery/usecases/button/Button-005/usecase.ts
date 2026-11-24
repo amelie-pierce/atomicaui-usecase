@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Try again button',
-  look: 'Secondary solid',
+
   apps: ['hcs'],
-  cases: [
-    { id: 'results', name: 'Results error strip', apps: ['hcs'], source: { hcs: 'src/components/F01Results.tsx' } },
+  options: [
+    { id: "results", name: "Results error strip", apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} },
   ],
   source: { hcs: 'src/components/F01Results.tsx' },
   summary: 'The default gray Button retries a failed action from an error message: Try again under the Results error.',

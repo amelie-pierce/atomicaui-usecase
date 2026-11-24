@@ -3,14 +3,14 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Close popover button',
-  look: 'Ghost, 20px',
+
   apps: ['hcs', 'pfd', 'pbs', 'fd', 'agpd', 'rws'],
-  cases: [
-    { id: 'hcs-help-close', name: 'Help popover close', apps: ['hcs'], source: { hcs: 'src/components/HcsDownloadDurationHelp.tsx' } },
-    { id: 'pfd-help-close', name: 'Help popover close', apps: ['pfd'], source: { pfd: 'src/pfd/fields.tsx' } },
-    { id: 'pbs-help-close', name: 'Help popover close', apps: ['pbs'], source: { pbs: 'src/InputFields.tsx' } },
-    { id: 'agpd-help-close', name: 'Help popover close', apps: ['agpd', 'rws'], source: { agpd: 'src/agpd/inputs.tsx', rws: 'src/rws/inputs.tsx' } },
-    { id: 'fd-apps-close', name: 'Apps popover close', apps: ['fd'], source: { fd: 'src/App.jsx' } },
+  options: [
+    { id: "hcs-help-close", name: "Help popover close", apps: ["hcs"], source: {"hcs":"src/components/HcsDownloadDurationHelp.tsx"} },
+    { id: "pfd-help-close", name: "Help popover close — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} },
+    { id: "pbs-help-close", name: "Help popover close — UI variant 3", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} },
+    { id: "agpd-help-close", name: "Help popover close — UI variant 4", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} },
+    { id: "fd-apps-close", name: "Apps popover close", apps: ["fd"], source: {"fd":"src/App.jsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A transparent icon-only IconButton, 20px square, closes a popover from its corner.',

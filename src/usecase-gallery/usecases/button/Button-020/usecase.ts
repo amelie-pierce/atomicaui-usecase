@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Go to carousel page button',
-  look: 'Pager dot',
+
   apps: ['fd'],
-  cases: [
-    { id: 'fd-carousel-dots', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
+  options: [
+    { id: "fd-carousel-dots", name: "Carousel footer", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
   ],
   source: { fd: 'src/components/InputPane.jsx' },
   summary: 'An empty solid Button is one dot of a carousel pager; the current page is the primary one.',

@@ -4,42 +4,11 @@ export default defineUsecase({
   uiType: 'Field select',
   title: 'Single select',
   apps: ['hcs', 'hs', 'pbs', 'pfd', 'fd', 'rws', 'agpd', 'adm', 'adc', 'ace'],
-  cases: [
-    {
-      id: 'hcs-field-select',
-      name: 'Field select',
-      apps: ['hcs', 'hs', 'pbs', 'pfd', 'fd', 'rws'],
-      note: 'Label above.',
-      source: {
-        hcs: 'src/components/HcsSelectbox.tsx',
-        hs: 'src/hs/InputFields.tsx',
-        pbs: 'src/InputFields.tsx',
-        pfd: 'src/pfd/fields.tsx',
-        fd: 'src/components/ui.jsx',
-        rws: 'src/rws/inputs.tsx',
-      },
-    },
-    {
-      id: 'agpd-field-select',
-      name: 'Field select',
-      apps: ['agpd'],
-      note: 'Label above; the chosen row ends with a check icon.',
-      source: { agpd: 'src/agpd/controls.tsx' },
-    },
-    {
-      id: 'adm-field-select',
-      name: 'Field select',
-      apps: ['adm', 'adc'],
-      note: 'Label beside: label and trigger share the row, half each.',
-      source: { adm: 'src/features/design-inputs/components/MasonryWallDetailsSection/FieldSelectRow.tsx', adc: 'src/adc/components/DesignField.tsx' },
-    },
-    {
-      id: 'ace-field-select',
-      name: 'Field select',
-      apps: ['ace'],
-      note: 'Label beside; the chosen row ends with a check icon.',
-      source: { ace: 'src/features/estimator/ui/EstimatorInputPanel.tsx' },
-    },
+  options: [
+    { id: "hcs-field-select", name: "Field select", apps: ["hcs","hs","pbs","pfd","fd","rws"], note: "Label above.", source: {"hcs":"src/components/HcsSelectbox.tsx","hs":"src/hs/InputFields.tsx","pbs":"src/InputFields.tsx","pfd":"src/pfd/fields.tsx","fd":"src/components/ui.jsx","rws":"src/rws/inputs.tsx"} },
+    { id: "agpd-field-select", name: "Field select — UI variant 2", apps: ["agpd"], note: "Label above; the chosen row ends with a check icon.", source: {"agpd":"src/agpd/controls.tsx"} },
+    { id: "adm-field-select", name: "Field select — UI variant 3", apps: ["adm","adc"], note: "Label beside: label and trigger share the row, half each.", source: {"adm":"src/features/design-inputs/components/MasonryWallDetailsSection/FieldSelectRow.tsx","adc":"src/adc/components/DesignField.tsx"} },
+    { id: "ace-field-select", name: "Field select — UI variant 4", apps: ["ace"], note: "Label beside; the chosen row ends with a check icon.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"} },
   ],
   source: {
     hcs: 'src/components/HcsSelectbox.tsx',

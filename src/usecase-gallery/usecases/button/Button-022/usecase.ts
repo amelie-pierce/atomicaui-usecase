@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Save edited value buttons',
-  look: 'Text and primary',
+
   apps: ['adc'],
-  cases: [
-    { id: 'adc-edit-value', name: 'Edit value', apps: ['adc'], source: { adc: 'src/adc/components/InPlaceEditor.tsx' } },
+  options: [
+    { id: "adc-edit-value", name: "Edit value", apps: ["adc"], source: {"adc":"src/adc/components/InPlaceEditor.tsx"} },
   ],
   source: { adc: 'src/adc/components/InPlaceEditor.tsx' },
   summary: 'A filled Cancel and a solid secondary Save close the in-place editor popover of a value chip.',

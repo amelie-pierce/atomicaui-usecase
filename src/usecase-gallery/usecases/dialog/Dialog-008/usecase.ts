@@ -3,11 +3,11 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Save template dialog',
-  look: 'Cancel and secondary Save',
+
   apps: ['ace', 'adm', 'hs', 'fd'],
-  cases: [
-    { id: 'ace-save', name: 'Save template', apps: ['ace', 'adm', 'hs'], source: { ace: 'src/features/templates/ui/SaveAsTemplateDialog.tsx', adm: 'src/features/templates/components/SaveAsTemplateDialog.tsx', hs: 'src/hs/TemplateDialogs.tsx' } },
-    { id: 'fd-save', name: 'Save template', apps: ['fd'], source: { fd: 'src/App.jsx' } },
+  options: [
+    { id: "ace-save", name: "Save template", apps: ["ace","adm","hs"], source: {"ace":"src/features/templates/ui/SaveAsTemplateDialog.tsx","adm":"src/features/templates/components/SaveAsTemplateDialog.tsx","hs":"src/hs/TemplateDialogs.tsx"} },
+    { id: "fd-save", name: "Save template — UI variant 2", apps: ["fd"], source: {"fd":"src/App.jsx"} },
   ],
   source: { ace: 'src/features/templates/ui/SaveAsTemplateDialog.tsx', adm: 'src/features/templates/components/SaveAsTemplateDialog.tsx', hs: 'src/hs/TemplateDialogs.tsx', fd: 'src/App.jsx' },
   summary: 'A form dialog that names and saves the current inputs as a template: a Cancel and a Save that stays disabled until the name is valid.',

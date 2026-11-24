@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Open products picker button',
-  look: 'Outlined row, extra small',
+
   apps: ['adc'],
-  cases: [
-    { id: 'adc-products', name: 'Products row', apps: ['adc'], source: { adc: 'src/adc/components/ProductsPicker.tsx' } },
+  options: [
+    { id: "adc-products", name: "Products row", apps: ["adc"], source: {"adc":"src/adc/components/ProductsPicker.tsx"} },
   ],
   source: { adc: 'src/adc/components/ProductsPicker.tsx' },
   summary: 'A full-width small Button with a border stands in for a field until the user activates it.',

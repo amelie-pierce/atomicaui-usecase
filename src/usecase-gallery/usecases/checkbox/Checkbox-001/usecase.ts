@@ -4,34 +4,10 @@ export default defineUsecase({
   uiType: 'Single checkbox',
   title: 'Dialog option checkbox',
   apps: ['adm', 'fd', 'hs', 'pfd', 'pbs', 'agpd', 'rws', 'adc'],
-  cases: [
-    {
-      id: 'adm-form',
-      name: 'Dialog option',
-      note: 'The checkbox sits in the dialog form.',
-      apps: ['adm', 'fd'],
-      source: { adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', fd: 'src/components/Feedback.jsx' },
-    },
-    {
-      id: 'hs-form',
-      name: 'Dialog option',
-      note: 'The checkbox sits in the dialog form.',
-      apps: ['hs', 'pfd', 'pbs', 'agpd', 'rws'],
-      source: {
-        hs: 'src/hs/ShellExtras.tsx',
-        pfd: 'src/pfd/ShellDialogs.tsx',
-        pbs: 'src/WorkspaceTools.tsx',
-        agpd: 'src/agpd/ShellDialogs.tsx',
-        rws: 'src/rws/ShellDialogs.tsx',
-      },
-    },
-    {
-      id: 'adc-footer',
-      name: 'Dialog option',
-      note: 'The checkbox sits in the dialog footer before the actions.',
-      apps: ['adc'],
-      source: { adc: 'src/adc/Workspace.tsx' },
-    },
+  options: [
+    { id: "adm-form", name: "Dialog option", apps: ["adm","fd"], note: "The checkbox sits in the dialog form.", source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","fd":"src/components/Feedback.jsx"} },
+    { id: "hs-form", name: "Dialog option — UI variant 2", apps: ["hs","pfd","pbs","agpd","rws"], note: "The checkbox sits in the dialog form.", source: {"hs":"src/hs/ShellExtras.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    { id: "adc-footer", name: "Dialog option — UI variant 3", apps: ["adc"], note: "The checkbox sits in the dialog footer before the actions.", source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: {
     adm: 'src/features/top-navigation/components/FeedbackDialog.tsx',

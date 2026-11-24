@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Edit and Delete row link buttons',
-  look: 'Stacked text links, no padding',
+
   apps: ['ace'],
-  cases: [
-    { id: 'ace-links', name: 'Edit and Delete links', apps: ['ace'], source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' } },
+  options: [
+    { id: "ace-links", name: "Edit and Delete links", apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
   ],
   source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
   summary: 'Text Buttons with no padding read as links; stacked in a column they give a table row its few actions while the table stays light.',

@@ -4,12 +4,8 @@ export default defineUsecase({
   uiType: 'ToggleGroup',
   title: 'Labelled segments',
   apps: ['hs', 'adc'],
-  cases: [
-    {
-      id: 'hs-settings',
-      name: 'Settings popover',
-      source: { hs: 'src/hs/SettingsPanel.tsx', adc: 'src/adc/components/AppConfigurationPopover.tsx' },
-    },
+  options: [
+    { id: "hs-settings", name: "Settings popover", source: {"hs":"src/hs/SettingsPanel.tsx","adc":"src/adc/components/AppConfigurationPopover.tsx"} },
   ],
   source: { hs: 'src/hs/SettingsPanel.tsx', adc: 'src/adc/components/AppConfigurationPopover.tsx' },
   summary: 'A labelled row of full-width segments where exactly one option is on, the chosen one a solid secondary segment.',

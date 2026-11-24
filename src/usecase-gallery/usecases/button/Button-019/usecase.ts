@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Toggle prototype controls button',
-  look: 'Elevated surface',
+
   apps: ['hcs'],
-  cases: [
-    { id: 'hcs-prototype-controls', name: 'Prototype controls', apps: ['hcs'], source: { hcs: 'src/components/F01Experience.tsx' } },
+  options: [
+    { id: "hcs-prototype-controls", name: "Prototype controls", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx' },
   summary: 'A surface Button lifted with a shadow floats over the page and toggles a panel of controls.',

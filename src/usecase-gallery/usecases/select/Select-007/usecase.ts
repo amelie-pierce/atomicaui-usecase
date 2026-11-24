@@ -4,9 +4,9 @@ export default defineUsecase({
   uiType: 'Field select',
   title: 'Options with images',
   apps: ['rws', 'agpd'],
-  cases: [
-    { id: 'rws-option-images', name: 'Options with images', apps: ['rws'], source: { rws: 'src/rws/inputs.tsx' } },
-    { id: 'agpd-option-images', name: 'Options with images', apps: ['agpd'], source: { agpd: 'src/agpd/controls.tsx' } },
+  options: [
+    { id: "rws-option-images", name: "Options with images", apps: ["rws"], source: {"rws":"src/rws/inputs.tsx"} },
+    { id: "agpd-option-images", name: "Options with images — UI variant 2", apps: ["agpd"], source: {"agpd":"src/agpd/controls.tsx"} },
   ],
   source: { rws: 'src/rws/inputs.tsx', agpd: 'src/agpd/controls.tsx' },
   summary: 'A field select whose rows lead with a picture of the option in a tonal tile, so the user picks by sight.',

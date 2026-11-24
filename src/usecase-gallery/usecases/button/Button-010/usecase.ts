@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Show locked field option button',
-  look: 'Accent text, extra small',
+
   apps: ['agpd'],
-  cases: [
-    { id: 'agpd-lock-hint', name: 'Lock hint', apps: ['agpd'], source: { agpd: 'src/agpd/inputs.tsx' } },
+  options: [
+    { id: "agpd-lock-hint", name: "Lock hint", apps: ["agpd"], source: {"agpd":"src/agpd/inputs.tsx"} },
   ],
   source: { agpd: 'src/agpd/inputs.tsx' },
   summary: 'A small primary text Button in a lock popover reveals the option that controls a locked field.',

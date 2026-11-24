@@ -4,22 +4,8 @@ export default defineUsecase({
   uiType: 'FileUpload',
   title: 'Upload file dialog dropzone',
   apps: ['ace', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  cases: [
-    {
-      id: 'ace-open-device',
-      name: 'Upload file dialog',
-      apps: ['ace', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-      source: {
-        ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx',
-        pfd: 'src/pfd/ShellDialogs.tsx',
-        pbs: 'src/WorkspaceTools.tsx',
-        hs: 'src/hs/ShellExtras.tsx',
-        fd: 'src/App.jsx',
-        agpd: 'src/agpd/ShellDialogs.tsx',
-        rws: 'src/rws/ShellDialogs.tsx',
-        adc: 'src/adc/components/NewProjectDialog.tsx',
-      },
-    },
+  options: [
+    { id: "ace-open-device", name: "Upload file dialog", apps: ["ace","pfd","pbs","hs","fd","agpd","rws","adc"], source: {"ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/App.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx","adc":"src/adc/components/NewProjectDialog.tsx"} },
   ],
   source: {
     ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx',

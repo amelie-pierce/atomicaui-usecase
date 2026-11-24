@@ -3,11 +3,11 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Accept licence dialog',
-  look: 'Do Not Accept and Accept',
+
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  cases: [
-    { id: 'hcs-accept', name: 'Accept licence', apps: ['hcs'], source: { hcs: 'src/components/F01Experience.tsx' } },
-    { id: 'ace-accept', name: 'Accept licence', apps: ['ace', 'adm', 'pfd', 'hs', 'fd', 'agpd', 'rws', 'pbs'], source: { ace: 'src/features/eula/ui/EulaGate.tsx', adm: 'src/features/eula/components/EulaGate.tsx', pfd: 'src/pfd/LicenseGate.tsx', hs: 'src/hs/LicenseGate.tsx', fd: 'src/components/LicenseGate.jsx', agpd: 'src/agpd/LicenseGate.tsx', rws: 'src/rws/LicenseGate.tsx', pbs: 'src/LicenseGate.tsx' } },
+  options: [
+    { id: "hcs-accept", name: "Accept licence", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"} },
+    { id: "ace-accept", name: "Accept licence — UI variant 2", apps: ["ace","adm","pfd","hs","fd","agpd","rws","pbs"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx","pbs":"src/LicenseGate.tsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', ace: 'src/features/eula/ui/EulaGate.tsx', adm: 'src/features/eula/components/EulaGate.tsx', pfd: 'src/pfd/LicenseGate.tsx', hs: 'src/hs/LicenseGate.tsx', fd: 'src/components/LicenseGate.jsx', agpd: 'src/agpd/LicenseGate.tsx', rws: 'src/rws/LicenseGate.tsx', pbs: 'src/LicenseGate.tsx' },
   summary: 'A gate that asks the user to accept the licence agreement before the app opens: a Do Not Accept and a solid Accept.',

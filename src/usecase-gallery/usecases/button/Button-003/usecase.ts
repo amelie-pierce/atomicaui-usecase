@@ -3,8 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Reset to default button',
-  look: 'Raised solid with icon',
-  area: 'Form',
+
+  options: [
+    { id: "default", name: "Raised solid with icon" },
+  ],
   apps: ['hcs'],
   source: { hcs: 'src/App.tsx' },
   summary: 'A raised solid Button resets one field group to its default without leaving the form.',

@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Single checkbox',
   title: 'Show passed checks filter',
   apps: ['fd'],
-  cases: [
-    {
-      id: 'fd-filter',
-      name: 'Table filter',
-      apps: ['fd'],
-      source: { fd: 'src/components/RowExpansion.jsx' },
-    },
+  options: [
+    { id: "fd-filter", name: "Table filter", apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
   ],
   source: {
     fd: 'src/components/RowExpansion.jsx',

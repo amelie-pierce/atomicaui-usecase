@@ -4,22 +4,8 @@ export default defineUsecase({
   uiType: 'Label chip',
   title: 'Solid release label',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  cases: [
-    {
-      id: 'hcs-release-note',
-      name: 'Release note row',
-      source: {
-        hcs: 'src/components/HcsAboutDialog.tsx',
-        ace: 'src/features/top-navigation/ui/AboutDialog.tsx',
-        adm: 'src/features/top-navigation/components/AboutDialog.tsx',
-        pfd: 'src/pfd/AboutDialog.tsx',
-        pbs: 'src/AboutDialog.tsx',
-        hs: 'src/hs/AboutDialog.tsx',
-        fd: 'src/components/AboutDialog.jsx',
-        agpd: 'src/agpd/AboutDialog.tsx',
-        rws: 'src/rws/AboutDialog.tsx',
-      },
-    },
+  options: [
+    { id: "hcs-release-note", name: "Release note row", source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pfd":"src/pfd/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"} },
   ],
   source: {
     hcs: 'src/components/HcsAboutDialog.tsx',

@@ -3,13 +3,13 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Start tutorial topic button',
-  look: 'Outlined full-width row',
+
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  cases: [
-    { id: 'hs-topic-row', name: 'Topic row', apps: ['hs', 'agpd', 'rws'], source: { hs: 'src/hs/Tutorials.tsx', agpd: 'src/agpd/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx' } },
-    { id: 'ace-topic-row', name: 'Topic row', apps: ['ace'], source: { ace: 'src/features/top-navigation/ui/TutorialsDialog.tsx' } },
-    { id: 'adm-topic-row', name: 'Topic row', apps: ['adm', 'pfd'], source: { adm: 'src/features/top-navigation/components/Tutorials.tsx', pfd: 'src/pfd/ShellDialogs.tsx' } },
-    { id: 'pbs-topic-row', name: 'Topic row', apps: ['pbs', 'fd'], source: { pbs: 'src/PbsHelpTutorials.tsx', fd: 'src/components/HelpCenter.jsx' } },
+  options: [
+    { id: "hs-topic-row", name: "Topic row", apps: ["hs","agpd","rws"], source: {"hs":"src/hs/Tutorials.tsx","agpd":"src/agpd/Tutorials.tsx","rws":"src/rws/Tutorials.tsx"} },
+    { id: "ace-topic-row", name: "Topic row — UI variant 2", apps: ["ace"], source: {"ace":"src/features/top-navigation/ui/TutorialsDialog.tsx"} },
+    { id: "adm-topic-row", name: "Topic row — UI variant 3", apps: ["adm","pfd"], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","pfd":"src/pfd/ShellDialogs.tsx"} },
+    { id: "pbs-topic-row", name: "Topic row — UI variant 4", apps: ["pbs","fd"], source: {"pbs":"src/PbsHelpTutorials.tsx","fd":"src/components/HelpCenter.jsx"} },
   ],
   source: { ace: 'src/features/top-navigation/ui/TutorialsDialog.tsx', adm: 'src/features/top-navigation/components/Tutorials.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/PbsHelpTutorials.tsx', hs: 'src/hs/Tutorials.tsx', fd: 'src/components/HelpCenter.jsx', agpd: 'src/agpd/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx' },
   summary: 'A full-width text Button with an outlined border is one tutorial topic in the Help & Tutorials list; pressing it starts that guided tour.',

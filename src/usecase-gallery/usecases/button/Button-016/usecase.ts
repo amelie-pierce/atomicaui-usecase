@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Show all connection types button',
-  look: 'Accent text',
+
   apps: ['fd'],
-  cases: [
-    { id: 'fd-carousel-footer', name: 'Carousel footer', apps: ['fd'], source: { fd: 'src/components/InputPane.jsx' } },
+  options: [
+    { id: "fd-carousel-footer", name: "Carousel footer", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
   ],
   source: { fd: 'src/components/InputPane.jsx' },
   summary: 'A text Button in the primary colour opens the full list from the footer of a carousel.',

@@ -4,7 +4,7 @@ export interface LayoutPanes {
   detail: ReactNode;
 }
 
-/** The rendered use case stays on the left while its documentation or code scrolls on the right. */
+/** The rendered use case stays on the left while its complete document scrolls on the right. */
 export function DetailLayout({ render, detail }: LayoutPanes) {
   return (
     <div className="ug-layout">

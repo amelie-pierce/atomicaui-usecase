@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Spinner',
   title: 'Large info spinner',
   apps: ['adc'],
-  cases: [{ id: 'adc-report', name: 'Generating report', source: { adc: 'src/adc/components/ReportFlow.tsx' } }],
+  options: [
+    { id: "adc-report", name: "Generating report", source: {"adc":"src/adc/components/ReportFlow.tsx"} },
+  ],
   source: { adc: 'src/adc/components/ReportFlow.tsx' },
   summary: 'An extra-large info spinner above a message, for a job that holds the user in a dialog.',
   where: 'The generating step of the ADC report flow (src/adc/components/ReportFlow.tsx).',

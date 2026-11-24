@@ -4,37 +4,12 @@ export default defineUsecase({
   uiType: 'Checkbox group',
   title: 'Object visibility checkbox group',
   apps: ['hcs', 'adc', 'adm', 'fd', 'hs', 'pbs', 'agpd', 'rws'],
-  cases: [
-    {
-      id: 'hcs-visibility',
-      name: 'Object visibility',
-      apps: ['hcs'],
-      source: { hcs: 'src/App.tsx' },
-    },
-    {
-      id: 'adc-visibility',
-      name: 'Object visibility',
-      apps: ['adc'],
-      source: { adc: 'src/adc/components/ConnectionModel.tsx' },
-    },
-    {
-      id: 'adm-visibility',
-      name: 'Object visibility',
-      apps: ['adm'],
-      source: { adm: 'src/features/viewer/components/ViewerChrome.tsx' },
-    },
-    {
-      id: 'fd-visibility',
-      name: 'Object visibility',
-      apps: ['fd'],
-      source: { fd: 'src/components/Viewer.jsx' },
-    },
-    {
-      id: 'hs-visibility',
-      name: 'Object visibility',
-      apps: ['hs', 'pbs', 'agpd', 'rws'],
-      source: { hs: 'src/hs/ViewerPane.tsx', pbs: 'src/Viewer.tsx', agpd: 'src/agpd/Viewer.tsx', rws: 'src/rws/Viewer.tsx' },
-    },
+  options: [
+    { id: "hcs-visibility", name: "Object visibility", apps: ["hcs"], source: {"hcs":"src/App.tsx"} },
+    { id: "adc-visibility", name: "Object visibility — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} },
+    { id: "adm-visibility", name: "Object visibility — UI variant 3", apps: ["adm"], source: {"adm":"src/features/viewer/components/ViewerChrome.tsx"} },
+    { id: "fd-visibility", name: "Object visibility — UI variant 4", apps: ["fd"], source: {"fd":"src/components/Viewer.jsx"} },
+    { id: "hs-visibility", name: "Object visibility — UI variant 5", apps: ["hs","pbs","agpd","rws"], source: {"hs":"src/hs/ViewerPane.tsx","pbs":"src/Viewer.tsx","agpd":"src/agpd/Viewer.tsx","rws":"src/rws/Viewer.tsx"} },
   ],
   source: {
     hcs: 'src/App.tsx',

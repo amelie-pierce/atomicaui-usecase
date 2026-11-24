@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Tooltip on a radio',
   title: 'Radio option tooltip',
   apps: ['pbs', 'rws'],
-  cases: [
-    {
-      id: 'pbs-viewer-radio',
-      name: 'Viewer control',
-      apps: ['pbs', 'rws'],
-      source: { pbs: 'src/Viewer.tsx', rws: 'src/rws/Viewer.tsx' },
-    },
+  options: [
+    { id: "pbs-viewer-radio", name: "Viewer control", apps: ["pbs","rws"], source: {"pbs":"src/Viewer.tsx","rws":"src/rws/Viewer.tsx"} },
   ],
   source: { pbs: 'src/Viewer.tsx', rws: 'src/rws/Viewer.tsx' },
   summary: 'A radio option of a group, with its label beside it, shows a short note about the option in a small tooltip on hover or keyboard focus.',

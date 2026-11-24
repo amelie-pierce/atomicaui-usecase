@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'CardGroup',
   title: 'Selectable template cards',
   apps: ['adc'],
-  cases: [{ id: 'adc-new-project', name: 'New project templates', source: { adc: 'src/adc/components/NewProjectDialog.tsx' } }],
+  options: [
+    { id: "adc-new-project", name: "New project templates", source: {"adc":"src/adc/components/NewProjectDialog.tsx"} },
+  ],
   source: { adc: 'src/adc/components/NewProjectDialog.tsx' },
   summary: 'A labelled grid of image cards with a search and a view toggle, where one card is selected.',
   where: 'The User Templates section of the ADC New Project dialog (src/adc/components/NewProjectDialog.tsx).',

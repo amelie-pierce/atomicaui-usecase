@@ -1,11 +1,11 @@
-import type { Usecase, UsecaseCase } from '../types';
+import type { Usecase, UsecaseOption } from '../types';
 import { DocsPane } from './docs-pane';
 
 /** The complete use-case document, including its code/API section. */
 export function DetailPane({
   usecase,
   componentName,
-  activeCase,
+  option,
   hoveredPartId,
   availablePartIds,
   onPartChange,
@@ -13,7 +13,7 @@ export function DetailPane({
 }: {
   usecase: Usecase;
   componentName: string;
-  activeCase?: UsecaseCase;
+  option: UsecaseOption;
   hoveredPartId?: string;
   availablePartIds?: string[];
   onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void;
@@ -21,7 +21,7 @@ export function DetailPane({
 }) {
   return (
     <section className="ug-detail" role="region" aria-label="Documentation">
-      <DocsPane usecase={usecase} componentName={componentName} activeCase={activeCase} hoveredPartId={hoveredPartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} />
+      <DocsPane usecase={usecase} option={option} componentName={componentName} hoveredPartId={hoveredPartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} />
     </section>
   );
 }

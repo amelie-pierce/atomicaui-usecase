@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Data table',
   title: 'Data preview table',
   apps: ['adc'],
-  cases: [
-    {
-      id: 'adc-preview',
-      name: 'Data preview table',
-      apps: ['adc'],
-      source: { adc: 'src/adc/components/CapImportSteps.tsx' },
-    },
+  options: [
+    { id: "adc-preview", name: "Data preview table", apps: ["adc"], source: {"adc":"src/adc/components/CapImportSteps.tsx"} },
   ],
   source: {
     adc: 'src/adc/components/CapImportSteps.tsx',

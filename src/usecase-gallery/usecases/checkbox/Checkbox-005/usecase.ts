@@ -4,14 +4,8 @@ export default defineUsecase({
   uiType: 'Checkbox group',
   title: 'Print summary checkbox',
   apps: ['ace', 'pbs'],
-  cases: [
-    {
-      id: 'ace-print',
-      name: 'Print summary',
-      note: 'A title sits above the checkbox; PBS uses a smaller gap than ACE.',
-      apps: ['ace', 'pbs'],
-      source: { ace: 'src/features/print/ui/CrackPrintReport.tsx', pbs: 'src/PrintView.tsx' },
-    },
+  options: [
+    { id: "ace-print", name: "Print summary", apps: ["ace","pbs"], note: "A title sits above the checkbox; PBS uses a smaller gap than ACE.", source: {"ace":"src/features/print/ui/CrackPrintReport.tsx","pbs":"src/PrintView.tsx"} },
   ],
   source: {
     ace: 'src/features/print/ui/CrackPrintReport.tsx',

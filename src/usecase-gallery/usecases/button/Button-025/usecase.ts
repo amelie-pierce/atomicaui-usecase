@@ -3,11 +3,11 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Edit and Duplicate row buttons',
-  look: 'Tonal pair',
+
   apps: ['hs', 'pbs'],
-  cases: [
-    { id: 'hs-edit', name: 'Edit and Duplicate', apps: ['hs'], source: { hs: 'src/hs/OutputPane.tsx' } },
-    { id: 'pbs-edit', name: 'Edit and Duplicate', apps: ['pbs'], source: { pbs: 'src/ResultsSection.tsx' } },
+  options: [
+    { id: "hs-edit", name: "Edit and Duplicate", apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} },
+    { id: "pbs-edit", name: "Edit and Duplicate — UI variant 2", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
   ],
   source: { hs: 'src/hs/OutputPane.tsx', pbs: 'src/ResultsSection.tsx' },
   summary: 'Two tonal labelled Buttons in the first cell of a saved-list row edit or duplicate that row.',

@@ -3,12 +3,12 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Walkthrough step navigation buttons',
-  look: 'Text with icons',
+
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  cases: [
-    { id: 'hcs-step-nav', name: 'Step navigation', apps: ['hcs'], source: { hcs: 'src/components/F01Walkthrough.tsx' } },
-    { id: 'ace-step-nav', name: 'Step navigation', apps: ['ace', 'hs', 'rws', 'agpd'], source: { ace: 'src/features/top-navigation/ui/TutorialWalkthrough.tsx', hs: 'src/hs/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx', agpd: 'src/agpd/Tutorials.tsx' } },
-    { id: 'adm-step-nav', name: 'Step navigation', apps: ['adm', 'pbs', 'pfd', 'fd'], source: { adm: 'src/features/top-navigation/components/TutorialWalkthrough.tsx', pbs: 'src/PbsWalkthrough.tsx', pfd: 'src/pfd/Walkthrough.tsx', fd: 'src/components/Walkthrough.jsx' } },
+  options: [
+    { id: "hcs-step-nav", name: "Step navigation", apps: ["hcs"], source: {"hcs":"src/components/F01Walkthrough.tsx"} },
+    { id: "ace-step-nav", name: "Step navigation — UI variant 2", apps: ["ace","hs","rws","agpd"], source: {"ace":"src/features/top-navigation/ui/TutorialWalkthrough.tsx","hs":"src/hs/Tutorials.tsx","rws":"src/rws/Tutorials.tsx","agpd":"src/agpd/Tutorials.tsx"} },
+    { id: "adm-step-nav", name: "Step navigation — UI variant 3", apps: ["adm","pbs","pfd","fd"], source: {"adm":"src/features/top-navigation/components/TutorialWalkthrough.tsx","pbs":"src/PbsWalkthrough.tsx","pfd":"src/pfd/Walkthrough.tsx","fd":"src/components/Walkthrough.jsx"} },
   ],
   source: { hcs: 'src/components/F01Walkthrough.tsx', ace: 'src/features/top-navigation/ui/TutorialWalkthrough.tsx', adm: 'src/features/top-navigation/components/TutorialWalkthrough.tsx', pfd: 'src/pfd/Walkthrough.tsx', pbs: 'src/PbsWalkthrough.tsx', hs: 'src/hs/Tutorials.tsx', fd: 'src/components/Walkthrough.jsx', agpd: 'src/agpd/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx' },
   summary: 'Borderless text Buttons step back and forward through a guided tour: Previous with arrow-left before it, then Next with arrow-right after it.',

@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Cancel upload button',
-  look: 'Secondary solid',
+
   apps: ['ace', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  cases: [
-    { id: 'ace-upload', name: 'Upload Cancel', apps: ['ace', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'], source: { ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/WorkspaceTools.tsx', hs: 'src/hs/ShellExtras.tsx', fd: 'src/App.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' } },
+  options: [
+    { id: "ace-upload", name: "Upload Cancel", apps: ["ace","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/App.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
   ],
   source: { ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/WorkspaceTools.tsx', hs: 'src/hs/ShellExtras.tsx', fd: 'src/App.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'The default gray Cancel is the lone button at the end of an upload dialog that waits for a file dropped in its body.',

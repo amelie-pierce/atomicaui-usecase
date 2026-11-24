@@ -6,8 +6,8 @@ export default defineUsecase({
   uiType: 'Resizable split',
   title: 'Stacked',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  cases: [
-    { id: 'hcs-stacked', name: 'Stacked', apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'], source: SOURCE },
+  options: [
+    { id: "hcs-stacked", name: "Stacked", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"] },
   ],
   source: SOURCE,
   summary: 'A Panels group stacks the workspace into surface panes, Input above and the results below, that the user resizes by dragging the horizontal handle between them.',

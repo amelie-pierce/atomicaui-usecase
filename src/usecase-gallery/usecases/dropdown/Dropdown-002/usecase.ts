@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Dropdown with icon trigger',
   title: 'Filled icon trigger',
   apps: ['adc'],
-  cases: [{ id: 'adc-hidden-designs', name: 'Overflow list', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } }],
+  options: [
+    { id: "adc-hidden-designs", name: "Overflow list", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+  ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'An icon-only trigger opens a plain list of the items that no longer fit in a row; choosing one activates it.',
   where: 'The ADC design tab rail, at the start of the row before the design tabs; it appears only when some designs do not fit as tabs and lists exactly those.',

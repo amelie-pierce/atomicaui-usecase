@@ -4,7 +4,9 @@ export default defineUsecase({
   uiType: 'Status chip',
   title: 'Compact solid status',
   apps: ['fd'],
-  cases: [{ id: 'fd-checks', name: 'Check categories', source: { fd: 'src/components/Results.jsx' } }],
+  options: [
+    { id: "fd-checks", name: "Check categories", source: {"fd":"src/components/Results.jsx"} },
+  ],
   source: { fd: 'src/components/Results.jsx' },
   summary: 'A compact solid chip with an icon for each check category of a result: green and a check when it passes, red and an exclamation when it fails.',
   where: 'Below the model header of each FD result card (src/components/Results.jsx).',

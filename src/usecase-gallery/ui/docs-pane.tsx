@@ -1,11 +1,10 @@
 import { Suspense, use } from 'react';
 import { APPS } from '../apps';
 import type { AppKey } from '../apps';
-import { appLabels, caseTypes, isShared } from '../catalog/app-views';
 import { useCopy } from '../hooks/use-copy';
 import { stripPreviewProps } from '../catalog/snippet';
 import { Button, Chip, Type } from '../kit';
-import type { AnatomyPart, Usecase, UsecaseCase } from '../types';
+import type { AnatomyPart, Usecase, UsecaseOption } from '../types';
 
 function AppBadges({ apps, label }: { apps: AppKey[]; label: string }) {
   return (
@@ -20,18 +19,7 @@ function AppBadges({ apps, label }: { apps: AppKey[]; label: string }) {
 }
 
 function UsedIn({ usecase }: { usecase: Usecase }) {
-  if (!usecase.cases?.some((candidate) => candidate.look || !isShared(candidate, usecase))) return <AppBadges apps={usecase.apps} label="Used in" />;
-  return <>
-    <Type as="p" role="l3" color="muted" className="ug-docs__note">Used in, by type. Each row of badges is one distinct UI.</Type>
-    <dl className="ug-docs__variants" aria-label="Used in">{caseTypes(usecase).map(({ name, cases }) => <div key={name} className="ug-docs__type">
-      <Type as="dt" role="l3" weight="semi-bold">{name}</Type>
-      {cases.map(({ id, label, apps, look }) => <dd key={id} className="ug-docs__variant">
-        {look && <Type as="span" role="l3"><Type as="span" role="l3" weight="semi-bold">Look: </Type>{look}</Type>}
-        {label !== appLabels(apps) && <Type as="span" role="l3" color="muted">{label}</Type>}
-        <AppBadges apps={apps} label={`${name}: ${label}`} />
-      </dd>)}
-    </div>)}</dl>
-  </>;
+  return <AppBadges apps={usecase.apps} label="Used in" />;
 }
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
@@ -87,32 +75,28 @@ function CodeBlock({ code, label }: { code: Promise<string>; label: string }) {
   </div>;
 }
 
-function CodeApiSection({ usecase, activeCase }: { usecase: Usecase; activeCase?: UsecaseCase }) {
-  const hasContext = !!(usecase.options || activeCase || usecase.loadContextCode);
-  const code = activeCase ? activeCase.loadCode() : usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
+function CodeApiSection({ usecase, option }: { usecase: Usecase; option: UsecaseOption }) {
   return <Section id="code-api" title="6. Code / API">
-    {hasContext && <CodeBlock label="Component UI" code={usecase.loadCode()} />}
-    <CodeBlock label={hasContext ? 'In context UI' : 'Example'} code={code} />
+    <CodeBlock label="Component UI" code={option.loadExampleCode()} />
+    <CodeBlock label="In context UI" code={option.loadCode()} />
     {!!usecase.api?.props?.length && <div className="ug-docs__props-wrap"><Type as="h4" role="l3" weight="semi-bold">Props</Type><div className="ug-docs__table-scroll"><table className="ug-docs__props"><thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead><tbody>{usecase.api.props.map((prop) => <tr key={prop.name}><th scope="row"><code>{prop.name}</code>{prop.required && ' *'}</th><td><code>{prop.type}</code></td><td>{prop.description ?? '—'}</td></tr>)}</tbody></table></div></div>}
   </Section>;
 }
 
-export function DocsPane({ usecase, componentName, activeCase, hoveredPartId, availablePartIds, onPartChange, onSelectPart }: { usecase: Usecase; componentName: string; activeCase?: UsecaseCase; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
+export function DocsPane({ usecase, option, componentName, hoveredPartId, availablePartIds, onPartChange, onSelectPart }: { usecase: Usecase; option: UsecaseOption; componentName: string; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
   const parts = usecase.anatomy;
-  const code = activeCase ? activeCase.loadCode() : usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
+  const code = option.loadExampleCode();
   const hasAccessibility = !!usecase.accessibility?.keyboard || !!usecase.accessibility?.focus;
-  const variantNames = [...new Set((usecase.cases ?? []).map((candidate) => candidate.name))];
-  const optionNames = (usecase.options ?? []).map((option) => option.name);
-  const hasVariants = !!usecase.variants || !!usecase.look || variantNames.length > 0 || optionNames.length > 0;
+  const hasVariants = !!usecase.variants || usecase.options.length > 0;
   return <div className="ug-docs">
-    <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{!!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{usecase.summary}</Type>{usecase.look && <Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">Look: </Type>{usecase.look}</Type>}<div className="ug-docs__apps"><UsedIn usecase={usecase} /></div></header>
+    <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{!!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{usecase.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name}</Type><div className="ug-docs__apps"><UsedIn usecase={usecase} /></div></header>
     <div className="ug-docs__sections">
       {parts.length > 0 && <Suspense fallback={null}><AnatomyCodeSource parts={parts} code={code} availablePartIds={availablePartIds} hoveredPartId={hoveredPartId} onPartChange={onPartChange} onSelectPart={onSelectPart} /></Suspense>}
       <Section id="usage" title="2. Usage / Behavior"><dl className="ug-docs__definition-list"><div><Type as="dt" role="l3" weight="semi-bold">Where</Type><Type as="dd" role="l3">{usecase.where}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">When</Type><Type as="dd" role="l3">{usecase.when}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">How</Type><Type as="dd" role="l3">{usecase.usage ?? usecase.how}</Type></div>{usecase.behavior && <div><Type as="dt" role="l3" weight="semi-bold">Behavior</Type><Type as="dd" role="l3">{usecase.behavior}</Type></div>}</dl></Section>
-      {hasVariants && <Section id="variants" title="3. Variants & States"><Type as="p" role="l3">{usecase.variants ?? (optionNames.length ? optionNames : [usecase.look, ...variantNames]).filter(Boolean).join(' · ')}</Type></Section>}
+      {hasVariants && <Section id="variants" title="3. Variants & States"><Type as="p" role="l3">{usecase.variants ?? usecase.options.map((candidate) => candidate.name).join(' · ')}</Type></Section>}
       {hasAccessibility && <Section id="accessibility" title="4. Accessibility"><dl className="ug-docs__definition-list">{usecase.accessibility?.keyboard && <div><Type as="dt" role="l3" weight="semi-bold">Keyboard</Type><Type as="dd" role="l3">{usecase.accessibility.keyboard}</Type></div>}{usecase.accessibility?.focus && <div><Type as="dt" role="l3" weight="semi-bold">Focus</Type><Type as="dd" role="l3">{usecase.accessibility.focus}</Type></div>}</dl></Section>}
       {(usecase.prompt || usecase.debugPrompt) && <Section id="prompts" title="5. Prompt / Debug prompt">{usecase.prompt && <CopyBlock label="Prompt" text={usecase.prompt} />}{usecase.debugPrompt && <CopyBlock label="Debug prompt" text={usecase.debugPrompt} />}</Section>}
-      <Suspense fallback={<Section id="code-api" title="6. Code / API"><Type as="p" role="l3" color="muted">Loading code…</Type></Section>}><CodeApiSection usecase={usecase} activeCase={activeCase} /></Suspense>
+      <Suspense fallback={<Section id="code-api" title="6. Code / API"><Type as="p" role="l3" color="muted">Loading code…</Type></Section>}><CodeApiSection usecase={usecase} option={option} /></Suspense>
       {!!usecase.related?.length && <Section id="related" title="7. Related components"><ul className="ug-docs__related">{usecase.related.map((item) => <li key={item.href}><a href={item.href}>{item.label}</a></li>)}</ul></Section>}
     </div>
   </div>;

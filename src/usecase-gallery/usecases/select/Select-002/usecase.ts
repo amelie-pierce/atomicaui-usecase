@@ -4,21 +4,9 @@ export default defineUsecase({
   uiType: 'Field select',
   title: 'Column filter select',
   apps: ['hcs', 'hs', 'pfd'],
-  cases: [
-    {
-      id: 'hcs-column-filter',
-      name: 'Column filter',
-      apps: ['hcs', 'hs'],
-      note: 'The list opens below the trigger.',
-      source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx' },
-    },
-    {
-      id: 'pfd-column-filter',
-      name: 'Column filter',
-      apps: ['pfd'],
-      note: 'The list opens above the trigger.',
-      source: { pfd: 'src/pfd/ColumnMenu.tsx' },
-    },
+  options: [
+    { id: "hcs-column-filter", name: "Column filter", apps: ["hcs","hs"], note: "The list opens below the trigger.", source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} },
+    { id: "pfd-column-filter", name: "Column filter — UI variant 2", apps: ["pfd"], note: "The list opens above the trigger.", source: {"pfd":"src/pfd/ColumnMenu.tsx"} },
   ],
   source: {
     hcs: 'src/components/ColumnMenu.tsx',

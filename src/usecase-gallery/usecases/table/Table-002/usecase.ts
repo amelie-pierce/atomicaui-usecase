@@ -13,12 +13,12 @@ export default defineUsecase({
     adm: 'src/features/multi-design/components/MultiDesignTable.tsx',
     ace: 'src/features/calculation/ui/CalculationOutput.tsx',
   },
-  cases: [
-    { id: 'hcs-selection', name: 'Row selection', apps: ['hcs'], source: { hcs: 'src/components/F01Results.tsx' } },
-    { id: 'hs-selection', name: 'Row selection', apps: ['hs', 'fd', 'pbs'], source: { hs: 'src/hs/ResultsTable.tsx', fd: 'src/components/Results.jsx', pbs: 'src/ResultsSection.tsx' } },
-    { id: 'rws-selection', name: 'Row selection', apps: ['rws'], source: { rws: 'src/rws/output.tsx' } },
-    { id: 'adm-selection', name: 'Row selection', apps: ['adm'], source: { adm: 'src/features/multi-design/components/MultiDesignTable.tsx' } },
-    { id: 'ace-selection', name: 'Row selection', apps: ['ace'], source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' } },
+  options: [
+    { id: "hcs-selection", name: "Row selection", apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} },
+    { id: "hs-selection", name: "Row selection — UI variant 2", apps: ["hs","fd","pbs"], source: {"hs":"src/hs/ResultsTable.tsx","fd":"src/components/Results.jsx","pbs":"src/ResultsSection.tsx"} },
+    { id: "rws-selection", name: "Row selection — UI variant 3", apps: ["rws"], source: {"rws":"src/rws/output.tsx"} },
+    { id: "adm-selection", name: "Row selection — UI variant 4", apps: ["adm"], source: {"adm":"src/features/multi-design/components/MultiDesignTable.tsx"} },
+    { id: "ace-selection", name: "Row selection — UI variant 5", apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
   ],
   summary: 'A radio in the first cell selects one row of a results table; the selected row is marked by the row surface and an edge bar.',
   where: 'Output tables where one candidate is chosen: HCS F01Results.tsx, HS ResultsTable.tsx, FD Results.jsx, PBS ResultsSection.tsx (edit mode, in the action column), RWS output.tsx (bar only), ADM MultiDesignTable.tsx (Multi design dialog) and ACE CalculationOutput.tsx (the Order model radio).',

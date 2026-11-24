@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Acknowledge notice button',
-  look: 'Accent solid',
+
   apps: ['adc'],
-  cases: [
-    { id: 'adc-ok', name: 'Info OK', apps: ['adc'], source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' } },
+  options: [
+    { id: "adc-ok", name: "Info OK", apps: ["adc"], source: {"adc":"src/adc/components/DesignCapacityDialog.tsx"} },
   ],
   source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' },
   summary: 'A solid primary Button, orange with white text, is the lone OK that acknowledges a notice.',

@@ -4,20 +4,8 @@ export default defineUsecase({
   uiType: 'FileUpload',
   title: 'Feedback attachments dropzone',
   apps: ['adm', 'pfd', 'pbs', 'hs', 'agpd', 'rws'],
-  cases: [
-    {
-      id: 'adm-attachments',
-      name: 'Feedback attachments',
-      apps: ['adm', 'pfd', 'pbs', 'hs', 'agpd', 'rws'],
-      source: {
-        adm: 'src/features/top-navigation/components/FeedbackDialog.tsx',
-        pfd: 'src/pfd/ShellDialogs.tsx',
-        pbs: 'src/WorkspaceTools.tsx',
-        hs: 'src/hs/ShellExtras.tsx',
-        agpd: 'src/agpd/ShellDialogs.tsx',
-        rws: 'src/rws/ShellDialogs.tsx',
-      },
-    },
+  options: [
+    { id: "adm-attachments", name: "Feedback attachments", apps: ["adm","pfd","pbs","hs","agpd","rws"], source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
   ],
   source: {
     adm: 'src/features/top-navigation/components/FeedbackDialog.tsx',

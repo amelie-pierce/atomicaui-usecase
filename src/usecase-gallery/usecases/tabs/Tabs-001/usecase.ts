@@ -4,25 +4,9 @@ export default defineUsecase({
   uiType: 'Segmented tabs',
   title: 'Pane tabs',
   apps: ['hs', 'pbs', 'fd', 'rws', 'adm', 'adc'],
-  cases: [
-    {
-      id: 'hs-pane-tabs',
-      name: 'Pane tabs',
-      apps: ['hs', 'pbs', 'fd', 'rws', 'adm'],
-      source: {
-        hs: 'src/hs/OutputTabs.tsx',
-        pbs: 'src/ResultsSection.tsx',
-        fd: 'src/components/Results.jsx',
-        rws: 'src/rws/output.tsx',
-        adm: 'src/app/layout/Workbench/Workbench.tsx',
-      },
-    },
-    {
-      id: 'adc-pane-tabs',
-      name: 'Pane tabs',
-      apps: ['adc'],
-      source: { adc: 'src/adc/Workspace.tsx' },
-    },
+  options: [
+    { id: "hs-pane-tabs", name: "Pane tabs", apps: ["hs","pbs","fd","rws","adm"], source: {"hs":"src/hs/OutputTabs.tsx","pbs":"src/ResultsSection.tsx","fd":"src/components/Results.jsx","rws":"src/rws/output.tsx","adm":"src/app/layout/Workbench/Workbench.tsx"} },
+    { id: "adc-pane-tabs", name: "Pane tabs — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: {
     hs: 'src/hs/OutputTabs.tsx',

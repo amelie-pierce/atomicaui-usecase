@@ -4,30 +4,10 @@ export default defineUsecase({
   uiType: 'Titled accordion',
   title: 'Title with badge and count',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  cases: [
-    {
-      id: 'hcs-release-notes',
-      name: 'Release notes',
-      apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-      source: {
-        hcs: 'src/components/HcsAboutDialog.tsx',
-        ace: 'src/features/top-navigation/ui/AboutDialog.tsx',
-        adm: 'src/features/top-navigation/components/AboutDialog.tsx',
-        pfd: 'src/pfd/AboutDialog.tsx',
-        pbs: 'src/AboutDialog.tsx',
-        hs: 'src/hs/AboutDialog.tsx',
-        fd: 'src/components/AboutDialog.jsx',
-        agpd: 'src/agpd/AboutDialog.tsx',
-        rws: 'src/rws/AboutDialog.tsx',
-      },
-    },
-    { id: 'adc-release-notes', name: 'Release notes', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } },
-    {
-      id: 'ace-other-regions',
-      name: 'Other regions',
-      apps: ['ace', 'hs', 'fd'],
-      source: { ace: 'src/features/top-navigation/ui/AboutDialog.tsx', hs: 'src/hs/AboutDialog.tsx', fd: 'src/components/AboutDialog.jsx' },
-    },
+  options: [
+    { id: "hcs-release-notes", name: "Release notes", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pfd":"src/pfd/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"} },
+    { id: "adc-release-notes", name: "Release notes — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "ace-other-regions", name: "Other regions", apps: ["ace","hs","fd"], source: {"ace":"src/features/top-navigation/ui/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx"} },
   ],
   source: {
     hcs: 'src/components/HcsAboutDialog.tsx',

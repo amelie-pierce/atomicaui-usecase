@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Data table',
   title: 'Print table totals row',
   apps: ['ace'],
-  cases: [
-    {
-      id: 'ace-print-totals',
-      name: 'Print table',
-      apps: ['ace'],
-      source: { ace: 'src/features/print/ui/report-primitives.tsx' },
-    },
+  options: [
+    { id: "ace-print-totals", name: "Print table", apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} },
   ],
   source: {
     ace: 'src/features/print/ui/report-primitives.tsx',

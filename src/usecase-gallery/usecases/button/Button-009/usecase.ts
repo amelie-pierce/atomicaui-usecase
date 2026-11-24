@@ -3,9 +3,11 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Open view options button',
-  look: 'Tonal outlined',
-  area: 'Viewer',
-  contextVariant: 'options',
+
+  options: [
+    { id: "default", name: "Tonal outlined" },
+  ],
+
   apps: ['hcs', 'adm'],
   source: { hcs: 'src/App.tsx', adm: 'src/features/base-plate/components/ThicknessCalculatorDialog.tsx' },
   summary: 'A tonal text Button in the corner of the 3D viewer opens the camera and visibility controls in a popover.',

@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Add result row button',
-  look: 'Tonal, 28px',
+
   apps: ['pbs'],
-  cases: [
-    { id: 'pbs-row', name: 'Row add icon', apps: ['pbs'], source: { pbs: 'src/ResultsSection.tsx' } },
+  options: [
+    { id: "pbs-row", name: "Row add icon", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
   ],
   source: { pbs: 'src/ResultsSection.tsx' },
   summary: 'A tonal plus IconButton, 28px square, adds one result row to a list.',

@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Download CSV button',
-  look: 'Text with leading icon',
+
   apps: ['pfd', 'hs', 'rws'],
-  cases: [
-    { id: 'pfd-toolbar', name: 'Table toolbar', apps: ['pfd', 'hs', 'rws'], source: { pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx', rws: 'src/rws/output.tsx' } },
+  options: [
+    { id: "pfd-toolbar", name: "Table toolbar", apps: ["pfd","hs","rws"], source: {"pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx","rws":"src/rws/output.tsx"} },
   ],
   source: { pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx', rws: 'src/rws/output.tsx' },
   summary: 'A quiet text Button with a leading icon runs one action in a toolbar: a CSV icon downloads the rows.',

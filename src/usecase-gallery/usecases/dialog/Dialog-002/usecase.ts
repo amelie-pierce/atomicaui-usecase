@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Report preview dialog',
   apps: ['adc'],
-  cases: [
-    {
-      id: 'adc-report',
-      name: 'Report preview',
-      apps: ['adc'],
-      source: { adc: 'src/adc/components/ReportFlow.tsx' },
-    },
+  options: [
+    { id: "adc-report", name: "Report preview", apps: ["adc"], source: {"adc":"src/adc/components/ReportFlow.tsx"} },
   ],
   source: {
     adc: 'src/adc/components/ReportFlow.tsx',

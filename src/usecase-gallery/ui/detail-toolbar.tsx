@@ -3,16 +3,16 @@ import { useCopy } from '../hooks/use-copy';
 import { Button } from '../kit';
 import type { Crumb } from './breadcrumb';
 import { Breadcrumb } from './breadcrumb';
-import type { Usecase, UsecaseCase } from '../types';
+import type { Usecase, UsecaseOption } from '../types';
 
 type SaveStatus = 'idle' | 'saved' | 'failed';
 
-export function DetailToolbar({ crumbs, usecase, activeCase }: { crumbs: Crumb[]; usecase: Usecase; activeCase?: UsecaseCase }) {
+export function DetailToolbar({ crumbs, usecase, option }: { crumbs: Crumb[]; usecase: Usecase; option: UsecaseOption }) {
   const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
   const saveTimer = useRef<ReturnType<typeof setTimeout>>();
   const share = useCopy();
   const copy = useCopy();
-  const code = activeCase ? activeCase.loadCode() : usecase.loadContextCode ? usecase.loadContextCode() : usecase.loadCode();
+  const code = option.loadCode();
 
   useEffect(() => () => clearTimeout(saveTimer.current), []);
 

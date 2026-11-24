@@ -4,21 +4,8 @@ export default defineUsecase({
   uiType: 'Drawer',
   title: 'Mobile navigation drawer',
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  cases: [
-    {
-      id: 'ace-mobile-nav',
-      name: 'Mobile navigation',
-      source: {
-        ace: 'src/features/top-navigation/ui/AceNavBar.tsx',
-        adm: 'src/app/layout/NavBar/NavBar.tsx',
-        pfd: 'src/pfd/TopBar.tsx',
-        pbs: 'src/TopBar.tsx',
-        hs: 'src/hs/TopBar.tsx',
-        fd: 'src/App.jsx',
-        agpd: 'src/agpd/TopBar.tsx',
-        rws: 'src/rws/TopBar.tsx',
-      },
-    },
+  options: [
+    { id: "ace-mobile-nav", name: "Mobile navigation", source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","pfd":"src/pfd/TopBar.tsx","pbs":"src/TopBar.tsx","hs":"src/hs/TopBar.tsx","fd":"src/App.jsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx"} },
   ],
   source: {
     ace: 'src/features/top-navigation/ui/AceNavBar.tsx',

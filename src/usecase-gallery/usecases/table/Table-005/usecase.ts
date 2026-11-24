@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Data table',
   title: 'Check details table',
   apps: ['fd'],
-  cases: [
-    {
-      id: 'fd-details',
-      name: 'Check details table',
-      apps: ['fd'],
-      source: { fd: 'src/components/RowExpansion.jsx' },
-    },
+  options: [
+    { id: "fd-details", name: "Check details table", apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
   ],
   source: {
     fd: 'src/components/RowExpansion.jsx',

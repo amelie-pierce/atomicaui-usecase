@@ -3,8 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Show all products button',
-  look: 'Inline link',
-  area: 'Body text',
+
+  options: [
+    { id: "default", name: "Inline link" },
+  ],
   apps: ['hcs'],
   source: { hcs: 'src/components/HcsNoOutputResults.tsx' },
   summary: 'A Button styled as an underlined warning-colored link inside body copy.',

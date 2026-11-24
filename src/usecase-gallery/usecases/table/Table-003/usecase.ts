@@ -4,19 +4,9 @@ export default defineUsecase({
   uiType: 'Data table',
   title: 'Calculation summary table',
   apps: ['adm', 'adc'],
-  cases: [
-    {
-      id: 'adm-summary',
-      name: 'Summary table',
-      apps: ['adm'],
-      source: { adm: 'src/features/calculation/components/shared/ResultTable.tsx' },
-    },
-    {
-      id: 'adc-summary',
-      name: 'Summary table',
-      apps: ['adc'],
-      source: { adc: 'src/adc/components/ResultTable.tsx' },
-    },
+  options: [
+    { id: "adm-summary", name: "Summary table", apps: ["adm"], source: {"adm":"src/features/calculation/components/shared/ResultTable.tsx"} },
+    { id: "adc-summary", name: "Summary table — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ResultTable.tsx"} },
   ],
   source: {
     adm: 'src/features/calculation/components/shared/ResultTable.tsx',

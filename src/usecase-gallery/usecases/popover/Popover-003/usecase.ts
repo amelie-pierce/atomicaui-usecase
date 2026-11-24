@@ -4,9 +4,9 @@ export default defineUsecase({
   uiType: 'Popover',
   title: 'Column menu',
   apps: ['hcs', 'hs', 'pfd'],
-  cases: [
-    { id: 'hcs-column-menu', name: 'Column menu', apps: ['hcs', 'hs'], source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx' } },
-    { id: 'pfd-column-menu', name: 'Column menu', apps: ['pfd'], source: { pfd: 'src/pfd/ColumnMenu.tsx' } },
+  options: [
+    { id: "hcs-column-menu", name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} },
+    { id: "pfd-column-menu", name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} },
   ],
   source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx', pfd: 'src/pfd/ColumnMenu.tsx' },
   summary: 'A popover of choices opened from the kebab of a table header cell: the Sort radios for that column.',

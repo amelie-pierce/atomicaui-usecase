@@ -41,7 +41,6 @@ export interface UsecaseOptionDoc {
 export interface AnatomyPart {
   id: string;
   name: string;
-  token?: string;
   description: string;
   /** A selector scoped to the preview stage. Omit when the example uses data-ug-part. */
   selector?: string;

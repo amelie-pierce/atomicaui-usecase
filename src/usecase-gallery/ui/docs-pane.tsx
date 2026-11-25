@@ -35,9 +35,10 @@ function AnatomySection({ parts, availablePartIds, hoveredPartId, onPartChange, 
   return <Section id="anatomy" title="1. Anatomy">
     <ol className="ug-docs__anatomy">{visibleParts.map((part, index) => <li key={part.id} id={`anatomy-${part.id}`} className={hoveredPartId === part.id ? 'is-highlighted' : undefined}>
       <Button className="ug-docs__anatomy-button" aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} aria-pressed={hoveredPartId === part.id}
-        onMouseEnter={() => onPartChange(part.id, undefined, 'hover')} onMouseLeave={(event) => { if (!shouldKeepHighlight(event.relatedTarget)) onPartChange(undefined, part.id, 'hover'); }} onFocus={() => onPartChange(part.id, undefined, 'focus')} onBlur={(event) => { if (!shouldKeepHighlight(event.relatedTarget)) onPartChange(undefined, part.id, 'focus'); }} onClick={() => onSelectPart(part.id)}>
+        onMouseEnter={() => onPartChange(part.id, undefined, 'hover')} onMouseLeave={(event) => { if (!shouldKeepHighlight(event.relatedTarget)) onPartChange(undefined, part.id, 'hover'); }} // A click also focuses the step; only keyboard focus keeps the highlight, so it never outlives the pointer.
+        onFocus={(event) => { if (event.currentTarget.matches(':focus-visible')) onPartChange(part.id, undefined, 'focus'); }} onBlur={(event) => { if (!shouldKeepHighlight(event.relatedTarget)) onPartChange(undefined, part.id, 'focus'); }} onClick={() => onSelectPart(part.id)}>
         <span className="ug-docs__anatomy-number">{String(index + 1).padStart(2, '0')}</span>
-        <span className="ug-docs__anatomy-copy"><span className="ug-docs__anatomy-name">{part.name}</span>{part.token && <Type as="code" role="l3" family="mono" color="muted">{part.token}</Type>}<span className="ug-docs__anatomy-description">{part.description}</span></span>
+        <span className="ug-docs__anatomy-copy"><span className="ug-docs__anatomy-name">{part.name}</span><span className="ug-docs__anatomy-description">{part.description}</span></span>
        </Button>
     </li>)}</ol>
   </Section>;

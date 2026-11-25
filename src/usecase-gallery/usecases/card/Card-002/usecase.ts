@@ -16,21 +16,18 @@ export default defineUsecase({
     {
       id: 'card',
       name: 'Card',
-      token: 'Card',
       selector: '[class~="aui-card"]',
       description: 'Square 96 by 96 soft tile with no padding; ADM lays three of them across under Explore More Applications.',
     },
     {
       id: 'image-container',
       name: 'Image container',
-      token: 'Card.ImageContainer',
       selector: '[class~="aui-card-image-container"]',
       description: 'Fills the whole card (width and height "fill"), so the picture is the entire tile.',
     },
     {
       id: 'image',
       name: 'Image',
-      token: 'Card.Image',
       selector: '[class~="aui-card-image"]',
       description: 'The application picture with alt "Application", a 1:1 ratio and fit="contain".',
     },

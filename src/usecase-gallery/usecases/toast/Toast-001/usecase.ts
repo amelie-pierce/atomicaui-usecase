@@ -27,14 +27,12 @@ export default defineUsecase({
     {
       id: 'viewport',
       name: 'Viewport',
-      token: 'Toast.Viewport',
       selector: '[class~="aui-toast-viewport"]',
       description: 'The stack container pinned to the top end of the pane with 8px insets, rendered inside Toast.Portal.',
     },
     {
       id: 'toast',
       name: 'Toast',
-      token: 'Toast',
       selector: '[class~="aui-toast"]',
       description: 'The success notification surface the ToastStack adds on mount, one per manager entry.',
     },

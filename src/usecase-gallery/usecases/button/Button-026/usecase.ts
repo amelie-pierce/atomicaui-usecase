@@ -18,10 +18,10 @@ export default defineUsecase({
     + 'In context the Buttons are stacked in a column and start-aligned in the first cell of a Job tally row; ACE hides Edit on the selected row and Delete while only one job exists. '
     + 'The other columns and the totals row are left out.',
   anatomy: [
-    { id: 'stack', name: 'Link stack', token: 'View', selector: '[data-ug-part="link-stack"]', description: 'The no-padding column, start-aligned, that stacks Edit above Delete so the row keeps its light, text-like look.' },
-    { id: 'edit', name: 'Edit', token: 'Button', selector: '[class~="aui-button"]:not([aria-label]):first-of-type', description: 'Secondary text Edit with profile no-padding, so it reads as a link rather than a button.' },
-    { id: 'delete', name: 'Delete', token: 'Button', selector: '[class~="aui-button"]:not([aria-label]):last-of-type', description: 'Secondary text Delete, styled like Edit; it is not tinted as destructive.' },
-    { id: 'cell', name: 'Actions cell', token: 'Table.Cell', selector: '[class~="aui-table-cell"]:first-child', description: 'ACE Job tally: the left-aligned first cell of the row that holds the stacked links next to the Job 1 value.' },
-    { id: 'header-cell', name: 'Actions header', token: 'Table.HeaderCell', selector: '[class~="aui-table-header-cell"]:first-child', description: 'The unlabeled Actions column heading (raised) above the links.' },
+    { id: 'stack', name: 'Link stack', selector: '[data-ug-part="link-stack"]', description: 'The no-padding column, start-aligned, that stacks Edit above Delete so the row keeps its light, text-like look.' },
+    { id: 'edit', name: 'Edit', selector: '[class~="aui-button"]:not([aria-label]):first-of-type', description: 'Secondary text Edit with profile no-padding, so it reads as a link rather than a button.' },
+    { id: 'delete', name: 'Delete', selector: '[class~="aui-button"]:not([aria-label]):last-of-type', description: 'Secondary text Delete, styled like Edit; it is not tinted as destructive.' },
+    { id: 'cell', name: 'Actions cell', selector: '[class~="aui-table-cell"]:first-child', description: 'ACE Job tally: the left-aligned first cell of the row that holds the stacked links next to the Job 1 value.' },
+    { id: 'header-cell', name: 'Actions header', selector: '[class~="aui-table-header-cell"]:first-child', description: 'The unlabeled Actions column heading (raised) above the links.' },
   ],
 });

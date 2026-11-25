@@ -15,10 +15,10 @@ export default defineUsecase({
   how: 'Cancel sets color "surface-alt" and paint "solid", Save color "secondary" and paint "solid", both scale "sm" with a soft shape and a 4px gap; there is no reset icon. '
     + 'The popup opens to the right of the value chip (surface solid xs, compact; right, center, 8px offset). The chip stands alone here instead of floating over the 3D model. One group, ADC only.',
   anatomy: [
-    { id: 'chip', name: 'Value chip', token: 'Popover.Trigger', selector: '[data-base-ui-click-trigger]', description: 'The 12 in value chip (aria-label "Edit Width, 12 in") that opens the editor popover; it stands alone here rather than floating over the 3D model.' },
-    { id: 'popup', name: 'Editor popup', token: 'Popover.Popup', selector: '[data-aui-popup-motion][role="dialog"]', description: 'The surface (solid, sm, soft, elevation 4) opened 8px to the right of the chip, holding the Width number field and the Cancel and Save buttons in one row.' },
-    { id: 'actions', name: 'Button row', token: 'View', selector: '[data-ug-part="edit-actions"]', description: 'The row at the end of the popup that keeps Cancel and Save together with a 4px gap and no growth, so the Width field takes the remaining width.' },
-    { id: 'cancel', name: 'Cancel', token: 'Button', selector: '[class~="aui-button"]:not([aria-label]):first-of-type', description: 'The filled gray surface-alt Cancel that abandons the edit; ADC fills it like a dialog Cancel.' },
-    { id: 'save', name: 'Save', token: 'Button', selector: '[class~="aui-button"]:not([aria-label]):last-of-type', description: 'The solid secondary Save that commits the new Width value; it follows Cancel and is the only emphasised action.' },
+    { id: 'chip', name: 'Value chip', selector: '[data-base-ui-click-trigger]', description: 'The 12 in value chip (aria-label "Edit Width, 12 in") that opens the editor popover; it stands alone here rather than floating over the 3D model.' },
+    { id: 'popup', name: 'Editor popup', selector: '[data-aui-popup-motion][role="dialog"]', description: 'The surface (solid, sm, soft, elevation 4) opened 8px to the right of the chip, holding the Width number field and the Cancel and Save buttons in one row.' },
+    { id: 'actions', name: 'Button row', selector: '[data-ug-part="edit-actions"]', description: 'The row at the end of the popup that keeps Cancel and Save together with a 4px gap and no growth, so the Width field takes the remaining width.' },
+    { id: 'cancel', name: 'Cancel', selector: '[class~="aui-button"]:not([aria-label]):first-of-type', description: 'The filled gray surface-alt Cancel that abandons the edit; ADC fills it like a dialog Cancel.' },
+    { id: 'save', name: 'Save', selector: '[class~="aui-button"]:not([aria-label]):last-of-type', description: 'The solid secondary Save that commits the new Width value; it follows Cancel and is the only emphasised action.' },
   ],
 });

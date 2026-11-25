@@ -16,7 +16,6 @@ export default defineUsecase({
     {
       id: "spinner",
       name: "Spinner",
-      token: "Spinner",
       selector: "[class~=\"aui-spinner\"]",
       description: "The small default-colour spinner at scale \"sm\", announced as \"Updating Results\", centred above the caption in the Output pane.",
     },

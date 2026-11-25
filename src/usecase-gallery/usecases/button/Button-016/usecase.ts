@@ -19,14 +19,12 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The View all Button in the FD carousel footer: primary text paint at the default scale, after the pager dots.",
       selector: "[class~=\"aui-button\"]:not([aria-label*=\" / \"])",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The text \"View all\" that opens every connection type instead of the few cards shown.",
       selector: "[class~=\"aui-button\"]:not([aria-label*=\" / \"])",
       text: true,

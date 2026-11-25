@@ -23,14 +23,12 @@ export default defineUsecase({
     {
       id: "chips",
       name: "Attached file chip",
-      token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The scene lists each attached file above the area as a default Chip with its name.",
     },
     {
       id: "upload",
       name: "Upload area",
-      token: "FileUpload",
       selector: "[class~=\"aui-file-upload\"]",
       description: "The dashed multi-file drop surface (multiple) in the Feedback form attachment block, with the idle message.",
     },

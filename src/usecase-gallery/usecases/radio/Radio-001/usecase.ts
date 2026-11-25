@@ -22,21 +22,18 @@ export default defineUsecase({
     {
       id: "group",
       name: "Radio group",
-      token: "RadioGroup",
       selector: "[class~=\"aui-radio-group\"]",
       description: "A row of radios (direction \"row\") with Welded selected by default; the FD Settings popover shows the same group as Yes or No.",
     },
     {
       id: "group-label",
       name: "Group label",
-      token: "RadioGroup.Label",
       selector: "[class~=\"aui-radio-group\"] > [class~=\"aui-label\"]",
       description: "The \"Plate connection\" form label at the start of the row, laid out as a flex row that fills the width with a gap of 4.",
     },
     {
       id: "radio",
       name: "Radio",
-      token: "Radio",
       selector: "[class~=\"aui-radio\"]",
       description: "One option, Welded or Bolted: a tonal surface circle with an outlined border when unselected and a solid primary circle when chosen.",
     },
@@ -49,7 +46,6 @@ export default defineUsecase({
     {
       id: "label",
       name: "Label",
-      token: "Radio.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The option text, Welded or Bolted, beside its circle.",
     },

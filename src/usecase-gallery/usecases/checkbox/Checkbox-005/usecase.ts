@@ -19,21 +19,18 @@ export default defineUsecase({
     {
       id: "fieldset",
       name: "Fieldset",
-      token: "Fieldset",
       selector: "[class~=\"aui-fieldset\"]",
       description: "The print-report group, without padding, that ties the legend to the read-only option below it.",
     },
     {
       id: "legend",
       name: "Legend",
-      token: "Fieldset.Legend",
       selector: "[class~=\"aui-fieldset-legend\"]",
       description: "The legend \"Paste over both sides of crack\" that repeats the input panel option the checkbox mirrors.",
     },
     {
       id: "checkbox",
       name: "Checkbox",
-      token: "Checkbox",
       selector: "[class~=\"aui-checkbox\"]",
       description: "A read-only, selected checkbox that cannot be toggled in the printed report, drawn with the primary solid selected style.",
     },
@@ -46,7 +43,6 @@ export default defineUsecase({
     {
       id: "label",
       name: "Label",
-      token: "Checkbox.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The answer \"Yes\" next to the box, matching the value chosen in the input panel (ACE and PBS reports).",
     },

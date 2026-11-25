@@ -18,21 +18,18 @@ export default defineUsecase({
     {
       id: "field",
       name: "Field",
-      token: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "Stacked wrapper that pairs the \"Description\" label with the multi-line box; ADC makes it a row with a 96px label and AGPD drops the label entirely.",
     },
     {
       id: "label",
       name: "Label",
-      token: "Field.Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The \"Description\" label above the box; in the AGPD quote notes there is no label and an aria-label names the box.",
     },
     {
       id: "textarea",
       name: "Textarea",
-      token: "Field.Textarea",
       selector: "[class~=\"aui-textarea\"]",
       description: "The five-row box that draws its own 1px slate outline, 4px radius and 3/8 padding, so no Field.Control surrounds it; it resizes vertically only.",
     },

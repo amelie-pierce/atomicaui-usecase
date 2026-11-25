@@ -23,14 +23,12 @@ export default defineUsecase({
     {
       id: "chip",
       name: "Chip",
-      token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The default-styled chip that stands for one attached file in the Feedback form of ADM, PFD, PBS, HS, AGPD and RWS.",
     },
     {
       id: "label",
       name: "Label",
-      token: "Chip.Label",
       selector: "[class~=\"aui-chip-label\"]",
       text: true,
       description: "The attached file name, screenshot.png.",
@@ -38,7 +36,6 @@ export default defineUsecase({
     {
       id: "dismiss",
       name: "Dismiss",
-      token: "Chip.Dismiss",
       selector: "[class~=\"aui-chip-dismiss\"]",
       description: "The X button at the end, labelled \"Remove screenshot.png\", that detaches the file.",
     },

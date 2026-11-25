@@ -16,21 +16,18 @@ export default defineUsecase({
     {
       id: "chip",
       name: "Chip",
-      token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The compact solid success chip at scale \"xs\" that reports one check category on an FD result card; a failed category turns red.",
     },
     {
       id: "icon",
       name: "Icon",
-      token: "Chip.Icon",
       selector: "[class~=\"aui-chip-icon\"]",
       description: "The \"circle-check\" icon at the start of the chip (an exclamation when the check fails).",
     },
     {
       id: "label",
       name: "Label",
-      token: "Chip.Label",
       selector: "[class~=\"aui-chip-label\"]",
       text: true,
       description: "The category name \"Anchorage\".",

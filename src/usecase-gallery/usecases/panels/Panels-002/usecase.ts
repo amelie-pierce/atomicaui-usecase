@@ -18,21 +18,18 @@ export default defineUsecase({
     {
       id: 'panels',
       name: 'Panels',
-      token: 'Panels',
       selector: '[class~="aui-panels"]',
       description: 'Vertical split group that stacks the panes, 560px wide and 160px tall at most.',
     },
     {
       id: 'panel',
       name: 'Panel',
-      token: 'Panels.Panel',
       selector: '[class~="aui-panels-panel"]',
       description: 'Input on top (50% default height) and Output below, both surface-alt soft panes that may shrink to 40px high.',
     },
     {
       id: 'resize-handle',
       name: 'Resize handle',
-      token: 'Panels.ResizeHandle',
       selector: '[class~="aui-panels-resize-handle"]',
       description: '6px primary horizontal bar between Input and Output; its label is "Resize Input and Output panels" in the example and "Resize Input and results panels" in the HCS scene.',
     },

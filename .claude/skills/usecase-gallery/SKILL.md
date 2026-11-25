@@ -29,7 +29,7 @@ The tree is Components grid (`#/`) > component page (`#/Button`) > use case (`#B
 2. Write `example.tsx` for the first option and `options/<option-id>/example.tsx` for every additional option. Each Component UI must be the exact control or component rendered for that option.
 3. Write `usecase.ts` with `uiType`, `title`, `apps`, `summary`, `where`, `when`, `how`, a specific `anatomy` array and `options`. Each option names the UI, lists its apps, records its source path and has a `scene.tsx`.
 4. Build each scene from the real app source, keeping it minimal but faithful. Do not replace app-specific visible structure with generic filler or a shared scene when the UI differs.
-5. Re-audit Anatomy whenever the UI changes. Every visible part needs one shared part id and an exact selector or `data-ug-part` link. Include a specific description, usage notes, states and accessibility information for every part. Anatomy steps carry no code: no code sample or code block under a step, only the step title, its token and its description. Hide only parts the selected option genuinely does not render.
+5. Re-audit Anatomy whenever the UI changes. Every visible part needs one shared part id and an exact selector or `data-ug-part` link. Include a specific description, usage notes, states and accessibility information for every part. Anatomy steps show only the step title and its description: no code sample, code block or component-token chip under a step. Hide only parts the selected option genuinely does not render.
 
 ## Detail page = one selection of options
 
@@ -39,9 +39,11 @@ Every use case uses the same selection model. The left column is the preview: it
 - Each option has `options/<id>/scene.tsx`; the first option uses the use case's `example.tsx`, and every later option has its own `example.tsx`.
 - The union of option `apps` must equal the use case `apps`; the catalog validates this. The selected option's app badges and document must match.
 - The document includes complete prose, Anatomy and both Component UI and In context code sections. Save and Copy use the selected In context code.
-- Anatomy highlight is one-way: hovering or focusing a step highlights its element in the preview; hovering the preview never changes Anatomy.
-- A preview never scrolls. `hooks/use-stage-fit.ts` zooms content that is larger than its stage down to fit; never clip it with `overflow: hidden` or a per-use-case size hack.
-- Check every option in the browser: all visible parts are present and hoverable, the preview has no scrollbar, the page is not blank, deep links such as `#Dialog-002` work, and the console has no errors.
+- Anatomy highlight is one-way: hovering or keyboard-focusing a step highlights its element in the preview; hovering the preview never changes Anatomy, and a mouse click on a step leaves no sticky highlight.
+- The highlight overlay is a sibling of the scrolling stage (`ug-render__viewport`), never a child: inside the stage it counts as scrollable overflow and toggles a scrollbar on and off in a loop (the `#Dialog-007` scrim flash). Nothing added by the gallery chrome may change the stage's scroll size.
+- A preview never scrolls. `hooks/use-stage-fit.ts` zooms content that is larger than its stage down to fit, in one measurement and without hunting; it skips fixed backdrop/viewport frames. Never clip it with `overflow: hidden` or a per-use-case size hack.
+- Switching option is a transition, so the old UI stays until the new example has loaded: the stage must never blank between options.
+- Check every option in the browser: all visible parts are present and hoverable, the preview has no scrollbar (also while hovering each Anatomy step: watch `scrollWidth`/`clientWidth` per frame for a toggling bar), the zoom settles on the first frame, the page is not blank, deep links such as `#Dialog-002` work, and the console has no errors.
 
 ## In context rules
 

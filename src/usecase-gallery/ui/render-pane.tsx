@@ -80,12 +80,15 @@ export function RenderPane({
           ))}
         </ToggleGroup>
       </div>
-      <div className="ug-render__stage" ref={stageRef} hidden={mode !== 'component'}>
-        <div className="ug-render__fit" ref={setFit}>
-          <Suspense fallback={null}>
-            {fit && <StageHostContext.Provider value={fit}><Example /></StageHostContext.Provider>}
-          </Suspense>
+      <div className="ug-render__viewport" hidden={mode !== 'component'}>
+        <div className="ug-render__stage" ref={stageRef}>
+          <div className="ug-render__fit" ref={setFit}>
+            <Suspense fallback={null}>
+              {fit && <StageHostContext.Provider value={fit}><Example /></StageHostContext.Provider>}
+            </Suspense>
+          </div>
         </div>
+        {/* A sibling of the scrolling stage, not a child: inside it the highlight would count as scrollable overflow. */}
         <AnatomyOverlay rect={overlay} />
       </div>
       <ContextStage option={option} hidden={mode !== 'context'} />

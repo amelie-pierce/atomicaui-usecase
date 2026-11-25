@@ -26,14 +26,12 @@ export default defineUsecase({
     {
       id: "chip",
       name: "Chip",
-      token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The solid success chip at scale \"sm\" that tags a release-note entry as a feature (the warning colour is used for an improvement).",
     },
     {
       id: "label",
       name: "Label",
-      token: "Chip.Label",
       selector: "[class~=\"aui-chip-label\"]",
       text: true,
       description: "The uppercase kind name FEATURE.",

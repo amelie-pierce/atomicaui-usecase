@@ -27,7 +27,6 @@ export default defineUsecase({
     {
       id: "checkbox",
       name: "Checkbox",
-      token: "Checkbox",
       selector: "[class~=\"aui-checkbox\"]",
       description: "The checkable control for one yes or no input of an input section, checked by default, with the primary solid selected style.",
     },
@@ -40,35 +39,30 @@ export default defineUsecase({
     {
       id: "icon",
       name: "Icon",
-      token: "Checkbox.Icon",
       selector: "[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]",
       description: "The \"check\" mark rendered inside the box when Galvanized is on.",
     },
     {
       id: "label",
       name: "Label",
-      token: "Checkbox.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The caption \"Galvanized\" beside the box; the other apps use their own option text, such as Same inputs as Left Hip, and ADM instead puts a Field.Label (Center to joint) before a label-less checkbox.",
     },
     {
       id: "group",
       name: "Fieldset",
-      token: "Fieldset",
       selector: "[class~=\"aui-fieldset\"]",
       description: "ACE groups the checkbox under a titled group, with a Fieldset and a legend above the option.",
     },
     {
       id: "legend",
       name: "Legend",
-      token: "Fieldset.Legend",
       selector: "[class~=\"aui-fieldset-legend\"]",
       description: "The group title that sits above the checkbox in the ACE titled scene.",
     },
     {
       id: "field-label",
       name: "Field label",
-      token: "Field.Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The label of a Field above a checkbox in a form row.",
     },

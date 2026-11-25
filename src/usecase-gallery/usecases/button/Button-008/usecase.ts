@@ -25,21 +25,18 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD.",
       selector: "[class~=\"aui-button\"]",
     },
     {
       id: "icon",
       name: "Icon",
-      token: "Button.Icon",
       description: "The filter glyph with a cross that signals removing the active filters, at scale \"sm\".",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The text \"Reset filters\" shown while a search or status filter is active.",
       selector: "[class~=\"aui-button\"]",
       text: true,

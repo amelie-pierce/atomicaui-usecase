@@ -18,14 +18,12 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The Try again Button under the Results error message: small scale only, taking the default surface-alt color and solid paint.",
       selector: "[class~=\"aui-button\"]",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The text \"Try again\" that retries the failed results request.",
       selector: "[class~=\"aui-button\"]",
       text: true,

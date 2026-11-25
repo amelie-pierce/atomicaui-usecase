@@ -18,14 +18,12 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The Prototype controls Button: small surface Button with elevation 3 so it floats above the page, toggling the controls panel (aria-expanded in the scene).",
       selector: "[class~=\"aui-button\"]",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The text \"Prototype controls\" that names the floating toggle.",
       selector: "[class~=\"aui-button\"]",
       text: true,

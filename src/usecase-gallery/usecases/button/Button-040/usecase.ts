@@ -16,10 +16,10 @@ export default defineUsecase({
   how: 'Set aui color "secondary", paint "tonal", scale "sm" and shape "soft" on an IconButton with the plus glyph; the default square profile gives the 28px box. '
     + 'In context it sits in the centred first cell of one result row inside a top Tooltip (4px offset) reading Add to Connection List; the table keeps one row and one other column, and the tooltip is closed.',
   anatomy: [
-    { id: 'add', name: 'Add', token: 'IconButton', selector: '[class~="aui-button"][aria-label="Add to Connection List"]', description: 'The tonal secondary soft plus button that adds the result row to the Connection List.' },
-    { id: 'add-icon', name: 'Plus icon', token: 'IconButton', selector: '[class~="aui-button"][aria-label="Add to Connection List"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The plus glyph centred in the button.' },
-    { id: 'tooltip', name: 'Tooltip', token: 'Tooltip.Popup', selector: '[class~="aui-tooltip-popup"]', description: 'PBS tooltip above the button that repeats the action as Add to Connection List.' },
-    { id: 'cell', name: 'Add cell', token: 'Table.Cell', selector: '[class~="aui-table-cell"]:first-child', description: 'The centred first cell of the Model A-100 row that holds the button.' },
-    { id: 'header-cell', name: 'Add header', token: 'Table.HeaderCell', selector: '[class~="aui-table-header-cell"]:first-child', description: 'The unlabeled column heading (aria-label Add) over the add buttons.' },
+    { id: 'add', name: 'Add', selector: '[class~="aui-button"][aria-label="Add to Connection List"]', description: 'The tonal secondary soft plus button that adds the result row to the Connection List.' },
+    { id: 'add-icon', name: 'Plus icon', selector: '[class~="aui-button"][aria-label="Add to Connection List"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The plus glyph centred in the button.' },
+    { id: 'tooltip', name: 'Tooltip', selector: '[class~="aui-tooltip-popup"]', description: 'PBS tooltip above the button that repeats the action as Add to Connection List.' },
+    { id: 'cell', name: 'Add cell', selector: '[class~="aui-table-cell"]:first-child', description: 'The centred first cell of the Model A-100 row that holds the button.' },
+    { id: 'header-cell', name: 'Add header', selector: '[class~="aui-table-header-cell"]:first-child', description: 'The unlabeled column heading (aria-label Add) over the add buttons.' },
   ],
 });

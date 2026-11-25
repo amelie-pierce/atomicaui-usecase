@@ -16,21 +16,18 @@ export default defineUsecase({
     {
       id: "chip",
       name: "Chip",
-      token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The tonal success chip at scale \"sm\" shown in the Status column of the HCS results table; a Failed row swaps it for the error colour.",
     },
     {
       id: "icon",
       name: "Icon",
-      token: "Chip.Icon",
       selector: "[class~=\"aui-chip-icon\"]",
       description: "The leading \"circle-check\" icon at scale \"sm\" that backs the result with a glyph (a cross for Failed).",
     },
     {
       id: "label",
       name: "Label",
-      token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       text: true,
       description: "The status text \"Passed\", written directly as the chip's children instead of a Chip.Label.",

@@ -517,7 +517,8 @@ $narrow: 840px;
 }
 
 .ug-site__section-head {
-  background: var(--theme-surface-alt);
+  padding: 0;
+  background: var(--theme-surface);
   border-block-end: var(--p-px-1) solid var(--theme-raised);
 }
 
@@ -597,7 +598,6 @@ $narrow: 840px;
   overflow: hidden;
   block-size: calc(var(--p-px-16) * 10);
   background: var(--theme-surface);
-  border-block-end: var(--p-px-1) solid var(--theme-raised);
   pointer-events: none;
   user-select: none;
 }
@@ -610,6 +610,9 @@ $narrow: 840px;
   block-size: 100%;
   min-block-size: 0;
   box-sizing: border-box;
+  // The card's own border and radius frame the thumbnail; the stage's border and radius would clash with them.
+  border: 0;
+  border-radius: 0;
   // Overflow runs off the right/bottom edge, which is the extent the fit measures.
   justify-content: safe center;
   overflow: visible;

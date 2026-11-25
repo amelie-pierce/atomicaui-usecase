@@ -1,5 +1,13 @@
 import { useLayoutEffect, useState } from 'react';
 
+/** Whether the element or one of its ancestors inside `root` is fully transparent. */
+function transparent(element: Element, root: Element) {
+  for (let node: Element | null = element; node && node !== root; node = node.parentElement) {
+    if (getComputedStyle(node).opacity === '0') return true;
+  }
+  return false;
+}
+
 /**
  * Shrinks the content of a stage when it is larger than the stage, so a wide or tall component fits without a scrollbar.
  * `fit` is the stage's content wrapper (`.ug-render__fit`). It is zoomed rather than transformed: a transform would make
@@ -43,6 +51,9 @@ export function useStageFit(fit: HTMLElement | null) {
         // A fixed element (a dialog's backdrop and viewport) frames the stage rather than being content, so it is not part
         // of the size to fit; the popup inside it still is. Counting it made every dialog scene shrink to its padding box.
         if (getComputedStyle(element).position === 'fixed') continue;
+        // Content that is fully transparent is not shown yet: a floating popup is held at opacity 0, at its unpositioned origin,
+        // until it has been placed, and it is measured once it is shown (the change of its style measures again).
+        if (transparent(element, fit)) continue;
         const rect = element.getBoundingClientRect();
         if (!rect.width && !rect.height) continue;
         left = Math.min(left, rect.left - origin.left);
@@ -66,8 +77,11 @@ export function useStageFit(fit: HTMLElement | null) {
     const resize = new ResizeObserver(measure);
     resize.observe(stage);
     resize.observe(fit);
-    const mutation = new MutationObserver(measure);
-    mutation.observe(fit, { childList: true, subtree: true, characterData: true });
+    const mutation = new MutationObserver((records) => {
+      // The wrapper's own style is the zoom written here, which must not measure again.
+      if (records.some((record) => record.target !== fit)) measure();
+    });
+    mutation.observe(fit, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['style'] });
     return () => {
       disposed = true;
       resize.disconnect();

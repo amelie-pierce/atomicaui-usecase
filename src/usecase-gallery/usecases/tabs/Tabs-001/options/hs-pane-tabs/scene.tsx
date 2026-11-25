@@ -9,13 +9,14 @@ const TAB_AUI = { color: 'surface-alt', paint: 'solid', shape: 'soft', states: {
 export default function HsPaneTabsScene(_props: ContextProps) {
   return (
     <View
+      data-ug-part="output-pane"
       as="section"
       aria-label="Output"
       aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
       style={{ inlineSize: 'min(100%, 480px)' }}
     >
       <Tabs defaultValue="summary" aui={{ profile: 'no-padding' }}>
-        <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', minHeight: '28', flex: 'none', paddingBlockStart: '0', paddingBlockEnd: '0' } }}>
+        <View data-ug-part="pane-header" aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', minHeight: '28', flex: 'none', paddingBlockStart: '0', paddingBlockEnd: '0' } }}>
           <Tabs.List>
             <Tabs.Tab value="summary" aui={TAB_AUI}>Summary</Tabs.Tab>
             <Tabs.Tab value="result" aui={TAB_AUI}>Result</Tabs.Tab>

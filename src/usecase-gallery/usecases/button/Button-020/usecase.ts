@@ -6,7 +6,10 @@ export default defineUsecase({
 
   apps: ['fd'],
   options: [
-    { id: "fd-carousel-dots", name: "Carousel footer", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
+    { id: "fd-carousel-dots", name: "Carousel footer", apps: ["fd"], contextAnatomy: [
+      { id: "pager", name: "Pager", description: "The row that holds one dot per page with an 8px gap." },
+      { id: "other-dot", name: "Other pages", description: "The surface-alt dots for the pages that are not current (2 / 3 and 3 / 3)." },
+    ], source: {"fd":"src/components/InputPane.jsx"} },
   ],
   source: { fd: 'src/components/InputPane.jsx' },
   summary: 'An empty solid Button is one dot of a carousel pager; the current page is the primary one.',

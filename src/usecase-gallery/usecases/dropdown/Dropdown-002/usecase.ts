@@ -1,11 +1,15 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'visible-tab', name: 'Visible tab', selector: '[class~="aui-tabs-tab"]', description: 'The "Design 1" chip tab after the trigger; it stands for the design tab rail whose overflow the ellipsis menu lists.' },
+];
+
 export default defineUsecase({
   uiType: 'Dropdown with icon trigger',
   title: 'Filled icon trigger',
   apps: ['adc'],
   options: [
-    { id: "adc-hidden-designs", name: "Overflow list", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "adc-hidden-designs", name: "Overflow list", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'An icon-only trigger opens a plain list of the items that no longer fit in a row; choosing one activates it.',
@@ -36,12 +40,6 @@ export default defineUsecase({
       name: 'Item',
       selector: '[class~="aui-dropdown-item"]',
       description: 'A plain row for one hidden design: Design 3, Design 4 or Design 5. None is selected; choosing one activates that tab.',
-    },
-    {
-      id: 'visible-tab',
-      name: 'Visible tab',
-      selector: '[class~="aui-tabs-tab"]',
-      description: 'In the ADC scene one visible design tab, "Design 1", stands beside the trigger for the rest of the rail.',
     },
   ],
 });

@@ -9,13 +9,14 @@ export default function FormContext({ children }: ContextProps) {
   return (
     <View
       as="aside"
+      data-ug-part="input-pane"
       aria-label="Input"
       aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }}
       style={{ inlineSize: 'min(100%, 280px)' }}
     >
       <View aui={{ color: 'surface', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', width: 'fill', overflow: 'hidden', gap: '0' } }}>
         <Accordion defaultValue={['Beam Properties']} aui={{ scale: 'sm' }}>
-          <Accordion.Item value="Beam Properties" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
+          <Accordion.Item data-ug-part="beam-section" value="Beam Properties" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
                 <Accordion.Icon name="layer-group" weight="regular" aria-hidden />

@@ -1,13 +1,23 @@
 import { defineUsecase } from '../../../define';
 
+const HS_CONTEXT = [
+  { id: 'list-table', name: 'Job List table', selector: '[class~="aui-table"]', description: 'The Table that lists the saved rows; only the first action column and the Job column are kept.' },
+  { id: 'name-cell', name: 'Job cell', selector: '[class~="aui-table-body"] [class~="aui-table-cell"]:last-child', description: 'The row label (Job 1) beside the action cell.' },
+];
+
+const PBS_CONTEXT = [
+  { id: 'list-table', name: 'Connection List table', selector: '[class~="aui-table"]', description: 'The Table that lists the saved rows; only the first action column and the Connection column are kept.' },
+  { id: 'name-cell', name: 'Connection cell', selector: '[class~="aui-table-body"] [class~="aui-table-cell"]:last-child', description: 'The row label (Connection 1) beside the action cell.' },
+];
+
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Edit and Duplicate row buttons',
 
   apps: ['hs', 'pbs'],
   options: [
-    { id: "hs-edit", name: "Edit and Duplicate", apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} },
-    { id: "pbs-edit", name: "Edit and Duplicate — UI variant 2", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
+    { id: "hs-edit", contextAnatomy: HS_CONTEXT, name: "Edit and Duplicate", apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} },
+    { id: "pbs-edit", contextAnatomy: PBS_CONTEXT, name: "Edit and Duplicate — UI variant 2", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
   ],
   source: { hs: 'src/hs/OutputPane.tsx', pbs: 'src/ResultsSection.tsx' },
   summary: 'Two tonal labelled Buttons in the first cell of a saved-list row edit or duplicate that row.',

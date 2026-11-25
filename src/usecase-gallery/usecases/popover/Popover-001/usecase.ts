@@ -5,9 +5,9 @@ export default defineUsecase({
   title: 'Help popover',
   apps: ['pfd', 'pbs', 'agpd', 'rws'],
   options: [
-    { id: "pbs-help", name: "Field help", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} },
-    { id: "pfd-help", name: "Field help — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} },
-    { id: "agpd-help", name: "Field help — UI variant 3", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} },
+    { id: "pbs-help", showContext: false, name: "Field help", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} },
+    { id: "pfd-help", showContext: false, name: "Field help — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} },
+    { id: "agpd-help", showContext: false, name: "Field help — UI variant 3", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} },
   ],
   source: { pfd: 'src/pfd/fields.tsx', pbs: 'src/InputFields.tsx', agpd: 'src/agpd/inputs.tsx', rws: 'src/rws/inputs.tsx' },
   summary: 'A short text popover opened from a circle-question trigger beside a field label, closed by an X or an outside click.',

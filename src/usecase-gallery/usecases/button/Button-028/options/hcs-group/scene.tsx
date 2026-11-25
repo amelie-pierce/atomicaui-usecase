@@ -18,7 +18,7 @@ export default function HcsGroupScene(_props: ContextProps) {
             <Table.Cell>
               <View aui={{ paint: 'text', scale: 'sm', sx: { display: 'flex', alignItems: 'center', gap: '4' } }}>
                 <Table.ExpandTrigger />
-                <Type as="span" weight="semi-bold">A-100 (2)</Type>
+                <Type data-ug-part="group-label" as="span" weight="semi-bold">A-100 (2)</Type>
               </View>
             </Table.Cell>
           </Table.Row>

@@ -8,17 +8,18 @@ import { MockViewerCanvas } from '../../../../../mock-data';
 export default function ViewerContext({ children }: ContextProps) {
   return (
     <View
+      data-ug-part="viewer-pane"
       as="section"
       aria-label="3D Viewer"
       aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
       style={{ inlineSize: 'min(100%, 560px)' }}
     >
       <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', height: '28', flex: 'none' } }}>
-        <Type as="h2" role="l3" weight="semi-bold">3D Viewer</Type>
+        <Type data-ug-part="viewer-title" as="h2" role="l3" weight="semi-bold">3D Viewer</Type>
       </View>
       <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flex: 'fill', width: 'fill', minHeight: '0' } }}>
         <View aui={{ color: 'surface', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', width: 'fill', gap: '0', flex: 'fill', minHeight: '0', overflow: 'hidden' } }}>
-          <div className="ug-scene">
+          <div data-ug-part="viewer-canvas" className="ug-scene">
             <MockViewerCanvas />
             <div className="ug-scene__controls">
               {children}

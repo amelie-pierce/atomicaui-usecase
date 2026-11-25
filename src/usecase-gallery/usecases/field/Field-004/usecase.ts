@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Search field',
   apps: ['hcs', 'hs', 'pfd', 'fd', 'pbs', 'rws'],
   options: [
-    { id: "hs-search", name: "Search field", apps: ["hcs","hs","pfd","fd"], note: "The box ends with a clear button.", source: {"hcs":"src/App.tsx","hs":"src/hs/ResultsTable.tsx","pfd":"src/pfd/ResultsTable.tsx","fd":"src/components/Results.jsx"} },
-    { id: "pbs-search", name: "Search field — UI variant 2", apps: ["pbs","rws"], note: "Icon only: the box has no clear button.", source: {"pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx"} },
+    { id: "hs-search", name: "Search field", apps: ["hcs","hs","pfd","fd"], note: "The box ends with a clear button.", source: {"hcs":"src/App.tsx","hs":"src/hs/ResultsTable.tsx","pfd":"src/pfd/ResultsTable.tsx","fd":"src/components/Results.jsx"}, showContext: false },
+    { id: "pbs-search", name: "Search field — UI variant 2", apps: ["pbs","rws"], note: "Icon only: the box has no clear button.", source: {"pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx"}, showContext: false },
   ],
   source: { hcs: 'src/App.tsx', hs: 'src/hs/ResultsTable.tsx', pfd: 'src/pfd/ResultsTable.tsx', fd: 'src/components/Results.jsx', pbs: 'src/ResultsSection.tsx', rws: 'src/rws/output.tsx' },
   summary: 'A search box with a magnifying-glass icon at the start and, in some apps, a clear button at the end.',

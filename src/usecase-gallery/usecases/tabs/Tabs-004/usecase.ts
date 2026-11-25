@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Design tab rail',
   apps: ['adc'],
   options: [
-    { id: "adc-design-rail", name: "Design tab rail", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "adc-design-rail", name: "Design tab rail", showContext: false, apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A rail of closable tab chips, one per open design, ending in an add button, with an error dot on a tab whose design has a problem.',

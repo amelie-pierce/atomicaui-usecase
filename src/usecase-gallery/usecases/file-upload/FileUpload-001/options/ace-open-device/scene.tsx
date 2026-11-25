@@ -8,17 +8,17 @@ export default function AceOpenDeviceScene({ children, host }: ContextProps) {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false}>
-            <Dialog.Title aui={{ color: 'raised' }}>
+          <Dialog.Popup data-ug-part="dialog" initialFocus={false}>
+            <Dialog.Title data-ug-part="dialog-title" aui={{ color: 'raised' }}>
               Upload JSON file
               <Dialog.Spacer />
-              <Dialog.Close aria-label="Cancel" />
+              <Dialog.Close data-ug-part="dialog-close" aria-label="Cancel" />
             </Dialog.Title>
             <Dialog.Body>
               {children}
             </Dialog.Body>
             <Dialog.Actions>
-              <Dialog.Button>Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="dialog-cancel">Cancel</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

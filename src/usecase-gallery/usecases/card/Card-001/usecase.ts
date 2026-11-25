@@ -1,11 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: "section-heading", name: "Related products heading", description: "The \"Related products\" h3 (Type l3 semi-bold) above the cards." },
+  { id: "card-row", name: "Card row", description: "The wrapping flex row (8px gap) that lays the related-product cards out side by side." },
+];
+
 export default defineUsecase({
   uiType: 'Card',
   title: 'Product card',
   apps: ['ace'],
   options: [
-    { id: "ace-related-products", name: "Related products", source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
+    { id: "ace-related-products", contextAnatomy: CONTEXT_ANATOMY, name: "Related products", source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
   ],
   source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
   summary: 'A fixed 128 by 160 card with a contained image above a centred, wrapping title.',

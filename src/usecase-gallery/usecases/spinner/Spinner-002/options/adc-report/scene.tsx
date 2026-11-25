@@ -6,7 +6,7 @@ export default function AdcReportScene({ children }: ContextProps) {
   return (
     <View aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8' } }} style={{ inlineSize: 'min(100%, calc(var(--p-px-16) * 28))' }}>
       {children}
-      <Type as="p" role="p1" weight="semi-bold">
+      <Type data-ug-part="message" as="p" role="p1" weight="semi-bold">
         Your design report is being generated. Please keep this window open.
       </Type>
     </View>

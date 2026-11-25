@@ -1,11 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: "beta-banner", name: "Beta notice banner", description: "The warning solid region labelled \"Beta release notice\" that starts with the BETA Chip, then a triangle-exclamation icon and the message." },
+  { id: "beta-message", name: "Banner message", description: "The l3 text \"Beta Release: We are actively refining this application.\" with the lead-in in bold." },
+];
+
 export default defineUsecase({
   uiType: 'Label chip',
   title: 'Compact soft label',
   apps: ['adc'],
   options: [
-    { id: "adc-beta", name: "Beta notice", source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "adc-beta", contextAnatomy: CONTEXT_ANATOMY, name: "Beta notice", source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A compact label with soft corners that marks a state of the whole app: BETA in the notice banner, the version beside the menu.',

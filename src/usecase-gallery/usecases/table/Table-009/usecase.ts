@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Cell input table',
   apps: ['adm'],
   options: [
-    { id: "adm-cell-input", name: "Cell input table", apps: ["adm"], source: {"adm":"src/features/design-inputs/components/GeometrySection/AnchorSpacingTable.tsx"} },
+    { id: "adm-cell-input", name: "Cell input table", showContext: false, apps: ["adm"], source: {"adm":"src/features/design-inputs/components/GeometrySection/AnchorSpacingTable.tsx"} },
   ],
   source: { adm: 'src/features/design-inputs/components/GeometrySection/AnchorSpacingTable.tsx' },
   summary: 'A table whose cells hold inputs: each spacing value is edited in its own number field.',

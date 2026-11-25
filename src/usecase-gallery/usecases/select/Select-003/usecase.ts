@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Multiple select',
   apps: ['pbs', 'fd', 'pfd'],
   options: [
-    { id: "pbs-multi-select", name: "Multiple select", apps: ["pbs","fd"], note: "Plain rows: chosen rows show by their raised fill.", source: {"pbs":"src/InputFields.tsx","fd":"src/components/ui.jsx"} },
-    { id: "pfd-multi-select", name: "Multiple select — UI variant 2", apps: ["pfd"], note: "Checkbox rows: each row leads with a checked or empty square.", source: {"pfd":"src/pfd/fields.tsx"} },
+    { id: "pbs-multi-select", showContext: false, name: "Multiple select", apps: ["pbs","fd"], note: "Plain rows: chosen rows show by their raised fill.", source: {"pbs":"src/InputFields.tsx","fd":"src/components/ui.jsx"} },
+    { id: "pfd-multi-select", showContext: false, name: "Multiple select — UI variant 2", apps: ["pfd"], note: "Checkbox rows: each row leads with a checked or empty square.", source: {"pfd":"src/pfd/fields.tsx"} },
   ],
   source: { pbs: 'src/InputFields.tsx', fd: 'src/components/ui.jsx', pfd: 'src/pfd/fields.tsx' },
   summary: 'The field select with the `multiple` prop: the trigger lists every chosen option and the list stays open while rows are toggled.',

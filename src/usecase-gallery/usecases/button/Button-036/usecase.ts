@@ -1,12 +1,17 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'rail', name: 'Collapsed rail', selector: '[data-ug-part="rail"]', description: 'The 40px column of the collapsed Input panel that keeps only the expand trigger at its top centre.' },
+  { id: 'viewer-pane', name: '3D Viewer pane', selector: '[data-ug-part="viewer-pane"]', description: 'The neighbouring 3D Viewer section that keeps the rest of the width, reduced to its header.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Expand panel button',
 
   apps: ['hcs'],
   options: [
-    { id: "hcs-rail", name: "Collapsed rail", apps: ["hcs"], source: {"hcs":"src/components/HcsSplitLayout.tsx"} },
+    { id: "hcs-rail", contextAnatomy: CONTEXT_ANATOMY, name: "Collapsed rail", apps: ["hcs"], source: {"hcs":"src/components/HcsSplitLayout.tsx"} },
   ],
   source: { hcs: 'src/components/HcsSplitLayout.tsx' },
   summary: 'A square transparent IconButton, 28px, expands a collapsed side panel from its rail.',

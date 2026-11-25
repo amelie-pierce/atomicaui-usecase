@@ -6,7 +6,10 @@ export default defineUsecase({
 
   apps: ['fd'],
   options: [
-    { id: "fd-carousel-footer", name: "Carousel footer", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
+    { id: "fd-carousel-footer", name: "Carousel footer", apps: ["fd"], contextAnatomy: [
+      { id: "pager", name: "Carousel footer", description: "The row after the carousel that holds the pager dots, then View all, with an 8px gap." },
+      { id: "dot", name: "Pager dots", description: "The two round buttons, one per page (1 / 2 and 2 / 2): the current page in primary, the other in surface-alt." },
+    ], source: {"fd":"src/components/InputPane.jsx"} },
   ],
   source: { fd: 'src/components/InputPane.jsx' },
   summary: 'A text Button in the primary colour opens the full list from the footer of a carousel.',

@@ -7,6 +7,7 @@ import { Field, Select, View } from '../../../../../kit';
 export default function HcsFieldHelpScene({ children }: ContextProps) {
   return (
     <View
+      data-ug-part="input-pane"
       as="aside"
       aria-label="Input"
       aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }}
@@ -14,7 +15,7 @@ export default function HcsFieldHelpScene({ children }: ContextProps) {
     >
       <View aui={{ color: 'surface', shape: 'soft', profile: 'default', sx: { display: 'flex', flexDirection: 'column', width: 'fill', gap: '0' } }}>
         <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-          <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', alignItems: 'center' } }}>
+          <View data-ug-part="label-row" aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', alignItems: 'center' } }}>
             <Field.Label aui={{ scale: 'sm' }}>Download Duration</Field.Label>
             {children}
           </View>

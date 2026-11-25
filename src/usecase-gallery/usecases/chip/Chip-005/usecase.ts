@@ -1,11 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: "attach-label", name: "Attachment heading", description: "The \"Attach Screenshot or Markups\" l4 caption above the attached files." },
+  { id: "attachment-row", name: "Attachment row", description: "The wrapping flex row (8px gap) that lists one Chip per attached file, such as screenshot.png and markup.pdf." },
+];
+
 export default defineUsecase({
   uiType: 'Dismissible chip',
   title: 'Attachment chip',
   apps: ['adm', 'pfd', 'pbs', 'hs', 'agpd', 'rws'],
   options: [
-    { id: "adm-attachments", name: "Feedback attachments", source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    { id: "adm-attachments", contextAnatomy: CONTEXT_ANATOMY, name: "Feedback attachments", source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
   ],
   source: {
     adm: 'src/features/top-navigation/components/FeedbackDialog.tsx',

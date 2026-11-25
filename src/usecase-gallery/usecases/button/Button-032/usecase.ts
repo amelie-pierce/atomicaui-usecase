@@ -1,16 +1,25 @@
 import { defineUsecase } from '../../../define';
 
+const LABEL_ROW_CONTEXT = [
+  { id: 'label-row', name: 'Label row', selector: '[data-ug-part="label-row"]', description: 'The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control.' },
+];
+
+const HCS_CONTEXT = [
+  { id: 'input-pane', name: 'Input pane', selector: '[data-ug-part="input-pane"]', description: 'The surface-alt Input pane that frames the Load Properties field.' },
+  { id: 'label-row', name: 'Label row', selector: '[data-ug-part="label-row"]', description: 'The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Open field help button',
   apps: ['hcs', 'pbs', 'rws', 'hs', 'adm', 'pfd', 'agpd'],
   options: [
-    { id: "hcs-field-help", name: "Ghost, 20px", apps: ["hcs"], source: {"hcs":"src/App.tsx"} },
-    { id: "pbs-field-help", name: "Ghost, 20px — UI variant 2", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} },
-    { id: "rws-field-help", name: "Ghost, 20px — UI variant 3", apps: ["rws"], source: {"rws":"src/rws/inputs.tsx"} },
-    { id: "hs-field-help", name: "Ghost, 28px", apps: ["hs"], source: {"hs":"src/hs/InputFields.tsx"} },
-    { id: "adm-field-help", name: "Ghost, 28px — UI variant 2", apps: ["adm"], source: {"adm":"src/shared/lib/tooltip/AdmHelpTooltip.tsx"} },
-    { id: "pfd-field-help", name: "Ghost, 28px — UI variant 3", apps: ["pfd","agpd"], source: {"pfd":"src/pfd/fields.tsx","agpd":"src/agpd/inputs.tsx"} },
+    { id: "hcs-field-help", contextAnatomy: HCS_CONTEXT, name: "Ghost, 20px", apps: ["hcs"], source: {"hcs":"src/App.tsx"} },
+    { id: "pbs-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "Ghost, 20px — UI variant 2", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} },
+    { id: "rws-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "Ghost, 20px — UI variant 3", apps: ["rws"], source: {"rws":"src/rws/inputs.tsx"} },
+    { id: "hs-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "Ghost, 28px", apps: ["hs"], source: {"hs":"src/hs/InputFields.tsx"} },
+    { id: "adm-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "Ghost, 28px — UI variant 2", apps: ["adm"], source: {"adm":"src/shared/lib/tooltip/AdmHelpTooltip.tsx"} },
+    { id: "pfd-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "Ghost, 28px — UI variant 3", apps: ["pfd","agpd"], source: {"pfd":"src/pfd/fields.tsx","agpd":"src/agpd/inputs.tsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', pbs: 'src/ResultsSection.tsx', rws: 'src/rws/ShellDialogs.tsx', hs: 'src/hs/InputFields.tsx', adm: 'src/shared/lib/tooltip/AdmHelpTooltip.tsx', pfd: 'src/pfd/fields.tsx', agpd: 'src/agpd/inputs.tsx' },
   summary: 'A transparent icon-only IconButton with a circle-question opens the help of a field from beside its label; the example is the 20px one and the Look select shows the 28px one.',

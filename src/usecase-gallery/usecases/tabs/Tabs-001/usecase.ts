@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Pane tabs',
   apps: ['hs', 'pbs', 'fd', 'rws', 'adm', 'adc'],
   options: [
-    { id: "hs-pane-tabs", name: "Pane tabs", apps: ["hs","pbs","fd","rws","adm"], source: {"hs":"src/hs/OutputTabs.tsx","pbs":"src/ResultsSection.tsx","fd":"src/components/Results.jsx","rws":"src/rws/output.tsx","adm":"src/app/layout/Workbench/Workbench.tsx"} },
-    { id: "adc-pane-tabs", name: "Pane tabs — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "hs-pane-tabs", name: "Pane tabs", contextAnatomy: [{ id: 'output-pane', name: 'Output pane', description: 'The Output section (soft, surface-alt) whose tabbed header holds the tab list.' }, { id: 'pane-header', name: 'Pane header', description: 'The 28px header row where the tab list takes the title spot, followed in the app by Print and Back to top actions.' }], apps: ["hs","pbs","fd","rws","adm"], source: {"hs":"src/hs/OutputTabs.tsx","pbs":"src/ResultsSection.tsx","fd":"src/components/Results.jsx","rws":"src/rws/output.tsx","adm":"src/app/layout/Workbench/Workbench.tsx"} },
+    { id: "adc-pane-tabs", name: "Pane tabs — UI variant 2", showContext: false, apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: {
     hs: 'src/hs/OutputTabs.tsx',

@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Settings drawer row menu',
   apps: ['adm', 'ace'],
   options: [
-    { id: "adm-drawer-row", name: "Drawer row", apps: ["adm"], source: {"adm":"src/features/settings/components/SettingsMenu.tsx"} },
-    { id: "ace-drawer-row", name: "Drawer row — UI variant 2", apps: ["ace"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx"} },
+    { id: "adm-drawer-row", showContext: false, name: "Drawer row", apps: ["adm"], source: {"adm":"src/features/settings/components/SettingsMenu.tsx"} },
+    { id: "ace-drawer-row", showContext: false, name: "Drawer row — UI variant 2", apps: ["ace"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx"} },
   ],
   source: {
     adm: 'src/features/settings/components/SettingsMenu.tsx',

@@ -1,12 +1,34 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'history-header', name: 'History header', description: 'The bordered strip that puts the Release history heading and the muted "1 version" count on one line.' },
+  { id: 'search', name: 'Search field', selector: '[class~="aui-field"]', description: 'The "Search releases" Field with a magnifying-glass icon that filters the version list.' },
+  { id: 'version-list', name: 'Version list', selector: '[class~="aui-list"][role="listbox"]', description: 'The "Release history" listbox with one selected row marked by a 4px secondary start border.' },
+  { id: 'version', name: 'Version number', description: 'The bold version 1.0.0 of the selected release row.' },
+  { id: 'current-chip', name: 'CURRENT chip', selector: '[data-ug-part="history-column"] [class~="aui-chip"]', description: 'The tonal primary CURRENT chip that marks the installed release.' },
+  { id: 'notes-header', name: 'App header', description: 'The bordered header above the notes: the app name as an h5 over a muted summary line.' },
+  { id: 'release-notes', name: 'Release notes accordion', selector: '[class~="aui-accordion"]', description: 'The accordion of release sections, open on "Global changes (1 update)", whose panel pairs an IMPROVEMENT chip with the change text.' },
+];
+
+const PFD_CONTEXT_ANATOMY = [
+  { id: 'history-header', name: 'History header', description: 'The bordered strip that puts the Release history heading and the muted "1 version" count on one line.' },
+  { id: 'search', name: 'Search field', selector: '[class~="aui-field"]', description: 'The "Search releases" Field with a magnifying-glass icon that filters the version list.' },
+  { id: 'version-list', name: 'Version list', selector: '[class~="aui-list"][role="listbox"]', description: 'The "Release history" listbox with one selected row marked by a 4px secondary start border.' },
+  { id: 'version', name: 'Version number', description: 'The bold version 1.0.0 of the selected release row.' },
+  { id: 'current-chip', name: 'CURRENT chip', selector: '[data-ug-part="history-column"] [class~="aui-chip"]', description: 'The tonal primary CURRENT chip that marks the installed release.' },
+  { id: 'notes-header', name: 'App header', description: 'The bordered header above the notes: the app name as an h5 over a muted summary line.' },
+  { id: 'key-features', name: 'Key Features list', description: 'The xs List under a muted "Key Features:" label that lists features such as Dynamic UI.' },
+  { id: 'toggle-all', name: 'Collapse all button', description: 'The right-aligned xs text button that expands or collapses every release section; shown as Collapse all.' },
+  { id: 'release-notes', name: 'Release notes accordion', selector: '[class~="aui-accordion"]', description: 'The accordion of release sections, open on "Global changes (1 update)", whose panel pairs an IMPROVEMENT chip with the change text.' },
+];
+
 export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'About dialog',
   apps: ['hcs', 'ace', 'adm', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'pfd'],
   options: [
-    { id: "hcs-about", name: "About dialog", apps: ["hcs","ace","adm","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"} },
-    { id: "pfd-about", name: "About dialog — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/AboutDialog.tsx"} },
+    { id: "hcs-about", name: "About dialog", apps: ["hcs","ace","adm","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
+    { id: "pfd-about", name: "About dialog — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/AboutDialog.tsx"}, contextAnatomy: PFD_CONTEXT_ANATOMY },
   ],
   source: {
     hcs: 'src/components/HcsAboutDialog.tsx',
@@ -78,35 +100,6 @@ export default defineUsecase({
       description: 'The bold l4 "Release history" label that names the version list.',
     },
     {
-      id: 'history-header',
-      name: 'History header',
-      description: 'The bordered strip in the In context scenes that puts the Release history heading and the muted "1 version" count on one line.',
-    },
-    {
-      id: 'search',
-      name: 'Search field',
-      selector: '[class~="aui-field"]',
-      description: 'The "Search releases" field with a magnifying-glass icon that filters the version list.',
-    },
-    {
-      id: 'version-list',
-      name: 'Version list',
-      selector: '[class~="aui-list"][role="listbox"]',
-      description: 'The "Release history" listbox with one option; the selected row is a solid surface with a 4px secondary start border.',
-    },
-    {
-      id: 'version',
-      name: 'Version number',
-      text: true,
-      description: 'The bold l3 version "1.0.0" of the selected release row.',
-    },
-    {
-      id: 'current-chip',
-      name: 'CURRENT chip',
-      selector: '[data-ug-part="history-column"] [class~="aui-chip"]',
-      description: 'The tonal primary CURRENT chip that marks the installed release next to its version.',
-    },
-    {
       id: 'notes-column',
       name: 'Notes column',
       description: 'The flexible column that fills the rest of the width and shows the notes of the chosen release; the example holds only the "Release notes" placeholder.',
@@ -116,27 +109,6 @@ export default defineUsecase({
       name: 'Notes text',
       text: true,
       description: 'The p3 "Release notes" placeholder line that stands in for the notes in the Dialog frame.',
-    },
-    {
-      id: 'notes-header',
-      name: 'App header',
-      description: 'The bordered header above the notes that shows the app name as an h5 (Hinge Connector Selector for HCS, Post-to-Foundation Designer for PFD) over a muted p3 summary.',
-    },
-    {
-      id: 'key-features',
-      name: 'Key Features list',
-      description: 'The PFD-only xs List under a muted "Key Features:" label that lists features such as Dynamic UI.',
-    },
-    {
-      id: 'toggle-all',
-      name: 'Collapse all button',
-      description: 'The PFD-only right-aligned xs text button that expands or collapses every release section; the scene shows its Collapse all state.',
-    },
-    {
-      id: 'release-notes',
-      name: 'Release notes accordion',
-      selector: '[class~="aui-accordion"]',
-      description: 'The accordion of release sections, open on "Global changes (1 update)", whose panel pairs an IMPROVEMENT chip with the change text.',
     },
   ],
 });

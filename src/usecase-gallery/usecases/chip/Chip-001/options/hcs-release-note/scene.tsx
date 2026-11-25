@@ -5,21 +5,21 @@ import { Chip, Type, View } from '../../../../../kit';
 export default function HcsReleaseNoteScene({ children }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, calc(var(--p-px-16) * 28))' }}>
-      <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', paddingBlockStart: '8', paddingBlockEnd: '8', borderColor: 'outlined', borderBlockEndWidth: '1' } }}>
-        <View aui={{ scale: 'sm', paint: 'text', sx: { width: '160', flex: 'none' } }}>
+      <View data-ug-part="change-row" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', paddingBlockStart: '8', paddingBlockEnd: '8', borderColor: 'outlined', borderBlockEndWidth: '1' } }}>
+        <View data-ug-part="chip-column" aui={{ scale: 'sm', paint: 'text', sx: { width: '160', flex: 'none' } }}>
           {children}
         </View>
-        <Type as="p" role="p3" aui={{ scale: 'sm', sx: { flex: 'fill', minWidth: '0' } }}>
+        <Type data-ug-part="change-text" as="p" role="p3" aui={{ scale: 'sm', sx: { flex: 'fill', minWidth: '0' } }}>
           Added the Download Duration help.
         </Type>
       </View>
-      <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', paddingBlockStart: '8', paddingBlockEnd: '8' } }}>
-        <View aui={{ scale: 'sm', paint: 'text', sx: { width: '160', flex: 'none' } }}>
+      <View data-ug-part="change-row" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', paddingBlockStart: '8', paddingBlockEnd: '8' } }}>
+        <View data-ug-part="chip-column" aui={{ scale: 'sm', paint: 'text', sx: { width: '160', flex: 'none' } }}>
           <Chip aui={{ scale: 'sm', color: 'warning', paint: 'solid' }}>
             <Chip.Label>IMPROVEMENT</Chip.Label>
           </Chip>
         </View>
-        <Type as="p" role="p3" aui={{ scale: 'sm', sx: { flex: 'fill', minWidth: '0' } }}>
+        <Type data-ug-part="change-text" as="p" role="p3" aui={{ scale: 'sm', sx: { flex: 'fill', minWidth: '0' } }}>
           Faster results table.
         </Type>
       </View>

@@ -1,12 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'width-field', name: 'Width field', selector: '[data-aui-popup-motion][role="dialog"] [class~="aui-field"]', description: 'The labelled Width number field (12 with an in unit) at the start of the popup, which Cancel and Save commit or discard.' },
+];
+
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Save edited value buttons',
 
   apps: ['adc'],
   options: [
-    { id: "adc-edit-value", name: "Edit value", apps: ["adc"], source: {"adc":"src/adc/components/InPlaceEditor.tsx"} },
+    { id: "adc-edit-value", contextAnatomy: CONTEXT_ANATOMY, name: "Edit value", apps: ["adc"], source: {"adc":"src/adc/components/InPlaceEditor.tsx"} },
   ],
   source: { adc: 'src/adc/components/InPlaceEditor.tsx' },
   summary: 'A filled Cancel and a solid secondary Save close the in-place editor popover of a value chip.',

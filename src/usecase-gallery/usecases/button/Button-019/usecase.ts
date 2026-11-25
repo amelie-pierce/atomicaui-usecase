@@ -6,7 +6,7 @@ export default defineUsecase({
 
   apps: ['hcs'],
   options: [
-    { id: "hcs-prototype-controls", name: "Prototype controls", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"} },
+    { id: "hcs-prototype-controls", name: "Prototype controls", apps: ["hcs"], showContext: false, source: {"hcs":"src/components/F01Experience.tsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx' },
   summary: 'A surface Button lifted with a shadow floats over the page and toggles a panel of controls.',

@@ -1,11 +1,18 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'dialog', name: 'Upload dialog', description: 'The Dialog that hosts the dropzone in its body, opened by the app\'s Open from device action.' },
+  { id: 'dialog-title', name: 'Dialog title', description: 'The raised title row reading "Upload JSON file", with the close X pushed to the end.' },
+  { id: 'dialog-close', name: 'Close button', description: 'The X at the end of the title row that dismisses the dialog (labelled "Cancel").' },
+  { id: 'dialog-cancel', name: 'Cancel button', description: 'The Cancel button in the dialog actions that closes the dialog without uploading.' },
+];
+
 export default defineUsecase({
   uiType: 'FileUpload',
   title: 'Upload file dialog dropzone',
   apps: ['ace', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   options: [
-    { id: "ace-open-device", name: "Upload file dialog", apps: ["ace","pfd","pbs","hs","fd","agpd","rws","adc"], source: {"ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/App.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx","adc":"src/adc/components/NewProjectDialog.tsx"} },
+    { id: "ace-open-device", contextAnatomy: CONTEXT_ANATOMY, name: "Upload file dialog", apps: ["ace","pfd","pbs","hs","fd","agpd","rws","adc"], source: {"ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/App.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx","adc":"src/adc/components/NewProjectDialog.tsx"} },
   ],
   source: {
     ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx',

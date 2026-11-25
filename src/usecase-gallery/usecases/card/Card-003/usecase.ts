@@ -1,11 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: "option-trigger", name: "Select field stand-in", description: "The surface field showing the highlighted option \"Glulam\" that the popover is anchored to; the real option list is Combobox-002." },
+  { id: "preview-popover", name: "Preview popover", description: "The open Popover, placed to the right of the field with an 8px offset, that holds the preview card." },
+];
+
 export default defineUsecase({
   uiType: 'Card',
   title: 'Preview card',
   apps: ['hcs'],
   options: [
-    { id: "hcs-preview", name: "Option preview", source: {"hcs":"src/components/HcsBeamTypeSelect.tsx"} },
+    { id: "hcs-preview", contextAnatomy: CONTEXT_ANATOMY, name: "Option preview", source: {"hcs":"src/components/HcsBeamTypeSelect.tsx"} },
   ],
   source: { hcs: 'src/components/HcsBeamTypeSelect.tsx' },
   summary: 'A raised surface card with a title above an illustration, shown beside an option list to preview the highlighted option.',

@@ -1,12 +1,17 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'results-table', name: 'Results table', selector: '[class~="aui-table"]', description: 'The Table of connection results; the add column comes first, then the Model column.' },
+  { id: 'model-cell', name: 'Model cell', selector: '[class~="aui-table-body"] [class~="aui-table-cell"]:last-child', description: 'The Model A-100 label of the row that the plus button adds.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Add result row button',
 
   apps: ['pbs'],
   options: [
-    { id: "pbs-row", name: "Row add icon", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
+    { id: "pbs-row", contextAnatomy: CONTEXT_ANATOMY, name: "Row add icon", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
   ],
   source: { pbs: 'src/ResultsSection.tsx' },
   summary: 'A tonal plus IconButton, 28px square, adds one result row to a list.',

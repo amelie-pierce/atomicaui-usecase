@@ -13,11 +13,11 @@ export default function HcsColumnMenuScene({ host }: ContextProps) {
       <Table aria-label="Connector calculation results" aui={{ scale: 'sm', shape: 'soft' }} sortable style={{ inlineSize: '100%' }}>
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell aui={{ color: 'raised' }} actions={<IconButton name="ellipsis-vertical" aria-label="Model column options" aui={{ color: 'surface', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} />}>Model</Table.HeaderCell>
+            <Table.HeaderCell data-ug-part="other-header" aui={{ color: 'raised' }} actions={<IconButton name="ellipsis-vertical" aria-label="Model column options" aui={{ color: 'surface', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} />}>Model</Table.HeaderCell>
             <Table.HeaderCell aui={{ color: 'raised' }} sortDirection="asc" actions={<span ref={setAnchor}><IconButton name="ellipsis-vertical" aria-label="Load (lb) column options" aui={{ color: 'surface', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} /></span>}>Load (lb)</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
-        <Table.Body>
+        <Table.Body data-ug-part="rows">
           {MOCK_OUTPUT_ROWS_BY_LOAD.map((row) => (
             <Table.Row key={row.model}>
               <Table.Cell>{row.model}</Table.Cell>

@@ -5,10 +5,26 @@ export default defineUsecase({
   title: 'Print output button',
   apps: ['hcs', 'adm', 'hs', 'fd'],
   options: [
-    { id: 'white-icon', name: 'White button with icon', apps: ['hcs'], source: { hcs: 'src/App.tsx' } },
-    { id: 'black-icon', name: 'Black button with icon', apps: ['hs', 'fd'], source: { hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } },
-    { id: 'black-no-icon', name: 'Black button without icon', apps: ['adm'], source: { adm: 'src/app/layout/Workbench/Workbench.tsx' } },
-    { id: 'disabled', name: 'Disabled button', apps: ['hcs', 'adm', 'hs', 'fd'], source: { hcs: 'src/App.tsx', adm: 'src/app/layout/Workbench/Workbench.tsx', hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } },
+    { id: 'white-icon', name: 'White button with icon', apps: ['hcs'], contextAnatomy: [
+      { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section that holds the header row. The toolbar, table and notes are left out." },
+      { id: "output-title", name: "Output title", description: "The \"Output\" heading at the start of the pane header." },
+      { id: "header-actions", name: "Header actions", description: "The action group pushed to the end of the header, which holds the Print Output button (HCS)." },
+    ], source: { hcs: 'src/App.tsx' } },
+    { id: 'black-icon', name: 'Black button with icon', apps: ['hs', 'fd'], contextAnatomy: [
+      { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section that holds the header row. Only the header is shown." },
+      { id: "output-tabs", name: "Output tabs", description: "The Output and Job List tabs at the start of the header, with the selected tab on an overlay fill." },
+      { id: "header-actions", name: "Header actions", description: "The action group that grows and right-aligns itself after the tabs and holds Print Output." },
+    ], source: { hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } },
+    { id: 'black-no-icon', name: 'Black button without icon', apps: ['adm'], contextAnatomy: [
+      { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section that holds the header row. Only the header is shown." },
+      { id: "output-tabs", name: "Output tabs", description: "The Summary and Result tabs at the start of the header; the Print label follows the selected tab." },
+      { id: "header-actions", name: "Header actions", description: "The action group pushed to the end of the header with an auto inline-start margin; it holds the text-only Print Summary button." },
+    ], source: { adm: 'src/app/layout/Workbench/Workbench.tsx' } },
+    { id: 'disabled', name: 'Disabled button', apps: ['hcs', 'adm', 'hs', 'fd'], contextAnatomy: [
+      { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section that holds the header row. Labelled \"Output, inputs invalid\"." },
+      { id: "output-title", name: "Output title", description: "The \"Output\" heading at the start of the pane header." },
+      { id: "header-actions", name: "Header actions", description: "The action group pushed to the end of the header; its Print Output button is disabled while the inputs are invalid." },
+    ], source: { hcs: 'src/App.tsx', adm: 'src/app/layout/Workbench/Workbench.tsx', hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } },
   ],
   source: { hcs: 'src/App.tsx', adm: 'src/app/layout/Workbench/Workbench.tsx', hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' },
   summary: 'A Button with a print icon is the last item of a results pane header: quiet and tonal in HCS, a solid black Button in the tabbed headers of HS, FD and ADM.',

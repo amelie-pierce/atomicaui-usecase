@@ -5,8 +5,8 @@ import { Chip, Type, View } from '../../../../../kit';
 export default function AdmAttachmentsScene({ children }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }} style={{ inlineSize: 'min(100%, calc(var(--p-px-16) * 28))' }}>
-      <Type as="span" role="l4">Attach Screenshot or Markups</Type>
-      <View aui={{ paint: 'text', sx: { display: 'flex', flexWrap: 'wrap', gap: '8' } }}>
+      <Type data-ug-part="attach-label" as="span" role="l4">Attach Screenshot or Markups</Type>
+      <View data-ug-part="attachment-row" aui={{ paint: 'text', sx: { display: 'flex', flexWrap: 'wrap', gap: '8' } }}>
         {children}
         <Chip>
           <Chip.Label>markup.pdf</Chip.Label>

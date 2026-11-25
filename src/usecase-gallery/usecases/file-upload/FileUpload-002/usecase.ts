@@ -5,7 +5,10 @@ export default defineUsecase({
   title: 'Feedback attachments dropzone',
   apps: ['adm', 'pfd', 'pbs', 'hs', 'agpd', 'rws'],
   options: [
-    { id: "adm-attachments", name: "Feedback attachments", apps: ["adm","pfd","pbs","hs","agpd","rws"], source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    { id: "adm-attachments", contextAnatomy: [
+      { id: 'form', name: 'Attachment block', description: 'The column that stacks the attached-file chips, the dropzone and the limits line inside the feedback form.' },
+      { id: 'limits', name: 'Limits line', description: 'The muted "Up to 5 files, 10 MB each." caption under the dropzone.' },
+    ], name: "Feedback attachments", apps: ["adm","pfd","pbs","hs","agpd","rws"], source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
   ],
   source: {
     adm: 'src/features/top-navigation/components/FeedbackDialog.tsx',

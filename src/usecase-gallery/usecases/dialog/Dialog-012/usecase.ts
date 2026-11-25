@@ -1,11 +1,17 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'table', name: 'Output table', selector: '[class~="aui-table"]', description: 'The table labelled "Output" that stands for the Output tabs; the popup places it straight at the edge.' },
+  { id: 'header-cell', name: 'Column heading', selector: '[class~="aui-table-header-cell"]', description: 'The single "Load" column heading.' },
+  { id: 'cell', name: 'Value cell', selector: '[class~="aui-table-cell"]', description: 'The "Dead" value cell of the one row.' },
+];
+
 export default defineUsecase({
   uiType: 'Dialog without title',
   title: 'Content-only expanded dialog',
   apps: ['hs'],
   options: [
-    { id: "hs-expanded-output", name: "Expanded output", source: {"hs":"src/hs/OutputTabs.tsx"} },
+    { id: "hs-expanded-output", name: "Expanded output", source: {"hs":"src/hs/OutputTabs.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
   ],
   source: { hs: 'src/hs/OutputTabs.tsx' },
   summary: 'A dialog with no title and no close X: the popup is square, has no padding and fills the screen, and holds content that brings its own controls.',
@@ -30,24 +36,6 @@ export default defineUsecase({
       name: 'Content text',
       text: true,
       description: 'The p3 line that stands for the content and its own toolbar (the scene reads "Output toolbar").',
-    },
-    {
-      id: 'table',
-      name: 'Output table',
-      selector: '[class~="aui-table"]',
-      description: 'The scene table labelled "Output" that stands for the Output tabs; the popup places it straight at the edge.',
-    },
-    {
-      id: 'header-cell',
-      name: 'Header cell',
-      selector: '[class~="aui-table-header-cell"]',
-      description: 'The single "Load" column heading of the scene table.',
-    },
-    {
-      id: 'cell',
-      name: 'Cell',
-      selector: '[class~="aui-table-cell"]',
-      description: 'The "Dead" value cell of the one scene row.',
     },
   ],
 });

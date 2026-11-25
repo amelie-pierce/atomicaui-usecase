@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Switch with bordered off state',
   apps: ['adm'],
   options: [
-    { id: "adm-loads", name: "Load conditions", apps: ["adm"], source: {"adm":"src/features/design-inputs/components/LoadsSection/LoadConditionsFields.tsx"} },
+    { id: "adm-loads", name: "Load conditions", contextAnatomy: [{ id: 'input-pane', name: 'Input pane', description: 'The Input side pane (an aside, soft, surface-alt) that holds the form sections.' }, { id: 'section', name: 'Load conditions section', description: 'The Accordion item, open, that groups the load condition rows.' }, { id: 'section-title', name: 'Section header', description: 'The Load conditions trigger, a semi-bold l4 label with a chevron, that collapses the section.' }], apps: ["adm"], source: {"adm":"src/features/design-inputs/components/LoadsSection/LoadConditionsFields.tsx"} },
   ],
   source: { adm: 'src/features/design-inputs/components/LoadsSection/LoadConditionsFields.tsx' },
   summary: 'A switch at the end of a form row, with the row\'s name at the start, turns the setting on or off; its off state is a white track with a thin border.',

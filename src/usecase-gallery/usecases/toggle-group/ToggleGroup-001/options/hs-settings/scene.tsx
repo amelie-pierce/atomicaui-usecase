@@ -6,10 +6,11 @@ export default function HsSettingsScene({ children, host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 12)', inlineSize: 'min(100%, calc(var(--p-px-16) * 24))' }}>
       <Popover open>
-        <Popover.Trigger render={<Button aui={{ scale: 'sm', paint: 'text', color: 'secondary', shape: 'soft' }} />}>Settings</Popover.Trigger>
+        <Popover.Trigger render={<Button data-ug-part="settings-trigger" aui={{ scale: 'sm', paint: 'text', color: 'secondary', shape: 'soft' }} />}>Settings</Popover.Trigger>
         <Popover.Portal container={host}>
           <Popover.Positioner side="bottom" align="start" sideOffset={4} className="ug-anchored">
             <Popover.Popup
+              data-ug-part="settings-popover"
               initialFocus={false}
               aria-label="Settings"
               render={<View aui={{ color: 'surface', paint: 'solid', profile: 'default', shape: 'soft', elevation: 4, sx: { display: 'flex', flexDirection: 'column', gap: '8', width: '288' } }} />}

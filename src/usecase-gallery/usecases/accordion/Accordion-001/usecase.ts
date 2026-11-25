@@ -1,16 +1,20 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: "input-pane", name: "Input pane", description: "The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out." },
+];
+
 export default defineUsecase({
   uiType: 'Section accordion',
   title: 'Flush sections',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   options: [
-    { id: "hcs-section-list", name: "Section list", apps: ["hcs","ace","adm","hs","adc"], source: {"hcs":"src/App.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx","adc":"src/adc/Workspace.tsx"} },
-    { id: "pbs-section-list", name: "Section list — UI variant 2", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} },
-    { id: "fd-section-list", name: "Section list — UI variant 3", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
-    { id: "hcs-section-cards", name: "Section cards", apps: ["hcs","ace","adm","hs"], source: {"hcs":"src/App.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx"} },
-    { id: "pbs-section-cards", name: "Section cards — UI variant 2", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} },
-    { id: "fd-section-cards", name: "Section cards — UI variant 3", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
+    { id: "hcs-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list", apps: ["hcs","ace","adm","hs","adc"], source: {"hcs":"src/App.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx","adc":"src/adc/Workspace.tsx"} },
+    { id: "pbs-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list — UI variant 2", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} },
+    { id: "fd-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list — UI variant 3", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
+    { id: "hcs-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards", apps: ["hcs","ace","adm","hs"], source: {"hcs":"src/App.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx"} },
+    { id: "pbs-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards — UI variant 2", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} },
+    { id: "fd-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards — UI variant 3", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
   ],
   source: {
     hcs: 'src/App.tsx',

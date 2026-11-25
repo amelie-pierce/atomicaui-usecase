@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Check details table',
   apps: ['fd'],
   options: [
-    { id: "fd-details", name: "Check details table", apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
+    { id: "fd-details", name: "Check details table", showContext: false, apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
   ],
   source: {
     fd: 'src/components/RowExpansion.jsx',

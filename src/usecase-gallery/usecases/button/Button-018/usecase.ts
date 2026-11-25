@@ -6,7 +6,7 @@ export default defineUsecase({
 
   apps: ['adc'],
   options: [
-    { id: "adc-products", name: "Products row", apps: ["adc"], source: {"adc":"src/adc/components/ProductsPicker.tsx"} },
+    { id: "adc-products", name: "Products row", apps: ["adc"], showContext: false, source: {"adc":"src/adc/components/ProductsPicker.tsx"} },
   ],
   source: { adc: 'src/adc/components/ProductsPicker.tsx' },
   summary: 'A full-width small Button with a border stands in for a field until the user activates it.',

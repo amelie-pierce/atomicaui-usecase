@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Settings summary',
   apps: ['hs', 'fd', 'ace'],
   options: [
-    { id: "hs-settings", name: "Top bar", source: {"hs":"src/hs/TopBar.tsx"} },
+    { id: "hs-settings", showContext: false, name: "Top bar", source: {"hs":"src/hs/TopBar.tsx"} },
   ],
   source: { hs: 'src/hs/TopBar.tsx', fd: 'src/components/SettingsPopover.jsx', ace: 'src/features/top-navigation/ui/AceNavBar.tsx' },
   summary: 'A tonal Menubar.Button that sums up the current region, language and design code in one line, separated by dividers, and opens the settings popover.',

@@ -1,11 +1,15 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: "check-row", name: "Check category row", description: "The flex row (8px gap) that lists one Chip per check category: Anchorage passed and Bearing failed." },
+];
+
 export default defineUsecase({
   uiType: 'Status chip',
   title: 'Compact solid status',
   apps: ['fd'],
   options: [
-    { id: "fd-checks", name: "Check categories", source: {"fd":"src/components/Results.jsx"} },
+    { id: "fd-checks", contextAnatomy: CONTEXT_ANATOMY, name: "Check categories", source: {"fd":"src/components/Results.jsx"} },
   ],
   source: { fd: 'src/components/Results.jsx' },
   summary: 'A compact solid chip with an icon for each check category of a result: green and a check when it passes, red and an exclamation when it fails.',

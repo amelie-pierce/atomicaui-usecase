@@ -6,7 +6,7 @@ export default defineUsecase({
 
   apps: ['adc'],
   options: [
-    { id: "adc-status-bar", name: "Status bar", apps: ["adc"], source: {"adc":"src/adc/components/ReportFlow.tsx"} },
+    { id: "adc-status-bar", name: "Status bar", apps: ["adc"], showContext: false, source: {"adc":"src/adc/components/ReportFlow.tsx"} },
   ],
   source: { adc: 'src/adc/components/ReportFlow.tsx' },
   summary: 'A small blue solid Button with a file icon tells the user a report is ready and opens it.',

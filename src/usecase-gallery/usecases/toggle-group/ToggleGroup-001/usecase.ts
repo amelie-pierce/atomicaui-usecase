@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Labelled segments',
   apps: ['hs', 'adc'],
   options: [
-    { id: "hs-settings", name: "Settings popover", source: {"hs":"src/hs/SettingsPanel.tsx","adc":"src/adc/components/AppConfigurationPopover.tsx"} },
+    { id: "hs-settings", name: "Settings popover", contextAnatomy: [{ id: 'settings-trigger', name: 'Settings button', description: 'The text Button labelled Settings that opens the popover under it.' }, { id: 'settings-popover', name: 'Settings popover', description: 'The elevated popover, 288px wide, anchored under the trigger that holds one Field per setting.' }], source: {"hs":"src/hs/SettingsPanel.tsx","adc":"src/adc/components/AppConfigurationPopover.tsx"} },
   ],
   source: { hs: 'src/hs/SettingsPanel.tsx', adc: 'src/adc/components/AppConfigurationPopover.tsx' },
   summary: 'A labelled row of full-width segments where exactly one option is on, the chosen one a solid secondary segment.',

@@ -11,17 +11,18 @@ export default function AdmEnabledScene(_props: ContextProps) {
   return (
     <View
       as="section"
+      data-ug-part="output-pane"
       aria-label="Output"
       aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
       style={{ inlineSize: 'min(100%, 720px)' }}
     >
       <Tabs defaultValue="summary" aui={{ profile: 'no-padding' }}>
         <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', minHeight: '28', flex: 'none', paddingBlockStart: '0', paddingBlockEnd: '0' } }}>
-          <Tabs.List>
+          <Tabs.List data-ug-part="output-tabs">
             <Tabs.Tab value="summary" aui={TAB_AUI}>Summary</Tabs.Tab>
             <Tabs.Tab value="result" aui={TAB_AUI}>Result</Tabs.Tab>
           </Tabs.List>
-          <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '6', height: '28' } }} style={{ marginInlineStart: 'auto' }}>
+          <View data-ug-part="header-actions" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '6', height: '28' } }} style={{ marginInlineStart: 'auto' }}>
             <Button aui={{ color: 'secondary', paint: 'solid', scale: 'sm', shape: 'soft' }}>
               Print Summary
             </Button>

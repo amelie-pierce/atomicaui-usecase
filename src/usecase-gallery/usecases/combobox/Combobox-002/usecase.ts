@@ -1,11 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'preview-card', name: 'Preview card', selector: '[class~="aui-card"]', description: 'The 224px elevated Card beside the open list that previews the highlighted timber type (the app shows it in a side Popover).' },
+  { id: 'preview-title', name: 'Preview title', selector: '[class~="aui-card-title"]', description: 'The type name, Glulam, shown above the preview picture.' },
+];
+
 export default defineUsecase({
   uiType: 'Combobox',
   title: 'Select with option preview',
   apps: ['hcs'],
   options: [
-    { id: "hcs-beam-type", name: "Beam type", source: {"hcs":"src/components/HcsBeamTypeSelect.tsx"} },
+    { id: "hcs-beam-type", name: "Beam type", source: {"hcs":"src/components/HcsBeamTypeSelect.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
   ],
   source: { hcs: 'src/components/HcsBeamTypeSelect.tsx' },
   summary: 'A compact Combobox whose open list previews the highlighted option in a card beside it.',
@@ -66,18 +71,6 @@ export default defineUsecase({
       name: 'Item',
       selector: '[class~="aui-combobox-item"]',
       description: 'A timber type row at scale "sm"; highlighting one previews it in the card beside the list.',
-    },
-    {
-      id: 'preview-card',
-      name: 'Preview card',
-      selector: '[class~="aui-card"]',
-      description: 'In the HCS scene the highlighted option shows in a 224px card to the right of the open list.',
-    },
-    {
-      id: 'preview-title',
-      name: 'Preview title',
-      selector: '[class~="aui-card-title"]',
-      description: 'The option name, "Glulam", shown above the preview picture.',
     },
   ],
 });

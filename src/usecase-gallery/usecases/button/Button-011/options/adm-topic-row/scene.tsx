@@ -7,13 +7,13 @@ export default function AdmTopicRowScene({ host }: ContextProps) {
     <Dialog open modal={false}>
       <Dialog.Portal container={host}>
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }}>
-            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
+          <Dialog.Popup data-ug-part="dialog" initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }}>
+            <Dialog.Title data-ug-part="dialog-title" aui={{ scale: 'sm', color: 'raised' }}>
               Help &amp; Tutorials
-              <Dialog.Close aria-label="Close Help & Tutorials" aui={{ scale: 'sm' }} />
+              <Dialog.Close data-ug-part="dialog-close" aria-label="Close Help & Tutorials" aui={{ scale: 'sm' }} />
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
-              <View as="nav" aria-label="Help & Tutorials" aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8', paddingBlockStart: '16', paddingBlockEnd: '16', paddingInlineStart: '16', paddingInlineEnd: '16' } }}>
+              <View data-ug-part="topic-list" as="nav" aria-label="Help & Tutorials" aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8', paddingBlockStart: '16', paddingBlockEnd: '16', paddingInlineStart: '16', paddingInlineEnd: '16' } }}>
                 <Button aui={{ scale: 'sm', paint: 'text', sx: { width: 'fill', justifyContent: 'between', borderWidth: '1', borderColor: 'outlined' } }}>
                   ADM: General Walkthrough
                 </Button>

@@ -6,7 +6,11 @@ export default defineUsecase({
 
   apps: ['hs'],
   options: [
-    { id: "hs-launch", name: "Launch general tutorial", apps: ["hs"], source: {"hs":"src/hs/Tutorials.tsx"} },
+    { id: "hs-launch", name: "Launch general tutorial", apps: ["hs"], contextAnatomy: [
+      { id: "walkthrough-card", name: "Walkthrough card", description: "The elevated Walkthrough region over the tour target that holds the step text and the launch button." },
+      { id: "walkthrough-close", name: "Close button", description: "The X IconButton in the card corner (aria-label \"Close walkthrough\")." },
+      { id: "step-text", name: "Step text", description: "The body \"Find a solution. See the General tutorial for more information on the Results Table.\" with 24px kept at its end for the close X." },
+    ], source: {"hs":"src/hs/Tutorials.tsx"} },
   ],
   source: { hs: 'src/hs/Tutorials.tsx' },
   summary: 'A borderless text Button on the last step of a topic tour starts the General Tutorial.',

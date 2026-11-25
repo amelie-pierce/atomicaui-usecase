@@ -1,13 +1,20 @@
 import { defineUsecase } from '../../../define';
 
+const VIEWER_CONTEXT = [
+  { id: 'viewer-pane', name: '3D Viewer pane', description: 'The soft surface-alt section labelled "3D Viewer" that holds the model view and its controls.' },
+  { id: 'viewer-title', name: 'Pane title', description: 'The semi-bold "3D Viewer" heading at the top of the pane.' },
+  { id: 'viewer-stage', name: 'Viewer canvas', description: 'The soft model canvas that the camera controls float over.' },
+  { id: 'viewer-controls', name: 'Viewer controls', description: 'The control cluster over the canvas that holds the camera projection group.' },
+];
+
 export default defineUsecase({
   uiType: 'Radio',
   title: 'Camera projection radio group',
   apps: ['hcs', 'fd', 'adc', 'pbs'],
   options: [
-    { id: "hcs-projection", name: "Projection", apps: ["hcs","fd"], source: {"hcs":"src/App.tsx","fd":"src/components/Viewer.jsx"} },
-    { id: "adc-projection", name: "Projection — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} },
-    { id: "pbs-projection-tooltip", name: "Projection — UI variant 3", apps: ["pbs"], source: {"pbs":"src/Viewer.tsx"} },
+    { id: "hcs-projection", contextAnatomy: VIEWER_CONTEXT, name: "Projection", apps: ["hcs","fd"], source: {"hcs":"src/App.tsx","fd":"src/components/Viewer.jsx"} },
+    { id: "adc-projection", contextAnatomy: VIEWER_CONTEXT, name: "Projection — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} },
+    { id: "pbs-projection-tooltip", contextAnatomy: [...VIEWER_CONTEXT, { id: 'radio-tooltip', name: 'Radio tooltip', description: 'The tooltip above the Perspective radio that explains the view mode: "Realistic 3D view with depth and perspective."' }], name: "Projection — UI variant 3", apps: ["pbs"], source: {"pbs":"src/Viewer.tsx"} },
   ],
   source: {
     hcs: 'src/App.tsx',

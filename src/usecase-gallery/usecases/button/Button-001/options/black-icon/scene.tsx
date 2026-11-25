@@ -11,17 +11,18 @@ export default function HsEnabledScene(_props: ContextProps) {
   return (
     <View
       as="section"
+      data-ug-part="output-pane"
       aria-label="Output"
       aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
       style={{ inlineSize: 'min(100%, 720px)' }}
     >
       <Tabs defaultValue="output" aui={{ profile: 'no-padding' }}>
         <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', minHeight: '28', flex: 'none', paddingBlockStart: '0', paddingBlockEnd: '0' } }}>
-          <Tabs.List>
+          <Tabs.List data-ug-part="output-tabs">
             <Tabs.Tab value="output" aui={TAB_AUI}>Output</Tabs.Tab>
             <Tabs.Tab value="jobs" aui={TAB_AUI}>Job List</Tabs.Tab>
           </Tabs.List>
-          <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', justifyContent: 'end', flexWrap: 'wrap', gap: '6', flex: 'auto' } }}>
+          <View data-ug-part="header-actions" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', justifyContent: 'end', flexWrap: 'wrap', gap: '6', flex: 'auto' } }}>
             <Button aui={{ color: 'secondary', paint: 'solid', scale: 'sm', shape: 'soft' }}>
               <Button.Icon name="print" aui={{ scale: 'sm' }} />
               Print Output

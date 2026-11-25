@@ -1,11 +1,15 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: "results-table", name: "Results table", description: "The \"Connector calculation results\" Table with Model and Status columns; the Status cell of each row holds the Passed or Failed Chip." },
+];
+
 export default defineUsecase({
   uiType: 'Status chip',
   title: 'Tonal status with icon',
   apps: ['hcs'],
   options: [
-    { id: "hcs-results-status", name: "Results status", source: {"hcs":"src/components/F01Results.tsx"} },
+    { id: "hcs-results-status", contextAnatomy: CONTEXT_ANATOMY, name: "Results status", source: {"hcs":"src/components/F01Results.tsx"} },
   ],
   source: { hcs: 'src/components/F01Results.tsx' },
   summary: 'A tonal chip with a leading icon that states a result: success and a check for Passed, error and a cross for Failed.',

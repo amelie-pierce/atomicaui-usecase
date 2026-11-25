@@ -1,14 +1,18 @@
 import { defineUsecase } from '../../../define';
 
+const ADC_CONTEXT_ANATOMY = [
+  { id: 'copy-checkbox', name: 'Send me a copy checkbox', selector: '[class~="aui-checkbox"]', description: 'The checkbox "Send me a copy of my responses" at the start of the split footer.' },
+];
+
 export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Send feedback dialog',
 
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   options: [
-    { id: "hcs-feedback", name: "Send feedback", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"} },
-    { id: "adc-feedback", name: "Send feedback — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
-    { id: "ace-feedback", name: "Send feedback — UI variant 3", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/top-navigation/ui/FeedbackDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/components/Feedback.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    { id: "hcs-feedback", name: "Send feedback", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false },
+    { id: "adc-feedback", name: "Send feedback — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, contextAnatomy: ADC_CONTEXT_ANATOMY },
+    { id: "ace-feedback", name: "Send feedback — UI variant 3", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/top-navigation/ui/FeedbackDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/components/Feedback.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"}, showContext: false },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', adc: 'src/adc/Workspace.tsx', ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/WorkspaceTools.tsx', hs: 'src/hs/ShellExtras.tsx', fd: 'src/components/Feedback.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A form dialog that sends the user\'s feedback: a Cancel and a solid Send (Submit).',
@@ -89,12 +93,6 @@ export default defineUsecase({
       name: 'Footer',
       selector: '[class~="aui-dialog-actions"]',
       description: 'The footer: Submit alone in HCS, Cancel then Send in ACE, and a split footer led by a checkbox in ADC.',
-    },
-    {
-      id: 'copy-checkbox',
-      name: 'Send me a copy',
-      selector: '[class~="aui-checkbox"]',
-      description: 'The ADC-only checkbox "Send me a copy of my responses" at the start of the split footer.',
     },
     {
       id: 'cancel',

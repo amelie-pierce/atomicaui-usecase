@@ -26,7 +26,7 @@ export default function AceOtherRegionsScene({ host }: ContextProps) {
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
-            <View aui={{ scale: 'sm', paint: 'text', profile: 'default' }}>
+            <View data-ug-part="about-body" aui={{ scale: 'sm', paint: 'text', profile: 'default' }}>
               <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['other']}>
                 <Accordion.Item value="other">
                   {trigger('Updates for other regions', '1 update')}

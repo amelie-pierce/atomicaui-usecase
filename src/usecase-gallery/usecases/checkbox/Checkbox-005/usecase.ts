@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Print summary checkbox',
   apps: ['ace', 'pbs'],
   options: [
-    { id: "ace-print", name: "Print summary", apps: ["ace","pbs"], note: "A title sits above the checkbox; PBS uses a smaller gap than ACE.", source: {"ace":"src/features/print/ui/CrackPrintReport.tsx","pbs":"src/PrintView.tsx"} },
+    { id: "ace-print", showContext: false, name: "Print summary", apps: ["ace","pbs"], note: "A title sits above the checkbox; PBS uses a smaller gap than ACE.", source: {"ace":"src/features/print/ui/CrackPrintReport.tsx","pbs":"src/PrintView.tsx"} },
   ],
   source: {
     ace: 'src/features/print/ui/CrackPrintReport.tsx',

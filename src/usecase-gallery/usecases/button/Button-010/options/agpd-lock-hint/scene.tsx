@@ -7,7 +7,7 @@ export default function AgpdLockHintScene({ children, host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'end' } }} style={{ minBlockSize: 'calc(var(--p-px-16) * 12)', inlineSize: 'min(100%, calc(var(--p-px-16) * 24))' }}>
       <Popover open>
-        <Popover.Trigger render={<Button aria-label="Thickness is locked" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft' }} />}>
+        <Popover.Trigger render={<Button data-ug-part="lock-trigger" aria-label="Thickness is locked" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft' }} />}>
           <ContainedIcon name="lock" />
         </Popover.Trigger>
         <Popover.Portal container={host}>
@@ -15,13 +15,14 @@ export default function AgpdLockHintScene({ children, host }: ContextProps) {
             <Popover.Popup
               initialFocus={false}
               aria-label="Thickness is locked"
+              data-ug-part="hint-popup"
               render={
                 <View
                   aui={{ color: 'surface', paint: 'solid', profile: 'default', shape: 'soft', elevation: 4, sx: { display: 'flex', flexDirection: 'column', gap: '8', width: '288' } }}
                 />
               }
             >
-              <Type as="p" role="p3">
+              <Type data-ug-part="hint-text" as="p" role="p3">
                 Controlled by <Type as="strong" weight="semi-bold">Plate Option</Type> — currently “All Plates based on the stock model”.
               </Type>
               <View aui={{ paint: 'text', profile: 'no-padding' }}>{children}</View>

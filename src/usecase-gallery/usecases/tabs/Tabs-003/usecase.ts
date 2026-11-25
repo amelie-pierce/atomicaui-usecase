@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Tabs with status icon',
   apps: ['hcs', 'fd'],
   options: [
-    { id: "hcs-check-tabs", name: "Check result tabs", apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} },
-    { id: "fd-check-tabs", name: "Check result tabs — UI variant 2", apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
+    { id: "hcs-check-tabs", name: "Check result tabs", showContext: false, apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} },
+    { id: "fd-check-tabs", name: "Check result tabs — UI variant 2", showContext: false, apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
   ],
   source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/RowExpansion.jsx' },
   summary: 'Tabs that each lead with a pass or fail icon, so the tab strip is also the summary of which checks passed.',

@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Icon button tooltip',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   options: [
-    { id: "hcs-icon-label", name: "Icon label", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws","adc"], source: {"hcs":"src/components/HcsIconTooltip.tsx","ace":"src/shared/ui/PaneIconTooltip.tsx","adm":"src/shared/lib/tooltip/AdmIconTooltip.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/App.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/panel.tsx","rws":"src/rws/panel.tsx","adc":"src/adc/Workspace.tsx"} },
+    { id: "hcs-icon-label", name: "Icon label", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws","adc"], showContext: false, source: {"hcs":"src/components/HcsIconTooltip.tsx","ace":"src/shared/ui/PaneIconTooltip.tsx","adm":"src/shared/lib/tooltip/AdmIconTooltip.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/App.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/panel.tsx","rws":"src/rws/panel.tsx","adc":"src/adc/Workspace.tsx"} },
   ],
   source: {
     hcs: 'src/components/HcsIconTooltip.tsx',

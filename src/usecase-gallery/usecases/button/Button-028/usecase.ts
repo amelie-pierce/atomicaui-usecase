@@ -1,14 +1,24 @@
 import { defineUsecase } from '../../../define';
 
+const RESULTS_CONTEXT = [
+  { id: 'results-table', name: 'Results table', selector: '[class~="aui-table"]', description: 'The Table of connector results, cut to the Model column; its header cell is raised.' },
+  { id: 'failed-expander', name: 'Failed-model expander', selector: '[aria-label="Why Not for Model C-300"]', description: 'The second row\'s expander in the error color for Model C-300, which failed its check.' },
+];
+
+const GROUP_CONTEXT = [
+  { id: 'results-table', name: 'Results table', selector: '[class~="aui-table"]', description: 'The Table of connector results, cut to the Model column; its header cell is raised.' },
+  { id: 'group-label', name: 'Group label', selector: '[data-ug-part="group-label"]', description: 'The semi-bold model name with its member count (A-100 (2)) next to the expander in the group row.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Expand row button',
 
   apps: ['hcs', 'hs', 'fd', 'adc'],
   options: [
-    { id: "hcs-results", name: "Results table", apps: ["hcs","fd"], source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx"} },
-    { id: "hcs-group", name: "Group row", apps: ["hcs","adc"], source: {"hcs":"src/components/F01Results.tsx","adc":"src/adc/components/ProductsPicker.tsx"} },
-    { id: "hs-group", name: "Group row — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ResultsTable.tsx"} },
+    { id: "hcs-results", contextAnatomy: RESULTS_CONTEXT, name: "Results table", apps: ["hcs","fd"], source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx"} },
+    { id: "hcs-group", contextAnatomy: GROUP_CONTEXT, name: "Group row", apps: ["hcs","adc"], source: {"hcs":"src/components/F01Results.tsx","adc":"src/adc/components/ProductsPicker.tsx"} },
+    { id: "hs-group", contextAnatomy: GROUP_CONTEXT, name: "Group row — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ResultsTable.tsx"} },
   ],
   source: { hcs: 'src/components/F01Results.tsx', hs: 'src/hs/ResultsTable.tsx', fd: 'src/components/Results.jsx', adc: 'src/adc/components/ProductsPicker.tsx' },
   summary: 'A compact chevron Button expands a table row; HCS draws it as a Button (error color on failed rows), the other apps use the table\'s own expand trigger.',

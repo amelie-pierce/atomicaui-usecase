@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Card button tooltip',
   apps: ['pfd', 'rws'],
   options: [
-    { id: "pfd-card-note", name: "Card hint", apps: ["pfd"], source: {"pfd":"src/pfd/SelectionCards.tsx"} },
-    { id: "rws-show-in-3d", name: "Card hint — UI variant 2", apps: ["rws"], source: {"rws":"src/rws/output.tsx"} },
+    { id: "pfd-card-note", name: "Card hint", showContext: false, apps: ["pfd"], source: {"pfd":"src/pfd/SelectionCards.tsx"} },
+    { id: "rws-show-in-3d", name: "Card hint — UI variant 2", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} },
   ],
   source: { pfd: 'src/pfd/SelectionCards.tsx', rws: 'src/rws/output.tsx' },
   summary: 'A selection card or an image button explains itself in a text tooltip.',

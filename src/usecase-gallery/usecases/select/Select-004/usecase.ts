@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Configuration country select',
   apps: ['hs', 'ace', 'adc', 'fd', 'pfd', 'rws'],
   options: [
-    { id: "hs-configuration-select", name: "Configuration select", apps: ["hs","ace","adc","fd","pfd","rws"], source: {"hs":"src/hs/SettingsPanel.tsx","ace":"src/features/app-configuration/ui/AppConfigurationDialog.tsx","adc":"src/adc/components/AppConfigurationPopover.tsx","fd":"src/components/SettingsPopover.jsx","pfd":"src/pfd/CountrySelection.tsx","rws":"src/rws/CountryConfiguration.tsx"} },
+    { id: "hs-configuration-select", showContext: false, name: "Configuration select", apps: ["hs","ace","adc","fd","pfd","rws"], source: {"hs":"src/hs/SettingsPanel.tsx","ace":"src/features/app-configuration/ui/AppConfigurationDialog.tsx","adc":"src/adc/components/AppConfigurationPopover.tsx","fd":"src/components/SettingsPopover.jsx","pfd":"src/pfd/CountrySelection.tsx","rws":"src/rws/CountryConfiguration.tsx"} },
   ],
   source: {
     hs: 'src/hs/SettingsPanel.tsx',

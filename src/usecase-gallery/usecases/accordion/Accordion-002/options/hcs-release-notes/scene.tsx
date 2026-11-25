@@ -14,7 +14,7 @@ export default function HcsReleaseNotesScene({ host }: ContextProps) {
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
-            <View aui={{ scale: 'sm', paint: 'text', profile: 'default' }}>
+            <View data-ug-part="about-body" aui={{ scale: 'sm', paint: 'text', profile: 'default' }}>
               <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['global']}>
                 <Accordion.Item value="global">
                   <Accordion.Header>

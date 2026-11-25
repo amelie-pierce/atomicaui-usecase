@@ -1,13 +1,27 @@
 import { defineUsecase } from '../../../define';
 
+const ABOUT_CONTEXT = [
+  { id: "about-dialog", name: "About dialog", selector: "[class~=\"aui-dialog-popup\"]", description: "The Dialog popup titled About that hosts the release notes." },
+  { id: "about-title", name: "About title bar", selector: "[class~=\"aui-dialog-title\"]", description: "The raised Dialog.Title reading \"About\", with the Close About button at its end." },
+  { id: "about-close", name: "Close button", selector: "[class~=\"aui-dialog-close\"]", description: "The X Dialog.Close (aria-label \"Close About\") that dismisses the dialog." },
+  { id: "about-body", name: "Release notes body", description: "The padded View under the title bar that holds the release notes Accordion (the Release history column and app header are left out)." },
+];
+
+const ADC_ABOUT_CONTEXT = [
+  { id: "about-dialog", name: "About dialog", selector: "[class~=\"aui-dialog-popup\"]", description: "The Dialog popup titled About that hosts the release notes." },
+  { id: "about-title", name: "About title bar", selector: "[class~=\"aui-dialog-title\"]", description: "The raised Dialog.Title reading \"About\", with the Close About button at its end." },
+  { id: "about-close", name: "Close button", selector: "[class~=\"aui-dialog-close\"]", description: "The X Dialog.Close (aria-label \"Close About\") that dismisses the dialog." },
+  { id: "about-body", name: "Dialog body", selector: "[class~=\"aui-dialog-body\"]", description: "The Dialog.Body under the title bar that holds the release Accordion (the app description and Close footer are left out)." },
+];
+
 export default defineUsecase({
   uiType: 'Titled accordion',
   title: 'Title with badge and count',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   options: [
-    { id: "hcs-release-notes", name: "Release notes", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pfd":"src/pfd/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"} },
-    { id: "adc-release-notes", name: "Release notes — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
-    { id: "ace-other-regions", name: "Other regions", apps: ["ace","hs","fd"], source: {"ace":"src/features/top-navigation/ui/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx"} },
+    { id: "hcs-release-notes", contextAnatomy: ABOUT_CONTEXT, name: "Release notes", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pfd":"src/pfd/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"} },
+    { id: "adc-release-notes", contextAnatomy: ADC_ABOUT_CONTEXT, name: "Release notes — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "ace-other-regions", contextAnatomy: ABOUT_CONTEXT, name: "Other regions", apps: ["ace","hs","fd"], source: {"ace":"src/features/top-navigation/ui/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx"} },
   ],
   source: {
     hcs: 'src/components/HcsAboutDialog.tsx',

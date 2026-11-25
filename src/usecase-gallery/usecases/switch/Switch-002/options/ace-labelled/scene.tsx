@@ -7,12 +7,12 @@ export default function AceLabelledScene({ host }: ContextProps) {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false}>
-            <Dialog.Title aui={{ color: 'raised' }}>Feedback Form<Dialog.Spacer /><Dialog.Close aria-label="Cancel" /></Dialog.Title>
-            <Dialog.Body>
+          <Dialog.Popup data-ug-part="dialog" initialFocus={false}>
+            <Dialog.Title data-ug-part="dialog-title" aui={{ color: 'raised' }}>Feedback Form<Dialog.Spacer /><Dialog.Close aria-label="Cancel" /></Dialog.Title>
+            <Dialog.Body data-ug-part="dialog-body">
               <Switch defaultSelected><Switch.Label>Send me a copy</Switch.Label></Switch>
             </Dialog.Body>
-            <Dialog.Actions>
+            <Dialog.Actions data-ug-part="dialog-actions">
               <Dialog.Button dismiss={false}>Cancel</Dialog.Button>
               <Dialog.Button dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Send</Dialog.Button>
             </Dialog.Actions>

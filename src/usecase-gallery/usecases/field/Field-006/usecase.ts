@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Description under a field',
   apps: ['fd', 'rws', 'ace'],
   options: [
-    { id: "fd-description", name: "Field description", apps: ["fd","rws"], note: "Label above; the description sits under the control.", source: {"fd":"src/components/ui.jsx","rws":"src/rws/inputs.tsx"} },
-    { id: "ace-description", name: "Field description — UI variant 2", apps: ["ace"], note: "Label beside; the description sits under the whole row.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"} },
+    { id: "fd-description", name: "Field description", apps: ["fd","rws"], note: "Label above; the description sits under the control.", source: {"fd":"src/components/ui.jsx","rws":"src/rws/inputs.tsx"}, showContext: false },
+    { id: "ace-description", name: "Field description — UI variant 2", apps: ["ace"], note: "Label beside; the description sits under the whole row.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"}, showContext: false },
   ],
   source: { fd: 'src/components/ui.jsx', rws: 'src/rws/inputs.tsx', ace: 'src/features/estimator/ui/EstimatorInputPanel.tsx' },
   summary: 'A line of help text under a field that explains the chosen value.',

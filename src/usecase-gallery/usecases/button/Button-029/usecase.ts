@@ -1,16 +1,39 @@
 import { defineUsecase } from '../../../define';
 
+const HCS_CONTEXT = [
+  { id: 'help-intro', name: 'Help intro', selector: '[data-ug-part="help-intro"]', description: 'The line "Duration of load adjustments as specified by the code are as follows:" that fills the popup row and leaves the close X at its end.' },
+  { id: 'duration-notes', name: 'Duration notes', selector: '[data-ug-part="duration-notes"]', description: 'The plain list of five load-duration notes under the intro, each with a quoted bold label and its description.' },
+];
+
+const PFD_CONTEXT = [
+  { id: 'help-text', name: 'Help text', selector: '[data-ug-part="help-text"]', description: 'The "Select the base material of the member." text under the close button in the popup.' },
+];
+
+const PBS_CONTEXT = [
+  { id: 'help-text', name: 'Help text', selector: '[data-ug-part="help-text"]', description: 'The "Select the base material of the member." text that fills the popup row beside the close X.' },
+];
+
+const AGPD_CONTEXT = [
+  { id: 'close-row', name: 'Close row', selector: '[data-ug-part="close-row"]', description: 'The end-aligned row that holds only the close X above the help text.' },
+  { id: 'help-text', name: 'Help text', selector: '[data-ug-part="help-text"]', description: 'The "Select the base material of the member." text under the close row.' },
+];
+
+const FD_CONTEXT = [
+  { id: 'top-bar', name: 'Top bar', selector: '[class~="aui-menubar"]', description: 'The Menubar with the grip Apps button that opens this popover.' },
+  { id: 'apps-title', name: 'Popover title', selector: '[data-ug-part="apps-title"]', description: 'The semi-bold "Explore More Applications" heading at the start of the title row, opposite the close button.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Close popover button',
 
   apps: ['hcs', 'pfd', 'pbs', 'fd', 'agpd', 'rws'],
   options: [
-    { id: "hcs-help-close", name: "Help popover close", apps: ["hcs"], source: {"hcs":"src/components/HcsDownloadDurationHelp.tsx"} },
-    { id: "pfd-help-close", name: "Help popover close — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} },
-    { id: "pbs-help-close", name: "Help popover close — UI variant 3", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} },
-    { id: "agpd-help-close", name: "Help popover close — UI variant 4", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} },
-    { id: "fd-apps-close", name: "Apps popover close", apps: ["fd"], source: {"fd":"src/App.jsx"} },
+    { id: "hcs-help-close", contextAnatomy: HCS_CONTEXT, name: "Help popover close", apps: ["hcs"], source: {"hcs":"src/components/HcsDownloadDurationHelp.tsx"} },
+    { id: "pfd-help-close", contextAnatomy: PFD_CONTEXT, name: "Help popover close — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} },
+    { id: "pbs-help-close", contextAnatomy: PBS_CONTEXT, name: "Help popover close — UI variant 3", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} },
+    { id: "agpd-help-close", contextAnatomy: AGPD_CONTEXT, name: "Help popover close — UI variant 4", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} },
+    { id: "fd-apps-close", contextAnatomy: FD_CONTEXT, name: "Apps popover close", apps: ["fd"], source: {"fd":"src/App.jsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A transparent icon-only IconButton, 20px square, closes a popover from its corner.',

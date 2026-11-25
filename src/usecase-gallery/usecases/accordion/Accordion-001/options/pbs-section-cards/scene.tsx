@@ -4,7 +4,7 @@ import { Accordion, Type, View } from '../../../../../kit';
 // PBS Input pane (src/App.tsx InputSection; PFD, RWS and AGPD write the same sections), Engineering Overview grid: two soft section cards 6px apart (a native rowGap on the View holding the items) on the pane, each with a Type l4 semi-bold title and the chevron but no section icon. Every corner of a card is rounded, stated as the four radii. Left out: the pane header, the section fields, the other sections and the grid columns.
 export default function PbsCardsScene(_props: ContextProps) {
   return (
-    <View as="aside" aria-label="Input" aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }} style={{ inlineSize: 'min(100%, 360px)' }}>
+    <View data-ug-part="input-pane" as="aside" aria-label="Input" aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }} style={{ inlineSize: 'min(100%, 360px)' }}>
       <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
         <View aui={{ paint: 'text', profile: 'no-padding', sx: { width: 'fill' } }} style={{ display: 'flex', flexDirection: 'column', rowGap: 6 }}>
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>

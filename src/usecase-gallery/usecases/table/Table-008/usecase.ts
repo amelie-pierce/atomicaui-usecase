@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Print table totals row',
   apps: ['ace'],
   options: [
-    { id: "ace-print-totals", name: "Print table", apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} },
+    { id: "ace-print-totals", name: "Print table", showContext: false, apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} },
   ],
   source: {
     ace: 'src/features/print/ui/report-primitives.tsx',

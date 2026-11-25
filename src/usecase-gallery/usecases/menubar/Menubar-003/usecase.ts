@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Help Center menu',
   apps: ['hcs', 'ace', 'adm', 'hs', 'adc', 'pbs', 'pfd', 'rws', 'agpd'],
   options: [
-    { id: "hcs-help-center", name: "Help Center menu", apps: ["hcs"], source: {"hcs":"src/App.tsx"} },
-    { id: "pbs-help-center", name: "Help Center menu — UI variant 2", apps: ["ace","adm","hs","adc","pbs","pfd","rws","agpd"], source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","hs":"src/hs/TopBar.tsx","adc":"src/adc/Workspace.tsx","pbs":"src/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","rws":"src/rws/TopBar.tsx","agpd":"src/agpd/TopBar.tsx"} },
+    { id: "hcs-help-center", showContext: false, name: "Help Center menu", apps: ["hcs"], source: {"hcs":"src/App.tsx"} },
+    { id: "pbs-help-center", showContext: false, name: "Help Center menu — UI variant 2", apps: ["ace","adm","hs","adc","pbs","pfd","rws","agpd"], source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","hs":"src/hs/TopBar.tsx","adc":"src/adc/Workspace.tsx","pbs":"src/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","rws":"src/rws/TopBar.tsx","agpd":"src/agpd/TopBar.tsx"} },
   ],
   source: {
     hcs: 'src/App.tsx',

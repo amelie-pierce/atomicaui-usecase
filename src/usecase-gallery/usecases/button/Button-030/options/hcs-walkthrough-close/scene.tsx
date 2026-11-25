@@ -19,14 +19,14 @@ export default function HcsWalkthroughCloseScene() {
         <span style={{ position: 'absolute', insetBlockStart: 4, insetInlineEnd: 4 }}>
           <IconButton name="xmark" aria-label="Close walkthrough" aui={{ scale: 'sm', paint: 'text', color: 'surface' }} />
         </span>
-        <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Connection Type</Type>
+        <Type data-ug-part="step-title" as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Connection Type</Type>
         <Type role="p3">Choose how the beams connect.</Type>
         <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
           <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
             Next
             <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
           </Button>
-          <Type as="span" role="p3" color="muted" style={{ marginInlineStart: 'auto', whiteSpace: 'nowrap' }}>1 / 6</Type>
+          <Type data-ug-part="step-counter" as="span" role="p3" color="muted" style={{ marginInlineStart: 'auto', whiteSpace: 'nowrap' }}>1 / 6</Type>
         </View>
       </View>
     </div>

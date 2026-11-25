@@ -6,7 +6,11 @@ export default defineUsecase({
 
   apps: ['pfd', 'hs', 'rws'],
   options: [
-    { id: "pfd-toolbar", name: "Table toolbar", apps: ["pfd","hs","rws"], source: {"pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx","rws":"src/rws/output.tsx"} },
+    { id: "pfd-toolbar", name: "Table toolbar", apps: ["pfd","hs","rws"], contextAnatomy: [
+      { id: "toolbar", name: "Output toolbar", description: "The wrapping row of small controls (8px gap) with the search field first, the count next and Download CSV last." },
+      { id: "search", name: "Search field", description: "The Search Table Field with a magnifying-glass icon that fills the line." },
+      { id: "count", name: "Result count", description: "The muted \"Showing 1 entry\" status text before Download CSV." },
+    ], source: {"pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx","rws":"src/rws/output.tsx"} },
   ],
   source: { pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx', rws: 'src/rws/output.tsx' },
   summary: 'A quiet text Button with a leading icon runs one action in a toolbar: a CSV icon downloads the rows.',

@@ -8,14 +8,14 @@ export default function AdcOkScene({ host }: ContextProps) {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false}>
-            <Dialog.Title aui={{ color: 'raised' }}>
-              <Dialog.Icon name="circle-xmark" aui={{ color: 'error' }} />
+          <Dialog.Popup data-ug-part="dialog" initialFocus={false}>
+            <Dialog.Title data-ug-part="dialog-title" aui={{ color: 'raised' }}>
+              <Dialog.Icon data-ug-part="error-icon" name="circle-xmark" aui={{ color: 'error' }} />
               Maximum Number of Designs Reached
               <Dialog.Spacer />
               <Tooltip.Provider>
                 <Tooltip>
-                  <Tooltip.Trigger render={<Dialog.Close aria-label="Close" />} />
+                  <Tooltip.Trigger data-ug-part="dialog-close" render={<Dialog.Close aria-label="Close" />} />
                   <Tooltip.Portal>
                     <Tooltip.Positioner side="top" sideOffset={8}>
                       <Tooltip.Popup aui={{ paint: 'solid', color: 'secondary', scale: 'sm' }}>Close</Tooltip.Popup>
@@ -24,7 +24,7 @@ export default function AdcOkScene({ host }: ContextProps) {
                 </Tooltip>
               </Tooltip.Provider>
             </Dialog.Title>
-            <Dialog.Description>
+            <Dialog.Description data-ug-part="message">
               A Project can contain a maximum of 15 Designs. Please close an existing Design before creating or duplicating a Design.
             </Dialog.Description>
             <Dialog.Actions>

@@ -1,11 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'top-bar', name: 'Top bar', selector: '[class~="aui-menubar"][aria-label="Top bar"]', description: 'The phone top bar Menubar labelled "Top bar" that stays visible above the drawer; the drawer opens flush under it.' },
+  { id: 'toggle', name: 'Navigation toggle', selector: '[class~="aui-menubar"][aria-label="Top bar"] [class~="aui-button"]', description: 'The xmark icon button labelled "Close navigation" at the top bar; it toggles the drawer closed.' },
+];
+
 export default defineUsecase({
   uiType: 'Drawer',
   title: 'Mobile navigation drawer',
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   options: [
-    { id: "ace-mobile-nav", name: "Mobile navigation", source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","pfd":"src/pfd/TopBar.tsx","pbs":"src/TopBar.tsx","hs":"src/hs/TopBar.tsx","fd":"src/App.jsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx"} },
+    { id: "ace-mobile-nav", name: "Mobile navigation", source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","pfd":"src/pfd/TopBar.tsx","pbs":"src/TopBar.tsx","hs":"src/hs/TopBar.tsx","fd":"src/App.jsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
   ],
   source: {
     ace: 'src/features/top-navigation/ui/AceNavBar.tsx',
@@ -51,12 +56,6 @@ export default defineUsecase({
       name: 'Menu rows',
       selector: '[class~="aui-drawer-content"] [class~="aui-button"]',
       description: 'The Save to device, Open from device and About rows of the example; the ACE scene adds Print.',
-    },
-    {
-      id: 'toggle',
-      name: 'Bar toggle',
-      selector: '[class~="aui-menubar"][aria-label="Top bar"] [class~="aui-button"]',
-      description: 'The ACE scene top bar icon button (an xmark labelled "Close navigation") that closes the drawer.',
     },
   ],
 });

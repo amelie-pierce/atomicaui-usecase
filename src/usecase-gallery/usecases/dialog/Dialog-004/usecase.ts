@@ -4,25 +4,10 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Template picker dialog',
   apps: ['ace', 'adm', 'hs', 'fd'],
-  cases: [
-    {
-      id: 'ace-templates',
-      name: 'Template picker',
-      apps: ['ace'],
-      source: { ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx' },
-    },
-    {
-      id: 'adm-templates',
-      name: 'Template picker',
-      apps: ['adm'],
-      source: { adm: 'src/features/templates/components/NewFromTemplateDialog.tsx' },
-    },
-    {
-      id: 'hs-templates',
-      name: 'Template picker',
-      apps: ['hs', 'fd'],
-      source: { hs: 'src/hs/TemplateDialogs.tsx', fd: 'src/components/TemplatesDialog.jsx' },
-    },
+  options: [
+    { id: "ace-templates", name: "Template picker", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} },
+    { id: "adm-templates", name: "Template picker — UI variant 2", apps: ["adm"], source: {"adm":"src/features/templates/components/NewFromTemplateDialog.tsx"} },
+    { id: "hs-templates", name: "Template picker — UI variant 3", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} },
   ],
   source: {
     ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx',
@@ -34,4 +19,153 @@ export default defineUsecase({
   where: 'The File menu item New from template in ACE, ADM, HS and FD (HCS, PFD, PBS, AGPD, RWS and ADC have no template picker). Real site source: the template dialog of each app (the paths are in source and in each case).',
   when: 'Use it to choose one saved starting point from a short list that has two owners (built in and the user\'s). Do not use it for a short message or a confirm (a plain Dialog, AlertDialog-003), to save a template (Dialog-008, Save template) or for a long searchable list.',
   how: 'The Dialog.Popup is the default scale and the default 480px (ADM sets 520px); the Title is raised and carries the name, the Spacer and the close X (Button-031). The Body holds one RadioGroup, each row a Radio at scale "sm" whose states are an outlined tonal surface when unselected and a solid primary when selected, with sx flex "fill" so it takes the row; only the user\'s own rows add row actions after the Radio, in a flex row with gap 8: three text Buttons Download, Delete (color error) and Edit in ACE and ADM, three icon buttons (download, trash, pen, each with an aria-label) in HS and FD. The example is the Dialog frame you copy (Popup, raised Title with the close X, Body); the radio list is a supporting part shown in In context. The apps write three UIs, one scene each: ACE (an Accordion of the two sections with a Type l4 trigger, Accordion-003), ADM (a 520px Popup, plain sections each headed by a muted Type, no Accordion) and HS and FD (the default-width shell dialog, an Accordion with plain-text triggers and icon-button rows; the Body also scrolls). The scenes leave out the no-match state, the keyboard handlers, the template footer (Cancel and Create, Dialog-008), the delete confirm, the empty state and further rows.',
+  anatomy: [
+    {
+      id: 'overlay',
+      name: 'Overlay',
+      token: 'Dialog.Backdrop',
+      selector: '[class~="aui-dialog-backdrop"]',
+      description: 'The scrim behind the New from Template picker.',
+      code: `<Dialog open modal={false}>
+  <Dialog.Portal container={host}>
+    <Dialog.Backdrop />`,
+    },
+    {
+      id: 'popup',
+      name: 'Popup',
+      token: 'Dialog.Popup',
+      selector: '[class~="aui-dialog-popup"]',
+      description: 'The narrow default-scale picker window, 480px wide (ADM widens it to 520px).',
+      code: `<Dialog.Popup initialFocus={false}>`,
+    },
+    {
+      id: 'title',
+      name: 'Title bar',
+      token: 'Dialog.Title',
+      selector: '[class~="aui-dialog-title"]',
+      description: 'The raised title bar reading "New from Template"; the ACE and HS scenes title it "Templates" and ADM keeps "New from Template".',
+      code: `<Dialog.Title aui={{ color: 'raised' }}>
+  New from Template
+  <Dialog.Spacer />
+  <Dialog.Close aria-label="Close" />
+</Dialog.Title>`,
+    },
+    {
+      id: 'title-text',
+      name: 'Title text',
+      token: 'Dialog.Title',
+      selector: '[class~="aui-dialog-title"]',
+      text: true,
+      description: 'The picker name at the start of the title bar.',
+      code: `<Dialog.Title aui={{ color: 'raised' }}>
+  New from Template`,
+    },
+    {
+      id: 'spacer',
+      name: 'Spacer',
+      token: 'Dialog.Spacer',
+      selector: '[class~="aui-dialog-spacer"]',
+      description: 'The gap between the picker name and the close X.',
+      code: `<Dialog.Spacer />`,
+    },
+    {
+      id: 'close',
+      name: 'Close',
+      token: 'Dialog.Close',
+      selector: '[class~="aui-dialog-close"]',
+      description: 'The close X that abandons the picker (labelled "Cancel" in the ACE scene and "Close Templates" in the HS scene).',
+      code: `<Dialog.Close aria-label="Close" />`,
+    },
+    {
+      id: 'body',
+      name: 'Body',
+      token: 'Dialog.Body',
+      selector: '[class~="aui-dialog-body"]',
+      description: 'The body that holds the radio list of templates; the HS and FD version also scrolls (overflow auto).',
+      code: `<Dialog.Body>
+  <Type data-ug-part="template-text" as="p" role="p3">
+    The list of templates goes here.
+  </Type>
+</Dialog.Body>`,
+    },
+    {
+      id: 'template-text',
+      name: 'Template text',
+      token: 'Type',
+      text: true,
+      description: 'The p3 placeholder line that stands in for the list of templates in the Dialog frame.',
+      code: `<Type data-ug-part="template-text" as="p" role="p3">
+  The list of templates goes here.
+</Type>`,
+    },
+    {
+      id: 'radio-group',
+      name: 'Template radio group',
+      token: 'RadioGroup',
+      selector: '[class~="aui-radio-group"]',
+      description: 'The one RadioGroup that makes the built-in and own templates a single choice, defaulting to the second template.',
+      code: `<RadioGroup defaultValue="2">`,
+    },
+    {
+      id: 'accordion',
+      name: 'Sections accordion',
+      token: 'Accordion',
+      selector: '[class~="aui-accordion"]',
+      description: 'The ACE and HS scenes group the rows into Default Templates and My Templates sections, both open; ADM uses plain sections instead.',
+      code: `<Accordion openMultiple defaultValue={['default-templates', 'my-templates']}>`,
+    },
+    {
+      id: 'section-trigger',
+      name: 'Section trigger',
+      token: 'Accordion.Trigger',
+      selector: '[class~="aui-accordion-trigger"]',
+      description: 'The header of a section: a Type l4 label in ACE, plain text in HS and FD, each ending in a chevron.',
+      code: `<Accordion.Trigger>
+  <Type role="l4">Default Templates</Type>
+  <Accordion.Chevron />
+</Accordion.Trigger>`,
+    },
+    {
+      id: 'section',
+      name: 'Plain section',
+      token: 'View',
+      description: 'The ADM section that stacks a muted heading over its radio rows with a gap of 4.',
+      code: `<View data-ug-part="section" aui={SECTION}>`,
+    },
+    {
+      id: 'section-heading',
+      name: 'Section heading',
+      token: 'Type',
+      text: true,
+      description: 'The muted "Default Templates" and "My Templates" labels of the ADM sections.',
+      code: `<Type data-ug-part="section-heading" color="muted">Default Templates</Type>`,
+    },
+    {
+      id: 'template-radio',
+      name: 'Template radio',
+      token: 'Radio',
+      selector: '[class~="aui-radio"]',
+      description: 'A template row such as "Two-beam connection": an outlined tonal surface when unselected and a solid primary one when selected, filling the row.',
+      code: `<Radio value="1" aui={{ ...SELECTION, sx: { flex: 'fill' } }}>
+  <Radio.Label>Two-beam connection</Radio.Label>
+</Radio>`,
+    },
+    {
+      id: 'template-label',
+      name: 'Template name',
+      token: 'Radio.Label',
+      selector: '[class~="aui-control-row"] > [class~="aui-label"]',
+      description: 'The template name inside the radio, such as "Three-beam connection".',
+      code: `<Radio.Label>Three-beam connection</Radio.Label>`,
+    },
+    {
+      id: 'row-action',
+      name: 'Row actions',
+      token: 'Button',
+      description: 'The actions after a user-owned template: the Download, Delete (error colour) and Edit text buttons in ACE and ADM, or the download, trash and pen icon buttons in HS and FD.',
+      code: `<Button>Download</Button>
+<Button aui={{ color: 'error' }}>Delete</Button>
+<Button>Edit</Button>`,
+    },
+  ],
 });

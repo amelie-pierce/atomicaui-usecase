@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Back to top and Table Notes buttons',
-  look: 'Text pair with leading icons',
+
   apps: ['hcs', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  cases: [
-    { id: 'hcs-output-header', name: 'Output header', apps: ['hcs', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'], source: { hcs: 'src/useOutputNavigation.tsx', pfd: 'src/pfd/useOutputNavigation.tsx', pbs: 'src/useOutputNavigation.tsx', hs: 'src/hs/useOutputNavigation.tsx', fd: 'src/components/useOutputNavigation.jsx', agpd: 'src/agpd/outputNavigation.tsx', rws: 'src/rws/outputNavigation.tsx' } },
+  options: [
+    { id: "hcs-output-header", name: "Output header", apps: ["hcs","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/useOutputNavigation.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/useOutputNavigation.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/useOutputNavigation.jsx","agpd":"src/agpd/outputNavigation.tsx","rws":"src/rws/outputNavigation.tsx"} },
   ],
   source: { hcs: 'src/useOutputNavigation.tsx', pfd: 'src/pfd/useOutputNavigation.tsx', pbs: 'src/useOutputNavigation.tsx', hs: 'src/hs/useOutputNavigation.tsx', fd: 'src/components/useOutputNavigation.jsx', agpd: 'src/agpd/outputNavigation.tsx', rws: 'src/rws/outputNavigation.tsx' },
   summary: 'Two quiet text Buttons with a leading icon sit together in a header: an arrow jumps to the top of a long table and another down to its notes.',
@@ -18,4 +18,31 @@ export default defineUsecase({
     + 'HCS, PFD, PBS, HS, FD, AGPD and RWS write the same Buttons. '
     + 'They are the first two items of the Output header action group, shown as they are once the results are scrolled: the apps reveal Back to top after 80px of scroll (hides below 20px) and Table Notes while the notes heading is below the pane, and all seven turn both into square icon Buttons with a Tooltip carrying the same label when the labels do not fit the header row (this scene shows the labelled state). '
     + 'The Print Output Button after them in the scene is HCS\'s neighbour (PFD, PBS, AGPD and RWS print from the menubar, and HS and FD put Configure columns (HS also Fullscreen) between them and Print); Configure columns and the table are left out.',
+  anatomy: [
+    { id: 'back-to-top', name: 'Back to top', token: 'Button', selector: '[class~="aui-button"][aria-label="Back to top"]', description: 'Secondary text button that scrolls to the top of the long table; its accessible name matches the visible label.',
+      code: `<Button
+  aria-label="Back to top"
+  aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}
+>
+  <Button.Icon name="arrow-up" />
+  Back to top
+</Button>` },
+    { id: 'back-icon', name: 'Arrow-up icon', token: 'Button.Icon', selector: '[class~="aui-button"][aria-label="Back to top"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The arrow-up glyph that shows the direction of the jump.',
+      code: `<Button.Icon name="arrow-up" />` },
+    { id: 'table-notes', name: 'Table Notes', token: 'Button', selector: '[class~="aui-button"][aria-label="Jump to table notes"]', description: 'Secondary text button that jumps down to the table notes; its accessible name "Jump to table notes" is longer than the visible Table Notes label.',
+      code: `<Button
+  aria-label="Jump to table notes"
+  aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}
+>
+  <Button.Icon name="arrow-down" />
+  Table Notes
+</Button>` },
+    { id: 'notes-icon', name: 'Arrow-down icon', token: 'Button.Icon', selector: '[class~="aui-button"][aria-label="Jump to table notes"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The arrow-down glyph that points toward the notes below the table.',
+      code: `<Button.Icon name="arrow-down" />` },
+    { id: 'print', name: 'Print Output', token: 'Button', selector: '[class~="aui-button"]:not([aria-label])', description: 'HCS Output header only: the tonal surface Print Output button with a print icon that sits right after the two jump buttons.',
+      code: `<Button aui={{ scale: 'sm', color: 'surface', paint: 'tonal', sx: { flex: 'none' } }}>
+  <Button.Icon name="print" aui={{ scale: 'sm' }} />
+  Print Output
+</Button>` },
+  ],
 });

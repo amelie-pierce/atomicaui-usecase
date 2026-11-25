@@ -4,10 +4,66 @@ export default defineUsecase({
   uiType: 'Context menu',
   title: 'Tab context menu',
   apps: ['adc'],
-  cases: [{ id: 'adc-tab-options', name: 'Tab options', apps: ['adc'], source: { adc: 'src/adc/Workspace.tsx' } }],
+  options: [
+    { id: "adc-tab-options", name: "Tab options", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+  ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A right-click on a tab opens a menu of actions for that tab: close, close the others, rename, duplicate and move.',
   where: 'The ADC design tab rail: each design tab is the right-click area of its own context menu, labelled "Tab options" (double-click on the tab also renames).',
   when: 'Use it for secondary actions on an item of a row or list that has no room for a button per action: the item itself is the area, and the menu opens at the pointer. It is the ContextMenu, not a Dropdown: no visible trigger, opened by right-click or long-press.',
   how: 'ADC: a ContextMenu per design whose ContextMenu.Trigger is the tab itself (Tabs.Tab with nativeButton false, rendered through ContextMenu.Trigger as a div; the trigger takes no aui). The popup is a ContextMenu.Popup labelled "Tab options" at the default scale, in the Portal and Positioner without props. It holds plain ContextMenu.Items, each with a leading ContextMenu.Icon: xmark "Close", ban "Close all other designs", a ContextMenu.Separator, then pen "Rename", copy "Duplicate", arrow-up "Move to top". No row is selected and choosing one runs the action and closes the menu. The app disables Close and Close all other designs when one design is left, and every row while a report is running; the scene shows them enabled. The scene shows the menu open under one design tab (CHIP_AUI of the app: surface-alt, solid, soft); the app opens it at the pointer, the scene anchors it 4px below the tab. Drag reorder, rename editing, the close button, the error dot and the other tabs are left out.',
+  anatomy: [
+    {
+      id: 'trigger',
+      name: 'Trigger',
+      token: 'ContextMenu.Trigger',
+      selector: '[class~="aui-tabs-tab"]',
+      description: 'The "Design 1" tab is the right-click area: a Tabs.Tab with nativeButton off rendered through ContextMenu.Trigger as a div, which takes no aui.',
+      code: `<Tabs.Tab
+  value="d1"
+  nativeButton={false}
+  render={<ContextMenu.Trigger render={<div />} />}
+  aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'raised', paint: 'tonal' } } }}
+>
+  {/* … */}
+</Tabs.Tab>`,
+    },
+    {
+      id: 'popup',
+      name: 'Popup',
+      token: 'ContextMenu.Popup',
+      selector: '[class~="aui-dropdown-popup"]',
+      description: 'The menu labelled "Tab options", opened at the pointer in the app and anchored under the tab in the scene.',
+      code: `<ContextMenu.Popup aria-label="Tab options">
+  {/* … */}
+</ContextMenu.Popup>`,
+    },
+    {
+      id: 'item',
+      name: 'Item',
+      token: 'ContextMenu.Item',
+      selector: '[class~="aui-dropdown-item"]',
+      description: 'A plain action row: Close, Close all other designs, Rename, Duplicate or Move to top; choosing one runs it and closes the menu.',
+      code: `<ContextMenu.Item>
+  <ContextMenu.Icon name="xmark" />
+  Close
+</ContextMenu.Item>`,
+    },
+    {
+      id: 'icon',
+      name: 'Icon',
+      token: 'ContextMenu.Icon',
+      selector: '[class~="aui-dropdown-item"] > [class~="aui-contained-icon"]',
+      description: 'The leading glyph of each row: xmark, ban, pen, copy and arrow-up.',
+      code: `<ContextMenu.Icon name="xmark" />`,
+    },
+    {
+      id: 'separator',
+      name: 'Separator',
+      token: 'ContextMenu.Separator',
+      selector: '[class~="aui-dropdown-separator"]',
+      description: 'The divider between the close actions (Close, Close all other designs) and the edit actions (Rename, Duplicate, Move to top).',
+      code: `<ContextMenu.Separator />`,
+    },
+  ],
 });

@@ -4,7 +4,7 @@ export default function Example() {
   return (
     <Tooltip.Provider>
       <Tooltip>
-        <Tooltip.Trigger render={<Button aria-label="Show in 3D" aui={{ color: 'surface', paint: 'text', shape: 'soft', sx: { width: '96', height: '80' } }} />}>
+        <Tooltip.Trigger render={<Button data-ug-part="trigger" aria-label="Show in 3D" aui={{ color: 'surface', paint: 'text', shape: 'soft', sx: { width: '96', height: '80' } }} />}>
           <svg viewBox="0 0 192 128" aria-hidden="true" style={{ width: 'var(--p-px-72)', aspectRatio: '4 / 3' }}>
               <rect width="192" height="128" fill="var(--theme-surface-alt)" />
               <path d="M24 20h144v18H24zM36 38h120v18H36z" fill="var(--theme-muted)" stroke="var(--theme-secondary)" strokeWidth="2" />

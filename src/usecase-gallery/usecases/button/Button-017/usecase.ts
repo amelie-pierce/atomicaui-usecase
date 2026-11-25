@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Open report button',
-  look: 'Info solid, extra small',
+
   apps: ['adc'],
-  cases: [
-    { id: 'adc-status-bar', name: 'Status bar', apps: ['adc'], source: { adc: 'src/adc/components/ReportFlow.tsx' } },
+  options: [
+    { id: "adc-status-bar", name: "Status bar", apps: ["adc"], source: {"adc":"src/adc/components/ReportFlow.tsx"} },
   ],
   source: { adc: 'src/adc/components/ReportFlow.tsx' },
   summary: 'A small blue solid Button with a file icon tells the user a report is ready and opens it.',
@@ -15,4 +15,31 @@ export default defineUsecase({
   how: 'Set aui color "info", paint "solid", scale "xs" and shape "soft", with a Button.Icon "file-lines" and a span label. '
     + 'Measured: 26px high, 4px 6px padding, 14px medium text, white on blue rgb(59, 130, 246), 4px radius, so the colour and the size differ from Button-015 (accent, 28px, 16px). '
     + 'The generating state is the same Button as secondary text, disabled, and is left out with the rest of the bar.',
+  anatomy: [
+    {
+      id: "container",
+      name: "Container",
+      token: "Button",
+      description: "The report-ready Button in the ADC status bar: solid info (blue), extra small, soft shape.",
+      selector: "[class~=\"aui-button\"]",
+      code: "<Button aui={{ color: 'info', paint: 'solid', scale: 'xs', shape: 'soft' }}>\n  …\n</Button>",
+    },
+    {
+      id: "icon",
+      name: "Icon",
+      token: "Button.Icon",
+      description: "The file glyph before the label that marks the item as a report.",
+      selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
+      code: "<Button.Icon name=\"file-lines\" />",
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Button",
+      description: "The text \"Report is ready\" in a span, which reads \"Report is ready (outdated)\" when inputs changed.",
+      selector: "[class~=\"aui-button\"] > span",
+      text: true,
+      code: "<span>Report is ready</span>",
+    },
+  ],
 });

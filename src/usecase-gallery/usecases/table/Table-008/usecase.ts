@@ -4,13 +4,8 @@ export default defineUsecase({
   uiType: 'Data table',
   title: 'Print table totals row',
   apps: ['ace'],
-  cases: [
-    {
-      id: 'ace-print-totals',
-      name: 'Print table',
-      apps: ['ace'],
-      source: { ace: 'src/features/print/ui/report-primitives.tsx' },
-    },
+  options: [
+    { id: "ace-print-totals", name: "Print table", apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} },
   ],
   source: {
     ace: 'src/features/print/ui/report-primitives.tsx',
@@ -19,4 +14,80 @@ export default defineUsecase({
   where: 'The ACE printed report table (print/ui/report-primitives.tsx): a bold footer row under the dense print grid.',
   when: 'Use it for the totals line of a printed table that sums the rows above. For the totals row of a results table on screen use Table-007; for a paper copy without totals use the Print table (Table-006).',
   how: 'The dense print grid of Table-006 with a Table.Foot row whose cells add typographyStyle "bold" to the print cell look (4px by 6px padding, centred). The scene keeps one body row and one column; the other columns and the report around it are left out.',
+  anatomy: [
+    {
+      id: 'table',
+      name: 'Table',
+      token: 'Table',
+      selector: '[class~="aui-table"]',
+      description: 'Print report table at scale "xs": no profile padding, shape "none", a text-coloured border, all cells ruled, scroll="parent" and selectionMode "none".',
+      code: `<Table aria-label="Connection" aui={{ profile: 'no-padding', scale: 'xs', shape: 'none', sx: { width: 'fill', borderColor: 'text' } }} border="all-cells" scroll="parent" selectionMode="none">`,
+    },
+    {
+      id: 'head',
+      name: 'Header',
+      token: 'Table.Head',
+      selector: '[class~="aui-table-head"]',
+      description: 'Muted header band printed with Model and Qty.',
+      code: `<Table.Head>
+  <Table.Row>
+    <Table.HeaderCell aui={{ …, sx: { …, background: 'muted', foreground: 'surface', whiteSpace: 'normal' } }}>Model</Table.HeaderCell>
+    …
+  </Table.Row>
+</Table.Head>`,
+    },
+    {
+      id: 'header-cell',
+      name: 'Header cell',
+      token: 'Table.HeaderCell',
+      selector: '[class~="aui-table-header-cell"]',
+      description: 'Centred label on the muted fill with a surface-coloured foreground and wrapping allowed.',
+      code: `<Table.HeaderCell aui={{ ...CELL, sx: { ...CELL.sx, background: 'muted', foreground: 'surface', whiteSpace: 'normal' } }}>Qty</Table.HeaderCell>`,
+    },
+    {
+      id: 'body',
+      name: 'Body',
+      token: 'Table.Body',
+      selector: '[class~="aui-table-body"]',
+      description: 'The line items being totalled, here Model B-200 with quantity 4.',
+      code: `<Table.Body>
+  <Table.Row>
+    <Table.Cell aui={CELL}>Model B-200</Table.Cell>
+    <Table.Cell aui={CELL}>4</Table.Cell>
+  </Table.Row>
+</Table.Body>`,
+    },
+    {
+      id: 'row',
+      name: 'Row',
+      token: 'Table.Row',
+      selector: '[class~="aui-table-row"]',
+      description: 'One printed line item.',
+      code: `<Table.Row>
+  <Table.Cell aui={CELL}>Model B-200</Table.Cell>
+  <Table.Cell aui={CELL}>4</Table.Cell>
+</Table.Row>`,
+    },
+    {
+      id: 'cell',
+      name: 'Cell',
+      token: 'Table.Cell',
+      selector: '[class~="aui-table-cell"]',
+      description: 'Centred cell with 4px inline and 6px block padding shared through the CELL constant.',
+      code: `<Table.Cell aui={CELL}>Model B-200</Table.Cell>`,
+    },
+    {
+      id: 'foot',
+      name: 'Foot',
+      token: 'Table.Foot',
+      selector: '[class~="aui-table-foot"]',
+      description: 'Totals row at the bottom of the print table, its Total label and sum set in bold typographyStyle.',
+      code: `<Table.Foot>
+  <Table.Row>
+    <Table.Cell aui={{ ...CELL, sx: { ...CELL.sx, typographyStyle: 'bold' } }}>Total</Table.Cell>
+    <Table.Cell aui={{ ...CELL, sx: { ...CELL.sx, typographyStyle: 'bold' } }}>4</Table.Cell>
+  </Table.Row>
+</Table.Foot>`,
+    },
+  ],
 });

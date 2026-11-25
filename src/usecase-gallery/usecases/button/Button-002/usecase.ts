@@ -3,10 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Download CSV button',
-  look: 'Text with leading icon',
+
   apps: ['pfd', 'hs', 'rws'],
-  cases: [
-    { id: 'pfd-toolbar', name: 'Table toolbar', apps: ['pfd', 'hs', 'rws'], source: { pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx', rws: 'src/rws/output.tsx' } },
+  options: [
+    { id: "pfd-toolbar", name: "Table toolbar", apps: ["pfd","hs","rws"], source: {"pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx","rws":"src/rws/output.tsx"} },
   ],
   source: { pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx', rws: 'src/rws/output.tsx' },
   summary: 'A quiet text Button with a leading icon runs one action in a toolbar: a CSV icon downloads the rows.',
@@ -17,4 +17,31 @@ export default defineUsecase({
   how: 'Set aui color "secondary", paint "text", scale "sm" and shape "soft" (profile "default"), with a Button.Icon "file-csv" before the label, and sx flex "none" so it never shrinks in the wrapping row (RWS writes the label in capitals, DOWNLOAD CSV, and the Button is the same). '
     + 'The example and the scene render this one Button. The scene shows the toolbar row of PFD, HS and RWS: sm controls with gap 8 that wrap, the search field filling the line, the muted count, then the button. '
     + 'Left out: Reset filters (PFD, HS), the Show Optimized Models switch (RWS), the product filter, the table and the notes.',
+  anatomy: [
+    {
+      id: "container",
+      name: "Container",
+      token: "Button",
+      description: "The Download CSV Button: secondary text paint, scale \"sm\", soft shape and flex \"none\" so it never shrinks in the wrapping toolbar row after the search field and count.",
+      selector: "[class~=\"aui-button\"]",
+      code: "<Button aui={{ color: 'secondary', paint: 'text', scale: 'sm', shape: 'soft', sx: { flex: 'none' } }}>\n  …\n</Button>",
+    },
+    {
+      id: "icon",
+      name: "Icon",
+      token: "Button.Icon",
+      description: "The CSV file glyph that sits before the label and tells the export format.",
+      selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
+      code: "<Button.Icon name=\"file-csv\" />",
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Button",
+      description: "The label \"Download CSV\" (written in capitals in RWS) that exports the rows the table shows.",
+      selector: "[class~=\"aui-button\"]",
+      text: true,
+      code: "Download CSV",
+    },
+  ],
 });

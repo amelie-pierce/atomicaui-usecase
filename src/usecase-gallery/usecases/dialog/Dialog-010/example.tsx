@@ -16,11 +16,11 @@ export default function Example() {
               <Dialog.Close aui={{ scale: 'sm' }} aria-label="Close" />
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
-              <Type as="p" role="p2">Welcome to the Anchor Designer.</Type>
+              <Type data-ug-part="welcome-text" as="p" role="p2">Welcome to the Anchor Designer.</Type>
             </Dialog.Body>
             <Dialog.Actions aui={{ scale: 'sm' }}>
-              <Dialog.Button dismiss={false}>Close</Dialog.Button>
-              <Dialog.Button dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Start Walkthrough</Dialog.Button>
+              <Dialog.Button data-ug-part="dismiss-button" dismiss={false}>Close</Dialog.Button>
+              <Dialog.Button data-ug-part="start" dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Start Walkthrough</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

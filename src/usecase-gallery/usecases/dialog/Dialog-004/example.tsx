@@ -15,7 +15,7 @@ export default function Example() {
               <Dialog.Close aria-label="Close" />
             </Dialog.Title>
             <Dialog.Body>
-              <Type as="p" role="p3">
+              <Type data-ug-part="template-text" as="p" role="p3">
                 The list of templates goes here.
               </Type>
             </Dialog.Body>

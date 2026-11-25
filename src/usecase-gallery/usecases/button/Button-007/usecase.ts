@@ -4,9 +4,9 @@ export default defineUsecase({
   uiType: 'Single button',
   title: 'Close info dialog button',
   apps: ['pbs', 'agpd', 'rws', 'fd'],
-  cases: [
-    { id: 'pbs-close', name: 'Info Close', apps: ['pbs', 'agpd', 'rws'], look: 'Secondary solid', source: { pbs: 'src/WorkspaceTools.tsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' } },
-    { id: 'fd-close', name: 'Info Close', apps: ['fd'], look: 'Dark solid', source: { fd: 'src/App.jsx' } },
+  options: [
+    { id: "pbs-close", name: "Secondary solid", apps: ["pbs","agpd","rws"], source: {"pbs":"src/WorkspaceTools.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    { id: "fd-close", name: "Dark solid", apps: ["fd"], source: {"fd":"src/App.jsx"} },
   ],
   source: { pbs: 'src/WorkspaceTools.tsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx', fd: 'src/App.jsx' },
   summary: 'Close is the lone button of an info dialog that only informs; its first look, the default gray one, is the example; the Look select shows the other.',
@@ -15,4 +15,23 @@ export default defineUsecase({
   how: 'Secondary solid (PBS, AGPD, RWS): the example sets only aui scale "sm"; color "surface-alt" and paint "solid" are the defaults, and the Dialog.Button default is the same gray solid button that dismisses the dialog. '
     + 'Dark solid (FD): a plain Button with aui color "secondary" (a black fill) instead of the gray Dialog.Button; the scene writes it. '
     + 'The dialog is an AlertDialog or Modal in the apps and is drawn as a non-modal Dialog here; each scene keeps one paragraph of body text.',
+  anatomy: [
+    {
+      id: "container",
+      name: "Container",
+      token: "Button",
+      description: "The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill.",
+      selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
+      code: "<Button aui={{ scale: 'sm' }}>Close</Button>",
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Button",
+      description: "The text \"Close\" that dismisses the info dialog, the only choice it offers.",
+      selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
+      text: true,
+      code: "Close",
+    },
+  ],
 });

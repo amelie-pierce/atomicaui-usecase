@@ -4,19 +4,9 @@ export default defineUsecase({
   uiType: 'Menubar with icon trigger',
   title: 'Settings drawer row menu',
   apps: ['adm', 'ace'],
-  cases: [
-    {
-      id: 'adm-drawer-row',
-      name: 'Drawer row',
-      apps: ['adm'],
-      source: { adm: 'src/features/settings/components/SettingsMenu.tsx' },
-    },
-    {
-      id: 'ace-drawer-row',
-      name: 'Drawer row',
-      apps: ['ace'],
-      source: { ace: 'src/features/settings/ui/SettingsMenu.tsx' },
-    },
+  options: [
+    { id: "adm-drawer-row", name: "Drawer row", apps: ["adm"], source: {"adm":"src/features/settings/components/SettingsMenu.tsx"} },
+    { id: "ace-drawer-row", name: "Drawer row — UI variant 2", apps: ["ace"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx"} },
   ],
   source: {
     adm: 'src/features/settings/components/SettingsMenu.tsx',
@@ -26,4 +16,111 @@ export default defineUsecase({
   where: 'The phone drawer of ADM (src/features/settings/components/SettingsMenu.tsx) and ACE (src/features/settings/ui/SettingsMenu.tsx).',
   when: 'Use it for the layout settings on a phone, where the top bar gear is replaced by a drawer row. Use Menubar-004 on the desktop top bar. Do not use it for file or help actions.',
   how: 'The same menu as the gear menu with a different trigger: the Menubar.DropdownTrigger is the text row "Settings" instead of the gear, and the menu opens beside or below it. ADM places the popup to the left (side "left", align "start", sideOffset 8, above the drawer) and keeps Auto-Rotate; ACE places it below, centred (side "bottom", align "center", sideOffset 4) and has no Auto-Rotate. The scenes show the enabled state: the apps disable Reset layout to default while the layout is at its default, and ADM hides the two groups and keeps only Auto-Rotate below 768px. Each scene is a minimal Menubar holding only the Settings trigger, shown open; the rest of the drawer is left out.',
+  anatomy: [
+    {
+      id: 'menubar',
+      name: 'Menubar',
+      token: 'Menubar',
+      selector: '[class~="aui-menubar"]',
+      description: 'The strip named "Drawer" that holds the Settings row inside the phone drawer.',
+      code: `<Menubar aria-label="Drawer">
+  {/* … */}
+</Menubar>`,
+    },
+    {
+      id: 'trigger',
+      name: 'Trigger',
+      token: 'Menubar.DropdownTrigger',
+      selector: '[class~="aui-menubar-trigger"]',
+      description: 'The text row "Settings" that opens the menu; it replaces the gear of the desktop bar.',
+      code: `<Menubar.DropdownTrigger>Settings</Menubar.DropdownTrigger>`,
+    },
+    {
+      id: 'popup',
+      name: 'Popup',
+      token: 'Menubar.DropdownPopup',
+      selector: '[class~="aui-dropdown-popup"]',
+      description: 'Menu labelled "Settings", opened below the row (side "bottom") and centred on it (align "center").',
+      code: `<Menubar.DropdownPopup aria-label="Settings">
+  {/* … */}
+</Menubar.DropdownPopup>`,
+    },
+    {
+      id: 'group',
+      name: 'Group',
+      token: 'Menubar.DropdownGroup',
+      selector: '[class~="aui-dropdown-group"]',
+      description: 'The Pane Orientation group with its heading and rows.',
+      code: `<Menubar.DropdownGroup>
+  {/* … */}
+</Menubar.DropdownGroup>`,
+    },
+    {
+      id: 'group-label',
+      name: 'Group label',
+      token: 'Menubar.DropdownGroupLabel',
+      selector: '[class~="aui-dropdown-group-label"]',
+      description: 'The "Pane Orientation" caption above the radio rows (and "Pane Layout" in the scenes).',
+      code: `<Menubar.DropdownGroupLabel>Pane Orientation</Menubar.DropdownGroupLabel>`,
+    },
+    {
+      id: 'radio-group',
+      name: 'Radio group',
+      token: 'Menubar.DropdownRadioGroup',
+      selector: '[class~="aui-dropdown-radio-group"]',
+      description: 'Single-choice set with Vertical chosen; the ADM and ACE scenes add Horizontal and Grid.',
+      code: `<Menubar.DropdownRadioGroup defaultValue="vertical">
+  {/* … */}
+</Menubar.DropdownRadioGroup>`,
+    },
+    {
+      id: 'radio-item',
+      name: 'Radio item',
+      token: 'Menubar.DropdownRadioItem',
+      selector: '[class~="aui-dropdown-radio-item"]',
+      description: 'The "Vertical" row with its table-columns icon and a hidden indicator.',
+      code: `<Menubar.DropdownRadioItem value="vertical">
+  <Menubar.Icon name="table-columns" />
+  Vertical
+  <Menubar.DropdownRadioItemIndicator hidden />
+</Menubar.DropdownRadioItem>`,
+    },
+    {
+      id: 'item-icon',
+      name: 'Row icon',
+      token: 'Menubar.Icon',
+      selector: '[class~="aui-dropdown-radio-item"] > [class~="aui-contained-icon"]',
+      description: 'The leading glyph of a row, table-columns for Vertical.',
+      code: `<Menubar.Icon name="table-columns" />`,
+    },
+    {
+      id: 'item',
+      name: 'Item',
+      token: 'Menubar.DropdownItem',
+      selector: '[class~="aui-dropdown-item"]',
+      description: 'The "Reset layout to default" row of the ACE and ADM scenes.',
+      code: `<Menubar.DropdownItem>
+  <Menubar.Icon name="rotate-left" />
+  Reset layout to default
+</Menubar.DropdownItem>`,
+    },
+    {
+      id: 'separator',
+      name: 'Separator',
+      token: 'Menubar.DropdownSeparator',
+      selector: '[class~="aui-dropdown-separator"]',
+      description: 'The divider between the orientation group and the layout group in the scenes.',
+      code: `<Menubar.DropdownSeparator />`,
+    },
+    {
+      id: 'checkbox-item',
+      name: 'Checkbox item',
+      token: 'Menubar.DropdownCheckboxItem',
+      selector: '[class~="aui-dropdown-checkbox-item"]',
+      description: 'The "Auto-Rotate 3D Model" check row that the ADM scene adds because ADM has a 3D model.',
+      code: `<Menubar.DropdownCheckboxItem defaultChecked>
+  {/* … */}
+</Menubar.DropdownCheckboxItem>`,
+    },
+  ],
 });

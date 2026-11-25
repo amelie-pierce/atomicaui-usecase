@@ -3,14 +3,14 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Close popover button',
-  look: 'Ghost, 20px',
+
   apps: ['hcs', 'pfd', 'pbs', 'fd', 'agpd', 'rws'],
-  cases: [
-    { id: 'hcs-help-close', name: 'Help popover close', apps: ['hcs'], source: { hcs: 'src/components/HcsDownloadDurationHelp.tsx' } },
-    { id: 'pfd-help-close', name: 'Help popover close', apps: ['pfd'], source: { pfd: 'src/pfd/fields.tsx' } },
-    { id: 'pbs-help-close', name: 'Help popover close', apps: ['pbs'], source: { pbs: 'src/InputFields.tsx' } },
-    { id: 'agpd-help-close', name: 'Help popover close', apps: ['agpd', 'rws'], source: { agpd: 'src/agpd/inputs.tsx', rws: 'src/rws/inputs.tsx' } },
-    { id: 'fd-apps-close', name: 'Apps popover close', apps: ['fd'], source: { fd: 'src/App.jsx' } },
+  options: [
+    { id: "hcs-help-close", name: "Help popover close", apps: ["hcs"], source: {"hcs":"src/components/HcsDownloadDurationHelp.tsx"} },
+    { id: "pfd-help-close", name: "Help popover close — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} },
+    { id: "pbs-help-close", name: "Help popover close — UI variant 3", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} },
+    { id: "agpd-help-close", name: "Help popover close — UI variant 4", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} },
+    { id: "fd-apps-close", name: "Apps popover close", apps: ["fd"], source: {"fd":"src/App.jsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A transparent icon-only IconButton, 20px square, closes a popover from its corner.',
@@ -24,4 +24,22 @@ export default defineUsecase({
     + 'PBS: an IconButton at scale "xs", paint "text", profile "square-compact", shape "soft" and no color, at the end of a row beside the help text, in a 320px popup. '
     + 'AGPD and RWS: an IconButton with only scale "xs", right-aligned in its own row above the text, in a 320px column. The optional image or diagram of the PFD, AGPD and RWS popups is left out. '
     + 'Apps popover close: FD only (a Button with an xmark Icon child, color "secondary", paint "text", scale "sm", at the end of the title row "Explore More Applications" in the 288px apps popover opened from the top bar grip; the grid of app links is left out).',
+  anatomy: [
+    { id: 'close', name: 'Close', token: 'IconButton', selector: '[class~="aui-button"][aria-label^="Close"]', description: 'The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD).',
+      code: `<IconButton name="xmark" aria-label="Close" aui={{ paint: 'text', profile: 'contained' }} />` },
+    { id: 'close-icon', name: 'Close icon', token: 'IconButton', selector: '[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The xmark glyph centred in the close button.',
+      code: `<IconButton name="xmark" aria-label="Close" aui={{ paint: 'text', profile: 'contained' }} />` },
+    { id: 'popup', name: 'Popover popup', token: 'Popover.Popup', selector: '[data-aui-popup-motion][role="dialog"]', description: 'The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner.',
+      code: `<Popover.Popup initialFocus={false} aria-label="Material help" render={<View aui={{ … }} />}>
+  …
+</Popover.Popup>` },
+    { id: 'help-trigger', name: 'Help trigger', token: 'Popover.Trigger', selector: '[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])', description: 'The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes.',
+      code: `<Popover.Trigger
+  render={<Button aria-label="Material help" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square-compact', shape: 'soft' }} />}
+>
+  <ContainedIcon name="circle-question" />
+</Popover.Trigger>` },
+    { id: 'apps-trigger', name: 'Apps trigger', token: 'Menubar.IconButton', selector: '[class~="aui-button"][aria-label="Apps"]', description: 'FD only: the grip button in the top bar that opens Explore More Applications.',
+      code: `<Popover.Trigger render={<Menubar.IconButton name="grip" aria-label="Apps" />} />` },
+  ],
 });

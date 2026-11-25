@@ -3,8 +3,10 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Reset to default button',
-  look: 'Raised solid with icon',
-  area: 'Form',
+
+  options: [
+    { id: "default", name: "Raised solid with icon" },
+  ],
   apps: ['hcs'],
   source: { hcs: 'src/App.tsx' },
   summary: 'A raised solid Button resets one field group to its default without leaving the form.',
@@ -14,4 +16,31 @@ export default defineUsecase({
     + 'In context it is the Beam Properties section of the Input pane: one beam column cut to the Fc perp field with the button below it. '
     + 'The button is left-aligned and as wide as its label (the app\'s `.hcs-material-strength` rule, here an alignSelf start wrapper); the app has it in both beam columns, with the beam type, species, SG, width and depth fields around it and the other sections above. '
     + 'The field value is sample data.',
+  anatomy: [
+    {
+      id: "container",
+      name: "Container",
+      token: "Button",
+      description: "The Reset to default Button: small, solid, raised color with a soft shape, placed beside a group of beam property inputs in a side panel.",
+      selector: "[class~=\"aui-button\"]",
+      code: "<Button aui={{ scale: 'sm', paint: 'solid', color: 'raised', shape: 'soft' }}>\n  …\n</Button>",
+    },
+    {
+      id: "icon",
+      name: "Icon",
+      token: "Button.Icon",
+      description: "The counter-clockwise arrow that signals returning the group to its defaults.",
+      selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
+      code: "<Button.Icon name=\"arrow-rotate-left\" />",
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Button",
+      description: "The text \"Reset to default\" naming what the Button restores.",
+      selector: "[class~=\"aui-button\"]",
+      text: true,
+      code: "Reset to default",
+    },
+  ],
 });

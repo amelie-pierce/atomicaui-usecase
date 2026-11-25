@@ -3,11 +3,11 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Single button',
   title: 'Reset filters button',
-  look: 'Secondary solid with icon',
+
   apps: ['hcs', 'pfd', 'hs', 'fd'],
-  cases: [
-    { id: 'hcs-toolbar', name: 'Toolbar', apps: ['hcs', 'pfd', 'hs'], source: { hcs: 'src/App.tsx', pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx' } },
-    { id: 'fd-toolbar', name: 'Toolbar', apps: ['fd'], source: { fd: 'src/components/Results.jsx' } },
+  options: [
+    { id: "hcs-toolbar", name: "Toolbar", apps: ["hcs","pfd","hs"], source: {"hcs":"src/App.tsx","pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx"} },
+    { id: "fd-toolbar", name: "Toolbar — UI variant 2", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
   ],
   source: { hcs: 'src/App.tsx', pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx', fd: 'src/components/Results.jsx' },
   summary: 'A neutral default Button clears the active filters of a results table; FD draws it as a quiet text Button.',
@@ -21,4 +21,31 @@ export default defineUsecase({
     + 'HCS, PFD, HS: the Output toolbar is one wrapping row, the search field fills the line, then the button (rendered only while a filter is active); the three write the same Button and row. '
     + 'FD: the same row, but the Button is aui color "secondary", paint "text", scale "sm", shape "soft" with a plain filter-circle-xmark icon. '
     + 'The pane header actions, the muted result count, the product filter, the results table and Table Notes are left out.',
+  anatomy: [
+    {
+      id: "container",
+      name: "Container",
+      token: "Button",
+      description: "The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD.",
+      selector: "[class~=\"aui-button\"]",
+      code: "<Button aui={{ scale: 'sm' }}>\n  …\n</Button>",
+    },
+    {
+      id: "icon",
+      name: "Icon",
+      token: "Button.Icon",
+      description: "The filter glyph with a cross that signals removing the active filters, at scale \"sm\".",
+      selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
+      code: "<Button.Icon name=\"filter-circle-xmark\" aui={{ scale: 'sm' }} />",
+    },
+    {
+      id: "label",
+      name: "Label",
+      token: "Button",
+      description: "The text \"Reset filters\" shown while a search or status filter is active.",
+      selector: "[class~=\"aui-button\"]",
+      text: true,
+      code: "Reset filters",
+    },
+  ],
 });

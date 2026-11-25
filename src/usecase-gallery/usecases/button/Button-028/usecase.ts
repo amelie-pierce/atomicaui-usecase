@@ -3,12 +3,12 @@ import { defineUsecase } from '../../../define';
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Expand row button',
-  look: 'Expander, 24px',
+
   apps: ['hcs', 'hs', 'fd', 'adc'],
-  cases: [
-    { id: 'hcs-results', name: 'Results table', apps: ['hcs', 'fd'], source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/Results.jsx' } },
-    { id: 'hcs-group', name: 'Group row', apps: ['hcs', 'adc'], source: { hcs: 'src/components/F01Results.tsx', adc: 'src/adc/components/ProductsPicker.tsx' } },
-    { id: 'hs-group', name: 'Group row', apps: ['hs'], source: { hs: 'src/hs/ResultsTable.tsx' } },
+  options: [
+    { id: "hcs-results", name: "Results table", apps: ["hcs","fd"], source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx"} },
+    { id: "hcs-group", name: "Group row", apps: ["hcs","adc"], source: {"hcs":"src/components/F01Results.tsx","adc":"src/adc/components/ProductsPicker.tsx"} },
+    { id: "hs-group", name: "Group row — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ResultsTable.tsx"} },
   ],
   source: { hcs: 'src/components/F01Results.tsx', hs: 'src/hs/ResultsTable.tsx', fd: 'src/components/Results.jsx', adc: 'src/adc/components/ProductsPicker.tsx' },
   summary: 'A compact chevron Button expands a table row; HCS draws it as a Button (error color on failed rows), the other apps use the table\'s own expand trigger.',
@@ -25,4 +25,28 @@ export default defineUsecase({
     + 'FD draws the same chevron with the library\'s Table.ExpandTrigger and has no error color, so the HCS format is the standard. '
     + 'Group row (rows that group members under a model or a parent): HCS and ADC (Table.ExpandTrigger, then the group name in semi-bold; ADC sets the trigger to scale "xs" and gap 6 where HCS keeps the table density and gap 4, a size difference only); HS (the same row painted surface-alt solid, so the group reads as a band). '
     + 'Left out of every scene: selection, the thumbnail, the other columns, sorting, the frozen column, the Why Not panel and the member rows.',
+  anatomy: [
+    { id: 'button', name: 'Expand button', token: 'Button', selector: '[class~="aui-button"][aria-label^="Why Not"]', description: 'The 24px minimum square-compact text Button with aria-expanded false that opens the Why Not explanation of one model row; HCS tints it with the error color on failed rows like Model C-300.',
+      code: `<Button
+  aria-label="Why Not for passing model"
+  aria-expanded={false}
+  aui={{
+    scale: 'sm',
+    profile: 'square-compact',
+    color: 'surface',
+    paint: 'text',
+    sx: { minWidth: '24', minHeight: '24' },
+  }}
+>` },
+    { id: 'chevron', name: 'Chevron', token: 'Button.Icon', selector: '[class~="aui-button"][aria-label^="Why Not"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The solid angle-right glyph that points to the collapsed content.',
+      code: `<Button.Icon name="angle-right" weight="solid" aui={{ scale: 'sm' }} />` },
+    { id: 'expand-trigger', name: 'Table expand trigger', token: 'Table.ExpandTrigger', selector: '[class~="aui-table-expand-trigger"]', description: 'HCS and HS group rows (A-100 (2)) use the table own expand trigger instead of a Button, placed before the semi-bold group name.',
+      code: `<Table.ExpandTrigger />` },
+    { id: 'row', name: 'Row', token: 'Table.Row', selector: '[class~="aui-table-row"]', description: 'The result row that the chevron opens: a model such as Model A-100, or the A-100 (2) group row with an Expand A-100 group label.',
+      code: `<Table.Row selectable={false} expandable expansionLabel="Expand A-100 group">` },
+    { id: 'cell', name: 'Model cell', token: 'Table.Cell', selector: '[class~="aui-table-cell"]', description: 'The Model cell that holds the chevron and the model name side by side with a gap of 12 (4 in group rows).',
+      code: `<Table.Cell>
+  …
+</Table.Cell>` },
+  ],
 });

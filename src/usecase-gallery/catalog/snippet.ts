@@ -9,7 +9,9 @@ const dedent = (jsx: string) => {
   return [first, ...rest.map((line) => line.slice(indent))].join('\n');
 };
 
-const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:anchor|ref)=\{anchor\}|\sclassName=\"ug-anchored\"|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
+const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:anchor|ref)=\{anchor\}|\sclassName=\"ug-anchored\"|\sdata-ug-part=\"[^\"]*\"|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
+
+export const stripPreviewProps = (code: string): string => code.replace(PREVIEW_ONLY_PROPS, '');
 
 /**
  * Turns an `example.tsx` source into the snippet users copy: the JSX the `Example` component returns,
@@ -25,16 +27,13 @@ export const toSnippet = (source: string): string => {
 const MOCK_SCENERY = /<Mock(\w+)[^>]*\/>/g;
 const CHILDREN_LINE = /^([ \t]*)\{children\}[ \t]*$/m;
 
-/**
- * Turns a `contexts/<area>.tsx` source and the example's snippet into the in-context snippet: the JSX
- * the context returns minus its preview-only props (forced open, `host` container), with its `{children}` line replaced by the example. Falls back to the example alone.
- */
+/** Turns an option scene source and the example snippet into the complete In context code, replacing its `{children}` slot. */
 export const toContextSnippet = (contextSource: string, exampleSnippet: string): string => {
   const context = toSnippet(contextSource)
     .replace(PREVIEW_ONLY_PROPS, '')
     .replace(MOCK_SCENERY, (_, name: string) => `{/* sample ${name.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase()} */}`);
   const slot = CHILDREN_LINE.exec(context);
-  // A scene with no slot writes its own controls (a static state of the case), so it is the snippet.
+  // A scene with no slot writes its own controls (a static state), so it is the snippet.
   if (!slot) return context;
   // A fragment only groups siblings; inside the context's parent element it is noise.
   const unwrapped = /^<>\s*([\s\S]*?)\s*<\/>$/.exec(exampleSnippet.trim())?.[1];

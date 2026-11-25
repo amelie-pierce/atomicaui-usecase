@@ -86,25 +86,10 @@ $narrow: 840px;
 }
 
 // ── Pane content ────────────────────────────────────────────────────────────
-// The theme primary is too light for small text (about 3.2:1 on white); where the gallery uses primary for
-// titles and the active toggle segment, resolve it to the palette's darker orange (at least 4.7:1 on the
-// surfaces, 5.2:1 with its white on-primary), the same step the high-contrast theme uses.
-.ug-render__toggle,
-.ug-detail__toggle,
+// The theme primary is too light for small text (about 3.2:1 on white); resolve documentation links to the
+// palette's darker orange, the same step the high-contrast theme uses.
 .ug-docs {
   --theme-primary: var(--p-palette-orange-600);
-}
-
-.ug-render__toggle {
-  flex: none;
-  inline-size: fit-content;
-  margin-block-end: var(--p-px-16);
-}
-
-.ug-detail__toggle {
-  flex: none;
-  inline-size: fit-content;
-  margin-block-end: var(--p-px-16);
 }
 
 .ug-toolbar {
@@ -153,23 +138,6 @@ $narrow: 840px;
 
 .ug-render--split .ug-render__stage + .ug-render__heading {
   margin-block-start: var(--p-px-16);
-}
-
-// The property note of the chosen group, plain text below the scene.
-.ug-render__note {
-  flex: none;
-  margin: var(--p-px-8) 0 0;
-}
-
-.ug-render__look {
-  flex: none;
-  margin: 0;
-}
-
-.ug-render__cases {
-  flex: none;
-  flex-wrap: wrap;
-  margin-block-end: var(--p-px-12);
 }
 
 .ug-render__stage {
@@ -244,30 +212,6 @@ $narrow: 840px;
 .ug-render__stage .aui-card,
 .ug-render__stage > .aui-table {
   inline-size: min(100%, calc(var(--p-px-16) * 24));
-}
-
-// The Copy button sits top-right of the code view and stays in view while the snippet scrolls.
-.ug-code__bar {
-  position: sticky;
-  inset-block-start: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--p-px-8);
-  padding-block-end: var(--p-px-8);
-  background: var(--theme-surface-alt);
-}
-
-// A selection-based use case labels each block of code; the label stays at the start of the bar.
-.ug-code__label {
-  margin: 0 auto 0 0;
-}
-
-.ug-code__pre {
-  margin: 0;
-  white-space: pre;
-  tab-size: 2;
 }
 
 .ug-docs__head,
@@ -409,6 +353,11 @@ $narrow: 840px;
 .ug-docs__anatomy > li.is-highlighted {
   background: color-mix(in srgb, var(--p-palette-orange-600) 10%, transparent);
   box-shadow: inset 0 0 0 var(--p-px-2) color-mix(in srgb, var(--p-palette-orange-600) 24%, transparent);
+}
+
+.ug-docs__anatomy-code {
+  margin-inline-start: calc(var(--p-px-16) * 2);
+  margin-block-start: var(--p-px-4);
 }
 
 .ug-docs__anatomy-button {
@@ -723,13 +672,6 @@ $narrow: 840px;
   min-block-size: 0;
   min-height: 0;
   overflow: hidden;
-}
-
-.ug-render__look-select {
-  flex: none;
-  inline-size: fit-content;
-  min-inline-size: calc(var(--p-px-16) * 12);
-  margin-block-end: var(--p-px-12);
 }
 
 // ── Narrow: one scrolling column ────────────────────────────────────────────

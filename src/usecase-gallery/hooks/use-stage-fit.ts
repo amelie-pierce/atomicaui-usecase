@@ -14,9 +14,23 @@ export function useStageFit(fit: HTMLElement | null) {
     const stage = fit?.parentElement;
     if (!fit || !stage) return;
     let applied = 1;
+    let disposed = false;
     const measure = () => {
       // A hidden stage has no size to fit into; it is measured again when it is shown.
       if (!fit.clientWidth || !stage.clientHeight) return;
+      // A popup that is opening is still animating in, and a floating one sits at its unpositioned origin meanwhile, which
+      // reads as content spilling out of the stage and shrinks it for the length of the animation. The current scale is kept
+      // until the animations end, then the settled content is measured. Endless animations (a spinner) never settle, so they
+      // do not hold the measure back.
+      const settling = fit
+        .getAnimations({ subtree: true })
+        .filter((animation) => Number.isFinite(animation.effect?.getComputedTiming().endTime ?? Infinity));
+      if (settling.length) {
+        Promise.allSettled(settling.map((animation) => animation.finished)).then(() => {
+          if (!disposed) measure();
+        });
+        return;
+      }
       // The content is always measured at its natural size. Measured while zoomed, a wrapping or percent-sized component
       // reflows into the larger zoomed box, reads as fitting, is unzoomed, overflows again and so flips between the two.
       // Nothing paints between this reset and the zoom written below, so the reset is never seen.
@@ -55,6 +69,7 @@ export function useStageFit(fit: HTMLElement | null) {
     const mutation = new MutationObserver(measure);
     mutation.observe(fit, { childList: true, subtree: true, characterData: true });
     return () => {
+      disposed = true;
       resize.disconnect();
       mutation.disconnect();
     };

@@ -40,7 +40,7 @@ function sourceExcerpt(part: AnatomyPart, source: string) {
 
 function AnatomyCode({ part, source }: { part: AnatomyPart; source: string }) {
   const text = sourceExcerpt(part, source);
-  return text ? <div className="ug-docs__anatomy-code"><CopyBlock label={`${part.name} code`} text={text} /></div> : null;
+  return text ? <Type as="p" role="l3" className="ug-docs__anatomy-code" aria-label={`${part.name} code`}><Type as="code" role="l3" family="mono">{text}</Type></Type> : null;
 }
 
 function AnatomySection({ parts, source, availablePartIds, hoveredPartId, onPartChange, onSelectPart }: { parts: AnatomyPart[]; source: string; availablePartIds?: string[]; hoveredPartId?: string; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {

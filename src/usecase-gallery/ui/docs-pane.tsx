@@ -1,6 +1,7 @@
 import { Suspense, use, useEffect, useId, useState } from 'react';
 import { APPS } from '../apps';
 import type { AppKey } from '../apps';
+import { useMediaQuery } from '../hooks/use-media-query';
 import { useCopy } from '../hooks/use-copy';
 import { Button, Chip, ToggleGroup, Type } from '../kit';
 import type { AnatomyPart, DocumentMode, LayerStep, PreviewMode, Usecase, UsecaseOption } from '../types';
@@ -68,12 +69,13 @@ function CodeApiSection({ option, mode, api }: { option: UsecaseOption; mode: Pr
 function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: number; onChange: (index: number) => void }) {
   const [playing, setPlaying] = useState(false);
   const navId = useId();
+  const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const active = layers[index] ?? layers[0];
   useEffect(() => {
-    if (!playing) return;
+    if (!playing || reducedMotion) return;
     const timer = window.setInterval(() => onChange(Math.min(index + 1, layers.length - 1)), 2200);
     return () => window.clearInterval(timer);
-  }, [playing, index, layers.length, onChange]);
+  }, [playing, reducedMotion, index, layers.length, onChange]);
   useEffect(() => {
     if (index >= layers.length - 1) setPlaying(false);
   }, [index, layers.length]);
@@ -87,7 +89,7 @@ function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: 
   return <div className="ug-layer-lesson" aria-label="Layer by layer lesson">
     <div className="ug-layer-lesson__topline"><Type as="p" role="l3" color="muted">Step {index + 1} of {layers.length}</Type><div className="ug-layer-lesson__controls">
       <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} onClick={() => { setPlaying(false); onChange(0); }}>Replay</Button>
-      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }} aria-pressed={playing} disabled={!playing && index === layers.length - 1} onClick={() => setPlaying((value) => !value)}>{playing ? 'Pause' : 'Autoplay'}</Button>
+      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }} aria-pressed={playing && !reducedMotion} disabled={reducedMotion || (!playing && index === layers.length - 1)} onClick={() => setPlaying((value) => !value)}>{playing && !reducedMotion ? 'Pause' : 'Autoplay'}</Button>
     </div></div>
     <div className="ug-layer-lesson__copy" aria-live="polite" aria-atomic="true">
       <Type as="p" role="l3" color="muted">Layer {String(index + 1).padStart(2, '0')}</Type>

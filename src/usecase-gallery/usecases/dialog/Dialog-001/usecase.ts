@@ -123,5 +123,6 @@ export default defineUsecase({
     { id: 'history-heading', title: 'Release history heading', selector: '[data-ug-part="history-heading"]', explanation: 'The bold heading labels the version list.', keyIdea: 'Name a navigation group before presenting its choices.' },
     { id: 'notes-column', title: 'Notes column', selector: '[data-ug-part="notes-column"]', explanation: 'The flexible column shows the selected release notes.', keyIdea: 'Let the main content use the remaining space after navigation.' },
     { id: 'notes-text', title: 'Notes content', selector: '[data-ug-part="notes-text"]', explanation: 'The placeholder line represents the notes for the selected release.', keyIdea: 'Keep the selected item’s details in the content area it controls.' },
+    { id: 'footer', title: 'Footer actions', selector: '[data-ug-part="footer"]', explanation: 'The footer holds the Close action button beneath the body, so the way to finish the dialog sits last.', keyIdea: 'Place the dialog’s actions after its content so users decide once they have read it.' },
   ],
 });

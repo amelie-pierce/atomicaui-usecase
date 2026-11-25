@@ -1,34 +1,32 @@
 import type { AnatomyPart, ComponentMeta, LayerStep, UsecaseDoc } from './types';
 
-const keyIdeaFor = (name: string) => {
-  const rules: [RegExp, string][] = [
-    [/overlay|backdrop|scrim/i, 'Separate the task surface from the surrounding page while keeping the context visible.'],
-    [/popup|container|card|panel|surface/i, 'Give related content one bounded, easy-to-scan surface.'],
-    [/title|heading|header/i, 'Orient users before they scan details or choose an action.'],
-    [/close|dismiss/i, 'Keep a clear, accessible way to leave this surface.'],
-    [/body|content|detail|notes/i, 'Use the main region for the information that supports the task.'],
-    [/footer|action|button|submit|cancel/i, 'Make the available choice clear and easy to reach.'],
-    [/search|filter/i, 'Help users narrow the set without losing their place.'],
-    [/list|option|item|row/i, 'Present each choice as a distinct, understandable unit.'],
-    [/tab/i, 'Keep related views together and make the active section clear.'],
-    [/toggle|switch|checkbox|radio/i, 'Make the current state and available choice easy to recognize.'],
-    [/badge|chip|status/i, 'Communicate status briefly without competing with the main content.'],
-    [/icon|glyph/i, 'Use the symbol to reinforce the control’s purpose.'],
-  ];
-  return rules.find(([pattern]) => pattern.test(name))?.[1] ?? `Keep ${name.toLowerCase()} focused on its role in the complete interface.`;
+const firstSentence = (text: string) => text.match(/^.*?[.!?](?=\s|$)/)?.[0] ?? text;
+
+/** Build order, outer to inner: wrapper/overlay, container, title, close, content, then footer actions. */
+const buildRank = (part: AnatomyPart) => {
+  const key = `${part.id} ${part.name}`;
+  if (/overlay|backdrop|scrim|wrapper|\broot\b/i.test(key)) return 0;
+  if (/popup|container|card|panel|surface|shell|frame/i.test(key)) return 1;
+  if (/title|heading|header/i.test(key)) return 2;
+  if (/close|dismiss/i.test(key)) return 3;
+  if (/footer|actions/i.test(key)) return 5;
+  return 4;
 };
 
 /** Anatomy already names each rendered part, so it is the starting data for a step-by-step build. */
-export const layersFromAnatomy = (parts: AnatomyPart[], prefix = ''): LayerStep[] => parts.map((part) => ({
-  id: `${prefix}${part.id}`,
-  partId: part.id,
-  title: part.name,
-  explanation: part.description,
-  keyIdea: part.keyIdea ?? keyIdeaFor(part.name),
-  selector: part.selector ?? `[data-ug-part="${part.id}"]`,
-  text: part.text,
-  scope: prefix ? 'context' : 'component',
-}));
+export const layersFromAnatomy = (parts: AnatomyPart[], prefix = ''): LayerStep[] => parts
+  .map((part, order) => ({ part, order }))
+  .sort((a, b) => buildRank(a.part) - buildRank(b.part) || a.order - b.order)
+  .map(({ part }) => ({
+    id: `${prefix}${part.id}`,
+    partId: part.id,
+    title: part.name,
+    explanation: part.description,
+    keyIdea: part.keyIdea ?? firstSentence(part.description),
+    selector: part.selector ?? `[data-ug-part="${part.id}"]`,
+    text: part.text,
+    scope: prefix ? 'context' : 'component',
+  }));
 
 /** Type-checks a use case's `usecase.ts` default export. */
 export const defineUsecase = (doc: UsecaseDoc): UsecaseDoc => ({ ...doc, layers: doc.layers ?? layersFromAnatomy(doc.anatomy) });

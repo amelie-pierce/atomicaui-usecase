@@ -7,6 +7,8 @@ export function useLayerVisibility(root: HTMLElement | null, layers: LayerStep[]
     if (!root || !enabled || !Array.isArray(layers)) return;
     const apply = () => {
       const assigned = new Map<Element, number>();
+      const textAssigned = new Map<Element, number>();
+      const assignText = (element: Element, index: number) => textAssigned.set(element, Math.min(index, textAssigned.get(element) ?? index));
       const assign = (element: Element, index: number) => assigned.set(element, Math.min(index, assigned.get(element) ?? index));
       layers.forEach((layer, index) => {
         try {
@@ -20,22 +22,23 @@ export function useLayerVisibility(root: HTMLElement | null, layers: LayerStep[]
               assign(element, index);
               return;
             }
-            // Wrap direct text nodes so a button label or dialog title can reveal separately from its shell.
-            for (const node of [...element.childNodes]) {
-              if (node.nodeType !== Node.TEXT_NODE || !node.textContent?.trim()) continue;
-              const wrapper = document.createElement('span');
-              wrapper.setAttribute('data-ug-layer-text', '');
-              node.replaceWith(wrapper);
-              wrapper.append(node);
-              assign(wrapper, index);
-            }
-            element.querySelectorAll('[data-ug-layer-text]').forEach((wrapper) => assign(wrapper, index));
+            assignText(element, index);
           });
         } catch {
           // A malformed authored selector should not break the preview.
         }
       });
-      root.querySelectorAll('[data-ug-layer-hidden]').forEach((element) => element.removeAttribute('data-ug-layer-hidden'));
+      // An ancestor appears no later than its earliest descendant, so a completed step never shows nothing.
+      [...assigned].forEach(([element, index]) => {
+        for (let ancestor = element.parentElement; ancestor && ancestor !== root; ancestor = ancestor.parentElement) {
+          if ((assigned.get(ancestor) ?? -1) > index) assigned.set(ancestor, index);
+        }
+      });
+      root.querySelectorAll('[data-ug-layer-hidden], [data-ug-layer-text-hidden]').forEach((element) => {
+        element.removeAttribute('data-ug-layer-hidden');
+        element.removeAttribute('data-ug-layer-text-hidden');
+      });
+      textAssigned.forEach((index, element) => element.toggleAttribute('data-ug-layer-text-hidden', index > activeIndex));
       assigned.forEach((index, element) => {
         element.setAttribute('data-ug-layer-index', String(index));
         if (index > activeIndex) element.setAttribute('data-ug-layer-hidden', '');
@@ -47,10 +50,10 @@ export function useLayerVisibility(root: HTMLElement | null, layers: LayerStep[]
     observer.observe(root, { childList: true, subtree: true });
     return () => {
       observer.disconnect();
-      root.querySelectorAll('[data-ug-layer-text]').forEach((wrapper) => wrapper.replaceWith(...wrapper.childNodes));
-      root.querySelectorAll('[data-ug-layer-index], [data-ug-layer-hidden]').forEach((element) => {
+      root.querySelectorAll('[data-ug-layer-index], [data-ug-layer-hidden], [data-ug-layer-text-hidden]').forEach((element) => {
         element.removeAttribute('data-ug-layer-index');
         element.removeAttribute('data-ug-layer-hidden');
+        element.removeAttribute('data-ug-layer-text-hidden');
       });
     };
   }, [root, layers, activeIndex, enabled]);

@@ -531,6 +531,19 @@ $narrow: 840px;
   display: none !important;
 }
 
+.ug-render [data-ug-layer-text-hidden] {
+  color: transparent !important;
+  text-shadow: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ug-layer-lesson,
+  .ug-layer-lesson * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 .ug-docs__copy-block {
   min-inline-size: 0;
   overflow: hidden;

@@ -47,7 +47,11 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const activePreviewKey = `${previewKey}:${activeMode}`;
   const availablePartIds = availableParts?.key === activePreviewKey ? availableParts.ids : undefined;
   const authoredLayers = activeMode === 'context' ? [...(usecase?.layers ?? []), ...(option?.contextLayers ?? [])] : usecase?.layers ?? [];
-  const layers = availablePartIds ? authoredLayers.filter((step) => availablePartIds.includes(step.partId ?? step.id.replace(/^context-/, ''))) : authoredLayers;
+  const anatomyIds = new Set(anatomy.map((part) => part.id));
+  const layers = availablePartIds ? authoredLayers.filter((step) => {
+    const partId = step.partId ?? step.id.replace(/^context-/, '');
+    return !anatomyIds.has(partId) || availablePartIds.includes(partId);
+  }) : authoredLayers;
   const activeLayerIndex = Math.min(layerIndex, Math.max(0, layers.length - 1));
   useEffect(() => {
     if (selectedPart && selectedPart.usecaseId !== selectedId) setSelectedPart(undefined);

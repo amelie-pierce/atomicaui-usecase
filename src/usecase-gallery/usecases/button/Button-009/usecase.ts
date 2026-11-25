@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Open view options button',
 
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"The View options Button in the corner of the 3D viewer: small, surface color with tonal paint, acting as the trigger of the camera and visibility popover.","keyIdea":"The View options Button in the corner of the 3D viewer: small, surface color with tonal paint, acting as the trigger of the camera and visibility popover.","selector":"[class~=\"aui-button\"]"},
+        {"id":"container","partId":"container","title":"Container","explanation":"The View options Button in the corner of the 3D viewer: small, surface color with tonal paint, acting as the trigger of the camera and visibility popover.","keyIdea":"The corner trigger opens view controls without covering the viewer heading.","selector":"[class~=\"aui-button\"]"},
       ],
 options: [
     { id: "default", name: "Tonal outlined", contextAnatomy: [
@@ -15,10 +15,10 @@ options: [
       { id: "reset-view", name: "Reset view button", description: "The outlined bullseye IconButton in the popover that resets the camera." },
     ] ,
       contextLayers: [
-        {"id":"context-viewer-pane","partId":"viewer-pane","title":"3D Viewer pane","explanation":"The 3D Viewer section with its heading and the viewer canvas that the controls float over.","keyIdea":"The 3D Viewer section with its heading and the viewer canvas that the controls float over.","selector":"[data-ug-part=\"viewer-pane\"]","scope":"context"},
-        {"id":"context-corner","partId":"corner","title":"Options corner","explanation":"The top-end corner of the scene, 8px in, that holds the View options trigger.","keyIdea":"The top-end corner of the scene, 8px in, that holds the View options trigger.","selector":"[data-ug-part=\"corner\"]","scope":"context"},
-        {"id":"context-options-popover","partId":"options-popover","title":"View options popover","explanation":"The open popover under the trigger (bottom, end, 4px offset) that holds the viewer controls.","keyIdea":"The open popover under the trigger (bottom, end, 4px offset) that holds the viewer controls.","selector":"[data-ug-part=\"options-popover\"]","scope":"context"},
-        {"id":"context-reset-view","partId":"reset-view","title":"Reset view button","explanation":"The outlined bullseye IconButton in the popover that resets the camera.","keyIdea":"The outlined bullseye IconButton in the popover that resets the camera.","selector":"[data-ug-part=\"reset-view\"]","scope":"context"},
+        {"id":"context-viewer-pane","partId":"viewer-pane","title":"3D Viewer pane","explanation":"The 3D Viewer section with its heading and the viewer canvas that the controls float over.","keyIdea":"The viewer pane keeps its title and canvas together beneath the floating controls.","selector":"[data-ug-part=\"viewer-pane\"]","scope":"context"},
+        {"id":"context-corner","partId":"corner","title":"Options corner","explanation":"The top-end corner of the scene, 8px in, that holds the View options trigger.","keyIdea":"The corner reserves a predictable overlay position for View options.","selector":"[data-ug-part=\"corner\"]","scope":"context"},
+        {"id":"context-options-popover","partId":"options-popover","title":"View options popover","explanation":"The open popover under the trigger (bottom, end, 4px offset) that holds the viewer controls.","keyIdea":"The popover places camera and visibility settings beside their viewer trigger.","selector":"[data-ug-part=\"options-popover\"]","scope":"context"},
+        {"id":"context-reset-view","partId":"reset-view","title":"Reset view button","explanation":"The outlined bullseye IconButton in the popover that resets the camera.","keyIdea":"The bullseye control returns the camera to its default view.","selector":"[data-ug-part=\"reset-view\"]","scope":"context"},
       ],
     },
   ],

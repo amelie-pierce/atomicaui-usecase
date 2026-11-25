@@ -48,20 +48,20 @@ export default defineUsecase({
       id: "container",
       name: "Container",
       description: "One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent \"between\"), outlined by a 1px border on all four sides from sx.",
-      selector: "[class~=\"aui-button\"]",
+      selector: "[data-ug-part=\"container\"]",
     },
     {
       id: "label",
       name: "Label",
       description: "The topic name, \"HS: General Tutorial\" in the example, wrapping onto several lines when long.",
-      selector: "[class~=\"aui-button\"]",
+      selector: "[data-ug-part=\"container\"]",
       text: true,
     },
     {
       id: "icon",
       name: "Icon",
       description: "The right arrow at the end of the row that signals starting the tour, at scale \"sm\".",
-      selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
+      selector: "[data-ug-part=\"icon\"]",
     },
   ],
 });

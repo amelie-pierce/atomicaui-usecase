@@ -8,7 +8,7 @@ import { ComponentsPage } from '../ui/components-page';
 import { DetailPane } from '../ui/detail-pane';
 import { DetailToolbar } from '../ui/detail-toolbar';
 import { RenderPane } from '../ui/render-pane';
-import type { PreviewMode } from '../types';
+import type { DocumentMode, PreviewMode } from '../types';
 import { DetailLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
 
@@ -30,6 +30,8 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const selectedPartId = selectedPart?.usecaseId === selectedId ? selectedPart.partId : undefined;
   const [chosen, setChosen] = useState<{ usecaseId: string; optionId?: string }>();
   const [viewMode, setViewMode] = useState<PreviewMode>('component');
+  const [documentMode, setDocumentMode] = useState<DocumentMode>('document');
+  const [layerIndex, setLayerIndex] = useState(0);
   const chosenForRoute = chosen?.usecaseId === selectedId ? chosen : undefined;
   const original = allUsecases.find((candidate) => candidate.id === selectedId);
   const group = catalog.find((candidate) => candidate.id === original?.componentId);
@@ -42,6 +44,11 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
     : usecase?.anatomy ?? [], [activeMode, usecase?.id, option?.id]);
   const activePartId = interactedPart?.id ?? selectedPartId;
   const previewKey = `${selectedId}:${option?.id ?? ''}`;
+  const activePreviewKey = `${previewKey}:${activeMode}`;
+  const availablePartIds = availableParts?.key === activePreviewKey ? availableParts.ids : undefined;
+  const authoredLayers = activeMode === 'context' ? [...(usecase?.layers ?? []), ...(option?.contextLayers ?? [])] : usecase?.layers ?? [];
+  const layers = availablePartIds ? authoredLayers.filter((step) => availablePartIds.includes(step.partId ?? step.id.replace(/^context-/, ''))) : authoredLayers;
+  const activeLayerIndex = Math.min(layerIndex, Math.max(0, layers.length - 1));
   useEffect(() => {
     if (selectedPart && selectedPart.usecaseId !== selectedId) setSelectedPart(undefined);
     if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
@@ -49,6 +56,12 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   useEffect(() => {
     setInteractedPart(undefined);
   }, [previewKey, activeMode]);
+  useEffect(() => {
+    setLayerIndex(0);
+  }, [previewKey, activeMode]);
+  useEffect(() => {
+    setLayerIndex((index) => Math.min(index, Math.max(0, layers.length - 1)));
+  }, [layers.length]);
   const onPartChange = useCallback((partId: string | undefined, expectedPartId?: string, source: 'hover' | 'focus' = 'hover') => {
     setInteractedPart((current) => {
       if (partId) return { id: partId, source };
@@ -60,7 +73,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
     if (window.matchMedia('(pointer: coarse)').matches) setSelectedPart((current) => current?.partId === partId ? undefined : { usecaseId: selectedId, partId });
     requestAnimationFrame(() => document.getElementById(`anatomy-${partId}`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
   }, [selectedId]);
-  const activePreviewKey = `${previewKey}:${activeMode}`;
+  const onLayerChange = useCallback((index: number) => setLayerIndex(index), []);
   const onAvailablePartsChange = useCallback((ids: string[]) => setAvailableParts({ key: activePreviewKey, ids }), [activePreviewKey]);
   if (route.page === 'components') return <div className="ug"><ComponentsPage groups={catalog} title={title} /></div>;
   if (route.page === 'component') {
@@ -70,8 +83,8 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   if (!original || !group || !usecase) return null;
   // The option change is a transition: the shown UI stays until the next option's lazy example has loaded, so the stage never blanks.
   const panes = {
-    render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={setViewMode} anatomy={anatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId }))} />,
-    detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availableParts?.key === activePreviewKey ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} />,
+    render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={(next) => { setViewMode(next); setLayerIndex(0); }} anatomy={anatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => { setLayerIndex(0); startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })); }} layers={layers} layerIndex={activeLayerIndex} layerMode={documentMode === 'layers'} />,
+    detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} documentMode={documentMode} onDocumentModeChange={(next) => { setDocumentMode(next); setLayerIndex(0); }} layers={layers} layerIndex={activeLayerIndex} onLayerChange={onLayerChange} />,
   };
   return (
     <div className="ug ug--usecase">

@@ -10,7 +10,7 @@ export default function HsTopBarScene(_: ContextProps) {
         <Menubar.Dropdown>
           <Menubar.DropdownTrigger data-ug-part="file-menu">File</Menubar.DropdownTrigger>
         </Menubar.Dropdown>
-        <Menubar.Button>About</Menubar.Button>
+        <Menubar.Button data-ug-part="button">About</Menubar.Button>
         <Menubar.Button data-ug-part="reset">Reset</Menubar.Button>
         <Menubar.Dropdown>
           <Menubar.DropdownTrigger data-ug-part="help-menu">Help Center</Menubar.DropdownTrigger>

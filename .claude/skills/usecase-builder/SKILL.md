@@ -68,6 +68,14 @@ Every use case uses the same selection model. The left column is the preview: it
 
 Anatomy is authored data in each `usecase.ts`, not generic component boilerplate. Audit the mounted Component and In context UI together. For a dialog, for example, include only what the selected UI renders, such as overlay, container, header/title, close icon, body/content, footer and action buttons, each linked to the exact element. A selector must resolve to the part in the preview; nested parts use the shared id and the existing highlight logic. Descriptions, usage, state and accessibility must name the actual labels, controls, props and behavior of that option.
 
+## Layer build lessons
+
+- Every use case exposes a Component `layers` sequence, authored beside its Anatomy in `usecase.ts`. Each step has a stable `id`, `title`, `explanation`, `keyIdea` and exact stage `selector`; the selector can default to the matching `data-ug-part`. Start with the outer wrapper and add one visible piece at a time. Use Anatomy as a source, then split broad parts such as a title bar, content group or footer into separately rendered controls when the example supports it.
+- An option can add `contextLayers` for pieces that exist only in its scene. In context lessons list Component layers first, then the selected option's context layers. Keep lesson content with use-case and option data; the shared lesson UI only presents it.
+- The preview hides every layer after the active step. A later part must not be visible, focusable or interactive until reached. Layer selection changes the preview and lesson together; changing use case, option, or Component / In context restarts at the first step.
+- The Document / Layer by layer control belongs to the right pane. Lessons provide numbered step navigation, Back, Next, Replay, Autoplay / Pause, a step title, explanation and key idea. Keep buttons keyboard accessible and the step list usable at narrow widths.
+- Use AtomicAUI tokens, fonts, components and icons only. Keep Anatomy hover one-way and ensure hiding or revealing layers never introduces preview scrollbars or flicker.
+
 ## Renumber ids
 
 Ids are `<Component>-<NNN>`, contiguous from 001 per component in tree order. Never renumber or merge existing ids unless the prompt explicitly asks. If an explicitly requested change requires renumbering, build one old-to-new map, rename folders in temporary phases to avoid collisions, update all source references and record the map in the PR description. The URL hash is the id and has no alias unless explicitly requested.

@@ -48,7 +48,7 @@ export default defineUsecase({
     {
       id: 'menubar',
       name: 'Vertical menubar',
-      selector: '[class~="aui-menubar"]',
+      selector: '[class~="aui-drawer-content"] [class~="aui-menubar"]',
       description: 'The vertical Menubar at scale "sm" that stacks the actions full width.',
     },
     {

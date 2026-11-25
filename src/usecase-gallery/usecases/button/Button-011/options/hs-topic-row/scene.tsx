@@ -16,7 +16,7 @@ export default function HsTopicRowScene({ children, host }: ContextProps) {
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
               <View data-ug-part="topic-list" as="nav" aria-label="Help & Tutorials" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }}>
-                {children}
+                <span data-ug-part="container" style={{ display: 'contents' }}>{children}</span>
               </View>
             </Dialog.Body>
           </Dialog.Popup>

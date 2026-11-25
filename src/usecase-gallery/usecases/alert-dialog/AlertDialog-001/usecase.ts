@@ -41,7 +41,7 @@ export default defineUsecase({
     {
       id: 'title-text',
       name: 'Title text',
-      selector: '[class~="aui-dialog-title"]',
+      selector: '[data-ug-part="title-text"]',
       text: true,
       description: 'The question "Warning: Reset Inputs?" that names what the user is about to do.',
     },

@@ -2,6 +2,22 @@ import type { ComponentType, ReactNode } from 'react';
 import type { AppKey } from './apps';
 
 export type PreviewMode = 'component' | 'context';
+export type DocumentMode = 'document' | 'layers';
+
+/** One layer in the interactive build lesson, authored beside the use case anatomy. */
+export interface LayerStep {
+  id: string;
+  /** Anatomy part id this layer reveals. Context layer ids can be namespaced independently. */
+  partId?: string;
+  title: string;
+  explanation: string;
+  keyIdea: string;
+  selector?: string;
+  /** Reveal the target's direct text as its own layer. */
+  text?: boolean;
+  /** Component layers target the selected example; context layers target the whole scene. */
+  scope?: 'component' | 'context';
+}
 
 /** Written once per component in `usecases/<component>/<component>.meta.ts`. */
 export interface ComponentMeta {
@@ -39,6 +55,8 @@ export interface UsecaseOptionDoc {
   showContext?: boolean;
   /** Parts added by this option's scene; component anatomy is included automatically in the In context view. */
   contextAnatomy?: AnatomyPart[];
+  /** Extra lesson layers that this option's In context scene adds. */
+  contextLayers?: LayerStep[];
   /** View-specific documentation for the scene. Omitted fields share the use case's general prose. */
   contextDocument?: Partial<UsecaseViewDoc>;
   /** The source file of the scene per app of the option; overrides the use case's `source` for these apps. */
@@ -50,6 +68,8 @@ export interface AnatomyPart {
   id: string;
   name: string;
   description: string;
+  /** A concise design principle for the interactive layer lesson. */
+  keyIdea?: string;
   /** A selector scoped to the preview stage. Omit when the example uses data-ug-part. */
   selector?: string;
   /** Highlight only the direct text of the selected element, measured without touching the DOM. */
@@ -110,6 +130,8 @@ export interface UsecaseDoc {
   /** Optional component-facing detail content; absent sections stay out of the document. */
   aliases?: string[];
   anatomy: AnatomyPart[];
+  /** Component build order, from its outer wrapper to its detailed contents. */
+  layers?: LayerStep[];
   usage?: string;
   behavior?: string;
   variants?: string;
@@ -152,6 +174,7 @@ export interface UsecaseOption {
   note?: string;
   showContext: boolean;
   contextAnatomy: AnatomyPart[];
+  contextLayers: LayerStep[];
   contextDocument?: Partial<UsecaseViewDoc>;
   Scene: ComponentType<ContextProps>;
   Example: ComponentType;
@@ -163,6 +186,7 @@ export interface Usecase extends UsecaseDoc {
   /** `<ComponentId>-<NNN>`; also the URL hash. */
   id: string;
   componentId: string;
+  layers: LayerStep[];
   /** The rendered example. Loaded on demand, so wrap it in `<Suspense>`. */
   Example: ComponentType;
   /** Resolves to the copyable snippet, derived from the same `example.tsx` that renders. */

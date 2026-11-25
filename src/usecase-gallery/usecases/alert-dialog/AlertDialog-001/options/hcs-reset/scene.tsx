@@ -11,7 +11,7 @@ export default function HcsResetScene({ host }: ContextProps) {
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }} style={{ '--aui-width': 'min(560px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
               <Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />
-              Warning: Reset Inputs?
+              <span data-ug-part="title-text">Warning: Reset Inputs?</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close Reset" aui={{ scale: 'sm' }} />
             </Dialog.Title>

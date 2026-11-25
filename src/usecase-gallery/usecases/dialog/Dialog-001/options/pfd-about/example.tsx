@@ -10,7 +10,7 @@ export default function Example() {
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { gap: '0' } }} style={{ '--aui-width': 'min(860px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-              About
+              <span data-ug-part="title-text">About</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>

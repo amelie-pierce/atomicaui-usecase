@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import type { ComponentType } from 'react';
 import { appLabels } from './app-views';
+import { layersFromAnatomy } from '../define';
 import { toContextSnippet, toSnippet } from './snippet';
 import type { AppKey } from '../apps';
 import type { ComponentGroup, ComponentMeta, ContextProps, UiTypeGroup, Usecase, UsecaseDoc, UsecaseOption, UsecaseOptionDoc } from '../types';
@@ -36,6 +37,16 @@ const fail = (message: string): never => {
   throw new Error(`[usecase-gallery] ${message}`);
 };
 
+function validateLayers(id: string, layers: Usecase['layers'], label: string) {
+  if (!layers.length) fail(`${id} has no ${label} layer steps`);
+  const ids = new Set<string>();
+  for (const layer of layers) {
+    if (!layer.id || !layer.title || !layer.explanation || !layer.keyIdea || !layer.selector) fail(`${id} has an incomplete ${label} layer step`);
+    if (ids.has(layer.id)) fail(`${id} repeats ${label} layer id "${layer.id}"`);
+    ids.add(layer.id);
+  }
+}
+
 /** Pure assembly of the catalog from glob results, so the discovery rules live in one testable place. */
 export function buildCatalog({ metas, docs, examples, sources, options = {}, optionSources = {} }: CatalogSources): ComponentGroup[] {
   const groups = new Map<string, ComponentGroup & { usecases: Usecase[] }>();
@@ -69,9 +80,11 @@ export function buildCatalog({ metas, docs, examples, sources, options = {}, opt
       Example: lazy(() => loadExample().then((component) => ({ default: component }))),
       loadCode: () => (code ??= loadSource().then(toSnippet)),
     };
+    validateLayers(id, usecase.layers, 'Component');
     if (!group.uiTypes.includes(doc.uiType)) fail(`${id} sets uiType "${doc.uiType}", which is not in uiTypes of ${component}.meta.ts (${group.uiTypes.join(', ')})`);
     if (!optionDocs?.length) fail(`${id} must define at least one option`);
     usecase.options = buildOptions(usecase, optionDocs, key, optionByKey, optionSourceByKey);
+    for (const option of usecase.options) if (option.contextLayers.length) validateLayers(id, option.contextLayers, `In context (${option.id})`);
     group.usecases.push(usecase);
   }
 
@@ -119,7 +132,7 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
   const { id } = usecase;
   const ids = new Set<string>();
   const options = docs.map((raw, index): UsecaseOption => {
-    const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextDocument } = raw;
+    const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextLayers, contextDocument } = raw;
     for (const app of [...apps, ...Object.keys(source ?? {})] as AppKey[]) {
       if (!apps.includes(app) || !usecase.apps.includes(app)) fail(`${id} sets the option "${optionId}" to app "${app}", which is not in its apps`);
     }
@@ -147,6 +160,7 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
       note,
       showContext,
       contextAnatomy,
+      contextLayers: contextLayers ?? layersFromAnatomy(contextAnatomy, 'context-'),
       contextDocument,
       Scene,
       Example,

@@ -67,7 +67,7 @@ export default defineUsecase({
     {
       id: 'title-text',
       name: 'Title text',
-      selector: '[class~="aui-dialog-title"]',
+      selector: '[data-ug-part="title-text"]',
       text: true,
       description: 'The word "About", the only text the title bar holds.',
     },
@@ -110,5 +110,18 @@ export default defineUsecase({
       text: true,
       description: 'The p3 "Release notes" placeholder line that stands in for the notes in the Dialog frame.',
     },
+  ],
+  layers: [
+    { id: 'overlay', title: 'Overlay', selector: '[class~="aui-dialog-backdrop"]', explanation: 'The scrim dims the app behind the About dialog while leaving the stage visible.', keyIdea: 'Separate the dialog from the app beneath it before adding the dialog surface.' },
+    { id: 'popup', title: 'Popup container', selector: '[class~="aui-dialog-popup"]', explanation: 'The wide popup defines the surface and zero-gap frame that contains the title and body.', keyIdea: 'Give the content one bounded surface so the dialog reads as a single unit.' },
+    { id: 'title', title: 'Title bar', selector: '[class~="aui-dialog-title"]', explanation: 'The raised title bar sits at the start of the popup and carries the dialog label.', keyIdea: 'Identify the purpose of the dialog before users scan its details.' },
+    { id: 'title-text', title: 'Title text', selector: '[data-ug-part="title-text"]', explanation: 'The word “About” names the window.', keyIdea: 'Use a short title that tells users what this surface contains.' },
+    { id: 'spacer', title: 'Flexible spacer', selector: '[class~="aui-dialog-spacer"]', explanation: 'The spacer pushes the close control to the far edge of the title bar.', keyIdea: 'Use flexible space to keep the title and close action at opposite ends.' },
+    { id: 'close', title: 'Close control', selector: '[class~="aui-dialog-close"]', explanation: 'The labelled close X dismisses the About dialog.', keyIdea: 'Keep a clear exit action available in the dialog header.' },
+    { id: 'body', title: 'Body row', selector: '[data-ug-part="body"]', explanation: 'The body starts a two-column layout beneath the title bar.', keyIdea: 'Separate the dialog shell from the task-specific information.' },
+    { id: 'history-column', title: 'Release history column', selector: '[data-ug-part="history-column"]', explanation: 'The 224px start column holds the release heading and version navigation.', keyIdea: 'Keep version selection in a dedicated, predictable rail.' },
+    { id: 'history-heading', title: 'Release history heading', selector: '[data-ug-part="history-heading"]', explanation: 'The bold heading labels the version list.', keyIdea: 'Name a navigation group before presenting its choices.' },
+    { id: 'notes-column', title: 'Notes column', selector: '[data-ug-part="notes-column"]', explanation: 'The flexible column shows the selected release notes.', keyIdea: 'Let the main content use the remaining space after navigation.' },
+    { id: 'notes-text', title: 'Notes content', selector: '[data-ug-part="notes-text"]', explanation: 'The placeholder line represents the notes for the selected release.', keyIdea: 'Keep the selected item’s details in the content area it controls.' },
   ],
 });

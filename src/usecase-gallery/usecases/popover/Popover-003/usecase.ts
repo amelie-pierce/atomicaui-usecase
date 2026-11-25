@@ -34,7 +34,7 @@ export default defineUsecase({
     {
       id: 'header-cell',
       name: 'Sortable header cell',
-      selector: '[class~="aui-table-header-cell"]',
+      selector: '[data-ug-part="header-cell"]',
       description: 'The Load (lb) header, sorted ascending, whose actions slot carries the kebab (vertical dots in HCS, horizontal in PFD).',
     },
     {

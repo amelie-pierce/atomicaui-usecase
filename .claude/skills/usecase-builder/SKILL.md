@@ -1,9 +1,9 @@
 ---
-name: usecase-gallery
+name: usecase-builder
 description: Load before adding or changing a use case, its option UI, documentation, Anatomy or apps, or adding an app to the registry. Covers the business-action taxonomy, option-based detail page, app-specific scenes and validation.
 ---
 
-# usecase-gallery
+# usecase-builder
 
 `src/usecase-gallery/README.md` is the folder how-to; this skill contains the procedure and rules for use-case work. Read `_vaults/atomicaui-usecase-prototype/wiki/index.md` first, then the README sections you need. Live code wins over both: `define.ts`, `types.ts`, `apps.ts`, `catalog/build-catalog.ts`, `ui/render-pane.tsx` and `ui/docs-pane.tsx`.
 
@@ -23,9 +23,20 @@ The tree is Components grid (`#/`) > component page (`#/Button`) > use case (`#B
 - Compare rendered styles and behavior in a real browser, not source code alone. Read every visible element, including body content, footer actions, close affordances, overlays, icons and hover content.
 - The example is the main-purpose component named by the use case. Supporting content belongs in the selected option's In context scene. A Dialog example includes its Popup, Title, close control and Body; Dialog body content is not omitted from the Anatomy or scene when it is rendered.
 
+## Decide where the use case belongs
+
+If the prompt explicitly names the placement, follow it exactly without asking (for example, add an option to `Button-007`, create a new component group `Slider`, or reuse `Dialog`). Otherwise, first inventory the existing component groups and use cases, then decide without asking:
+
+- An existing business action with a different rendered UI becomes a new option on that use case.
+- The same rendered UI used in another app adds that app to the existing option.
+- A new business action becomes a new use case with the next unused number in its component group.
+- A component that is not in the gallery becomes a new component group.
+
+Record every placement decision and its reason in the PR description. Never renumber or merge existing use case ids unless the prompt explicitly asks for it. If the placement cannot be made without renumbering or merging, stop and report that constraint. Never invent a scene without a real source design; report when the source design is missing.
+
 ## Add or change a use case
 
-1. Name the business action. Add or update an option if the action already exists; otherwise create the folder at its tree position and renumber later ids when needed.
+1. Follow the placement decision above. For a new use case, create the folder with the next unused id in its component, appended after the existing use cases; never insert it mid-tree, since that would require renumbering.
 2. Write `example.tsx` for the first option and `options/<option-id>/example.tsx` for every additional option. Each Component UI must be the exact control or component rendered for that option.
 3. Write `usecase.ts` with `uiType`, `title`, `apps`, `summary`, `where`, `when`, `how`, a specific `anatomy` array and `options`. Each option names the UI, lists its apps, records its source path and has a `scene.tsx`.
 4. Build each scene from the real app source, keeping it minimal but faithful. Do not replace app-specific visible structure with generic filler or a shared scene when the UI differs.
@@ -59,7 +70,7 @@ Anatomy is authored data in each `usecase.ts`, not generic component boilerplate
 
 ## Renumber ids
 
-Ids are `<Component>-<NNN>`, contiguous from 001 per component in tree order. When adding, merging, splitting or removing a use case, build one old-to-new map, rename folders in temporary phases to avoid collisions, update all source references and record the map in the PR description. The URL hash is the id and has no alias unless explicitly requested.
+Ids are `<Component>-<NNN>`, contiguous from 001 per component in tree order. Never renumber or merge existing ids unless the prompt explicitly asks. If an explicitly requested change requires renumbering, build one old-to-new map, rename folders in temporary phases to avoid collisions, update all source references and record the map in the PR description. The URL hash is the id and has no alias unless explicitly requested.
 
 ## Check the work
 

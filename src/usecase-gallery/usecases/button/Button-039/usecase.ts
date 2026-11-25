@@ -11,15 +11,15 @@ export default defineUsecase({
   title: 'Reset view button',
 
     layers: [
-        {"id":"button","partId":"button","title":"Reset view","explanation":"The small soft-shaped IconButton with primary orange color and a 1px outlined border that floats over the 3D viewer to reset the camera.","keyIdea":"The small soft-shaped IconButton with primary orange color and a 1px outlined border that floats over the 3D viewer to reset the camera.","selector":"[class~=\"aui-button\"]"},
-        {"id":"icon","partId":"icon","title":"Bullseye icon","explanation":"The bullseye glyph, drawn in the primary color on a transparent surface.","keyIdea":"The bullseye glyph, drawn in the primary color on a transparent surface.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
+        {"id":"button","partId":"button","title":"Reset view","explanation":"The small soft-shaped IconButton with primary orange color and a 1px outlined border that floats over the 3D viewer to reset the camera.","keyIdea":"The floating control resets the camera within the viewer canvas.","selector":"[class~=\"aui-button\"]"},
+        {"id":"icon","partId":"icon","title":"Bullseye icon","explanation":"The bullseye glyph, drawn in the primary color on a transparent surface.","keyIdea":"The bullseye glyph indicates returning the camera to its target view.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
       ],
 options: [
     { id: "default", contextAnatomy: CONTEXT_ANATOMY, name: "Outlined accent, 28px" ,
       contextLayers: [
-        {"id":"context-viewer-pane","partId":"viewer-pane","title":"3D Viewer pane","explanation":"The surface-alt 3D Viewer section that frames the header and the scene.","keyIdea":"The surface-alt 3D Viewer section that frames the header and the scene.","selector":"[data-ug-part=\"viewer-pane\"]","scope":"context"},
-        {"id":"context-viewer-title","partId":"viewer-title","title":"Viewer title","explanation":"The semi-bold 3D Viewer heading in the 28px header.","keyIdea":"The semi-bold 3D Viewer heading in the 28px header.","selector":"[data-ug-part=\"viewer-title\"]","scope":"context"},
-        {"id":"context-viewer-canvas","partId":"viewer-canvas","title":"Scene canvas","explanation":"The framed stand-in for the live 3D canvas, with Reset view overlaid at its top end.","keyIdea":"The framed stand-in for the live 3D canvas, with Reset view overlaid at its top end.","selector":"[data-ug-part=\"viewer-canvas\"]","scope":"context"},
+        {"id":"context-viewer-pane","partId":"viewer-pane","title":"3D Viewer pane","explanation":"The surface-alt 3D Viewer section that frames the header and the scene.","keyIdea":"The viewer section frames the canvas and its camera control.","selector":"[data-ug-part=\"viewer-pane\"]","scope":"context"},
+        {"id":"context-viewer-title","partId":"viewer-title","title":"Viewer title","explanation":"The semi-bold 3D Viewer heading in the 28px header.","keyIdea":"The header title identifies the area whose view can be adjusted.","selector":"[data-ug-part=\"viewer-title\"]","scope":"context"},
+        {"id":"context-viewer-canvas","partId":"viewer-canvas","title":"Scene canvas","explanation":"The framed stand-in for the live 3D canvas, with Reset view overlaid at its top end.","keyIdea":"The canvas provides the spatial surface where Reset view is overlaid.","selector":"[data-ug-part=\"viewer-canvas\"]","scope":"context"},
       ],
     },
   ],

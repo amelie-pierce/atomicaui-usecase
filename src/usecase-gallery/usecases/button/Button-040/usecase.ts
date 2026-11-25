@@ -11,17 +11,17 @@ export default defineUsecase({
 
   apps: ['pbs'],
     layers: [
-        {"id":"add","partId":"add","title":"Add","explanation":"The tonal secondary soft plus button that adds the result row to the Connection List.","keyIdea":"The tonal secondary soft plus button that adds the result row to the Connection List.","selector":"[class~=\"aui-button\"][aria-label=\"Add to Connection List\"]"},
-        {"id":"add-icon","partId":"add-icon","title":"Plus icon","explanation":"The plus glyph centred in the button.","keyIdea":"The plus glyph centred in the button.","selector":"[class~=\"aui-button\"][aria-label=\"Add to Connection List\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-        {"id":"tooltip","partId":"tooltip","title":"Tooltip","explanation":"PBS tooltip above the button that repeats the action as Add to Connection List.","keyIdea":"PBS tooltip above the button that repeats the action as Add to Connection List.","selector":"[class~=\"aui-tooltip-popup\"]"},
-        {"id":"cell","partId":"cell","title":"Add cell","explanation":"The centred first cell of the Model A-100 row that holds the button.","keyIdea":"The centred first cell of the Model A-100 row that holds the button.","selector":"[class~=\"aui-table-cell\"]:first-child"},
-        {"id":"header-cell","partId":"header-cell","title":"Add header","explanation":"The unlabeled column heading (aria-label Add) over the add buttons.","keyIdea":"The unlabeled column heading (aria-label Add) over the add buttons.","selector":"[class~=\"aui-table-header-cell\"]:first-child"},
+        {"id":"add","partId":"add","title":"Add","explanation":"The tonal secondary soft plus button that adds the result row to the Connection List.","keyIdea":"The plus action adds the displayed model to the connection list.","selector":"[class~=\"aui-button\"][aria-label=\"Add to Connection List\"]"},
+        {"id":"add-icon","partId":"add-icon","title":"Plus icon","explanation":"The plus glyph centred in the button.","keyIdea":"The plus glyph communicates adding the result row.","selector":"[class~=\"aui-button\"][aria-label=\"Add to Connection List\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"tooltip","partId":"tooltip","title":"Tooltip","explanation":"PBS tooltip above the button that repeats the action as Add to Connection List.","keyIdea":"The tooltip names the list destination before the add action.","selector":"[class~=\"aui-tooltip-popup\"]"},
+        {"id":"cell","partId":"cell","title":"Add cell","explanation":"The centred first cell of the Model A-100 row that holds the button.","keyIdea":"The first result cell gives each model its own add control.","selector":"[class~=\"aui-table-cell\"]:first-child"},
+        {"id":"header-cell","partId":"header-cell","title":"Add header","explanation":"The unlabeled column heading (aria-label Add) over the add buttons.","keyIdea":"The unlabeled heading identifies the add-action column accessibly.","selector":"[class~=\"aui-table-header-cell\"]:first-child"},
       ],
 options: [
     { id: "pbs-row", contextAnatomy: CONTEXT_ANATOMY, name: "Row add icon", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,
       contextLayers: [
-        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The Table of connection results; the add column comes first, then the Model column.","keyIdea":"The Table of connection results; the add column comes first, then the Model column.","selector":"[class~=\"aui-table\"]","scope":"context"},
-        {"id":"context-model-cell","partId":"model-cell","title":"Model cell","explanation":"The Model A-100 label of the row that the plus button adds.","keyIdea":"The Model A-100 label of the row that the plus button adds.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-cell\"]:last-child","scope":"context"},
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The Table of connection results; the add column comes first, then the Model column.","keyIdea":"The results table puts the add action before the model name.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-model-cell","partId":"model-cell","title":"Model cell","explanation":"The Model A-100 label of the row that the plus button adds.","keyIdea":"The model label identifies the result that will be added.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-cell\"]:last-child","scope":"context"},
       ],
     },
   ],

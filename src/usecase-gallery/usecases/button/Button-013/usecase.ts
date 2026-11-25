@@ -21,7 +21,6 @@ export default defineUsecase({
       token: "Button",
       description: "The Add to Job List Button: a solid secondary (black) small Button, text only, first in the HS Output toolbar row.",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button aui={{ color: 'secondary', paint: 'solid', scale: 'sm' }}>\n  Add to Job List\n</Button>",
     },
     {
       id: "label",
@@ -30,7 +29,6 @@ export default defineUsecase({
       description: "The text \"Add to Job List\" that adds the chosen result to the job list.",
       selector: "[class~=\"aui-button\"]",
       text: true,
-      code: "Add to Job List",
     },
   ],
 });

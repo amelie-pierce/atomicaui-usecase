@@ -22,11 +22,6 @@ export default defineUsecase({
       token: "Fieldset",
       selector: "[class~=\"aui-fieldset\"]",
       description: "The print-report group, without padding, that ties the legend to the read-only option below it.",
-      code: [
-        "<Fieldset aui={{ paint: 'text', profile: 'no-padding' }}>",
-        "  …",
-        "</Fieldset>",
-      ].join("\n"),
     },
     {
       id: "legend",
@@ -34,9 +29,6 @@ export default defineUsecase({
       token: "Fieldset.Legend",
       selector: "[class~=\"aui-fieldset-legend\"]",
       description: "The legend \"Paste over both sides of crack\" that repeats the input panel option the checkbox mirrors.",
-      code: [
-        "<Fieldset.Legend>Paste over both sides of crack</Fieldset.Legend>",
-      ].join("\n"),
     },
     {
       id: "checkbox",
@@ -44,22 +36,12 @@ export default defineUsecase({
       token: "Checkbox",
       selector: "[class~=\"aui-checkbox\"]",
       description: "A read-only, selected checkbox that cannot be toggled in the printed report, drawn with the primary solid selected style.",
-      code: [
-        "<Checkbox defaultSelected readOnly aui={{ … }}>",
-        "  <Checkbox.Label>Yes</Checkbox.Label>",
-        "</Checkbox>",
-      ].join("\n"),
     },
     {
       id: "indicator",
       name: "Indicator",
       selector: "[class~=\"aui-checkbox-indicator\"]",
       description: "The box showing the repeated input as checked in the report.",
-      code: [
-        "<Checkbox defaultSelected aui={{ … }}>",
-        "  …",
-        "</Checkbox>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -67,9 +49,6 @@ export default defineUsecase({
       token: "Checkbox.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The answer \"Yes\" next to the box, matching the value chosen in the input panel (ACE and PBS reports).",
-      code: [
-        "<Checkbox.Label>Yes</Checkbox.Label>",
-      ].join("\n"),
     },
   ],
 });

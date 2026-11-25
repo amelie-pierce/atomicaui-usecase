@@ -21,11 +21,6 @@ export default defineUsecase({
       token: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "Stacked wrapper that pairs the \"Description\" label with the multi-line box; ADC makes it a row with a 96px label and AGPD drops the label entirely.",
-      code: [
-        "<Field aui={{ scale: 'sm' }}>",
-        "  …",
-        "</Field>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -33,9 +28,6 @@ export default defineUsecase({
       token: "Field.Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The \"Description\" label above the box; in the AGPD quote notes there is no label and an aria-label names the box.",
-      code: [
-        "<Field.Label>Description</Field.Label>",
-      ].join("\n"),
     },
     {
       id: "textarea",
@@ -43,9 +35,6 @@ export default defineUsecase({
       token: "Field.Textarea",
       selector: "[class~=\"aui-textarea\"]",
       description: "The five-row box that draws its own 1px slate outline, 4px radius and 3/8 padding, so no Field.Control surrounds it; it resizes vertically only.",
-      code: [
-        "<Field.Textarea rows={5} resizable=\"vertical\" />",
-      ].join("\n"),
     },
   ],
 });

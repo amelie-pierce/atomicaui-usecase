@@ -19,18 +19,12 @@ export default defineUsecase({
       token: "Spinner",
       selector: "[class~=\"aui-spinner\"]",
       description: "The extra-large info-coloured spinner, hidden from assistive technology (role \"presentation\", aria-hidden) because the message below carries the meaning.",
-      code: [
-        "<Spinner role=\"presentation\" aria-hidden=\"true\" aui={{ color: 'info', scale: 'xl' }} />",
-      ].join("\n"),
     },
     {
       id: "ring",
       name: "Ring",
       selector: "[class~=\"aui-spinner-ring\"]",
       description: "The large animated ring above \"Your design report is being generated\" in the ADC report dialog.",
-      code: [
-        "<Spinner role=\"presentation\" aria-hidden=\"true\" aui={{ color: 'info', scale: 'xl' }} />",
-      ].join("\n"),
     },
   ],
 });

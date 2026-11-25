@@ -25,11 +25,6 @@ export default defineUsecase({
       token: "RadioGroup",
       selector: "[class~=\"aui-radio-group\"]",
       description: "A row of radios (direction \"row\") with Welded selected by default; the FD Settings popover shows the same group as Yes or No.",
-      code: [
-        "<RadioGroup defaultValue=\"welded\" direction=\"row\" aui={{ scale: 'sm', profile: 'no-padding' }}>",
-        "  …",
-        "</RadioGroup>",
-      ].join("\n"),
     },
     {
       id: "group-label",
@@ -37,9 +32,6 @@ export default defineUsecase({
       token: "RadioGroup.Label",
       selector: "[class~=\"aui-radio-group\"] > [class~=\"aui-label\"]",
       description: "The \"Plate connection\" form label at the start of the row, laid out as a flex row that fills the width with a gap of 4.",
-      code: [
-        "<RadioGroup.Label aui={{ sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '4', width: 'fill' } }}>Plate connection</RadioGroup.Label>",
-      ].join("\n"),
     },
     {
       id: "radio",
@@ -47,22 +39,12 @@ export default defineUsecase({
       token: "Radio",
       selector: "[class~=\"aui-radio\"]",
       description: "One option, Welded or Bolted: a tonal surface circle with an outlined border when unselected and a solid primary circle when chosen.",
-      code: [
-        "<Radio value=\"welded\" aui={{ scale: 'sm', states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }}>",
-        "  <Radio.Label>Welded</Radio.Label>",
-        "</Radio>",
-      ].join("\n"),
     },
     {
       id: "indicator",
       name: "Indicator",
       selector: "[class~=\"aui-radio-indicator\"]",
       description: "The circle that shows which option is chosen.",
-      code: [
-        "<Radio value=\"welded\" aui={{ … }}>",
-        "  …",
-        "</Radio>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -70,9 +52,6 @@ export default defineUsecase({
       token: "Radio.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The option text, Welded or Bolted, beside its circle.",
-      code: [
-        "<Radio.Label>Welded</Radio.Label>",
-      ].join("\n"),
     },
   ],
 });

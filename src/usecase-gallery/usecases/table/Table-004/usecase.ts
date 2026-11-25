@@ -21,13 +21,6 @@ export default defineUsecase({
       token: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Import preview grid: surface-coloured solid soft table at scale "sm" with "all-cells" tonal borders and a 1px outlined frame.',
-      code: `<Table
-  aria-label="Data preview"
-  border="all-cells"
-  borderStyle="tonal"
-  aui={{ color: 'surface', paint: 'solid', shape: 'soft', scale: 'sm', sx: { …, borderColor: 'outlined' } }}
-  headerCellAui={{ color: 'raised' }}
->`,
     },
     {
       id: 'head',
@@ -35,13 +28,6 @@ export default defineUsecase({
       token: 'Table.Head',
       selector: '[class~="aui-table-head"]',
       description: 'Raised heading row with the upper-case FIELD, VALUE and STATUS labels.',
-      code: `<Table.Head>
-  <Table.Row>
-    <Table.HeaderCell>FIELD</Table.HeaderCell>
-    <Table.HeaderCell>VALUE</Table.HeaderCell>
-    <Table.HeaderCell>STATUS</Table.HeaderCell>
-  </Table.Row>
-</Table.Head>`,
     },
     {
       id: 'header-cell',
@@ -49,7 +35,6 @@ export default defineUsecase({
       token: 'Table.HeaderCell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'One of the three column headings, FIELD, VALUE or STATUS, with the default alignment and no sorting.',
-      code: `<Table.HeaderCell>STATUS</Table.HeaderCell>`,
     },
     {
       id: 'body',
@@ -57,9 +42,6 @@ export default defineUsecase({
       token: 'Table.Body',
       selector: '[class~="aui-table-body"]',
       description: 'Holds the previewed record that the user checks before confirming the import.',
-      code: `<Table.Body>
-  <Table.Row>…</Table.Row>
-</Table.Body>`,
     },
     {
       id: 'row',
@@ -67,11 +49,6 @@ export default defineUsecase({
       token: 'Table.Row',
       selector: '[class~="aui-table-row"]',
       description: 'One imported field: Design Method, ACI 318, Supported.',
-      code: `<Table.Row>
-  <Table.Cell>Design Method</Table.Cell>
-  <Table.Cell>ACI 318</Table.Cell>
-  <Table.Cell>Supported</Table.Cell>
-</Table.Row>`,
     },
     {
       id: 'cell',
@@ -79,7 +56,6 @@ export default defineUsecase({
       token: 'Table.Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Plain text cell for the field name, its parsed value or its support status.',
-      code: `<Table.Cell>ACI 318</Table.Cell>`,
     },
   ],
 });

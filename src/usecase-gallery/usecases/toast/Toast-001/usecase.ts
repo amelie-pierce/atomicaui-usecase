@@ -30,8 +30,6 @@ export default defineUsecase({
       token: 'Toast.Viewport',
       selector: '[class~="aui-toast-viewport"]',
       description: 'The stack container pinned to the top end of the pane with 8px insets, rendered inside Toast.Portal.',
-      code: `<Toast.Portal container={container} style={{ display: 'contents' }}>
-  <Toast.Viewport style={{ position: 'absolute', insetBlockStart: 'var(--p-px-8)', insetInlineEnd: 'var(--p-px-8)', maxInlineSize: 'calc(100% - var(--p-px-16))' }}>`,
     },
     {
       id: 'toast',
@@ -39,23 +37,18 @@ export default defineUsecase({
       token: 'Toast',
       selector: '[class~="aui-toast"]',
       description: 'The success notification surface the ToastStack adds on mount, one per manager entry.',
-      code: `{manager.toasts.map((toast) => (
-  <Toast key={toast.id} toast={toast} />
-))}`,
     },
     {
       id: 'icon',
       name: 'Icon',
       selector: '[class~="aui-toast-icon"]',
       description: 'The success status icon that Toast draws itself from type: \'success\'.',
-      code: `manager.add({ title: 'Success', description: 'Your project was saved to the device.', type: 'success' });`,
     },
     {
       id: 'content',
       name: 'Content',
       selector: '[class~="aui-toast-content"]',
       description: 'The copy block that Toast renders beside the icon, holding the title and the description.',
-      code: `manager.add({ title: 'Success', description: 'Your project was saved to the device.', type: 'success' });`,
     },
     {
       id: 'title',
@@ -63,21 +56,18 @@ export default defineUsecase({
       selector: '[class~="aui-toast-title"]',
       text: true,
       description: 'The heading "Success" taken from the title passed to manager.add.',
-      code: `manager.add({ title: 'Success', … });`,
     },
     {
       id: 'description',
       name: 'Description',
       selector: '[class~="aui-toast-description"]',
       description: 'The detail line "Your project was saved to the device." taken from the description passed to manager.add.',
-      code: `manager.add({ …, description: 'Your project was saved to the device.', … });`,
     },
     {
       id: 'close',
       name: 'Close',
       selector: '[class~="aui-toast-close"]',
       description: 'The close X that Toast adds so the user can dismiss the message before it times out.',
-      code: `<Toast.Provider timeout={0} limit={1}>`,
     },
   ],
 });

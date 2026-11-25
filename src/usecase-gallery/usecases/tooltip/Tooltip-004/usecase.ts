@@ -19,14 +19,12 @@ export default defineUsecase({
       token: 'RadioGroup',
       selector: '[class~="aui-radio-group"]',
       description: 'The "Camera projection" RadioGroup (scale "sm", no padding) whose options each carry their own tooltip.',
-      code: `<RadioGroup aria-label="Camera projection" defaultValue="perspective" aui={{ scale: 'sm', profile: 'no-padding' }}>`,
     },
     {
       id: 'trigger',
       name: 'Trigger',
       token: 'Tooltip.Trigger',
       description: 'The span, with closeOnClick off, that wraps the Perspective radio so the tooltip does not close on arrow-key selection.',
-      code: `<Tooltip.Trigger closeOnClick={false} render={<span data-ug-part="trigger" />}>`,
     },
     {
       id: 'radio',
@@ -34,9 +32,6 @@ export default defineUsecase({
       token: 'Radio',
       selector: '[class~="aui-radio"]',
       description: 'The "Perspective" radio at scale "sm", selected by default.',
-      code: `<Radio value="perspective" aui={{ scale: 'sm' }}>
-  <Radio.Label>Perspective</Radio.Label>
-</Radio>`,
     },
     {
       id: 'radio-label',
@@ -44,7 +39,6 @@ export default defineUsecase({
       token: 'Radio.Label',
       selector: '[class~="aui-control-row"] > [class~="aui-label"]',
       description: 'The visible option name "Perspective" beside the radio.',
-      code: `<Radio.Label>Perspective</Radio.Label>`,
     },
     {
       id: 'positioner',
@@ -52,7 +46,6 @@ export default defineUsecase({
       token: 'Tooltip.Positioner',
       selector: '[class~="aui-tooltip-positioner"]',
       description: 'Places the note above the radio with a 4px offset (side="top"); RWS requests the bottom side.',
-      code: `<Tooltip.Positioner side="top" sideOffset={4}>`,
     },
     {
       id: 'popup',
@@ -60,7 +53,6 @@ export default defineUsecase({
       token: 'Tooltip.Popup',
       selector: '[class~="aui-tooltip-popup"]',
       description: 'The default tooltip surface for the one-line note.',
-      code: `<Tooltip.Popup>Show the model in perspective</Tooltip.Popup>`,
     },
     {
       id: 'note',
@@ -69,7 +61,6 @@ export default defineUsecase({
       selector: '[class~="aui-tooltip-popup"]',
       text: true,
       description: 'The note "Show the model in perspective" that explains what the option does.',
-      code: `<Tooltip.Popup>Show the model in perspective</Tooltip.Popup>`,
     },
   ],
 });

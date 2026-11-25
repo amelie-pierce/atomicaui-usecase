@@ -29,11 +29,6 @@ export default defineUsecase({
       token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The solid success chip at scale \"sm\" that tags a release-note entry as a feature (the warning colour is used for an improvement).",
-      code: [
-        "<Chip aui={{ scale: 'sm', color: 'success', paint: 'solid' }}>",
-        "  …",
-        "</Chip>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -42,9 +37,6 @@ export default defineUsecase({
       selector: "[class~=\"aui-chip-label\"]",
       text: true,
       description: "The uppercase kind name FEATURE.",
-      code: [
-        "<Chip.Label>FEATURE</Chip.Label>",
-      ].join("\n"),
     },
   ],
 });

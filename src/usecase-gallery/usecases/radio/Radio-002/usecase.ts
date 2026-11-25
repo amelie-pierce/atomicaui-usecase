@@ -26,11 +26,6 @@ export default defineUsecase({
       token: "RadioGroup",
       selector: "[class~=\"aui-radio-group\"]",
       description: "The projection group named by aria-label \"Camera projection\", Perspective selected by default; it sits among the 3D viewer controls.",
-      code: [
-        "<RadioGroup aria-label=\"Camera projection\" defaultValue=\"perspective\" aui={{ scale: 'sm', profile: 'no-padding' }}>",
-        "  …",
-        "</RadioGroup>",
-      ].join("\n"),
     },
     {
       id: "radio",
@@ -38,22 +33,12 @@ export default defineUsecase({
       token: "Radio",
       selector: "[class~=\"aui-radio\"]",
       description: "Perspective or Orthographic: a solid surface circle with a 1px outlined border when off and solid primary when chosen.",
-      code: [
-        "<Radio value=\"perspective\" aui={{ scale: 'sm', states: { unselected: { color: 'surface', paint: 'solid', sx: { borderWidth: '1', borderStyle: 'solid', borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }}>",
-        "  <Radio.Label>Perspective</Radio.Label>",
-        "</Radio>",
-      ].join("\n"),
     },
     {
       id: "indicator",
       name: "Indicator",
       selector: "[class~=\"aui-radio-indicator\"]",
       description: "The circle that marks the active camera projection.",
-      code: [
-        "<Radio value=\"perspective\" aui={{ … }}>",
-        "  …",
-        "</Radio>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -61,9 +46,6 @@ export default defineUsecase({
       token: "Radio.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The projection name, Perspective or Orthographic; PBS wraps each radio in a tooltip.",
-      code: [
-        "<Radio.Label>Perspective</Radio.Label>",
-      ].join("\n"),
     },
   ],
 });

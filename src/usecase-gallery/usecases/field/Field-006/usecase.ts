@@ -20,11 +20,6 @@ export default defineUsecase({
       token: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "Stacked wrapper holding the \"Anchor type\" label, the select and the help line; in ACE it becomes a column with a label-and-select row above the note.",
-      code: [
-        "<Field aui={{ scale: 'sm', sx: { gap: '3' } }}>",
-        "  …",
-        "</Field>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -32,9 +27,6 @@ export default defineUsecase({
       token: "Field.Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The \"Anchor type\" label that names the select; ACE puts it beside the trigger, taking half the row.",
-      code: [
-        "<Field.Label aui={{ scale: 'sm' }}>Anchor type</Field.Label>",
-      ].join("\n"),
     },
     {
       id: "trigger",
@@ -42,12 +34,6 @@ export default defineUsecase({
       token: "Field.SelectTrigger",
       selector: "[class~=\"aui-select-trigger\"]",
       description: "The closed 28px select trigger, surface coloured, that shows the chosen Adhesive option; the open list is Select-001.",
-      code: [
-        "<Field.SelectTrigger aui={{ scale: 'sm', color: 'surface', paint: 'fixed', sx: { width: 'fill', height: '28', … } }}>",
-        "  <Field.SelectValue />",
-        "  <Field.SelectChevron />",
-        "</Field.SelectTrigger>",
-      ].join("\n"),
     },
     {
       id: "value",
@@ -55,9 +41,6 @@ export default defineUsecase({
       token: "Field.SelectValue",
       selector: "[class~=\"aui-select-value\"]",
       description: "The text of the chosen option, \"Adhesive\".",
-      code: [
-        "<Field.SelectValue />",
-      ].join("\n"),
     },
     {
       id: "chevron",
@@ -65,9 +48,6 @@ export default defineUsecase({
       token: "Field.SelectChevron",
       selector: "[class~=\"aui-select-chevron\"]",
       description: "The disclosure chevron at the end of the trigger.",
-      code: [
-        "<Field.SelectChevron />",
-      ].join("\n"),
     },
     {
       id: "description",
@@ -75,9 +55,6 @@ export default defineUsecase({
       token: "Field.Description",
       selector: "[class~=\"aui-field-description\"]",
       description: "The help line \"Adhesive anchors need a cure time.\" under the control, 16/20 body-colour text, always visible.",
-      code: [
-        "<Field.Description>Adhesive anchors need a cure time.</Field.Description>",
-      ].join("\n"),
     },
   ],
 });

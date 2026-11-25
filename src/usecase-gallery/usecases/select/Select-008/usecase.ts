@@ -19,9 +19,6 @@ export default defineUsecase({
       token: 'Select.Trigger',
       selector: '[class~="aui-select-trigger"]',
       description: 'A bare Select with no Field: an "Hef" labelled (aria-label) outlined trigger at scale "xs" that fills its table cell.',
-      code: `<Select.Trigger aria-label="Hef" aui={{ scale: 'xs', color: 'surface', paint: 'fixed', sx: { width: 'fill' } }}>
-  {/* … */}
-</Select.Trigger>`,
     },
     {
       id: 'value',
@@ -30,7 +27,6 @@ export default defineUsecase({
       selector: '[class~="aui-select-value"]',
       text: true,
       description: 'Shows the effective embedment "6.000" for the row.',
-      code: `<Select.Value />`,
     },
     {
       id: 'chevron',
@@ -38,7 +34,6 @@ export default defineUsecase({
       token: 'Select.Chevron',
       selector: '[class~="aui-select-chevron"]',
       description: 'The chevron at the end of the compact trigger.',
-      code: `<Select.Chevron />`,
     },
     {
       id: 'popup',
@@ -46,9 +41,6 @@ export default defineUsecase({
       token: 'Select.Popup',
       selector: '[class~="aui-select-popup"]',
       description: 'Popup that matches the cell trigger width, 4px below it, listing 4.500, 6.000 and 7.500.',
-      code: `<Select.Popup matchTriggerWidth>
-  {/* … */}
-</Select.Popup>`,
     },
     {
       id: 'list',
@@ -56,9 +48,6 @@ export default defineUsecase({
       token: 'Select.List',
       selector: '[class~="aui-select-list"]',
       description: 'The list of the three Hef embedment values.',
-      code: `<Select.List>
-  {/* … */}
-</Select.List>`,
     },
     {
       id: 'item',
@@ -66,10 +55,6 @@ export default defineUsecase({
       token: 'Select.Item',
       selector: '[class~="aui-select-item"]',
       description: 'One embedment value row; the chosen 6.000 shows a raised fill.',
-      code: `<Select.Item value="4.5">
-  <Select.ItemText>4.500</Select.ItemText>
-  <Select.ItemIndicator>{null}</Select.ItemIndicator>
-</Select.Item>`,
     },
     {
       id: 'item-text',
@@ -77,7 +62,6 @@ export default defineUsecase({
       token: 'Select.ItemText',
       selector: '[class~="aui-select-item-text"]',
       description: 'The numeric value text, for example "7.500".',
-      code: `<Select.ItemText>4.500</Select.ItemText>`,
     },
     {
       id: 'indicator',
@@ -85,7 +69,6 @@ export default defineUsecase({
       token: 'Select.ItemIndicator',
       selector: '[class~="aui-select-item-indicator"]',
       description: 'Empty slot (`{null}`) at the end of each row.',
-      code: `<Select.ItemIndicator>{null}</Select.ItemIndicator>`,
     },
   ],
 });

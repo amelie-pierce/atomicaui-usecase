@@ -22,7 +22,6 @@ export default defineUsecase({
       token: "Button",
       description: "The report-ready Button in the ADC status bar: solid info (blue), extra small, soft shape.",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button aui={{ color: 'info', paint: 'solid', scale: 'xs', shape: 'soft' }}>\n  …\n</Button>",
     },
     {
       id: "icon",
@@ -30,7 +29,6 @@ export default defineUsecase({
       token: "Button.Icon",
       description: "The file glyph before the label that marks the item as a report.",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
-      code: "<Button.Icon name=\"file-lines\" />",
     },
     {
       id: "label",
@@ -39,7 +37,6 @@ export default defineUsecase({
       description: "The text \"Report is ready\" in a span, which reads \"Report is ready (outdated)\" when inputs changed.",
       selector: "[class~=\"aui-button\"] > span",
       text: true,
-      code: "<span>Report is ready</span>",
     },
   ],
 });

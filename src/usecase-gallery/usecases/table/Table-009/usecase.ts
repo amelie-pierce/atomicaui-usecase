@@ -19,7 +19,6 @@ export default defineUsecase({
       token: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Editable grid: a self-scrolling soft table at scale "sm", filling the width, whose body cells contain number fields.',
-      code: `<Table aria-label="Anchor spacing" scroll="self" aui={{ scale: 'sm', shape: 'soft', sx: { width: 'fill' } }}>`,
     },
     {
       id: 'head',
@@ -27,13 +26,6 @@ export default defineUsecase({
       token: 'Table.Head',
       selector: '[class~="aui-table-head"]',
       description: 'Column headings #, Column Spacing and Row Spacing.',
-      code: `<Table.Head>
-  <Table.Row>
-    <Table.HeaderCell aui={{ sx: { width: '32' } }}>#</Table.HeaderCell>
-    <Table.HeaderCell>Column Spacing</Table.HeaderCell>
-    <Table.HeaderCell>Row Spacing</Table.HeaderCell>
-  </Table.Row>
-</Table.Head>`,
     },
     {
       id: 'header-cell',
@@ -41,7 +33,6 @@ export default defineUsecase({
       token: 'Table.HeaderCell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'Heading for one editable spacing column; # is fixed at 32px.',
-      code: `<Table.HeaderCell>Column Spacing</Table.HeaderCell>`,
     },
     {
       id: 'body',
@@ -49,9 +40,6 @@ export default defineUsecase({
       token: 'Table.Body',
       selector: '[class~="aui-table-body"]',
       description: 'Rows of anchor spacings the user edits in place.',
-      code: `<Table.Body>
-  <Table.Row>…</Table.Row>
-</Table.Body>`,
     },
     {
       id: 'row',
@@ -59,11 +47,6 @@ export default defineUsecase({
       token: 'Table.Row',
       selector: '[class~="aui-table-row"]',
       description: 'Anchor 1, with an X and a Y spacing input in the other two cells.',
-      code: `<Table.Row>
-  <Table.Cell aui={{ sx: { width: '32' } }}>1</Table.Cell>
-  <Table.Cell>…</Table.Cell>
-  <Table.Cell>…</Table.Cell>
-</Table.Row>`,
     },
     {
       id: 'cell',
@@ -71,7 +54,6 @@ export default defineUsecase({
       token: 'Table.Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Body cell: the 32px row number, or the wrapper around one number field.',
-      code: `<Table.Cell aui={{ sx: { width: '32' } }}>1</Table.Cell>`,
     },
     {
       id: 'number-field',
@@ -79,14 +61,6 @@ export default defineUsecase({
       token: 'Field.NumberField',
       selector: '[class~="aui-number-field"]',
       description: 'The input that edits a spacing value: "X Spacing 1" starts at 6 and "Y Spacing 1" at 8, with min 1.',
-      code: `<Field.NumberField aria-label="X Spacing 1" defaultValue={6} min={1} aui={{ sx: { width: 'fill', minWidth: '0' } }}>
-  <Field.NumberFieldGroup aui={{ color: 'surface', paint: 'fixed' }}>
-    <Field.NumberFieldInput aui={{ sx: { minWidth: '0', textAlign: 'end' } }} />
-    <Field.NumberFieldUnit>
-      <Symbol>in</Symbol>
-    </Field.NumberFieldUnit>
-  </Field.NumberFieldGroup>
-</Field.NumberField>`,
     },
     {
       id: 'number-group',
@@ -94,9 +68,6 @@ export default defineUsecase({
       token: 'Field.NumberFieldGroup',
       selector: '[class~="aui-number-field-group"]',
       description: 'Fixed surface frame holding the input and its unit.',
-      code: `<Field.NumberFieldGroup aui={{ color: 'surface', paint: 'fixed' }}>
-  …
-</Field.NumberFieldGroup>`,
     },
     {
       id: 'number-input',
@@ -104,7 +75,6 @@ export default defineUsecase({
       token: 'Field.NumberFieldInput',
       selector: '[class~="aui-number-field-group"] [class~="aui-input"]',
       description: 'The editable numeric text, right-aligned.',
-      code: `<Field.NumberFieldInput aui={{ sx: { minWidth: '0', textAlign: 'end' } }} />`,
     },
     {
       id: 'number-unit',
@@ -112,9 +82,6 @@ export default defineUsecase({
       token: 'Field.NumberFieldUnit',
       selector: '[class~="aui-number-field-unit"]',
       description: 'The "in" unit that follows each value.',
-      code: `<Field.NumberFieldUnit>
-  <Symbol>in</Symbol>
-</Field.NumberFieldUnit>`,
     },
   ],
 });

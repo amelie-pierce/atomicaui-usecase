@@ -32,11 +32,6 @@ export default defineUsecase({
       token: "Type",
       selector: "[data-aui-typeface]",
       description: "The \"Object Visibility\" title, a Type role \"l4\" at semi-bold weight, that names the group of visibility checkboxes; some apps write it as a Field.Label.",
-      code: [
-        "<Type as=\"span\" role=\"l4\" weight=\"semi-bold\">",
-        "  Object Visibility",
-        "</Type>",
-      ].join("\n"),
     },
     {
       id: "checkbox",
@@ -44,28 +39,12 @@ export default defineUsecase({
       token: "Checkbox",
       selector: "[class~=\"aui-checkbox\"]",
       description: "One of the visibility checkboxes (Wall, Roof, and Base plate or Anchors in the scenes) that shows or hides that part of the 3D model; checked by default.",
-      code: [
-        "<Checkbox defaultSelected aui={{",
-        "  scale: 'sm',",
-        "  states: {",
-        "    unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },",
-        "    selected: { color: 'primary', paint: 'solid' },",
-        "  },",
-        "}}>",
-        "  <Checkbox.Label>Wall</Checkbox.Label>",
-        "</Checkbox>",
-      ].join("\n"),
     },
     {
       id: "indicator",
       name: "Indicator",
       selector: "[class~=\"aui-checkbox-indicator\"]",
       description: "The box that shows whether the model part is visible.",
-      code: [
-        "<Checkbox defaultSelected aui={{ … }}>",
-        "  …",
-        "</Checkbox>",
-      ].join("\n"),
     },
     {
       id: "icon",
@@ -73,9 +52,6 @@ export default defineUsecase({
       token: "Checkbox.Icon",
       selector: "[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]",
       description: "The \"check\" mark used in the ADC, ADM, FD, HCS and HS scenes; the compact example draws the box without one.",
-      code: [
-        "<Checkbox.Icon name=\"check\" />",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -83,9 +59,6 @@ export default defineUsecase({
       token: "Checkbox.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The part name beside the box, such as Wall or Roof, in the wrapped row of the 3D viewer controls.",
-      code: [
-        "<Checkbox.Label>Wall</Checkbox.Label>",
-      ].join("\n"),
     },
   ],
 });

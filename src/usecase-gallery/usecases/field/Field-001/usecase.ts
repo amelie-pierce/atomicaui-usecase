@@ -22,11 +22,6 @@ export default defineUsecase({
       token: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "Stacked number field at scale \"sm\" with a 3 gap; in the label-beside apps (ADM, ADC, ACE) it becomes a row that splits 137px for the label and 137px for the control.",
-      code: [
-        "<Field aui={{ scale: 'sm', sx: { gap: '3' } }}>",
-        "  …",
-        "</Field>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -34,9 +29,6 @@ export default defineUsecase({
       token: "Field.Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The \"Fc perp\" label above the control; the label-beside apps set it nowrap with an ellipsis and flex-basis half.",
-      code: [
-        "<Field.Label aui={{ scale: 'sm' }}>Fc perp</Field.Label>",
-      ].join("\n"),
     },
     {
       id: "control",
@@ -44,12 +36,6 @@ export default defineUsecase({
       token: "Field.Control",
       selector: "[class~=\"aui-field-control\"]",
       description: "The 28px outlined control row with 3/8 padding that holds the value and the unit side by side.",
-      code: [
-        "<Field.Control aui={{ scale: 'sm' }}>",
-        "  <Field.Input … />",
-        "  <Type as=\"span\" role=\"l4\" family=\"mono\">psi</Type>",
-        "</Field.Control>",
-      ].join("\n"),
     },
     {
       id: "input",
@@ -57,9 +43,6 @@ export default defineUsecase({
       token: "Field.Input",
       selector: "[class~=\"aui-field-control\"] > [class~=\"aui-input\"]",
       description: "The input showing 650, with inputMode \"decimal\" and the value aligned to the end so it sits next to the unit.",
-      code: [
-        "<Field.Input defaultValue=\"650\" aria-label=\"Fc perp\" inputMode=\"decimal\" aui={{ sx: { textAlign: 'end' } }} />",
-      ].join("\n"),
     },
     {
       id: "number-field",
@@ -67,14 +50,6 @@ export default defineUsecase({
       token: "Field.NumberField",
       selector: "[class~=\"aui-number-field\"]",
       description: "FD, AGPD, ADM and ADC wrap the value in a Field.NumberField group instead of a plain input, with no steppers, so the number is parsed and aligned at the end.",
-      code: [
-        "<Field.NumberField>",
-        "  <Field.NumberFieldGroup>",
-        "    <Field.NumberFieldInput aui={{ sx: { textAlign: 'end' } }} />",
-        "    <Field.NumberFieldUnit>…</Field.NumberFieldUnit>",
-        "  </Field.NumberFieldGroup>",
-        "</Field.NumberField>",
-      ].join("\n"),
     },
     {
       id: "unit",
@@ -82,9 +57,6 @@ export default defineUsecase({
       token: "Type",
       selector: "[class~=\"aui-field-control\"] > [data-aui-typeface], [class~=\"aui-number-field-unit\"]",
       description: "The \"psi\" unit after the value, a mono role \"l4\" Type here; HS, PFD and RWS render it 14px semi-bold, FD and AGPD as a 16px regular mono unit.",
-      code: [
-        "<Type as=\"span\" role=\"l4\" family=\"mono\">psi</Type>",
-      ].join("\n"),
     },
   ],
 });

@@ -28,19 +28,6 @@ export default defineUsecase({
       token: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Framed results grid: scale "sm", soft shape, a 1px outlined border and "all-cells" tonal borders. It scrolls on its own (scroll "self"), pins the first column with frozenColumns={1} and is sortable.',
-      code: `<Table
-  aria-label="Results"
-  aui={{ scale: 'sm', shape: 'soft', sx: { gap: '0', minHeight: '0', borderColor: 'outlined', … } }}
-  border="all-cells"
-  borderStyle="tonal"
-  scroll="self"
-  bodyFit="content"
-  fit="fill"
-  minInlineSize={256}
-  frozenColumns={1}
-  sortable
-  headerCellAui={{ color: 'raised', sx: { textAlign: 'center' } }}
->`,
     },
     {
       id: 'head',
@@ -48,11 +35,6 @@ export default defineUsecase({
       token: 'Table.Head',
       selector: '[class~="aui-table-head"]',
       description: 'Raised header band holding the single row of sortable column headings, Model and Load (lb).',
-      code: `<Table.Head>
-  <Table.Row data-aui-header-row>
-    …
-  </Table.Row>
-</Table.Head>`,
     },
     {
       id: 'header-cell',
@@ -60,18 +42,12 @@ export default defineUsecase({
       token: 'Table.HeaderCell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'Centred raised heading with a 128px width that matches its body column; the label sits in one span so a wrapped label stays a single flex item.',
-      code: `<Table.HeaderCell aui={{ scale: 'sm', color: 'raised', sx: { width: '128', textAlign: 'center' } }} title="Sort by Model" sortDirection={false} onSortToggle={() => {}}>
-  <span>Model</span>
-</Table.HeaderCell>`,
     },
     {
       id: 'sort-button',
       name: 'Sort button',
       selector: '[class~="aui-table-sort-button"]',
       description: 'The sort control built from sortDirection and onSortToggle; its title reads "Sort by Model" or "Sort by Load".',
-      code: `title="Sort by Load"
-sortDirection={false}
-onSortToggle={() => {}}`,
     },
     {
       id: 'body',
@@ -79,10 +55,6 @@ onSortToggle={() => {}}`,
       token: 'Table.Body',
       selector: '[class~="aui-table-body"]',
       description: 'The two result rows, Model B-200 (2,210) and Model C-300 (1,180), scrolling under the pinned header.',
-      code: `<Table.Body>
-  <Table.Row>…</Table.Row>
-  <Table.Row>…</Table.Row>
-</Table.Body>`,
     },
     {
       id: 'row',
@@ -90,10 +62,6 @@ onSortToggle={() => {}}`,
       token: 'Table.Row',
       selector: '[class~="aui-table-row"]',
       description: 'One candidate product, a plain read-only row with no selection or expander.',
-      code: `<Table.Row>
-  <Table.Cell aui={{ scale: 'sm', sx: { width: '128', textAlign: 'left' } }}>Model B-200</Table.Cell>
-  <Table.Cell aui={{ scale: 'sm', sx: { width: '128', textAlign: 'center' } }}>2,210</Table.Cell>
-</Table.Row>`,
     },
     {
       id: 'cell',
@@ -101,7 +69,6 @@ onSortToggle={() => {}}`,
       token: 'Table.Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Value cell using the same 128px width token as its header; the model name is left-aligned in the pinned first column and the load is centred.',
-      code: `<Table.Cell aui={{ scale: 'sm', sx: { width: '128', textAlign: 'center' } }}>2,210</Table.Cell>`,
     },
   ],
 });

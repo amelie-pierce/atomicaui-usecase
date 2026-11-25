@@ -21,9 +21,6 @@ export default defineUsecase({
       token: 'Field',
       selector: '[class~="aui-field"]',
       description: 'Field at scale "sm", full width, laid out for the ACE licence gate dialog above the accept checkbox.',
-      code: `<Field aui={{ scale: 'sm', sx: { width: 'fill', minWidth: '0' } }}>
-  {/* … */}
-</Field>`,
     },
     {
       id: 'label',
@@ -31,7 +28,6 @@ export default defineUsecase({
       token: 'Field.Label',
       selector: '[class~="aui-field-label"]',
       description: 'The "Country" label above the licence gate trigger.',
-      code: `<Field.Label>Country</Field.Label>`,
     },
     {
       id: 'trigger',
@@ -39,9 +35,6 @@ export default defineUsecase({
       token: 'Field.SelectTrigger',
       selector: '[class~="aui-select-trigger"]',
       description: 'The flag-led outlined trigger in the licence gate; unlike the configuration panel the ACE scene states no scale or height.',
-      code: `<Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', scale: 'sm', sx: { width: 'fill', height: '28' } }}>
-  {/* … */}
-</Field.SelectTrigger>`,
     },
     {
       id: 'trigger-icon',
@@ -49,7 +42,6 @@ export default defineUsecase({
       token: 'Field.SelectIcon',
       selector: '[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])',
       description: 'The flag icon that leads the trigger and mirrors the chosen row.',
-      code: `<Field.SelectIcon name="flag" aria-hidden />`,
     },
     {
       id: 'value',
@@ -58,7 +50,6 @@ export default defineUsecase({
       selector: '[class~="aui-select-value"]',
       text: true,
       description: 'Shows "United States" as the pre-filled country before the licence is accepted.',
-      code: `<Field.SelectValue />`,
     },
     {
       id: 'chevron',
@@ -66,7 +57,6 @@ export default defineUsecase({
       token: 'Field.SelectChevron',
       selector: '[class~="aui-select-chevron"]',
       description: 'The chevron at the end of the trigger.',
-      code: `<Field.SelectChevron />`,
     },
     {
       id: 'popup',
@@ -74,9 +64,6 @@ export default defineUsecase({
       token: 'Field.SelectPopup',
       selector: '[class~="aui-select-popup"]',
       description: 'Popup of the trigger width, 4px below the trigger, listing the three countries.',
-      code: `<Field.SelectPopup matchTriggerWidth>
-  {/* … */}
-</Field.SelectPopup>`,
     },
     {
       id: 'list',
@@ -84,9 +71,6 @@ export default defineUsecase({
       token: 'Field.SelectList',
       selector: '[class~="aui-select-list"]',
       description: 'The list of Canada, United States and Mexico rows.',
-      code: `<Field.SelectList>
-  {/* … */}
-</Field.SelectList>`,
     },
     {
       id: 'item',
@@ -94,11 +78,6 @@ export default defineUsecase({
       token: 'Field.SelectItem',
       selector: '[class~="aui-select-item"]',
       description: 'A country row with flag, name and a trailing check slot for the chosen country.',
-      code: `<Field.SelectItem value="ca">
-  <Field.SelectIcon name="flag" aria-hidden />
-  <Field.SelectItemText>Canada</Field.SelectItemText>
-  <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
-</Field.SelectItem>`,
     },
     {
       id: 'item-icon',
@@ -106,7 +85,6 @@ export default defineUsecase({
       token: 'Field.SelectIcon',
       selector: '[class~="aui-select-item"] > [class~="aui-contained-icon"]',
       description: 'The flag icon at the start of each row, before the country name.',
-      code: `<Field.SelectIcon name="flag" aria-hidden />`,
     },
     {
       id: 'item-text',
@@ -114,7 +92,6 @@ export default defineUsecase({
       token: 'Field.SelectItemText',
       selector: '[class~="aui-select-item-text"]',
       description: 'The country name: Canada, United States or Mexico.',
-      code: `<Field.SelectItemText>Canada</Field.SelectItemText>`,
     },
     {
       id: 'indicator',
@@ -122,7 +99,6 @@ export default defineUsecase({
       token: 'Field.SelectItemIndicator',
       selector: '[class~="aui-select-item-indicator"]',
       description: 'In the ACE licence gate scene this slot holds a check icon on the chosen row; the base example keeps it empty.',
-      code: `<Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>`,
     },
     {
       id: 'check',
@@ -130,7 +106,6 @@ export default defineUsecase({
       token: 'Field.SelectIcon',
       selector: '[class~="aui-select-item-indicator"] [class~="aui-contained-icon"]',
       description: 'The check drawn at the end of the chosen country row in the ACE scene.',
-      code: `<Field.SelectIcon name="check" aria-hidden aui={{ scale: 'xs' }} />`,
     },
   ],
 });

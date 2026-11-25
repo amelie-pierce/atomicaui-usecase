@@ -22,7 +22,6 @@ export default defineUsecase({
       token: "Button",
       description: "The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill.",
       selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
-      code: "<Button aui={{ scale: 'sm' }}>Close</Button>",
     },
     {
       id: "label",
@@ -31,7 +30,6 @@ export default defineUsecase({
       description: "The text \"Close\" that dismisses the info dialog, the only choice it offers.",
       selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
       text: true,
-      code: "Close",
     },
   ],
 });

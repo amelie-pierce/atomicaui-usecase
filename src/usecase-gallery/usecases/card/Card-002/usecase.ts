@@ -19,7 +19,6 @@ export default defineUsecase({
       token: 'Card',
       selector: '[class~="aui-card"]',
       description: 'Square 96 by 96 soft tile with no padding; ADM lays three of them across under Explore More Applications.',
-      code: `<Card aui={{ paint: 'text', profile: 'no-padding', scale: 'sm', shape: 'soft', sx: { width: '96', height: '96' } }}>`,
     },
     {
       id: 'image-container',
@@ -27,9 +26,6 @@ export default defineUsecase({
       token: 'Card.ImageContainer',
       selector: '[class~="aui-card-image-container"]',
       description: 'Fills the whole card (width and height "fill"), so the picture is the entire tile.',
-      code: `<Card.ImageContainer aui={{ profile: 'no-padding', sx: { width: 'fill', height: 'fill' } }}>
-  <Card.Image … />
-</Card.ImageContainer>`,
     },
     {
       id: 'image',
@@ -37,7 +33,6 @@ export default defineUsecase({
       token: 'Card.Image',
       selector: '[class~="aui-card-image"]',
       description: 'The application picture with alt "Application", a 1:1 ratio and fit="contain".',
-      code: `<Card.Image src={MOCK_IMAGE_SRC} alt="Application" fit="contain" ratio="1:1" />`,
     },
   ],
 });

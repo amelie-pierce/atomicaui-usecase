@@ -21,7 +21,6 @@ export default defineUsecase({
       token: "Button",
       description: "The Add job Button under the Job tally table: solid secondary, small, stretching across the ACE column.",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button aui={{ color: 'secondary', paint: 'solid', scale: 'sm' }}>\n  …\n</Button>",
     },
     {
       id: "icon",
@@ -29,7 +28,6 @@ export default defineUsecase({
       token: "Button.Icon",
       description: "The plus glyph before the label, marked aria-hidden since the label already says what it does.",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
-      code: "<Button.Icon name=\"plus\" aria-hidden />",
     },
     {
       id: "label",
@@ -38,7 +36,6 @@ export default defineUsecase({
       description: "The text \"Add job\" that appends an empty job entry.",
       selector: "[class~=\"aui-button\"]",
       text: true,
-      code: "Add job",
     },
   ],
 });

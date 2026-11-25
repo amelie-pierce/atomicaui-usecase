@@ -26,9 +26,6 @@ export default defineUsecase({
       token: 'Dialog.Backdrop',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the New from Template picker.',
-      code: `<Dialog open modal={false}>
-  <Dialog.Portal container={host}>
-    <Dialog.Backdrop />`,
     },
     {
       id: 'popup',
@@ -36,7 +33,6 @@ export default defineUsecase({
       token: 'Dialog.Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The narrow default-scale picker window, 480px wide (ADM widens it to 520px).',
-      code: `<Dialog.Popup initialFocus={false}>`,
     },
     {
       id: 'title',
@@ -44,11 +40,6 @@ export default defineUsecase({
       token: 'Dialog.Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title bar reading "New from Template"; the ACE and HS scenes title it "Templates" and ADM keeps "New from Template".',
-      code: `<Dialog.Title aui={{ color: 'raised' }}>
-  New from Template
-  <Dialog.Spacer />
-  <Dialog.Close aria-label="Close" />
-</Dialog.Title>`,
     },
     {
       id: 'title-text',
@@ -57,8 +48,6 @@ export default defineUsecase({
       selector: '[class~="aui-dialog-title"]',
       text: true,
       description: 'The picker name at the start of the title bar.',
-      code: `<Dialog.Title aui={{ color: 'raised' }}>
-  New from Template`,
     },
     {
       id: 'spacer',
@@ -66,7 +55,6 @@ export default defineUsecase({
       token: 'Dialog.Spacer',
       selector: '[class~="aui-dialog-spacer"]',
       description: 'The gap between the picker name and the close X.',
-      code: `<Dialog.Spacer />`,
     },
     {
       id: 'close',
@@ -74,7 +62,6 @@ export default defineUsecase({
       token: 'Dialog.Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X that abandons the picker (labelled "Cancel" in the ACE scene and "Close Templates" in the HS scene).',
-      code: `<Dialog.Close aria-label="Close" />`,
     },
     {
       id: 'body',
@@ -82,11 +69,6 @@ export default defineUsecase({
       token: 'Dialog.Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The body that holds the radio list of templates; the HS and FD version also scrolls (overflow auto).',
-      code: `<Dialog.Body>
-  <Type data-ug-part="template-text" as="p" role="p3">
-    The list of templates goes here.
-  </Type>
-</Dialog.Body>`,
     },
     {
       id: 'template-text',
@@ -94,9 +76,6 @@ export default defineUsecase({
       token: 'Type',
       text: true,
       description: 'The p3 placeholder line that stands in for the list of templates in the Dialog frame.',
-      code: `<Type data-ug-part="template-text" as="p" role="p3">
-  The list of templates goes here.
-</Type>`,
     },
     {
       id: 'radio-group',
@@ -104,7 +83,6 @@ export default defineUsecase({
       token: 'RadioGroup',
       selector: '[class~="aui-radio-group"]',
       description: 'The one RadioGroup that makes the built-in and own templates a single choice, defaulting to the second template.',
-      code: `<RadioGroup defaultValue="2">`,
     },
     {
       id: 'accordion',
@@ -112,7 +90,6 @@ export default defineUsecase({
       token: 'Accordion',
       selector: '[class~="aui-accordion"]',
       description: 'The ACE and HS scenes group the rows into Default Templates and My Templates sections, both open; ADM uses plain sections instead.',
-      code: `<Accordion openMultiple defaultValue={['default-templates', 'my-templates']}>`,
     },
     {
       id: 'section-trigger',
@@ -120,17 +97,12 @@ export default defineUsecase({
       token: 'Accordion.Trigger',
       selector: '[class~="aui-accordion-trigger"]',
       description: 'The header of a section: a Type l4 label in ACE, plain text in HS and FD, each ending in a chevron.',
-      code: `<Accordion.Trigger>
-  <Type role="l4">Default Templates</Type>
-  <Accordion.Chevron />
-</Accordion.Trigger>`,
     },
     {
       id: 'section',
       name: 'Plain section',
       token: 'View',
       description: 'The ADM section that stacks a muted heading over its radio rows with a gap of 4.',
-      code: `<View data-ug-part="section" aui={SECTION}>`,
     },
     {
       id: 'section-heading',
@@ -138,7 +110,6 @@ export default defineUsecase({
       token: 'Type',
       text: true,
       description: 'The muted "Default Templates" and "My Templates" labels of the ADM sections.',
-      code: `<Type data-ug-part="section-heading" color="muted">Default Templates</Type>`,
     },
     {
       id: 'template-radio',
@@ -146,9 +117,6 @@ export default defineUsecase({
       token: 'Radio',
       selector: '[class~="aui-radio"]',
       description: 'A template row such as "Two-beam connection": an outlined tonal surface when unselected and a solid primary one when selected, filling the row.',
-      code: `<Radio value="1" aui={{ ...SELECTION, sx: { flex: 'fill' } }}>
-  <Radio.Label>Two-beam connection</Radio.Label>
-</Radio>`,
     },
     {
       id: 'template-label',
@@ -156,16 +124,12 @@ export default defineUsecase({
       token: 'Radio.Label',
       selector: '[class~="aui-control-row"] > [class~="aui-label"]',
       description: 'The template name inside the radio, such as "Three-beam connection".',
-      code: `<Radio.Label>Three-beam connection</Radio.Label>`,
     },
     {
       id: 'row-action',
       name: 'Row actions',
       token: 'Button',
       description: 'The actions after a user-owned template: the Download, Delete (error colour) and Edit text buttons in ACE and ADM, or the download, trash and pen icon buttons in HS and FD.',
-      code: `<Button>Download</Button>
-<Button aui={{ color: 'error' }}>Delete</Button>
-<Button>Edit</Button>`,
     },
   ],
 });

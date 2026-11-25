@@ -33,9 +33,6 @@ export default defineUsecase({
       token: 'Field',
       selector: '[class~="aui-field"]',
       description: 'Field at scale "sm" with a 3 gap that stacks the label above the select; the ADM, ADC and ACE scenes lay it out as a row with the label beside the trigger.',
-      code: `<Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-  {/* … */}
-</Field>`,
     },
     {
       id: 'label',
@@ -43,7 +40,6 @@ export default defineUsecase({
       token: 'Field.Label',
       selector: '[class~="aui-field-label"]',
       description: 'The "Download Duration" label at scale "sm". In the label-beside scenes it is nowrap with an ellipsis and shares the row with the trigger.',
-      code: `<Field.Label aui={{ scale: 'sm' }}>Download Duration</Field.Label>`,
     },
     {
       id: 'trigger',
@@ -51,9 +47,6 @@ export default defineUsecase({
       token: 'Field.SelectTrigger',
       selector: '[class~="aui-select-trigger"]',
       description: 'Outlined trigger (color "surface", paint "fixed") filling the field width, 28px high with 16/20 text; it opens the Dead, Snow and Roof choices.',
-      code: `<Field.SelectTrigger aui={{ scale: 'sm', color: 'surface', paint: 'fixed', sx: { width: 'fill', height: '28', minHeight: '28', paddingBlockStart: '3', paddingBlockEnd: '3', fontSize: '16', lineHeight: '20' } }}>
-  {/* … */}
-</Field.SelectTrigger>`,
     },
     {
       id: 'value',
@@ -62,7 +55,6 @@ export default defineUsecase({
       selector: '[class~="aui-select-value"]',
       text: true,
       description: 'Shows the chosen "Snow (115)" in the trigger; Field.SelectValue reads it from the items list.',
-      code: `<Field.SelectValue />`,
     },
     {
       id: 'chevron',
@@ -70,7 +62,6 @@ export default defineUsecase({
       token: 'Field.SelectChevron',
       selector: '[class~="aui-select-chevron"]',
       description: 'The chevron at the end of the trigger that marks it as a list opener.',
-      code: `<Field.SelectChevron />`,
     },
     {
       id: 'popup',
@@ -78,9 +69,6 @@ export default defineUsecase({
       token: 'Field.SelectPopup',
       selector: '[class~="aui-select-popup"]',
       description: 'Popup that matches the trigger width and sits 4px below it, listing Dead (90), Snow (115) and Roof (125).',
-      code: `<Field.SelectPopup matchTriggerWidth>
-  {/* … */}
-</Field.SelectPopup>`,
     },
     {
       id: 'list',
@@ -88,9 +76,6 @@ export default defineUsecase({
       token: 'Field.SelectList',
       selector: '[class~="aui-select-list"]',
       description: 'The scrolling list inside the popup that holds the three duration rows.',
-      code: `<Field.SelectList>
-  {/* … */}
-</Field.SelectList>`,
     },
     {
       id: 'item',
@@ -98,10 +83,6 @@ export default defineUsecase({
       token: 'Field.SelectItem',
       selector: '[class~="aui-select-item"]',
       description: 'One duration row; the chosen one is marked by a raised fill rather than a glyph.',
-      code: `<Field.SelectItem value="dead">
-  <Field.SelectItemText>Dead (90)</Field.SelectItemText>
-  <Field.SelectItemIndicator />
-</Field.SelectItem>`,
     },
     {
       id: 'item-text',
@@ -109,7 +90,6 @@ export default defineUsecase({
       token: 'Field.SelectItemText',
       selector: '[class~="aui-select-item-text"]',
       description: 'The row label, for example "Dead (90)" or "Roof (125)".',
-      code: `<Field.SelectItemText>Dead (90)</Field.SelectItemText>`,
     },
     {
       id: 'indicator',
@@ -117,7 +97,6 @@ export default defineUsecase({
       token: 'Field.SelectItemIndicator',
       selector: '[class~="aui-select-item-indicator"]',
       description: 'The empty indicator slot at the end of a row; the AGPD and ACE scenes draw a check icon in it for the chosen row.',
-      code: `<Field.SelectItemIndicator />`,
     },
     {
       id: 'check',
@@ -125,7 +104,6 @@ export default defineUsecase({
       token: 'Field.SelectIcon',
       selector: '[class~="aui-select-item-indicator"] [class~="aui-contained-icon"]',
       description: 'The 16px check on the chosen row in the AGPD and ACE scenes; the base example leaves the indicator empty.',
-      code: `<Field.SelectIcon name="check" aria-hidden aui={{ scale: 'xs' }} />`,
     },
   ],
 });

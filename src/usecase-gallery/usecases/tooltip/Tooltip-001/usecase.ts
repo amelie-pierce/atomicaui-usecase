@@ -29,7 +29,6 @@ export default defineUsecase({
       name: 'Trigger',
       token: 'Tooltip.Trigger',
       description: 'The icon-only gear IconButton labelled "Settings" (scale "sm", text paint, secondary colour) that the tooltip names; it is passed to the trigger through render.',
-      code: `<Tooltip.Trigger render={<IconButton data-ug-part="trigger" name="gear" aria-label="Settings" aui={{ scale: 'sm', paint: 'text', color: 'secondary' }} />} />`,
     },
     {
       id: 'positioner',
@@ -37,7 +36,6 @@ export default defineUsecase({
       token: 'Tooltip.Positioner',
       selector: '[class~="aui-tooltip-positioner"]',
       description: 'Places the label below the gear button with a 4px offset (side="bottom"); the HS app requests the default top side and RWS the bottom.',
-      code: `<Tooltip.Positioner side="bottom" sideOffset={4}>`,
     },
     {
       id: 'popup',
@@ -45,7 +43,6 @@ export default defineUsecase({
       token: 'Tooltip.Popup',
       selector: '[class~="aui-tooltip-popup"]',
       description: 'The small tooltip surface that holds the one-word label.',
-      code: `<Tooltip.Popup>Settings</Tooltip.Popup>`,
     },
     {
       id: 'label',
@@ -54,7 +51,6 @@ export default defineUsecase({
       selector: '[class~="aui-tooltip-popup"]',
       text: true,
       description: 'The text "Settings", repeating the button\'s accessible name so sighted users can read it.',
-      code: `<Tooltip.Popup>Settings</Tooltip.Popup>`,
     },
   ],
 });

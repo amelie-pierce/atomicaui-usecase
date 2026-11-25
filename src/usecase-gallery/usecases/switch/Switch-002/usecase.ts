@@ -22,22 +22,12 @@ export default defineUsecase({
       token: "Switch",
       selector: "[class~=\"aui-switch\"]",
       description: "The on/off control, on by default, with a solid primary track when selected; each app places it in a popover, a table toolbar or a dialog.",
-      code: [
-        "<Switch defaultSelected aui={{ states: { selected: { color: 'primary', paint: 'solid' } } }}>",
-        "  …",
-        "</Switch>",
-      ].join("\n"),
     },
     {
       id: "thumb",
       name: "Thumb",
       selector: "[class~=\"aui-switch-thumb\"]",
       description: "The thumb that slides to the end of the track when Group by model is on.",
-      code: [
-        "<Switch defaultSelected … >",
-        "  …",
-        "</Switch>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -45,9 +35,6 @@ export default defineUsecase({
       token: "Switch.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The option text \"Group by model\" beside the switch; the scenes swap it for Show Optimized Models, Send me a copy or the ADM draft switches.",
-      code: [
-        "<Switch.Label>Group by model</Switch.Label>",
-      ].join("\n"),
     },
   ],
 });

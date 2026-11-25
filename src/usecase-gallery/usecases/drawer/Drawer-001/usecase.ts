@@ -28,9 +28,6 @@ export default defineUsecase({
       token: 'Drawer.Backdrop',
       selector: '[class~="aui-drawer-backdrop"]',
       description: 'The scrim behind the drawer; in the ACE scene it starts 36px down so the top bar stays uncovered.',
-      code: `<Drawer open modal={false} swipeDirection="right" disablePointerDismissal>
-  <Drawer.Portal container={host}>
-    <Drawer.Backdrop />`,
     },
     {
       id: 'popup',
@@ -38,7 +35,6 @@ export default defineUsecase({
       token: 'Drawer.Popup',
       selector: '[class~="aui-drawer-popup"]',
       description: 'The 288px-wide, full-height, square no-padding panel labelled "Navigation" that slides in from the right edge on a phone.',
-      code: `<Drawer.Popup aria-label="Navigation" aui={{ profile: 'no-padding', shape: 'none', sx: { width: '288', height: 'fill' } }}>`,
     },
     {
       id: 'content',
@@ -46,7 +42,6 @@ export default defineUsecase({
       token: 'Drawer.Content',
       selector: '[class~="aui-drawer-content"]',
       description: 'The region that holds the vertical menubar of top bar actions.',
-      code: `<Drawer.Content>`,
     },
     {
       id: 'menubar',
@@ -54,7 +49,6 @@ export default defineUsecase({
       token: 'Menubar',
       selector: '[class~="aui-menubar"]',
       description: 'The vertical Menubar at scale "sm" that stacks the actions full width.',
-      code: `<Menubar orientation="vertical" aui={{ scale: 'sm', sx: { display: 'flex', flexDirection: 'column', alignItems: 'stretch', width: 'fill' } }}>`,
     },
     {
       id: 'item',
@@ -62,9 +56,6 @@ export default defineUsecase({
       token: 'Menubar.Button',
       selector: '[class~="aui-drawer-content"] [class~="aui-button"]',
       description: 'The Save to device, Open from device and About rows of the example; the ACE scene adds Print.',
-      code: `<Menubar.Button>Save to device</Menubar.Button>
-<Menubar.Button>Open from device</Menubar.Button>
-<Menubar.Button>About</Menubar.Button>`,
     },
     {
       id: 'toggle',
@@ -72,9 +63,6 @@ export default defineUsecase({
       token: 'Menubar.IconButton',
       selector: '[class~="aui-menubar"][aria-label="Top bar"] [class~="aui-button"]',
       description: 'The ACE scene top bar icon button (an xmark labelled "Close navigation") that closes the drawer.',
-      code: `<Menubar aria-label="Top bar">
-  <Menubar.IconButton name="xmark" aria-label="Close navigation" />
-</Menubar>`,
     },
   ],
 });

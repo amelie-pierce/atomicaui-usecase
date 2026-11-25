@@ -20,9 +20,6 @@ export default defineUsecase({
       token: 'Dialog.Backdrop',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim that interrupts the user before the Reset Inputs confirm; the gallery draws the alert as a non-modal Dialog.',
-      code: `<Dialog open modal={false}>
-  <Dialog.Portal container={host}>
-    <Dialog.Backdrop />`,
     },
     {
       id: 'popup',
@@ -30,7 +27,6 @@ export default defineUsecase({
       token: 'Dialog.Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The confirm window at scale "sm" with a soft shape; 560px wide in HCS (480px in ACE and ADM, 640px default scale in ADC).',
-      code: `<Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }} style={{ '--aui-width': 'min(560px, 100%)' } as React.CSSProperties}>`,
     },
     {
       id: 'title',
@@ -38,12 +34,6 @@ export default defineUsecase({
       token: 'Dialog.Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title bar that carries the warning icon, "Warning: Reset Inputs?", the spacer and the close X.',
-      code: `<Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-  <Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />
-  Warning: Reset Inputs?
-  <Dialog.Spacer />
-  <Dialog.Close aria-label="Close Reset" aui={{ scale: 'sm' }} />
-</Dialog.Title>`,
     },
     {
       id: 'icon',
@@ -51,7 +41,6 @@ export default defineUsecase({
       token: 'Dialog.Icon',
       selector: '[class~="aui-dialog-title"] [class~="aui-contained-icon"]',
       description: 'The triangle-exclamation glyph in the warning colour that marks this prompt as a caution.',
-      code: `<Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />`,
     },
     {
       id: 'title-text',
@@ -60,9 +49,6 @@ export default defineUsecase({
       selector: '[class~="aui-dialog-title"]',
       text: true,
       description: 'The question "Warning: Reset Inputs?" that names what the user is about to do.',
-      code: `<Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-  <Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />
-  Warning: Reset Inputs?`,
     },
     {
       id: 'spacer',
@@ -70,7 +56,6 @@ export default defineUsecase({
       token: 'Dialog.Spacer',
       selector: '[class~="aui-dialog-spacer"]',
       description: 'The gap that pushes the close X to the end of the title bar.',
-      code: `<Dialog.Spacer />`,
     },
     {
       id: 'close',
@@ -78,7 +63,6 @@ export default defineUsecase({
       token: 'Dialog.Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X labelled "Close Reset" that leaves the inputs untouched.',
-      code: `<Dialog.Close aria-label="Close Reset" aui={{ scale: 'sm' }} />`,
     },
     {
       id: 'description',
@@ -86,9 +70,6 @@ export default defineUsecase({
       token: 'Dialog.Description',
       selector: '[class~="aui-dialog-description"]',
       description: 'The sentence that says what is lost: "You are about to reset all input fields. This cannot be undone." (ADC explains that project information and design names are preserved).',
-      code: `<Dialog.Description aui={{ scale: 'sm' }}>
-  You are about to reset all input fields. This cannot be undone.
-</Dialog.Description>`,
     },
     {
       id: 'actions',
@@ -96,28 +77,24 @@ export default defineUsecase({
       token: 'Dialog.Actions',
       selector: '[class~="aui-dialog-actions"]',
       description: 'The footer that sits at the end in HCS, ACE and ADM; in ADC it is split and wraps three buttons.',
-      code: `<Dialog.Actions aui={{ scale: 'sm' }}>`,
     },
     {
       id: 'cancel',
       name: 'Cancel',
       token: 'Dialog.Button',
       description: 'The default Cancel that backs out of the reset.',
-      code: `<Dialog.Button data-ug-part="cancel" aui={{ scale: 'sm' }}>Cancel</Dialog.Button>`,
     },
     {
       id: 'confirm',
       name: 'Reset',
       token: 'Dialog.Button',
       description: 'The solid destructive button: a secondary Reset in HCS, ACE and ADM, and the solid error "Reset All Designs to Standard" in ADC.',
-      code: `<Dialog.Button data-ug-part="confirm" aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Reset</Dialog.Button>`,
     },
     {
       id: 'reset-current',
       name: 'Reset current design',
       token: 'Dialog.Button',
       description: 'The ADC-only text error button "Reset Current Design to Standard" that offers the narrower reset.',
-      code: `<Dialog.Button data-ug-part="reset-current" aui={{ color: 'error', paint: 'text', sx: { whiteSpace: 'nowrap' } }}>Reset Current Design to Standard</Dialog.Button>`,
     },
   ],
 });

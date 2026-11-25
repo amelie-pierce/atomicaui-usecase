@@ -30,9 +30,6 @@ export default defineUsecase({
       token: 'Dialog.Backdrop',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the licence gate that the user must answer before the app opens.',
-      code: `<Dialog open modal={false}>
-  <Dialog.Portal container={host}>
-    <Dialog.Backdrop />`,
     },
     {
       id: 'popup',
@@ -40,7 +37,6 @@ export default defineUsecase({
       token: 'Dialog.Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The full-size licence window: scale "sm" with width and height set to "fill" so it fills the stage.',
-      code: `<Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: 'fill', height: 'fill' } }}>`,
     },
     {
       id: 'title',
@@ -48,11 +44,6 @@ export default defineUsecase({
       token: 'Dialog.Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The title bar naming the "Website Application License Agreement"; HCS and the example raise it, the other apps leave it plain.',
-      code: `<Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-  Website Application License Agreement
-  <Dialog.Spacer />
-  <Dialog.Close aria-label="Close Website Application License Agreement" aui={{ scale: 'sm' }} />
-</Dialog.Title>`,
     },
     {
       id: 'title-text',
@@ -61,8 +52,6 @@ export default defineUsecase({
       selector: '[class~="aui-dialog-title"]',
       text: true,
       description: 'The agreement name at the start of the title bar.',
-      code: `<Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-  Website Application License Agreement`,
     },
     {
       id: 'spacer',
@@ -70,7 +59,6 @@ export default defineUsecase({
       token: 'Dialog.Spacer',
       selector: '[class~="aui-dialog-spacer"]',
       description: 'The gap before the close X in the title bar.',
-      code: `<Dialog.Spacer />`,
     },
     {
       id: 'close',
@@ -78,7 +66,6 @@ export default defineUsecase({
       token: 'Dialog.Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X, which also declines the licence (labelled "Do Not Accept" in the ADM scene); PBS hides it.',
-      code: `<Dialog.Close aria-label="Close Website Application License Agreement" aui={{ scale: 'sm' }} />`,
     },
     {
       id: 'description',
@@ -86,9 +73,6 @@ export default defineUsecase({
       token: 'Dialog.Description',
       selector: '[class~="aui-dialog-description"]',
       description: 'The HCS-only line "Review and accept to start using the HCS prototype." that stays fixed under the title while the body scrolls.',
-      code: `<Dialog.Description aui={{ scale: 'sm', sx: { flex: 'none' } }}>
-  Review and accept to start using the HCS prototype.
-</Dialog.Description>`,
     },
     {
       id: 'body',
@@ -96,16 +80,12 @@ export default defineUsecase({
       token: 'Dialog.Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The scroll owner of the window; it scrolls when the licence text is longer than the popup.',
-      code: `<Dialog.Body aui={{ scale: 'sm' }}>`,
     },
     {
       id: 'licence-text',
       name: 'Licence text',
       token: 'Type',
       description: 'The licence sections as Type p2 text: one sample clause in the example, and the full mock agreement in a gap-12 column View in the HCS and ADM scenes.',
-      code: `<Type data-ug-part="licence-text" role="p2" aui={{ sx: { flex: 'none' } }}>
-  1. The licence text goes here; the Body scrolls when it is longer than the popup.
-</Type>`,
     },
   ],
 });

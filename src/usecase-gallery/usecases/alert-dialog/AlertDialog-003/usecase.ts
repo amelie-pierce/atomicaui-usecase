@@ -31,9 +31,6 @@ export default defineUsecase({
       token: 'Dialog.Backdrop',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the reset confirm shared by five apps.',
-      code: `<Dialog open modal={false}>
-  <Dialog.Portal container={host}>
-    <Dialog.Backdrop />`,
     },
     {
       id: 'popup',
@@ -41,7 +38,6 @@ export default defineUsecase({
       token: 'Dialog.Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The 560px soft confirm window at scale "sm" (ADM uses 480px, HS 384px, ADC a 640px cap).',
-      code: `<Dialog.Popup initialFocus={false} style={{ width: 560 }} aui={{ scale: 'sm', shape: 'soft' }}>`,
     },
     {
       id: 'title',
@@ -49,12 +45,6 @@ export default defineUsecase({
       token: 'Dialog.Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title bar with the warning icon and "Warning: Reset Inputs?"; ACE leaves out the close X and HS leaves the bar plain.',
-      code: `<Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-  <Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />
-  Warning: Reset Inputs?
-  <Dialog.Spacer />
-  <Dialog.Close aria-label="Close Reset" aui={{ scale: 'sm' }} />
-</Dialog.Title>`,
     },
     {
       id: 'icon',
@@ -62,7 +52,6 @@ export default defineUsecase({
       token: 'Dialog.Icon',
       selector: '[class~="aui-dialog-title"] [class~="aui-contained-icon"]',
       description: 'The warning-coloured triangle-exclamation icon at the start of the title.',
-      code: `<Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />`,
     },
     {
       id: 'title-text',
@@ -71,9 +60,6 @@ export default defineUsecase({
       selector: '[class~="aui-dialog-title"]',
       text: true,
       description: 'The question "Warning: Reset Inputs?".',
-      code: `<Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-  <Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />
-  Warning: Reset Inputs?`,
     },
     {
       id: 'spacer',
@@ -81,7 +67,6 @@ export default defineUsecase({
       token: 'Dialog.Spacer',
       selector: '[class~="aui-dialog-spacer"]',
       description: 'The gap before the close X in the title bar; HS also places one between Cancel and Reset in its footer.',
-      code: `<Dialog.Spacer />`,
     },
     {
       id: 'close',
@@ -89,7 +74,6 @@ export default defineUsecase({
       token: 'Dialog.Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X labelled "Close Reset"; in ADC it sits in a "Close" tooltip trigger.',
-      code: `<Dialog.Close aria-label="Close Reset" aui={{ scale: 'sm' }} />`,
     },
     {
       id: 'body',
@@ -97,8 +81,6 @@ export default defineUsecase({
       token: 'Dialog.Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The HS-only body that wraps its description instead of placing it directly in the popup.',
-      code: `<Dialog.Body>
-  <Dialog.Description>`,
     },
     {
       id: 'description',
@@ -106,9 +88,6 @@ export default defineUsecase({
       token: 'Dialog.Description',
       selector: '[class~="aui-dialog-description"]',
       description: 'The warning that all input fields will be reset and that the project configurations erased cannot be recovered.',
-      code: `<Dialog.Description aui={{ scale: 'sm' }}>
-  You are about to reset all input fields. This will erase all of your project configurations and cannot be undone.
-</Dialog.Description>`,
     },
     {
       id: 'actions',
@@ -116,35 +95,30 @@ export default defineUsecase({
       token: 'Dialog.Actions',
       selector: '[class~="aui-dialog-actions"]',
       description: 'The footer that holds Cancel and the destructive button; split and wrapping in ADC.',
-      code: `<Dialog.Actions aui={{ scale: 'sm' }}>`,
     },
     {
       id: 'cancel',
       name: 'Cancel',
       token: 'Dialog.Button',
       description: 'The default Cancel next to the destructive action.',
-      code: `<Dialog.Button data-ug-part="cancel" aui={{ scale: 'sm' }}>Cancel</Dialog.Button>`,
     },
     {
       id: 'confirm',
       name: 'Reset',
       token: 'Dialog.Button',
       description: 'The solid secondary Reset that clears every input in HCS, ACE, ADM and HS.',
-      code: `<Dialog.Button data-ug-part="confirm" aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Reset</Dialog.Button>`,
     },
     {
       id: 'reset-current',
       name: 'Reset current design',
       token: 'Dialog.Button',
       description: 'The ADC text error button "Reset Current Design to Standard".',
-      code: `<Dialog.Button data-ug-part="reset-current" aui={{ color: 'error', paint: 'text', sx: { whiteSpace: 'nowrap' } }}>Reset Current Design to Standard</Dialog.Button>`,
     },
     {
       id: 'reset-all',
       name: 'Reset all designs',
       token: 'Dialog.Button',
       description: 'The ADC solid error button "Reset All Designs to Standard".',
-      code: `<Dialog.Button data-ug-part="reset-all" aui={{ color: 'error', paint: 'solid', sx: { whiteSpace: 'nowrap' } }}>Reset All Designs to Standard</Dialog.Button>`,
     },
     {
       id: 'close-tooltip',
@@ -152,7 +126,6 @@ export default defineUsecase({
       token: 'Tooltip.Popup',
       selector: '[class~="aui-tooltip-popup"]',
       description: 'The ADC tooltip that labels the close X "Close" on hover.',
-      code: `<Tooltip.Popup aui={{ paint: 'solid', color: 'secondary', scale: 'sm' }}>Close</Tooltip.Popup>`,
     },
   ],
 });

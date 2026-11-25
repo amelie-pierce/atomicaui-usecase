@@ -30,28 +30,12 @@ export default defineUsecase({
       token: "Checkbox",
       selector: "[class~=\"aui-checkbox\"]",
       description: "The checkable control for one yes or no input of an input section, checked by default, with the primary solid selected style.",
-      code: [
-        "<Checkbox defaultSelected aui={{",
-        "  scale: 'sm',",
-        "  states: {",
-        "    unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },",
-        "    selected: { color: 'primary', paint: 'solid' },",
-        "  },",
-        "}}>",
-        "  …",
-        "</Checkbox>",
-      ].join("\n"),
     },
     {
       id: "indicator",
       name: "Indicator",
       selector: "[class~=\"aui-checkbox-indicator\"]",
       description: "The box that shows the Galvanized state; HCS, HS, FD and ADC draw it with the same outlined, surface-tonal off style.",
-      code: [
-        "<Checkbox defaultSelected aui={{ … }}>",
-        "  …",
-        "</Checkbox>",
-      ].join("\n"),
     },
     {
       id: "icon",
@@ -59,9 +43,6 @@ export default defineUsecase({
       token: "Checkbox.Icon",
       selector: "[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]",
       description: "The \"check\" mark rendered inside the box when Galvanized is on.",
-      code: [
-        "<Checkbox.Icon name=\"check\" />",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -69,9 +50,6 @@ export default defineUsecase({
       token: "Checkbox.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The caption \"Galvanized\" beside the box; the other apps use their own option text, such as Same inputs as Left Hip, and ADM instead puts a Field.Label (Center to joint) before a label-less checkbox.",
-      code: [
-        "<Checkbox.Label>Galvanized</Checkbox.Label>",
-      ].join("\n"),
     },
     {
       id: "group",
@@ -79,12 +57,6 @@ export default defineUsecase({
       token: "Fieldset",
       selector: "[class~=\"aui-fieldset\"]",
       description: "ACE groups the checkbox under a titled group, with a Fieldset and a legend above the option.",
-      code: [
-        "<Fieldset>",
-        "  <Fieldset.Legend>…</Fieldset.Legend>",
-        "  …",
-        "</Fieldset>",
-      ].join("\n"),
     },
     {
       id: "legend",
@@ -92,9 +64,6 @@ export default defineUsecase({
       token: "Fieldset.Legend",
       selector: "[class~=\"aui-fieldset-legend\"]",
       description: "The group title that sits above the checkbox in the ACE titled scene.",
-      code: [
-        "<Fieldset.Legend>…</Fieldset.Legend>",
-      ].join("\n"),
     },
     {
       id: "field-label",
@@ -102,9 +71,6 @@ export default defineUsecase({
       token: "Field.Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The label of a Field above a checkbox in a form row.",
-      code: [
-        "<Field.Label>…</Field.Label>",
-      ].join("\n"),
     },
   ],
 });

@@ -10,7 +10,7 @@ src/usecase-gallery/
   define.ts, types.ts     shared types and define helpers
   kit.ts                  the only import boundary for AtomicAUI
   catalog/                glob discovery, validation and snippet extraction
-  hooks/                  routing, stage hosting and Anatomy highlighting
+  hooks/                  routing, stage hosting, stage fit and Anatomy highlighting
   ui/                     gallery pages and detail panes
   styles/gallery.scss     layout and token-based chrome
   usecases/
@@ -35,7 +35,7 @@ The tree is component > UI type > use case. A use case is one business action su
 
 Every use case has `options` in `usecase.ts`. One option is one distinct rendered UI of the action, including an enabled/disabled state, icon treatment, app-specific structure or context. Option names describe the UI, never the app. Apps with identical rendered UI can share an option; a measured difference gets a different option.
 
-The detail page has exactly one option selector, a vertical radio group on the left above the Document. Choosing it updates the Component UI, In context UI, Anatomy, app badges and complete Document together. The right column shows the preview with a `Component` / `In context` toggle for the two views; there is no Document/Code tab. The document contains both Component UI and In context code sections, plus complete API and Anatomy details. Save and Copy use the selected In context code.
+The detail page has exactly one option selector: a select in the header of the left column, beside the `Component` / `In context` toggle for the two views. Choosing an option updates the preview, Anatomy, app badges and complete Document together. The right column is the Document; there is no Document/Code tab. The document contains both Component UI and In context code sections, plus complete API and Anatomy details. Save and Copy use the selected In context code.
 
 Example shape:
 
@@ -66,7 +66,6 @@ export default defineUsecase({
       token: 'Button',
       selector: '[data-ug-part="button"]',
       description: 'The visible Submit action for this UI.',
-      code: '<Button>Submit</Button>',
     },
   ],
   options: [
@@ -84,13 +83,13 @@ The catalog loads `Scene` and `Example` from `options/<id>/scene.tsx` and `examp
 
 ## Anatomy and document quality
 
-Anatomy is authored per use case and option, not generic boilerplate. Re-audit it against the mounted UI whenever the option changes. Every visible part must have one shared part id linked to the exact element through a selector or `data-ug-part`. Include a specific description, usage notes, states, accessibility information and a code sample for every part (rendered as plain inline text in Anatomy, not as a block code box). Hide only a part the selected UI genuinely does not render.
+Anatomy is authored per use case and option, not generic boilerplate. Re-audit it against the mounted UI whenever the option changes. Every visible part must have one shared part id linked to the exact element through a selector or `data-ug-part`. Include a specific description, usage notes, states and accessibility information for every part. Anatomy steps carry no code: no code sample or code block under a step. Hide only a part the selected UI genuinely does not render.
 
-For a dialog, list the actual rendered shell and content: overlay when present, container/popup, header/title, close icon, body/content, footer and each action button. If a body contains a form, accordion or radio list, describe the actual visible controls and keep their code in the selected option's document. The existing Anatomy hook and highlight overlay use these links for hover and keyboard focus.
+For a dialog, list the actual rendered shell and content: overlay when present, container/popup, header/title, close icon, body/content, footer and each action button. If a body contains a form, accordion or radio list, describe the actual visible controls and keep their code in the selected option's document. Hovering or focusing a step highlights its element in the preview; the preview never changes Anatomy.
 
 ## In context scenes
 
-`scene.tsx` is the selected option's real app context. It receives `{ children, host }`, places the Component UI where the source app places it and retains every visible part of that UI. Keep scenes minimal but faithful; use mock data only for content. Record source paths for the apps listed on the option and explain deliberate omissions in `how`.
+`scene.tsx` is the selected option's real app context. It receives `{ children, host }`, places the Component UI where the source app places it and retains every visible part of that UI. `host` is the stage's content wrapper, which `hooks/use-stage-fit.ts` zooms down when the content is larger than the stage. Keep scenes minimal but faithful; use mock data only for content. Record source paths for the apps listed on the option and explain deliberate omissions in `how`.
 
 Portaled Dialog, Popover and Tooltip parts use the stage host and preview-only props (`open`, `modal={false}`, `container={host}`, `anchor={host}`) that `catalog/snippet.ts` strips from copied code. Popover and Tooltip scenes are open and non-modal so the visible popup can be inspected. The stage is the preview's frame; do not add a page-covering overlay outside it.
 
@@ -98,4 +97,4 @@ Portaled Dialog, Popover and Tooltip parts use the stage host and preview-only p
 
 `example.tsx` and each option scene are read with Vite `?raw`, so previews and code stay together. Keep `return` as the final statement of `Example`. The catalog validates ids, options, scenes, examples, Anatomy links and that the union of option `apps` equals the use case `apps`.
 
-Run `npm run build`, then use a real browser to sweep every component, use case and option. Check deep links such as `#Dialog-001` and `#Dialog-002`, confirm no blank page, all parts hover/focus correctly, code and Anatomy follow the selected option, and the console has no errors.
+Run `npm run build`, then use a real browser to sweep every component, use case and option. Check deep links such as `#Dialog-001` and `#Dialog-002`, confirm no blank page, all parts hover/focus correctly, Anatomy follows the selected option, no preview scrolls, and the console has no errors.

@@ -19,11 +19,6 @@ export default defineUsecase({
       token: "ToggleGroup",
       selector: "[class~=\"aui-toggle-group\"]",
       description: "The fastener switch named \"Fastener\", with STN22 chosen, that sizes to its labels and draws no outline of its own.",
-      code: [
-        "<ToggleGroup aria-label=\"Fastener\" aui={{ paint: 'text' }} value={['2']} multiple={false}>",
-        "  …",
-        "</ToggleGroup>",
-      ].join("\n"),
     },
     {
       id: "item",
@@ -31,17 +26,6 @@ export default defineUsecase({
       token: "ToggleGroup.Item",
       selector: "[class~=\"aui-toggle-group\"] > button",
       description: "One option, STN22 or SDWB, rendered through a text Button at scale \"xs\" with zero padding so only the segment shows.",
-      code: [
-        "<ToggleGroup.Item",
-        "  key={value}",
-        "  value={value}",
-        "  render={(props, state) => (",
-        "    <Button {...props} aui={{ color: 'surface', paint: 'text', scale: 'xs', shape: 'none', … }}>",
-        "      …",
-        "    </Button>",
-        "  )}",
-        "/>",
-      ].join("\n"),
     },
     {
       id: "segment",
@@ -49,18 +33,6 @@ export default defineUsecase({
       token: "View",
       selector: "[class~=\"aui-toggle-group\"] > button [class~=\"aui-view\"]",
       description: "The span that paints the pressed option solid secondary with soft corners and 6px inline padding, so each segment hugs its label.",
-      code: [
-        "<View",
-        "  as=\"span\"",
-        "  aui={{",
-        "    color: state.pressed ? 'secondary' : 'surface',",
-        "    paint: state.pressed ? 'solid' : 'text',",
-        "    scale: 'xs',",
-        "    shape: state.pressed ? 'soft' : 'none',",
-        "    sx: { lineHeight: '16', paddingBlockStart: '3', … paddingInlineStart: '6', paddingInlineEnd: '6' },",
-        "  }}",
-        ">",
-      ].join("\n"),
     },
     {
       id: "text",
@@ -68,11 +40,6 @@ export default defineUsecase({
       token: "Type",
       selector: "[class~=\"aui-toggle-group\"] > button [data-aui-typeface]",
       description: "The fastener name, STN22 or SDWB, in a Type role \"l5\" at medium weight.",
-      code: [
-        "<Type as=\"span\" role=\"l5\" weight=\"medium\">",
-        "  {text}",
-        "</Type>",
-      ].join("\n"),
     },
     {
       id: "field",
@@ -80,11 +47,6 @@ export default defineUsecase({
       token: "Field.Control",
       selector: "[class~=\"aui-field-control\"]",
       description: "The Diameter / Style field that the switch sits above and drives in the AGPD scene.",
-      code: [
-        "<Field.Control>",
-        "  …",
-        "</Field.Control>",
-      ].join("\n"),
     },
   ],
 });

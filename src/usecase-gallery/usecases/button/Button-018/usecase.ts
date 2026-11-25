@@ -22,7 +22,6 @@ export default defineUsecase({
       token: "Button",
       description: "The Select products Button that stands in for the Products field: extra small, surface color with fixed (bordered) paint, soft shape and full width with content at the start.",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button aui={{ scale: 'xs', color: 'surface', paint: 'fixed', shape: 'soft', sx: { width: 'fill', justifyContent: 'between' } }}>\n  Select products\n</Button>",
     },
     {
       id: "label",
@@ -31,7 +30,6 @@ export default defineUsecase({
       description: "The placeholder text \"Select products\" shown until hover or focus swaps in the picker.",
       selector: "[class~=\"aui-button\"]",
       text: true,
-      code: "Select products",
     },
   ],
 });

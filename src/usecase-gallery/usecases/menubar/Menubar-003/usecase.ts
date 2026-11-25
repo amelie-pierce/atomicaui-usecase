@@ -30,9 +30,6 @@ export default defineUsecase({
       token: 'Menubar',
       selector: '[class~="aui-menubar"]',
       description: 'The top bar whose last menu is Help Center; the HCS scene sets it at scale "sm" and names it "Main navigation".',
-      code: `<Menubar aria-label="Top bar">
-  {/* … */}
-</Menubar>`,
     },
     {
       id: 'trigger',
@@ -40,7 +37,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownTrigger',
       selector: '[class~="aui-menubar-trigger"]',
       description: 'The text trigger "Help Center".',
-      code: `<Menubar.DropdownTrigger>Help Center</Menubar.DropdownTrigger>`,
     },
     {
       id: 'popup',
@@ -48,9 +44,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownPopup',
       selector: '[class~="aui-dropdown-popup"]',
       description: 'The 192px wide popup under the trigger (288px in the HCS scene), aligned to the trigger start.',
-      code: `<Menubar.DropdownPopup aui={{ sx: { width: '192' } }}>
-  {/* … */}
-</Menubar.DropdownPopup>`,
     },
     {
       id: 'item',
@@ -58,7 +51,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownItem',
       selector: '[class~="aui-dropdown-item"]',
       description: 'A help action row: "Feedback", "Tutorials" or "Add to Home Screen".',
-      code: `<Menubar.DropdownItem>Feedback</Menubar.DropdownItem>`,
     },
     {
       id: 'submenu-trigger',
@@ -66,7 +58,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownSubmenuTrigger',
       selector: '[class~="aui-dropdown-submenu-trigger"]',
       description: 'In the HCS scene "Tutorials" is a submenu trigger that opens one tutorial to its right.',
-      code: `<Menubar.DropdownSubmenuTrigger>Tutorials</Menubar.DropdownSubmenuTrigger>`,
     },
   ],
 });

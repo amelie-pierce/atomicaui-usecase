@@ -19,12 +19,6 @@ export default defineUsecase({
       token: 'Dropdown.Trigger',
       selector: '[class~="aui-dropdown-trigger"]',
       description: 'Square icon trigger labelled "Show hidden designs": color "surface-alt", paint "solid", soft shape, flex "none" with a default border.',
-      code: `<Dropdown.Trigger
-  aria-label="Show hidden designs"
-  aui={{ color: 'surface-alt', paint: 'solid', scale: 'sm', profile: 'square', shape: 'soft', sx: { flex: 'none', borderColor: 'default' } }}
->
-  {/* … */}
-</Dropdown.Trigger>`,
     },
     {
       id: 'icon',
@@ -32,7 +26,6 @@ export default defineUsecase({
       token: 'Dropdown.Icon',
       selector: '[class~="aui-dropdown-trigger"] > [class~="aui-contained-icon"]',
       description: 'The ellipsis-vertical glyph that is the only content of the trigger.',
-      code: `<Dropdown.Icon name="ellipsis-vertical" />`,
     },
     {
       id: 'popup',
@@ -40,9 +33,6 @@ export default defineUsecase({
       token: 'Dropdown.Popup',
       selector: '[class~="aui-dropdown-popup"]',
       description: 'Popup at scale "sm", capped at 256px high and scrolling vertically when many designs are hidden, aligned to the trigger start.',
-      code: `<Dropdown.Popup aui={{ scale: 'sm', sx: { maxHeight: '256', overflowY: 'auto' } }}>
-  {/* … */}
-</Dropdown.Popup>`,
     },
     {
       id: 'item',
@@ -50,7 +40,6 @@ export default defineUsecase({
       token: 'Dropdown.Item',
       selector: '[class~="aui-dropdown-item"]',
       description: 'A plain row for one hidden design: Design 3, Design 4 or Design 5. None is selected; choosing one activates that tab.',
-      code: `<Dropdown.Item>Design 3</Dropdown.Item>`,
     },
     {
       id: 'visible-tab',
@@ -58,7 +47,6 @@ export default defineUsecase({
       token: 'Tabs.Tab',
       selector: '[class~="aui-tabs-tab"]',
       description: 'In the ADC scene one visible design tab, "Design 1", stands beside the trigger for the rest of the rail.',
-      code: `<Tabs.Tab value="d1" aui={CHIP_AUI}>Design 1</Tabs.Tab>`,
     },
   ],
 });

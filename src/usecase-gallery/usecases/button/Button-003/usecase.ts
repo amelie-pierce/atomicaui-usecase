@@ -23,7 +23,6 @@ export default defineUsecase({
       token: "Button",
       description: "The Reset to default Button: small, solid, raised color with a soft shape, placed beside a group of beam property inputs in a side panel.",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button aui={{ scale: 'sm', paint: 'solid', color: 'raised', shape: 'soft' }}>\n  …\n</Button>",
     },
     {
       id: "icon",
@@ -31,7 +30,6 @@ export default defineUsecase({
       token: "Button.Icon",
       description: "The counter-clockwise arrow that signals returning the group to its defaults.",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
-      code: "<Button.Icon name=\"arrow-rotate-left\" />",
     },
     {
       id: "label",
@@ -40,7 +38,6 @@ export default defineUsecase({
       description: "The text \"Reset to default\" naming what the Button restores.",
       selector: "[class~=\"aui-button\"]",
       text: true,
-      code: "Reset to default",
     },
   ],
 });

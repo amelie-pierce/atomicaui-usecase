@@ -21,7 +21,6 @@ export default defineUsecase({
       token: 'Panels',
       selector: '[class~="aui-panels"]',
       description: 'Vertical split group that stacks the panes, 560px wide and 160px tall at most.',
-      code: `<Panels orientation="vertical" aui={{ scale: 'sm' }} style={{ inlineSize: 'min(100%, 560px)', blockSize: 160 }}>`,
     },
     {
       id: 'panel',
@@ -29,14 +28,6 @@ export default defineUsecase({
       token: 'Panels.Panel',
       selector: '[class~="aui-panels-panel"]',
       description: 'Input on top (50% default height) and Output below, both surface-alt soft panes that may shrink to 40px high.',
-      code: `<Panels.Panel
-  id="input"
-  defaultSize="50%"
-  minSize="40px"
-  aui={{ profile: 'block-padding', scale: 'sm', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
->
-  <Type as="h2" role="l3" weight="semi-bold">Input</Type>
-</Panels.Panel>`,
     },
     {
       id: 'resize-handle',
@@ -44,7 +35,6 @@ export default defineUsecase({
       token: 'Panels.ResizeHandle',
       selector: '[class~="aui-panels-resize-handle"]',
       description: '6px primary horizontal bar between Input and Output; its label is "Resize Input and Output panels" in the example and "Resize Input and results panels" in the HCS scene.',
-      code: `<Panels.ResizeHandle aria-label="Resize Input and Output panels" color="primary" width="6px" />`,
     },
   ],
 });

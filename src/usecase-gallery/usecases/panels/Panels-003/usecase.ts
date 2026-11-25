@@ -20,7 +20,6 @@ export default defineUsecase({
       token: 'Panels',
       selector: '[class~="aui-panels"]',
       description: 'Vertical split group, 560px wide and 200px tall at most, whose top pane can fold to a rail.',
-      code: `<Panels orientation="vertical" aui={{ scale: 'sm' }} style={{ inlineSize: 'min(100%, 560px)', blockSize: 200 }}>`,
     },
     {
       id: 'panel',
@@ -28,14 +27,6 @@ export default defineUsecase({
       token: 'Panels.Panel',
       selector: '[class~="aui-panels-panel"]',
       description: 'The Input pane is collapsible with a 40px collapsedSize (starts at 40px in the HCS scene) and minSize 120px; the Output pane below stays open.',
-      code: `<Panels.Panel
-  id="input"
-  collapsible
-  collapsedSize="40px"
-  defaultSize="50%"
-  minSize="120px"
-  aui={{ profile: 'block-padding', scale: 'sm', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
->`,
     },
     {
       id: 'content',
@@ -43,9 +34,6 @@ export default defineUsecase({
       token: 'Panels.Content',
       selector: '[class~="aui-panels-content"]',
       description: 'HCS scene: the pane body that holds the Input heading beside the rail, hidden when the panel is collapsed.',
-      code: `<Panels.Content aui={{ paint: 'text', profile: 'no-padding', sx: { position: 'relative', display: 'flex', flexDirection: 'column', flex: 'fill', overflow: 'hidden', minWidth: '0', minHeight: '0' } }}>
-  <Type as="h2" role="l3" weight="semi-bold">Input</Type>
-</Panels.Content>`,
     },
     {
       id: 'trigger',
@@ -53,12 +41,6 @@ export default defineUsecase({
       token: 'Panels.Trigger',
       selector: '[class~="aui-panels-trigger"]',
       description: 'HCS scene: angle-down icon button labelled "Expand Input" on the 40px rail, with a bottom tooltip, that reopens the Input pane.',
-      code: `<Panels.Trigger
-  targetId="hcs-input"
-  name="angle-down"
-  aria-label="Expand Input"
-  aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'square', shape: 'soft' }}
-/>`,
     },
     {
       id: 'resize-handle',
@@ -66,7 +48,6 @@ export default defineUsecase({
       token: 'Panels.ResizeHandle',
       selector: '[class~="aui-panels-resize-handle"]',
       description: '6px primary horizontal bar between Input and the results pane.',
-      code: `<Panels.ResizeHandle aria-label="Resize Input and results panels" color="primary" width="6px" />`,
     },
   ],
 });

@@ -28,27 +28,18 @@ export default defineUsecase({
       token: "FileUpload",
       selector: "[class~=\"aui-file-upload\"]",
       description: "The dashed single-file drop surface (multiple={false}) with the idle message, shown in the body of the upload dialog.",
-      code: [
-        "<FileUpload multiple={false} messages={{ idle: { text: 'Drop your file here or', action: 'Browse' } }} />",
-      ].join("\n"),
     },
     {
       id: "icon",
       name: "Icon",
       selector: "[class~=\"aui-file-upload-icon\"]",
       description: "The upload icon at the top of the drop area.",
-      code: [
-        "<FileUpload multiple={false} messages={{ idle: { text: 'Drop your file here or', action: 'Browse' } }} />",
-      ].join("\n"),
     },
     {
       id: "body",
       name: "Body",
       selector: "[class~=\"aui-file-upload-body\"]",
       description: "The row below the icon that holds the prompt and the browse action.",
-      code: [
-        "<FileUpload multiple={false} messages={{ idle: { text: 'Drop your file here or', action: 'Browse' } }} />",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -56,18 +47,12 @@ export default defineUsecase({
       selector: "[class~=\"aui-file-upload-label\"]",
       text: true,
       description: "The idle text \"Drop your file here or\" that invites a drag and drop.",
-      code: [
-        "messages={{ idle: { text: 'Drop your file here or', … } }}",
-      ].join("\n"),
     },
     {
       id: "action",
       name: "Browse action",
       selector: "[class~=\"aui-file-upload-action\"]",
       description: "The \"Browse\" action that opens the device file picker as the alternative to dropping.",
-      code: [
-        "messages={{ idle: { …, action: 'Browse' } }}",
-      ].join("\n"),
     },
   ],
 });

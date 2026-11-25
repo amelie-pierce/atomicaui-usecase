@@ -20,11 +20,6 @@ export default defineUsecase({
       token: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "Stacked text field with a 3 gap that ties the Connection ID label to its single-line control; ADC lays it out as a wrapping row with a 96px label.",
-      code: [
-        "<Field aui={{ scale: 'sm', sx: { gap: '3' } }}>",
-        "  …",
-        "</Field>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -32,9 +27,6 @@ export default defineUsecase({
       token: "Field.Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The \"Connection ID\" label above the control; in ADC it is a 96px end-aligned label with a required asterisk in the error colour.",
-      code: [
-        "<Field.Label aui={{ scale: 'sm' }}>Connection ID</Field.Label>",
-      ].join("\n"),
     },
     {
       id: "control",
@@ -42,11 +34,6 @@ export default defineUsecase({
       token: "Field.Control",
       selector: "[class~=\"aui-field-control\"]",
       description: "The 28px surface-coloured outlined frame, 3/8 padding and a 4px radius, that wraps the text input.",
-      code: [
-        "<Field.Control aui={{ scale: 'sm' }}>",
-        "  <Field.Input defaultValue=\"C-1042\" aria-label=\"Connection ID\" />",
-        "</Field.Control>",
-      ].join("\n"),
     },
     {
       id: "input",
@@ -54,9 +41,6 @@ export default defineUsecase({
       token: "Field.Input",
       selector: "[class~=\"aui-field-control\"] > [class~=\"aui-input\"]",
       description: "The editable line of text, prefilled with C-1042 and named by its aria-label.",
-      code: [
-        "<Field.Input defaultValue=\"C-1042\" aria-label=\"Connection ID\" />",
-      ].join("\n"),
     },
   ],
 });

@@ -19,11 +19,6 @@ export default defineUsecase({
       token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The secondary solid chip at scale \"xs\" with soft corners that marks the whole app state, shown in the ADC beta notice and beside the menu.",
-      code: [
-        "<Chip aui={{ color: 'secondary', paint: 'solid', scale: 'xs', shape: 'soft' }}>",
-        "  …",
-        "</Chip>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -32,9 +27,6 @@ export default defineUsecase({
       selector: "[class~=\"aui-chip-label\"]",
       text: true,
       description: "The word BETA that states the status.",
-      code: [
-        "<Chip.Label>BETA</Chip.Label>",
-      ].join("\n"),
     },
   ],
 });

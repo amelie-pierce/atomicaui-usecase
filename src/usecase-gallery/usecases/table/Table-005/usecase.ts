@@ -21,7 +21,6 @@ export default defineUsecase({
       token: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Header-less message grid with a11y="table", "all-cells" tonal borders, scale "sm" and a soft shape; it sits inside an expanded result row.',
-      code: `<Table a11y="table" border="all-cells" borderStyle="tonal" aui={{ scale: 'sm', shape: 'soft' }}>`,
     },
     {
       id: 'body',
@@ -29,9 +28,6 @@ export default defineUsecase({
       token: 'Table.Body',
       selector: '[class~="aui-table-body"]',
       description: 'Contains only body rows, one per failed or warning check; there is no Table.Head.',
-      code: `<Table.Body>
-  <Table.Row>…</Table.Row>
-</Table.Body>`,
     },
     {
       id: 'row',
@@ -39,10 +35,6 @@ export default defineUsecase({
       token: 'Table.Row',
       selector: '[class~="aui-table-row"]',
       description: 'One check message: the status chip followed by its text.',
-      code: `<Table.Row>
-  <Table.Cell aui={{ sx: { width: '96' } }}>…</Table.Cell>
-  <Table.Cell>Edge distance is below the minimum.</Table.Cell>
-</Table.Row>`,
     },
     {
       id: 'status-cell',
@@ -50,9 +42,6 @@ export default defineUsecase({
       token: 'Table.Cell',
       selector: '[class~="aui-table-cell"]:first-child',
       description: 'Fixed 96px first column that holds the status chip.',
-      code: `<Table.Cell aui={{ sx: { width: '96' } }}>
-  <Chip aui={{ color: 'danger', paint: 'tonal', scale: 'xs' }}>…</Chip>
-</Table.Cell>`,
     },
     {
       id: 'chip',
@@ -60,9 +49,6 @@ export default defineUsecase({
       token: 'Chip',
       selector: '[class~="aui-chip"]',
       description: 'Small danger-tonal xs chip that marks the check as a failure.',
-      code: `<Chip aui={{ color: 'danger', paint: 'tonal', scale: 'xs' }}>
-  <Chip.Label>Fail</Chip.Label>
-</Chip>`,
     },
     {
       id: 'chip-label',
@@ -71,7 +57,6 @@ export default defineUsecase({
       selector: '[class~="aui-chip-label"]',
       text: true,
       description: 'The word "Fail" inside the chip.',
-      code: `<Chip.Label>Fail</Chip.Label>`,
     },
     {
       id: 'message-cell',
@@ -79,7 +64,6 @@ export default defineUsecase({
       token: 'Table.Cell',
       selector: '[class~="aui-table-cell"]:last-child',
       description: 'Message text that explains the check, for example "Edge distance is below the minimum."',
-      code: `<Table.Cell>Edge distance is below the minimum.</Table.Cell>`,
     },
   ],
 });

@@ -25,28 +25,24 @@ export default defineUsecase({
       name: "Reset button",
       token: "IconButton",
       description: "The icon-only rotate-left button at the start of the footer that resets the columns to their default order and visibility.",
-      code: "<IconButton data-ug-part=\"reset\" name=\"rotate-left\" aria-label=\"Reset columns to default\" aui={{ paint: 'text' }} />",
     },
     {
       id: "actions",
       name: "Action group",
       token: "View",
       description: "The row at the end of the footer that holds Cancel and Save with an 8px gap.",
-      code: "<View data-ug-part=\"actions\" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', alignItems: 'center', gap: '8' } }}>\n  …\n</View>",
     },
     {
       id: "cancel",
       name: "Cancel",
       token: "Button",
       description: "The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS).",
-      code: "<Button data-ug-part=\"cancel\" aui={{ paint: 'text' }}>Cancel</Button>",
     },
     {
       id: "save",
       name: "Save",
       token: "Button",
       description: "The solid secondary Save Button that applies the column changes (scale \"sm\" in HCS, default scale in HS).",
-      code: "<Button data-ug-part=\"save\" aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Save</Button>",
     },
   ],
 });

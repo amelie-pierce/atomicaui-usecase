@@ -19,11 +19,6 @@ export default defineUsecase({
       token: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "The wrapper at scale \"sm\", filling the popover width, that ties the \"Units\" label to the segment row.",
-      code: [
-        "<Field aui={{ scale: 'sm', sx: { width: 'fill', minWidth: '0' } }}>",
-        "  …",
-        "</Field>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -31,9 +26,6 @@ export default defineUsecase({
       token: "Field.Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The \"Units\" label above the segments, referenced by aria-labelledby so the group is named.",
-      code: [
-        "<Field.Label id=\"units-label\">Units</Field.Label>",
-      ].join("\n"),
     },
     {
       id: "group",
@@ -41,11 +33,6 @@ export default defineUsecase({
       token: "ToggleGroup",
       selector: "[class~=\"aui-toggle-group\"]",
       description: "The single-select group (multiple={false}) with Metric chosen, whose segments share the full width.",
-      code: [
-        "<ToggleGroup value={['metric']} multiple={false} aria-labelledby=\"units-label\">",
-        "  …",
-        "</ToggleGroup>",
-      ].join("\n"),
     },
     {
       id: "item",
@@ -53,17 +40,6 @@ export default defineUsecase({
       token: "ToggleGroup.Item",
       selector: "[class~=\"aui-toggle-group\"] > button",
       description: "One option, Metric or Imperial, rendered through a text Button at scale \"xs\" with no padding that flexes to fill.",
-      code: [
-        "<ToggleGroup.Item",
-        "  key={option}",
-        "  value={option}",
-        "  render={(props, state) => (",
-        "    <Button {...props} aui={{ color: 'surface', paint: 'text', scale: 'xs', shape: 'none', … }}>",
-        "      …",
-        "    </Button>",
-        "  )}",
-        "/>",
-      ].join("\n"),
     },
     {
       id: "segment",
@@ -71,18 +47,6 @@ export default defineUsecase({
       token: "View",
       selector: "[class~=\"aui-toggle-group\"] > button [class~=\"aui-view\"]",
       description: "The inner span that paints the segment: solid secondary with soft corners when pressed, plain text on surface otherwise.",
-      code: [
-        "<View",
-        "  as=\"span\"",
-        "  aui={{",
-        "    color: state.pressed ? 'secondary' : 'surface',",
-        "    paint: state.pressed ? 'solid' : 'text',",
-        "    scale: 'xs',",
-        "    shape: state.pressed ? 'soft' : 'none',",
-        "    sx: { flex: 'fill', minWidth: '0', lineHeight: '16', … },",
-        "  }}",
-        ">",
-      ].join("\n"),
     },
     {
       id: "text",
@@ -90,11 +54,6 @@ export default defineUsecase({
       token: "Type",
       selector: "[class~=\"aui-toggle-group\"] > button [data-aui-typeface]",
       description: "The Metric or Imperial name in a Type role \"l5\" at medium weight.",
-      code: [
-        "<Type as=\"span\" role=\"l5\" weight=\"medium\">",
-        "  {content}",
-        "</Type>",
-      ].join("\n"),
     },
   ],
 });

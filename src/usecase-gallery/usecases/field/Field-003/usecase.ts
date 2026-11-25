@@ -22,11 +22,6 @@ export default defineUsecase({
       token: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "The field is marked invalid, which switches the label, control and message to the error state while the gap stays at 3.",
-      code: [
-        "<Field invalid aui={{ scale: 'sm', sx: { gap: '3' } }}>",
-        "  …",
-        "</Field>",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -34,9 +29,6 @@ export default defineUsecase({
       token: "Field.Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The \"Quantity\" label that stays above the failed control; ADC puts it beside the control.",
-      code: [
-        "<Field.Label aui={{ scale: 'sm' }}>Quantity</Field.Label>",
-      ].join("\n"),
     },
     {
       id: "control",
@@ -44,11 +36,6 @@ export default defineUsecase({
       token: "Field.Control",
       selector: "[class~=\"aui-field-control\"]",
       description: "The outlined 28px control of the failed field; RWS and ADC redraw its outline in the error colour.",
-      code: [
-        "<Field.Control aui={{ scale: 'sm' }}>",
-        "  <Field.Input … aria-invalid />",
-        "</Field.Control>",
-      ].join("\n"),
     },
     {
       id: "input",
@@ -56,9 +43,6 @@ export default defineUsecase({
       token: "Field.Input",
       selector: "[class~=\"aui-field-control\"] > [class~=\"aui-input\"]",
       description: "The input holding the rejected value 0, flagged with aria-invalid so assistive technology reads it as an error.",
-      code: [
-        "<Field.Input defaultValue=\"0\" aria-label=\"Quantity\" aria-invalid />",
-      ].join("\n"),
     },
     {
       id: "error",
@@ -66,9 +50,6 @@ export default defineUsecase({
       token: "Field.Error",
       selector: "[class~=\"aui-field-error\"]",
       description: "The message \"Enter a whole number from 1 to 999.\" in the error colour, 16/20 text 3px under the control (14px in HCS, on its own line in ADC).",
-      code: [
-        "<Field.Error match aui={{ color: 'error', scale: 'sm' }}>Enter a whole number from 1 to 999.</Field.Error>",
-      ].join("\n"),
     },
   ],
 });

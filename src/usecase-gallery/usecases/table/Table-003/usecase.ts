@@ -23,12 +23,6 @@ export default defineUsecase({
       token: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Short summary table: border "between-rows" in a soft 1px outlined frame, overflow hidden and text right-aligned so the numbers line up.',
-      code: `<Table
-  aria-label="Governing ratios"
-  border="between-rows"
-  aui={{ shape: 'soft', sx: { textAlign: 'right', borderColor: 'outlined', …, overflow: 'hidden' } }}
-  headerCellAui={{ color: 'raised' }}
->`,
     },
     {
       id: 'head',
@@ -36,12 +30,6 @@ export default defineUsecase({
       token: 'Table.Head',
       selector: '[class~="aui-table-head"]',
       description: 'Raised band with the Limit state, Demand (lb) and Capacity (lb) headings; ADM adds a full-width Limit states title row above them.',
-      code: `<Table.Head>
-  <Table.Row>
-    <Table.HeaderCell aui={{ color: 'raised', sx: { textAlign: 'left' } }}>Limit state</Table.HeaderCell>
-    …
-  </Table.Row>
-</Table.Head>`,
     },
     {
       id: 'header-cell',
@@ -49,7 +37,6 @@ export default defineUsecase({
       token: 'Table.HeaderCell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'Column heading; the first, Limit state, is left-aligned while the numeric headings follow the right-aligned table.',
-      code: `<Table.HeaderCell>Demand (lb)</Table.HeaderCell>`,
     },
     {
       id: 'body',
@@ -57,10 +44,6 @@ export default defineUsecase({
       token: 'Table.Body',
       selector: '[class~="aui-table-body"]',
       description: 'Rows for Steel tension (2,210 / 5,400) and Concrete breakout (1,180 / 3,060), separated by hairlines.',
-      code: `<Table.Body>
-  <Table.Row>…</Table.Row>
-  <Table.Row>…</Table.Row>
-</Table.Body>`,
     },
     {
       id: 'row',
@@ -68,11 +51,6 @@ export default defineUsecase({
       token: 'Table.Row',
       selector: '[class~="aui-table-row"]',
       description: 'One limit state with its demand and capacity values.',
-      code: `<Table.Row>
-  <Table.Cell aui={{ sx: { textAlign: 'left' } }}>Steel tension</Table.Cell>
-  <Table.Cell>2,210</Table.Cell>
-  <Table.Cell>5,400</Table.Cell>
-</Table.Row>`,
     },
     {
       id: 'cell',
@@ -80,7 +58,6 @@ export default defineUsecase({
       token: 'Table.Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Value cell; the limit state name is left-aligned through its own aui, the figures stay right-aligned.',
-      code: `<Table.Cell aui={{ sx: { textAlign: 'left' } }}>Concrete breakout</Table.Cell>`,
     },
     {
       id: 'status-dot',
@@ -88,9 +65,6 @@ export default defineUsecase({
       token: 'Symbol',
       selector: '[class~="aui-table-cell"] [class~="aui-symbol"]',
       description: 'ADM only: the Ratio cell leads with a coloured success dot before the 41% value.',
-      code: `<Table.Cell>
-  <Symbol color="success" aria-hidden>●</Symbol> 41%
-</Table.Cell>`,
     },
   ],
 });

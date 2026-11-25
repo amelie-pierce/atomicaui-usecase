@@ -20,9 +20,6 @@ export default defineUsecase({
       token: 'Field',
       selector: '[class~="aui-field"]',
       description: 'Field written as a row (flexDirection "row", centred, full width) so the Product label and trigger share one line.',
-      code: `<Field aui={{ sx: { flexDirection: 'row', alignItems: 'center', width: 'fill' } }}>
-  {/* … */}
-</Field>`,
     },
     {
       id: 'label',
@@ -30,7 +27,6 @@ export default defineUsecase({
       token: 'Field.Label',
       selector: '[class~="aui-field-label"]',
       description: 'The "Product" label that takes half the row (flexBasis "half") and truncates with an ellipsis.',
-      code: `<Field.Label aui={{ sx: { flex: 'fill', flexBasis: 'half', minWidth: '0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }}>Product</Field.Label>`,
     },
     {
       id: 'trigger',
@@ -38,9 +34,6 @@ export default defineUsecase({
       token: 'Field.SelectTrigger',
       selector: '[class~="aui-select-trigger"]',
       description: 'Outlined trigger that fills the other half of the row (flex fill, flexBasis "half"); the FD scene leads it with the chosen row\'s icon.',
-      code: `<Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { flex: 'fill', flexBasis: 'half', minWidth: '0' } }}>
-  {/* … */}
-</Field.SelectTrigger>`,
     },
     {
       id: 'value',
@@ -49,7 +42,6 @@ export default defineUsecase({
       selector: '[class~="aui-select-value"]',
       text: true,
       description: 'Shows the chosen product, "Anchor A1" by default.',
-      code: `<Field.SelectValue />`,
     },
     {
       id: 'chevron',
@@ -57,7 +49,6 @@ export default defineUsecase({
       token: 'Field.SelectChevron',
       selector: '[class~="aui-select-chevron"]',
       description: 'The chevron at the trigger end.',
-      code: `<Field.SelectChevron />`,
     },
     {
       id: 'popup',
@@ -65,9 +56,6 @@ export default defineUsecase({
       token: 'Field.SelectPopup',
       selector: '[class~="aui-select-popup"]',
       description: 'Popup of the trigger width holding two groups, Anchors and Rods.',
-      code: `<Field.SelectPopup matchTriggerWidth>
-  {/* … */}
-</Field.SelectPopup>`,
     },
     {
       id: 'list',
@@ -75,9 +63,6 @@ export default defineUsecase({
       token: 'Field.SelectList',
       selector: '[class~="aui-select-list"]',
       description: 'The list that stacks the Anchors and Rods groups.',
-      code: `<Field.SelectList>
-  {/* … */}
-</Field.SelectList>`,
     },
     {
       id: 'group',
@@ -85,9 +70,6 @@ export default defineUsecase({
       token: 'Field.SelectGroup',
       selector: '[class~="aui-select-group"]',
       description: 'One family of related rows: Anchors (Anchor A1, Anchor A2) or Rods (Rod B1).',
-      code: `<Field.SelectGroup>
-  {/* … */}
-</Field.SelectGroup>`,
     },
     {
       id: 'group-label',
@@ -95,7 +77,6 @@ export default defineUsecase({
       token: 'Field.SelectGroupLabel',
       selector: '[class~="aui-select-group-label"]',
       description: 'The heading above each family, "Anchors" and "Rods".',
-      code: `<Field.SelectGroupLabel>Anchors</Field.SelectGroupLabel>`,
     },
     {
       id: 'item',
@@ -103,10 +84,6 @@ export default defineUsecase({
       token: 'Field.SelectItem',
       selector: '[class~="aui-select-item"]',
       description: 'A product row inside its group; the chosen row is marked by a raised fill.',
-      code: `<Field.SelectItem value="a1">
-  <Field.SelectItemText>Anchor A1</Field.SelectItemText>
-  <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
-</Field.SelectItem>`,
     },
     {
       id: 'item-text',
@@ -114,7 +91,6 @@ export default defineUsecase({
       token: 'Field.SelectItemText',
       selector: '[class~="aui-select-item-text"]',
       description: 'The product name, such as "Anchor A2" or "Rod B1".',
-      code: `<Field.SelectItemText>Anchor A1</Field.SelectItemText>`,
     },
     {
       id: 'indicator',
@@ -122,7 +98,6 @@ export default defineUsecase({
       token: 'Field.SelectItemIndicator',
       selector: '[class~="aui-select-item-indicator"]',
       description: 'Empty slot (`{null}`) at the row end; no check is drawn.',
-      code: `<Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>`,
     },
   ],
 });

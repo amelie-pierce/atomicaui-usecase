@@ -30,28 +30,12 @@ export default defineUsecase({
       token: "Checkbox",
       selector: "[class~=\"aui-checkbox\"]",
       description: "The checkable control, at scale \"sm\", checked by default: a surface-tonal box with an outlined border when off and a solid primary box when on.",
-      code: [
-        "<Checkbox defaultSelected aui={{",
-        "  scale: 'sm',",
-        "  states: {",
-        "    unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },",
-        "    selected: { color: 'primary', paint: 'solid' },",
-        "  },",
-        "}}>",
-        "  …",
-        "</Checkbox>",
-      ].join("\n"),
     },
     {
       id: "indicator",
       name: "Indicator",
       selector: "[class~=\"aui-checkbox-indicator\"]",
       description: "The small box that shows the checked state for the optional copy of the feedback responses.",
-      code: [
-        "<Checkbox defaultSelected aui={{ … }}>",
-        "  …",
-        "</Checkbox>",
-      ].join("\n"),
     },
     {
       id: "icon",
@@ -59,9 +43,6 @@ export default defineUsecase({
       token: "Checkbox.Icon",
       selector: "[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]",
       description: "The \"check\" mark inside the indicator; the HS, PFD, PBS, AGPD, RWS, ADM and FD feedback dialogs show it when the option is on.",
-      code: [
-        "<Checkbox.Icon name=\"check\" />",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -69,9 +50,6 @@ export default defineUsecase({
       token: "Checkbox.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The caption \"Send me a copy of my responses\" beside the box, answering the optional yes or no question at the end of the form.",
-      code: [
-        "<Checkbox.Label>Send me a copy of my responses</Checkbox.Label>",
-      ].join("\n"),
     },
     {
       id: "form-field",
@@ -79,12 +57,6 @@ export default defineUsecase({
       token: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "The feedback-form text fields (name, email, subject) above the checkbox in the dialog scenes, each a Field with a label and an input.",
-      code: [
-        "<Field>",
-        "  <Field.Label>…</Field.Label>",
-        "  <Field.Control><Field.Input … /></Field.Control>",
-        "</Field>",
-      ].join("\n"),
     },
   ],
 });

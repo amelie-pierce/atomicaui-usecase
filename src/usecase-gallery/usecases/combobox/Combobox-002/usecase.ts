@@ -19,9 +19,6 @@ export default defineUsecase({
       token: 'Field',
       selector: '[class~="aui-field"]',
       description: 'Field at scale "sm" with a 3 gap that stacks the Type label above the combobox.',
-      code: `<Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-  {/* … */}
-</Field>`,
     },
     {
       id: 'label',
@@ -29,7 +26,6 @@ export default defineUsecase({
       token: 'Field.Label',
       selector: '[class~="aui-field-label"]',
       description: 'The "Type" label above the input group.',
-      code: `<Field.Label aui={{ scale: 'sm' }}>Type</Field.Label>`,
     },
     {
       id: 'input-group',
@@ -37,9 +33,6 @@ export default defineUsecase({
       token: 'Combobox.InputGroup',
       selector: '[class~="aui-combobox-input-group"]',
       description: 'Input group at scale "sm" (color "surface", paint "fixed"), 28px high, matching the other Input pane fields.',
-      code: `<Combobox.InputGroup aui={{ scale: 'sm', color: 'surface', paint: 'fixed', sx: { height: '28', minHeight: '28' } }}>
-  {/* … */}
-</Combobox.InputGroup>`,
     },
     {
       id: 'input',
@@ -47,7 +40,6 @@ export default defineUsecase({
       token: 'Combobox.Input',
       selector: '[class~="aui-combobox-input"]',
       description: 'The type field showing "Glulam"; it filters Glulam, Solid Sawn and Parallel Strand Lumber as the user types.',
-      code: `<Combobox.Input aria-label="Type" aui={{ scale: 'sm' }} />`,
     },
     {
       id: 'trigger',
@@ -55,9 +47,6 @@ export default defineUsecase({
       token: 'Combobox.Trigger',
       selector: '[class~="aui-combobox-trigger"]',
       description: 'The "Open Type" button at the end of the group that opens the list.',
-      code: `<Combobox.Trigger aria-label="Open Type" aui={{ scale: 'sm' }}>
-  {/* … */}
-</Combobox.Trigger>`,
     },
     {
       id: 'icon',
@@ -65,7 +54,6 @@ export default defineUsecase({
       token: 'Combobox.Icon',
       selector: '[class~="aui-combobox-icon"]',
       description: 'The chevron-down glyph in the monotone layer at scale "sm".',
-      code: `<Combobox.Icon name="chevron-down" layer="monotone" aui={{ scale: 'sm' }} />`,
     },
     {
       id: 'popup',
@@ -73,9 +61,6 @@ export default defineUsecase({
       token: 'Combobox.Popup',
       selector: '[class~="aui-combobox-popup"]',
       description: 'Popup of the trigger width capped at 20rem high, aligned to the start of the group.',
-      code: `<Combobox.Popup matchTriggerWidth maxHeight="20rem" aui={{ scale: 'sm' }}>
-  {/* … */}
-</Combobox.Popup>`,
     },
     {
       id: 'list',
@@ -83,9 +68,6 @@ export default defineUsecase({
       token: 'Combobox.List',
       selector: '[class~="aui-combobox-list"]',
       description: 'The list that renders one row per timber type.',
-      code: `<Combobox.List>
-  {/* … */}
-</Combobox.List>`,
     },
     {
       id: 'item',
@@ -93,9 +75,6 @@ export default defineUsecase({
       token: 'Combobox.Item',
       selector: '[class~="aui-combobox-item"]',
       description: 'A timber type row at scale "sm"; highlighting one previews it in the card beside the list.',
-      code: `<Combobox.Item key={option} value={option} aui={{ scale: 'sm' }}>
-  {/* … */}
-</Combobox.Item>`,
     },
     {
       id: 'preview-card',
@@ -103,9 +82,6 @@ export default defineUsecase({
       token: 'Card',
       selector: '[class~="aui-card"]',
       description: 'In the HCS scene the highlighted option shows in a 224px card to the right of the open list.',
-      code: `<Card aui={{ scale: 'sm', color: 'surface', paint: 'solid', shape: 'soft', elevation: 4, sx: { width: '224', marginBlockStart: '64' } }}>
-  {/* … */}
-</Card>`,
     },
     {
       id: 'preview-title',
@@ -113,7 +89,6 @@ export default defineUsecase({
       token: 'Card.Title',
       selector: '[class~="aui-card-title"]',
       description: 'The option name, "Glulam", shown above the preview picture.',
-      code: `<Card.Title>Glulam</Card.Title>`,
     },
   ],
 });

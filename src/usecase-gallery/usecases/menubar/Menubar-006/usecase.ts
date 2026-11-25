@@ -19,9 +19,6 @@ export default defineUsecase({
       token: 'Menubar',
       selector: '[class~="aui-menubar"]',
       description: 'The "Top bar" strip that holds the one summary button at its right side.',
-      code: `<Menubar aria-label="Top bar">
-  {/* … */}
-</Menubar>`,
     },
     {
       id: 'button',
@@ -29,9 +26,6 @@ export default defineUsecase({
       token: 'Menubar.Button',
       selector: '[class~="aui-button"]',
       description: 'Tonal button (color "surface", paint "tonal", aria-label "Settings") that sums up region, language and design code and opens the settings popover.',
-      code: `<Menubar.Button aria-label="Settings" aui={{ color: 'surface', paint: 'tonal' }}>
-  {/* … */}
-</Menubar.Button>`,
     },
     {
       id: 'icon',
@@ -39,7 +33,6 @@ export default defineUsecase({
       token: 'Menubar.Icon',
       selector: '[class~="aui-button"] > [class~="aui-contained-icon"]',
       description: 'The globe glyph that leads the summary.',
-      code: `<Menubar.Icon name="globe" />`,
     },
     {
       id: 'label',
@@ -48,14 +41,6 @@ export default defineUsecase({
       selector: '[class~="aui-button"]',
       text: true,
       description: 'The summary text "US", "EN" and "IBC 2018" shown in one line.',
-      code: `<Menubar.Button aria-label="Settings" aui={{ color: 'surface', paint: 'tonal' }}>
-  <Menubar.Icon name="globe" />
-  US
-  <Menubar.Divider />
-  EN
-  <Menubar.Divider />
-  IBC 2018
-</Menubar.Button>`,
     },
     {
       id: 'divider',
@@ -63,7 +48,6 @@ export default defineUsecase({
       token: 'Menubar.Divider',
       selector: '[class~="aui-menubar-divider"]',
       description: 'The thin separators between country, language and design code (two in this example).',
-      code: `<Menubar.Divider />`,
     },
   ],
 });

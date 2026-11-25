@@ -26,12 +26,6 @@ export default defineUsecase({
       token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The scene lists each attached file above the area as a default Chip with its name.",
-      code: [
-        "<Chip>",
-        "  <Chip.Label>…</Chip.Label>",
-        "  <Chip.Dismiss … />",
-        "</Chip>",
-      ].join("\n"),
     },
     {
       id: "upload",
@@ -39,18 +33,12 @@ export default defineUsecase({
       token: "FileUpload",
       selector: "[class~=\"aui-file-upload\"]",
       description: "The dashed multi-file drop surface (multiple) in the Feedback form attachment block, with the idle message.",
-      code: [
-        "<FileUpload multiple messages={{ idle: { text: 'Drop your file here or', action: 'Browse' } }} />",
-      ].join("\n"),
     },
     {
       id: "icon",
       name: "Icon",
       selector: "[class~=\"aui-file-upload-icon\"]",
       description: "The upload icon at the top of the drop area.",
-      code: [
-        "<FileUpload multiple messages={{ idle: { text: 'Drop your file here or', action: 'Browse' } }} />",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -58,18 +46,12 @@ export default defineUsecase({
       selector: "[class~=\"aui-file-upload-label\"]",
       text: true,
       description: "The idle text \"Drop your file here or\" next to the browse action.",
-      code: [
-        "messages={{ idle: { text: 'Drop your file here or', … } }}",
-      ].join("\n"),
     },
     {
       id: "action",
       name: "Browse action",
       selector: "[class~=\"aui-file-upload-action\"]",
       description: "The \"Browse\" action that opens the file picker so several files can be added one after another.",
-      code: [
-        "messages={{ idle: { …, action: 'Browse' } }}",
-      ].join("\n"),
     },
   ],
 });

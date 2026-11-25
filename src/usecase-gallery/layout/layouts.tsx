@@ -4,15 +4,15 @@ export interface LayoutPanes {
   detail: ReactNode;
 }
 
-/** The selection and its complete document scroll on the left while the rendered use case stays on the right. */
+/** The preview with its option select stays on the left while the complete document scrolls on the right. */
 export function DetailLayout({ render, detail }: LayoutPanes) {
   return (
     <div className="ug-layout">
-      <div className="ug-layout__column ug-layout__column--detail">
-        {detail}
-      </div>
       <div className="ug-layout__column ug-layout__column--render">
         {render}
+      </div>
+      <div className="ug-layout__column ug-layout__column--detail">
+        {detail}
       </div>
     </div>
   );
@@ -22,8 +22,8 @@ export function DetailLayout({ render, detail }: LayoutPanes) {
 export function StackedLayout({ render, detail }: LayoutPanes) {
   return (
     <div className="ug-stacked">
-      {detail}
       {render}
+      {detail}
     </div>
   );
 }

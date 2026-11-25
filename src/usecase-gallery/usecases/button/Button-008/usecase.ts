@@ -28,7 +28,6 @@ export default defineUsecase({
       token: "Button",
       description: "The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD.",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button aui={{ scale: 'sm' }}>\n  …\n</Button>",
     },
     {
       id: "icon",
@@ -36,7 +35,6 @@ export default defineUsecase({
       token: "Button.Icon",
       description: "The filter glyph with a cross that signals removing the active filters, at scale \"sm\".",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
-      code: "<Button.Icon name=\"filter-circle-xmark\" aui={{ scale: 'sm' }} />",
     },
     {
       id: "label",
@@ -45,7 +43,6 @@ export default defineUsecase({
       description: "The text \"Reset filters\" shown while a search or status filter is active.",
       selector: "[class~=\"aui-button\"]",
       text: true,
-      code: "Reset filters",
     },
   ],
 });

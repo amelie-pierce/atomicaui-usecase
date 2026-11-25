@@ -19,24 +19,6 @@ export default defineUsecase({
       token: 'Dropdown.Trigger',
       selector: '[class~="aui-dropdown-trigger"]',
       description: 'Outlined text trigger (color "surface", paint "fixed", 1px "outlined" border on all four sides, nowrap) labelled "Product filter" for assistive tech.',
-      code: `<Dropdown.Trigger
-  aria-label="Product filter"
-  aui={{
-    scale: 'sm',
-    color: 'surface',
-    paint: 'fixed',
-    sx: {
-      whiteSpace: 'nowrap',
-      borderColor: 'outlined',
-      borderBlockStartWidth: '1',
-      borderBlockEndWidth: '1',
-      borderInlineStartWidth: '1',
-      borderInlineEndWidth: '1',
-    },
-  }}
->
-  {/* … */}
-</Dropdown.Trigger>`,
     },
     {
       id: 'trigger-label',
@@ -45,25 +27,6 @@ export default defineUsecase({
       selector: '[class~="aui-dropdown-trigger"]',
       text: true,
       description: 'The chosen option with its count, "Passed Products (9)", written as the trigger text.',
-      code: `<Dropdown.Trigger
-  aria-label="Product filter"
-  aui={{
-    scale: 'sm',
-    color: 'surface',
-    paint: 'fixed',
-    sx: {
-      whiteSpace: 'nowrap',
-      borderColor: 'outlined',
-      borderBlockStartWidth: '1',
-      borderBlockEndWidth: '1',
-      borderInlineStartWidth: '1',
-      borderInlineEndWidth: '1',
-    },
-  }}
->
-  Passed Products (9)
-  <Dropdown.Chevron aui={{ scale: 'sm' }} />
-</Dropdown.Trigger>`,
     },
     {
       id: 'chevron',
@@ -71,7 +34,6 @@ export default defineUsecase({
       token: 'Dropdown.Chevron',
       selector: '[class~="aui-dropdown-chevron"]',
       description: 'The chevron at the end of the trigger at scale "sm".',
-      code: `<Dropdown.Chevron aui={{ scale: 'sm' }} />`,
     },
     {
       id: 'popup',
@@ -79,9 +41,6 @@ export default defineUsecase({
       token: 'Dropdown.Popup',
       selector: '[class~="aui-dropdown-popup"]',
       description: 'Popup at scale "sm" that matches the trigger width, 4px below it and aligned to its start.',
-      code: `<Dropdown.Popup matchTriggerWidth aui={{ scale: 'sm' }}>
-  {/* … */}
-</Dropdown.Popup>`,
     },
     {
       id: 'radio-group',
@@ -89,9 +48,6 @@ export default defineUsecase({
       token: 'Dropdown.RadioGroup',
       selector: '[class~="aui-dropdown-radio-group"]',
       description: 'The group with value "passed" that makes exactly one of the three filters current.',
-      code: `<Dropdown.RadioGroup value="passed">
-  {/* … */}
-</Dropdown.RadioGroup>`,
     },
     {
       id: 'radio-item',
@@ -99,10 +55,6 @@ export default defineUsecase({
       token: 'Dropdown.RadioItem',
       selector: '[class~="aui-dropdown-radio-item"]',
       description: 'A filter row with its label and count (Passed Products (9), Failed Products (3), All Products (12)); closeOnClick closes the list after a choice.',
-      code: `<Dropdown.RadioItem value="passed" closeOnClick aui={{ scale: 'sm' }}>
-  Passed Products (9)
-  <Dropdown.RadioItemIndicator />
-</Dropdown.RadioItem>`,
     },
     {
       id: 'indicator',
@@ -110,7 +62,6 @@ export default defineUsecase({
       token: 'Dropdown.RadioItemIndicator',
       selector: '[class~="aui-dropdown-radio-item-indicator"]',
       description: 'Empty transparent span at the row end; the chosen row shows by its raised fill, not a glyph.',
-      code: `<Dropdown.RadioItemIndicator />`,
     },
   ],
 });

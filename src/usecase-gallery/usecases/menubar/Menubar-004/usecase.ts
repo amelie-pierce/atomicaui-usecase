@@ -29,9 +29,6 @@ export default defineUsecase({
       token: 'Menubar',
       selector: '[class~="aui-menubar"]',
       description: 'The "Top bar" strip whose right end holds the gear; the HCS and ACE scenes set it at scale "sm" and right-aligned.',
-      code: `<Menubar aria-label="Top bar">
-  {/* … */}
-</Menubar>`,
     },
     {
       id: 'trigger',
@@ -39,9 +36,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownTrigger',
       selector: '[class~="aui-menubar-trigger"]',
       description: 'Square gear button with aria-label "Settings" (profile "square") that opens the layout menu.',
-      code: `<Menubar.DropdownTrigger aria-label="Settings" aui={{ profile: 'square' }}>
-  {/* … */}
-</Menubar.DropdownTrigger>`,
     },
     {
       id: 'trigger-icon',
@@ -49,7 +43,6 @@ export default defineUsecase({
       token: 'Menubar.Icon',
       selector: '[class~="aui-menubar-trigger"] > [class~="aui-contained-icon"]',
       description: 'The gear glyph that is the whole visible content of the trigger.',
-      code: `<Menubar.Icon name="gear" />`,
     },
     {
       id: 'popup',
@@ -57,9 +50,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownPopup',
       selector: '[class~="aui-dropdown-popup"]',
       description: 'Menu labelled "Settings", aligned to the end of the trigger so it stays on screen at the right edge.',
-      code: `<Menubar.DropdownPopup aria-label="Settings">
-  {/* … */}
-</Menubar.DropdownPopup>`,
     },
     {
       id: 'group',
@@ -67,9 +57,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownGroup',
       selector: '[class~="aui-dropdown-group"]',
       description: 'The Pane Orientation group that holds its heading and the orientation rows.',
-      code: `<Menubar.DropdownGroup>
-  {/* … */}
-</Menubar.DropdownGroup>`,
     },
     {
       id: 'group-label',
@@ -77,7 +64,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownGroupLabel',
       selector: '[class~="aui-dropdown-group-label"]',
       description: 'The caption "Pane Orientation" (and "Pane Layout" in the scenes).',
-      code: `<Menubar.DropdownGroupLabel>Pane Orientation</Menubar.DropdownGroupLabel>`,
     },
     {
       id: 'radio-group',
@@ -85,9 +71,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownRadioGroup',
       selector: '[class~="aui-dropdown-radio-group"]',
       description: 'Single-choice set with "vertical" chosen; the scenes add Horizontal and Grid.',
-      code: `<Menubar.DropdownRadioGroup defaultValue="vertical">
-  {/* … */}
-</Menubar.DropdownRadioGroup>`,
     },
     {
       id: 'radio-item',
@@ -95,11 +78,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownRadioItem',
       selector: '[class~="aui-dropdown-radio-item"]',
       description: 'The "Vertical" orientation row with its leading table-columns icon and a hidden indicator.',
-      code: `<Menubar.DropdownRadioItem value="vertical">
-  <Menubar.Icon name="table-columns" />
-  Vertical
-  <Menubar.DropdownRadioItemIndicator hidden />
-</Menubar.DropdownRadioItem>`,
     },
     {
       id: 'item-icon',
@@ -107,7 +85,6 @@ export default defineUsecase({
       token: 'Menubar.Icon',
       selector: '[class~="aui-dropdown-radio-item"] > [class~="aui-contained-icon"]',
       description: 'The leading glyph of a row, such as table-columns for Vertical.',
-      code: `<Menubar.Icon name="table-columns" />`,
     },
     {
       id: 'item',
@@ -115,10 +92,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownItem',
       selector: '[class~="aui-dropdown-item"]',
       description: 'The "Reset layout to default" action row of the scenes, under its own Pane Layout group.',
-      code: `<Menubar.DropdownItem>
-  <Menubar.Icon name="rotate-left" />
-  Reset layout to default
-</Menubar.DropdownItem>`,
     },
     {
       id: 'separator',
@@ -126,7 +99,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownSeparator',
       selector: '[class~="aui-dropdown-separator"]',
       description: 'The divider between the orientation group, the layout group and the check row in the scenes.',
-      code: `<Menubar.DropdownSeparator />`,
     },
     {
       id: 'checkbox-item',
@@ -134,9 +106,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownCheckboxItem',
       selector: '[class~="aui-dropdown-checkbox-item"]',
       description: 'The "Auto-Rotate 3D Model" check row of the HCS scene, shown only where the app has a 3D model.',
-      code: `<Menubar.DropdownCheckboxItem defaultChecked>
-  {/* … */}
-</Menubar.DropdownCheckboxItem>`,
     },
   ],
 });

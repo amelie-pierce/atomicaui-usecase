@@ -19,9 +19,6 @@ export default defineUsecase({
       token: 'Field',
       selector: '[class~="aui-field"]',
       description: 'Field at scale "sm" with a 3 gap that stacks the Country label over the combobox.',
-      code: `<Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-  {/* … */}
-</Field>`,
     },
     {
       id: 'label',
@@ -29,7 +26,6 @@ export default defineUsecase({
       token: 'Field.Label',
       selector: '[class~="aui-field-label"]',
       description: 'The "Country" label above the input group.',
-      code: `<Field.Label aui={{ scale: 'sm' }}>Country</Field.Label>`,
     },
     {
       id: 'input-group',
@@ -37,9 +33,6 @@ export default defineUsecase({
       token: 'Combobox.InputGroup',
       selector: '[class~="aui-combobox-input-group"]',
       description: 'Row at scale "sm", full width, that joins the text field and the chevron button into one control.',
-      code: `<Combobox.InputGroup aui={{ scale: 'sm', sx: { width: 'fill' } }}>
-  {/* … */}
-</Combobox.InputGroup>`,
     },
     {
       id: 'input',
@@ -47,7 +40,6 @@ export default defineUsecase({
       token: 'Combobox.Input',
       selector: '[class~="aui-combobox-input"]',
       description: 'The search field with placeholder "Search"; typing filters Canada, Mexico and United States, and the chosen "Canada" fills it.',
-      code: `<Combobox.Input placeholder="Search" aria-label="Country" />`,
     },
     {
       id: 'trigger',
@@ -55,9 +47,6 @@ export default defineUsecase({
       token: 'Combobox.Trigger',
       selector: '[class~="aui-combobox-trigger"]',
       description: 'The button at the end of the group that opens or closes the country list.',
-      code: `<Combobox.Trigger>
-  {/* … */}
-</Combobox.Trigger>`,
     },
     {
       id: 'icon',
@@ -65,7 +54,6 @@ export default defineUsecase({
       token: 'Combobox.Icon',
       selector: '[class~="aui-combobox-icon"]',
       description: 'The chevron-down glyph inside the trigger button.',
-      code: `<Combobox.Icon name="chevron-down" />`,
     },
     {
       id: 'popup',
@@ -73,9 +61,6 @@ export default defineUsecase({
       token: 'Combobox.Popup',
       selector: '[class~="aui-combobox-popup"]',
       description: 'Popup of the trigger width, 4px below the group; this example is built open and non-modal inside the stage.',
-      code: `<Combobox.Popup matchTriggerWidth aui={{ scale: 'sm' }}>
-  {/* … */}
-</Combobox.Popup>`,
     },
     {
       id: 'empty',
@@ -83,7 +68,6 @@ export default defineUsecase({
       token: 'Combobox.Empty',
       selector: '[class~="aui-combobox-empty"]',
       description: 'The "No result found" message shown when the typed text matches no country.',
-      code: `<Combobox.Empty>No result found</Combobox.Empty>`,
     },
     {
       id: 'list',
@@ -91,9 +75,6 @@ export default defineUsecase({
       token: 'Combobox.List',
       selector: '[class~="aui-combobox-list"]',
       description: 'The list that renders one row per matching country.',
-      code: `<Combobox.List>
-  {/* … */}
-</Combobox.List>`,
     },
     {
       id: 'item',
@@ -101,9 +82,6 @@ export default defineUsecase({
       token: 'Combobox.Item',
       selector: '[class~="aui-combobox-item"]',
       description: 'A country row; its label is the item text and the chosen row is highlighted.',
-      code: `<Combobox.Item key={option} value={option}>
-  {/* … */}
-</Combobox.Item>`,
     },
     {
       id: 'item-indicator',
@@ -111,7 +89,6 @@ export default defineUsecase({
       token: 'Combobox.ItemIndicator',
       selector: '[class~="aui-combobox-item-indicator"]',
       description: 'The tick that marks the chosen country row.',
-      code: `<Combobox.ItemIndicator />`,
     },
     {
       id: 'dialog-body',
@@ -119,9 +96,6 @@ export default defineUsecase({
       token: 'Dialog.Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'In the FD licence gate scene the whole combobox sits inside the body of the "License Agreement" dialog.',
-      code: `<Dialog.Body style={{ minBlockSize: 'calc(var(--p-px-16) * 14)' }}>
-  {/* … */}
-</Dialog.Body>`,
     },
   ],
 });

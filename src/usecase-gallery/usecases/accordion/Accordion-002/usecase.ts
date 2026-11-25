@@ -32,7 +32,6 @@ export default defineUsecase({
       token: 'Accordion',
       selector: '[class~="aui-accordion"]',
       description: 'Release-notes list at scale "sm" with openMultiple and "global" open by default; the ACE scene nests a second Accordion (Europe) inside Updates for other regions, and ADC uses one 1.0 release item.',
-      code: `<Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['global']}>`,
     },
     {
       id: 'item',
@@ -40,7 +39,6 @@ export default defineUsecase({
       token: 'Accordion.Item',
       selector: '[class~="aui-accordion-item"]',
       description: 'One group of changes, for example Global changes.',
-      code: `<Accordion.Item value="global">`,
     },
     {
       id: 'trigger',
@@ -48,10 +46,6 @@ export default defineUsecase({
       token: 'Accordion.Trigger',
       selector: '[class~="aui-accordion-trigger"]',
       description: 'Title row that opens the group; it carries the name and a muted update count.',
-      code: `<Accordion.Trigger>
-  <span>…</span>
-  <Accordion.Chevron />
-</Accordion.Trigger>`,
     },
     {
       id: 'label',
@@ -59,10 +53,6 @@ export default defineUsecase({
       token: 'Accordion.Trigger',
       selector: '[class~="aui-accordion-trigger-content"]',
       description: 'Semi-bold l3 "Global changes" followed by a muted l5 "(1 update)"; ADC uses the release line "1.0 Released on Jan 01, 2027 (TBD)".',
-      code: `<span>
-  <Type as="span" role="l3" weight="semi-bold">Global changes</Type>{' '}
-  <Type as="span" role="l5" color="muted">(1 update)</Type>
-</span>`,
     },
     {
       id: 'chevron',
@@ -70,7 +60,6 @@ export default defineUsecase({
       token: 'Accordion.Chevron',
       selector: '[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]',
       description: 'Disclosure chevron at the end of the title row.',
-      code: `<Accordion.Chevron />`,
     },
     {
       id: 'panel',
@@ -78,11 +67,6 @@ export default defineUsecase({
       token: 'Accordion.Panel',
       selector: '[class~="aui-accordion-panel"]',
       description: 'Holds the change entries: a 160px badge column beside the sentence describing the change.',
-      code: `<Accordion.Panel>
-  <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', alignItems: 'start', gap: '12', … } }}>
-    …
-  </View>
-</Accordion.Panel>`,
     },
     {
       id: 'chip',
@@ -90,9 +74,6 @@ export default defineUsecase({
       token: 'Chip',
       selector: '[class~="aui-chip"]',
       description: 'Coloured solid chip that tags the type of change: warning IMPROVEMENT here, success FEATURE in the Europe group.',
-      code: `<Chip aui={{ scale: 'sm', color: 'warning', paint: 'solid' }}>
-  <Chip.Label>IMPROVEMENT</Chip.Label>
-</Chip>`,
     },
     {
       id: 'chip-label',
@@ -101,7 +82,6 @@ export default defineUsecase({
       selector: '[class~="aui-chip-label"]',
       text: true,
       description: 'Upper-case change type, IMPROVEMENT or FEATURE.',
-      code: `<Chip.Label>IMPROVEMENT</Chip.Label>`,
     },
   ],
 });

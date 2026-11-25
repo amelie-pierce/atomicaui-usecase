@@ -26,9 +26,6 @@ export default defineUsecase({
       token: 'Field',
       selector: '[class~="aui-field"]',
       description: 'Field at scale "sm", full width with zero minimum width so it fits the configuration panel.',
-      code: `<Field aui={{ scale: 'sm', sx: { width: 'fill', minWidth: '0' } }}>
-  {/* … */}
-</Field>`,
     },
     {
       id: 'label',
@@ -36,7 +33,6 @@ export default defineUsecase({
       token: 'Field.Label',
       selector: '[class~="aui-field-label"]',
       description: 'The "Country" label above the trigger.',
-      code: `<Field.Label>Country</Field.Label>`,
     },
     {
       id: 'trigger',
@@ -44,9 +40,6 @@ export default defineUsecase({
       token: 'Field.SelectTrigger',
       selector: '[class~="aui-select-trigger"]',
       description: 'The 28px outlined trigger (scale "sm", color "surface", paint "fixed") that opens the country list.',
-      code: `<Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', scale: 'sm', sx: { width: 'fill', height: '28' } }}>
-  {/* … */}
-</Field.SelectTrigger>`,
     },
     {
       id: 'trigger-icon',
@@ -54,7 +47,6 @@ export default defineUsecase({
       token: 'Field.SelectIcon',
       selector: '[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])',
       description: 'The flag icon that leads the trigger and mirrors the chosen row.',
-      code: `<Field.SelectIcon name="flag" aria-hidden />`,
     },
     {
       id: 'value',
@@ -63,7 +55,6 @@ export default defineUsecase({
       selector: '[class~="aui-select-value"]',
       text: true,
       description: 'Shows "United States", the default country.',
-      code: `<Field.SelectValue />`,
     },
     {
       id: 'chevron',
@@ -71,7 +62,6 @@ export default defineUsecase({
       token: 'Field.SelectChevron',
       selector: '[class~="aui-select-chevron"]',
       description: 'The chevron at the end of the trigger.',
-      code: `<Field.SelectChevron />`,
     },
     {
       id: 'popup',
@@ -79,9 +69,6 @@ export default defineUsecase({
       token: 'Field.SelectPopup',
       selector: '[class~="aui-select-popup"]',
       description: 'Popup of the trigger width, 4px below the trigger, holding three flagged rows.',
-      code: `<Field.SelectPopup matchTriggerWidth>
-  {/* … */}
-</Field.SelectPopup>`,
     },
     {
       id: 'list',
@@ -89,9 +76,6 @@ export default defineUsecase({
       token: 'Field.SelectList',
       selector: '[class~="aui-select-list"]',
       description: 'The list of Canada, United States and Mexico rows.',
-      code: `<Field.SelectList>
-  {/* … */}
-</Field.SelectList>`,
     },
     {
       id: 'item',
@@ -99,11 +83,6 @@ export default defineUsecase({
       token: 'Field.SelectItem',
       selector: '[class~="aui-select-item"]',
       description: 'A country row with its flag icon, name and an empty indicator slot; the chosen row is marked by a raised fill.',
-      code: `<Field.SelectItem value="ca">
-  <Field.SelectIcon name="flag" aria-hidden />
-  <Field.SelectItemText>Canada</Field.SelectItemText>
-  <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
-</Field.SelectItem>`,
     },
     {
       id: 'item-icon',
@@ -111,7 +90,6 @@ export default defineUsecase({
       token: 'Field.SelectIcon',
       selector: '[class~="aui-select-item"] > [class~="aui-contained-icon"]',
       description: 'The flag icon at the start of each row, before the country name.',
-      code: `<Field.SelectIcon name="flag" aria-hidden />`,
     },
     {
       id: 'item-text',
@@ -119,7 +97,6 @@ export default defineUsecase({
       token: 'Field.SelectItemText',
       selector: '[class~="aui-select-item-text"]',
       description: 'The country name: Canada, United States or Mexico.',
-      code: `<Field.SelectItemText>Canada</Field.SelectItemText>`,
     },
     {
       id: 'indicator',
@@ -127,7 +104,6 @@ export default defineUsecase({
       token: 'Field.SelectItemIndicator',
       selector: '[class~="aui-select-item-indicator"]',
       description: 'An empty slot (`{null}`) at the end of each row; in this panel the chosen row has no check.',
-      code: `<Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>`,
     },
   ],
 });

@@ -22,9 +22,6 @@ export default defineUsecase({
       token: 'Dialog.Backdrop',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the ADM welcome prompt.',
-      code: `<Dialog open modal={false}>
-  <Dialog.Portal container={host}>
-    <Dialog.Backdrop />`,
     },
     {
       id: 'popup',
@@ -32,7 +29,6 @@ export default defineUsecase({
       token: 'Dialog.Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The small 384px welcome window at scale "sm", sized through the --aui-dialog-width variable the app sets.',
-      code: `<Dialog.Popup initialFocus={false} aui={{ scale: 'sm' }} style={{ '--aui-dialog-width': 'var(--p-px-384)' } as CSSProperties}>`,
     },
     {
       id: 'title',
@@ -40,11 +36,6 @@ export default defineUsecase({
       token: 'Dialog.Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The plain (not raised) title bar reading "Welcome to ADM" with the close X at its end.',
-      code: `<Dialog.Title aui={{ scale: 'sm' }}>
-  Welcome to ADM
-  <Dialog.Spacer />
-  <Dialog.Close aui={{ scale: 'sm' }} aria-label="Close" />
-</Dialog.Title>`,
     },
     {
       id: 'title-text',
@@ -53,8 +44,6 @@ export default defineUsecase({
       selector: '[class~="aui-dialog-title"]',
       text: true,
       description: 'The greeting "Welcome to ADM" in the title bar.',
-      code: `<Dialog.Title aui={{ scale: 'sm' }}>
-  Welcome to ADM`,
     },
     {
       id: 'close',
@@ -62,7 +51,6 @@ export default defineUsecase({
       token: 'Dialog.Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X that dismisses the welcome prompt without starting the tour.',
-      code: `<Dialog.Close aui={{ scale: 'sm' }} aria-label="Close" />`,
     },
     {
       id: 'body',
@@ -70,7 +58,6 @@ export default defineUsecase({
       token: 'Dialog.Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The body that holds one welcome sentence.',
-      code: `<Dialog.Body aui={{ scale: 'sm' }}>`,
     },
     {
       id: 'welcome-text',
@@ -78,7 +65,6 @@ export default defineUsecase({
       token: 'Type',
       text: true,
       description: 'The p2 sentence "Welcome to the Anchor Designer." that introduces the tour.',
-      code: `<Type data-ug-part="welcome-text" as="p" role="p2">Welcome to the Anchor Designer.</Type>`,
     },
     {
       id: 'actions',
@@ -86,21 +72,18 @@ export default defineUsecase({
       token: 'Dialog.Actions',
       selector: '[class~="aui-dialog-actions"]',
       description: 'The footer that offers Close and Start Walkthrough.',
-      code: `<Dialog.Actions aui={{ scale: 'sm' }}>`,
     },
     {
       id: 'dismiss-button',
       name: 'Close button',
       token: 'Dialog.Button',
       description: 'The default gray Dialog.Button labelled Close; dismiss={false} leaves closing to the app.',
-      code: `<Dialog.Button data-ug-part="dismiss-button" dismiss={false}>Close</Dialog.Button>`,
     },
     {
       id: 'start',
       name: 'Start Walkthrough',
       token: 'Dialog.Button',
       description: 'The solid secondary button that starts the guided tour.',
-      code: `<Dialog.Button data-ug-part="start" dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Start Walkthrough</Dialog.Button>`,
     },
   ],
 });

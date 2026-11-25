@@ -20,9 +20,6 @@ export default defineUsecase({
       token: 'Field',
       selector: '[class~="aui-field"]',
       description: 'Field at scale "sm" with a 3 gap and a fixed 224px width, so the picture rows have room.',
-      code: `<Field aui={{ scale: 'sm', sx: { gap: '3', width: '224' } }}>
-  {/* … */}
-</Field>`,
     },
     {
       id: 'label',
@@ -30,7 +27,6 @@ export default defineUsecase({
       token: 'Field.Label',
       selector: '[class~="aui-field-label"]',
       description: 'The "Base plate" label above the trigger.',
-      code: `<Field.Label aui={{ scale: 'sm' }}>Base plate</Field.Label>`,
     },
     {
       id: 'trigger',
@@ -38,9 +34,6 @@ export default defineUsecase({
       token: 'Field.SelectTrigger',
       selector: '[class~="aui-select-trigger"]',
       description: 'Full-width outlined trigger showing the chosen plate name only; the picture appears in the rows, not in the trigger.',
-      code: `<Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { width: 'fill' } }}>
-  {/* … */}
-</Field.SelectTrigger>`,
     },
     {
       id: 'value',
@@ -49,7 +42,6 @@ export default defineUsecase({
       selector: '[class~="aui-select-value"]',
       text: true,
       description: 'Shows "Plate A", the default base plate.',
-      code: `<Field.SelectValue />`,
     },
     {
       id: 'chevron',
@@ -57,7 +49,6 @@ export default defineUsecase({
       token: 'Field.SelectChevron',
       selector: '[class~="aui-select-chevron"]',
       description: 'The chevron at the trigger end.',
-      code: `<Field.SelectChevron />`,
     },
     {
       id: 'popup',
@@ -65,9 +56,6 @@ export default defineUsecase({
       token: 'Field.SelectPopup',
       selector: '[class~="aui-select-popup"]',
       description: 'Popup of the trigger width listing Plate A, Plate B and Plate C.',
-      code: `<Field.SelectPopup matchTriggerWidth>
-  {/* … */}
-</Field.SelectPopup>`,
     },
     {
       id: 'list',
@@ -75,9 +63,6 @@ export default defineUsecase({
       token: 'Field.SelectList',
       selector: '[class~="aui-select-list"]',
       description: 'The list of the three plate rows.',
-      code: `<Field.SelectList>
-  {/* … */}
-</Field.SelectList>`,
     },
     {
       id: 'item',
@@ -85,13 +70,6 @@ export default defineUsecase({
       token: 'Field.SelectItem',
       selector: '[class~="aui-select-item"]',
       description: 'A plate row that leads with a picture tile, then the name and an indicator slot.',
-      code: `<Field.SelectItem value="plate-a">
-  <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
-  <ContainedIcon name="image" aria-hidden />
-</View>
-  <Field.SelectItemText>Plate A</Field.SelectItemText>
-  <Field.SelectItemIndicator />
-</Field.SelectItem>`,
     },
     {
       id: 'image-tile',
@@ -99,9 +77,6 @@ export default defineUsecase({
       token: 'View',
       selector: '[class~="aui-select-item"] > [class~="aui-view"]',
       description: 'The tonal primary tile with soft corners and 4 padding that frames the option picture.',
-      code: `<View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
-<ContainedIcon name="image" aria-hidden />
-</View>`,
     },
     {
       id: 'image',
@@ -109,7 +84,6 @@ export default defineUsecase({
       token: 'ContainedIcon',
       selector: '[class~="aui-select-item"] > [class~="aui-view"] > [class~="aui-contained-icon"]',
       description: 'The image glyph standing in for the plate drawing; the apps show a real picture.',
-      code: `<ContainedIcon name="image" aria-hidden />`,
     },
     {
       id: 'item-text',
@@ -117,7 +91,6 @@ export default defineUsecase({
       token: 'Field.SelectItemText',
       selector: '[class~="aui-select-item-text"]',
       description: 'The plate name next to the picture.',
-      code: `<Field.SelectItemText>Plate A</Field.SelectItemText>`,
     },
     {
       id: 'indicator',
@@ -125,7 +98,6 @@ export default defineUsecase({
       token: 'Field.SelectItemIndicator',
       selector: '[class~="aui-select-item-indicator"]',
       description: 'End-of-row slot; the AGPD scene draws a check icon here on the chosen plate.',
-      code: `<Field.SelectItemIndicator />`,
     },
   ],
 });

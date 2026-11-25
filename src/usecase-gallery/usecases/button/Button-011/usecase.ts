@@ -6,8 +6,8 @@ export default defineUsecase({
 
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent \"between\"), outlined by a 1px border on all four sides from sx.","keyIdea":"One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent \"between\"), outlined by a 1px border on all four sides from sx.","selector":"[data-ug-part=\"container\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"The right arrow at the end of the row that signals starting the tour, at scale \"sm\".","keyIdea":"The right arrow at the end of the row that signals starting the tour, at scale \"sm\".","selector":"[data-ug-part=\"icon\"]"},
+        {"id":"container","partId":"container","title":"Container","explanation":"One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent \"between\"), outlined by a 1px border on all four sides from sx.","keyIdea":"A full-row text control gives each tutorial a generous activation target.","selector":"[data-ug-part=\"container\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The right arrow at the end of the row that signals starting the tour, at scale \"sm\".","keyIdea":"The trailing arrow marks the topic row as an entry point to a guided tour.","selector":"[data-ug-part=\"icon\"]"},
       ],
 options: [
     { id: "hs-topic-row", name: "Topic row", apps: ["hs","agpd","rws"], contextAnatomy: [
@@ -17,10 +17,10 @@ options: [
       { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
     ], source: {"hs":"src/hs/Tutorials.tsx","agpd":"src/agpd/Tutorials.tsx","rws":"src/rws/Tutorials.tsx"} ,
       contextLayers: [
-        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"The open dialog that lists the tutorial topics.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
-        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The title bar \"Help & Tutorials\" with the close X.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
-        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The X in the title that closes the dialog.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
-        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The nav column that holds one outlined row per tutorial.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
+        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"The HS dialog gathers tutorials in one browsable help surface.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The title bar names the tutorial directory and its close route.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The close control exits the help list without opening a topic.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The navigation column keeps the available walkthrough choices together.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
       ],
     },
     { id: "ace-topic-row", name: "Topic row — UI variant 2", apps: ["ace"], contextAnatomy: [
@@ -32,12 +32,12 @@ options: [
       { id: "topic-description", name: "Topic description", description: "The muted description under the topic name." },
     ], source: {"ace":"src/features/top-navigation/ui/TutorialsDialog.tsx"} ,
       contextLayers: [
-        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"The open dialog that lists the tutorial topics.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
-        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The title bar \"Help & Tutorials\" with the close X.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
-        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The X in the title that closes the dialog.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
-        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The nav column that holds one outlined row per tutorial.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
-        {"id":"context-topic-name","partId":"topic-name","title":"Topic name","explanation":"The semi-bold topic name (\"ACE: General Tutorial\") stacked above the description.","keyIdea":"The semi-bold topic name (\"ACE: General Tutorial\") stacked above the description.","selector":"[data-ug-part=\"topic-name\"]","scope":"context"},
-        {"id":"context-topic-description","partId":"topic-description","title":"Topic description","explanation":"The muted description under the topic name.","keyIdea":"The muted description under the topic name.","selector":"[data-ug-part=\"topic-description\"]","scope":"context"},
+        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"ACE presents the same tutorial directory as a distinct app-context variant.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The ACE title confirms which help surface the selected topic belongs to.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The ACE close control dismisses the directory from its title bar.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The ACE topic column keeps each available walkthrough in a single list.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
+        {"id":"context-topic-name","partId":"topic-name","title":"Topic name","explanation":"The semi-bold topic name (\"ACE: General Tutorial\") stacked above the description.","keyIdea":"The topic name identifies the selected ACE walkthrough before its summary.","selector":"[data-ug-part=\"topic-name\"]","scope":"context"},
+        {"id":"context-topic-description","partId":"topic-description","title":"Topic description","explanation":"The muted description under the topic name.","keyIdea":"The muted copy previews what the ACE tutorial will cover.","selector":"[data-ug-part=\"topic-description\"]","scope":"context"},
       ],
     },
     { id: "adm-topic-row", name: "Topic row — UI variant 3", apps: ["adm","pfd"], contextAnatomy: [
@@ -47,10 +47,10 @@ options: [
       { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
     ], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","pfd":"src/pfd/ShellDialogs.tsx"} ,
       contextLayers: [
-        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"The open dialog that lists the tutorial topics.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
-        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The title bar \"Help & Tutorials\" with the close X.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
-        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The X in the title that closes the dialog.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
-        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The nav column that holds one outlined row per tutorial.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
+        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"ADM and PFD group the tutorial choices inside their help dialog.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The ADM and PFD title labels the list of available walkthroughs.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The close icon leaves the ADM or PFD tutorial directory.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The topic navigation column lets users scan available guidance.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
       ],
     },
     { id: "pbs-topic-row", name: "Topic row — UI variant 4", apps: ["pbs","fd"], contextAnatomy: [
@@ -60,10 +60,10 @@ options: [
       { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
     ], source: {"pbs":"src/PbsHelpTutorials.tsx","fd":"src/components/HelpCenter.jsx"} ,
       contextLayers: [
-        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"The open dialog that lists the tutorial topics.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
-        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The title bar \"Help & Tutorials\" with the close X.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
-        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The X in the title that closes the dialog.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
-        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The nav column that holds one outlined row per tutorial.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
+        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"PBS and FD place the tutorial rows in a shared help dialog.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The shared title distinguishes the tutorial directory from its selected content.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The close action returns users to the app without starting a walkthrough.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The list keeps each tutorial entry available for selection.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
       ],
     },
   ],

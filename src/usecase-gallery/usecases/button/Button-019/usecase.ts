@@ -6,7 +6,7 @@ export default defineUsecase({
 
   apps: ['hcs'],
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"The Prototype controls Button: small surface Button with elevation 3 so it floats above the page, toggling the controls panel (aria-expanded in the scene).","keyIdea":"The Prototype controls Button: small surface Button with elevation 3 so it floats above the page, toggling the controls panel (aria-expanded in the scene).","selector":"[class~=\"aui-button\"]"},
+        {"id":"container","partId":"container","title":"Container","explanation":"The Prototype controls Button: small surface Button with elevation 3 so it floats above the page, toggling the controls panel (aria-expanded in the scene).","keyIdea":"The elevated prototype control toggles access to the floating demo panel.","selector":"[class~=\"aui-button\"]"},
       ],
 options: [
     { id: "hcs-prototype-controls", name: "Prototype controls", apps: ["hcs"], showContext: false, source: {"hcs":"src/components/F01Experience.tsx"} ,

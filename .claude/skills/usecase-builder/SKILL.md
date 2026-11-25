@@ -36,7 +36,7 @@ Record every placement decision and its reason in the PR description. Never renu
 
 ## Add or change a use case
 
-1. Follow the placement decision above. For a new use case, create the folder at its tree position using the next unused id, subject to the no-renumbering rule.
+1. Follow the placement decision above. For a new use case, create the folder with the next unused id in its component, appended after the existing use cases; never insert it mid-tree, since that would require renumbering.
 2. Write `example.tsx` for the first option and `options/<option-id>/example.tsx` for every additional option. Each Component UI must be the exact control or component rendered for that option.
 3. Write `usecase.ts` with `uiType`, `title`, `apps`, `summary`, `where`, `when`, `how`, a specific `anatomy` array and `options`. Each option names the UI, lists its apps, records its source path and has a `scene.tsx`.
 4. Build each scene from the real app source, keeping it minimal but faithful. Do not replace app-specific visible structure with generic filler or a shared scene when the UI differs.

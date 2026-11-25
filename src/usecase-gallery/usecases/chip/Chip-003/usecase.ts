@@ -9,13 +9,13 @@ export default defineUsecase({
   title: 'Tonal status with icon',
   apps: ['hcs'],
     layers: [
-        {"id":"chip","partId":"chip","title":"Chip","explanation":"The tonal success chip at scale \"sm\" shown in the Status column of the HCS results table; a Failed row swaps it for the error colour.","keyIdea":"The tonal success chip at scale \"sm\" shown in the Status column of the HCS results table; a Failed row swaps it for the error colour.","selector":"[class~=\"aui-chip\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"The leading \"circle-check\" icon at scale \"sm\" that backs the result with a glyph (a cross for Failed).","keyIdea":"The leading \"circle-check\" icon at scale \"sm\" that backs the result with a glyph (a cross for Failed).","selector":"[class~=\"aui-chip-icon\"]"},
+        {"id":"chip","partId":"chip","title":"Chip","explanation":"The tonal success chip at scale \"sm\" shown in the Status column of the HCS results table; a Failed row swaps it for the error colour.","keyIdea":"The status chip compresses each calculation outcome into a quickly scannable table value.","selector":"[class~=\"aui-chip\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The leading \"circle-check\" icon at scale \"sm\" that backs the result with a glyph (a cross for Failed).","keyIdea":"The leading glyph distinguishes a successful check from a failed result before its text is read.","selector":"[class~=\"aui-chip-icon\"]"},
       ],
 options: [
     { id: "hcs-results-status", contextAnatomy: CONTEXT_ANATOMY, name: "Results status", source: {"hcs":"src/components/F01Results.tsx"} ,
       contextLayers: [
-        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The \"Connector calculation results\" Table with Model and Status columns; the Status cell of each row holds the Passed or Failed Chip.","keyIdea":"The \"Connector calculation results\" Table with Model and Status columns; the Status cell of each row holds the Passed or Failed Chip.","selector":"[data-ug-part=\"results-table\"]","scope":"context"},
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The \"Connector calculation results\" Table with Model and Status columns; the Status cell of each row holds the Passed or Failed Chip.","keyIdea":"The table keeps the connector result aligned with its Passed or Failed status.","selector":"[data-ug-part=\"results-table\"]","scope":"context"},
       ],
     },
   ],

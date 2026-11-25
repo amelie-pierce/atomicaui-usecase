@@ -11,14 +11,14 @@ export default defineUsecase({
   title: 'Solid release label',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
     layers: [
-        {"id":"chip","partId":"chip","title":"Chip","explanation":"The solid success chip at scale \"sm\" that tags a release-note entry as a feature (the warning colour is used for an improvement).","keyIdea":"The solid success chip at scale \"sm\" that tags a release-note entry as a feature (the warning colour is used for an improvement).","selector":"[class~=\"aui-chip\"]"},
+        {"id":"chip","partId":"chip","title":"Chip","explanation":"The solid success chip at scale \"sm\" that tags a release-note entry as a feature (the warning colour is used for an improvement).","keyIdea":"The success treatment marks a release entry as a feature before its explanation is read.","selector":"[class~=\"aui-chip\"]"},
       ],
 options: [
     { id: "hcs-release-note", contextAnatomy: CONTEXT_ANATOMY, name: "Release note row", source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pfd":"src/pfd/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"} ,
       contextLayers: [
-        {"id":"context-change-row","partId":"change-row","title":"Change row","explanation":"One release-note row: a flex row with 8px vertical padding and an outlined bottom border between rows.","keyIdea":"One release-note row: a flex row with 8px vertical padding and an outlined bottom border between rows.","selector":"[data-ug-part=\"change-row\"]","scope":"context"},
-        {"id":"context-chip-column","partId":"chip-column","title":"Chip column","explanation":"The fixed 160px start column that holds the change Chip (FEATURE, IMPROVEMENT).","keyIdea":"The fixed 160px start column that holds the change Chip (FEATURE, IMPROVEMENT).","selector":"[data-ug-part=\"chip-column\"]","scope":"context"},
-        {"id":"context-change-text","partId":"change-text","title":"Change text","explanation":"The p3 text that describes the change, such as \"Added the Download Duration help.\"","keyIdea":"The p3 text that describes the change, such as \"Added the Download Duration help.\"","selector":"[data-ug-part=\"change-text\"]","scope":"context"},
+        {"id":"context-change-row","partId":"change-row","title":"Change row","explanation":"One release-note row: a flex row with 8px vertical padding and an outlined bottom border between rows.","keyIdea":"The bordered row keeps each release change distinct while maintaining a shared list rhythm.","selector":"[data-ug-part=\"change-row\"]","scope":"context"},
+        {"id":"context-chip-column","partId":"chip-column","title":"Chip column","explanation":"The fixed 160px start column that holds the change Chip (FEATURE, IMPROVEMENT).","keyIdea":"A fixed badge column aligns change categories across neighboring release entries.","selector":"[data-ug-part=\"chip-column\"]","scope":"context"},
+        {"id":"context-change-text","partId":"change-text","title":"Change text","explanation":"The p3 text that describes the change, such as \"Added the Download Duration help.\"","keyIdea":"The sentence supplies the concrete change behind the category chip.","selector":"[data-ug-part=\"change-text\"]","scope":"context"},
       ],
     },
   ],

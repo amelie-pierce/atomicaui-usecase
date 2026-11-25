@@ -16,6 +16,7 @@ export default function HsConfigureColumnsScene({ host }: ContextProps) {
           <Popover.Portal container={host}>
             <Popover.Positioner side="bottom" align="end" sideOffset={4} className="ug-anchored">
               <Popover.Popup
+                data-ug-part="popover"
                 initialFocus={false}
                 aria-label="Configure columns"
                 render={
@@ -24,7 +25,7 @@ export default function HsConfigureColumnsScene({ host }: ContextProps) {
                   />
                 }
               >
-                <List aria-label="Columns" reorderable>
+                <List data-ug-part="columns" aria-label="Columns" reorderable>
                   {MOCK_OUTPUT_COLUMNS.map((column) => (
                     <List.Item key={column.id} id={column.id} locked={!column.hideable}>
                       <List.ItemIndicator />

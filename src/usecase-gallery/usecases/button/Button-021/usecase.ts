@@ -1,13 +1,18 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'popover', name: 'Configure columns popover', description: 'The elevated popover opened under the table-columns IconButton that holds the column list and this footer.' },
+  { id: 'columns', name: 'Column list', description: 'The reorderable List of Output columns, each with a visibility Switch and a drag handle.' },
+];
+
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Save column configuration buttons',
 
   apps: ['hcs', 'hs'],
   options: [
-    { id: "hcs-configure-columns", name: "Configure columns", apps: ["hcs"], source: {"hcs":"src/components/ColumnVisibility.tsx"} },
-    { id: "hs-configure-columns", name: "Configure columns — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ColumnVisibility.tsx"} },
+    { id: "hcs-configure-columns", name: "Configure columns", apps: ["hcs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hcs":"src/components/ColumnVisibility.tsx"} },
+    { id: "hs-configure-columns", name: "Configure columns — UI variant 2", apps: ["hs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hs":"src/hs/ColumnVisibility.tsx"} },
   ],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx' },
   summary: 'A reset icon, a Cancel and a solid secondary Save close the Configure columns popover.',

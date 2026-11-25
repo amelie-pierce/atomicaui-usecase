@@ -71,7 +71,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   // The option change is a transition: the shown UI stays until the next option's lazy example has loaded, so the stage never blanks.
   const panes = {
     render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={setViewMode} anatomy={anatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId }))} />,
-    detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availableParts?.key === activePreviewKey ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} />,
+    detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availableParts?.key.startsWith(`${selectedId}:`) ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} />,
   };
   return (
     <div className="ug ug--usecase">

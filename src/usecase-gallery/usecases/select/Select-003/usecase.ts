@@ -4,9 +4,29 @@ export default defineUsecase({
   uiType: 'Field select',
   title: 'Multiple select',
   apps: ['pbs', 'fd', 'pfd'],
-  options: [
-    { id: "pbs-multi-select", showContext: false, name: "Multiple select", apps: ["pbs","fd"], note: "Plain rows: chosen rows show by their raised fill.", source: {"pbs":"src/InputFields.tsx","fd":"src/components/ui.jsx"} },
-    { id: "pfd-multi-select", showContext: false, name: "Multiple select — UI variant 2", apps: ["pfd"], note: "Checkbox rows: each row leads with a checked or empty square.", source: {"pfd":"src/pfd/fields.tsx"} },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"Field at scale \"sm\" with a 3 gap that stacks the Corrosion Resistance label above the multi-select.","keyIdea":"Field at scale \"sm\" with a 3 gap that stacks the Corrosion Resistance label above the multi-select.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Corrosion Resistance\" label at scale \"sm\".","keyIdea":"The \"Corrosion Resistance\" label at scale \"sm\".","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The 28px outlined trigger that stays one line high while it lists every chosen option.","keyIdea":"The 28px outlined trigger that stays one line high while it lists every chosen option.","selector":"[class~=\"aui-select-trigger\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The chevron at the trigger end; the list stays open while rows are toggled.","keyIdea":"The chevron at the trigger end; the list stays open while rows are toggled.","selector":"[class~=\"aui-select-chevron\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup of the trigger width listing Standard, Hot dip galvanized and Stainless steel.","keyIdea":"Popup of the trigger width listing Standard, Hot dip galvanized and Stainless steel.","selector":"[class~=\"aui-select-popup\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"The list holding the three corrosion options.","keyIdea":"The list holding the three corrosion options.","selector":"[class~=\"aui-select-list\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"A toggleable option row; both Standard and Hot dip galvanized start selected (the `multiple` defaultValue is an array).","keyIdea":"A toggleable option row; both Standard and Hot dip galvanized start selected (the `multiple` defaultValue is an array).","selector":"[class~=\"aui-select-item\"]"},
+        {"id":"item-text","partId":"item-text","title":"Item text","explanation":"The option name such as \"Stainless steel\".","keyIdea":"The option name such as \"Stainless steel\".","selector":"[class~=\"aui-select-item-text\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The indicator slot at the row end; the PFD scene leads each row with a checkbox icon instead.","keyIdea":"The indicator slot at the row end; the PFD scene leads each row with a checkbox icon instead.","selector":"[class~=\"aui-select-item-indicator\"]"},
+        {"id":"checkbox-icon","partId":"checkbox-icon","title":"Checkbox icon","explanation":"In the PFD scene each row leads with a square-check icon when chosen and a square when not, with no indicator.","keyIdea":"In the PFD scene each row leads with a square-check icon when chosen and a square when not, with no indicator.","selector":"[class~=\"aui-select-item\"] > [class~=\"aui-contained-icon\"]"},
+      ],
+options: [
+    { id: "pbs-multi-select", showContext: false, name: "Multiple select", apps: ["pbs","fd"], note: "Plain rows: chosen rows show by their raised fill.", source: {"pbs":"src/InputFields.tsx","fd":"src/components/ui.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "pfd-multi-select", showContext: false, name: "Multiple select — UI variant 2", apps: ["pfd"], note: "Checkbox rows: each row leads with a checked or empty square.", source: {"pfd":"src/pfd/fields.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { pbs: 'src/InputFields.tsx', fd: 'src/components/ui.jsx', pfd: 'src/pfd/fields.tsx' },
   summary: 'The field select with the `multiple` prop: the trigger lists every chosen option and the list stays open while rows are toggled.',

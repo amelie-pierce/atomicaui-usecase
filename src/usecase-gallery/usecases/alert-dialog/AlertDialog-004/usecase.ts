@@ -5,10 +5,34 @@ export default defineUsecase({
   title: 'Delete confirm dialog',
 
   apps: ['ace', 'adm', 'pbs', 'hs', 'fd'],
-  options: [
-    { id: "ace-delete", showContext: false, name: "Delete confirm", apps: ["ace","adm"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx","adm":"src/features/templates/components/NewFromTemplateDialog.tsx"} },
-    { id: "pbs-delete", showContext: false, name: "Delete confirm — UI variant 2", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
-    { id: "hs-delete", showContext: false, name: "Delete confirm — UI variant 3", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the delete confirm.","keyIdea":"The scrim behind the delete confirm.","selector":"[class~=\"aui-dialog-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The default-width confirm window used by ACE, HS and PBS.","keyIdea":"The default-width confirm window used by ACE, HS and PBS.","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title","explanation":"The raised title \"Warning: Delete Template?\" with a solid warning icon and no close X (HS leaves the bar plain, PBS has no title at all).","keyIdea":"The raised title \"Warning: Delete Template?\" with a solid warning icon and no close X (HS leaves the bar plain, PBS has no title at all).","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"icon","partId":"icon","title":"Warning icon","explanation":"The solid triangle-exclamation glyph in the warning colour.","keyIdea":"The solid triangle-exclamation glyph in the warning colour.","selector":"[class~=\"aui-dialog-title\"] [class~=\"aui-contained-icon\"]"},
+        {"id":"close-row","partId":"close-row","title":"Close row","explanation":"The PBS-only end-aligned row that holds a lone close X above the message instead of a title bar.","keyIdea":"The PBS-only end-aligned row that holds a lone close X above the message instead of a title bar.","selector":"[data-ug-part=\"close-row\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The PBS close X above the message; the other apps have none.","keyIdea":"The PBS close X above the message; the other apps have none.","selector":"[class~=\"aui-dialog-close\"]"},
+        {"id":"description","partId":"description","title":"Description","explanation":"The message that the deletion cannot be undone and must be confirmed (PBS asks \"Are you sure you want to delete Connection 1\").","keyIdea":"The message that the deletion cannot be undone and must be confirmed (PBS asks \"Are you sure you want to delete Connection 1\").","selector":"[class~=\"aui-dialog-description\"]"},
+        {"id":"actions","partId":"actions","title":"Footer","explanation":"The footer with the back-out and delete buttons; PBS puts a spacer between them.","keyIdea":"The footer with the back-out and delete buttons; PBS puts a spacer between them.","selector":"[class~=\"aui-dialog-actions\"]"},
+        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"The default Cancel (labelled Close in PBS) that keeps the template.","keyIdea":"The default Cancel (labelled Close in PBS) that keeps the template.","selector":"[data-ug-part=\"cancel\"]"},
+        {"id":"delete","partId":"delete","title":"Delete","explanation":"The solid error Delete that removes the template.","keyIdea":"The solid error Delete that removes the template.","selector":"[data-ug-part=\"delete\"]"},
+      ],
+options: [
+    { id: "ace-delete", showContext: false, name: "Delete confirm", apps: ["ace","adm"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx","adm":"src/features/templates/components/NewFromTemplateDialog.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "pbs-delete", showContext: false, name: "Delete confirm — UI variant 2", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "hs-delete", showContext: false, name: "Delete confirm — UI variant 3", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx', adm: 'src/features/templates/components/NewFromTemplateDialog.tsx', pbs: 'src/ResultsSection.tsx', hs: 'src/hs/TemplateDialogs.tsx', fd: 'src/components/TemplatesDialog.jsx' },
   summary: 'A confirmation that asks before a template or a saved result is deleted: a Cancel next to a solid error Delete.',

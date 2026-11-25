@@ -4,9 +4,27 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Full-size dialog',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  options: [
-    { id: "hcs-licence", name: "Licence dialog", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false },
-    { id: "adm-licence", name: "Licence dialog — UI variant 2", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","pbs":"src/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx"}, showContext: false },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the licence gate that the user must answer before the app opens.","keyIdea":"The scrim behind the licence gate that the user must answer before the app opens.","selector":"[class~=\"aui-dialog-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The full-size licence window: scale \"sm\" with width and height set to \"fill\" so it fills the stage.","keyIdea":"The full-size licence window: scale \"sm\" with width and height set to \"fill\" so it fills the stage.","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title bar","explanation":"The title bar naming the \"Website Application License Agreement\"; HCS and the example raise it, the other apps leave it plain.","keyIdea":"The title bar naming the \"Website Application License Agreement\"; HCS and the example raise it, the other apps leave it plain.","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"spacer","partId":"spacer","title":"Spacer","explanation":"The gap before the close X in the title bar.","keyIdea":"The gap before the close X in the title bar.","selector":"[class~=\"aui-dialog-spacer\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The close X, which also declines the licence (labelled \"Do Not Accept\" in the ADM scene); PBS hides it.","keyIdea":"The close X, which also declines the licence (labelled \"Do Not Accept\" in the ADM scene); PBS hides it.","selector":"[class~=\"aui-dialog-close\"]"},
+        {"id":"description","partId":"description","title":"Description","explanation":"The HCS-only line \"Review and accept to start using the HCS prototype.\" that stays fixed under the title while the body scrolls.","keyIdea":"The HCS-only line \"Review and accept to start using the HCS prototype.\" that stays fixed under the title while the body scrolls.","selector":"[class~=\"aui-dialog-description\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The scroll owner of the window; it scrolls when the licence text is longer than the popup.","keyIdea":"The scroll owner of the window; it scrolls when the licence text is longer than the popup.","selector":"[class~=\"aui-dialog-body\"]"},
+        {"id":"licence-text","partId":"licence-text","title":"Licence text","explanation":"The licence sections as Type p2 text: one sample clause in the example, and the full mock agreement in a gap-12 column View in the HCS and ADM scenes.","keyIdea":"The licence sections as Type p2 text: one sample clause in the example, and the full mock agreement in a gap-12 column View in the HCS and ADM scenes.","selector":"[data-ug-part=\"licence-text\"]"},
+      ],
+options: [
+    { id: "hcs-licence", name: "Licence dialog", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-licence", name: "Licence dialog — UI variant 2", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","pbs":"src/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     hcs: 'src/components/F01Experience.tsx',

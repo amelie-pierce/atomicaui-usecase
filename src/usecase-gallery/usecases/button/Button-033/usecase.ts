@@ -11,8 +11,21 @@ export default defineUsecase({
   title: 'Collapse all sections button',
 
   apps: ['hcs'],
-  options: [
-    { id: "hcs-panel-header", contextAnatomy: CONTEXT_ANATOMY, name: "Panel header", apps: ["hcs"], source: {"hcs":"src/App.tsx"} },
+    layers: [
+        {"id":"collapse","partId":"collapse","title":"Collapse all","explanation":"The transparent secondary arrows-to-line button (aria-label Collapse all) that folds every Input section; in HCS it is the angle-left Collapse Input button at the start of the header.","keyIdea":"The transparent secondary arrows-to-line button (aria-label Collapse all) that folds every Input section; in HCS it is the angle-left Collapse Input button at the start of the header.","selector":"[class~=\"aui-button\"][aria-label^=\"Collapse\"]"},
+        {"id":"collapse-icon","partId":"collapse-icon","title":"Icon","explanation":"The arrows-to-line glyph, which becomes expand when all sections are closed.","keyIdea":"The arrows-to-line glyph, which becomes expand when all sections are closed.","selector":"[class~=\"aui-button\"][aria-label^=\"Collapse\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"tooltip","partId":"tooltip","title":"Tooltip","explanation":"The Collapse Input label shown below the button in the HCS panel header.","keyIdea":"The Collapse Input label shown below the button in the HCS panel header.","selector":"[class~=\"aui-tooltip-popup\"]"},
+        {"id":"item","partId":"item","title":"Section","explanation":"The Connection Type and Load Properties sections of the Input pane that the button collapses or expands together.","keyIdea":"The Connection Type and Load Properties sections of the Input pane that the button collapses or expands together.","selector":"[class~=\"aui-accordion-item\"]"},
+        {"id":"trigger","partId":"trigger","title":"Section trigger","explanation":"The header row of each section with its icon, semi-bold name and chevron.","keyIdea":"The header row of each section with its icon, semi-bold name and chevron.","selector":"[class~=\"aui-accordion-trigger\"]"},
+      ],
+options: [
+    { id: "hcs-panel-header", contextAnatomy: CONTEXT_ANATOMY, name: "Panel header", apps: ["hcs"], source: {"hcs":"src/App.tsx"} ,
+      contextLayers: [
+        {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The surface-alt Input pane that frames the header and the section card.","keyIdea":"The surface-alt Input pane that frames the header and the section card.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
+        {"id":"context-collapse-input","partId":"collapse-input","title":"Collapse Input","explanation":"The angle-left button at the start of the header that collapses the whole pane, with its Collapse Input tooltip.","keyIdea":"The angle-left button at the start of the header that collapses the whole pane, with its Collapse Input tooltip.","selector":"[class~=\"aui-button\"][aria-label=\"Collapse Input\"]","scope":"context"},
+        {"id":"context-pane-title","partId":"pane-title","title":"Pane title","explanation":"The semi-bold Input heading in the header, before the spacer and Collapse all.","keyIdea":"The semi-bold Input heading in the header, before the spacer and Collapse all.","selector":"[data-ug-part=\"pane-title\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/F01Experience.tsx' },
   summary: 'A transparent icon-only IconButton collapses every section of the Input pane, and expands them again when all are closed.',

@@ -40,13 +40,16 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const option = resolved?.option;
   const activeMode = option?.showContext ? viewMode : 'component';
   const anatomy = useMemo(() => activeMode === 'context'
-    ? [...(usecase?.anatomy ?? []), ...(option?.contextAnatomy ?? [])]
+    ? [
+      ...(usecase?.anatomy ?? []).map((part) => ({ ...part, scope: 'component' as const })),
+      ...(option?.contextAnatomy ?? []).map((part) => ({ ...part, scope: 'context' as const })),
+    ]
     : usecase?.anatomy ?? [], [activeMode, usecase?.id, option?.id]);
   const activePartId = interactedPart?.id ?? selectedPartId;
   const previewKey = `${selectedId}:${option?.id ?? ''}`;
   const activePreviewKey = `${previewKey}:${activeMode}`;
   const availablePartIds = availableParts?.key === activePreviewKey ? availableParts.ids : undefined;
-  const authoredLayers = activeMode === 'context' ? [...(usecase?.layers ?? []), ...(option?.contextLayers ?? [])] : usecase?.layers ?? [];
+  const authoredLayers = activeMode === 'context' ? [...(option?.contextLayers ?? []), ...(usecase?.layers ?? [])] : usecase?.layers ?? [];
   const anatomyIds = new Set(anatomy.map((part) => part.id));
   const layers = availablePartIds ? authoredLayers.filter((step) => {
     const partId = step.partId ?? step.id.replace(/^context-/, '');

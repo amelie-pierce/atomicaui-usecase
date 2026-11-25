@@ -4,8 +4,22 @@ export default defineUsecase({
   uiType: 'Context menu',
   title: 'Tab context menu',
   apps: ['adc'],
-  options: [
-    { id: "adc-tab-options", name: "Tab options", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, showContext: false },
+    layers: [
+    {"id":"trigger","partId":"trigger","title":"Design tab trigger","explanation":"The Design 1 tab receives the right-click action that opens its secondary menu.","keyIdea":"Attach secondary actions to the row they affect.","selector":"[class~=\"aui-tabs-tab\"]"},
+    {"id":"popup","partId":"popup","title":"Menu surface","explanation":"The Tab options popup groups the available actions and is positioned beside the tab.","keyIdea":"Keep secondary choices together in one anchored menu.","selector":"[class~=\"aui-dropdown-popup\"]"},
+    {"id":"close-action","partId":"close-action","title":"Close action","explanation":"The first row closes the current design tab.","keyIdea":"Place the most local action first.","selector":"[data-ug-part=\"close-action\"]"},
+    {"id":"close-others-action","partId":"close-others-action","title":"Close other designs","explanation":"This row closes every other design while keeping the current tab.","keyIdea":"Make the broader destructive action distinct from closing one item.","selector":"[data-ug-part=\"close-others-action\"]"},
+    {"id":"separator","partId":"separator","title":"Action group divider","explanation":"The separator divides close actions from actions that edit or duplicate the design.","keyIdea":"Use a divider when menu actions form different groups.","selector":"[class~=\"aui-dropdown-separator\"]"},
+    {"id":"rename-action","partId":"rename-action","title":"Rename action","explanation":"The Rename row opens the name editor for the current design.","keyIdea":"Put related editing actions after the close group.","selector":"[data-ug-part=\"rename-action\"]"},
+    {"id":"duplicate-action","partId":"duplicate-action","title":"Duplicate action","explanation":"The Duplicate row creates a copy of the current design.","keyIdea":"Group creation actions with other non-close actions.","selector":"[data-ug-part=\"duplicate-action\"]"},
+    {"id":"move-to-top-action","partId":"move-to-top-action","title":"Move to top action","explanation":"The final row moves the current design to the start of the tab rail.","keyIdea":"Place the final related action at the end of the menu.","selector":"[data-ug-part=\"move-to-top-action\"]"},
+  ],
+options: [
+    { id: "adc-tab-options", name: "Tab options", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A right-click on a tab opens a menu of actions for that tab: close, close the others, rename, duplicate and move.',

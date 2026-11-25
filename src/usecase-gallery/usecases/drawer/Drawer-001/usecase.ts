@@ -9,8 +9,20 @@ export default defineUsecase({
   uiType: 'Drawer',
   title: 'Mobile navigation drawer',
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  options: [
-    { id: "ace-mobile-nav", name: "Mobile navigation", source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","pfd":"src/pfd/TopBar.tsx","pbs":"src/TopBar.tsx","hs":"src/hs/TopBar.tsx","fd":"src/App.jsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the drawer; in the ACE scene it starts 36px down so the top bar stays uncovered.","keyIdea":"The scrim behind the drawer; in the ACE scene it starts 36px down so the top bar stays uncovered.","selector":"[class~=\"aui-drawer-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The 288px-wide, full-height, square no-padding panel labelled \"Navigation\" that slides in from the right edge on a phone.","keyIdea":"The 288px-wide, full-height, square no-padding panel labelled \"Navigation\" that slides in from the right edge on a phone.","selector":"[class~=\"aui-drawer-popup\"]"},
+        {"id":"content","partId":"content","title":"Content","explanation":"The region that holds the vertical menubar of top bar actions.","keyIdea":"The region that holds the vertical menubar of top bar actions.","selector":"[class~=\"aui-drawer-content\"]"},
+        {"id":"menubar","partId":"menubar","title":"Vertical menubar","explanation":"The vertical Menubar at scale \"sm\" that stacks the actions full width.","keyIdea":"The vertical Menubar at scale \"sm\" that stacks the actions full width.","selector":"[class~=\"aui-drawer-content\"] [class~=\"aui-menubar\"]"},
+        {"id":"item","partId":"item","title":"Menu rows","explanation":"The Save to device, Open from device and About rows of the example; the ACE scene adds Print.","keyIdea":"The Save to device, Open from device and About rows of the example; the ACE scene adds Print.","selector":"[class~=\"aui-drawer-content\"] [class~=\"aui-button\"]"},
+      ],
+options: [
+    { id: "ace-mobile-nav", name: "Mobile navigation", source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","pfd":"src/pfd/TopBar.tsx","pbs":"src/TopBar.tsx","hs":"src/hs/TopBar.tsx","fd":"src/App.jsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx"}, contextAnatomy: CONTEXT_ANATOMY ,
+      contextLayers: [
+        {"id":"context-top-bar","partId":"top-bar","title":"Top bar","explanation":"The phone top bar Menubar labelled \"Top bar\" that stays visible above the drawer; the drawer opens flush under it.","keyIdea":"The phone top bar Menubar labelled \"Top bar\" that stays visible above the drawer; the drawer opens flush under it.","selector":"[class~=\"aui-menubar\"][aria-label=\"Top bar\"]","scope":"context"},
+        {"id":"context-toggle","partId":"toggle","title":"Navigation toggle","explanation":"The xmark icon button labelled \"Close navigation\" at the top bar; it toggles the drawer closed.","keyIdea":"The xmark icon button labelled \"Close navigation\" at the top bar; it toggles the drawer closed.","selector":"[class~=\"aui-menubar\"][aria-label=\"Top bar\"] [class~=\"aui-button\"]","scope":"context"},
+      ],
+    },
   ],
   source: {
     ace: 'src/features/top-navigation/ui/AceNavBar.tsx',

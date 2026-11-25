@@ -4,8 +4,20 @@ export default defineUsecase({
   uiType: 'Tooltip on a radio',
   title: 'Radio option tooltip',
   apps: ['pbs', 'rws'],
-  options: [
-    { id: "pbs-viewer-radio", name: "Viewer control", showContext: false, apps: ["pbs","rws"], source: {"pbs":"src/Viewer.tsx","rws":"src/rws/Viewer.tsx"} },
+    layers: [
+        {"id":"group","partId":"group","title":"Radio group","explanation":"The \"Camera projection\" RadioGroup (scale \"sm\", no padding) whose options each carry their own tooltip.","keyIdea":"The \"Camera projection\" RadioGroup (scale \"sm\", no padding) whose options each carry their own tooltip.","selector":"[class~=\"aui-radio-group\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The span, with closeOnClick off, that wraps the Perspective radio so the tooltip does not close on arrow-key selection.","keyIdea":"The span, with closeOnClick off, that wraps the Perspective radio so the tooltip does not close on arrow-key selection.","selector":"[data-ug-part=\"trigger\"]"},
+        {"id":"radio","partId":"radio","title":"Radio","explanation":"The \"Perspective\" radio at scale \"sm\", selected by default.","keyIdea":"The \"Perspective\" radio at scale \"sm\", selected by default.","selector":"[class~=\"aui-radio\"]"},
+        {"id":"radio-label","partId":"radio-label","title":"Radio label","explanation":"The visible option name \"Perspective\" beside the radio.","keyIdea":"The visible option name \"Perspective\" beside the radio.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
+        {"id":"positioner","partId":"positioner","title":"Positioner","explanation":"Places the note above the radio with a 4px offset (side=\"top\"); RWS requests the bottom side.","keyIdea":"Places the note above the radio with a 4px offset (side=\"top\"); RWS requests the bottom side.","selector":"[class~=\"aui-tooltip-positioner\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The default tooltip surface for the one-line note.","keyIdea":"The default tooltip surface for the one-line note.","selector":"[class~=\"aui-tooltip-popup\"]"},
+      ],
+options: [
+    { id: "pbs-viewer-radio", name: "Viewer control", showContext: false, apps: ["pbs","rws"], source: {"pbs":"src/Viewer.tsx","rws":"src/rws/Viewer.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { pbs: 'src/Viewer.tsx', rws: 'src/rws/Viewer.tsx' },
   summary: 'A radio option of a group, with its label beside it, shows a short note about the option in a small tooltip on hover or keyboard focus.',

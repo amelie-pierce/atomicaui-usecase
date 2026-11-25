@@ -4,27 +4,55 @@ export default defineUsecase({
   uiType: 'Single button',
   title: 'Print output button',
   apps: ['hcs', 'adm', 'hs', 'fd'],
-  options: [
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"The Print Output Button: scale \"sm\", surface color with tonal paint and flex \"none\" so it keeps its width at the end of the results pane header (HCS look; HS, FD and ADM scenes swap in a solid secondary black Button).","keyIdea":"The Print Output Button: scale \"sm\", surface color with tonal paint and flex \"none\" so it keeps its width at the end of the results pane header (HCS look; HS, FD and ADM scenes swap in a solid secondary black Button).","selector":"[class~=\"aui-button\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The print glyph before the label, at scale \"sm\" so it matches the small Button.","keyIdea":"The print glyph before the label, at scale \"sm\" so it matches the small Button.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
+      ],
+options: [
     { id: 'white-icon', name: 'White button with icon', apps: ['hcs'], contextAnatomy: [
       { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section that holds the header row. The toolbar, table and notes are left out." },
       { id: "output-title", name: "Output title", description: "The \"Output\" heading at the start of the pane header." },
       { id: "header-actions", name: "Header actions", description: "The action group pushed to the end of the header, which holds the Print Output button (HCS)." },
-    ], source: { hcs: 'src/App.tsx' } },
+    ], source: { hcs: 'src/App.tsx' } ,
+      contextLayers: [
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. The toolbar, table and notes are left out.","keyIdea":"The Output pane frame, a surface-alt section that holds the header row.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The \"Output\" heading at the start of the pane header.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
+        {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"The action group pushed to the end of the header, which holds the Print Output button (HCS).","keyIdea":"The action group pushed to the end of the header, which holds the Print Output button (HCS).","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
+      ],
+    },
     { id: 'black-icon', name: 'Black button with icon', apps: ['hs', 'fd'], contextAnatomy: [
       { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section that holds the header row. Only the header is shown." },
       { id: "output-tabs", name: "Output tabs", description: "The Output and Job List tabs at the start of the header, with the selected tab on an overlay fill." },
       { id: "header-actions", name: "Header actions", description: "The action group that grows and right-aligns itself after the tabs and holds Print Output." },
-    ], source: { hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } },
+    ], source: { hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } ,
+      contextLayers: [
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. Only the header is shown.","keyIdea":"The Output pane frame, a surface-alt section that holds the header row.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-tabs","partId":"output-tabs","title":"Output tabs","explanation":"The Output and Job List tabs at the start of the header, with the selected tab on an overlay fill.","keyIdea":"The Output and Job List tabs at the start of the header, with the selected tab on an overlay fill.","selector":"[data-ug-part=\"output-tabs\"]","scope":"context"},
+        {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"The action group that grows and right-aligns itself after the tabs and holds Print Output.","keyIdea":"The action group that grows and right-aligns itself after the tabs and holds Print Output.","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
+      ],
+    },
     { id: 'black-no-icon', name: 'Black button without icon', apps: ['adm'], contextAnatomy: [
       { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section that holds the header row. Only the header is shown." },
       { id: "output-tabs", name: "Output tabs", description: "The Summary and Result tabs at the start of the header; the Print label follows the selected tab." },
       { id: "header-actions", name: "Header actions", description: "The action group pushed to the end of the header with an auto inline-start margin; it holds the text-only Print Summary button." },
-    ], source: { adm: 'src/app/layout/Workbench/Workbench.tsx' } },
+    ], source: { adm: 'src/app/layout/Workbench/Workbench.tsx' } ,
+      contextLayers: [
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. Only the header is shown.","keyIdea":"The Output pane frame, a surface-alt section that holds the header row.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-tabs","partId":"output-tabs","title":"Output tabs","explanation":"The Summary and Result tabs at the start of the header; the Print label follows the selected tab.","keyIdea":"The Summary and Result tabs at the start of the header; the Print label follows the selected tab.","selector":"[data-ug-part=\"output-tabs\"]","scope":"context"},
+        {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"The action group pushed to the end of the header with an auto inline-start margin; it holds the text-only Print Summary button.","keyIdea":"The action group pushed to the end of the header with an auto inline-start margin; it holds the text-only Print Summary button.","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
+      ],
+    },
     { id: 'disabled', name: 'Disabled button', apps: ['hcs', 'adm', 'hs', 'fd'], contextAnatomy: [
       { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section that holds the header row. Labelled \"Output, inputs invalid\"." },
       { id: "output-title", name: "Output title", description: "The \"Output\" heading at the start of the pane header." },
       { id: "header-actions", name: "Header actions", description: "The action group pushed to the end of the header; its Print Output button is disabled while the inputs are invalid." },
-    ], source: { hcs: 'src/App.tsx', adm: 'src/app/layout/Workbench/Workbench.tsx', hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } },
+    ], source: { hcs: 'src/App.tsx', adm: 'src/app/layout/Workbench/Workbench.tsx', hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } ,
+      contextLayers: [
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. Labelled \"Output, inputs invalid\".","keyIdea":"The Output pane frame, a surface-alt section that holds the header row.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The \"Output\" heading at the start of the pane header.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
+        {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"The action group pushed to the end of the header; its Print Output button is disabled while the inputs are invalid.","keyIdea":"The action group pushed to the end of the header; its Print Output button is disabled while the inputs are invalid.","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/App.tsx', adm: 'src/app/layout/Workbench/Workbench.tsx', hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' },
   summary: 'A Button with a print icon is the last item of a results pane header: quiet and tonal in HCS, a solid black Button in the tabbed headers of HS, FD and ADM.',

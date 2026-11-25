@@ -68,6 +68,8 @@ export interface AnatomyPart {
   id: string;
   name: string;
   description: string;
+  /** In context, component anatomy is measured inside the selected example and context anatomy around it. */
+  scope?: 'component' | 'context';
   /** A concise design principle for the interactive layer lesson. */
   keyIdea?: string;
   /** A selector scoped to the preview stage. Omit when the example uses data-ug-part. */

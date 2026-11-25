@@ -10,9 +10,25 @@ export default defineUsecase({
   title: 'Save column configuration buttons',
 
   apps: ['hcs', 'hs'],
-  options: [
-    { id: "hcs-configure-columns", name: "Configure columns", apps: ["hcs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hcs":"src/components/ColumnVisibility.tsx"} },
-    { id: "hs-configure-columns", name: "Configure columns — UI variant 2", apps: ["hs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hs":"src/hs/ColumnVisibility.tsx"} },
+    layers: [
+        {"id":"reset","partId":"reset","title":"Reset button","explanation":"The icon-only rotate-left button at the start of the footer that resets the columns to their default order and visibility.","keyIdea":"The icon-only rotate-left button at the start of the footer that resets the columns to their default order and visibility.","selector":"[data-ug-part=\"reset\"]"},
+        {"id":"actions","partId":"actions","title":"Action group","explanation":"The row at the end of the footer that holds Cancel and Save with an 8px gap.","keyIdea":"The row at the end of the footer that holds Cancel and Save with an 8px gap.","selector":"[data-ug-part=\"actions\"]"},
+        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS).","keyIdea":"The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS).","selector":"[data-ug-part=\"cancel\"]"},
+        {"id":"save","partId":"save","title":"Save","explanation":"The solid secondary Save Button that applies the column changes (scale \"sm\" in HCS, default scale in HS).","keyIdea":"The solid secondary Save Button that applies the column changes (scale \"sm\" in HCS, default scale in HS).","selector":"[data-ug-part=\"save\"]"},
+      ],
+options: [
+    { id: "hcs-configure-columns", name: "Configure columns", apps: ["hcs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hcs":"src/components/ColumnVisibility.tsx"} ,
+      contextLayers: [
+        {"id":"context-popover","partId":"popover","title":"Configure columns popover","explanation":"The elevated popover opened under the table-columns IconButton that holds the column list and this footer.","keyIdea":"The elevated popover opened under the table-columns IconButton that holds the column list and this footer.","selector":"[data-ug-part=\"popover\"]","scope":"context"},
+        {"id":"context-columns","partId":"columns","title":"Column list","explanation":"The reorderable List of Output columns, each with a visibility Switch and a drag handle.","keyIdea":"The reorderable List of Output columns, each with a visibility Switch and a drag handle.","selector":"[data-ug-part=\"columns\"]","scope":"context"},
+      ],
+    },
+    { id: "hs-configure-columns", name: "Configure columns — UI variant 2", apps: ["hs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hs":"src/hs/ColumnVisibility.tsx"} ,
+      contextLayers: [
+        {"id":"context-popover","partId":"popover","title":"Configure columns popover","explanation":"The elevated popover opened under the table-columns IconButton that holds the column list and this footer.","keyIdea":"The elevated popover opened under the table-columns IconButton that holds the column list and this footer.","selector":"[data-ug-part=\"popover\"]","scope":"context"},
+        {"id":"context-columns","partId":"columns","title":"Column list","explanation":"The reorderable List of Output columns, each with a visibility Switch and a drag handle.","keyIdea":"The reorderable List of Output columns, each with a visibility Switch and a drag handle.","selector":"[data-ug-part=\"columns\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx' },
   summary: 'A reset icon, a Cancel and a solid secondary Save close the Configure columns popover.',

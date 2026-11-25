@@ -4,9 +4,30 @@ export default defineUsecase({
   uiType: 'Menubar with icon trigger',
   title: 'Settings drawer row menu',
   apps: ['adm', 'ace'],
-  options: [
-    { id: "adm-drawer-row", showContext: false, name: "Drawer row", apps: ["adm"], source: {"adm":"src/features/settings/components/SettingsMenu.tsx"} },
-    { id: "ace-drawer-row", showContext: false, name: "Drawer row — UI variant 2", apps: ["ace"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx"} },
+    layers: [
+        {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"The strip named \"Drawer\" that holds the Settings row inside the phone drawer.","keyIdea":"The strip named \"Drawer\" that holds the Settings row inside the phone drawer.","selector":"[class~=\"aui-menubar\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The text row \"Settings\" that opens the menu; it replaces the gear of the desktop bar.","keyIdea":"The text row \"Settings\" that opens the menu; it replaces the gear of the desktop bar.","selector":"[class~=\"aui-menubar-trigger\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Menu labelled \"Settings\", opened below the row (side \"bottom\") and centred on it (align \"center\").","keyIdea":"Menu labelled \"Settings\", opened below the row (side \"bottom\") and centred on it (align \"center\").","selector":"[class~=\"aui-dropdown-popup\"]"},
+        {"id":"group","partId":"group","title":"Group","explanation":"The Pane Orientation group with its heading and rows.","keyIdea":"The Pane Orientation group with its heading and rows.","selector":"[class~=\"aui-dropdown-group\"]"},
+        {"id":"group-label","partId":"group-label","title":"Group label","explanation":"The \"Pane Orientation\" caption above the radio rows (and \"Pane Layout\" in the scenes).","keyIdea":"The \"Pane Orientation\" caption above the radio rows (and \"Pane Layout\" in the scenes).","selector":"[class~=\"aui-dropdown-group-label\"]"},
+        {"id":"radio-group","partId":"radio-group","title":"Radio group","explanation":"Single-choice set with Vertical chosen; the ADM and ACE scenes add Horizontal and Grid.","keyIdea":"Single-choice set with Vertical chosen; the ADM and ACE scenes add Horizontal and Grid.","selector":"[class~=\"aui-dropdown-radio-group\"]"},
+        {"id":"radio-item","partId":"radio-item","title":"Radio item","explanation":"The \"Vertical\" row with its table-columns icon and a hidden indicator.","keyIdea":"The \"Vertical\" row with its table-columns icon and a hidden indicator.","selector":"[class~=\"aui-dropdown-radio-item\"]"},
+        {"id":"item-icon","partId":"item-icon","title":"Row icon","explanation":"The leading glyph of a row, table-columns for Vertical.","keyIdea":"The leading glyph of a row, table-columns for Vertical.","selector":"[class~=\"aui-dropdown-radio-item\"] > [class~=\"aui-contained-icon\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"The \"Reset layout to default\" row of the ACE and ADM scenes.","keyIdea":"The \"Reset layout to default\" row of the ACE and ADM scenes.","selector":"[class~=\"aui-dropdown-item\"]"},
+        {"id":"separator","partId":"separator","title":"Separator","explanation":"The divider between the orientation group and the layout group in the scenes.","keyIdea":"The divider between the orientation group and the layout group in the scenes.","selector":"[class~=\"aui-dropdown-separator\"]"},
+        {"id":"checkbox-item","partId":"checkbox-item","title":"Checkbox item","explanation":"The \"Auto-Rotate 3D Model\" check row that the ADM scene adds because ADM has a 3D model.","keyIdea":"The \"Auto-Rotate 3D Model\" check row that the ADM scene adds because ADM has a 3D model.","selector":"[class~=\"aui-dropdown-checkbox-item\"]"},
+      ],
+options: [
+    { id: "adm-drawer-row", showContext: false, name: "Drawer row", apps: ["adm"], source: {"adm":"src/features/settings/components/SettingsMenu.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "ace-drawer-row", showContext: false, name: "Drawer row — UI variant 2", apps: ["ace"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     adm: 'src/features/settings/components/SettingsMenu.tsx',

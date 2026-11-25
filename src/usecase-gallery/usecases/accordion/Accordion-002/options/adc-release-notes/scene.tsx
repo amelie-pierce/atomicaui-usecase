@@ -15,7 +15,8 @@ export default function AdcReleaseNotesScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
             <Dialog.Body>
-              <Accordion defaultValue={['initial']}>
+              <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion defaultValue={['initial']}>
                 <Accordion.Item value="initial" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
                   <Accordion.Header>
                     <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
@@ -33,7 +34,7 @@ export default function AdcReleaseNotesScene({ host }: ContextProps) {
                     </View>
                   </Accordion.Panel>
                 </Accordion.Item>
-              </Accordion>
+              </Accordion></span>
             </Dialog.Body>
           </Dialog.Popup>
         </Dialog.Viewport>

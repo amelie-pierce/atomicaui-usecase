@@ -4,9 +4,30 @@ export default defineUsecase({
   uiType: 'Alert / Confirm',
   title: 'Confirm with warning icon',
   apps: ['hcs', 'ace', 'adm', 'adc'],
-  options: [
-    { id: "hcs-reset", showContext: false, name: "Reset confirm", apps: ["hcs","ace","adm"], source: {"hcs":"src/components/HcsResetDialog.tsx","ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx","adm":"src/features/top-navigation/components/ResetDialog.tsx"} },
-    { id: "adc-reset", showContext: false, name: "Reset confirm — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim that interrupts the user before the Reset Inputs confirm; the gallery draws the alert as a non-modal Dialog.","keyIdea":"The scrim that interrupts the user before the Reset Inputs confirm; the gallery draws the alert as a non-modal Dialog.","selector":"[class~=\"aui-dialog-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The confirm window at scale \"sm\" with a soft shape; 560px wide in HCS (480px in ACE and ADM, 640px default scale in ADC).","keyIdea":"The confirm window at scale \"sm\" with a soft shape; 560px wide in HCS (480px in ACE and ADM, 640px default scale in ADC).","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title bar","explanation":"The raised title bar that carries the warning icon, \"Warning: Reset Inputs?\", the spacer and the close X.","keyIdea":"The raised title bar that carries the warning icon, \"Warning: Reset Inputs?\", the spacer and the close X.","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"icon","partId":"icon","title":"Warning icon","explanation":"The triangle-exclamation glyph in the warning colour that marks this prompt as a caution.","keyIdea":"The triangle-exclamation glyph in the warning colour that marks this prompt as a caution.","selector":"[class~=\"aui-dialog-title\"] [class~=\"aui-contained-icon\"]"},
+        {"id":"spacer","partId":"spacer","title":"Spacer","explanation":"The gap that pushes the close X to the end of the title bar.","keyIdea":"The gap that pushes the close X to the end of the title bar.","selector":"[class~=\"aui-dialog-spacer\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The close X labelled \"Close Reset\" that leaves the inputs untouched.","keyIdea":"The close X labelled \"Close Reset\" that leaves the inputs untouched.","selector":"[class~=\"aui-dialog-close\"]"},
+        {"id":"description","partId":"description","title":"Description","explanation":"The sentence that says what is lost: \"You are about to reset all input fields. This cannot be undone.\" (ADC explains that project information and design names are preserved).","keyIdea":"The sentence that says what is lost: \"You are about to reset all input fields.","selector":"[class~=\"aui-dialog-description\"]"},
+        {"id":"actions","partId":"actions","title":"Footer","explanation":"The footer that sits at the end in HCS, ACE and ADM; in ADC it is split and wraps three buttons.","keyIdea":"The footer that sits at the end in HCS, ACE and ADM; in ADC it is split and wraps three buttons.","selector":"[class~=\"aui-dialog-actions\"]"},
+        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"The default Cancel that backs out of the reset.","keyIdea":"The default Cancel that backs out of the reset.","selector":"[data-ug-part=\"cancel\"]"},
+        {"id":"confirm","partId":"confirm","title":"Reset","explanation":"The solid destructive button: a secondary Reset in HCS, ACE and ADM, and the solid error \"Reset All Designs to Standard\" in ADC.","keyIdea":"The solid destructive button: a secondary Reset in HCS, ACE and ADM, and the solid error \"Reset All Designs to Standard\" in ADC.","selector":"[data-ug-part=\"confirm\"]"},
+        {"id":"reset-current","partId":"reset-current","title":"Reset current design","explanation":"The ADC-only text error button \"Reset Current Design to Standard\" that offers the narrower reset.","keyIdea":"The ADC-only text error button \"Reset Current Design to Standard\" that offers the narrower reset.","selector":"[data-ug-part=\"reset-current\"]"},
+      ],
+options: [
+    { id: "hcs-reset", showContext: false, name: "Reset confirm", apps: ["hcs","ace","adm"], source: {"hcs":"src/components/HcsResetDialog.tsx","ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx","adm":"src/features/top-navigation/components/ResetDialog.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adc-reset", showContext: false, name: "Reset confirm — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hcs: 'src/components/HcsResetDialog.tsx', ace: 'src/features/reset-inputs/ui/ResetInputsAction.tsx', adm: 'src/features/top-navigation/components/ResetDialog.tsx', adc: 'src/adc/Workspace.tsx' },
   summary: 'A confirmation that interrupts the user: a warning icon title with a close X, a description of what is lost, and a Cancel next to the destructive action.',

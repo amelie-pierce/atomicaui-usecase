@@ -4,8 +4,21 @@ export default defineUsecase({
   uiType: 'Switch',
   title: 'Switch at row end',
   apps: ['hcs', 'hs', 'fd'],
-  options: [
-    { id: "hcs-columns", name: "Column visibility", contextAnatomy: [{ id: 'columns-trigger', name: 'Configure columns trigger', description: 'The table-columns IconButton, labelled Configure columns, that opens the popover under it.' }, { id: 'columns-popover', name: 'Configure columns popover', description: 'The elevated popover, 320px wide, anchored under the trigger that holds the column list.' }], apps: ["hcs","hs","fd"], source: {"hcs":"src/components/ColumnVisibility.tsx","hs":"src/hs/ColumnVisibility.tsx","fd":"src/components/ColumnSettings.jsx"} },
+    layers: [
+        {"id":"list","partId":"list","title":"List","explanation":"The \"Columns\" list of the Configure columns popover, one row per results-table column.","keyIdea":"The \"Columns\" list of the Configure columns popover, one row per results-table column.","selector":"[class~=\"aui-list\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"The Model row: the column name at the start and its switch in the row actions at the end.","keyIdea":"The Model row: the column name at the start and its switch in the row actions at the end.","selector":"[class~=\"aui-list-item\"]"},
+        {"id":"row-text","partId":"row-text","title":"Row text","explanation":"The column name \"Model\" that names what the switch shows or hides.","keyIdea":"The column name \"Model\" that names what the switch shows or hides.","selector":"[class~=\"aui-list-item-text\"]"},
+        {"id":"row-actions","partId":"row-actions","title":"Row actions","explanation":"The trailing slot at the end of the row that holds the switch.","keyIdea":"The trailing slot at the end of the row that holds the switch.","selector":"[class~=\"aui-list-item-actions\"]"},
+        {"id":"switch","partId":"switch","title":"Switch","explanation":"The on/off control, on by default, with no visible label; its aria-label \"Show Model\" names it and the selected track is solid primary.","keyIdea":"The on/off control, on by default, with no visible label; its aria-label \"Show Model\" names it and the selected track is solid primary.","selector":"[class~=\"aui-switch\"]"},
+        {"id":"thumb","partId":"thumb","title":"Thumb","explanation":"The movable thumb that sits at the end of the track while the column is shown.","keyIdea":"The movable thumb that sits at the end of the track while the column is shown.","selector":"[class~=\"aui-switch-thumb\"]"},
+      ],
+options: [
+    { id: "hcs-columns", name: "Column visibility", contextAnatomy: [{ id: 'columns-trigger', name: 'Configure columns trigger', description: 'The table-columns IconButton, labelled Configure columns, that opens the popover under it.' }, { id: 'columns-popover', name: 'Configure columns popover', description: 'The elevated popover, 320px wide, anchored under the trigger that holds the column list.' }], apps: ["hcs","hs","fd"], source: {"hcs":"src/components/ColumnVisibility.tsx","hs":"src/hs/ColumnVisibility.tsx","fd":"src/components/ColumnSettings.jsx"} ,
+      contextLayers: [
+        {"id":"context-columns-trigger","partId":"columns-trigger","title":"Configure columns trigger","explanation":"The table-columns IconButton, labelled Configure columns, that opens the popover under it.","keyIdea":"The table-columns IconButton, labelled Configure columns, that opens the popover under it.","selector":"[data-ug-part=\"columns-trigger\"]","scope":"context"},
+        {"id":"context-columns-popover","partId":"columns-popover","title":"Configure columns popover","explanation":"The elevated popover, 320px wide, anchored under the trigger that holds the column list.","keyIdea":"The elevated popover, 320px wide, anchored under the trigger that holds the column list.","selector":"[data-ug-part=\"columns-popover\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', fd: 'src/components/ColumnSettings.jsx' },
   summary: 'A switch at the end of a row, with the row\'s name at the start, turns the setting the row names on or off.',

@@ -4,9 +4,23 @@ export default defineUsecase({
   uiType: 'Tooltip on a button',
   title: 'Card button tooltip',
   apps: ['pfd', 'rws'],
-  options: [
-    { id: "pfd-card-note", name: "Card hint", showContext: false, apps: ["pfd"], source: {"pfd":"src/pfd/SelectionCards.tsx"} },
-    { id: "rws-show-in-3d", name: "Card hint — UI variant 2", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} },
+    layers: [
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The selection target: a 96 by 80 surface image Button labelled \"Show in 3D\" in the example and RWS, or the PFD \"Embedded Strap\" card (a View as button, at least 96px square).","keyIdea":"The selection target: a 96 by 80 surface image Button labelled \"Show in 3D\" in the example and RWS, or the PFD \"Embedded Strap\" card (a View as button, at least 96px square).","selector":"[data-ug-part=\"trigger\"]"},
+        {"id":"thumbnail","partId":"thumbnail","title":"Thumbnail","explanation":"The connection image drawn inside the trigger as an aria-hidden svg (72px wide in the example, 64px in the PFD card).","keyIdea":"The connection image drawn inside the trigger as an aria-hidden svg (72px wide in the example, 64px in the PFD card).","selector":"[data-ug-part=\"trigger\"] > svg"},
+        {"id":"positioner","partId":"positioner","title":"Positioner","explanation":"Opens the note to the right of the image button with a 4px offset (side=\"right\"); PFD uses the default side.","keyIdea":"Opens the note to the right of the image button with a 4px offset (side=\"right\"); PFD uses the default side.","selector":"[class~=\"aui-tooltip-positioner\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The text tooltip surface; in PFD it is allowed to grow to 384px for the longer note.","keyIdea":"The text tooltip surface; in PFD it is allowed to grow to 384px for the longer note.","selector":"[class~=\"aui-tooltip-popup\"]"},
+      ],
+options: [
+    { id: "pfd-card-note", name: "Card hint", showContext: false, apps: ["pfd"], source: {"pfd":"src/pfd/SelectionCards.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "rws-show-in-3d", name: "Card hint — UI variant 2", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { pfd: 'src/pfd/SelectionCards.tsx', rws: 'src/rws/output.tsx' },
   summary: 'A selection card or an image button explains itself in a text tooltip.',

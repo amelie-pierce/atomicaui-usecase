@@ -4,9 +4,26 @@ export default defineUsecase({
   uiType: 'Data table',
   title: 'Calculation summary table',
   apps: ['adm', 'adc'],
-  options: [
-    { id: "adm-summary", name: "Summary table", showContext: false, apps: ["adm"], source: {"adm":"src/features/calculation/components/shared/ResultTable.tsx"} },
-    { id: "adc-summary", name: "Summary table — UI variant 2", showContext: false, apps: ["adc"], source: {"adc":"src/adc/components/ResultTable.tsx"} },
+    layers: [
+        {"id":"table","partId":"table","title":"Table","explanation":"Short summary table: border \"between-rows\" in a soft 1px outlined frame, overflow hidden and text right-aligned so the numbers line up.","keyIdea":"Short summary table: border \"between-rows\" in a soft 1px outlined frame, overflow hidden and text right-aligned so the numbers line up.","selector":"[class~=\"aui-table\"]"},
+        {"id":"head","partId":"head","title":"Header","explanation":"Raised band with the Limit state, Demand (lb) and Capacity (lb) headings; ADM adds a full-width Limit states title row above them.","keyIdea":"Raised band with the Limit state, Demand (lb) and Capacity (lb) headings; ADM adds a full-width Limit states title row above them.","selector":"[class~=\"aui-table-head\"]"},
+        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Column heading; the first, Limit state, is left-aligned while the numeric headings follow the right-aligned table.","keyIdea":"Column heading; the first, Limit state, is left-aligned while the numeric headings follow the right-aligned table.","selector":"[class~=\"aui-table-header-cell\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"Rows for Steel tension (2,210 / 5,400) and Concrete breakout (1,180 / 3,060), separated by hairlines.","keyIdea":"Rows for Steel tension (2,210 / 5,400) and Concrete breakout (1,180 / 3,060), separated by hairlines.","selector":"[class~=\"aui-table-body\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"One limit state with its demand and capacity values.","keyIdea":"One limit state with its demand and capacity values.","selector":"[class~=\"aui-table-row\"]"},
+        {"id":"cell","partId":"cell","title":"Cell","explanation":"Value cell; the limit state name is left-aligned through its own aui, the figures stay right-aligned.","keyIdea":"Value cell; the limit state name is left-aligned through its own aui, the figures stay right-aligned.","selector":"[class~=\"aui-table-cell\"]"},
+        {"id":"status-dot","partId":"status-dot","title":"Status dot","explanation":"ADM only: the Ratio cell leads with a coloured success dot before the 41% value.","keyIdea":"ADM only: the Ratio cell leads with a coloured success dot before the 41% value.","selector":"[class~=\"aui-table-cell\"] [class~=\"aui-symbol\"]"},
+      ],
+options: [
+    { id: "adm-summary", name: "Summary table", showContext: false, apps: ["adm"], source: {"adm":"src/features/calculation/components/shared/ResultTable.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adc-summary", name: "Summary table — UI variant 2", showContext: false, apps: ["adc"], source: {"adc":"src/adc/components/ResultTable.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     adm: 'src/features/calculation/components/shared/ResultTable.tsx',
@@ -44,7 +61,7 @@ export default defineUsecase({
     {
       id: 'row',
       name: 'Row',
-      selector: '[class~="aui-table-row"]',
+      selector: '[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]',
       description: 'One limit state with its demand and capacity values.',
     },
     {

@@ -13,10 +13,30 @@ export default defineUsecase({
   title: 'Close dialog button',
 
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  options: [
-    { id: "hcs-close", contextAnatomy: TITLE_CONTEXT, name: "Dialog close", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/F01Experience.tsx","ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellDialog.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
-    { id: "adc-close", contextAnatomy: TITLE_CONTEXT, name: "Dialog close — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
-    { id: "pbs-close", contextAnatomy: PBS_CONTEXT, name: "Close without Title", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
+    layers: [
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The dialog surface: ADC and PBS use the default width, HCS a 384px popup.","keyIdea":"The dialog surface: ADC and PBS use the default width, HCS a 384px popup.","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title","explanation":"The raised title bar of the ADC Feedback Form and HCS Send feedback dialogs, with the heading and a spacer pushing Close to its end; PBS has no title.","keyIdea":"The raised title bar of the ADC Feedback Form and HCS Send feedback dialogs, with the heading and a spacer pushing Close to its end; PBS has no title.","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"dialog-close","partId":"dialog-close","title":"Dialog close","explanation":"The transparent xmark control at the end of the title (ADC wraps it in a Close tooltip, HCS names it Close Send feedback); in PBS it sits alone in a right-aligned row above the body.","keyIdea":"The transparent xmark control at the end of the title (ADC wraps it in a Close tooltip, HCS names it Close Send feedback); in PBS it sits alone in a right-aligned row above the body.","selector":"[class~=\"aui-dialog-close\"]"},
+        {"id":"icon-button","partId":"icon-button","title":"Close button","explanation":"The standalone 20px transparent xmark IconButton shown in the example before it is mounted as a Dialog.Close.","keyIdea":"The standalone 20px transparent xmark IconButton shown in the example before it is mounted as a Dialog.Close.","selector":"[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])"},
+        {"id":"tooltip","partId":"tooltip","title":"Close tooltip","explanation":"ADC only: the secondary tooltip reading Close shown above the close control.","keyIdea":"ADC only: the secondary tooltip reading Close shown above the close control.","selector":"[class~=\"aui-tooltip-popup\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1.","keyIdea":"PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1.","selector":"[class~=\"aui-dialog-body\"]"},
+      ],
+options: [
+    { id: "hcs-close", contextAnatomy: TITLE_CONTEXT, name: "Dialog close", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/F01Experience.tsx","ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellDialog.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
+      contextLayers: [
+        {"id":"context-title-spacer","partId":"title-spacer","title":"Title spacer","explanation":"The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar.","keyIdea":"The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar.","selector":"[class~=\"aui-dialog-spacer\"]","scope":"context"},
+      ],
+    },
+    { id: "adc-close", contextAnatomy: TITLE_CONTEXT, name: "Dialog close — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
+      contextLayers: [
+        {"id":"context-title-spacer","partId":"title-spacer","title":"Title spacer","explanation":"The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar.","keyIdea":"The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar.","selector":"[class~=\"aui-dialog-spacer\"]","scope":"context"},
+      ],
+    },
+    { id: "pbs-close", contextAnatomy: PBS_CONTEXT, name: "Close without Title", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,
+      contextLayers: [
+        {"id":"context-close-row","partId":"close-row","title":"Close row","explanation":"The end-aligned row that holds only the close X above the dialog body, since this dialog has no title.","keyIdea":"The end-aligned row that holds only the close X above the dialog body, since this dialog has no title.","selector":"[data-ug-part=\"close-row\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', hs: 'src/hs/ShellDialog.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx', adc: 'src/adc/Workspace.tsx' },
   summary: 'A transparent icon-only IconButton, 20px square, closes a dialog from the end of its Title.',

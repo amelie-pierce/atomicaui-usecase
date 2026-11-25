@@ -13,12 +13,40 @@ export default defineUsecase({
     pfd: 'src/pfd/PrintView.tsx',
     agpd: 'src/App.tsx',
   },
-  options: [
-    { id: "ace-print", name: "Print table", showContext: false, apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} },
-    { id: "adm-print", name: "Print table — UI variant 2", showContext: false, apps: ["adm"], source: {"adm":"src/features/print/components/InputDataPrintPage.tsx"} },
-    { id: "hs-print", name: "Print table — UI variant 3", showContext: false, apps: ["hs"], source: {"hs":"src/hs/PrintView.tsx"} },
-    { id: "rws-print", name: "Print table — UI variant 4", showContext: false, apps: ["rws"], source: {"rws":"src/legacy/src/apps/rws/containers/PrintView/components/PrintTable.jsx"} },
-    { id: "pbs-print", name: "Print table — UI variant 5", showContext: false, apps: ["pbs","pfd","agpd"], source: {"pbs":"src/PrintView.tsx","pfd":"src/pfd/PrintView.tsx","agpd":"src/App.tsx"} },
+    layers: [
+        {"id":"table","partId":"table","title":"Table","explanation":"Flat print grid at scale \"xs\" with \"all-cells\" borders and no selection. ACE, ADM, HS and RWS override it with shape \"none\", a text-coloured border, compact profile or smaller 10/12 type.","keyIdea":"Flat print grid at scale \"xs\" with \"all-cells\" borders and no selection.","selector":"[class~=\"aui-table\"]"},
+        {"id":"head","partId":"head","title":"Header","explanation":"Header row printed with Model and Load (lb); ACE and ADM paint it muted with a surface foreground, HS and RWS use a secondary solid fill.","keyIdea":"Header row printed with Model and Load (lb); ACE and ADM paint it muted with a surface foreground, HS and RWS use a secondary solid fill.","selector":"[class~=\"aui-table-head\"]"},
+        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Printed column label without sort controls; its alignment is centre in ACE and RWS and left or start in ADM and HS.","keyIdea":"Printed column label without sort controls; its alignment is centre in ACE and RWS and left or start in ADM and HS.","selector":"[class~=\"aui-table-header-cell\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The printed rows of the report table.","keyIdea":"The printed rows of the report table.","selector":"[class~=\"aui-table-body\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"One printed record, Model B-200 with 2,210 lb; HS and RWS switch selectable and expandable off on the row.","keyIdea":"One printed record, Model B-200 with 2,210 lb; HS and RWS switch selectable and expandable off on the row.","selector":"[class~=\"aui-table-row\"]"},
+        {"id":"cell","partId":"cell","title":"Cell","explanation":"Plain printed value; ACE sets 4px by 6px padding with centred text, ADM left-aligns it in the compact profile.","keyIdea":"Plain printed value; ACE sets 4px by 6px padding with centred text, ADM left-aligns it in the compact profile.","selector":"[class~=\"aui-table-cell\"]"},
+      ],
+options: [
+    { id: "ace-print", name: "Print table", showContext: false, apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-print", name: "Print table — UI variant 2", showContext: false, apps: ["adm"], source: {"adm":"src/features/print/components/InputDataPrintPage.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "hs-print", name: "Print table — UI variant 3", showContext: false, apps: ["hs"], source: {"hs":"src/hs/PrintView.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "rws-print", name: "Print table — UI variant 4", showContext: false, apps: ["rws"], source: {"rws":"src/legacy/src/apps/rws/containers/PrintView/components/PrintTable.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "pbs-print", name: "Print table — UI variant 5", showContext: false, apps: ["pbs","pfd","agpd"], source: {"pbs":"src/PrintView.tsx","pfd":"src/pfd/PrintView.tsx","agpd":"src/App.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   summary: 'The paper copy of a table: a flat all-cells grid with no sorting or selection, printed in the report.',
   where: 'Print views: ACE print/ui/report-primitives.tsx (ReportTable), ADM print/components/InputDataPrintPage.tsx, HS PrintView.tsx, RWS PrintView PrintTable.jsx, PBS PrintView.tsx, PFD PrintView.tsx and AGPD App.tsx (the print table).',
@@ -52,7 +80,7 @@ export default defineUsecase({
     {
       id: 'row',
       name: 'Row',
-      selector: '[class~="aui-table-row"]',
+      selector: '[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]',
       description: 'One printed record, Model B-200 with 2,210 lb; HS and RWS switch selectable and expandable off on the row.',
     },
     {

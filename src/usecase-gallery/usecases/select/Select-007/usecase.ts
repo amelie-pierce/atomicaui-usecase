@@ -4,9 +4,30 @@ export default defineUsecase({
   uiType: 'Field select',
   title: 'Options with images',
   apps: ['rws', 'agpd'],
-  options: [
-    { id: "rws-option-images", showContext: false, name: "Options with images", apps: ["rws"], source: {"rws":"src/rws/inputs.tsx"} },
-    { id: "agpd-option-images", showContext: false, name: "Options with images — UI variant 2", apps: ["agpd"], source: {"agpd":"src/agpd/controls.tsx"} },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"Field at scale \"sm\" with a 3 gap and a fixed 224px width, so the picture rows have room.","keyIdea":"Field at scale \"sm\" with a 3 gap and a fixed 224px width, so the picture rows have room.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Base plate\" label above the trigger.","keyIdea":"The \"Base plate\" label above the trigger.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Full-width outlined trigger showing the chosen plate name only; the picture appears in the rows, not in the trigger.","keyIdea":"Full-width outlined trigger showing the chosen plate name only; the picture appears in the rows, not in the trigger.","selector":"[class~=\"aui-select-trigger\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The chevron at the trigger end.","keyIdea":"The chevron at the trigger end.","selector":"[class~=\"aui-select-chevron\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup of the trigger width listing Plate A, Plate B and Plate C.","keyIdea":"Popup of the trigger width listing Plate A, Plate B and Plate C.","selector":"[class~=\"aui-select-popup\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"The list of the three plate rows.","keyIdea":"The list of the three plate rows.","selector":"[class~=\"aui-select-list\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"A plate row that leads with a picture tile, then the name and an indicator slot.","keyIdea":"A plate row that leads with a picture tile, then the name and an indicator slot.","selector":"[class~=\"aui-select-item\"]"},
+        {"id":"image-tile","partId":"image-tile","title":"Image tile","explanation":"The tonal primary tile with soft corners and 4 padding that frames the option picture.","keyIdea":"The tonal primary tile with soft corners and 4 padding that frames the option picture.","selector":"[class~=\"aui-select-item\"] > [class~=\"aui-view\"]"},
+        {"id":"image","partId":"image","title":"Image","explanation":"The image glyph standing in for the plate drawing; the apps show a real picture.","keyIdea":"The image glyph standing in for the plate drawing; the apps show a real picture.","selector":"[class~=\"aui-select-item\"] > [class~=\"aui-view\"] > [class~=\"aui-contained-icon\"]"},
+        {"id":"item-text","partId":"item-text","title":"Item text","explanation":"The plate name next to the picture.","keyIdea":"The plate name next to the picture.","selector":"[class~=\"aui-select-item-text\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"End-of-row slot; the AGPD scene draws a check icon here on the chosen plate.","keyIdea":"End-of-row slot; the AGPD scene draws a check icon here on the chosen plate.","selector":"[class~=\"aui-select-item-indicator\"]"},
+      ],
+options: [
+    { id: "rws-option-images", showContext: false, name: "Options with images", apps: ["rws"], source: {"rws":"src/rws/inputs.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "agpd-option-images", showContext: false, name: "Options with images — UI variant 2", apps: ["agpd"], source: {"agpd":"src/agpd/controls.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { rws: 'src/rws/inputs.tsx', agpd: 'src/agpd/controls.tsx' },
   summary: 'A field select whose rows lead with a picture of the option in a tonal tile, so the user picks by sight.',

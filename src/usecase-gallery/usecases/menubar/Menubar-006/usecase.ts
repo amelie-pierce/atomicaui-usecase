@@ -4,8 +4,18 @@ export default defineUsecase({
   uiType: 'Menubar with summary trigger',
   title: 'Settings summary',
   apps: ['hs', 'fd', 'ace'],
-  options: [
-    { id: "hs-settings", showContext: false, name: "Top bar", source: {"hs":"src/hs/TopBar.tsx"} },
+    layers: [
+        {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"The \"Top bar\" strip that holds the one summary button at its right side.","keyIdea":"The \"Top bar\" strip that holds the one summary button at its right side.","selector":"[class~=\"aui-menubar\"]"},
+        {"id":"button","partId":"button","title":"Button","explanation":"Tonal button (color \"surface\", paint \"tonal\", aria-label \"Settings\") that sums up region, language and design code and opens the settings popover.","keyIdea":"Tonal button (color \"surface\", paint \"tonal\", aria-label \"Settings\") that sums up region, language and design code and opens the settings popover.","selector":"[class~=\"aui-button\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The globe glyph that leads the summary.","keyIdea":"The globe glyph that leads the summary.","selector":"[class~=\"aui-button\"] > [class~=\"aui-contained-icon\"]"},
+        {"id":"divider","partId":"divider","title":"Divider","explanation":"The thin separators between country, language and design code (two in this example).","keyIdea":"The thin separators between country, language and design code (two in this example).","selector":"[class~=\"aui-menubar-divider\"]"},
+      ],
+options: [
+    { id: "hs-settings", showContext: false, name: "Top bar", source: {"hs":"src/hs/TopBar.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hs: 'src/hs/TopBar.tsx', fd: 'src/components/SettingsPopover.jsx', ace: 'src/features/top-navigation/ui/AceNavBar.tsx' },
   summary: 'A tonal Menubar.Button that sums up the current region, language and design code in one line, separated by dividers, and opens the settings popover.',

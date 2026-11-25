@@ -4,10 +4,27 @@ export default defineUsecase({
   uiType: 'Multi-line field',
   title: 'Textarea',
   apps: ['hcs', 'hs', 'pbs', 'pfd', 'fd', 'rws', 'agpd', 'adm', 'ace', 'adc'],
-  options: [
-    { id: "hs-textarea", name: "Textarea", apps: ["hcs","hs","pbs","pfd","fd","rws","adm","ace"], note: "Label above.", source: {"hcs":"src/components/F01Experience.tsx","hs":"src/hs/ShellExtras.tsx","pbs":"src/WorkspaceTools.tsx","pfd":"src/pfd/ShellDialogs.tsx","fd":"src/components/Feedback.jsx","rws":"src/rws/ShellDialogs.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","ace":"src/features/top-navigation/ui/FeedbackDialog.tsx"}, showContext: false },
-    { id: "adc-textarea-beside", name: "Textarea — UI variant 2", apps: ["adc"], note: "Label beside: a 96px end-aligned label, the textarea fills the rest of the row.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false },
-    { id: "agpd-textarea-nolabel", name: "Textarea — UI variant 3", apps: ["agpd"], note: "No label: the box is named by its aria-label and placeholder (the quote notes).", source: {"agpd":"src/agpd/QuoteDialog.tsx"}, showContext: false },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"Stacked wrapper that pairs the \"Description\" label with the multi-line box; ADC makes it a row with a 96px label and AGPD drops the label entirely.","keyIdea":"Stacked wrapper that pairs the \"Description\" label with the multi-line box; ADC makes it a row with a 96px label and AGPD drops the label entirely.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Description\" label above the box; in the AGPD quote notes there is no label and an aria-label names the box.","keyIdea":"The \"Description\" label above the box; in the AGPD quote notes there is no label and an aria-label names the box.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"textarea","partId":"textarea","title":"Textarea","explanation":"The five-row box that draws its own 1px slate outline, 4px radius and 3/8 padding, so no Field.Control surrounds it; it resizes vertically only.","keyIdea":"The five-row box that draws its own 1px slate outline, 4px radius and 3/8 padding, so no Field.Control surrounds it; it resizes vertically only.","selector":"[class~=\"aui-textarea\"]"},
+      ],
+options: [
+    { id: "hs-textarea", name: "Textarea", apps: ["hcs","hs","pbs","pfd","fd","rws","adm","ace"], note: "Label above.", source: {"hcs":"src/components/F01Experience.tsx","hs":"src/hs/ShellExtras.tsx","pbs":"src/WorkspaceTools.tsx","pfd":"src/pfd/ShellDialogs.tsx","fd":"src/components/Feedback.jsx","rws":"src/rws/ShellDialogs.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","ace":"src/features/top-navigation/ui/FeedbackDialog.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adc-textarea-beside", name: "Textarea — UI variant 2", apps: ["adc"], note: "Label beside: a 96px end-aligned label, the textarea fills the rest of the row.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "agpd-textarea-nolabel", name: "Textarea — UI variant 3", apps: ["agpd"], note: "No label: the box is named by its aria-label and placeholder (the quote notes).", source: {"agpd":"src/agpd/QuoteDialog.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', hs: 'src/hs/ShellExtras.tsx', pbs: 'src/WorkspaceTools.tsx', pfd: 'src/pfd/ShellDialogs.tsx', fd: 'src/components/Feedback.jsx', rws: 'src/rws/ShellDialogs.tsx', agpd: 'src/agpd/ShellDialogs.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx', adc: 'src/adc/components/ProjectInfoField.tsx' },
   summary: 'A labelled field with a multi-line outlined box for free text.',

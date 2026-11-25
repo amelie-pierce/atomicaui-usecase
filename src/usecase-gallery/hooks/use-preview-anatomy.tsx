@@ -83,6 +83,8 @@ export function usePreviewAnatomy(
           // A malformed optional selector should not make a preview unusable.
           elements = [];
         }
+        if (part.scope === 'component') elements = elements.filter((element) => element.closest('[data-ug-component-root]'));
+        if (part.scope === 'context') elements = elements.filter((element) => !element.closest('[data-ug-component-root]'));
         if (part.text) elements = elements.filter((element) => textNodesOf(element).length > 0);
         targets.set(part.id, elements);
       }

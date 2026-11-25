@@ -5,12 +5,22 @@ export default defineUsecase({
   title: 'Add job button',
 
   apps: ['ace'],
-  options: [
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"The Add job Button under the Job tally table: solid secondary, small, stretching across the ACE column.","keyIdea":"The Add job Button under the Job tally table: solid secondary, small, stretching across the ACE column.","selector":"[class~=\"aui-button\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The plus glyph before the label, marked aria-hidden since the label already says what it does.","keyIdea":"The plus glyph before the label, marked aria-hidden since the label already says what it does.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
+      ],
+options: [
     { id: "ace-button", name: "Add new entry", apps: ["ace"], contextAnatomy: [
       { id: "tally-section", name: "Job tally section", description: "The section that stacks the title, table and Add job button in a column." },
       { id: "tally-title", name: "Section title", description: "The \"Job tally\" heading." },
       { id: "tally-table", name: "Job tally table", description: "The table with a Job header and one \"Job 1\" row above the button." },
-    ], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
+    ], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} ,
+      contextLayers: [
+        {"id":"context-tally-section","partId":"tally-section","title":"Job tally section","explanation":"The section that stacks the title, table and Add job button in a column.","keyIdea":"The section that stacks the title, table and Add job button in a column.","selector":"[data-ug-part=\"tally-section\"]","scope":"context"},
+        {"id":"context-tally-title","partId":"tally-title","title":"Section title","explanation":"The \"Job tally\" heading.","keyIdea":"The \"Job tally\" heading.","selector":"[data-ug-part=\"tally-title\"]","scope":"context"},
+        {"id":"context-tally-table","partId":"tally-table","title":"Job tally table","explanation":"The table with a Job header and one \"Job 1\" row above the button.","keyIdea":"The table with a Job header and one \"Job 1\" row above the button.","selector":"[data-ug-part=\"tally-table\"]","scope":"context"},
+      ],
+    },
   ],
   source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
   summary: 'A solid secondary Button with a plus icon appends an empty job entry under the Job tally table.',

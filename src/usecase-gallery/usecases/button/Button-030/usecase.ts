@@ -11,8 +11,20 @@ export default defineUsecase({
   title: 'Close walkthrough button',
 
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  options: [
-    { id: "hcs-walkthrough-close", contextAnatomy: TOUR_CONTEXT, name: "Walkthrough close", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/F01Walkthrough.tsx","ace":"src/features/top-navigation/ui/TutorialWalkthrough.tsx","adm":"src/features/top-navigation/components/TutorialWalkthrough.tsx","pfd":"src/pfd/Walkthrough.tsx","pbs":"src/PbsWalkthrough.tsx","hs":"src/hs/Tutorials.tsx","fd":"src/components/Walkthrough.jsx","agpd":"src/agpd/Tutorials.tsx","rws":"src/rws/Tutorials.tsx"} },
+    layers: [
+        {"id":"card","partId":"card","title":"Walkthrough card","explanation":"The 328px coach-mark card for the Connection Type step with its text and footer navigation.","keyIdea":"The 328px coach-mark card for the Connection Type step with its text and footer navigation.","selector":"[role=\"region\"][aria-label=\"Walkthrough\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The 20px transparent xmark button pinned to the card corner (4px inset) that dismisses the HCS walkthrough; HCS wraps it in an absolute span.","keyIdea":"The 20px transparent xmark button pinned to the card corner (4px inset) that dismisses the HCS walkthrough; HCS wraps it in an absolute span.","selector":"[class~=\"aui-button\"][aria-label^=\"Close\"]"},
+        {"id":"close-icon","partId":"close-icon","title":"Close icon","explanation":"The xmark glyph inside the close button.","keyIdea":"The xmark glyph inside the close button.","selector":"[class~=\"aui-button\"][aria-label^=\"Close\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"next","partId":"next","title":"Next","explanation":"The step button that is the only navigation on step 1 / 6 (Next with arrow-right); Close is the way out without finishing.","keyIdea":"The step button that is the only navigation on step 1 / 6 (Next with arrow-right); Close is the way out without finishing.","selector":"[class~=\"aui-button\"]:not([aria-label])"},
+      ],
+options: [
+    { id: "hcs-walkthrough-close", contextAnatomy: TOUR_CONTEXT, name: "Walkthrough close", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/F01Walkthrough.tsx","ace":"src/features/top-navigation/ui/TutorialWalkthrough.tsx","adm":"src/features/top-navigation/components/TutorialWalkthrough.tsx","pfd":"src/pfd/Walkthrough.tsx","pbs":"src/PbsWalkthrough.tsx","hs":"src/hs/Tutorials.tsx","fd":"src/components/Walkthrough.jsx","agpd":"src/agpd/Tutorials.tsx","rws":"src/rws/Tutorials.tsx"} ,
+      contextLayers: [
+        {"id":"context-tour-target","partId":"tour-target","title":"Spotlight target","explanation":"The Connection Type section header that the first step points at, beside the card (a stand-in for the app page).","keyIdea":"The Connection Type section header that the first step points at, beside the card (a stand-in for the app page).","selector":"[class~=\"ug-tour__target\"]","scope":"context"},
+        {"id":"context-step-title","partId":"step-title","title":"Step title","explanation":"The medium-weight Connection Type heading with room reserved at its end so its text stops short of the close X.","keyIdea":"The medium-weight Connection Type heading with room reserved at its end so its text stops short of the close X.","selector":"[data-ug-part=\"step-title\"]","scope":"context"},
+        {"id":"context-step-counter","partId":"step-counter","title":"Step counter","explanation":"The muted 1 / 6 step count at the end of the footer row, beside Next.","keyIdea":"The muted 1 / 6 step count at the end of the footer row, beside Next.","selector":"[data-ug-part=\"step-counter\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', hs: 'src/hs/ShellDialog.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A transparent icon-only IconButton, 20px square, dismisses the coach-mark card of a walkthrough from its corner.',

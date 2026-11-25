@@ -9,8 +9,19 @@ export default defineUsecase({
   title: 'Save edited value buttons',
 
   apps: ['adc'],
-  options: [
-    { id: "adc-edit-value", contextAnatomy: CONTEXT_ANATOMY, name: "Edit value", apps: ["adc"], source: {"adc":"src/adc/components/InPlaceEditor.tsx"} },
+    layers: [
+        {"id":"chip","partId":"chip","title":"Value chip","explanation":"The 12 in value chip (aria-label \"Edit Width, 12 in\") that opens the editor popover; it stands alone here rather than floating over the 3D model.","keyIdea":"The 12 in value chip (aria-label \"Edit Width, 12 in\") that opens the editor popover; it stands alone here rather than floating over the 3D model.","selector":"[data-base-ui-click-trigger]"},
+        {"id":"popup","partId":"popup","title":"Editor popup","explanation":"The surface (solid, sm, soft, elevation 4) opened 8px to the right of the chip, holding the Width number field and the Cancel and Save buttons in one row.","keyIdea":"The surface (solid, sm, soft, elevation 4) opened 8px to the right of the chip, holding the Width number field and the Cancel and Save buttons in one row.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
+        {"id":"actions","partId":"actions","title":"Button row","explanation":"The row at the end of the popup that keeps Cancel and Save together with a 4px gap and no growth, so the Width field takes the remaining width.","keyIdea":"The row at the end of the popup that keeps Cancel and Save together with a 4px gap and no growth, so the Width field takes the remaining width.","selector":"[data-ug-part=\"edit-actions\"]"},
+        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"The filled gray surface-alt Cancel that abandons the edit; ADC fills it like a dialog Cancel.","keyIdea":"The filled gray surface-alt Cancel that abandons the edit; ADC fills it like a dialog Cancel.","selector":"[class~=\"aui-button\"]:not([aria-label]):first-of-type"},
+        {"id":"save","partId":"save","title":"Save","explanation":"The solid secondary Save that commits the new Width value; it follows Cancel and is the only emphasised action.","keyIdea":"The solid secondary Save that commits the new Width value; it follows Cancel and is the only emphasised action.","selector":"[class~=\"aui-button\"]:not([aria-label]):last-of-type"},
+      ],
+options: [
+    { id: "adc-edit-value", contextAnatomy: CONTEXT_ANATOMY, name: "Edit value", apps: ["adc"], source: {"adc":"src/adc/components/InPlaceEditor.tsx"} ,
+      contextLayers: [
+        {"id":"context-width-field","partId":"width-field","title":"Width field","explanation":"The labelled Width number field (12 with an in unit) at the start of the popup, which Cancel and Save commit or discard.","keyIdea":"The labelled Width number field (12 with an in unit) at the start of the popup, which Cancel and Save commit or discard.","selector":"[data-aui-popup-motion][role=\"dialog\"] [class~=\"aui-field\"]","scope":"context"},
+      ],
+    },
   ],
   source: { adc: 'src/adc/components/InPlaceEditor.tsx' },
   summary: 'A filled Cancel and a solid secondary Save close the in-place editor popover of a value chip.',

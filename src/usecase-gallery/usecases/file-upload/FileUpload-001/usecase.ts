@@ -11,8 +11,21 @@ export default defineUsecase({
   uiType: 'FileUpload',
   title: 'Upload file dialog dropzone',
   apps: ['ace', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  options: [
-    { id: "ace-open-device", contextAnatomy: CONTEXT_ANATOMY, name: "Upload file dialog", apps: ["ace","pfd","pbs","hs","fd","agpd","rws","adc"], source: {"ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/App.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx","adc":"src/adc/components/NewProjectDialog.tsx"} },
+    layers: [
+        {"id":"upload","partId":"upload","title":"Upload area","explanation":"The dashed single-file drop surface (multiple={false}) with the idle message, shown in the body of the upload dialog.","keyIdea":"The dashed single-file drop surface (multiple={false}) with the idle message, shown in the body of the upload dialog.","selector":"[class~=\"aui-file-upload\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The upload icon at the top of the drop area.","keyIdea":"The upload icon at the top of the drop area.","selector":"[class~=\"aui-file-upload-icon\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The row below the icon that holds the prompt and the browse action.","keyIdea":"The row below the icon that holds the prompt and the browse action.","selector":"[class~=\"aui-file-upload-body\"]"},
+        {"id":"action","partId":"action","title":"Browse action","explanation":"The \"Browse\" action that opens the device file picker as the alternative to dropping.","keyIdea":"The \"Browse\" action that opens the device file picker as the alternative to dropping.","selector":"[class~=\"aui-file-upload-action\"]"},
+      ],
+options: [
+    { id: "ace-open-device", contextAnatomy: CONTEXT_ANATOMY, name: "Upload file dialog", apps: ["ace","pfd","pbs","hs","fd","agpd","rws","adc"], source: {"ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/App.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx","adc":"src/adc/components/NewProjectDialog.tsx"} ,
+      contextLayers: [
+        {"id":"context-dialog","partId":"dialog","title":"Upload dialog","explanation":"The Dialog that hosts the dropzone in its body, opened by the app's Open from device action.","keyIdea":"The Dialog that hosts the dropzone in its body, opened by the app's Open from device action.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The raised title row reading \"Upload JSON file\", with the close X pushed to the end.","keyIdea":"The raised title row reading \"Upload JSON file\", with the close X pushed to the end.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X at the end of the title row that dismisses the dialog (labelled \"Cancel\").","keyIdea":"The X at the end of the title row that dismisses the dialog (labelled \"Cancel\").","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-dialog-cancel","partId":"dialog-cancel","title":"Cancel button","explanation":"The Cancel button in the dialog actions that closes the dialog without uploading.","keyIdea":"The Cancel button in the dialog actions that closes the dialog without uploading.","selector":"[data-ug-part=\"dialog-cancel\"]","scope":"context"},
+      ],
+    },
   ],
   source: {
     ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx',

@@ -168,6 +168,7 @@ $narrow: 840px;
 
 // The content of a stage. `useStageFit` scales it down from its top centre when it is larger than the stage, so it never scrolls.
 .ug-render__fit {
+  position: relative;
   inline-size: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -175,6 +176,11 @@ $narrow: 840px;
   align-content: safe center;
   justify-content: center;
   gap: var(--p-px-16);
+}
+
+.ug-render__component-portal-host {
+  position: absolute;
+  inset: 0;
 }
 
 .ug-render__stage {
@@ -525,15 +531,6 @@ $narrow: 840px;
 
 .ug-layer-lesson__back-next > :first-child {
   margin-inline-end: auto;
-}
-
-.ug-render [data-ug-layer-hidden] {
-  display: none !important;
-}
-
-.ug-render [data-ug-layer-text-hidden] {
-  color: transparent !important;
-  text-shadow: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

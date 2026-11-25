@@ -8,8 +8,20 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Calculator dialog',
   apps: ['adm'],
-  options: [
-    { id: "adm-calculator", name: "Calculator dialog", apps: ["adm"], source: {"adm":"src/features/base-plate/components/ThicknessCalculatorDialog.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the Thickness Calculator while it is open over the ADM base plate page.","keyIdea":"The scrim behind the Thickness Calculator while it is open over the ADM base plate page.","selector":"[class~=\"aui-dialog-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The default 480px calculator window (520px in the ADM scene) that keeps focus off the first control until the user acts.","keyIdea":"The default 480px calculator window (520px in the ADM scene) that keeps focus off the first control until the user acts.","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title bar","explanation":"The raised title bar reading \"Thickness Calculator\" with the close X at its end.","keyIdea":"The raised title bar reading \"Thickness Calculator\" with the close X at its end.","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"spacer","partId":"spacer","title":"Spacer","explanation":"The flexible gap between the calculator name and the close X.","keyIdea":"The flexible gap between the calculator name and the close X.","selector":"[class~=\"aui-dialog-spacer\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The close X that returns the user to the base plate inputs without applying the calculation.","keyIdea":"The close X that returns the user to the base plate inputs without applying the calculation.","selector":"[class~=\"aui-dialog-close\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The scrolling body that holds the calculator inputs and result; the example shows a one-line placeholder.","keyIdea":"The scrolling body that holds the calculator inputs and result; the example shows a one-line placeholder.","selector":"[class~=\"aui-dialog-body\"]"},
+      ],
+options: [
+    { id: "adm-calculator", name: "Calculator dialog", apps: ["adm"], source: {"adm":"src/features/base-plate/components/ThicknessCalculatorDialog.tsx"}, contextAnatomy: CONTEXT_ANATOMY ,
+      contextLayers: [
+        {"id":"context-trigger","partId":"trigger","title":"Trigger","explanation":"The secondary solid soft \"Thickness Calculator\" button on the ADM base plate inputs that opens the dialog; it is written inside the same Dialog root.","keyIdea":"The secondary solid soft \"Thickness Calculator\" button on the ADM base plate inputs that opens the dialog; it is written inside the same Dialog root.","selector":"[class~=\"aui-dialog-trigger\"]","scope":"context"},
+      ],
+    },
   ],
   source: {
     adm: 'src/features/base-plate/components/ThicknessCalculatorDialog.tsx',

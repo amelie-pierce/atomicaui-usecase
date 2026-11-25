@@ -4,8 +4,21 @@ export default defineUsecase({
   uiType: 'Compact select',
   title: 'Cell select',
   apps: ['adc'],
-  options: [
-    { id: "adc-table-cell", showContext: false, name: "Cell select", apps: ["adc"], source: {"adc":"src/adc/components/ProductsPicker.tsx"} },
+    layers: [
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"A bare Select with no Field: an \"Hef\" labelled (aria-label) outlined trigger at scale \"xs\" that fills its table cell.","keyIdea":"A bare Select with no Field: an \"Hef\" labelled (aria-label) outlined trigger at scale \"xs\" that fills its table cell.","selector":"[class~=\"aui-select-trigger\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The chevron at the end of the compact trigger.","keyIdea":"The chevron at the end of the compact trigger.","selector":"[class~=\"aui-select-chevron\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup that matches the cell trigger width, 4px below it, listing 4.500, 6.000 and 7.500.","keyIdea":"Popup that matches the cell trigger width, 4px below it, listing 4.500, 6.000 and 7.500.","selector":"[class~=\"aui-select-popup\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"The list of the three Hef embedment values.","keyIdea":"The list of the three Hef embedment values.","selector":"[class~=\"aui-select-list\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"One embedment value row; the chosen 6.000 shows a raised fill.","keyIdea":"One embedment value row; the chosen 6.000 shows a raised fill.","selector":"[class~=\"aui-select-item\"]"},
+        {"id":"item-text","partId":"item-text","title":"Item text","explanation":"The numeric value text, for example \"7.500\".","keyIdea":"The numeric value text, for example \"7.500\".","selector":"[class~=\"aui-select-item-text\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"Empty slot (`{null}`) at the end of each row.","keyIdea":"Empty slot (`{null}`) at the end of each row.","selector":"[class~=\"aui-select-item-indicator\"]"},
+      ],
+options: [
+    { id: "adc-table-cell", showContext: false, name: "Cell select", apps: ["adc"], source: {"adc":"src/adc/components/ProductsPicker.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { adc: 'src/adc/components/ProductsPicker.tsx' },
   summary: 'A compact label-less select that fills a table cell and picks one value for the row.',

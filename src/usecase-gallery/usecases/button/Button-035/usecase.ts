@@ -16,9 +16,27 @@ export default defineUsecase({
   title: 'Open column menu button',
 
   apps: ['hcs', 'hs', 'pfd'],
-  options: [
-    { id: "hcs-column-menu", contextAnatomy: HCS_CONTEXT, name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} },
-    { id: "pfd-column-menu", contextAnatomy: PFD_CONTEXT, name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} },
+    layers: [
+        {"id":"options","partId":"options","title":"Column options","explanation":"The xs square-compact transparent button that opens the column menu; HCS uses the ellipsis-vertical glyph and PFD the horizontal ellipsis.","keyIdea":"The xs square-compact transparent button that opens the column menu; HCS uses the ellipsis-vertical glyph and PFD the horizontal ellipsis.","selector":"[class~=\"aui-button\"][aria-label*=\"column options\" i]"},
+        {"id":"options-icon","partId":"options-icon","title":"Icon","explanation":"The vertical or horizontal ellipsis glyph, centred in the button.","keyIdea":"The vertical or horizontal ellipsis glyph, centred in the button.","selector":"[class~=\"aui-button\"][aria-label*=\"column options\" i] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"header-cell","partId":"header-cell","title":"Column header","explanation":"The raised Model and Load (lb) headings; each takes its options button through the actions prop, and Load (lb) is sorted ascending.","keyIdea":"The raised Model and Load (lb) headings; each takes its options button through the actions prop, and Load (lb) is sorted ascending.","selector":"[class~=\"aui-table-header-cell\"]"},
+        {"id":"popup","partId":"popup","title":"Column menu","explanation":"The 256px popover opened under the Load (lb) heading with a Sort radio group; PFD adds a Close button at its end.","keyIdea":"The 256px popover opened under the Load (lb) heading with a Sort radio group; PFD adds a Close button at its end.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
+        {"id":"radio","partId":"radio","title":"Sort option","explanation":"The three sort choices (A to Z, Z to A, None), with the ascending one selected in primary.","keyIdea":"The three sort choices (A to Z, Z to A, None), with the ascending one selected in primary.","selector":"[class~=\"aui-radio\"]"},
+      ],
+options: [
+    { id: "hcs-column-menu", contextAnatomy: HCS_CONTEXT, name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} ,
+      contextLayers: [
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The sortable Connector calculation results Table with the Model and Load (lb) columns.","keyIdea":"The sortable Connector calculation results Table with the Model and Load (lb) columns.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-result-rows","partId":"result-rows","title":"Result rows","explanation":"The two body rows, ordered by the ascending Load (lb) sort chosen in the menu.","keyIdea":"The two body rows, ordered by the ascending Load (lb) sort chosen in the menu.","selector":"[class~=\"aui-table-body\"]","scope":"context"},
+      ],
+    },
+    { id: "pfd-column-menu", contextAnatomy: PFD_CONTEXT, name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} ,
+      contextLayers: [
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The sortable Connector calculation results Table with the Model and Load (lb) columns.","keyIdea":"The sortable Connector calculation results Table with the Model and Load (lb) columns.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-result-rows","partId":"result-rows","title":"Result rows","explanation":"The two body rows, ordered by the ascending Load (lb) sort chosen in the menu.","keyIdea":"The two body rows, ordered by the ascending Load (lb) sort chosen in the menu.","selector":"[class~=\"aui-table-body\"]","scope":"context"},
+        {"id":"context-menu-close","partId":"menu-close","title":"Menu close","explanation":"The Close button at the end of the menu popover, above the Sort radios.","keyIdea":"The Close button at the end of the menu popover, above the Sort radios.","selector":"[data-aui-popup-motion][role=\"dialog\"] [class~=\"aui-button\"][aria-label=\"Close\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx', pfd: 'src/pfd/ColumnMenu.tsx' },
   summary: 'A small IconButton opens the menu of a table column header.',

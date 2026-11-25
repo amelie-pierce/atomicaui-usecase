@@ -5,11 +5,19 @@ export default defineUsecase({
   title: 'Add to Job List button',
 
   apps: ['hs'],
-  options: [
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"The Add to Job List Button: a solid secondary (black) small Button, text only, first in the HS Output toolbar row.","keyIdea":"The Add to Job List Button: a solid secondary (black) small Button, text only, first in the HS Output toolbar row.","selector":"[class~=\"aui-button\"]"},
+      ],
+options: [
     { id: "hs-button", name: "Add selected result", apps: ["hs"], contextAnatomy: [
       { id: "toolbar", name: "Output toolbar", description: "The wrapping row of small controls (8px gap) that starts with Add to Job List." },
       { id: "search", name: "Search field", description: "The Search Table Field with a magnifying-glass icon that fills the rest of the line." },
-    ], source: {"hs":"src/hs/OutputPane.tsx"} },
+    ], source: {"hs":"src/hs/OutputPane.tsx"} ,
+      contextLayers: [
+        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"The wrapping row of small controls (8px gap) that starts with Add to Job List.","keyIdea":"The wrapping row of small controls (8px gap) that starts with Add to Job List.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
+        {"id":"context-search","partId":"search","title":"Search field","explanation":"The Search Table Field with a magnifying-glass icon that fills the rest of the line.","keyIdea":"The Search Table Field with a magnifying-glass icon that fills the rest of the line.","selector":"[data-ug-part=\"search\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hs: 'src/hs/OutputPane.tsx' },
   summary: 'A solid secondary Button, black with white text, adds the chosen result to the job list.',

@@ -9,8 +9,18 @@ export default defineUsecase({
   uiType: 'Card',
   title: 'Image tile',
   apps: ['adm'],
-  options: [
-    { id: "adm-related-apps", contextAnatomy: CONTEXT_ANATOMY, name: "Related applications", source: {"adm":"src/features/applications/components/RelatedAppsGrid.tsx"} },
+    layers: [
+        {"id":"card","partId":"card","title":"Card","explanation":"Square 96 by 96 soft tile with no padding; ADM lays three of them across under Explore More Applications.","keyIdea":"Square 96 by 96 soft tile with no padding; ADM lays three of them across under Explore More Applications.","selector":"[class~=\"aui-card\"]"},
+        {"id":"image-container","partId":"image-container","title":"Image container","explanation":"Fills the whole card (width and height \"fill\"), so the picture is the entire tile.","keyIdea":"Fills the whole card (width and height \"fill\"), so the picture is the entire tile.","selector":"[class~=\"aui-card-image-container\"]"},
+        {"id":"image","partId":"image","title":"Image","explanation":"The application picture with alt \"Application\", a 1:1 ratio and fit=\"contain\".","keyIdea":"The application picture with alt \"Application\", a 1:1 ratio and fit=\"contain\".","selector":"[class~=\"aui-card-image\"]"},
+      ],
+options: [
+    { id: "adm-related-apps", contextAnatomy: CONTEXT_ANATOMY, name: "Related applications", source: {"adm":"src/features/applications/components/RelatedAppsGrid.tsx"} ,
+      contextLayers: [
+        {"id":"context-section-heading","partId":"section-heading","title":"Explore More Applications heading","explanation":"The \"Explore More Applications\" h3 (Type l3 semi-bold) above the tiles.","keyIdea":"The \"Explore More Applications\" h3 (Type l3 semi-bold) above the tiles.","selector":"[data-ug-part=\"section-heading\"]","scope":"context"},
+        {"id":"context-app-grid","partId":"app-grid","title":"Application grid","explanation":"The three-column grid (8px gap) that holds the image-only application cards.","keyIdea":"The three-column grid (8px gap) that holds the image-only application cards.","selector":"[data-ug-part=\"app-grid\"]","scope":"context"},
+      ],
+    },
   ],
   source: { adm: 'src/features/applications/components/RelatedAppsGrid.tsx' },
   summary: 'An image-only card, 96 by 96, used as the visual of a link in a grid.',

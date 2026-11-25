@@ -14,8 +14,21 @@ export default defineUsecase({
     fd: 'src/components/Results.jsx',
     ace: 'src/features/calculation/ui/CalculationOutput.tsx',
   },
-  options: [
-    { id: "hcs-results-grid", name: "Results grid", showContext: false, apps: ["hcs","hs","pfd","agpd","pbs","rws","fd","ace"], source: {"hcs":"src/components/F01Results.tsx","hs":"src/hs/ResultsTable.tsx","pfd":"src/pfd/ResultsTable.tsx","agpd":"src/agpd/Results.tsx","pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx","fd":"src/components/Results.jsx","ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
+    layers: [
+        {"id":"table","partId":"table","title":"Table","explanation":"Framed results grid: scale \"sm\", soft shape, a 1px outlined border and \"all-cells\" tonal borders. It scrolls on its own (scroll \"self\"), pins the first column with frozenColumns={1} and is sortable.","keyIdea":"Framed results grid: scale \"sm\", soft shape, a 1px outlined border and \"all-cells\" tonal borders.","selector":"[class~=\"aui-table\"]"},
+        {"id":"head","partId":"head","title":"Header","explanation":"Raised header band holding the single row of sortable column headings, Model and Load (lb).","keyIdea":"Raised header band holding the single row of sortable column headings, Model and Load (lb).","selector":"[class~=\"aui-table-head\"]"},
+        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Centred raised heading with a 128px width that matches its body column; the label sits in one span so a wrapped label stays a single flex item.","keyIdea":"Centred raised heading with a 128px width that matches its body column; the label sits in one span so a wrapped label stays a single flex item.","selector":"[class~=\"aui-table-header-cell\"]"},
+        {"id":"sort-button","partId":"sort-button","title":"Sort button","explanation":"The sort control built from sortDirection and onSortToggle; its title reads \"Sort by Model\" or \"Sort by Load\".","keyIdea":"The sort control built from sortDirection and onSortToggle; its title reads \"Sort by Model\" or \"Sort by Load\".","selector":"[class~=\"aui-table-sort-button\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The two result rows, Model B-200 (2,210) and Model C-300 (1,180), scrolling under the pinned header.","keyIdea":"The two result rows, Model B-200 (2,210) and Model C-300 (1,180), scrolling under the pinned header.","selector":"[class~=\"aui-table-body\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"One candidate product, a plain read-only row with no selection or expander.","keyIdea":"One candidate product, a plain read-only row with no selection or expander.","selector":"[class~=\"aui-table-row\"]"},
+        {"id":"cell","partId":"cell","title":"Cell","explanation":"Value cell using the same 128px width token as its header; the model name is left-aligned in the pinned first column and the load is centred.","keyIdea":"Value cell using the same 128px width token as its header; the model name is left-aligned in the pinned first column and the load is centred.","selector":"[class~=\"aui-table-cell\"]"},
+      ],
+options: [
+    { id: "hcs-results-grid", name: "Results grid", showContext: false, apps: ["hcs","hs","pfd","agpd","pbs","rws","fd","ace"], source: {"hcs":"src/components/F01Results.tsx","hs":"src/hs/ResultsTable.tsx","pfd":"src/pfd/ResultsTable.tsx","agpd":"src/agpd/Results.tsx","pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx","fd":"src/components/Results.jsx","ace":"src/features/calculation/ui/CalculationOutput.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   summary: 'The results table of the Output pane: a framed all-cells grid with a raised sortable header, the first column pinned and left-aligned, and the other columns centred.',
   where: 'The Output pane of every calculator that lists candidate products: HCS F01Results.tsx (Connector calculation results), HS ResultsTable.tsx, PFD ResultsTable.tsx, AGPD Results.tsx (Gable plate results), PBS ResultsSection.tsx, RWS output.tsx and FD Results.jsx (Fastener solutions). ACE writes its Output tables the same way in CalculationOutput.tsx. Row selection, the expander and the column menu inside it are Table-002, Button-028 and Button-035.',
@@ -55,7 +68,7 @@ export default defineUsecase({
     {
       id: 'row',
       name: 'Row',
-      selector: '[class~="aui-table-row"]',
+      selector: '[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]',
       description: 'One candidate product, a plain read-only row with no selection or expander.',
     },
     {

@@ -4,8 +4,20 @@ export default defineUsecase({
   uiType: 'Dropdown with text trigger',
   title: 'Outlined text trigger',
   apps: ['hcs'],
-  options: [
-    { id: "hcs-product-filter", name: "Radio value filter", apps: ["hcs"], source: {"hcs":"src/components/HcsProductFilter.tsx"}, showContext: false },
+    layers: [
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Outlined text trigger (color \"surface\", paint \"fixed\", 1px \"outlined\" border on all four sides, nowrap) labelled \"Product filter\" for assistive tech.","keyIdea":"Outlined text trigger (color \"surface\", paint \"fixed\", 1px \"outlined\" border on all four sides, nowrap) labelled \"Product filter\" for assistive tech.","selector":"[class~=\"aui-dropdown-trigger\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The chevron at the end of the trigger at scale \"sm\".","keyIdea":"The chevron at the end of the trigger at scale \"sm\".","selector":"[class~=\"aui-dropdown-chevron\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup at scale \"sm\" that matches the trigger width, 4px below it and aligned to its start.","keyIdea":"Popup at scale \"sm\" that matches the trigger width, 4px below it and aligned to its start.","selector":"[class~=\"aui-dropdown-popup\"]"},
+        {"id":"radio-group","partId":"radio-group","title":"Radio group","explanation":"The group with value \"passed\" that makes exactly one of the three filters current.","keyIdea":"The group with value \"passed\" that makes exactly one of the three filters current.","selector":"[class~=\"aui-dropdown-radio-group\"]"},
+        {"id":"radio-item","partId":"radio-item","title":"Radio item","explanation":"A filter row with its label and count (Passed Products (9), Failed Products (3), All Products (12)); closeOnClick closes the list after a choice.","keyIdea":"A filter row with its label and count (Passed Products (9), Failed Products (3), All Products (12)); closeOnClick closes the list after a choice.","selector":"[class~=\"aui-dropdown-radio-item\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"Empty transparent span at the row end; the chosen row shows by its raised fill, not a glyph.","keyIdea":"Empty transparent span at the row end; the chosen row shows by its raised fill, not a glyph.","selector":"[class~=\"aui-dropdown-radio-item-indicator\"]"},
+      ],
+options: [
+    { id: "hcs-product-filter", name: "Radio value filter", apps: ["hcs"], source: {"hcs":"src/components/HcsProductFilter.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hcs: 'src/components/HcsProductFilter.tsx' },
   summary: 'A text trigger with a chevron opens a short list of radio rows; the chosen row names the trigger and closes the list.',

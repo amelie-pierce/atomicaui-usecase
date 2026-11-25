@@ -1,36 +1,53 @@
-import { Suspense, useRef, useState } from 'react';
+import { Suspense, useCallback, useMemo, useRef, useState } from 'react';
 import { Button, ToggleGroup, Type } from '../kit';
 import type { LayerStep, PreviewMode, Usecase, UsecaseOption } from '../types';
 import { StageHostContext } from '../hooks/use-stage-host';
 import type { AnatomyPart } from '../types';
 import { AnatomyOverlay, usePreviewAnatomy } from '../hooks/use-preview-anatomy';
 import { useStageFit } from '../hooks/use-stage-fit';
-import { useLayerVisibility } from '../hooks/use-layer-visibility';
+import { layerVisibilityCss } from '../hooks/use-layer-visibility';
 import { OptionBar } from './option-bar';
 const MODES: { value: PreviewMode; label: string }[] = [
   { value: 'component', label: 'Component' },
   { value: 'context', label: 'In context' },
 ];
 
+function LayerVisibilityStyles({ layers, layerIndex, enabled }: { layers: LayerStep[]; layerIndex: number; enabled: boolean }) {
+  const css = useMemo(() => enabled ? layerVisibilityCss(layers, layerIndex) : '', [enabled, layers, layerIndex]);
+  return css ? <style data-ug-layer-styles>{css}</style> : null;
+}
+
 /** The In context UI of a selection-based use case: the chosen option's scene with the example placed in it, in a stage of its own. */
 function ContextStage({ option, hidden, anatomy, hoveredPartId, onAvailablePartsChange, layers, layerIndex, layerMode }: { option: UsecaseOption; hidden: boolean; anatomy: AnatomyPart[]; hoveredPartId?: string; onAvailablePartsChange: (partIds: string[]) => void; layers: LayerStep[]; layerIndex: number; layerMode: boolean }) {
   const [fit, setFit] = useState<HTMLDivElement | null>(null);
+  const [contextHost, setContextHostState] = useState<HTMLDivElement | null>(null);
+  const setContextHost = useCallback((node: HTMLDivElement | null) => setContextHostState((current) => current === node ? current : node), []);
+  const [componentHost, setComponentHostState] = useState<HTMLDivElement | null>(null);
+  const setComponentHost = useCallback((node: HTMLDivElement | null) => setComponentHostState((current) => current === node ? current : node), []);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const { Example, Scene } = option;
   const scale = useStageFit(fit);
-  useLayerVisibility(fit, layers, layerIndex, layerMode && !hidden);
   const overlay = usePreviewAnatomy(stageRef, anatomy, hoveredPartId, hidden ? undefined : onAvailablePartsChange, scale, !hidden);
   return (
     <div className="ug-render__viewport" hidden={hidden}>
       <div className="ug-render__stage" ref={stageRef}>
-        <div className="ug-render__fit" ref={setFit}>
-          <Suspense fallback={null}>
-            {fit && (
-              <Scene host={fit}>
-                <span data-ug-component-root style={{ display: 'contents' }}><Example /></span>
-              </Scene>
-            )}
-          </Suspense>
+        <div className="ug-render__fit" ref={setFit} data-ug-layer-mode={layerMode && !hidden ? 'true' : undefined}>
+          <LayerVisibilityStyles layers={layers} layerIndex={layerIndex} enabled={layerMode && !hidden} />
+          <div ref={setContextHost} className="ug-render__component-portal-host" />
+          <span data-ug-component-root style={{ display: 'contents' }}>
+            <div ref={setComponentHost} className="ug-render__component-portal-host" />
+          </span>
+          {fit && (
+            <Suspense fallback={null}>
+              {contextHost && componentHost && <Scene host={contextHost}>
+                <span data-ug-component-root style={{ display: 'contents' }}>
+                  <Suspense fallback={null}>
+                    <StageHostContext.Provider value={componentHost}><Example /></StageHostContext.Provider>
+                  </Suspense>
+                </span>
+              </Scene>}
+            </Suspense>
+          )}
         </div>
       </div>
       {/* Keep the context highlight outside the scrolling stage, as in Component mode. */}
@@ -67,9 +84,10 @@ export function RenderPane({
 }) {
   const { Example } = option;
   const [fit, setFit] = useState<HTMLDivElement | null>(null);
+  const [componentHost, setComponentHostState] = useState<HTMLDivElement | null>(null);
+  const setComponentHost = useCallback((node: HTMLDivElement | null) => setComponentHostState((current) => current === node ? current : node), []);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const scale = useStageFit(fit);
-  useLayerVisibility(fit, layers, layerIndex, layerMode && mode === 'component');
   const overlay = usePreviewAnatomy(stageRef, anatomy, mode === 'component' ? hoveredPartId : undefined, mode === 'component' ? onAvailablePartsChange : undefined, scale, mode === 'component');
   return (
     <section className="ug-render ug-render--split" role="region" aria-label="Preview">
@@ -97,10 +115,16 @@ export function RenderPane({
       </div>
       <div className="ug-render__viewport" hidden={mode !== 'component'}>
         <div className="ug-render__stage" ref={stageRef}>
-          <div className="ug-render__fit" ref={setFit}>
-            <Suspense fallback={null}>
-              {fit && <StageHostContext.Provider value={fit}><span data-ug-component-root style={{ display: 'contents' }}><Example /></span></StageHostContext.Provider>}
-            </Suspense>
+          <div className="ug-render__fit" ref={setFit} data-ug-layer-mode={layerMode && mode === 'component' ? 'true' : undefined}>
+            <LayerVisibilityStyles layers={layers} layerIndex={layerIndex} enabled={layerMode && mode === 'component'} />
+            {fit && (
+              <span data-ug-component-root style={{ display: 'contents' }}>
+                <div ref={setComponentHost} className="ug-render__component-portal-host" />
+                <Suspense fallback={null}>
+                  {componentHost && <StageHostContext.Provider value={componentHost}><Example /></StageHostContext.Provider>}
+                </Suspense>
+              </span>
+            )}
           </div>
         </div>
         {/* A sibling of the scrolling stage, not a child: inside it the highlight would count as scrollable overflow. */}

@@ -4,11 +4,39 @@ export default defineUsecase({
   uiType: 'Field select',
   title: 'Single select',
   apps: ['hcs', 'hs', 'pbs', 'pfd', 'fd', 'rws', 'agpd', 'adm', 'adc', 'ace'],
-  options: [
-    { id: "hcs-field-select", showContext: false, name: "Field select", apps: ["hcs","hs","pbs","pfd","fd","rws"], note: "Label above.", source: {"hcs":"src/components/HcsSelectbox.tsx","hs":"src/hs/InputFields.tsx","pbs":"src/InputFields.tsx","pfd":"src/pfd/fields.tsx","fd":"src/components/ui.jsx","rws":"src/rws/inputs.tsx"} },
-    { id: "agpd-field-select", showContext: false, name: "Field select — UI variant 2", apps: ["agpd"], note: "Label above; the chosen row ends with a check icon.", source: {"agpd":"src/agpd/controls.tsx"} },
-    { id: "adm-field-select", showContext: false, name: "Field select — UI variant 3", apps: ["adm","adc"], note: "Label beside: label and trigger share the row, half each.", source: {"adm":"src/features/design-inputs/components/MasonryWallDetailsSection/FieldSelectRow.tsx","adc":"src/adc/components/DesignField.tsx"} },
-    { id: "ace-field-select", showContext: false, name: "Field select — UI variant 4", apps: ["ace"], note: "Label beside; the chosen row ends with a check icon.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"} },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"Field at scale \"sm\" with a 3 gap that stacks the label above the select; the ADM, ADC and ACE scenes lay it out as a row with the label beside the trigger.","keyIdea":"Field at scale \"sm\" with a 3 gap that stacks the label above the select; the ADM, ADC and ACE scenes lay it out as a row with the label beside the trigger.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Download Duration\" label at scale \"sm\". In the label-beside scenes it is nowrap with an ellipsis and shares the row with the trigger.","keyIdea":"The \"Download Duration\" label at scale \"sm\".","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Outlined trigger (color \"surface\", paint \"fixed\") filling the field width, 28px high with 16/20 text; it opens the Dead, Snow and Roof choices.","keyIdea":"Outlined trigger (color \"surface\", paint \"fixed\") filling the field width, 28px high with 16/20 text; it opens the Dead, Snow and Roof choices.","selector":"[class~=\"aui-select-trigger\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The chevron at the end of the trigger that marks it as a list opener.","keyIdea":"The chevron at the end of the trigger that marks it as a list opener.","selector":"[class~=\"aui-select-chevron\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup that matches the trigger width and sits 4px below it, listing Dead (90), Snow (115) and Roof (125).","keyIdea":"Popup that matches the trigger width and sits 4px below it, listing Dead (90), Snow (115) and Roof (125).","selector":"[class~=\"aui-select-popup\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"The scrolling list inside the popup that holds the three duration rows.","keyIdea":"The scrolling list inside the popup that holds the three duration rows.","selector":"[class~=\"aui-select-list\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"One duration row; the chosen one is marked by a raised fill rather than a glyph.","keyIdea":"One duration row; the chosen one is marked by a raised fill rather than a glyph.","selector":"[class~=\"aui-select-item\"]"},
+        {"id":"item-text","partId":"item-text","title":"Item text","explanation":"The row label, for example \"Dead (90)\" or \"Roof (125)\".","keyIdea":"The row label, for example \"Dead (90)\" or \"Roof (125)\".","selector":"[class~=\"aui-select-item-text\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The empty indicator slot at the end of a row; the AGPD and ACE scenes draw a check icon in it for the chosen row.","keyIdea":"The empty indicator slot at the end of a row; the AGPD and ACE scenes draw a check icon in it for the chosen row.","selector":"[class~=\"aui-select-item-indicator\"]"},
+        {"id":"check","partId":"check","title":"Check icon","explanation":"The 16px check on the chosen row in the AGPD and ACE scenes; the base example leaves the indicator empty.","keyIdea":"The 16px check on the chosen row in the AGPD and ACE scenes; the base example leaves the indicator empty.","selector":"[class~=\"aui-select-item-indicator\"] [class~=\"aui-contained-icon\"]"},
+      ],
+options: [
+    { id: "hcs-field-select", showContext: false, name: "Field select", apps: ["hcs","hs","pbs","pfd","fd","rws"], note: "Label above.", source: {"hcs":"src/components/HcsSelectbox.tsx","hs":"src/hs/InputFields.tsx","pbs":"src/InputFields.tsx","pfd":"src/pfd/fields.tsx","fd":"src/components/ui.jsx","rws":"src/rws/inputs.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "agpd-field-select", showContext: false, name: "Field select — UI variant 2", apps: ["agpd"], note: "Label above; the chosen row ends with a check icon.", source: {"agpd":"src/agpd/controls.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-field-select", showContext: false, name: "Field select — UI variant 3", apps: ["adm","adc"], note: "Label beside: label and trigger share the row, half each.", source: {"adm":"src/features/design-inputs/components/MasonryWallDetailsSection/FieldSelectRow.tsx","adc":"src/adc/components/DesignField.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "ace-field-select", showContext: false, name: "Field select — UI variant 4", apps: ["ace"], note: "Label beside; the chosen row ends with a check icon.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     hcs: 'src/components/HcsSelectbox.tsx',

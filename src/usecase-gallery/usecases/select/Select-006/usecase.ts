@@ -4,9 +4,30 @@ export default defineUsecase({
   uiType: 'Field select',
   title: 'Grouped options',
   apps: ['adc', 'fd'],
-  options: [
-    { id: "adc-grouped-options", showContext: false, name: "Grouped options", apps: ["adc"], source: {"adc":"src/adc/components/DesignField.tsx"} },
-    { id: "fd-grouped-options", showContext: false, name: "Grouped options — UI variant 2", apps: ["fd"], source: {"fd":"src/components/SettingsPopover.jsx"} },
+    layers: [
+        {"id":"field","partId":"field","title":"Field row","explanation":"Field written as a row (flexDirection \"row\", centred, full width) so the Product label and trigger share one line.","keyIdea":"Field written as a row (flexDirection \"row\", centred, full width) so the Product label and trigger share one line.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Product\" label that takes half the row (flexBasis \"half\") and truncates with an ellipsis.","keyIdea":"The \"Product\" label that takes half the row (flexBasis \"half\") and truncates with an ellipsis.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Outlined trigger that fills the other half of the row (flex fill, flexBasis \"half\"); the FD scene leads it with the chosen row's icon.","keyIdea":"Outlined trigger that fills the other half of the row (flex fill, flexBasis \"half\"); the FD scene leads it with the chosen row's icon.","selector":"[class~=\"aui-select-trigger\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The chevron at the trigger end.","keyIdea":"The chevron at the trigger end.","selector":"[class~=\"aui-select-chevron\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup of the trigger width holding two groups, Anchors and Rods.","keyIdea":"Popup of the trigger width holding two groups, Anchors and Rods.","selector":"[class~=\"aui-select-popup\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"The list that stacks the Anchors and Rods groups.","keyIdea":"The list that stacks the Anchors and Rods groups.","selector":"[class~=\"aui-select-list\"]"},
+        {"id":"group","partId":"group","title":"Group","explanation":"One family of related rows: Anchors (Anchor A1, Anchor A2) or Rods (Rod B1).","keyIdea":"One family of related rows: Anchors (Anchor A1, Anchor A2) or Rods (Rod B1).","selector":"[class~=\"aui-select-group\"]"},
+        {"id":"group-label","partId":"group-label","title":"Group label","explanation":"The heading above each family, \"Anchors\" and \"Rods\".","keyIdea":"The heading above each family, \"Anchors\" and \"Rods\".","selector":"[class~=\"aui-select-group-label\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"A product row inside its group; the chosen row is marked by a raised fill.","keyIdea":"A product row inside its group; the chosen row is marked by a raised fill.","selector":"[class~=\"aui-select-item\"]"},
+        {"id":"item-text","partId":"item-text","title":"Item text","explanation":"The product name, such as \"Anchor A2\" or \"Rod B1\".","keyIdea":"The product name, such as \"Anchor A2\" or \"Rod B1\".","selector":"[class~=\"aui-select-item-text\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"Empty slot (`{null}`) at the row end; no check is drawn.","keyIdea":"Empty slot (`{null}`) at the row end; no check is drawn.","selector":"[class~=\"aui-select-item-indicator\"]"},
+      ],
+options: [
+    { id: "adc-grouped-options", showContext: false, name: "Grouped options", apps: ["adc"], source: {"adc":"src/adc/components/DesignField.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "fd-grouped-options", showContext: false, name: "Grouped options — UI variant 2", apps: ["fd"], source: {"fd":"src/components/SettingsPopover.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { adc: 'src/adc/components/DesignField.tsx', fd: 'src/components/SettingsPopover.jsx' },
   summary: 'A select whose rows are split into labelled groups: a heading above each run of related options.',

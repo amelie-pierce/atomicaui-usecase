@@ -4,9 +4,31 @@ export default defineUsecase({
   uiType: 'Menubar with icon trigger',
   title: 'Settings gear menu',
   apps: ['hcs', 'adm', 'ace', 'hs', 'pfd', 'agpd', 'rws', 'pbs'],
-  options: [
-    { id: "hcs-gear-menu", showContext: false, name: "Gear menu", apps: ["hcs","adm"], source: {"hcs":"src/App.tsx","adm":"src/features/settings/components/SettingsMenu.tsx"} },
-    { id: "ace-gear-menu", showContext: false, name: "Gear menu — UI variant 2", apps: ["ace","hs","pfd","agpd","rws","pbs"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx","hs":"src/hs/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx","pbs":"src/TopBar.tsx"} },
+    layers: [
+        {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"The \"Top bar\" strip whose right end holds the gear; the HCS and ACE scenes set it at scale \"sm\" and right-aligned.","keyIdea":"The \"Top bar\" strip whose right end holds the gear; the HCS and ACE scenes set it at scale \"sm\" and right-aligned.","selector":"[class~=\"aui-menubar\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Square gear button with aria-label \"Settings\" (profile \"square\") that opens the layout menu.","keyIdea":"Square gear button with aria-label \"Settings\" (profile \"square\") that opens the layout menu.","selector":"[class~=\"aui-menubar-trigger\"]"},
+        {"id":"trigger-icon","partId":"trigger-icon","title":"Trigger icon","explanation":"The gear glyph that is the whole visible content of the trigger.","keyIdea":"The gear glyph that is the whole visible content of the trigger.","selector":"[class~=\"aui-menubar-trigger\"] > [class~=\"aui-contained-icon\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Menu labelled \"Settings\", aligned to the end of the trigger so it stays on screen at the right edge.","keyIdea":"Menu labelled \"Settings\", aligned to the end of the trigger so it stays on screen at the right edge.","selector":"[class~=\"aui-dropdown-popup\"]"},
+        {"id":"group","partId":"group","title":"Group","explanation":"The Pane Orientation group that holds its heading and the orientation rows.","keyIdea":"The Pane Orientation group that holds its heading and the orientation rows.","selector":"[class~=\"aui-dropdown-group\"]"},
+        {"id":"group-label","partId":"group-label","title":"Group label","explanation":"The caption \"Pane Orientation\" (and \"Pane Layout\" in the scenes).","keyIdea":"The caption \"Pane Orientation\" (and \"Pane Layout\" in the scenes).","selector":"[class~=\"aui-dropdown-group-label\"]"},
+        {"id":"radio-group","partId":"radio-group","title":"Radio group","explanation":"Single-choice set with \"vertical\" chosen; the scenes add Horizontal and Grid.","keyIdea":"Single-choice set with \"vertical\" chosen; the scenes add Horizontal and Grid.","selector":"[class~=\"aui-dropdown-radio-group\"]"},
+        {"id":"radio-item","partId":"radio-item","title":"Radio item","explanation":"The \"Vertical\" orientation row with its leading table-columns icon and a hidden indicator.","keyIdea":"The \"Vertical\" orientation row with its leading table-columns icon and a hidden indicator.","selector":"[class~=\"aui-dropdown-radio-item\"]"},
+        {"id":"item-icon","partId":"item-icon","title":"Row icon","explanation":"The leading glyph of a row, such as table-columns for Vertical.","keyIdea":"The leading glyph of a row, such as table-columns for Vertical.","selector":"[class~=\"aui-dropdown-radio-item\"] > [class~=\"aui-contained-icon\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"The \"Reset layout to default\" action row of the scenes, under its own Pane Layout group.","keyIdea":"The \"Reset layout to default\" action row of the scenes, under its own Pane Layout group.","selector":"[class~=\"aui-dropdown-item\"]"},
+        {"id":"separator","partId":"separator","title":"Separator","explanation":"The divider between the orientation group, the layout group and the check row in the scenes.","keyIdea":"The divider between the orientation group, the layout group and the check row in the scenes.","selector":"[class~=\"aui-dropdown-separator\"]"},
+        {"id":"checkbox-item","partId":"checkbox-item","title":"Checkbox item","explanation":"The \"Auto-Rotate 3D Model\" check row of the HCS scene, shown only where the app has a 3D model.","keyIdea":"The \"Auto-Rotate 3D Model\" check row of the HCS scene, shown only where the app has a 3D model.","selector":"[class~=\"aui-dropdown-checkbox-item\"]"},
+      ],
+options: [
+    { id: "hcs-gear-menu", showContext: false, name: "Gear menu", apps: ["hcs","adm"], source: {"hcs":"src/App.tsx","adm":"src/features/settings/components/SettingsMenu.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "ace-gear-menu", showContext: false, name: "Gear menu — UI variant 2", apps: ["ace","hs","pfd","agpd","rws","pbs"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx","hs":"src/hs/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx","pbs":"src/TopBar.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     hcs: 'src/App.tsx',

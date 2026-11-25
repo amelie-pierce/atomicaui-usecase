@@ -26,6 +26,9 @@ export default function Example() {
                 </Type>
               </View>
             </View>
+            <Dialog.Actions data-ug-part="footer" aui={{ scale: 'sm' }}>
+              <Dialog.Button data-ug-part="footer-close" aui={{ scale: 'sm', color: 'secondary' }}>Close</Dialog.Button>
+            </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>
       </Dialog.Portal>

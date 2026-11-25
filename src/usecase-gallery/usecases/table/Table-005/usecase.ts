@@ -4,8 +4,20 @@ export default defineUsecase({
   uiType: 'Data table',
   title: 'Check details table',
   apps: ['fd'],
-  options: [
-    { id: "fd-details", name: "Check details table", showContext: false, apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
+    layers: [
+        {"id":"table","partId":"table","title":"Table","explanation":"Header-less message grid with a11y=\"table\", \"all-cells\" tonal borders, scale \"sm\" and a soft shape; it sits inside an expanded result row.","keyIdea":"Header-less message grid with a11y=\"table\", \"all-cells\" tonal borders, scale \"sm\" and a soft shape; it sits inside an expanded result row.","selector":"[class~=\"aui-table\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"Contains only body rows, one per failed or warning check; there is no Table.Head.","keyIdea":"Contains only body rows, one per failed or warning check; there is no Table.Head.","selector":"[class~=\"aui-table-body\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"One check message: the status chip followed by its text.","keyIdea":"One check message: the status chip followed by its text.","selector":"[class~=\"aui-table-row\"]"},
+        {"id":"status-cell","partId":"status-cell","title":"Status cell","explanation":"Fixed 96px first column that holds the status chip.","keyIdea":"Fixed 96px first column that holds the status chip.","selector":"[class~=\"aui-table-cell\"]:first-child"},
+        {"id":"chip","partId":"chip","title":"Status chip","explanation":"Small danger-tonal xs chip that marks the check as a failure.","keyIdea":"Small danger-tonal xs chip that marks the check as a failure.","selector":"[class~=\"aui-chip\"]"},
+        {"id":"message-cell","partId":"message-cell","title":"Message cell","explanation":"Message text that explains the check, for example \"Edge distance is below the minimum.\"","keyIdea":"Message text that explains the check, for example \"Edge distance is below the minimum.\"","selector":"[class~=\"aui-table-cell\"]:last-child"},
+      ],
+options: [
+    { id: "fd-details", name: "Check details table", showContext: false, apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     fd: 'src/components/RowExpansion.jsx',
@@ -30,7 +42,7 @@ export default defineUsecase({
     {
       id: 'row',
       name: 'Row',
-      selector: '[class~="aui-table-row"]',
+      selector: '[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]',
       description: 'One check message: the status chip followed by its text.',
     },
     {

@@ -9,8 +9,19 @@ export default defineUsecase({
   uiType: 'Card',
   title: 'Preview card',
   apps: ['hcs'],
-  options: [
-    { id: "hcs-preview", contextAnatomy: CONTEXT_ANATOMY, name: "Option preview", source: {"hcs":"src/components/HcsBeamTypeSelect.tsx"} },
+    layers: [
+        {"id":"card","partId":"card","title":"Card","explanation":"224px wide raised surface card with elevation 4 that floats beside the option list in a popover.","keyIdea":"224px wide raised surface card with elevation 4 that floats beside the option list in a popover.","selector":"[class~=\"aui-card\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"Stacks the option name above its illustration.","keyIdea":"Stacks the option name above its illustration.","selector":"[class~=\"aui-card-body\"]"},
+        {"id":"title","partId":"title","title":"Title","explanation":"Name of the highlighted option, \"Glulam\".","keyIdea":"Name of the highlighted option, \"Glulam\".","selector":"[class~=\"aui-card-title\"]"},
+        {"id":"illustration","partId":"illustration","title":"Illustration","explanation":"4:3 generic illustration of Glulam, fitted whole with fit=\"contain\".","keyIdea":"4:3 generic illustration of Glulam, fitted whole with fit=\"contain\".","selector":"[class~=\"aui-contained-image\"]"},
+      ],
+options: [
+    { id: "hcs-preview", contextAnatomy: CONTEXT_ANATOMY, name: "Option preview", source: {"hcs":"src/components/HcsBeamTypeSelect.tsx"} ,
+      contextLayers: [
+        {"id":"context-option-trigger","partId":"option-trigger","title":"Select field stand-in","explanation":"The surface field showing the highlighted option \"Glulam\" that the popover is anchored to; the real option list is Combobox-002.","keyIdea":"The surface field showing the highlighted option \"Glulam\" that the popover is anchored to; the real option list is Combobox-002.","selector":"[data-ug-part=\"option-trigger\"]","scope":"context"},
+        {"id":"context-preview-popover","partId":"preview-popover","title":"Preview popover","explanation":"The open Popover, placed to the right of the field with an 8px offset, that holds the preview card.","keyIdea":"The open Popover, placed to the right of the field with an 8px offset, that holds the preview card.","selector":"[data-ug-part=\"preview-popover\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/HcsBeamTypeSelect.tsx' },
   summary: 'A raised surface card with a title above an illustration, shown beside an option list to preview the highlighted option.',

@@ -28,12 +28,42 @@ export default defineUsecase({
   title: 'Close popover button',
 
   apps: ['hcs', 'pfd', 'pbs', 'fd', 'agpd', 'rws'],
-  options: [
-    { id: "hcs-help-close", contextAnatomy: HCS_CONTEXT, name: "Help popover close", apps: ["hcs"], source: {"hcs":"src/components/HcsDownloadDurationHelp.tsx"} },
-    { id: "pfd-help-close", contextAnatomy: PFD_CONTEXT, name: "Help popover close — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} },
-    { id: "pbs-help-close", contextAnatomy: PBS_CONTEXT, name: "Help popover close — UI variant 3", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} },
-    { id: "agpd-help-close", contextAnatomy: AGPD_CONTEXT, name: "Help popover close — UI variant 4", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} },
-    { id: "fd-apps-close", contextAnatomy: FD_CONTEXT, name: "Apps popover close", apps: ["fd"], source: {"fd":"src/App.jsx"} },
+    layers: [
+        {"id":"close","partId":"close","title":"Close","explanation":"The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD).","keyIdea":"The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD).","selector":"[class~=\"aui-button\"][aria-label^=\"Close\"]"},
+        {"id":"close-icon","partId":"close-icon","title":"Close icon","explanation":"The xmark glyph centred in the close button.","keyIdea":"The xmark glyph centred in the close button.","selector":"[class~=\"aui-button\"][aria-label^=\"Close\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"popup","partId":"popup","title":"Popover popup","explanation":"The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner.","keyIdea":"The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
+        {"id":"help-trigger","partId":"help-trigger","title":"Help trigger","explanation":"The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes.","keyIdea":"The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes.","selector":"[class~=\"aui-button\"][aria-label*=\"elp\"]:not([aria-label^=\"Close\"])"},
+        {"id":"apps-trigger","partId":"apps-trigger","title":"Apps trigger","explanation":"FD only: the grip button in the top bar that opens Explore More Applications.","keyIdea":"FD only: the grip button in the top bar that opens Explore More Applications.","selector":"[class~=\"aui-button\"][aria-label=\"Apps\"]"},
+      ],
+options: [
+    { id: "hcs-help-close", contextAnatomy: HCS_CONTEXT, name: "Help popover close", apps: ["hcs"], source: {"hcs":"src/components/HcsDownloadDurationHelp.tsx"} ,
+      contextLayers: [
+        {"id":"context-help-intro","partId":"help-intro","title":"Help intro","explanation":"The line \"Duration of load adjustments as specified by the code are as follows:\" that fills the popup row and leaves the close X at its end.","keyIdea":"The line \"Duration of load adjustments as specified by the code are as follows:\" that fills the popup row and leaves the close X at its end.","selector":"[data-ug-part=\"help-intro\"]","scope":"context"},
+        {"id":"context-duration-notes","partId":"duration-notes","title":"Duration notes","explanation":"The plain list of five load-duration notes under the intro, each with a quoted bold label and its description.","keyIdea":"The plain list of five load-duration notes under the intro, each with a quoted bold label and its description.","selector":"[data-ug-part=\"duration-notes\"]","scope":"context"},
+      ],
+    },
+    { id: "pfd-help-close", contextAnatomy: PFD_CONTEXT, name: "Help popover close — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} ,
+      contextLayers: [
+        {"id":"context-help-text","partId":"help-text","title":"Help text","explanation":"The \"Select the base material of the member.\" text under the close button in the popup.","keyIdea":"The \"Select the base material of the member.\" text under the close button in the popup.","selector":"[data-ug-part=\"help-text\"]","scope":"context"},
+      ],
+    },
+    { id: "pbs-help-close", contextAnatomy: PBS_CONTEXT, name: "Help popover close — UI variant 3", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} ,
+      contextLayers: [
+        {"id":"context-help-text","partId":"help-text","title":"Help text","explanation":"The \"Select the base material of the member.\" text that fills the popup row beside the close X.","keyIdea":"The \"Select the base material of the member.\" text that fills the popup row beside the close X.","selector":"[data-ug-part=\"help-text\"]","scope":"context"},
+      ],
+    },
+    { id: "agpd-help-close", contextAnatomy: AGPD_CONTEXT, name: "Help popover close — UI variant 4", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} ,
+      contextLayers: [
+        {"id":"context-close-row","partId":"close-row","title":"Close row","explanation":"The end-aligned row that holds only the close X above the help text.","keyIdea":"The end-aligned row that holds only the close X above the help text.","selector":"[data-ug-part=\"close-row\"]","scope":"context"},
+        {"id":"context-help-text","partId":"help-text","title":"Help text","explanation":"The \"Select the base material of the member.\" text under the close row.","keyIdea":"The \"Select the base material of the member.\" text under the close row.","selector":"[data-ug-part=\"help-text\"]","scope":"context"},
+      ],
+    },
+    { id: "fd-apps-close", contextAnatomy: FD_CONTEXT, name: "Apps popover close", apps: ["fd"], source: {"fd":"src/App.jsx"} ,
+      contextLayers: [
+        {"id":"context-top-bar","partId":"top-bar","title":"Top bar","explanation":"The Menubar with the grip Apps button that opens this popover.","keyIdea":"The Menubar with the grip Apps button that opens this popover.","selector":"[class~=\"aui-menubar\"]","scope":"context"},
+        {"id":"context-apps-title","partId":"apps-title","title":"Popover title","explanation":"The semi-bold \"Explore More Applications\" heading at the start of the title row, opposite the close button.","keyIdea":"The semi-bold \"Explore More Applications\" heading at the start of the title row, opposite the close button.","selector":"[data-ug-part=\"apps-title\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A transparent icon-only IconButton, 20px square, closes a popover from its corner.',

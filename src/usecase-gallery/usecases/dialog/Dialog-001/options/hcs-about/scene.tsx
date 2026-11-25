@@ -98,9 +98,11 @@ export default function HcsAboutScene({ host }: ContextProps) {
                 </View>
               </View>
             </View>
-            <Dialog.Actions data-ug-part="footer" aui={{ scale: 'sm' }}>
-              <Dialog.Button aui={{ scale: 'sm', color: 'secondary' }}>Close</Dialog.Button>
-            </Dialog.Actions>
+            <span data-ug-component-root style={{ display: 'contents' }}>
+              <Dialog.Actions data-ug-part="footer" aui={{ scale: 'sm' }}>
+                <Dialog.Button data-ug-part="footer-close" aui={{ scale: 'sm', color: 'secondary' }}>Close</Dialog.Button>
+              </Dialog.Actions>
+            </span>
           </Dialog.Popup>
         </Dialog.Viewport>
       </Dialog.Portal>

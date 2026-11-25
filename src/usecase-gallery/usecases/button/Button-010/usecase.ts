@@ -5,11 +5,20 @@ export default defineUsecase({
   title: 'Show locked field option button',
 
   apps: ['agpd'],
-  options: [
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"The Show Plate Option Button at the start of the lock popup: extra small, primary text paint, with no fill so it reads as an accent link under the explanatory line.","keyIdea":"The Show Plate Option Button at the start of the lock popup: extra small, primary text paint, with no fill so it reads as an accent link under the explanatory line.","selector":"[class~=\"aui-button\"]:not([aria-label=\"Thickness is locked\"])"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The 288px popup that opens from the lock icon, holding the line \"Controlled by Plate Option, currently ...\" above this Button.","keyIdea":"The 288px popup that opens from the lock icon, holding the line \"Controlled by Plate Option, currently ...\" above this Button.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
+      ],
+options: [
     { id: "agpd-lock-hint", name: "Lock hint", apps: ["agpd"], contextAnatomy: [
       { id: "lock-trigger", name: "Lock trigger", description: "The square lock button after the field label (aria-label \"Thickness is locked\") that opens the hint on hover or focus." },
       { id: "hint-text", name: "Hint text", description: "The line \"Controlled by Plate Option\" and its current value \"All Plates based on the stock model\"." },
-    ], source: {"agpd":"src/agpd/inputs.tsx"} },
+    ], source: {"agpd":"src/agpd/inputs.tsx"} ,
+      contextLayers: [
+        {"id":"context-lock-trigger","partId":"lock-trigger","title":"Lock trigger","explanation":"The square lock button after the field label (aria-label \"Thickness is locked\") that opens the hint on hover or focus.","keyIdea":"The square lock button after the field label (aria-label \"Thickness is locked\") that opens the hint on hover or focus.","selector":"[data-ug-part=\"lock-trigger\"]","scope":"context"},
+        {"id":"context-hint-text","partId":"hint-text","title":"Hint text","explanation":"The line \"Controlled by Plate Option\" and its current value \"All Plates based on the stock model\".","keyIdea":"The line \"Controlled by Plate Option\" and its current value \"All Plates based on the stock model\".","selector":"[data-ug-part=\"hint-text\"]","scope":"context"},
+      ],
+    },
   ],
   source: { agpd: 'src/agpd/inputs.tsx' },
   summary: 'A small primary text Button in a lock popover reveals the option that controls a locked field.',

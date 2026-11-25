@@ -49,6 +49,7 @@ function validateLayers(id: string, layers: Usecase['layers'], label: string) {
 
 /** Pure assembly of the catalog from glob results, so the discovery rules live in one testable place. */
 export function buildCatalog({ metas, docs, examples, sources, options = {}, optionSources = {} }: CatalogSources): ComponentGroup[] {
+  const isDevelopment = import.meta.env.DEV;
   const groups = new Map<string, ComponentGroup & { usecases: Usecase[] }>();
   for (const [path, meta] of Object.entries(metas)) {
     groups.set(componentKey(path), { ...meta, usecases: [] });
@@ -73,18 +74,28 @@ export function buildCatalog({ metas, docs, examples, sources, options = {}, opt
     const loadSource = sourceByPath.get(key) ?? fail(`${id} is missing example.tsx`);
     let code: Promise<string> | undefined;
     const { options: optionDocs, ...docFields } = doc;
+    const authoredLayers = doc.layers;
     const usecase: Usecase = {
       ...docFields,
+      layers: authoredLayers ?? [],
       id,
       componentId: group.id,
       Example: lazy(() => loadExample().then((component) => ({ default: component }))),
       loadCode: () => (code ??= loadSource().then(toSnippet)),
     };
+    if (!authoredLayers?.length) {
+      if (!isDevelopment) fail(`${id} is missing authored Component layer steps`);
+      console.warn(`[usecase-gallery] ${id} is using development-only Component layers derived from Anatomy`);
+      usecase.layers = layersFromAnatomy(doc.anatomy);
+    }
     validateLayers(id, usecase.layers, 'Component');
     if (!group.uiTypes.includes(doc.uiType)) fail(`${id} sets uiType "${doc.uiType}", which is not in uiTypes of ${component}.meta.ts (${group.uiTypes.join(', ')})`);
     if (!optionDocs?.length) fail(`${id} must define at least one option`);
-    usecase.options = buildOptions(usecase, optionDocs, key, optionByKey, optionSourceByKey);
-    for (const option of usecase.options) if (option.contextLayers.length) validateLayers(id, option.contextLayers, `In context (${option.id})`);
+    usecase.options = buildOptions(usecase, optionDocs, key, optionByKey, optionSourceByKey, isDevelopment);
+    for (const option of usecase.options) {
+      if (option.contextLayers.length) validateLayers(id, option.contextLayers, `In context (${option.id})`);
+      else if (option.contextAnatomy.length) fail(`${id} option "${option.id}" is missing authored In context layer steps`);
+    }
     group.usecases.push(usecase);
   }
 
@@ -128,11 +139,15 @@ function groupByUiType({ id, title, uiTypes }: ComponentMeta, usecases: Usecase[
  * the use case's `example.tsx`, every other option brings `options/<id>/example.tsx`. The apps of the options must be
  * exactly the apps of the use case, so the Document badges and the control say the same thing.
  */
-function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, files: Map<string, Loader<ComponentType<ContextProps> | ComponentType>>, sources: Map<string, Loader<string>>): UsecaseOption[] {
+function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, files: Map<string, Loader<ComponentType<ContextProps> | ComponentType>>, sources: Map<string, Loader<string>>, isDevelopment: boolean): UsecaseOption[] {
   const { id } = usecase;
   const ids = new Set<string>();
   const options = docs.map((raw, index): UsecaseOption => {
     const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextLayers, contextDocument } = raw;
+    if (contextLayers === undefined) {
+      if (!isDevelopment) fail(`${id} option "${optionId}" is missing authored In context layer steps`);
+      console.warn(`[usecase-gallery] ${id} option "${optionId}" is using development-only In context layers derived from Anatomy`);
+    }
     for (const app of [...apps, ...Object.keys(source ?? {})] as AppKey[]) {
       if (!apps.includes(app) || !usecase.apps.includes(app)) fail(`${id} sets the option "${optionId}" to app "${app}", which is not in its apps`);
     }

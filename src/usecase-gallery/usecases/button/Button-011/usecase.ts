@@ -5,13 +5,24 @@ export default defineUsecase({
   title: 'Start tutorial topic button',
 
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  options: [
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent \"between\"), outlined by a 1px border on all four sides from sx.","keyIdea":"One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent \"between\"), outlined by a 1px border on all four sides from sx.","selector":"[data-ug-part=\"container\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The right arrow at the end of the row that signals starting the tour, at scale \"sm\".","keyIdea":"The right arrow at the end of the row that signals starting the tour, at scale \"sm\".","selector":"[data-ug-part=\"icon\"]"},
+      ],
+options: [
     { id: "hs-topic-row", name: "Topic row", apps: ["hs","agpd","rws"], contextAnatomy: [
       { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
       { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
       { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog." },
       { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
-    ], source: {"hs":"src/hs/Tutorials.tsx","agpd":"src/agpd/Tutorials.tsx","rws":"src/rws/Tutorials.tsx"} },
+    ], source: {"hs":"src/hs/Tutorials.tsx","agpd":"src/agpd/Tutorials.tsx","rws":"src/rws/Tutorials.tsx"} ,
+      contextLayers: [
+        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"The open dialog that lists the tutorial topics.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The title bar \"Help & Tutorials\" with the close X.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The X in the title that closes the dialog.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The nav column that holds one outlined row per tutorial.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
+      ],
+    },
     { id: "ace-topic-row", name: "Topic row — UI variant 2", apps: ["ace"], contextAnatomy: [
       { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
       { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
@@ -19,19 +30,42 @@ export default defineUsecase({
       { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
       { id: "topic-name", name: "Topic name", description: "The semi-bold topic name (\"ACE: General Tutorial\") stacked above the description." },
       { id: "topic-description", name: "Topic description", description: "The muted description under the topic name." },
-    ], source: {"ace":"src/features/top-navigation/ui/TutorialsDialog.tsx"} },
+    ], source: {"ace":"src/features/top-navigation/ui/TutorialsDialog.tsx"} ,
+      contextLayers: [
+        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"The open dialog that lists the tutorial topics.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The title bar \"Help & Tutorials\" with the close X.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The X in the title that closes the dialog.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The nav column that holds one outlined row per tutorial.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
+        {"id":"context-topic-name","partId":"topic-name","title":"Topic name","explanation":"The semi-bold topic name (\"ACE: General Tutorial\") stacked above the description.","keyIdea":"The semi-bold topic name (\"ACE: General Tutorial\") stacked above the description.","selector":"[data-ug-part=\"topic-name\"]","scope":"context"},
+        {"id":"context-topic-description","partId":"topic-description","title":"Topic description","explanation":"The muted description under the topic name.","keyIdea":"The muted description under the topic name.","selector":"[data-ug-part=\"topic-description\"]","scope":"context"},
+      ],
+    },
     { id: "adm-topic-row", name: "Topic row — UI variant 3", apps: ["adm","pfd"], contextAnatomy: [
       { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
       { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
       { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog." },
       { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
-    ], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","pfd":"src/pfd/ShellDialogs.tsx"} },
+    ], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","pfd":"src/pfd/ShellDialogs.tsx"} ,
+      contextLayers: [
+        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"The open dialog that lists the tutorial topics.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The title bar \"Help & Tutorials\" with the close X.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The X in the title that closes the dialog.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The nav column that holds one outlined row per tutorial.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
+      ],
+    },
     { id: "pbs-topic-row", name: "Topic row — UI variant 4", apps: ["pbs","fd"], contextAnatomy: [
       { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
       { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
       { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog." },
       { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
-    ], source: {"pbs":"src/PbsHelpTutorials.tsx","fd":"src/components/HelpCenter.jsx"} },
+    ], source: {"pbs":"src/PbsHelpTutorials.tsx","fd":"src/components/HelpCenter.jsx"} ,
+      contextLayers: [
+        {"id":"context-dialog","partId":"dialog","title":"Help & Tutorials dialog","explanation":"The open dialog that lists the tutorial topics.","keyIdea":"The open dialog that lists the tutorial topics.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The title bar \"Help & Tutorials\" with the close X.","keyIdea":"The title bar \"Help & Tutorials\" with the close X.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The X in the title that closes the dialog.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The nav column that holds one outlined row per tutorial.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
+      ],
+    },
   ],
   source: { ace: 'src/features/top-navigation/ui/TutorialsDialog.tsx', adm: 'src/features/top-navigation/components/Tutorials.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/PbsHelpTutorials.tsx', hs: 'src/hs/Tutorials.tsx', fd: 'src/components/HelpCenter.jsx', agpd: 'src/agpd/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx' },
   summary: 'A full-width text Button with an outlined border is one tutorial topic in the Help & Tutorials list; pressing it starts that guided tour.',

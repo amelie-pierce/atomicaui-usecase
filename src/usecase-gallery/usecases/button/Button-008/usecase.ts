@@ -5,19 +5,37 @@ export default defineUsecase({
   title: 'Reset filters button',
 
   apps: ['hcs', 'pfd', 'hs', 'fd'],
-  options: [
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD.","keyIdea":"The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD.","selector":"[class~=\"aui-button\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The filter glyph with a cross that signals removing the active filters, at scale \"sm\".","keyIdea":"The filter glyph with a cross that signals removing the active filters, at scale \"sm\".","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
+      ],
+options: [
     { id: "hcs-toolbar", name: "Toolbar", apps: ["hcs","pfd","hs"], contextAnatomy: [
       { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section cut to its title and toolbar." },
       { id: "output-title", name: "Output title", description: "The \"Output\" heading at the start of the pane header." },
       { id: "toolbar", name: "Output toolbar", description: "The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it." },
       { id: "search", name: "Search field", description: "The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button." },
-    ], source: {"hcs":"src/App.tsx","pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx"} },
+    ], source: {"hcs":"src/App.tsx","pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx"} ,
+      contextLayers: [
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section cut to its title and toolbar.","keyIdea":"The Output pane frame, a surface-alt section cut to its title and toolbar.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The \"Output\" heading at the start of the pane header.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
+        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it.","keyIdea":"The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
+        {"id":"context-search","partId":"search","title":"Search field","explanation":"The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button.","keyIdea":"The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button.","selector":"[data-ug-part=\"search\"]","scope":"context"},
+      ],
+    },
     { id: "fd-toolbar", name: "Toolbar — UI variant 2", apps: ["fd"], contextAnatomy: [
       { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section cut to its title and toolbar." },
       { id: "output-title", name: "Output title", description: "The \"Output\" heading at the start of the pane header." },
       { id: "toolbar", name: "Output toolbar", description: "The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it." },
       { id: "search", name: "Search field", description: "The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button." },
-    ], source: {"fd":"src/components/Results.jsx"} },
+    ], source: {"fd":"src/components/Results.jsx"} ,
+      contextLayers: [
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section cut to its title and toolbar.","keyIdea":"The Output pane frame, a surface-alt section cut to its title and toolbar.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The \"Output\" heading at the start of the pane header.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
+        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it.","keyIdea":"The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
+        {"id":"context-search","partId":"search","title":"Search field","explanation":"The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button.","keyIdea":"The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button.","selector":"[data-ug-part=\"search\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/App.tsx', pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx', fd: 'src/components/Results.jsx' },
   summary: 'A neutral default Button clears the active filters of a results table; FD draws it as a quiet text Button.',

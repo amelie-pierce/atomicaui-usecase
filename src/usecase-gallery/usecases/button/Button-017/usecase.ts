@@ -5,8 +5,16 @@ export default defineUsecase({
   title: 'Open report button',
 
   apps: ['adc'],
-  options: [
-    { id: "adc-status-bar", name: "Status bar", apps: ["adc"], showContext: false, source: {"adc":"src/adc/components/ReportFlow.tsx"} },
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"The report-ready Button in the ADC status bar: solid info (blue), extra small, soft shape.","keyIdea":"The report-ready Button in the ADC status bar: solid info (blue), extra small, soft shape.","selector":"[class~=\"aui-button\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The file glyph before the label that marks the item as a report.","keyIdea":"The file glyph before the label that marks the item as a report.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
+      ],
+options: [
+    { id: "adc-status-bar", name: "Status bar", apps: ["adc"], showContext: false, source: {"adc":"src/adc/components/ReportFlow.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { adc: 'src/adc/components/ReportFlow.tsx' },
   summary: 'A small blue solid Button with a file icon tells the user a report is ready and opens it.',

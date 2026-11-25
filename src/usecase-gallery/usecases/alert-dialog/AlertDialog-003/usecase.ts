@@ -5,12 +5,48 @@ export default defineUsecase({
   title: 'Reset confirm dialog',
 
   apps: ['hcs', 'ace', 'adm', 'hs', 'fd', 'adc'],
-  options: [
-    { id: "hcs-reset", showContext: false, name: "Reset confirm", apps: ["hcs"], source: {"hcs":"src/components/HcsResetDialog.tsx"} },
-    { id: "ace-reset", showContext: false, name: "Reset confirm — UI variant 2", apps: ["ace"], source: {"ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx"} },
-    { id: "adm-reset", showContext: false, name: "Reset confirm — UI variant 3", apps: ["adm"], source: {"adm":"src/features/top-navigation/components/ResetDialog.tsx"} },
-    { id: "hs-reset", showContext: false, name: "Reset confirm — UI variant 4", apps: ["hs","fd"], source: {"hs":"src/App.tsx","fd":"src/App.jsx"} },
-    { id: "adc-reset", showContext: false, name: "Reset confirm — UI variant 5", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the reset confirm shared by five apps.","keyIdea":"The scrim behind the reset confirm shared by five apps.","selector":"[class~=\"aui-dialog-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The 560px soft confirm window at scale \"sm\" (ADM uses 480px, HS 384px, ADC a 640px cap).","keyIdea":"The 560px soft confirm window at scale \"sm\" (ADM uses 480px, HS 384px, ADC a 640px cap).","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title bar","explanation":"The raised title bar with the warning icon and \"Warning: Reset Inputs?\"; ACE leaves out the close X and HS leaves the bar plain.","keyIdea":"The raised title bar with the warning icon and \"Warning: Reset Inputs?\"; ACE leaves out the close X and HS leaves the bar plain.","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"icon","partId":"icon","title":"Warning icon","explanation":"The warning-coloured triangle-exclamation icon at the start of the title.","keyIdea":"The warning-coloured triangle-exclamation icon at the start of the title.","selector":"[class~=\"aui-dialog-title\"] [class~=\"aui-contained-icon\"]"},
+        {"id":"spacer","partId":"spacer","title":"Spacer","explanation":"The gap before the close X in the title bar; HS also places one between Cancel and Reset in its footer.","keyIdea":"The gap before the close X in the title bar; HS also places one between Cancel and Reset in its footer.","selector":"[class~=\"aui-dialog-spacer\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The close X labelled \"Close Reset\"; in ADC it sits in a \"Close\" tooltip trigger.","keyIdea":"The close X labelled \"Close Reset\"; in ADC it sits in a \"Close\" tooltip trigger.","selector":"[class~=\"aui-dialog-close\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The HS-only body that wraps its description instead of placing it directly in the popup.","keyIdea":"The HS-only body that wraps its description instead of placing it directly in the popup.","selector":"[class~=\"aui-dialog-body\"]"},
+        {"id":"description","partId":"description","title":"Description","explanation":"The warning that all input fields will be reset and that the project configurations erased cannot be recovered.","keyIdea":"The warning that all input fields will be reset and that the project configurations erased cannot be recovered.","selector":"[class~=\"aui-dialog-description\"]"},
+        {"id":"actions","partId":"actions","title":"Footer","explanation":"The footer that holds Cancel and the destructive button; split and wrapping in ADC.","keyIdea":"The footer that holds Cancel and the destructive button; split and wrapping in ADC.","selector":"[class~=\"aui-dialog-actions\"]"},
+        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"The default Cancel next to the destructive action.","keyIdea":"The default Cancel next to the destructive action.","selector":"[data-ug-part=\"cancel\"]"},
+        {"id":"confirm","partId":"confirm","title":"Reset","explanation":"The solid secondary Reset that clears every input in HCS, ACE, ADM and HS.","keyIdea":"The solid secondary Reset that clears every input in HCS, ACE, ADM and HS.","selector":"[data-ug-part=\"confirm\"]"},
+        {"id":"reset-current","partId":"reset-current","title":"Reset current design","explanation":"The ADC text error button \"Reset Current Design to Standard\".","keyIdea":"The ADC text error button \"Reset Current Design to Standard\".","selector":"[data-ug-part=\"reset-current\"]"},
+        {"id":"reset-all","partId":"reset-all","title":"Reset all designs","explanation":"The ADC solid error button \"Reset All Designs to Standard\".","keyIdea":"The ADC solid error button \"Reset All Designs to Standard\".","selector":"[data-ug-part=\"reset-all\"]"},
+        {"id":"close-tooltip","partId":"close-tooltip","title":"Close tooltip","explanation":"The ADC tooltip that labels the close X \"Close\" on hover.","keyIdea":"The ADC tooltip that labels the close X \"Close\" on hover.","selector":"[class~=\"aui-tooltip-popup\"]"},
+      ],
+options: [
+    { id: "hcs-reset", showContext: false, name: "Reset confirm", apps: ["hcs"], source: {"hcs":"src/components/HcsResetDialog.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "ace-reset", showContext: false, name: "Reset confirm — UI variant 2", apps: ["ace"], source: {"ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-reset", showContext: false, name: "Reset confirm — UI variant 3", apps: ["adm"], source: {"adm":"src/features/top-navigation/components/ResetDialog.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "hs-reset", showContext: false, name: "Reset confirm — UI variant 4", apps: ["hs","fd"], source: {"hs":"src/App.tsx","fd":"src/App.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adc-reset", showContext: false, name: "Reset confirm — UI variant 5", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hcs: 'src/components/HcsResetDialog.tsx', ace: 'src/features/reset-inputs/ui/ResetInputsAction.tsx', adm: 'src/features/top-navigation/components/ResetDialog.tsx', hs: 'src/App.tsx', fd: 'src/App.jsx', adc: 'src/adc/Workspace.tsx' },
   summary: 'A confirmation that asks before every input is reset: a warning title, a description of what is lost, and a Cancel next to a solid Reset.',

@@ -10,8 +10,19 @@ export default defineUsecase({
   title: 'Remove row button',
 
   apps: ['hs', 'pbs'],
-  options: [
-    { id: "hs-remove", contextAnatomy: CONTEXT_ANATOMY, name: "Remove", apps: ["hs","pbs"], source: {"hs":"src/hs/OutputPane.tsx","pbs":"src/ResultsSection.tsx"} },
+    layers: [
+        {"id":"remove","partId":"remove","title":"Remove","explanation":"The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click.","keyIdea":"The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"]"},
+        {"id":"remove-icon","partId":"remove-icon","title":"Trash icon","explanation":"The trash glyph centred in the button.","keyIdea":"The trash glyph centred in the button.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"cell","partId":"cell","title":"Remove cell","explanation":"The last cell of the Job 1 row that holds the trash button next to the job name.","keyIdea":"The last cell of the Job 1 row that holds the trash button next to the job name.","selector":"[class~=\"aui-table-cell\"]:last-child"},
+        {"id":"header-cell","partId":"header-cell","title":"Remove header","explanation":"The unlabeled column heading (aria-label Remove) above the trash buttons.","keyIdea":"The unlabeled column heading (aria-label Remove) above the trash buttons.","selector":"[class~=\"aui-table-header-cell\"]:last-child"},
+      ],
+options: [
+    { id: "hs-remove", contextAnatomy: CONTEXT_ANATOMY, name: "Remove", apps: ["hs","pbs"], source: {"hs":"src/hs/OutputPane.tsx","pbs":"src/ResultsSection.tsx"} ,
+      contextLayers: [
+        {"id":"context-jobs-table","partId":"jobs-table","title":"Jobs table","explanation":"The Table of jobs; the trash button sits in its last column after the Job column.","keyIdea":"The Table of jobs; the trash button sits in its last column after the Job column.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-job-name","partId":"job-name","title":"Job cell","explanation":"The Job 1 label that the Remove Job 1 button belongs to.","keyIdea":"The Job 1 label that the Remove Job 1 button belongs to.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-cell\"]:first-child","scope":"context"},
+      ],
+    },
   ],
   source: { hs: 'src/hs/InputFields.tsx', pbs: 'src/ResultsSection.tsx' },
   summary: 'A square transparent trash IconButton, 28px, removes a row from a saved list after a confirmation.',

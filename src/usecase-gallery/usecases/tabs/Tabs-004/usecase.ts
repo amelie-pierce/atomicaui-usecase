@@ -4,8 +4,20 @@ export default defineUsecase({
   uiType: 'Closable tab rail',
   title: 'Design tab rail',
   apps: ['adc'],
-  options: [
-    { id: "adc-design-rail", name: "Design tab rail", showContext: false, apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    layers: [
+        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"The design rail root with no padding; Design 1 (d1) is selected by default.","keyIdea":"The design rail root with no padding; Design 1 (d1) is selected by default.","selector":"[class~=\"aui-tabs\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"Row holding the design chips and the add button; ADC lets it shrink with overflow=\"shrink\".","keyIdea":"Row holding the design chips and the add button; ADC lets it shrink with overflow=\"shrink\".","selector":"[class~=\"aui-tabs-list\"]"},
+        {"id":"tab","partId":"tab","title":"Tab","explanation":"One open design (Design 1, Design 2) rendered as a div chip with nativeButton={false} so it can hold buttons; the selected chip is raised and tonal.","keyIdea":"One open design (Design 1, Design 2) rendered as a div chip with nativeButton={false} so it can hold buttons; the selected chip is raised and tonal.","selector":"[class~=\"aui-tabs-tab\"]"},
+        {"id":"pin","partId":"pin","title":"Error dot","explanation":"Error-coloured circle-exclamation on Design 1, labelled \"The design has an error\".","keyIdea":"Error-coloured circle-exclamation on Design 1, labelled \"The design has an error\".","selector":"[class~=\"aui-tabs-pin-button\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"Per-design close action, for example \"Close Design 1\".","keyIdea":"Per-design close action, for example \"Close Design 1\".","selector":"[class~=\"aui-tabs-close-button\"]"},
+        {"id":"add","partId":"add","title":"Add","explanation":"File-circle-plus button at the end of the rail that opens a new design.","keyIdea":"File-circle-plus button at the end of the rail that opens a new design.","selector":"[class~=\"aui-tabs-add-button\"]"},
+      ],
+options: [
+    { id: "adc-design-rail", name: "Design tab rail", showContext: false, apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A rail of closable tab chips, one per open design, ending in an add button, with an error dot on a tab whose design has a problem.',

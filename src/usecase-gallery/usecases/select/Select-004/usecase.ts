@@ -4,8 +4,25 @@ export default defineUsecase({
   uiType: 'Field select',
   title: 'Configuration country select',
   apps: ['hs', 'ace', 'adc', 'fd', 'pfd', 'rws'],
-  options: [
-    { id: "hs-configuration-select", showContext: false, name: "Configuration select", apps: ["hs","ace","adc","fd","pfd","rws"], source: {"hs":"src/hs/SettingsPanel.tsx","ace":"src/features/app-configuration/ui/AppConfigurationDialog.tsx","adc":"src/adc/components/AppConfigurationPopover.tsx","fd":"src/components/SettingsPopover.jsx","pfd":"src/pfd/CountrySelection.tsx","rws":"src/rws/CountryConfiguration.tsx"} },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"Field at scale \"sm\", full width with zero minimum width so it fits the configuration panel.","keyIdea":"Field at scale \"sm\", full width with zero minimum width so it fits the configuration panel.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Country\" label above the trigger.","keyIdea":"The \"Country\" label above the trigger.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The 28px outlined trigger (scale \"sm\", color \"surface\", paint \"fixed\") that opens the country list.","keyIdea":"The 28px outlined trigger (scale \"sm\", color \"surface\", paint \"fixed\") that opens the country list.","selector":"[class~=\"aui-select-trigger\"]"},
+        {"id":"trigger-icon","partId":"trigger-icon","title":"Trigger icon","explanation":"The flag icon that leads the trigger and mirrors the chosen row.","keyIdea":"The flag icon that leads the trigger and mirrors the chosen row.","selector":"[class~=\"aui-select-trigger\"] > [class~=\"aui-contained-icon\"]:not([class~=\"aui-select-chevron\"])"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The chevron at the end of the trigger.","keyIdea":"The chevron at the end of the trigger.","selector":"[class~=\"aui-select-chevron\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup of the trigger width, 4px below the trigger, holding three flagged rows.","keyIdea":"Popup of the trigger width, 4px below the trigger, holding three flagged rows.","selector":"[class~=\"aui-select-popup\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"The list of Canada, United States and Mexico rows.","keyIdea":"The list of Canada, United States and Mexico rows.","selector":"[class~=\"aui-select-list\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"A country row with its flag icon, name and an empty indicator slot; the chosen row is marked by a raised fill.","keyIdea":"A country row with its flag icon, name and an empty indicator slot; the chosen row is marked by a raised fill.","selector":"[class~=\"aui-select-item\"]"},
+        {"id":"item-icon","partId":"item-icon","title":"Item icon","explanation":"The flag icon at the start of each row, before the country name.","keyIdea":"The flag icon at the start of each row, before the country name.","selector":"[class~=\"aui-select-item\"] > [class~=\"aui-contained-icon\"]"},
+        {"id":"item-text","partId":"item-text","title":"Item text","explanation":"The country name: Canada, United States or Mexico.","keyIdea":"The country name: Canada, United States or Mexico.","selector":"[class~=\"aui-select-item-text\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"An empty slot (`{null}`) at the end of each row; in this panel the chosen row has no check.","keyIdea":"An empty slot (`{null}`) at the end of each row; in this panel the chosen row has no check.","selector":"[class~=\"aui-select-item-indicator\"]"},
+      ],
+options: [
+    { id: "hs-configuration-select", showContext: false, name: "Configuration select", apps: ["hs","ace","adc","fd","pfd","rws"], source: {"hs":"src/hs/SettingsPanel.tsx","ace":"src/features/app-configuration/ui/AppConfigurationDialog.tsx","adc":"src/adc/components/AppConfigurationPopover.tsx","fd":"src/components/SettingsPopover.jsx","pfd":"src/pfd/CountrySelection.tsx","rws":"src/rws/CountryConfiguration.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     hs: 'src/hs/SettingsPanel.tsx',

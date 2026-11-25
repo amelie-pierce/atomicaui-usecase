@@ -4,8 +4,18 @@ export default defineUsecase({
   uiType: 'Tooltip on a button',
   title: 'Icon button tooltip',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  options: [
-    { id: "hcs-icon-label", name: "Icon label", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws","adc"], showContext: false, source: {"hcs":"src/components/HcsIconTooltip.tsx","ace":"src/shared/ui/PaneIconTooltip.tsx","adm":"src/shared/lib/tooltip/AdmIconTooltip.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/App.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/panel.tsx","rws":"src/rws/panel.tsx","adc":"src/adc/Workspace.tsx"} },
+    layers: [
+    {"id":"trigger","partId":"trigger","title":"Icon button trigger","explanation":"The Settings gear button is the control whose accessible label is repeated in the tooltip.","keyIdea":"Make an icon-only control understandable through its accessible label and tooltip.","selector":"[data-ug-part=\"trigger\"]"},
+    {"id":"positioner","partId":"positioner","title":"Tooltip positioner","explanation":"The positioner places the tooltip below the trigger with a four-pixel offset.","keyIdea":"Anchor the label to the control it explains.","selector":"[class~=\"aui-tooltip-positioner\"]"},
+    {"id":"popup","partId":"popup","title":"Tooltip surface","explanation":"The small popup provides a surface for the trigger label.","keyIdea":"Give supporting text enough contrast to read beside the control.","selector":"[class~=\"aui-tooltip-popup\"]"},
+    {"id":"label","partId":"label","title":"Settings label","explanation":"The word Settings repeats the button accessible name for sighted users.","keyIdea":"Repeat the control name in visible text when the icon alone has no label.","selector":"[data-ug-part=\"tooltip-label\"]"},
+  ],
+options: [
+    { id: "hcs-icon-label", name: "Icon label", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws","adc"], showContext: false, source: {"hcs":"src/components/HcsIconTooltip.tsx","ace":"src/shared/ui/PaneIconTooltip.tsx","adm":"src/shared/lib/tooltip/AdmIconTooltip.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/App.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/panel.tsx","rws":"src/rws/panel.tsx","adc":"src/adc/Workspace.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     hcs: 'src/components/HcsIconTooltip.tsx',

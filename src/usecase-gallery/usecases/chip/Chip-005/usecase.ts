@@ -9,8 +9,17 @@ export default defineUsecase({
   uiType: 'Dismissible chip',
   title: 'Attachment chip',
   apps: ['adm', 'pfd', 'pbs', 'hs', 'agpd', 'rws'],
-  options: [
-    { id: "adm-attachments", contextAnatomy: CONTEXT_ANATOMY, name: "Feedback attachments", source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    layers: [
+        {"id":"chip","partId":"chip","title":"Chip","explanation":"The default-styled chip that stands for one attached file in the Feedback form of ADM, PFD, PBS, HS, AGPD and RWS.","keyIdea":"The default-styled chip that stands for one attached file in the Feedback form of ADM, PFD, PBS, HS, AGPD and RWS.","selector":"[class~=\"aui-chip\"]"},
+        {"id":"dismiss","partId":"dismiss","title":"Dismiss","explanation":"The X button at the end, labelled \"Remove screenshot.png\", that detaches the file.","keyIdea":"The X button at the end, labelled \"Remove screenshot.png\", that detaches the file.","selector":"[class~=\"aui-chip-dismiss\"]"},
+      ],
+options: [
+    { id: "adm-attachments", contextAnatomy: CONTEXT_ANATOMY, name: "Feedback attachments", source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
+      contextLayers: [
+        {"id":"context-attach-label","partId":"attach-label","title":"Attachment heading","explanation":"The \"Attach Screenshot or Markups\" l4 caption above the attached files.","keyIdea":"The \"Attach Screenshot or Markups\" l4 caption above the attached files.","selector":"[data-ug-part=\"attach-label\"]","scope":"context"},
+        {"id":"context-attachment-row","partId":"attachment-row","title":"Attachment row","explanation":"The wrapping flex row (8px gap) that lists one Chip per attached file, such as screenshot.png and markup.pdf.","keyIdea":"The wrapping flex row (8px gap) that lists one Chip per attached file, such as screenshot.png and markup.pdf.","selector":"[data-ug-part=\"attachment-row\"]","scope":"context"},
+      ],
+    },
   ],
   source: {
     adm: 'src/features/top-navigation/components/FeedbackDialog.tsx',

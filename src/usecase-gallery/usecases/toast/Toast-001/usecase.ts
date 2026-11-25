@@ -4,8 +4,21 @@ export default defineUsecase({
   uiType: 'Toast',
   title: 'Status toast',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  options: [
-    { id: "hcs-viewport", name: "App viewport", contextAnatomy: [{ id: 'pane', name: 'Work area pane', description: 'The relatively positioned pane at the app root over which the toast viewport floats at its top end.' }, { id: 'pane-title', name: 'Pane title', description: 'The semi-bold l3 Input heading of the pane the toast appears over.' }], source: {"hcs":"src/App.tsx","ace":"src/app/providers/ProviderCore.tsx","adm":"src/app/providers/AppProviders.tsx","pfd":"src/App.tsx","pbs":"src/App.tsx","hs":"src/App.tsx","fd":"src/App.jsx","agpd":"src/App.tsx","rws":"src/rws/Shell.tsx","adc":"src/adc/components/ReportFlow.tsx"} },
+    layers: [
+        {"id":"viewport","partId":"viewport","title":"Viewport","explanation":"The stack container pinned to the top end of the pane with 8px insets, rendered inside Toast.Portal.","keyIdea":"The stack container pinned to the top end of the pane with 8px insets, rendered inside Toast.Portal.","selector":"[class~=\"aui-toast-viewport\"]"},
+        {"id":"toast","partId":"toast","title":"Toast","explanation":"The success notification surface the ToastStack adds on mount, one per manager entry.","keyIdea":"The success notification surface the ToastStack adds on mount, one per manager entry.","selector":"[class~=\"aui-toast\"]"},
+        {"id":"content","partId":"content","title":"Content","explanation":"The copy block that Toast renders beside the icon, holding the title and the description.","keyIdea":"The copy block that Toast renders beside the icon, holding the title and the description.","selector":"[class~=\"aui-toast-content\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The success status icon that Toast draws itself from type: 'success'.","keyIdea":"The success status icon that Toast draws itself from type: 'success'.","selector":"[class~=\"aui-toast-icon\"]"},
+        {"id":"description","partId":"description","title":"Description","explanation":"The detail line \"Your project was saved to the device.\" taken from the description passed to manager.add.","keyIdea":"The detail line \"Your project was saved to the device.\" taken from the description passed to manager.add.","selector":"[class~=\"aui-toast-description\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The close X that Toast adds so the user can dismiss the message before it times out.","keyIdea":"The close X that Toast adds so the user can dismiss the message before it times out.","selector":"[class~=\"aui-toast-close\"]"},
+      ],
+options: [
+    { id: "hcs-viewport", name: "App viewport", contextAnatomy: [{ id: 'pane', name: 'Work area pane', description: 'The relatively positioned pane at the app root over which the toast viewport floats at its top end.' }, { id: 'pane-title', name: 'Pane title', description: 'The semi-bold l3 Input heading of the pane the toast appears over.' }], source: {"hcs":"src/App.tsx","ace":"src/app/providers/ProviderCore.tsx","adm":"src/app/providers/AppProviders.tsx","pfd":"src/App.tsx","pbs":"src/App.tsx","hs":"src/App.tsx","fd":"src/App.jsx","agpd":"src/App.tsx","rws":"src/rws/Shell.tsx","adc":"src/adc/components/ReportFlow.tsx"} ,
+      contextLayers: [
+        {"id":"context-pane","partId":"pane","title":"Work area pane","explanation":"The relatively positioned pane at the app root over which the toast viewport floats at its top end.","keyIdea":"The relatively positioned pane at the app root over which the toast viewport floats at its top end.","selector":"[data-ug-part=\"pane\"]","scope":"context"},
+        {"id":"context-pane-title","partId":"pane-title","title":"Pane title","explanation":"The semi-bold l3 Input heading of the pane the toast appears over.","keyIdea":"The semi-bold l3 Input heading of the pane the toast appears over.","selector":"[data-ug-part=\"pane-title\"]","scope":"context"},
+      ],
+    },
   ],
   source: {
     hcs: 'src/App.tsx',
@@ -37,16 +50,16 @@ export default defineUsecase({
       description: 'The success notification surface the ToastStack adds on mount, one per manager entry.',
     },
     {
-      id: 'icon',
-      name: 'Icon',
-      selector: '[class~="aui-toast-icon"]',
-      description: 'The success status icon that Toast draws itself from type: \'success\'.',
-    },
-    {
       id: 'content',
       name: 'Content',
       selector: '[class~="aui-toast-content"]',
       description: 'The copy block that Toast renders beside the icon, holding the title and the description.',
+    },
+    {
+      id: 'icon',
+      name: 'Icon',
+      selector: '[class~="aui-toast-icon"]',
+      description: 'The success status icon that Toast draws itself from type: \'success\'.',
     },
     {
       id: 'title',

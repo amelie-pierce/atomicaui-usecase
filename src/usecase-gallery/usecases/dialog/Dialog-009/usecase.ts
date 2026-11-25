@@ -9,10 +9,38 @@ export default defineUsecase({
   title: 'Send feedback dialog',
 
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  options: [
-    { id: "hcs-feedback", name: "Send feedback", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false },
-    { id: "adc-feedback", name: "Send feedback — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, contextAnatomy: ADC_CONTEXT_ANATOMY },
-    { id: "ace-feedback", name: "Send feedback — UI variant 3", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/top-navigation/ui/FeedbackDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/components/Feedback.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"}, showContext: false },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the feedback form.","keyIdea":"The scrim behind the feedback form.","selector":"[class~=\"aui-dialog-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The feedback window: 384px wide in HCS, the default width in ACE, and capped at 560px in ADC.","keyIdea":"The feedback window: 384px wide in HCS, the default width in ACE, and capped at 560px in ADC.","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title bar","explanation":"The raised title bar reading \"Send feedback\" in HCS and \"Feedback Form\" in the other apps.","keyIdea":"The raised title bar reading \"Send feedback\" in HCS and \"Feedback Form\" in the other apps.","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The close X; it is the only way to leave the HCS form without sending, and ADC wraps it in a \"Close\" tooltip.","keyIdea":"The close X; it is the only way to leave the HCS form without sending, and ADC wraps it in a \"Close\" tooltip.","selector":"[class~=\"aui-dialog-close\"]"},
+        {"id":"description","partId":"description","title":"Description","explanation":"The HCS line \"Tell us about your experience.\" under the title bar.","keyIdea":"The HCS line \"Tell us about your experience.\" under the title bar.","selector":"[class~=\"aui-dialog-description\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The body that wraps the feedback form; in HCS it is a form with id \"feedback-form\" that the footer Submit button targets.","keyIdea":"The body that wraps the feedback form; in HCS it is a form with id \"feedback-form\" that the footer Submit button targets.","selector":"[class~=\"aui-dialog-body\"]"},
+        {"id":"form-column","partId":"form-column","title":"Form column","explanation":"The column with gap 16 that stacks the Email and Description fields.","keyIdea":"The column with gap 16 that stacks the Email and Description fields.","selector":"[data-ug-part=\"form-column\"]"},
+        {"id":"email-field","partId":"email-field","title":"Email field","explanation":"The required Email field with its label and an email-typed input.","keyIdea":"The required Email field with its label and an email-typed input.","selector":"[class~=\"aui-field\"]:has(input[type=\"email\"])"},
+        {"id":"email-input","partId":"email-input","title":"Email input","explanation":"The email input of the form.","keyIdea":"The email input of the form.","selector":"[class~=\"aui-field\"] input[type=\"email\"]"},
+        {"id":"description-field","partId":"description-field","title":"Description field","explanation":"The Description field with a four-row Textarea for the feedback text.","keyIdea":"The Description field with a four-row Textarea for the feedback text.","selector":"[class~=\"aui-field\"]:has(textarea)"},
+        {"id":"description-textarea","partId":"description-textarea","title":"Description textarea","explanation":"The four-row textarea (Field.Textarea in the ACE and ADC scenes) for the feedback text.","keyIdea":"The four-row textarea (Field.Textarea in the ACE and ADC scenes) for the feedback text.","selector":"[class~=\"aui-field\"] textarea"},
+        {"id":"actions","partId":"actions","title":"Footer","explanation":"The footer: Submit alone in HCS, Cancel then Send in ACE, and a split footer led by a checkbox in ADC.","keyIdea":"The footer: Submit alone in HCS, Cancel then Send in ACE, and a split footer led by a checkbox in ADC.","selector":"[class~=\"aui-dialog-actions\"]"},
+        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"The default Cancel of the ACE and ADC footers; HCS has none.","keyIdea":"The default Cancel of the ACE and ADC footers; HCS has none.","selector":"[data-ug-part=\"cancel\"]"},
+        {"id":"send","partId":"send","title":"Submit","explanation":"The submit button: a secondary Submit tied to \"feedback-form\" in HCS, a secondary solid Send in ACE, and a primary Send kept disabled in ADC.","keyIdea":"The submit button: a secondary Submit tied to \"feedback-form\" in HCS, a secondary solid Send in ACE, and a primary Send kept disabled in ADC.","selector":"[data-ug-part=\"send\"]"},
+      ],
+options: [
+    { id: "hcs-feedback", name: "Send feedback", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adc-feedback", name: "Send feedback — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, contextAnatomy: ADC_CONTEXT_ANATOMY ,
+      contextLayers: [
+        {"id":"context-copy-checkbox","partId":"copy-checkbox","title":"Send me a copy checkbox","explanation":"The checkbox \"Send me a copy of my responses\" at the start of the split footer.","keyIdea":"The checkbox \"Send me a copy of my responses\" at the start of the split footer.","selector":"[class~=\"aui-checkbox\"]","scope":"context"},
+      ],
+    },
+    { id: "ace-feedback", name: "Send feedback — UI variant 3", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/top-navigation/ui/FeedbackDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/components/Feedback.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', adc: 'src/adc/Workspace.tsx', ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/WorkspaceTools.tsx', hs: 'src/hs/ShellExtras.tsx', fd: 'src/components/Feedback.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A form dialog that sends the user\'s feedback: a Cancel and a solid Send (Submit).',

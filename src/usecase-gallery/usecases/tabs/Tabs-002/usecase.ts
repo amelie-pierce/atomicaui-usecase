@@ -4,10 +4,29 @@ export default defineUsecase({
   uiType: 'Segmented tabs',
   title: 'Phone workspace tabs',
   apps: ['pfd', 'hs', 'agpd', 'fd', 'adm', 'ace', 'pbs'],
-  options: [
-    { id: "pfd-phone-tabs", name: "Phone workspace tabs", showContext: false, apps: ["pfd","hs","agpd","fd"], note: "The row fills the phone width and shrinks its tabs.", source: {"pfd":"src/pfd/Workspace.tsx","hs":"src/App.tsx","agpd":"src/App.tsx","fd":"src/App.jsx"} },
-    { id: "adm-phone-tabs", name: "Phone workspace tabs — UI variant 2", showContext: false, apps: ["adm","ace"], note: "The row fills the phone width and shrinks its tabs; a Reset button ends the row.", source: {"adm":"src/app/layout/MobileWorkbench/MobileWorkbench.tsx","ace":"src/pages/estimator/EstimatorPage.tsx"} },
-    { id: "pbs-phone-tabs", name: "Phone workspace tabs — UI variant 3", showContext: false, apps: ["pbs"], note: "Every tab keeps its natural width (fit) and the row scrolls sideways.", source: {"pbs":"src/App.tsx"} },
+    layers: [
+        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"Top-level phone switch with no padding, spanning the viewport width (390px in the scenes). ADM, PBS and PFD start on Input.","keyIdea":"Top-level phone switch with no padding, spanning the viewport width (390px in the scenes).","selector":"[class~=\"aui-tabs\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"One-line row of pane chips; in the ADM and PFD scenes it uses overflow=\"shrink\" with gap 0 and scrolls horizontally when the labels do not fit.","keyIdea":"One-line row of pane chips; in the ADM and PFD scenes it uses overflow=\"shrink\" with gap 0 and scrolls horizontally when the labels do not fit.","selector":"[class~=\"aui-tabs-list\"]"},
+        {"id":"tab","partId":"tab","title":"Tab","explanation":"One chip per pane with a short label (Summary and Result, or Input and Output in the scenes), kept on one line with whiteSpace nowrap.","keyIdea":"One chip per pane with a short label (Summary and Result, or Input and Output in the scenes), kept on one line with whiteSpace nowrap.","selector":"[class~=\"aui-tabs-tab\"]"},
+        {"id":"add","partId":"add","title":"Reset button","explanation":"ADM only: a trailing rotate-right icon button labelled \"Reset\" at the end of the list.","keyIdea":"ADM only: a trailing rotate-right icon button labelled \"Reset\" at the end of the list.","selector":"[class~=\"aui-tabs-add-button\"]"},
+        {"id":"panel","partId":"panel","title":"Panel","explanation":"The pane shown for the selected tab, \"Summary content\" or \"Result content\".","keyIdea":"The pane shown for the selected tab, \"Summary content\" or \"Result content\".","selector":"[class~=\"aui-tabs-panel\"]"},
+      ],
+options: [
+    { id: "pfd-phone-tabs", name: "Phone workspace tabs", showContext: false, apps: ["pfd","hs","agpd","fd"], note: "The row fills the phone width and shrinks its tabs.", source: {"pfd":"src/pfd/Workspace.tsx","hs":"src/App.tsx","agpd":"src/App.tsx","fd":"src/App.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-phone-tabs", name: "Phone workspace tabs — UI variant 2", showContext: false, apps: ["adm","ace"], note: "The row fills the phone width and shrinks its tabs; a Reset button ends the row.", source: {"adm":"src/app/layout/MobileWorkbench/MobileWorkbench.tsx","ace":"src/pages/estimator/EstimatorPage.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "pbs-phone-tabs", name: "Phone workspace tabs — UI variant 3", showContext: false, apps: ["pbs"], note: "Every tab keeps its natural width (fit) and the row scrolls sideways.", source: {"pbs":"src/App.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     pfd: 'src/pfd/Workspace.tsx',

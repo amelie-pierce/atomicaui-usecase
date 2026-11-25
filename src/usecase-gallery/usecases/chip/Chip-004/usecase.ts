@@ -8,8 +8,16 @@ export default defineUsecase({
   uiType: 'Status chip',
   title: 'Compact solid status',
   apps: ['fd'],
-  options: [
-    { id: "fd-checks", contextAnatomy: CONTEXT_ANATOMY, name: "Check categories", source: {"fd":"src/components/Results.jsx"} },
+    layers: [
+        {"id":"chip","partId":"chip","title":"Chip","explanation":"The compact solid success chip at scale \"xs\" that reports one check category on an FD result card; a failed category turns red.","keyIdea":"The compact solid success chip at scale \"xs\" that reports one check category on an FD result card; a failed category turns red.","selector":"[class~=\"aui-chip\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The \"circle-check\" icon at the start of the chip (an exclamation when the check fails).","keyIdea":"The \"circle-check\" icon at the start of the chip (an exclamation when the check fails).","selector":"[class~=\"aui-chip-icon\"]"},
+      ],
+options: [
+    { id: "fd-checks", contextAnatomy: CONTEXT_ANATOMY, name: "Check categories", source: {"fd":"src/components/Results.jsx"} ,
+      contextLayers: [
+        {"id":"context-check-row","partId":"check-row","title":"Check category row","explanation":"The flex row (8px gap) that lists one Chip per check category: Anchorage passed and Bearing failed.","keyIdea":"The flex row (8px gap) that lists one Chip per check category: Anchorage passed and Bearing failed.","selector":"[data-ug-part=\"check-row\"]","scope":"context"},
+      ],
+    },
   ],
   source: { fd: 'src/components/Results.jsx' },
   summary: 'A compact solid chip with an icon for each check category of a result: green and a check when it passes, red and an exclamation when it fails.',

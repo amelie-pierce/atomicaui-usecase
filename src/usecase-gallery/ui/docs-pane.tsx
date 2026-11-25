@@ -100,7 +100,7 @@ function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: 
     <nav className="ug-layer-lesson__steps" aria-label="Layer steps" id={navId} onKeyDown={onNavigationKey}>
       {layers.map((step, stepIndex) => {
         const state = stepIndex === index ? 'active' : stepIndex < index ? 'completed' : 'upcoming';
-        return <Button key={step.id} className={`ug-layer-lesson__step is-${state}`} aui={{ color: state === 'active' ? 'primary' : 'secondary', paint: state === 'active' ? 'solid' : 'text', scale: 'sm' }} aria-current={state === 'active' ? 'step' : undefined} aria-label={`Step ${stepIndex + 1}: ${step.title}, ${state}`} data-state={state} onClick={() => onChange(stepIndex)}>
+        return <Button key={step.id} className={`ug-layer-lesson__step is-${state}`} aui={{ color: state === 'active' ? 'primary' : 'secondary', paint: state === 'active' ? 'solid' : 'text', scale: 'sm' }} aria-current={state === 'active' ? 'step' : undefined} aria-label={`Step ${stepIndex + 1}: ${step.title}, ${state}`} data-state={state} data-ug-layer-id={step.id} data-ug-layer-selector={step.selector ?? `[data-ug-part="${step.id}"]`} data-ug-layer-scope={step.scope ?? 'component'} onClick={() => onChange(stepIndex)}>
           <span className="ug-layer-lesson__step-number">{stepIndex + 1}</span><span className="ug-layer-lesson__step-title">{step.title}</span>
         </Button>;
       })}

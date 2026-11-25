@@ -9,8 +9,18 @@ export default defineUsecase({
   title: 'Show column info button',
 
   apps: ['fd'],
-  options: [
-    { id: "fd-header-info", contextAnatomy: CONTEXT_ANATOMY, name: "Header info", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
+    layers: [
+        {"id":"info","partId":"info","title":"Info button","explanation":"The xs transparent secondary circle-info button that explains a column; in FD it is a Button with Button.Icon beside the Fastener Pattern heading.","keyIdea":"The xs transparent secondary circle-info button that explains a column; in FD it is a Button with Button.Icon beside the Fastener Pattern heading.","selector":"[class~=\"aui-button\"][aria-label=\"Fastener Pattern\"], [class~=\"aui-button\"][aria-label=\"Column info\"]"},
+        {"id":"info-icon","partId":"info-icon","title":"Info icon","explanation":"The circle-info glyph that signals a note about the column.","keyIdea":"The circle-info glyph that signals a note about the column.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"header-cell","partId":"header-cell","title":"Column header","explanation":"The raised Fastener Pattern heading cell that carries the text and the info button with a 4px gap.","keyIdea":"The raised Fastener Pattern heading cell that carries the text and the info button with a 4px gap.","selector":"[class~=\"aui-table-header-cell\"]"},
+        {"id":"popup","partId":"popup","title":"Info popover","explanation":"The 384px solid popover below the heading that states Fasteners are counted per row.","keyIdea":"The 384px solid popover below the heading that states Fasteners are counted per row.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
+      ],
+options: [
+    { id: "fd-header-info", contextAnatomy: CONTEXT_ANATOMY, name: "Header info", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} ,
+      contextLayers: [
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The Table whose raised header row holds the Fastener Pattern heading and its info button.","keyIdea":"The Table whose raised header row holds the Fastener Pattern heading and its info button.","selector":"[class~=\"aui-table\"]","scope":"context"},
+      ],
+    },
   ],
   source: { fd: 'src/components/ui.jsx' },
   summary: 'A transparent icon-only button with a circle-info opens an explanation popover from a table column header.',

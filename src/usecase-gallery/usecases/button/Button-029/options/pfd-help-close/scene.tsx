@@ -23,9 +23,11 @@ export default function PfdHelpCloseScene({ host }: ContextProps) {
                 />
               }
             >
-              <Button aria-label="Close" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft', sx: { alignSelf: 'end' } }}>
-                <ContainedIcon name="xmark" />
-              </Button>
+              <span data-ug-component-root style={{ display: 'contents' }}>
+                <Button aria-label="Close" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft', sx: { alignSelf: 'end' } }}>
+                  <ContainedIcon name="xmark" />
+                </Button>
+              </span>
               <Type data-ug-part="help-text" as="div" role="p3">Select the base material of the member.</Type>
             </Popover.Popup>
           </Popover.Positioner>

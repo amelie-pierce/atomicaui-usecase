@@ -15,10 +15,32 @@ export default defineUsecase({
   title: 'Expand row button',
 
   apps: ['hcs', 'hs', 'fd', 'adc'],
-  options: [
-    { id: "hcs-results", contextAnatomy: RESULTS_CONTEXT, name: "Results table", apps: ["hcs","fd"], source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx"} },
-    { id: "hcs-group", contextAnatomy: GROUP_CONTEXT, name: "Group row", apps: ["hcs","adc"], source: {"hcs":"src/components/F01Results.tsx","adc":"src/adc/components/ProductsPicker.tsx"} },
-    { id: "hs-group", contextAnatomy: GROUP_CONTEXT, name: "Group row — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ResultsTable.tsx"} },
+    layers: [
+        {"id":"button","partId":"button","title":"Expand button","explanation":"The 24px minimum square-compact text Button with aria-expanded false that opens the Why Not explanation of one model row; HCS tints it with the error color on failed rows like Model C-300.","keyIdea":"The 24px minimum square-compact text Button with aria-expanded false that opens the Why Not explanation of one model row; HCS tints it with the error color on failed rows like Model C-300.","selector":"[class~=\"aui-button\"][aria-label^=\"Why Not\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The solid angle-right glyph that points to the collapsed content.","keyIdea":"The solid angle-right glyph that points to the collapsed content.","selector":"[class~=\"aui-button\"][aria-label^=\"Why Not\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"expand-trigger","partId":"expand-trigger","title":"Table expand trigger","explanation":"HCS and HS group rows (A-100 (2)) use the table own expand trigger instead of a Button, placed before the semi-bold group name.","keyIdea":"HCS and HS group rows (A-100 (2)) use the table own expand trigger instead of a Button, placed before the semi-bold group name.","selector":"[class~=\"aui-table-expand-trigger\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"The result row that the chevron opens: a model such as Model A-100, or the A-100 (2) group row with an Expand A-100 group label.","keyIdea":"The result row that the chevron opens: a model such as Model A-100, or the A-100 (2) group row with an Expand A-100 group label.","selector":"[class~=\"aui-table-row\"]"},
+        {"id":"cell","partId":"cell","title":"Model cell","explanation":"The Model cell that holds the chevron and the model name side by side with a gap of 12 (4 in group rows).","keyIdea":"The Model cell that holds the chevron and the model name side by side with a gap of 12 (4 in group rows).","selector":"[class~=\"aui-table-cell\"]"},
+      ],
+options: [
+    { id: "hcs-results", contextAnatomy: RESULTS_CONTEXT, name: "Results table", apps: ["hcs","fd"], source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx"} ,
+      contextLayers: [
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The Table of connector results, cut to the Model column; its header cell is raised.","keyIdea":"The Table of connector results, cut to the Model column; its header cell is raised.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-failed-expander","partId":"failed-expander","title":"Failed-model expander","explanation":"The second row's expander in the error color for Model C-300, which failed its check.","keyIdea":"The second row's expander in the error color for Model C-300, which failed its check.","selector":"[aria-label=\"Why Not for Model C-300\"]","scope":"context"},
+      ],
+    },
+    { id: "hcs-group", contextAnatomy: GROUP_CONTEXT, name: "Group row", apps: ["hcs","adc"], source: {"hcs":"src/components/F01Results.tsx","adc":"src/adc/components/ProductsPicker.tsx"} ,
+      contextLayers: [
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The Table of connector results, cut to the Model column; its header cell is raised.","keyIdea":"The Table of connector results, cut to the Model column; its header cell is raised.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-group-label","partId":"group-label","title":"Group label","explanation":"The semi-bold model name with its member count (A-100 (2)) next to the expander in the group row.","keyIdea":"The semi-bold model name with its member count (A-100 (2)) next to the expander in the group row.","selector":"[data-ug-part=\"group-label\"]","scope":"context"},
+      ],
+    },
+    { id: "hs-group", contextAnatomy: GROUP_CONTEXT, name: "Group row — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ResultsTable.tsx"} ,
+      contextLayers: [
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The Table of connector results, cut to the Model column; its header cell is raised.","keyIdea":"The Table of connector results, cut to the Model column; its header cell is raised.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-group-label","partId":"group-label","title":"Group label","explanation":"The semi-bold model name with its member count (A-100 (2)) next to the expander in the group row.","keyIdea":"The semi-bold model name with its member count (A-100 (2)) next to the expander in the group row.","selector":"[data-ug-part=\"group-label\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/F01Results.tsx', hs: 'src/hs/ResultsTable.tsx', fd: 'src/components/Results.jsx', adc: 'src/adc/components/ProductsPicker.tsx' },
   summary: 'A compact chevron Button expands a table row; HCS draws it as a Button (error color on failed rows), the other apps use the table\'s own expand trigger.',

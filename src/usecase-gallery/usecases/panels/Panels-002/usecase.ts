@@ -7,7 +7,7 @@ export default defineUsecase({
   title: 'Stacked',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   options: [
-    { id: "hcs-stacked", name: "Stacked", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"] },
+    { id: "hcs-stacked", showContext: false, name: "Stacked", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"] },
   ],
   source: SOURCE,
   summary: 'A Panels group stacks the workspace into surface panes, Input above and the results below, that the user resizes by dragging the horizontal handle between them.',

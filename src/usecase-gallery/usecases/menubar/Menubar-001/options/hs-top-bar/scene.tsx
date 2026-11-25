@@ -8,12 +8,12 @@ export default function HsTopBarScene(_: ContextProps) {
     <div style={{ inlineSize: 'min(100%, calc(var(--p-px-16) * 28))' }}>
       <Menubar aria-label="Top bar">
         <Menubar.Dropdown>
-          <Menubar.DropdownTrigger>File</Menubar.DropdownTrigger>
+          <Menubar.DropdownTrigger data-ug-part="file-menu">File</Menubar.DropdownTrigger>
         </Menubar.Dropdown>
         <Menubar.Button>About</Menubar.Button>
-        <Menubar.Button>Reset</Menubar.Button>
+        <Menubar.Button data-ug-part="reset">Reset</Menubar.Button>
         <Menubar.Dropdown>
-          <Menubar.DropdownTrigger>Help Center</Menubar.DropdownTrigger>
+          <Menubar.DropdownTrigger data-ug-part="help-menu">Help Center</Menubar.DropdownTrigger>
         </Menubar.Dropdown>
       </Menubar>
     </div>

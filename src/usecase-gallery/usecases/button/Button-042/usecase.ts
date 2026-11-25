@@ -1,12 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'results-row', name: 'Results row', selector: '[data-ug-part="results-row"]', description: 'The header row that places the Recalculate button before the N and V readouts with a 16px gap.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Recalculate button',
 
   apps: ['adc'],
   options: [
-    { id: "adc-recalculate", name: "Results header", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "adc-recalculate", contextAnatomy: CONTEXT_ANATOMY, name: "Results header", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A small amber solid IconButton re-runs the calculation when the inputs have changed.',

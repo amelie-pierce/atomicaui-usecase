@@ -7,7 +7,7 @@ export default function AgpdFastenerScene({ children }: ContextProps) {
     <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '4' } }} style={{ inlineSize: 'min(100%, calc(var(--p-px-16) * 20))' }}>
       {children}
       <Field aui={{ scale: 'sm' }}>
-        <Field.Control aria-label="Diameter and style" defaultValue="1/4 in, hex head" />
+        <Field.Control data-ug-part="diameter-field" aria-label="Diameter and style" defaultValue="1/4 in, hex head" />
       </Field>
     </View>
   );

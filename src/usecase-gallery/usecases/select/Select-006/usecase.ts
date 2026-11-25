@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Grouped options',
   apps: ['adc', 'fd'],
   options: [
-    { id: "adc-grouped-options", name: "Grouped options", apps: ["adc"], source: {"adc":"src/adc/components/DesignField.tsx"} },
-    { id: "fd-grouped-options", name: "Grouped options — UI variant 2", apps: ["fd"], source: {"fd":"src/components/SettingsPopover.jsx"} },
+    { id: "adc-grouped-options", showContext: false, name: "Grouped options", apps: ["adc"], source: {"adc":"src/adc/components/DesignField.tsx"} },
+    { id: "fd-grouped-options", showContext: false, name: "Grouped options — UI variant 2", apps: ["fd"], source: {"fd":"src/components/SettingsPopover.jsx"} },
   ],
   source: { adc: 'src/adc/components/DesignField.tsx', fd: 'src/components/SettingsPopover.jsx' },
   summary: 'A select whose rows are split into labelled groups: a heading above each run of related options.',

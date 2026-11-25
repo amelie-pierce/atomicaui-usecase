@@ -6,10 +6,32 @@ export default defineUsecase({
 
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   options: [
-    { id: "hs-topic-row", name: "Topic row", apps: ["hs","agpd","rws"], source: {"hs":"src/hs/Tutorials.tsx","agpd":"src/agpd/Tutorials.tsx","rws":"src/rws/Tutorials.tsx"} },
-    { id: "ace-topic-row", name: "Topic row — UI variant 2", apps: ["ace"], source: {"ace":"src/features/top-navigation/ui/TutorialsDialog.tsx"} },
-    { id: "adm-topic-row", name: "Topic row — UI variant 3", apps: ["adm","pfd"], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","pfd":"src/pfd/ShellDialogs.tsx"} },
-    { id: "pbs-topic-row", name: "Topic row — UI variant 4", apps: ["pbs","fd"], source: {"pbs":"src/PbsHelpTutorials.tsx","fd":"src/components/HelpCenter.jsx"} },
+    { id: "hs-topic-row", name: "Topic row", apps: ["hs","agpd","rws"], contextAnatomy: [
+      { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
+      { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
+      { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog." },
+      { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
+    ], source: {"hs":"src/hs/Tutorials.tsx","agpd":"src/agpd/Tutorials.tsx","rws":"src/rws/Tutorials.tsx"} },
+    { id: "ace-topic-row", name: "Topic row — UI variant 2", apps: ["ace"], contextAnatomy: [
+      { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
+      { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
+      { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog." },
+      { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
+      { id: "topic-name", name: "Topic name", description: "The semi-bold topic name (\"ACE: General Tutorial\") stacked above the description." },
+      { id: "topic-description", name: "Topic description", description: "The muted description under the topic name." },
+    ], source: {"ace":"src/features/top-navigation/ui/TutorialsDialog.tsx"} },
+    { id: "adm-topic-row", name: "Topic row — UI variant 3", apps: ["adm","pfd"], contextAnatomy: [
+      { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
+      { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
+      { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog." },
+      { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
+    ], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","pfd":"src/pfd/ShellDialogs.tsx"} },
+    { id: "pbs-topic-row", name: "Topic row — UI variant 4", apps: ["pbs","fd"], contextAnatomy: [
+      { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
+      { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
+      { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog." },
+      { id: "topic-list", name: "Topic list", description: "The nav column that holds one outlined row per tutorial." },
+    ], source: {"pbs":"src/PbsHelpTutorials.tsx","fd":"src/components/HelpCenter.jsx"} },
   ],
   source: { ace: 'src/features/top-navigation/ui/TutorialsDialog.tsx', adm: 'src/features/top-navigation/components/Tutorials.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/PbsHelpTutorials.tsx', hs: 'src/hs/Tutorials.tsx', fd: 'src/components/HelpCenter.jsx', agpd: 'src/agpd/Tutorials.tsx', rws: 'src/rws/Tutorials.tsx' },
   summary: 'A full-width text Button with an outlined border is one tutorial topic in the Help & Tutorials list; pressing it starts that guided tour.',

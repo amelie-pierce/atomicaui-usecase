@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Centered-title dialog',
   apps: ['fd'],
   options: [
-    { id: "fd-help-center", name: "Help Center", source: {"fd":"src/components/HelpCenter.jsx"} },
+    { id: "fd-help-center", name: "Help Center", showContext: false, source: {"fd":"src/components/HelpCenter.jsx"} },
   ],
   source: { fd: 'src/components/HelpCenter.jsx' },
   summary: 'A small raised-title dialog whose title is centred between side paddings, with the close X pinned to the end and a column of rows in the body.',

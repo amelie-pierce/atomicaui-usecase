@@ -5,9 +5,9 @@ export default defineUsecase({
   title: 'Phone workspace tabs',
   apps: ['pfd', 'hs', 'agpd', 'fd', 'adm', 'ace', 'pbs'],
   options: [
-    { id: "pfd-phone-tabs", name: "Phone workspace tabs", apps: ["pfd","hs","agpd","fd"], note: "The row fills the phone width and shrinks its tabs.", source: {"pfd":"src/pfd/Workspace.tsx","hs":"src/App.tsx","agpd":"src/App.tsx","fd":"src/App.jsx"} },
-    { id: "adm-phone-tabs", name: "Phone workspace tabs — UI variant 2", apps: ["adm","ace"], note: "The row fills the phone width and shrinks its tabs; a Reset button ends the row.", source: {"adm":"src/app/layout/MobileWorkbench/MobileWorkbench.tsx","ace":"src/pages/estimator/EstimatorPage.tsx"} },
-    { id: "pbs-phone-tabs", name: "Phone workspace tabs — UI variant 3", apps: ["pbs"], note: "Every tab keeps its natural width (fit) and the row scrolls sideways.", source: {"pbs":"src/App.tsx"} },
+    { id: "pfd-phone-tabs", name: "Phone workspace tabs", showContext: false, apps: ["pfd","hs","agpd","fd"], note: "The row fills the phone width and shrinks its tabs.", source: {"pfd":"src/pfd/Workspace.tsx","hs":"src/App.tsx","agpd":"src/App.tsx","fd":"src/App.jsx"} },
+    { id: "adm-phone-tabs", name: "Phone workspace tabs — UI variant 2", showContext: false, apps: ["adm","ace"], note: "The row fills the phone width and shrinks its tabs; a Reset button ends the row.", source: {"adm":"src/app/layout/MobileWorkbench/MobileWorkbench.tsx","ace":"src/pages/estimator/EstimatorPage.tsx"} },
+    { id: "pbs-phone-tabs", name: "Phone workspace tabs — UI variant 3", showContext: false, apps: ["pbs"], note: "Every tab keeps its natural width (fit) and the row scrolls sideways.", source: {"pbs":"src/App.tsx"} },
   ],
   source: {
     pfd: 'src/pfd/Workspace.tsx',

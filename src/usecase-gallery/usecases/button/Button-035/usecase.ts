@@ -1,13 +1,24 @@
 import { defineUsecase } from '../../../define';
 
+const HCS_CONTEXT = [
+  { id: 'results-table', name: 'Results table', selector: '[class~="aui-table"]', description: 'The sortable Connector calculation results Table with the Model and Load (lb) columns.' },
+  { id: 'result-rows', name: 'Result rows', selector: '[class~="aui-table-body"]', description: 'The two body rows, ordered by the ascending Load (lb) sort chosen in the menu.' },
+];
+
+const PFD_CONTEXT = [
+  { id: 'results-table', name: 'Results table', selector: '[class~="aui-table"]', description: 'The sortable Connector calculation results Table with the Model and Load (lb) columns.' },
+  { id: 'result-rows', name: 'Result rows', selector: '[class~="aui-table-body"]', description: 'The two body rows, ordered by the ascending Load (lb) sort chosen in the menu.' },
+  { id: 'menu-close', name: 'Menu close', selector: '[data-aui-popup-motion][role="dialog"] [class~="aui-button"][aria-label="Close"]', description: 'The Close button at the end of the menu popover, above the Sort radios.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Open column menu button',
 
   apps: ['hcs', 'hs', 'pfd'],
   options: [
-    { id: "hcs-column-menu", name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} },
-    { id: "pfd-column-menu", name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} },
+    { id: "hcs-column-menu", contextAnatomy: HCS_CONTEXT, name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} },
+    { id: "pfd-column-menu", contextAnatomy: PFD_CONTEXT, name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} },
   ],
   source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx', pfd: 'src/pfd/ColumnMenu.tsx' },
   summary: 'A small IconButton opens the menu of a table column header.',

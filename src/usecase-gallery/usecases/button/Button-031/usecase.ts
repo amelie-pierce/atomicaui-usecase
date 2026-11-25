@@ -1,14 +1,22 @@
 import { defineUsecase } from '../../../define';
 
+const TITLE_CONTEXT = [
+  { id: 'title-spacer', name: 'Title spacer', selector: '[class~="aui-dialog-spacer"]', description: 'The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar.' },
+];
+
+const PBS_CONTEXT = [
+  { id: 'close-row', name: 'Close row', selector: '[data-ug-part="close-row"]', description: 'The end-aligned row that holds only the close X above the dialog body, since this dialog has no title.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Close dialog button',
 
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
   options: [
-    { id: "hcs-close", name: "Dialog close", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/F01Experience.tsx","ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellDialog.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
-    { id: "adc-close", name: "Dialog close — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
-    { id: "pbs-close", name: "Close without Title", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
+    { id: "hcs-close", contextAnatomy: TITLE_CONTEXT, name: "Dialog close", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/F01Experience.tsx","ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellDialog.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    { id: "adc-close", contextAnatomy: TITLE_CONTEXT, name: "Dialog close — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "pbs-close", contextAnatomy: PBS_CONTEXT, name: "Close without Title", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', hs: 'src/hs/ShellDialog.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx', adc: 'src/adc/Workspace.tsx' },
   summary: 'A transparent icon-only IconButton, 20px square, closes a dialog from the end of its Title.',

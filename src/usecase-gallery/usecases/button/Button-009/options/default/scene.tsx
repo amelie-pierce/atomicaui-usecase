@@ -12,6 +12,7 @@ export default function ViewerOptionsContext({ children, host }: ContextProps) {
   return (
     <View
       as="section"
+      data-ug-part="viewer-pane"
       aria-label="3D Viewer"
       aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
       style={{ inlineSize: 'min(100%, 560px)' }}
@@ -24,14 +25,15 @@ export default function ViewerOptionsContext({ children, host }: ContextProps) {
           <div className="ug-scene">
             <MockViewerCanvas />
             <Popover open>
-              <span ref={anchor} className="ug-scene__options">
+              <span ref={anchor} data-ug-part="corner" className="ug-scene__options">
                 {children}
               </span>
               <Popover.Portal container={host}>
                 <Popover.Positioner anchor={anchor} side="bottom" align="end" sideOffset={4} className="ug-anchored">
-                  <Popover.Popup initialFocus={false} aria-label="View options" className="ug-scene__popover">
+                  <Popover.Popup data-ug-part="options-popover" initialFocus={false} aria-label="View options" className="ug-scene__popover">
                     <div className="ug-scene__controls" style={{ position: 'static', maxInlineSize: 'none' }}>
                       <IconButton
+                        data-ug-part="reset-view"
                         name="bullseye"
                         aria-label="Reset view"
                         title="Reset view"

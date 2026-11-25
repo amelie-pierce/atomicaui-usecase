@@ -1,12 +1,17 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'job-table', name: 'Job tally table', selector: '[class~="aui-table"]', description: 'The Table of jobs; the Edit and Delete links live in its first column next to the Job column.' },
+  { id: 'job-cell', name: 'Job cell', selector: '[class~="aui-table-body"] [class~="aui-table-cell"]:last-child', description: 'The Job 1 label in the row beside the link cell.' },
+];
+
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Edit and Delete row link buttons',
 
   apps: ['ace'],
   options: [
-    { id: "ace-links", name: "Edit and Delete links", apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
+    { id: "ace-links", contextAnatomy: CONTEXT_ANATOMY, name: "Edit and Delete links", apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
   ],
   source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
   summary: 'Text Buttons with no padding read as links; stacked in a column they give a table row its few actions while the table stays light.',

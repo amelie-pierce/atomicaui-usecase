@@ -5,8 +5,20 @@ export default defineUsecase({
   title: 'Close info dialog button',
   apps: ['pbs', 'agpd', 'rws', 'fd'],
   options: [
-    { id: "pbs-close", name: "Secondary solid", apps: ["pbs","agpd","rws"], source: {"pbs":"src/WorkspaceTools.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
-    { id: "fd-close", name: "Dark solid", apps: ["fd"], source: {"fd":"src/App.jsx"} },
+    { id: "pbs-close", name: "Secondary solid", apps: ["pbs","agpd","rws"], contextAnatomy: [
+      { id: "dialog", name: "Dialog", description: "The open dialog titled \"Add to Your Home Screen\"." },
+      { id: "dialog-title", name: "Dialog title", description: "The raised title bar with \"Add to Your Home Screen\" and the close X at the end." },
+      { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog (aria-label \"Close Add to Your Home Screen\")." },
+      { id: "dialog-body", name: "Dialog body", description: "The scrollable body with the Android \"Add to Home Screen\" instructions." },
+      { id: "dialog-footer", name: "Dialog footer", description: "The Actions row at the end that holds the single Close button." },
+    ], source: {"pbs":"src/WorkspaceTools.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    { id: "fd-close", name: "Dark solid", apps: ["fd"], contextAnatomy: [
+      { id: "dialog", name: "Dialog", description: "The open dialog titled \"Explore More Applications\"." },
+      { id: "dialog-title", name: "Dialog title", description: "The raised title bar with \"Explore More Applications\" and the close X at the end." },
+      { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog (aria-label \"Close Explore More Applications\")." },
+      { id: "dialog-body", name: "Dialog body", description: "The scrollable body with the line \"Simpson Strong-Tie design applications.\"" },
+      { id: "dialog-footer", name: "Dialog footer", description: "The Actions row at the end that holds the single Close button." },
+    ], source: {"fd":"src/App.jsx"} },
   ],
   source: { pbs: 'src/WorkspaceTools.tsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx', fd: 'src/App.jsx' },
   summary: 'Close is the lone button of an info dialog that only informs; its first look, the default gray one, is the example; the Look select shows the other.',

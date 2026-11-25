@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Full-size dialog',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   options: [
-    { id: "hcs-licence", name: "Licence dialog", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"} },
-    { id: "adm-licence", name: "Licence dialog — UI variant 2", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","pbs":"src/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx"} },
+    { id: "hcs-licence", name: "Licence dialog", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false },
+    { id: "adm-licence", name: "Licence dialog — UI variant 2", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","pbs":"src/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx"}, showContext: false },
   ],
   source: {
     hcs: 'src/components/F01Experience.tsx',

@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Job tally totals row',
   apps: ['ace', 'hs'],
   options: [
-    { id: "ace-tally", name: "Job tally", apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
-    { id: "hs-totals", name: "Job tally — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} },
+    { id: "ace-tally", name: "Job tally", showContext: false, apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
+    { id: "hs-totals", name: "Job tally — UI variant 2", showContext: false, apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} },
   ],
   source: {
     ace: 'src/features/calculation/ui/CalculationOutput.tsx',

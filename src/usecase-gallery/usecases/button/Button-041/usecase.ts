@@ -1,12 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'dealer-row', name: 'Dealer contact row', selector: '[data-ug-part="dealer-row"]', description: 'The end-aligned row under the quote form that pairs the Need help? text with the phone button, with an 8px gap.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Call dealer button',
 
   apps: ['agpd'],
   options: [
-    { id: "agpd-dealer-contact", name: "Dealer contact", apps: ["agpd"], source: {"agpd":"src/agpd/QuoteDialog.tsx"} },
+    { id: "agpd-dealer-contact", contextAnatomy: CONTEXT_ANATOMY, name: "Dealer contact", apps: ["agpd"], source: {"agpd":"src/agpd/QuoteDialog.tsx"} },
   ],
   source: { agpd: 'src/agpd/QuoteDialog.tsx' },
   summary: 'A round filled accent IconButton calls the dealer.',

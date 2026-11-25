@@ -5,7 +5,10 @@ export default defineUsecase({
   title: 'Show all products button',
 
   options: [
-    { id: "default", name: "Inline link" },
+    { id: "default", name: "Inline link", contextAnatomy: [
+      { id: "notice", name: "No output results notice", description: "The tonal warning status with the triangle icon and the \"No Output Results\" heading." },
+      { id: "try-list", name: "Suggestions list", description: "The \"You can try:\" bulleted list whose list item holds the inline All Products button." },
+    ] },
   ],
   apps: ['hcs'],
   source: { hcs: 'src/components/HcsNoOutputResults.tsx' },

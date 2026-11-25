@@ -6,7 +6,10 @@ export default defineUsecase({
 
   apps: ['hs'],
   options: [
-    { id: "hs-button", name: "Add selected result", apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} },
+    { id: "hs-button", name: "Add selected result", apps: ["hs"], contextAnatomy: [
+      { id: "toolbar", name: "Output toolbar", description: "The wrapping row of small controls (8px gap) that starts with Add to Job List." },
+      { id: "search", name: "Search field", description: "The Search Table Field with a magnifying-glass icon that fills the rest of the line." },
+    ], source: {"hs":"src/hs/OutputPane.tsx"} },
   ],
   source: { hs: 'src/hs/OutputPane.tsx' },
   summary: 'A solid secondary Button, black with white text, adds the chosen result to the job list.',

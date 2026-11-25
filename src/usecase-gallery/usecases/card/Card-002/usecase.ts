@@ -1,11 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: "section-heading", name: "Explore More Applications heading", description: "The \"Explore More Applications\" h3 (Type l3 semi-bold) above the tiles." },
+  { id: "app-grid", name: "Application grid", description: "The three-column grid (8px gap) that holds the image-only application cards." },
+];
+
 export default defineUsecase({
   uiType: 'Card',
   title: 'Image tile',
   apps: ['adm'],
   options: [
-    { id: "adm-related-apps", name: "Related applications", source: {"adm":"src/features/applications/components/RelatedAppsGrid.tsx"} },
+    { id: "adm-related-apps", contextAnatomy: CONTEXT_ANATOMY, name: "Related applications", source: {"adm":"src/features/applications/components/RelatedAppsGrid.tsx"} },
   ],
   source: { adm: 'src/features/applications/components/RelatedAppsGrid.tsx' },
   summary: 'An image-only card, 96 by 96, used as the visual of a link in a grid.',

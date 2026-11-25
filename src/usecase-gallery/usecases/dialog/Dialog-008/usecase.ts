@@ -6,8 +6,8 @@ export default defineUsecase({
 
   apps: ['ace', 'adm', 'hs', 'fd'],
   options: [
-    { id: "ace-save", name: "Save template", apps: ["ace","adm","hs"], source: {"ace":"src/features/templates/ui/SaveAsTemplateDialog.tsx","adm":"src/features/templates/components/SaveAsTemplateDialog.tsx","hs":"src/hs/TemplateDialogs.tsx"} },
-    { id: "fd-save", name: "Save template — UI variant 2", apps: ["fd"], source: {"fd":"src/App.jsx"} },
+    { id: "ace-save", name: "Save template", apps: ["ace","adm","hs"], source: {"ace":"src/features/templates/ui/SaveAsTemplateDialog.tsx","adm":"src/features/templates/components/SaveAsTemplateDialog.tsx","hs":"src/hs/TemplateDialogs.tsx"}, showContext: false },
+    { id: "fd-save", name: "Save template — UI variant 2", apps: ["fd"], source: {"fd":"src/App.jsx"}, showContext: false },
   ],
   source: { ace: 'src/features/templates/ui/SaveAsTemplateDialog.tsx', adm: 'src/features/templates/components/SaveAsTemplateDialog.tsx', hs: 'src/hs/TemplateDialogs.tsx', fd: 'src/App.jsx' },
   summary: 'A form dialog that names and saves the current inputs as a template: a Cancel and a Save that stays disabled until the name is valid.',

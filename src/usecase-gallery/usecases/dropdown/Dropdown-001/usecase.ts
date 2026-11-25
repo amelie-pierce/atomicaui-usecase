@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Outlined text trigger',
   apps: ['hcs'],
   options: [
-    { id: "hcs-product-filter", name: "Radio value filter", apps: ["hcs"], source: {"hcs":"src/components/HcsProductFilter.tsx"} },
+    { id: "hcs-product-filter", name: "Radio value filter", apps: ["hcs"], source: {"hcs":"src/components/HcsProductFilter.tsx"}, showContext: false },
   ],
   source: { hcs: 'src/components/HcsProductFilter.tsx' },
   summary: 'A text trigger with a chevron opens a short list of radio rows; the chosen row names the trigger and closes the list.',

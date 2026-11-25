@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Status filter',
   apps: ['fd'],
   options: [
-    { id: "fd-status-filter", name: "Status filter", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
+    { id: "fd-status-filter", showContext: false, name: "Status filter", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
   ],
   source: { fd: 'src/components/Results.jsx' },
   summary: 'A label-less select in the output toolbar that narrows the results by status.',

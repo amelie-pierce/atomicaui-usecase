@@ -9,7 +9,7 @@ export default function PbsCloseScene({ host }: ContextProps) {
         <Dialog.Backdrop />
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false}>
-            <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', justifyContent: 'end' } }}>
+            <View data-ug-part="close-row" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', justifyContent: 'end' } }}>
               <Dialog.Close aria-label="Close" />
             </View>
             <Dialog.Body>

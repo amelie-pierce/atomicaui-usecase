@@ -1,12 +1,18 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'input-pane', name: 'Input pane', selector: '[data-ug-part="input-pane"]', description: 'The surface-alt Input pane that frames the header and the section card.' },
+  { id: 'collapse-input', name: 'Collapse Input', selector: '[class~="aui-button"][aria-label="Collapse Input"]', description: 'The angle-left button at the start of the header that collapses the whole pane, with its Collapse Input tooltip.' },
+  { id: 'pane-title', name: 'Pane title', selector: '[data-ug-part="pane-title"]', description: 'The semi-bold Input heading in the header, before the spacer and Collapse all.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Collapse all sections button',
 
   apps: ['hcs'],
   options: [
-    { id: "hcs-panel-header", name: "Panel header", apps: ["hcs"], source: {"hcs":"src/App.tsx"} },
+    { id: "hcs-panel-header", contextAnatomy: CONTEXT_ANATOMY, name: "Panel header", apps: ["hcs"], source: {"hcs":"src/App.tsx"} },
   ],
   source: { hcs: 'src/components/F01Experience.tsx' },
   summary: 'A transparent icon-only IconButton collapses every section of the Input pane, and expands them again when all are closed.',

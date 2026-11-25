@@ -1,12 +1,19 @@
 import { defineUsecase } from '../../../define';
 
+const TEMPLATES_CONTEXT = [
+  { id: "templates-dialog", name: "Templates dialog", selector: "[class~=\"aui-dialog-popup\"]", description: "The Dialog popup titled Templates that lists the template groups." },
+  { id: "templates-title", name: "Templates title bar", selector: "[class~=\"aui-dialog-title\"]", description: "The raised Dialog.Title reading \"Templates\", with the Close Templates button at its end." },
+  { id: "templates-close", name: "Close button", selector: "[class~=\"aui-dialog-close\"]", description: "The X Dialog.Close (aria-label \"Close Templates\") that dismisses the dialog." },
+  { id: "templates-body", name: "Templates body", selector: "[class~=\"aui-dialog-body\"]", description: "The scrollable Dialog.Body holding the RadioGroup that wraps the Default Templates and My Templates groups (the Cancel and Create footer is left out)." },
+];
+
 export default defineUsecase({
   uiType: 'Titled accordion',
   title: 'Plain title',
   apps: ['ace', 'hs', 'fd'],
   options: [
-    { id: "ace-template-groups", name: "Template groups", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} },
-    { id: "hs-template-groups", name: "Template groups — UI variant 2", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} },
+    { id: "ace-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Template groups", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} },
+    { id: "hs-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Template groups — UI variant 2", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} },
   ],
   source: {
     ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx',

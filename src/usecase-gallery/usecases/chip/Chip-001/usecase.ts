@@ -1,11 +1,17 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: "change-row", name: "Change row", description: "One release-note row: a flex row with 8px vertical padding and an outlined bottom border between rows." },
+  { id: "chip-column", name: "Chip column", description: "The fixed 160px start column that holds the change Chip (FEATURE, IMPROVEMENT)." },
+  { id: "change-text", name: "Change text", description: "The p3 text that describes the change, such as \"Added the Download Duration help.\"" },
+];
+
 export default defineUsecase({
   uiType: 'Label chip',
   title: 'Solid release label',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   options: [
-    { id: "hcs-release-note", name: "Release note row", source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pfd":"src/pfd/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"} },
+    { id: "hcs-release-note", contextAnatomy: CONTEXT_ANATOMY, name: "Release note row", source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pfd":"src/pfd/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"} },
   ],
   source: {
     hcs: 'src/components/HcsAboutDialog.tsx',

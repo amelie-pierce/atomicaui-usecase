@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Cell select',
   apps: ['adc'],
   options: [
-    { id: "adc-table-cell", name: "Cell select", apps: ["adc"], source: {"adc":"src/adc/components/ProductsPicker.tsx"} },
+    { id: "adc-table-cell", showContext: false, name: "Cell select", apps: ["adc"], source: {"adc":"src/adc/components/ProductsPicker.tsx"} },
   ],
   source: { adc: 'src/adc/components/ProductsPicker.tsx' },
   summary: 'A compact label-less select that fills a table cell and picks one value for the row.',

@@ -9,7 +9,7 @@ export default defineUsecase({
     { id: "adc-visibility", name: "Object visibility — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} },
     { id: "adm-visibility", name: "Object visibility — UI variant 3", apps: ["adm"], source: {"adm":"src/features/viewer/components/ViewerChrome.tsx"} },
     { id: "fd-visibility", name: "Object visibility — UI variant 4", apps: ["fd"], source: {"fd":"src/components/Viewer.jsx"} },
-    { id: "hs-visibility", name: "Object visibility — UI variant 5", apps: ["hs","pbs","agpd","rws"], source: {"hs":"src/hs/ViewerPane.tsx","pbs":"src/Viewer.tsx","agpd":"src/agpd/Viewer.tsx","rws":"src/rws/Viewer.tsx"} },
+    { id: "hs-visibility", showContext: false, name: "Object visibility — UI variant 5", apps: ["hs","pbs","agpd","rws"], source: {"hs":"src/hs/ViewerPane.tsx","pbs":"src/Viewer.tsx","agpd":"src/agpd/Viewer.tsx","rws":"src/rws/Viewer.tsx"} },
   ],
   source: {
     hcs: 'src/App.tsx',

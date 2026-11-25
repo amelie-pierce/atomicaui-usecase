@@ -6,8 +6,18 @@ export default defineUsecase({
 
   apps: ['hcs', 'pfd', 'hs', 'fd'],
   options: [
-    { id: "hcs-toolbar", name: "Toolbar", apps: ["hcs","pfd","hs"], source: {"hcs":"src/App.tsx","pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx"} },
-    { id: "fd-toolbar", name: "Toolbar — UI variant 2", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
+    { id: "hcs-toolbar", name: "Toolbar", apps: ["hcs","pfd","hs"], contextAnatomy: [
+      { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section cut to its title and toolbar." },
+      { id: "output-title", name: "Output title", description: "The \"Output\" heading at the start of the pane header." },
+      { id: "toolbar", name: "Output toolbar", description: "The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it." },
+      { id: "search", name: "Search field", description: "The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button." },
+    ], source: {"hcs":"src/App.tsx","pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx"} },
+    { id: "fd-toolbar", name: "Toolbar — UI variant 2", apps: ["fd"], contextAnatomy: [
+      { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section cut to its title and toolbar." },
+      { id: "output-title", name: "Output title", description: "The \"Output\" heading at the start of the pane header." },
+      { id: "toolbar", name: "Output toolbar", description: "The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it." },
+      { id: "search", name: "Search field", description: "The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button." },
+    ], source: {"fd":"src/components/Results.jsx"} },
   ],
   source: { hcs: 'src/App.tsx', pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx', fd: 'src/components/Results.jsx' },
   summary: 'A neutral default Button clears the active filters of a results table; FD draws it as a quiet text Button.',

@@ -1,11 +1,20 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'form-column', name: 'Form column', description: 'The column with gap 12 and a 256px minimum width that stacks the dealer question, the text fields and the SUBMIT row.' },
+  { id: 'dealer-group', name: 'Dealer question', selector: '[class~="aui-radio-group"]', description: 'The row RadioGroup asking "Are you a Simpson Strong-Tie Dealer ?", label on a full-width first line, defaulting to No.' },
+  { id: 'dealer-radio', name: 'Yes and No radios', selector: '[class~="aui-radio"]', description: 'An outlined tonal Radio when unselected and a solid primary one when selected.' },
+  { id: 'name-field', name: 'Name field', selector: '[class~="aui-field"] input', description: 'The Name text input, identified by a placeholder and aria-label instead of a visible label.' },
+  { id: 'notes-field', name: 'Project notes field', selector: '[class~="aui-field"] textarea', description: 'The four-row textarea for "Add project notes and other part requests".' },
+  { id: 'submit', name: 'Submit button', description: 'The solid secondary soft SUBMIT button at scale sm, end-aligned in its own row.' },
+];
+
 export default defineUsecase({
   uiType: 'Dialog with plain title',
   title: 'Form dialog',
   apps: ['agpd'],
   options: [
-    { id: "agpd-quote", name: "Request a quote", apps: ["agpd"], source: {"agpd":"src/agpd/QuoteDialog.tsx"} },
+    { id: "agpd-quote", name: "Request a quote", apps: ["agpd"], source: {"agpd":"src/agpd/QuoteDialog.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
   ],
   source: { agpd: 'src/agpd/QuoteDialog.tsx' },
   summary: 'A wide dialog whose Body is one form: a yes/no question, short text fields, a notes Textarea and a SUBMIT button at the end of the row.',
@@ -60,40 +69,6 @@ export default defineUsecase({
       name: 'Form text',
       text: true,
       description: 'The p3 placeholder line "The form fields go here." in the Dialog frame.',
-    },
-    {
-      id: 'form-column',
-      name: 'Form column',
-      description: 'The column in the scene with gap 12 and a 256px minimum width that stacks the question, the text fields and the SUBMIT row.',
-    },
-    {
-      id: 'dealer-group',
-      name: 'Dealer question',
-      selector: '[class~="aui-radio-group"]',
-      description: 'The row RadioGroup asking "Are you a Simpson Strong-Tie Dealer ?", with the label on a full-width first line, defaulting to No.',
-    },
-    {
-      id: 'dealer-radio',
-      name: 'Yes / No radios',
-      selector: '[class~="aui-radio"]',
-      description: 'The Yes and No radios: an outlined tonal surface when unselected and a solid primary when selected.',
-    },
-    {
-      id: 'name-field',
-      name: 'Name field',
-      selector: '[class~="aui-field"] input',
-      description: 'The Name text input, identified by a placeholder and aria-label instead of a visible label.',
-    },
-    {
-      id: 'notes-field',
-      name: 'Notes textarea',
-      selector: '[class~="aui-field"] textarea',
-      description: 'The four-row textarea for "Add project notes and other part requests".',
-    },
-    {
-      id: 'submit',
-      name: 'SUBMIT',
-      description: 'The solid secondary soft SUBMIT button at scale "sm", end-aligned in its own row.',
     },
   ],
 });

@@ -19,7 +19,7 @@ export default function AceStepNavScene() {
           aui={{ scale: 'sm', paint: 'text', color: 'surface' }}
           style={{ position: 'absolute', insetBlockStart: 4, insetInlineEnd: 4 }}
         />
-        <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Split-Pane Slider</Type>
+        <Type data-ug-part="step-title" as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Split-Pane Slider</Type>
         <Type role="p3">Need more space on the input side or the output? Drag the slider.</Type>
         <View data-ug-part="step-nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
           <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
@@ -32,7 +32,7 @@ export default function AceStepNavScene() {
               <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
             </Button>
           </View>
-          <Type as="span" role="p3" color="muted" style={{ whiteSpace: 'nowrap' }}>2 / 4</Type>
+          <Type data-ug-part="step-counter" as="span" role="p3" color="muted" style={{ whiteSpace: 'nowrap' }}>2 / 4</Type>
         </View>
       </View>
     </div>

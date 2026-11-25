@@ -6,9 +6,9 @@ export default defineUsecase({
 
   apps: ['hcs', 'ace', 'adm', 'hs', 'fd', 'adc'],
   options: [
-    { id: "hcs-reset", name: "Reset confirm", apps: ["hcs"], source: {"hcs":"src/components/HcsResetDialog.tsx"} },
+    { id: "hcs-reset", showContext: false, name: "Reset confirm", apps: ["hcs"], source: {"hcs":"src/components/HcsResetDialog.tsx"} },
     { id: "ace-reset", name: "Reset confirm — UI variant 2", apps: ["ace"], source: {"ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx"} },
-    { id: "adm-reset", name: "Reset confirm — UI variant 3", apps: ["adm"], source: {"adm":"src/features/top-navigation/components/ResetDialog.tsx"} },
+    { id: "adm-reset", showContext: false, name: "Reset confirm — UI variant 3", apps: ["adm"], source: {"adm":"src/features/top-navigation/components/ResetDialog.tsx"} },
     { id: "hs-reset", name: "Reset confirm — UI variant 4", apps: ["hs","fd"], source: {"hs":"src/App.tsx","fd":"src/App.jsx"} },
     { id: "adc-reset", name: "Reset confirm — UI variant 5", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
   ],

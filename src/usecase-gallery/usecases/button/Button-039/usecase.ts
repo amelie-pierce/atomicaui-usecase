@@ -1,11 +1,17 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'viewer-pane', name: '3D Viewer pane', selector: '[data-ug-part="viewer-pane"]', description: 'The surface-alt 3D Viewer section that frames the header and the scene.' },
+  { id: 'viewer-title', name: 'Viewer title', selector: '[data-ug-part="viewer-title"]', description: 'The semi-bold 3D Viewer heading in the 28px header.' },
+  { id: 'viewer-canvas', name: 'Scene canvas', selector: '[data-ug-part="viewer-canvas"]', description: 'The framed stand-in for the live 3D canvas, with Reset view overlaid at its top end.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Reset view button',
 
   options: [
-    { id: "default", name: "Outlined accent, 28px" },
+    { id: "default", contextAnatomy: CONTEXT_ANATOMY, name: "Outlined accent, 28px" },
   ],
   apps: ['hcs'],
   source: { hcs: 'src/App.tsx' },

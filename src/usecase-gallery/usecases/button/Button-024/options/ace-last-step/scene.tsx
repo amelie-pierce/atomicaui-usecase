@@ -19,7 +19,7 @@ export default function AceLastStepScene() {
           aui={{ scale: 'sm', paint: 'text', color: 'surface' }}
           style={{ position: 'absolute', insetBlockStart: 4, insetInlineEnd: 4 }}
         />
-        <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Step #1</Type>
+        <Type data-ug-part="step-title" as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Step #1</Type>
         <Type role="p3">Click here for application specific tutorials.</Type>
         <View data-ug-part="step-nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
           <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
@@ -29,7 +29,7 @@ export default function AceLastStepScene() {
             </Button>
             <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>END</Button>
           </View>
-          <Type as="span" role="p3" color="muted" style={{ whiteSpace: 'nowrap' }}>4 / 4</Type>
+          <Type data-ug-part="step-counter" as="span" role="p3" color="muted" style={{ whiteSpace: 'nowrap' }}>4 / 4</Type>
         </View>
       </View>
     </div>

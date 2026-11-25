@@ -1,13 +1,40 @@
 import { defineUsecase } from '../../../define';
 
+const ACE_CONTEXT_ANATOMY = [
+  { id: 'radio-group', name: 'Template choice', selector: '[class~="aui-radio-group"]', description: 'The one RadioGroup that makes the built-in and own templates a single choice, defaulting to Three-beam connection.' },
+  { id: 'accordion', name: 'Template sections', selector: '[class~="aui-accordion"]', description: 'Default Templates and My Templates as two Accordion sections, both open.' },
+  { id: 'section-trigger', name: 'Section header', selector: '[class~="aui-accordion-trigger"]', description: 'A Type l4 section label ending in a chevron.' },
+  { id: 'template-radio', name: 'Template row', selector: '[class~="aui-radio"]', description: 'A template row such as "Two-beam connection": an outlined tonal Radio when unselected and a solid primary one when selected, filling the row.' },
+  { id: 'template-label', name: 'Template name', selector: '[class~="aui-control-row"] > [class~="aui-label"]', description: 'The template name inside the radio, such as "Three-beam connection".' },
+  { id: 'row-action', name: 'Row actions', description: 'The Download, Delete (error colour) and Edit text buttons after a user-owned template row.' },
+];
+
+const ADM_CONTEXT_ANATOMY = [
+  { id: 'radio-group', name: 'Template choice', selector: '[class~="aui-radio-group"]', description: 'The one RadioGroup that makes the built-in and own templates a single choice, defaulting to Three-beam connection.' },
+  { id: 'section', name: 'Template section', description: 'A plain section that stacks a muted heading over its radio rows with a gap of 4 (no Accordion).' },
+  { id: 'section-heading', name: 'Section heading', text: true, description: 'The muted "Default Templates" and "My Templates" labels.' },
+  { id: 'template-radio', name: 'Template row', selector: '[class~="aui-radio"]', description: 'A template row such as "Two-beam connection": an outlined tonal Radio when unselected and a solid primary one when selected, filling the row.' },
+  { id: 'template-label', name: 'Template name', selector: '[class~="aui-control-row"] > [class~="aui-label"]', description: 'The template name inside the radio, such as "Three-beam connection".' },
+  { id: 'row-action', name: 'Row actions', description: 'The Download, Delete (error colour) and Edit text buttons after a user-owned template row.' },
+];
+
+const HS_CONTEXT_ANATOMY = [
+  { id: 'radio-group', name: 'Template choice', selector: '[class~="aui-radio-group"]', description: 'The one RadioGroup that makes the built-in and own templates a single choice, defaulting to Three-beam connection.' },
+  { id: 'accordion', name: 'Template sections', selector: '[class~="aui-accordion"]', description: 'Default Templates and My Templates as two Accordion sections, both open.' },
+  { id: 'section-trigger', name: 'Section header', selector: '[class~="aui-accordion-trigger"]', description: 'A plain text section label ending in a chevron.' },
+  { id: 'template-radio', name: 'Template row', selector: '[class~="aui-radio"]', description: 'A template row such as "Two-beam connection": an outlined tonal Radio when unselected and a solid primary one when selected, filling the row.' },
+  { id: 'template-label', name: 'Template name', selector: '[class~="aui-control-row"] > [class~="aui-label"]', description: 'The template name inside the radio, such as "Three-beam connection".' },
+  { id: 'row-action', name: 'Row actions', description: 'The download, trash and pen icon buttons after a user-owned template row, each with its own aria-label.' },
+];
+
 export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Template picker dialog',
   apps: ['ace', 'adm', 'hs', 'fd'],
   options: [
-    { id: "ace-templates", name: "Template picker", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} },
-    { id: "adm-templates", name: "Template picker — UI variant 2", apps: ["adm"], source: {"adm":"src/features/templates/components/NewFromTemplateDialog.tsx"} },
-    { id: "hs-templates", name: "Template picker — UI variant 3", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} },
+    { id: "ace-templates", name: "Template picker", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"}, contextAnatomy: ACE_CONTEXT_ANATOMY },
+    { id: "adm-templates", name: "Template picker — UI variant 2", apps: ["adm"], source: {"adm":"src/features/templates/components/NewFromTemplateDialog.tsx"}, contextAnatomy: ADM_CONTEXT_ANATOMY },
+    { id: "hs-templates", name: "Template picker — UI variant 3", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"}, contextAnatomy: HS_CONTEXT_ANATOMY },
   ],
   source: {
     ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx',
@@ -68,52 +95,6 @@ export default defineUsecase({
       name: 'Template text',
       text: true,
       description: 'The p3 placeholder line that stands in for the list of templates in the Dialog frame.',
-    },
-    {
-      id: 'radio-group',
-      name: 'Template radio group',
-      selector: '[class~="aui-radio-group"]',
-      description: 'The one RadioGroup that makes the built-in and own templates a single choice, defaulting to the second template.',
-    },
-    {
-      id: 'accordion',
-      name: 'Sections accordion',
-      selector: '[class~="aui-accordion"]',
-      description: 'The ACE and HS scenes group the rows into Default Templates and My Templates sections, both open; ADM uses plain sections instead.',
-    },
-    {
-      id: 'section-trigger',
-      name: 'Section trigger',
-      selector: '[class~="aui-accordion-trigger"]',
-      description: 'The header of a section: a Type l4 label in ACE, plain text in HS and FD, each ending in a chevron.',
-    },
-    {
-      id: 'section',
-      name: 'Plain section',
-      description: 'The ADM section that stacks a muted heading over its radio rows with a gap of 4.',
-    },
-    {
-      id: 'section-heading',
-      name: 'Section heading',
-      text: true,
-      description: 'The muted "Default Templates" and "My Templates" labels of the ADM sections.',
-    },
-    {
-      id: 'template-radio',
-      name: 'Template radio',
-      selector: '[class~="aui-radio"]',
-      description: 'A template row such as "Two-beam connection": an outlined tonal surface when unselected and a solid primary one when selected, filling the row.',
-    },
-    {
-      id: 'template-label',
-      name: 'Template name',
-      selector: '[class~="aui-control-row"] > [class~="aui-label"]',
-      description: 'The template name inside the radio, such as "Three-beam connection".',
-    },
-    {
-      id: 'row-action',
-      name: 'Row actions',
-      description: 'The actions after a user-owned template: the Download, Delete (error colour) and Edit text buttons in ACE and ADM, or the download, trash and pen icon buttons in HS and FD.',
     },
   ],
 });

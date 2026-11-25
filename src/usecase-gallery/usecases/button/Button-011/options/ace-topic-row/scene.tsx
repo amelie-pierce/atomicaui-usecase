@@ -8,14 +8,14 @@ export default function AceTopicRowScene({ host }: ContextProps) {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { maxHeight: '384' } }}>
-            <Dialog.Title aui={{ scale: 'sm' }}>
+          <Dialog.Popup data-ug-part="dialog" initialFocus={false} aui={{ scale: 'sm', sx: { maxHeight: '384' } }}>
+            <Dialog.Title data-ug-part="dialog-title" aui={{ scale: 'sm' }}>
               Help &amp; Tutorials
               <Dialog.Spacer />
-              <Dialog.Close aui={{ scale: 'sm' }} aria-label="Close" />
+              <Dialog.Close data-ug-part="dialog-close" aui={{ scale: 'sm' }} aria-label="Close" />
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
-              <View as="nav" aria-label="Help & Tutorials" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }}>
+              <View data-ug-part="topic-list" as="nav" aria-label="Help & Tutorials" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }}>
                 <Button
                   aui={{
                     scale: 'sm',
@@ -37,8 +37,8 @@ export default function AceTopicRowScene({ host }: ContextProps) {
                     },
                   }}
                 >
-                  <Type as="span" role="p2" weight="semi-bold">ACE: General Tutorial</Type>
-                  <Type as="span" role="p3" color="muted">Shows the general features common to all Blueprint-based applications.</Type>
+                  <Type data-ug-part="topic-name" as="span" role="p2" weight="semi-bold">ACE: General Tutorial</Type>
+                  <Type data-ug-part="topic-description" as="span" role="p3" color="muted">Shows the general features common to all Blueprint-based applications.</Type>
                 </Button>
               </View>
             </Dialog.Body>

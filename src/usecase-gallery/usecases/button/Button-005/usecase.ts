@@ -6,7 +6,10 @@ export default defineUsecase({
 
   apps: ['hcs'],
   options: [
-    { id: "results", name: "Results error strip", apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} },
+    { id: "results", name: "Results error strip", apps: ["hcs"], contextAnatomy: [
+      { id: "error-strip", name: "Error strip", description: "The solid error alert of the Output pane that holds the message and the Try again button on the next line." },
+      { id: "error-message", name: "Error message", description: "The text \"We couldn't check products right now. Please try again.\"" },
+    ], source: {"hcs":"src/components/F01Results.tsx"} },
   ],
   source: { hcs: 'src/components/F01Results.tsx' },
   summary: 'The default gray Button retries a failed action from an error message: Try again under the Results error.',

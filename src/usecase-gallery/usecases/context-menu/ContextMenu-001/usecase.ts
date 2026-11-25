@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Tab context menu',
   apps: ['adc'],
   options: [
-    { id: "adc-tab-options", name: "Tab options", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "adc-tab-options", name: "Tab options", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, showContext: false },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A right-click on a tab opens a menu of actions for that tab: close, close the others, rename, duplicate and move.',

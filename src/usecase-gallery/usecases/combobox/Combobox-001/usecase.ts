@@ -1,11 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'licence-dialog', name: 'License Agreement dialog', selector: '[class~="aui-dialog-popup"]', description: 'The non-modal Dialog that hosts the picker in the FD licence gate: a raised "License Agreement" title and a body about 14 rows tall that holds the Country field.' },
+  { id: 'dialog-body', name: 'Dialog body', selector: '[class~="aui-dialog-body"]', description: 'The body of the licence dialog; the whole Country combobox sits inside it.' },
+];
+
 export default defineUsecase({
   uiType: 'Combobox',
   title: 'Searchable select',
   apps: ['fd'],
   options: [
-    { id: "fd-license-country", name: "Country picker", source: {"fd":"src/components/LicenseGate.jsx"} },
+    { id: "fd-license-country", name: "Country picker", source: {"fd":"src/components/LicenseGate.jsx"}, contextAnatomy: CONTEXT_ANATOMY },
   ],
   source: { fd: 'src/components/LicenseGate.jsx' },
   summary: 'A select you can type into: the text field filters the list, a chevron opens it, and the chosen option is ticked.',
@@ -78,12 +83,6 @@ export default defineUsecase({
       name: 'Item indicator',
       selector: '[class~="aui-combobox-item-indicator"]',
       description: 'The tick that marks the chosen country row.',
-    },
-    {
-      id: 'dialog-body',
-      name: 'Dialog body',
-      selector: '[class~="aui-dialog-body"]',
-      description: 'In the FD licence gate scene the whole combobox sits inside the body of the "License Agreement" dialog.',
     },
   ],
 });

@@ -17,7 +17,7 @@ export default function HcsRailScene() {
           className="ug-split__panel"
           aui={{ profile: 'block-padding', scale: 'sm', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
         >
-          <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 'none' } }} style={{ height: '100%', boxSizing: 'border-box' }}>
+          <View data-ug-part="rail" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 'none' } }} style={{ height: '100%', boxSizing: 'border-box' }}>
             <Tooltip.Provider>
               <Tooltip>
                 <Tooltip.Trigger
@@ -47,6 +47,7 @@ export default function HcsRailScene() {
         <Panels.ResizeHandle aria-label="Resize Input and 3D Viewer panels" color="primary" width="8px" />
         <Panels.Panel id="hcs-viewer" minSize="200px" className="ug-split__panel" aui={{ scale: 'sm' }}>
           <View
+            data-ug-part="viewer-pane"
             as="section"
             aria-label="3D Viewer"
             aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', height: 'fill' } }}

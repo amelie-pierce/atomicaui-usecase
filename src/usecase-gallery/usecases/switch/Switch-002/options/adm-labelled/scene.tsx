@@ -7,9 +7,9 @@ export default function AdmLabelledScene({ host }: ContextProps) {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false}>
-            <Dialog.Title aui={{ color: 'raised' }}>Base plate<Dialog.Spacer /><Dialog.Close aria-label="Close" /></Dialog.Title>
-            <Dialog.Body>
+          <Dialog.Popup data-ug-part="dialog" initialFocus={false}>
+            <Dialog.Title data-ug-part="dialog-title" aui={{ color: 'raised' }}>Base plate<Dialog.Spacer /><Dialog.Close aria-label="Close" /></Dialog.Title>
+            <Dialog.Body data-ug-part="dialog-body">
               <View aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '12' } }}>
                 <Switch defaultSelected aui={{ states: { unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } }, selected: { paint: 'solid', color: 'primary' } } }}>
                   <Switch.Label>Include base plate</Switch.Label>

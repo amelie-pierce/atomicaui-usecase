@@ -1,12 +1,18 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'output-pane', name: 'Output pane', selector: '[data-ug-part="output-pane"]', description: 'The surface-alt Output section that frames the header row.' },
+  { id: 'output-title', name: 'Output title', selector: '[data-ug-part="output-title"]', description: 'The semi-bold Output heading at the start of the header row.' },
+  { id: 'header-actions', name: 'Header actions', selector: '[data-ug-part="header-actions"]', description: 'The end-aligned group with the two scroll helpers followed by the tonal Print Output button, wrapping when space runs out.' },
+];
+
 export default defineUsecase({
   uiType: 'Button group',
   title: 'Back to top and Table Notes buttons',
 
   apps: ['hcs', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   options: [
-    { id: "hcs-output-header", name: "Output header", apps: ["hcs","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/useOutputNavigation.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/useOutputNavigation.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/useOutputNavigation.jsx","agpd":"src/agpd/outputNavigation.tsx","rws":"src/rws/outputNavigation.tsx"} },
+    { id: "hcs-output-header", contextAnatomy: CONTEXT_ANATOMY, name: "Output header", apps: ["hcs","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/useOutputNavigation.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/useOutputNavigation.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/useOutputNavigation.jsx","agpd":"src/agpd/outputNavigation.tsx","rws":"src/rws/outputNavigation.tsx"} },
   ],
   source: { hcs: 'src/useOutputNavigation.tsx', pfd: 'src/pfd/useOutputNavigation.tsx', pbs: 'src/useOutputNavigation.tsx', hs: 'src/hs/useOutputNavigation.tsx', fd: 'src/components/useOutputNavigation.jsx', agpd: 'src/agpd/outputNavigation.tsx', rws: 'src/rws/outputNavigation.tsx' },
   summary: 'Two quiet text Buttons with a leading icon sit together in a header: an arrow jumps to the top of a long table and another down to its notes.',

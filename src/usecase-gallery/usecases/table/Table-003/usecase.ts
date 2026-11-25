@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Calculation summary table',
   apps: ['adm', 'adc'],
   options: [
-    { id: "adm-summary", name: "Summary table", apps: ["adm"], source: {"adm":"src/features/calculation/components/shared/ResultTable.tsx"} },
-    { id: "adc-summary", name: "Summary table — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ResultTable.tsx"} },
+    { id: "adm-summary", name: "Summary table", showContext: false, apps: ["adm"], source: {"adm":"src/features/calculation/components/shared/ResultTable.tsx"} },
+    { id: "adc-summary", name: "Summary table — UI variant 2", showContext: false, apps: ["adc"], source: {"adc":"src/adc/components/ResultTable.tsx"} },
   ],
   source: {
     adm: 'src/features/calculation/components/shared/ResultTable.tsx',

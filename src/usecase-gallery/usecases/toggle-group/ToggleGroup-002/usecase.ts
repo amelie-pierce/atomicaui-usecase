@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Hugging segments',
   apps: ['agpd'],
   options: [
-    { id: "agpd-fastener", name: "Fastener switch", source: {"agpd":"src/agpd/inputs.tsx"} },
+    { id: "agpd-fastener", name: "Fastener switch", contextAnatomy: [{ id: 'diameter-field', name: 'Diameter and style field', description: 'The Diameter and Style field control, showing 1/4 in, hex head, that the segments sit above and switch.' }], source: {"agpd":"src/agpd/inputs.tsx"} },
   ],
   source: { agpd: 'src/agpd/inputs.tsx' },
   summary: 'Two segments sized to their labels with no outline of their own, switching the field they sit above.',

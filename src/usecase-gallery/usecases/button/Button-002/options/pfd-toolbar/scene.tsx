@@ -6,15 +6,15 @@ import { Field, Type, View } from '../../../../../kit';
 // before the count, RWS a Show Optimized Models switch; both, and the table, are left out.
 export default function PfdToolbarScene({ children }: ContextProps) {
   return (
-    <View aui={{ scale: 'sm', profile: 'default', paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', flexWrap: 'wrap' } }} style={{ inlineSize: 'min(100%, 560px)' }}>
-      <Field style={{ minWidth: 112 }} aui={{ scale: 'sm', sx: { flex: 'fill' } }}>
+    <View data-ug-part="toolbar" aui={{ scale: 'sm', profile: 'default', paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', flexWrap: 'wrap' } }} style={{ inlineSize: 'min(100%, 560px)' }}>
+      <Field data-ug-part="search" style={{ minWidth: 112 }} aui={{ scale: 'sm', sx: { flex: 'fill' } }}>
         <Field.Control>
           <Field.Icon name="magnifying-glass" />
           <Field.Input aria-label="Search Table" placeholder="Search Table" />
         </Field.Control>
       </Field>
       <Type color="muted" aui={{ sx: { margin: '0', fontSize: '12', flex: 'none' } }}>
-        <View as="span" role="status" aui={{ paint: 'text', sx: { display: 'inline' } }}>Showing 1 entry</View>
+        <View data-ug-part="count" as="span" role="status" aui={{ paint: 'text', sx: { display: 'inline' } }}>Showing 1 entry</View>
       </Type>
       {children}
     </View>

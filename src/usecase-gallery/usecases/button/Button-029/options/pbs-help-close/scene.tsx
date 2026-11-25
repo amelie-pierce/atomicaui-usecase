@@ -23,7 +23,7 @@ export default function PbsHelpCloseScene({ host }: ContextProps) {
                 />
               }
             >
-              <Type as="p" role="p3" aui={{ sx: { flex: 'fill' } }}>Select the base material of the member.</Type>
+              <Type data-ug-part="help-text" as="p" role="p3" aui={{ sx: { flex: 'fill' } }}>Select the base material of the member.</Type>
               <IconButton name="xmark" aria-label="Close" aui={{ scale: 'xs', paint: 'text', profile: 'square-compact', shape: 'soft' }} />
             </Popover.Popup>
           </Popover.Positioner>

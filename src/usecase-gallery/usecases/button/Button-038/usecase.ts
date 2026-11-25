@@ -1,12 +1,17 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'jobs-table', name: 'Jobs table', selector: '[class~="aui-table"]', description: 'The Table of jobs; the trash button sits in its last column after the Job column.' },
+  { id: 'job-name', name: 'Job cell', selector: '[class~="aui-table-body"] [class~="aui-table-cell"]:first-child', description: 'The Job 1 label that the Remove Job 1 button belongs to.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Remove row button',
 
   apps: ['hs', 'pbs'],
   options: [
-    { id: "hs-remove", name: "Remove", apps: ["hs","pbs"], source: {"hs":"src/hs/OutputPane.tsx","pbs":"src/ResultsSection.tsx"} },
+    { id: "hs-remove", contextAnatomy: CONTEXT_ANATOMY, name: "Remove", apps: ["hs","pbs"], source: {"hs":"src/hs/OutputPane.tsx","pbs":"src/ResultsSection.tsx"} },
   ],
   source: { hs: 'src/hs/InputFields.tsx', pbs: 'src/ResultsSection.tsx' },
   summary: 'A square transparent trash IconButton, 28px, removes a row from a saved list after a confirmation.',

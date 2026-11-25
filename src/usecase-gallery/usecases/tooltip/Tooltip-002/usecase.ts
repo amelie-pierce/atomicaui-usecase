@@ -5,9 +5,9 @@ export default defineUsecase({
   title: 'Text button tooltip',
   apps: ['pfd', 'rws', 'hs'],
   options: [
-    { id: "pfd-image-preview", name: "Image preview", apps: ["pfd"], source: {"pfd":"src/pfd/ResultsTable.tsx"} },
-    { id: "rws-image-link", name: "Image preview — UI variant 2", apps: ["rws"], source: {"rws":"src/rws/output.tsx"} },
-    { id: "hs-hanger-mark", name: "Image preview — UI variant 3", apps: ["hs"], source: {"hs":"src/hs/SlopeCalculator.tsx"} },
+    { id: "pfd-image-preview", name: "Image preview", showContext: false, apps: ["pfd"], source: {"pfd":"src/pfd/ResultsTable.tsx"} },
+    { id: "rws-image-link", name: "Image preview — UI variant 2", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} },
+    { id: "hs-hanger-mark", name: "Image preview — UI variant 3", showContext: false, apps: ["hs"], source: {"hs":"src/hs/SlopeCalculator.tsx"} },
   ],
   source: { pfd: 'src/pfd/ResultsTable.tsx', rws: 'src/rws/output.tsx', hs: 'src/hs/SlopeCalculator.tsx' },
   summary: 'Hovering or focusing a link, cell or mark opens a tooltip that holds a larger image instead of text.',

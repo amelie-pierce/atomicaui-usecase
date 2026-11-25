@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Switch at row end',
   apps: ['hcs', 'hs', 'fd'],
   options: [
-    { id: "hcs-columns", name: "Column visibility", apps: ["hcs","hs","fd"], source: {"hcs":"src/components/ColumnVisibility.tsx","hs":"src/hs/ColumnVisibility.tsx","fd":"src/components/ColumnSettings.jsx"} },
+    { id: "hcs-columns", name: "Column visibility", contextAnatomy: [{ id: 'columns-trigger', name: 'Configure columns trigger', description: 'The table-columns IconButton, labelled Configure columns, that opens the popover under it.' }, { id: 'columns-popover', name: 'Configure columns popover', description: 'The elevated popover, 320px wide, anchored under the trigger that holds the column list.' }], apps: ["hcs","hs","fd"], source: {"hcs":"src/components/ColumnVisibility.tsx","hs":"src/hs/ColumnVisibility.tsx","fd":"src/components/ColumnSettings.jsx"} },
   ],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', fd: 'src/components/ColumnSettings.jsx' },
   summary: 'A switch at the end of a row, with the row\'s name at the start, turns the setting the row names on or off.',

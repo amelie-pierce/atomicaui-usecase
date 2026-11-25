@@ -1,11 +1,18 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: "project-dialog", name: "New Project dialog", selector: "[class~=\"aui-dialog-popup\"]", description: "The Dialog popup titled New Project that hosts the template picker." },
+  { id: "project-title", name: "New Project title bar", selector: "[class~=\"aui-dialog-title\"]", description: "The raised Dialog.Title reading \"New Project\", with the Close button at its end." },
+  { id: "project-close", name: "Close button", selector: "[class~=\"aui-dialog-close\"]", description: "The X Dialog.Close (aria-label \"Close\") that dismisses the dialog." },
+  { id: "project-body", name: "New Project body", selector: "[class~=\"aui-dialog-body\"]", description: "The Dialog.Body that ends with the User Templates card group (the import dropzone and clear-designs warning above it are left out)." },
+];
+
 export default defineUsecase({
   uiType: 'CardGroup',
   title: 'Selectable template cards',
   apps: ['adc'],
   options: [
-    { id: "adc-new-project", name: "New project templates", source: {"adc":"src/adc/components/NewProjectDialog.tsx"} },
+    { id: "adc-new-project", contextAnatomy: CONTEXT_ANATOMY, name: "New project templates", source: {"adc":"src/adc/components/NewProjectDialog.tsx"} },
   ],
   source: { adc: 'src/adc/components/NewProjectDialog.tsx' },
   summary: 'A labelled grid of image cards with a search and a view toggle, where one card is selected.',

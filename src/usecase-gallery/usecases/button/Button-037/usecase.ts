@@ -6,7 +6,7 @@ export default defineUsecase({
 
   apps: ['fd'],
   options: [
-    { id: "fd-carousel-arrows", name: "Carousel arrows", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
+    { id: "fd-carousel-arrows", showContext: false, name: "Carousel arrows", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
   ],
   source: { fd: 'src/components/InputPane.jsx' },
   summary: 'Two square transparent Buttons, 28px, step an input pane carousel back and forward.',

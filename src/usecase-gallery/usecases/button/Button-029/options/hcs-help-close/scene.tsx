@@ -32,7 +32,7 @@ export default function HcsHelpCloseScene({ host }: ContextProps) {
             }
           >
             <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', alignItems: 'start' } }}>
-              <Type aui={{ sx: { flex: 'fill' } }}>
+              <Type data-ug-part="help-intro" aui={{ sx: { flex: 'fill' } }}>
                 Duration of load adjustments as specified by the code are as follows:
               </Type>
               <IconButton
@@ -42,6 +42,7 @@ export default function HcsHelpCloseScene({ host }: ContextProps) {
               />
             </View>
             <View
+              data-ug-part="duration-notes"
               as="ul"
               aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', flexDirection: 'column' } }}
               style={{ listStyle: 'none', margin: 0, padding: 0 }}

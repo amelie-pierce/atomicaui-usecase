@@ -1,11 +1,15 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'document', name: 'Report document', description: 'The centred role="document" View that shows "Report preview for Design 1" over a line about the generated PDF.' },
+];
+
 export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Report preview dialog',
   apps: ['adc'],
   options: [
-    { id: "adc-report", name: "Report preview", apps: ["adc"], source: {"adc":"src/adc/components/ReportFlow.tsx"} },
+    { id: "adc-report", name: "Report preview", apps: ["adc"], source: {"adc":"src/adc/components/ReportFlow.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
   ],
   source: {
     adc: 'src/adc/components/ReportFlow.tsx',
@@ -63,11 +67,6 @@ export default defineUsecase({
       name: 'Preview text',
       text: true,
       description: 'The p3 line "The preview of the report goes here." that stands in for the generated report in the Dialog frame.',
-    },
-    {
-      id: 'document',
-      name: 'Report document',
-      description: 'The centred role="document" View of the ADC scene that shows "Report preview for Design 1" over a line about the generated PDF.',
     },
   ],
 });

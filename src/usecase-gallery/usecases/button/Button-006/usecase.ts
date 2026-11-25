@@ -6,7 +6,13 @@ export default defineUsecase({
 
   apps: ['ace', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
   options: [
-    { id: "ace-upload", name: "Upload Cancel", apps: ["ace","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/App.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    { id: "ace-upload", name: "Upload Cancel", apps: ["ace","pfd","pbs","hs","fd","agpd","rws"], contextAnatomy: [
+      { id: "dialog", name: "Dialog", description: "The open dialog titled \"Upload JSON File\"." },
+      { id: "dialog-title", name: "Dialog title", description: "The raised title bar with \"Upload JSON File\" and the close X at the end." },
+      { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog like Cancel (aria-label \"Cancel\")." },
+      { id: "upload-body", name: "Upload area", description: "The dialog body that holds the file upload drop zone (\"Drop files here\" with a Browse action)." },
+      { id: "dialog-footer", name: "Dialog footer", description: "The Actions row at the end that holds the single Cancel button." },
+    ], source: {"ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/App.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
   ],
   source: { ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/WorkspaceTools.tsx', hs: 'src/hs/ShellExtras.tsx', fd: 'src/App.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'The default gray Cancel is the lone button at the end of an upload dialog that waits for a file dropped in its body.',

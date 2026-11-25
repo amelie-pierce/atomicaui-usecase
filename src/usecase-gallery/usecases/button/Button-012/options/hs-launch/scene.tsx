@@ -9,19 +9,21 @@ export default function HsLaunchScene({ children }: ContextProps) {
       <MockTourTarget target="beams" />
       <View
         role="region"
+      data-ug-part="walkthrough-card"
         aria-label="Walkthrough"
         className="ug-tour__card"
         aui={{ scale: 'sm', color: 'surface', paint: 'solid', shape: 'soft', elevation: 4, sx: { display: 'flex', flexDirection: 'column', gap: '16', paddingBlockStart: '16', paddingBlockEnd: '16', paddingInlineStart: '16', paddingInlineEnd: '16' } }}
         style={{ insetInlineStart: 228, insetBlockStart: 8, inlineSize: 328 }}
       >
         <IconButton
+          data-ug-part="walkthrough-close"
           name="xmark"
           aria-label="Close walkthrough"
           aui={{ scale: 'sm', paint: 'text', color: 'surface' }}
           style={{ position: 'absolute', insetBlockStart: 4, insetInlineEnd: 4 }}
         />
         <View aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '16', paddingInlineEnd: '24' } }}>
-          <Type as="p" role="p3">Find a solution. See the General tutorial for more information on the Results Table.</Type>
+          <Type data-ug-part="step-text" as="p" role="p3">Find a solution. See the General tutorial for more information on the Results Table.</Type>
         </View>
         {children}
       </View>

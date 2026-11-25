@@ -7,7 +7,7 @@ export default function AdmFieldHelpScene({ host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 10)', inlineSize: 'min(100%, calc(var(--p-px-16) * 18))' }}>
       <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-        <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', alignItems: 'center' } }}>
+        <View data-ug-part="label-row" aui={{ scale: 'sm', profile: 'no-padding', paint: 'text', sx: { display: 'flex', alignItems: 'center' } }}>
           <Field.Label aui={{ scale: 'sm' }}>Material</Field.Label>
           <Tooltip.Provider>
             <Tooltip open>

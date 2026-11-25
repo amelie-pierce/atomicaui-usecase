@@ -5,7 +5,12 @@ export default defineUsecase({
   title: 'Open view options button',
 
   options: [
-    { id: "default", name: "Tonal outlined" },
+    { id: "default", name: "Tonal outlined", contextAnatomy: [
+      { id: "viewer-pane", name: "3D Viewer pane", description: "The 3D Viewer section with its heading and the viewer canvas that the controls float over." },
+      { id: "corner", name: "Options corner", description: "The top-end corner of the scene, 8px in, that holds the View options trigger." },
+      { id: "options-popover", name: "View options popover", description: "The open popover under the trigger (bottom, end, 4px offset) that holds the viewer controls." },
+      { id: "reset-view", name: "Reset view button", description: "The outlined bullseye IconButton in the popover that resets the camera." },
+    ] },
   ],
 
   apps: ['hcs', 'adm'],

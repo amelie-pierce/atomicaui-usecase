@@ -6,12 +6,12 @@ import { Radio, RadioGroup, Type, View } from '../../../../../kit';
 // Left out: the Reset view button, the Object Visibility checkboxes; the apps show the group enabled.
 export default function HcsProjectionScene(_: ContextProps) {
   return (
-    <View as="section" aria-label="3D Viewer" aui={{ color: 'surface-alt', paint: 'fixed', shape: 'soft', profile: 'default' }}>
-      <Type as="h2" role="l3" weight="semi-bold">3D Viewer</Type>
+    <View data-ug-part="viewer-pane" as="section" aria-label="3D Viewer" aui={{ color: 'surface-alt', paint: 'fixed', shape: 'soft', profile: 'default' }}>
+      <Type data-ug-part="viewer-title" as="h2" role="l3" weight="semi-bold">3D Viewer</Type>
       <View aui={{ color: 'surface', shape: 'soft', profile: 'no-padding' }}>
-        <div className="ug-scene">
+        <div data-ug-part="viewer-stage" className="ug-scene">
           <MockViewerCanvas />
-          <div className="ug-scene__controls">
+          <div data-ug-part="viewer-controls" className="ug-scene__controls">
             <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', alignItems: 'start', gap: '4' } }}>
               <RadioGroup aria-label="Camera projection" defaultValue="perspective" aui={{ scale: 'sm', profile: 'no-padding' }}>
                 <Radio value="perspective" aui={{ scale: 'sm', states: { unselected: { color: 'surface', paint: 'solid', sx: { borderWidth: '1', borderStyle: 'solid', borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }}>

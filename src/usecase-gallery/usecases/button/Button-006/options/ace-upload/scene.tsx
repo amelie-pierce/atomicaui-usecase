@@ -8,16 +8,16 @@ export default function AceUploadScene({ host }: ContextProps) {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false}>
-            <Dialog.Title aui={{ color: 'raised' }}>
+          <Dialog.Popup data-ug-part="dialog" initialFocus={false}>
+            <Dialog.Title data-ug-part="dialog-title" aui={{ color: 'raised' }}>
               Upload JSON File
               <Dialog.Spacer />
-              <Dialog.Close aria-label="Cancel" />
+              <Dialog.Close data-ug-part="dialog-close" aria-label="Cancel" />
             </Dialog.Title>
-            <Dialog.Body>
+            <Dialog.Body data-ug-part="upload-body">
               <FileUpload multiple={false} messages={{ idle: { text: 'Drop files here', action: 'Browse' } }} />
             </Dialog.Body>
-            <Dialog.Actions>
+            <Dialog.Actions data-ug-part="dialog-footer">
               <Dialog.Button>Cancel</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>

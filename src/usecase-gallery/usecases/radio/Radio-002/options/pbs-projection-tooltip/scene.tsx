@@ -6,12 +6,12 @@ import { Radio, RadioGroup, Tooltip, Type, View } from '../../../../../kit';
 // Shown with the Perspective tooltip open; left out: the Reset View button, the Object Visibility checkboxes; the app shows the group enabled.
 export default function PbsProjectionScene({ host }: ContextProps) {
   return (
-    <View as="section" aria-label="3D Viewer" aui={{ color: 'surface-alt', paint: 'fixed', shape: 'soft', profile: 'default' }}>
-      <Type as="h2" role="l3" weight="semi-bold">3D Viewer</Type>
+    <View data-ug-part="viewer-pane" as="section" aria-label="3D Viewer" aui={{ color: 'surface-alt', paint: 'fixed', shape: 'soft', profile: 'default' }}>
+      <Type data-ug-part="viewer-title" as="h2" role="l3" weight="semi-bold">3D Viewer</Type>
       <View aui={{ color: 'surface', shape: 'soft', profile: 'no-padding' }}>
-        <div className="ug-scene">
+        <div data-ug-part="viewer-stage" className="ug-scene">
           <MockViewerCanvas />
-          <div className="ug-scene__controls">
+          <div data-ug-part="viewer-controls" className="ug-scene__controls">
             <View aui={{ paint: 'text', profile: 'no-padding' }}>
               <RadioGroup defaultValue="perspective" aria-label="View mode" aui={{ scale: 'sm', profile: 'no-padding', sx: { flexDirection: 'row', gap: '8' } }}>
                 <Tooltip.Provider>
@@ -23,7 +23,7 @@ export default function PbsProjectionScene({ host }: ContextProps) {
                     </Tooltip.Trigger>
                     <Tooltip.Portal container={host}>
                       <Tooltip.Positioner side="top" sideOffset={4} className="ug-anchored">
-                        <Tooltip.Popup>Realistic 3D view with depth and perspective.</Tooltip.Popup>
+                        <Tooltip.Popup data-ug-part="radio-tooltip">Realistic 3D view with depth and perspective.</Tooltip.Popup>
                       </Tooltip.Positioner>
                     </Tooltip.Portal>
                   </Tooltip>

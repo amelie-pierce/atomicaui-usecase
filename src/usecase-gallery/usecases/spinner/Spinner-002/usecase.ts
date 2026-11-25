@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Large info spinner',
   apps: ['adc'],
   options: [
-    { id: "adc-report", name: "Generating report", source: {"adc":"src/adc/components/ReportFlow.tsx"} },
+    { id: "adc-report", name: "Generating report", contextAnatomy: [{ id: 'message', name: 'Status message', description: 'The semi-bold p1 text under the spinner, "Your design report is being generated. Please keep this window open.", which carries the status since the spinner is hidden from assistive tech.' }], source: {"adc":"src/adc/components/ReportFlow.tsx"} },
   ],
   source: { adc: 'src/adc/components/ReportFlow.tsx' },
   summary: 'An extra-large info spinner above a message, for a job that holds the user in a dialog.',

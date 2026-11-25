@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Licence gate country select',
   apps: ['ace'],
   options: [
-    { id: "ace-licence-country", name: "Licence gate country", apps: ["ace"], source: {"ace":"src/features/eula/ui/EulaGate.tsx"} },
+    { id: "ace-licence-country", showContext: false, name: "Licence gate country", apps: ["ace"], source: {"ace":"src/features/eula/ui/EulaGate.tsx"} },
   ],
   source: {
     ace: 'src/features/eula/ui/EulaGate.tsx',

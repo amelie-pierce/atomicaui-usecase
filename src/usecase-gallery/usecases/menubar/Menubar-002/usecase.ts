@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'File menu',
   apps: ['hs', 'adc', 'adm', 'ace', 'hcs', 'pbs', 'pfd', 'rws', 'agpd'],
   options: [
-    { id: "hs-file-menu", name: "File menu", apps: ["hs","adc"], source: {"hs":"src/hs/TopBar.tsx","adc":"src/adc/Workspace.tsx"} },
-    { id: "adm-file-menu", name: "File menu — UI variant 2", apps: ["adm","ace","hcs","pbs","pfd","rws","agpd"], source: {"adm":"src/app/layout/NavBar/NavBar.tsx","ace":"src/features/top-navigation/ui/AceNavBar.tsx","hcs":"src/App.tsx","pbs":"src/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","rws":"src/rws/TopBar.tsx","agpd":"src/agpd/TopBar.tsx"} },
+    { id: "hs-file-menu", showContext: false, name: "File menu", apps: ["hs","adc"], source: {"hs":"src/hs/TopBar.tsx","adc":"src/adc/Workspace.tsx"} },
+    { id: "adm-file-menu", showContext: false, name: "File menu — UI variant 2", apps: ["adm","ace","hcs","pbs","pfd","rws","agpd"], source: {"adm":"src/app/layout/NavBar/NavBar.tsx","ace":"src/features/top-navigation/ui/AceNavBar.tsx","hcs":"src/App.tsx","pbs":"src/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","rws":"src/rws/TopBar.tsx","agpd":"src/agpd/TopBar.tsx"} },
   ],
   source: {
     hs: 'src/hs/TopBar.tsx',

@@ -1,12 +1,23 @@
 import { defineUsecase } from '../../../define';
 
+const INPUT_PANEL_CONTEXT = [
+  { id: 'input-pane', name: 'Input pane', description: 'The soft surface-alt section labelled "Input panel" that holds the plate connection field.' },
+  { id: 'input-title', name: 'Pane title', description: 'The semi-bold "Input" heading at the top of the pane.' },
+];
+
+const SETTINGS_CONTEXT = [
+  { id: 'settings-trigger', name: 'Settings button', description: 'The Settings Button that opens the popover under it.' },
+  { id: 'settings-popup', name: 'Settings popover', description: 'The elevated popover that holds the settings, here the Auto-rotate 3D model group.' },
+  { id: 'settings-title', name: 'Settings title', description: 'The semi-bold "Settings" heading at the top of the popover.' },
+];
+
 export default defineUsecase({
   uiType: 'Radio',
   title: 'Option radio group',
   apps: ['agpd', 'rws', 'pbs', 'fd'],
   options: [
-    { id: "agpd-inline", name: "Labelled group", apps: ["agpd","rws","pbs"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx","pbs":"src/InputFields.tsx"} },
-    { id: "fd-settings", name: "Labelled group — UI variant 2", apps: ["fd"], source: {"fd":"src/App.jsx"} },
+    { id: "agpd-inline", contextAnatomy: INPUT_PANEL_CONTEXT, name: "Labelled group", apps: ["agpd","rws","pbs"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx","pbs":"src/InputFields.tsx"} },
+    { id: "fd-settings", contextAnatomy: SETTINGS_CONTEXT, name: "Labelled group — UI variant 2", apps: ["fd"], source: {"fd":"src/App.jsx"} },
   ],
   source: {
     agpd: 'src/agpd/inputs.tsx',

@@ -8,12 +8,13 @@ export default function AceButtonScene(_props: ContextProps) {
   return (
     <View
       as="section"
+      data-ug-part="tally-section"
       aria-labelledby="ug-job-tally-title"
       aui={{ scale: 'sm', profile: 'default', shape: 'none', paint: 'text', sx: { display: 'flex', flexDirection: 'column', width: 'fill' } }}
       style={{ inlineSize: 'min(100%, 480px)' }}
     >
-      <Type id="ug-job-tally-title" as="h3" role="l4" weight="semi-bold">Job tally</Type>
-      <Table aria-label="Job tally" aui={{ scale: 'sm', shape: 'soft' }}>
+      <Type data-ug-part="tally-title" id="ug-job-tally-title" as="h3" role="l4" weight="semi-bold">Job tally</Type>
+      <Table data-ug-part="tally-table" aria-label="Job tally" aui={{ scale: 'sm', shape: 'soft' }}>
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell aui={{ color: 'raised' }}>Job</Table.HeaderCell>

@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Confirm with warning icon',
   apps: ['hcs', 'ace', 'adm', 'adc'],
   options: [
-    { id: "hcs-reset", name: "Reset confirm", apps: ["hcs","ace","adm"], source: {"hcs":"src/components/HcsResetDialog.tsx","ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx","adm":"src/features/top-navigation/components/ResetDialog.tsx"} },
+    { id: "hcs-reset", showContext: false, name: "Reset confirm", apps: ["hcs","ace","adm"], source: {"hcs":"src/components/HcsResetDialog.tsx","ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx","adm":"src/features/top-navigation/components/ResetDialog.tsx"} },
     { id: "adc-reset", name: "Reset confirm — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: { hcs: 'src/components/HcsResetDialog.tsx', ace: 'src/features/reset-inputs/ui/ResetInputsAction.tsx', adm: 'src/features/top-navigation/components/ResetDialog.tsx', adc: 'src/adc/Workspace.tsx' },

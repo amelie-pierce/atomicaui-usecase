@@ -6,7 +6,11 @@ export default defineUsecase({
 
   apps: ['ace'],
   options: [
-    { id: "ace-button", name: "Add new entry", apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
+    { id: "ace-button", name: "Add new entry", apps: ["ace"], contextAnatomy: [
+      { id: "tally-section", name: "Job tally section", description: "The section that stacks the title, table and Add job button in a column." },
+      { id: "tally-title", name: "Section title", description: "The \"Job tally\" heading." },
+      { id: "tally-table", name: "Job tally table", description: "The table with a Job header and one \"Job 1\" row above the button." },
+    ], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
   ],
   source: { ace: 'src/features/calculation/ui/CalculationOutput.tsx' },
   summary: 'A solid secondary Button with a plus icon appends an empty job entry under the Job tally table.',

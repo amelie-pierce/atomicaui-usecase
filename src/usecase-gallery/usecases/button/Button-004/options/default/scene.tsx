@@ -8,6 +8,7 @@ export default function BodyTextContext({ children }: ContextProps) {
   return (
     <View
       role="status"
+      data-ug-part="notice"
       aui={{ scale: 'sm', profile: 'default', color: 'warning', paint: 'tonal', shape: 'soft', sx: { display: 'flex', alignItems: 'center', textAlign: 'start' } }}
       style={{ inlineSize: 'min(100%, 400px)' }}
     >
@@ -15,7 +16,7 @@ export default function BodyTextContext({ children }: ContextProps) {
       <View aui={{ scale: 'sm', profile: 'no-padding', color: 'warning', paint: 'text', sx: { display: 'flex', flexDirection: 'column', minWidth: '0' } }}>
         <Type as="h3" role="l4" weight="semi-bold">No Output Results</Type>
         <Type role="l4" weight="semi-bold">You can try:</Type>
-        <View as="ul" aui={{ scale: 'sm', profile: 'no-padding', color: 'warning', paint: 'text', sx: { paddingInlineStart: '24' } }} style={{ listStyle: 'disc' }}>
+        <View data-ug-part="try-list" as="ul" aui={{ scale: 'sm', profile: 'no-padding', color: 'warning', paint: 'text', sx: { paddingInlineStart: '24' } }} style={{ listStyle: 'disc' }}>
           <li>
             {children}
           </li>

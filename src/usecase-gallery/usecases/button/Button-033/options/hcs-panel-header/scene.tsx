@@ -6,6 +6,7 @@ import { Accordion, IconButton, Panels, Tooltip, Type, View } from '../../../../
 export default function HcsPanelHeaderScene({ children }: ContextProps) {
   return (
     <View
+      data-ug-part="input-pane"
       as="aside"
       aria-label="Input"
       aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }}
@@ -24,7 +25,7 @@ export default function HcsPanelHeaderScene({ children }: ContextProps) {
             </Tooltip.Portal>
           </Tooltip>
         </Tooltip.Provider>
-        <Type as="h2" role="l3" weight="semi-bold">Input</Type>
+        <Type data-ug-part="pane-title" as="h2" role="l3" weight="semi-bold">Input</Type>
         <Panels.Spacer />
         {children}
       </View>

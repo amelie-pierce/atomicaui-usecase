@@ -6,7 +6,7 @@ export default defineUsecase({
 
   apps: ['adm', 'fd'],
   options: [
-    { id: "adm-welcome", name: "Welcome dialog", apps: ["adm","fd"], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","fd":"src/components/HelpCenter.jsx"} },
+    { id: "adm-welcome", name: "Welcome dialog", apps: ["adm","fd"], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","fd":"src/components/HelpCenter.jsx"}, showContext: false },
   ],
   source: { adm: 'src/features/top-navigation/components/Tutorials.tsx', fd: 'src/components/HelpCenter.jsx' },
   summary: 'A welcome dialog that offers the guided tour: a gray Close and a solid Start Walkthrough.',

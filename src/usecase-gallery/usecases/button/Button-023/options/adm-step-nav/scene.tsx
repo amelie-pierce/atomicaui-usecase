@@ -19,7 +19,7 @@ export default function AdmStepNavScene() {
           aui={{ scale: 'sm', paint: 'text', color: 'surface' }}
           style={{ position: 'absolute', insetBlockStart: 4, insetInlineEnd: 4 }}
         />
-        <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Multi Design</Type>
+        <Type data-ug-part="step-title" as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>Multi Design</Type>
         <Type role="p3">Explore which products meet design requirements.</Type>
         <View data-ug-part="step-nav" className="ug-tour__nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
           <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
@@ -30,7 +30,7 @@ export default function AdmStepNavScene() {
             Next
             <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
           </Button>
-          <Type as="span" role="p3" color="muted" style={{ marginInlineStart: 'auto', whiteSpace: 'nowrap' }}>2 / 4</Type>
+          <Type data-ug-part="step-counter" as="span" role="p3" color="muted" style={{ marginInlineStart: 'auto', whiteSpace: 'nowrap' }}>2 / 4</Type>
         </View>
       </View>
     </div>

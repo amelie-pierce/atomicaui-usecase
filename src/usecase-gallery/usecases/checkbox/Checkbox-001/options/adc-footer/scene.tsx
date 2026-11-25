@@ -26,8 +26,8 @@ export default function AdcFooterScene({ host }: ContextProps) {
               >
                 <Checkbox.Label>Send me a copy of my responses</Checkbox.Label>
               </Checkbox>
-              <Dialog.Button>Cancel</Dialog.Button>
-              <Dialog.Button aui={{ color: 'primary', paint: 'solid' }}>Send</Dialog.Button>
+              <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="send" aui={{ color: 'primary', paint: 'solid' }}>Send</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

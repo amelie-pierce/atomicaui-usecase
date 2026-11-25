@@ -5,7 +5,10 @@ export default defineUsecase({
   title: 'Reset to default button',
 
   options: [
-    { id: "default", name: "Raised solid with icon" },
+    { id: "default", name: "Raised solid with icon", contextAnatomy: [
+      { id: "input-pane", name: "Input pane", description: "The narrow Input aside that holds the form sections." },
+      { id: "beam-section", name: "Beam Properties section", description: "The open \"Beam Properties\" Accordion item with its layer-group icon and chevron, holding the Fc perp number field (650 psi) with Reset to default below it." },
+    ] },
   ],
   apps: ['hcs'],
   source: { hcs: 'src/App.tsx' },

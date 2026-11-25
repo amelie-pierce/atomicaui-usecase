@@ -23,7 +23,7 @@ export default function FdAppsCloseScene({ host }: ContextProps) {
                 }
               >
                 <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
-                  <Type as="h2" role="l3" weight="semi-bold">Explore More Applications</Type>
+                  <Type data-ug-part="apps-title" as="h2" role="l3" weight="semi-bold">Explore More Applications</Type>
                   <Button aria-label="Close applications" aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}>
                     <Icon name="xmark" />
                   </Button>

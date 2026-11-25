@@ -7,8 +7,8 @@ import ToastStack from '../../toast-stack';
 export default function HcsViewportScene({ host }: ContextProps) {
   const [pane, setPane] = useState<HTMLElement | null>(null);
   return (
-    <View ref={setPane} aui={{ paint: 'text', profile: 'no-padding' }} style={{ position: 'relative', minBlockSize: 'calc(var(--p-px-16) * 14)', inlineSize: 'min(100%, calc(var(--p-px-16) * 36))' }}>
-      <Type as="h2" role="l3" weight="semi-bold">Input</Type>
+    <View data-ug-part="pane" ref={setPane} aui={{ paint: 'text', profile: 'no-padding' }} style={{ position: 'relative', minBlockSize: 'calc(var(--p-px-16) * 14)', inlineSize: 'min(100%, calc(var(--p-px-16) * 36))' }}>
+      <Type data-ug-part="pane-title" as="h2" role="l3" weight="semi-bold">Input</Type>
       <Toast.Provider timeout={0} limit={1}>
         <ToastStack container={pane ?? host} />
       </Toast.Provider>

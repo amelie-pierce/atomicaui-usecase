@@ -1,11 +1,15 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'trigger', name: 'Trigger', selector: '[class~="aui-dialog-trigger"]', description: 'The secondary solid soft "Thickness Calculator" button on the ADM base plate inputs that opens the dialog; it is written inside the same Dialog root.' },
+];
+
 export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Calculator dialog',
   apps: ['adm'],
   options: [
-    { id: "adm-calculator", name: "Calculator dialog", apps: ["adm"], source: {"adm":"src/features/base-plate/components/ThicknessCalculatorDialog.tsx"} },
+    { id: "adm-calculator", name: "Calculator dialog", apps: ["adm"], source: {"adm":"src/features/base-plate/components/ThicknessCalculatorDialog.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
   ],
   source: {
     adm: 'src/features/base-plate/components/ThicknessCalculatorDialog.tsx',
@@ -15,12 +19,6 @@ export default defineUsecase({
   when: 'Use it for a small side calculation that feeds a value back into the form and should not leave the page. Do not use it for a confirm (AlertDialog-003) or a form that is the main work of the page.',
   how: 'The dialog is opened by a Dialog.Trigger written inside the Dialog root instead of a controlled open (a secondary solid soft button at scale "sm"); the popup, raised Title with the close X (Button-031) and Body measure the same as the template picker. The popup is the default 480px. The example is the Dialog frame you copy (Popup, raised Title with the close X, Body); the calculator fields are supporting parts shown in In context.',
   anatomy: [
-    {
-      id: 'trigger',
-      name: 'Trigger',
-      selector: '[class~="aui-dialog-trigger"]',
-      description: 'The secondary solid soft "Thickness Calculator" button of the ADM scene that opens the dialog from the base plate inputs; the example frame shows the dialog already open without it.',
-    },
     {
       id: 'overlay',
       name: 'Overlay',

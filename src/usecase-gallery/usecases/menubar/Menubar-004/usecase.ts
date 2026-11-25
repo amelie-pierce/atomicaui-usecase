@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Settings gear menu',
   apps: ['hcs', 'adm', 'ace', 'hs', 'pfd', 'agpd', 'rws', 'pbs'],
   options: [
-    { id: "hcs-gear-menu", name: "Gear menu", apps: ["hcs","adm"], source: {"hcs":"src/App.tsx","adm":"src/features/settings/components/SettingsMenu.tsx"} },
-    { id: "ace-gear-menu", name: "Gear menu — UI variant 2", apps: ["ace","hs","pfd","agpd","rws","pbs"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx","hs":"src/hs/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx","pbs":"src/TopBar.tsx"} },
+    { id: "hcs-gear-menu", showContext: false, name: "Gear menu", apps: ["hcs","adm"], source: {"hcs":"src/App.tsx","adm":"src/features/settings/components/SettingsMenu.tsx"} },
+    { id: "ace-gear-menu", showContext: false, name: "Gear menu — UI variant 2", apps: ["ace","hs","pfd","agpd","rws","pbs"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx","hs":"src/hs/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx","pbs":"src/TopBar.tsx"} },
   ],
   source: {
     hcs: 'src/App.tsx',

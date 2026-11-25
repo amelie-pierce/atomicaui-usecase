@@ -19,7 +19,7 @@ export default function HcsLastStepScene() {
           aui={{ scale: 'sm', paint: 'text', color: 'surface' }}
           style={{ position: 'absolute', insetBlockStart: 4, insetInlineEnd: 4 }}
         />
-        <Type as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>File</Type>
+        <Type data-ug-part="step-title" as="h2" weight="medium" aui={{ sx: { paddingInlineEnd: '24' } }}>File</Type>
         <Type role="p3">Use File to open or save a project.</Type>
         <View data-ug-part="step-nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
           <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
@@ -30,7 +30,7 @@ export default function HcsLastStepScene() {
             End
             <Button.Icon name="check" aui={{ scale: 'sm' }} />
           </Button>
-          <Type as="span" role="p3" color="muted" style={{ marginInlineStart: 'auto', whiteSpace: 'nowrap' }}>6 / 6</Type>
+          <Type data-ug-part="step-counter" as="span" role="p3" color="muted" style={{ marginInlineStart: 'auto', whiteSpace: 'nowrap' }}>6 / 6</Type>
         </View>
       </View>
     </div>

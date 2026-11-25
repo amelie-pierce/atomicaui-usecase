@@ -1,12 +1,17 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+      { id: 'rows', name: 'Result rows', description: 'The table body rows under the header; with Load sorted A to Z they follow the chosen order.' },
+      { id: 'other-header', name: 'Neighbouring header cell', description: 'The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to.' },
+    ];
+
 export default defineUsecase({
   uiType: 'Popover',
   title: 'Column menu',
   apps: ['hcs', 'hs', 'pfd'],
   options: [
-    { id: "hcs-column-menu", name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} },
-    { id: "pfd-column-menu", name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} },
+    { id: "hcs-column-menu", contextAnatomy: CONTEXT_ANATOMY, name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} },
+    { id: "pfd-column-menu", contextAnatomy: CONTEXT_ANATOMY, name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} },
   ],
   source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx', pfd: 'src/pfd/ColumnMenu.tsx' },
   summary: 'A popover of choices opened from the kebab of a table header cell: the Sort radios for that column.',

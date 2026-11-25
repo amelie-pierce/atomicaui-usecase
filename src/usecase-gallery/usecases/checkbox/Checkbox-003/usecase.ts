@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Show passed checks filter',
   apps: ['fd'],
   options: [
-    { id: "fd-filter", name: "Table filter", apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
+    { id: "fd-filter", showContext: false, name: "Table filter", apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
   ],
   source: {
     fd: 'src/components/RowExpansion.jsx',

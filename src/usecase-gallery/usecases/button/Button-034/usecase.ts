@@ -1,12 +1,16 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'results-table', name: 'Results table', selector: '[class~="aui-table"]', description: 'The Table whose raised header row holds the Fastener Pattern heading and its info button.' },
+];
+
 export default defineUsecase({
   uiType: 'Icon button',
   title: 'Show column info button',
 
   apps: ['fd'],
   options: [
-    { id: "fd-header-info", name: "Header info", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
+    { id: "fd-header-info", contextAnatomy: CONTEXT_ANATOMY, name: "Header info", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
   ],
   source: { fd: 'src/components/ui.jsx' },
   summary: 'A transparent icon-only button with a circle-info opens an explanation popover from a table column header.',

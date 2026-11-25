@@ -5,7 +5,11 @@ export default defineUsecase({
   title: 'Top bar action button',
   apps: ['hs', 'adc', 'adm', 'ace', 'hcs', 'pbs', 'pfd', 'rws', 'agpd'],
   options: [
-    { id: "hs-top-bar", name: "Action buttons", source: {"hs":"src/hs/TopBar.tsx"} },
+    { id: "hs-top-bar", contextAnatomy: [
+      { id: 'file-menu', name: 'File menu trigger', description: 'The File dropdown trigger at the start of the bar, which opens the file actions.' },
+      { id: 'reset', name: 'Reset button', description: 'The plain Reset Menubar.Button next to About that restores the design to its defaults.' },
+      { id: 'help-menu', name: 'Help Center trigger', description: 'The Help Center dropdown trigger at the end of the bar.' },
+    ], name: "Action buttons", source: {"hs":"src/hs/TopBar.tsx"} },
   ],
   source: {
     hs: 'src/hs/TopBar.tsx',

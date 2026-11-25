@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Data preview table',
   apps: ['adc'],
   options: [
-    { id: "adc-preview", name: "Data preview table", apps: ["adc"], source: {"adc":"src/adc/components/CapImportSteps.tsx"} },
+    { id: "adc-preview", name: "Data preview table", showContext: false, apps: ["adc"], source: {"adc":"src/adc/components/CapImportSteps.tsx"} },
   ],
   source: {
     adc: 'src/adc/components/CapImportSteps.tsx',

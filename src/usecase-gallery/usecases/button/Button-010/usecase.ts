@@ -6,7 +6,11 @@ export default defineUsecase({
 
   apps: ['agpd'],
   options: [
-    { id: "agpd-lock-hint", name: "Lock hint", apps: ["agpd"], source: {"agpd":"src/agpd/inputs.tsx"} },
+    { id: "agpd-lock-hint", name: "Lock hint", apps: ["agpd"], contextAnatomy: [
+      { id: "lock-trigger", name: "Lock trigger", description: "The square lock button after the field label (aria-label \"Thickness is locked\") that opens the hint on hover or focus." },
+      { id: "hint-popup", name: "Hint popup", description: "The 288px elevated surface popup above the trigger (top, 4px offset) that holds the explanation and the action." },
+      { id: "hint-text", name: "Hint text", description: "The line \"Controlled by Plate Option\" and its current value \"All Plates based on the stock model\"." },
+    ], source: {"agpd":"src/agpd/inputs.tsx"} },
   ],
   source: { agpd: 'src/agpd/inputs.tsx' },
   summary: 'A small primary text Button in a lock popover reveals the option that controls a locked field.',

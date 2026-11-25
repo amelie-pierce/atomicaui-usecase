@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Single centered action',
   apps: ['ace', 'hs'],
   options: [
-    { id: "ace-relaunch", name: "Relaunch notice", apps: ["ace","hs"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","hs":"src/hs/LicenseGate.tsx"} },
+    { id: "ace-relaunch", showContext: false, name: "Relaunch notice", apps: ["ace","hs"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","hs":"src/hs/LicenseGate.tsx"} },
   ],
   source: { ace: 'src/features/eula/ui/EulaGate.tsx', hs: 'src/hs/LicenseGate.tsx' },
   summary: 'A blocking notice with no close X and one solid button centred in the footer, the only way forward.',

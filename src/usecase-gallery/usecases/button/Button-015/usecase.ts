@@ -6,7 +6,13 @@ export default defineUsecase({
 
   apps: ['adc'],
   options: [
-    { id: "adc-ok", name: "Info OK", apps: ["adc"], source: {"adc":"src/adc/components/DesignCapacityDialog.tsx"} },
+    { id: "adc-ok", name: "Info OK", apps: ["adc"], contextAnatomy: [
+      { id: "dialog", name: "Dialog", description: "The open alert dialog." },
+      { id: "dialog-title", name: "Dialog title", description: "The raised title bar \"Maximum Number of Designs Reached\"." },
+      { id: "error-icon", name: "Error icon", description: "The error-colored circle-xmark icon before the title." },
+      { id: "dialog-close", name: "Close button", description: "The X at the end of the title, shown in a \"Close\" tooltip." },
+      { id: "message", name: "Message", description: "The text that a Project can contain at most 15 Designs." },
+    ], source: {"adc":"src/adc/components/DesignCapacityDialog.tsx"} },
   ],
   source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' },
   summary: 'A solid primary Button, orange with white text, is the lone OK that acknowledges a notice.',

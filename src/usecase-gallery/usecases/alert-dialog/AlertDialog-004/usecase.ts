@@ -6,7 +6,7 @@ export default defineUsecase({
 
   apps: ['ace', 'adm', 'pbs', 'hs', 'fd'],
   options: [
-    { id: "ace-delete", name: "Delete confirm", apps: ["ace","adm"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx","adm":"src/features/templates/components/NewFromTemplateDialog.tsx"} },
+    { id: "ace-delete", showContext: false, name: "Delete confirm", apps: ["ace","adm"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx","adm":"src/features/templates/components/NewFromTemplateDialog.tsx"} },
     { id: "pbs-delete", name: "Delete confirm — UI variant 2", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
     { id: "hs-delete", name: "Delete confirm — UI variant 3", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} },
   ],

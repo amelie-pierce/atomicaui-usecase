@@ -5,8 +5,8 @@ import { Radio, RadioGroup, Type, View } from '../../../../../kit';
 // Left out: the help trigger and lock hint of the label row, the per-radio disabled rule; the apps show the group enabled.
 export default function AgpdInlineScene(_: ContextProps) {
   return (
-    <View as="section" aria-label="Input panel" aui={{ color: 'surface-alt', paint: 'fixed', shape: 'soft', profile: 'default' }}>
-      <Type as="h2" role="l3" weight="semi-bold">Input</Type>
+    <View data-ug-part="input-pane" as="section" aria-label="Input panel" aui={{ color: 'surface-alt', paint: 'fixed', shape: 'soft', profile: 'default' }}>
+      <Type data-ug-part="input-title" as="h2" role="l3" weight="semi-bold">Input</Type>
       <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, calc(var(--p-px-16) * 20))' }}>
         <RadioGroup defaultValue="welded" direction="row" aui={{ scale: 'sm', profile: 'no-padding' }}>
           <RadioGroup.Label aui={{ sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '4', width: 'fill' } }}>Plate connection</RadioGroup.Label>

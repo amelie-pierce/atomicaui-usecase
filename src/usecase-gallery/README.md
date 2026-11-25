@@ -35,7 +35,7 @@ The tree is component > UI type > use case. A use case is one business action su
 
 Every use case has `options` in `usecase.ts`. One option is one distinct rendered UI of the action, including an enabled/disabled state, icon treatment, app-specific structure or context. Option names describe the UI, never the app. Apps with identical rendered UI can share an option; a measured difference gets a different option.
 
-The detail page has exactly one option selector: a select in the header of the left column, beside the `Component` / `In context` toggle for the two views. Choosing an option updates the preview, Anatomy, app badges and complete Document together. The right column is the Document; there is no Document/Code tab. The document contains both Component UI and In context code sections, plus complete API and Anatomy details. Save and Copy use the selected In context code.
+The detail page has exactly one option selector: a select in the header of the left column, beside the view toggle. Choosing `Component` or `In context` updates the preview and the entire right-hand document together, including prose, Anatomy, app badges, references and code. The Component view always appears. Add the In context view only when its scene adds real surrounding app UI; when it has no surrounding context (for example, Tooltip-001's isolated gear trigger and tooltip), set `showContext: false` and show only Component. Author context-specific prose under the option's `contextDocument`; fields omitted there reuse use-case prose only when it accurately describes both views. Code shows just the selected view: the Component code is `example.tsx`; the In context code is generated from the selected option's `scene.tsx` plus its example and must reproduce the preview. Save and Copy use the selected view's code.
 
 Example shape:
 
@@ -74,6 +74,12 @@ export default defineUsecase({
       name: 'Primary solid submit',
       apps: ['hcs'],
       source: { hcs: 'src/.../form.tsx' },
+      contextDocument: {
+        summary: 'The Submit button within the form footer.',
+        where: 'The form footer in the edit pane.',
+        when: 'Use when submitting the completed form.',
+        how: 'The scene places the button next to the form fields.',
+      },
     },
   ],
 });
@@ -83,7 +89,7 @@ The catalog loads `Scene` and `Example` from `options/<id>/scene.tsx` and `examp
 
 ## Anatomy and document quality
 
-Anatomy is authored per use case and option, not generic boilerplate. Re-audit it against the mounted UI whenever the option changes. Every visible part must have one shared part id linked to the exact element through a selector or `data-ug-part`. Include a specific description, usage notes, states and accessibility information for every part. Anatomy steps show only the part's name and its description: no code sample, code block, or component-token chip (`Button.Icon`) under a step. Hide only a part the selected UI genuinely does not render.
+Component Anatomy stays authored on the use case and describes the component UI. Each option can author `contextAnatomy` for parts added by its In context scene; the context view combines those parts with the component Anatomy. Re-audit both against their mounted views whenever the option changes. Every visible part must have one shared part id linked to the exact element through a selector or `data-ug-part`. Include a specific description, usage notes, states and accessibility information for every part. Anatomy steps show only the part's name and its description: no code sample, code block, or component-token chip (`Button.Icon`) under a step. Hide only a part the selected UI genuinely does not render.
 
 For a dialog, list the actual rendered shell and content: overlay when present, container/popup, header/title, close icon, body/content, footer and each action button. If a body contains a form, accordion or radio list, describe the actual visible controls and keep their code in the selected option's document. Hovering or keyboard-focusing a step highlights its element in the preview (a mouse click does not keep the highlight); the preview never changes Anatomy. The highlight is an out-of-flow overlay that sits beside the scrolling stage, never inside it, so it cannot change the stage's scroll size.
 
@@ -91,7 +97,7 @@ For a dialog, list the actual rendered shell and content: overlay when present, 
 
 `scene.tsx` is the selected option's real app context. It receives `{ children, host }`, places the Component UI where the source app places it and retains every visible part of that UI. `host` is the stage's content wrapper, which `hooks/use-stage-fit.ts` zooms down when the content is larger than the stage. The fit counts content only: a fixed backdrop or viewport frames the stage and is skipped, so a dialog that fits is not shrunk, and fully transparent content (a popup not yet placed) is skipped until it is shown. A preview never scrolls and never clips; a component that does not fit is scaled, and nothing in the stage (a highlight, outline, shadow or fixed frame) may add to its scroll size. Keep scenes minimal but faithful; use mock data only for content. Record source paths for the apps listed on the option and explain deliberate omissions in `how`.
 
-Portaled Dialog, Popover and Tooltip parts use the stage host and preview-only props (`open`, `modal={false}`, `container={host}`, `anchor={host}`) that `catalog/snippet.ts` strips from copied code. Popover and Tooltip scenes are open and non-modal so the visible popup can be inspected. The stage is the preview's frame; do not add a page-covering overlay outside it.
+Portaled Dialog, Popover and Tooltip parts use the stage host for the preview. In context code preserves visible state props such as `open` and `modal={false}` and the scene's mock content; it strips only the gallery's host container and anatomy marker props. Popover and Tooltip scenes are open and non-modal so the visible popup can be inspected. The stage is the preview's frame; do not add a page-covering overlay outside it.
 
 ## Code and validation
 

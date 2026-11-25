@@ -42,10 +42,10 @@ export default function HsConfigureColumnsScene({ host }: ContextProps) {
                   ))}
                 </List>
                 <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', minWidth: '0', justifyContent: 'between' } }}>
-                  <IconButton name="rotate-left" aria-label="Reset columns to default" aui={{ paint: 'text' }} />
-                  <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', minWidth: '0' } }}>
-                    <Button aui={{ paint: 'text' }}>Cancel</Button>
-                    <Button aui={{ color: 'secondary', paint: 'solid' }}>Save</Button>
+                  <IconButton data-ug-part="reset" name="rotate-left" aria-label="Reset columns to default" aui={{ paint: 'text' }} />
+                  <View data-ug-part="actions" aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', gap: '8', minWidth: '0' } }}>
+                    <Button data-ug-part="cancel" aui={{ paint: 'text' }}>Cancel</Button>
+                    <Button data-ug-part="save" aui={{ color: 'secondary', paint: 'solid' }}>Save</Button>
                   </View>
                 </View>
               </Popover.Popup>

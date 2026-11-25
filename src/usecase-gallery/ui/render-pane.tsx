@@ -1,35 +1,38 @@
 import { Suspense, useRef, useState } from 'react';
 import { Button, ToggleGroup, Type } from '../kit';
-import type { Usecase, UsecaseOption } from '../types';
+import type { PreviewMode, Usecase, UsecaseOption } from '../types';
 import { StageHostContext } from '../hooks/use-stage-host';
 import type { AnatomyPart } from '../types';
 import { AnatomyOverlay, usePreviewAnatomy } from '../hooks/use-preview-anatomy';
 import { useStageFit } from '../hooks/use-stage-fit';
 import { OptionBar } from './option-bar';
-
-type Mode = 'component' | 'context';
-
-const MODES: { value: Mode; label: string }[] = [
+const MODES: { value: PreviewMode; label: string }[] = [
   { value: 'component', label: 'Component' },
   { value: 'context', label: 'In context' },
 ];
 
 /** The In context UI of a selection-based use case: the chosen option's scene with the example placed in it, in a stage of its own. */
-function ContextStage({ option, hidden }: { option: UsecaseOption; hidden: boolean }) {
+function ContextStage({ option, hidden, anatomy, hoveredPartId, onAvailablePartsChange }: { option: UsecaseOption; hidden: boolean; anatomy: AnatomyPart[]; hoveredPartId?: string; onAvailablePartsChange: (partIds: string[]) => void }) {
   const [fit, setFit] = useState<HTMLDivElement | null>(null);
+  const stageRef = useRef<HTMLDivElement | null>(null);
   const { Example, Scene } = option;
-  useStageFit(fit);
+  const scale = useStageFit(fit);
+  const overlay = usePreviewAnatomy(stageRef, anatomy, hoveredPartId, hidden ? undefined : onAvailablePartsChange, scale, !hidden);
   return (
-    <div className="ug-render__stage" hidden={hidden}>
-      <div className="ug-render__fit" ref={setFit}>
-        <Suspense fallback={null}>
-          {fit && (
-            <Scene host={fit}>
-              <Example />
-            </Scene>
-          )}
-        </Suspense>
+    <div className="ug-render__viewport" hidden={hidden}>
+      <div className="ug-render__stage" ref={stageRef}>
+        <div className="ug-render__fit" ref={setFit}>
+          <Suspense fallback={null}>
+            {fit && (
+              <Scene host={fit}>
+                <Example />
+              </Scene>
+            )}
+          </Suspense>
+        </div>
       </div>
+      {/* Keep the context highlight outside the scrolling stage, as in Component mode. */}
+      <AnatomyOverlay rect={overlay} />
     </div>
   );
 }
@@ -38,6 +41,8 @@ function ContextStage({ option, hidden }: { option: UsecaseOption; hidden: boole
 export function RenderPane({
   usecase,
   option,
+  mode,
+  onModeChange,
   anatomy,
   hoveredPartId,
   onAvailablePartsChange,
@@ -45,17 +50,18 @@ export function RenderPane({
 }: {
   usecase: Usecase;
   option: UsecaseOption;
+  mode: PreviewMode;
+  onModeChange: (mode: PreviewMode) => void;
   anatomy: AnatomyPart[];
   hoveredPartId?: string;
   onAvailablePartsChange: (partIds: string[]) => void;
   onOptionChange: (id: string) => void;
 }) {
   const { Example } = option;
-  const [mode, setMode] = useState<Mode>('component');
   const [fit, setFit] = useState<HTMLDivElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const scale = useStageFit(fit);
-  const overlay = usePreviewAnatomy(stageRef, anatomy, hoveredPartId, onAvailablePartsChange, scale);
+  const overlay = usePreviewAnatomy(stageRef, anatomy, mode === 'component' ? hoveredPartId : undefined, mode === 'component' ? onAvailablePartsChange : undefined, scale, mode === 'component');
   return (
     <section className="ug-render ug-render--split" role="region" aria-label="Preview">
       <div className="ug-render__header">
@@ -65,9 +71,9 @@ export function RenderPane({
           aria-label="Preview mode"
           value={[mode]}
           // Pressing the active segment would clear the group; keep one mode selected.
-          onValueChange={([next]) => next && setMode(next as Mode)}
+          onValueChange={([next]) => next && onModeChange(next as PreviewMode)}
         >
-          {MODES.map(({ value, label }) => (
+          {(option.showContext ? MODES : MODES.slice(0, 1)).map(({ value, label }) => (
             <ToggleGroup.Item
               key={value}
               value={value}
@@ -91,7 +97,7 @@ export function RenderPane({
         {/* A sibling of the scrolling stage, not a child: inside it the highlight would count as scrollable overflow. */}
         <AnatomyOverlay rect={overlay} />
       </div>
-      <ContextStage option={option} hidden={mode !== 'context'} />
+      <ContextStage option={option} hidden={mode !== 'context'} anatomy={anatomy} hoveredPartId={mode === 'context' ? hoveredPartId : undefined} onAvailablePartsChange={onAvailablePartsChange} />
       {option.note && (
         <Type role="l3" as="p" color="muted" className="ug-render__note">
           {option.note}

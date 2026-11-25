@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Disabled control tooltip',
   apps: ['hcs', 'fd', 'hs'],
   options: [
-    { id: "hcs-disabled-radio", name: "Disabled control", apps: ["hcs","fd","hs"], source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx","hs":"src/hs/OutputPane.tsx"} },
+    { id: "hcs-disabled-radio", name: "Disabled control", apps: ["hcs","fd","hs"], showContext: false, source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx","hs":"src/hs/OutputPane.tsx"} },
   ],
   source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/Results.jsx', hs: 'src/hs/OutputPane.tsx' },
   summary: 'A control that cannot be used shows why in a tooltip on its wrapper.',

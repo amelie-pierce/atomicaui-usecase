@@ -1,6 +1,8 @@
 import type { ComponentType, ReactNode } from 'react';
 import type { AppKey } from './apps';
 
+export type PreviewMode = 'component' | 'context';
+
 /** Written once per component in `usecases/<component>/<component>.meta.ts`. */
 export interface ComponentMeta {
   /** Id prefix shared by every use case of the component, e.g. `Button` for `Button-013`. */
@@ -33,6 +35,12 @@ export interface UsecaseOptionDoc {
   apps?: AppKey[];
   /** Plain text shown below the In context UI when this UI needs a specific measured note. */
   note?: string;
+  /** Whether this option adds real surrounding app UI worth showing in the In context view. Defaults to true. */
+  showContext?: boolean;
+  /** Parts added by this option's scene; component anatomy is included automatically in the In context view. */
+  contextAnatomy?: AnatomyPart[];
+  /** View-specific documentation for the scene. Omitted fields share the use case's general prose. */
+  contextDocument?: Partial<UsecaseViewDoc>;
   /** The source file of the scene per app of the option; overrides the use case's `source` for these apps. */
   source?: Partial<Record<AppKey, string>>;
 }
@@ -64,6 +72,22 @@ export interface ApiProp {
 export interface RelatedComponent {
   label: string;
   href: string;
+}
+
+/** Prose and reference sections that describe one rendered view of a use case. */
+export interface UsecaseViewDoc {
+  summary: string;
+  where: string;
+  when: string;
+  how: string;
+  usage?: string;
+  behavior?: string;
+  variants?: string;
+  accessibility?: AccessibilityDoc;
+  prompt?: string;
+  debugPrompt?: string;
+  api?: { props?: ApiProp[] };
+  related?: RelatedComponent[];
 }
 
 /** Written once per use case in `usecases/<component>/<UseCaseId>/usecase.ts`. */
@@ -100,9 +124,9 @@ export interface UsecaseDoc {
   apps: AppKey[];
   /**
    * The selection-based detail page. Every UI of the action (each look and state, enabled or disabled) is one option of one
-   * list; the page shows one control at the top, and below it the Component UI, In context UI and complete document of the
-   * chosen option. The first option's example is `example.tsx`; every other option has `options/<id>/example.tsx`, and every
-   * option has `options/<id>/scene.tsx`.
+   * list; the page shows one control at the top, and below it the selected view and its matching document. The first
+   * option's example is `example.tsx`; every other option has `options/<id>/example.tsx`, and every option has
+   * `options/<id>/scene.tsx`.
    */
   options: UsecaseOptionDoc[];
   /**
@@ -126,6 +150,9 @@ export interface UsecaseOption {
   apps: AppKey[];
   label: string;
   note?: string;
+  showContext: boolean;
+  contextAnatomy: AnatomyPart[];
+  contextDocument?: Partial<UsecaseViewDoc>;
   Scene: ComponentType<ContextProps>;
   Example: ComponentType;
   loadExampleCode: () => Promise<string>;

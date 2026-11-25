@@ -119,7 +119,7 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
   const { id } = usecase;
   const ids = new Set<string>();
   const options = docs.map((raw, index): UsecaseOption => {
-    const { id: optionId, name, apps = usecase.apps, note, source } = raw;
+    const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextDocument } = raw;
     for (const app of [...apps, ...Object.keys(source ?? {})] as AppKey[]) {
       if (!apps.includes(app) || !usecase.apps.includes(app)) fail(`${id} sets the option "${optionId}" to app "${app}", which is not in its apps`);
     }
@@ -145,6 +145,9 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
       apps,
       label: appLabels(apps),
       note,
+      showContext,
+      contextAnatomy,
+      contextDocument,
       Scene,
       Example,
       loadExampleCode,

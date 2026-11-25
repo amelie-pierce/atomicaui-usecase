@@ -3,7 +3,7 @@ import { APPS } from '../apps';
 import type { AppKey } from '../apps';
 import { useCopy } from '../hooks/use-copy';
 import { Button, Chip, Type } from '../kit';
-import type { AnatomyPart, Usecase, UsecaseOption } from '../types';
+import type { AnatomyPart, PreviewMode, Usecase, UsecaseOption } from '../types';
 
 function AppBadges({ apps, label }: { apps: AppKey[]; label: string }) {
   return (
@@ -17,10 +17,6 @@ function AppBadges({ apps, label }: { apps: AppKey[]; label: string }) {
   );
 }
 
-function UsedIn({ usecase }: { usecase: Usecase }) {
-  return <AppBadges apps={usecase.apps} label="Used in" />;
-}
-
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return <section id={id} className="ug-docs__section" aria-labelledby={`${id}-title`}>
     <Type as="h3" role="l3" weight="semi-bold" id={`${id}-title`}>{title}</Type>
@@ -28,11 +24,11 @@ function Section({ id, title, children }: { id: string; title: string; children:
   </section>;
 }
 
-function AnatomySection({ parts, availablePartIds, hoveredPartId, onPartChange, onSelectPart }: { parts: AnatomyPart[]; availablePartIds?: string[]; hoveredPartId?: string; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
+function AnatomySection({ parts, mode, availablePartIds, hoveredPartId, onPartChange, onSelectPart }: { parts: AnatomyPart[]; mode: PreviewMode; availablePartIds?: string[]; hoveredPartId?: string; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
   const visibleParts = availablePartIds ? parts.filter((part) => availablePartIds.includes(part.id)) : parts;
   if (!visibleParts.length) return null;
   const shouldKeepHighlight = (target: EventTarget | null) => target instanceof Element && !!target.closest('.ug-docs__anatomy-button');
-  return <Section id="anatomy" title="1. Anatomy">
+  return <Section id="anatomy" title={mode === 'context' ? '1. Anatomy · In context' : '1. Anatomy · Component'}>
     <ol className="ug-docs__anatomy">{visibleParts.map((part, index) => <li key={part.id} id={`anatomy-${part.id}`} className={hoveredPartId === part.id ? 'is-highlighted' : undefined}>
       <Button className="ug-docs__anatomy-button" aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} aria-pressed={hoveredPartId === part.id}
         onMouseEnter={() => onPartChange(part.id, undefined, 'hover')} onMouseLeave={(event) => { if (!shouldKeepHighlight(event.relatedTarget)) onPartChange(undefined, part.id, 'hover'); }} // A click also focuses the step; only keyboard focus keeps the highlight, so it never outlives the pointer.
@@ -61,28 +57,29 @@ function CodeBlock({ code, label }: { code: Promise<string>; label: string }) {
   </div>;
 }
 
-function CodeApiSection({ usecase, option }: { usecase: Usecase; option: UsecaseOption }) {
+function CodeApiSection({ option, mode, api }: { option: UsecaseOption; mode: PreviewMode; api?: Usecase['api'] }) {
+  const props = api?.props;
   return <Section id="code-api" title="6. Code / API">
-    <CodeBlock label="Component UI" code={option.loadExampleCode()} />
-    <CodeBlock label="In context UI" code={option.loadCode()} />
-    {!!usecase.api?.props?.length && <div className="ug-docs__props-wrap"><Type as="h4" role="l3" weight="semi-bold">Props</Type><div className="ug-docs__table-scroll"><table className="ug-docs__props"><thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead><tbody>{usecase.api.props.map((prop) => <tr key={prop.name}><th scope="row"><code>{prop.name}</code>{prop.required && ' *'}</th><td><code>{prop.type}</code></td><td>{prop.description ?? '—'}</td></tr>)}</tbody></table></div></div>}
+    <CodeBlock label={mode === 'component' ? 'Component UI' : 'In context UI'} code={mode === 'component' ? option.loadExampleCode() : option.loadCode()} />
+    {!!props?.length && <div className="ug-docs__props-wrap"><Type as="h4" role="l3" weight="semi-bold">Props</Type><div className="ug-docs__table-scroll"><table className="ug-docs__props"><thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead><tbody>{props.map((prop) => <tr key={prop.name}><th scope="row"><code>{prop.name}</code>{prop.required && ' *'}</th><td><code>{prop.type}</code></td><td>{prop.description ?? '—'}</td></tr>)}</tbody></table></div></div>}
   </Section>;
 }
 
-export function DocsPane({ usecase, option, componentName, hoveredPartId, availablePartIds, onPartChange, onSelectPart }: { usecase: Usecase; option: UsecaseOption; componentName: string; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
-  const parts = usecase.anatomy;
-  const hasAccessibility = !!usecase.accessibility?.keyboard || !!usecase.accessibility?.focus;
-  const hasVariants = !!usecase.variants || usecase.options.length > 0;
+export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, availablePartIds, onPartChange, onSelectPart }: { usecase: Usecase; option: UsecaseOption; mode: PreviewMode; componentName: string; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
+  const doc = mode === 'context' ? { ...usecase, ...option.contextDocument } : usecase;
+  const parts = mode === 'context' ? [...usecase.anatomy, ...option.contextAnatomy] : usecase.anatomy;
+  const hasAccessibility = !!doc.accessibility?.keyboard || !!doc.accessibility?.focus;
+  const hasVariants = !!doc.variants || usecase.options.length > 0;
   return <div className="ug-docs">
-    <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{!!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{usecase.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name}</Type><div className="ug-docs__apps"><UsedIn usecase={usecase} /></div></header>
+    <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div></header>
     <div className="ug-docs__sections">
-      {parts.length > 0 && <AnatomySection parts={parts} availablePartIds={availablePartIds} hoveredPartId={hoveredPartId} onPartChange={onPartChange} onSelectPart={onSelectPart} />}
-      <Section id="usage" title="2. Usage / Behavior"><dl className="ug-docs__definition-list"><div><Type as="dt" role="l3" weight="semi-bold">Where</Type><Type as="dd" role="l3">{usecase.where}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">When</Type><Type as="dd" role="l3">{usecase.when}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">How</Type><Type as="dd" role="l3">{usecase.usage ?? usecase.how}</Type></div>{usecase.behavior && <div><Type as="dt" role="l3" weight="semi-bold">Behavior</Type><Type as="dd" role="l3">{usecase.behavior}</Type></div>}</dl></Section>
-      {hasVariants && <Section id="variants" title="3. Variants & States"><Type as="p" role="l3">{usecase.variants ?? usecase.options.map((candidate) => candidate.name).join(' · ')}</Type></Section>}
-      {hasAccessibility && <Section id="accessibility" title="4. Accessibility"><dl className="ug-docs__definition-list">{usecase.accessibility?.keyboard && <div><Type as="dt" role="l3" weight="semi-bold">Keyboard</Type><Type as="dd" role="l3">{usecase.accessibility.keyboard}</Type></div>}{usecase.accessibility?.focus && <div><Type as="dt" role="l3" weight="semi-bold">Focus</Type><Type as="dd" role="l3">{usecase.accessibility.focus}</Type></div>}</dl></Section>}
-      {(usecase.prompt || usecase.debugPrompt) && <Section id="prompts" title="5. Prompt / Debug prompt">{usecase.prompt && <CopyBlock label="Prompt" text={usecase.prompt} />}{usecase.debugPrompt && <CopyBlock label="Debug prompt" text={usecase.debugPrompt} />}</Section>}
-      <Suspense fallback={<Section id="code-api" title="6. Code / API"><Type as="p" role="l3" color="muted">Loading code…</Type></Section>}><CodeApiSection usecase={usecase} option={option} /></Suspense>
-      {!!usecase.related?.length && <Section id="related" title="7. Related components"><ul className="ug-docs__related">{usecase.related.map((item) => <li key={item.href}><a href={item.href}>{item.label}</a></li>)}</ul></Section>}
+      {parts.length > 0 && <AnatomySection parts={parts} mode={mode} availablePartIds={availablePartIds} hoveredPartId={hoveredPartId} onPartChange={onPartChange} onSelectPart={onSelectPart} />}
+      <Section id="usage" title="2. Usage / Behavior"><dl className="ug-docs__definition-list"><div><Type as="dt" role="l3" weight="semi-bold">Where</Type><Type as="dd" role="l3">{doc.where}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">When</Type><Type as="dd" role="l3">{doc.when}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">How</Type><Type as="dd" role="l3">{doc.usage ?? doc.how}</Type></div>{doc.behavior && <div><Type as="dt" role="l3" weight="semi-bold">Behavior</Type><Type as="dd" role="l3">{doc.behavior}</Type></div>}</dl></Section>
+      {hasVariants && <Section id="variants" title="3. Variants & States"><Type as="p" role="l3">{doc.variants ?? (mode === 'component' ? usecase.options.map((candidate) => candidate.name).join(' · ') : option.name)}</Type></Section>}
+      {hasAccessibility && <Section id="accessibility" title="4. Accessibility"><dl className="ug-docs__definition-list">{doc.accessibility?.keyboard && <div><Type as="dt" role="l3" weight="semi-bold">Keyboard</Type><Type as="dd" role="l3">{doc.accessibility.keyboard}</Type></div>}{doc.accessibility?.focus && <div><Type as="dt" role="l3" weight="semi-bold">Focus</Type><Type as="dd" role="l3">{doc.accessibility.focus}</Type></div>}</dl></Section>}
+      {(doc.prompt || doc.debugPrompt) && <Section id="prompts" title="5. Prompt / Debug prompt">{doc.prompt && <CopyBlock label="Prompt" text={doc.prompt} />}{doc.debugPrompt && <CopyBlock label="Debug prompt" text={doc.debugPrompt} />}</Section>}
+      <Suspense fallback={<Section id="code-api" title="6. Code / API"><Type as="p" role="l3" color="muted">Loading code…</Type></Section>}><CodeApiSection option={option} mode={mode} api={doc.api} /></Suspense>
+      {!!doc.related?.length && <Section id="related" title="7. Related components"><ul className="ug-docs__related">{doc.related.map((item) => <li key={item.href}><a href={item.href}>{item.label}</a></li>)}</ul></Section>}
     </div>
   </div>;
 }

@@ -53,6 +53,7 @@ export function usePreviewAnatomy(
   highlightedPartId: string | undefined,
   onAvailablePartsChange?: (partIds: string[]) => void,
   fitScale = 1,
+  enabled = true,
 ) {
   const [overlay, setOverlay] = useState<OverlayRect | null>(null);
   const partTargets = useRef(new Map<string, Element[]>());
@@ -60,7 +61,10 @@ export function usePreviewAnatomy(
 
   useLayoutEffect(() => {
     const stage = stageRef.current;
-    if (!stage) return;
+    if (!stage || !enabled) {
+      setOverlay(null);
+      return;
+    }
 
     availablePartIds.current = undefined;
     const refreshTargets = () => {
@@ -103,11 +107,11 @@ export function usePreviewAnatomy(
       window.clearInterval(retryRefresh);
       partTargets.current = new Map();
     };
-  }, [onAvailablePartsChange, parts, stageRef]);
+  }, [enabled, onAvailablePartsChange, parts, stageRef]);
 
   useLayoutEffect(() => {
     const stage = stageRef.current;
-    if (!stage || !highlightedPartId) {
+    if (!stage || !enabled || !highlightedPartId) {
       setOverlay(null);
       return;
     }
@@ -128,7 +132,7 @@ export function usePreviewAnatomy(
       stage.removeEventListener('scroll', update);
       window.removeEventListener('resize', update);
     };
-  }, [fitScale, highlightedPartId, parts, stageRef]);
+  }, [enabled, fitScale, highlightedPartId, parts, stageRef]);
 
   return overlay;
 }

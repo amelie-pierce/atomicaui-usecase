@@ -5,10 +5,10 @@ export default defineUsecase({
   title: 'Settings summary',
   apps: ['hs', 'fd', 'ace'],
     layers: [
-        {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"The \"Top bar\" strip that holds the one summary button at its right side.","keyIdea":"The \"Top bar\" strip that holds the one summary button at its right side.","selector":"[class~=\"aui-menubar\"]"},
-        {"id":"button","partId":"button","title":"Button","explanation":"Tonal button (color \"surface\", paint \"tonal\", aria-label \"Settings\") that sums up region, language and design code and opens the settings popover.","keyIdea":"Tonal button (color \"surface\", paint \"tonal\", aria-label \"Settings\") that sums up region, language and design code and opens the settings popover.","selector":"[class~=\"aui-button\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"The globe glyph that leads the summary.","keyIdea":"The globe glyph that leads the summary.","selector":"[class~=\"aui-button\"] > [class~=\"aui-contained-icon\"]"},
-        {"id":"divider","partId":"divider","title":"Divider","explanation":"The thin separators between country, language and design code (two in this example).","keyIdea":"The thin separators between country, language and design code (two in this example).","selector":"[class~=\"aui-menubar-divider\"]"},
+        {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"The \"Top bar\" strip that holds the one summary button at its right side.","keyIdea":"The top bar keeps a single settings summary reachable from the right side of the page.","selector":"[class~=\"aui-menubar\"]"},
+        {"id":"button","partId":"button","title":"Button","explanation":"Tonal button (color \"surface\", paint \"tonal\", aria-label \"Settings\") that sums up region, language and design code and opens the settings popover.","keyIdea":"The tonal summary button combines current region and design details into its accessible name.","selector":"[class~=\"aui-button\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The globe glyph that leads the summary.","keyIdea":"The globe glyph cues users that the summary includes locale information.","selector":"[class~=\"aui-button\"] > [class~=\"aui-contained-icon\"]"},
+        {"id":"divider","partId":"divider","title":"Divider","explanation":"The thin separators between country, language and design code (two in this example).","keyIdea":"Thin dividers separate country, language, and design code so each value can be scanned.","selector":"[class~=\"aui-menubar-divider\"]"},
       ],
 options: [
     { id: "hs-settings", showContext: false, name: "Top bar", source: {"hs":"src/hs/TopBar.tsx"} ,

@@ -15,7 +15,7 @@ options: [
       { id: "header-actions", name: "Header actions", description: "The action group pushed to the end of the header, which holds the Print Output button (HCS)." },
     ], source: { hcs: 'src/App.tsx' } ,
       contextLayers: [
-        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. The toolbar, table and notes are left out.","keyIdea":"The Output pane frame, a surface-alt section that holds the header row.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. The toolbar, table and notes are left out.","keyIdea":"The HCS pane shows only its heading and action group to anchor the print example.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
         {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The HCS heading establishes the output area before its controls.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
         {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"The action group pushed to the end of the header, which holds the Print Output button (HCS).","keyIdea":"The HCS action group keeps printing aligned with the output heading.","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
       ],
@@ -26,8 +26,8 @@ options: [
       { id: "header-actions", name: "Header actions", description: "The action group that grows and right-aligns itself after the tabs and holds Print Output." },
     ], source: { hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } ,
       contextLayers: [
-        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. Only the header is shown.","keyIdea":"The Output pane frame, a surface-alt section that holds the header row.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
-        {"id":"context-output-tabs","partId":"output-tabs","title":"Output tabs","explanation":"The Output and Job List tabs at the start of the header, with the selected tab on an overlay fill.","keyIdea":"The HCS tabs switch between output content and the job list.","selector":"[data-ug-part=\"output-tabs\"]","scope":"context"},
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. Only the header is shown.","keyIdea":"The HS pane exposes its header tabs and print action above the result area.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-tabs","partId":"output-tabs","title":"Output tabs","explanation":"The Output and Job List tabs at the start of the header, with the selected tab on an overlay fill.","keyIdea":"The HS tabs switch between the output and the saved job list.","selector":"[data-ug-part=\"output-tabs\"]","scope":"context"},
         {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"The action group that grows and right-aligns itself after the tabs and holds Print Output.","keyIdea":"The FD action group follows its tabs and holds the print command at the far end.","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
       ],
     },
@@ -37,9 +37,9 @@ options: [
       { id: "header-actions", name: "Header actions", description: "The action group pushed to the end of the header with an auto inline-start margin; it holds the text-only Print Summary button." },
     ], source: { adm: 'src/app/layout/Workbench/Workbench.tsx' } ,
       contextLayers: [
-        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. Only the header is shown.","keyIdea":"The Output pane frame, a surface-alt section that holds the header row.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. Only the header is shown.","keyIdea":"The ADM pane keeps its Summary and Result tabs beside the selected print action.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
         {"id":"context-output-tabs","partId":"output-tabs","title":"Output tabs","explanation":"The Summary and Result tabs at the start of the header; the Print label follows the selected tab.","keyIdea":"The ADM tabs separate summary information from the detailed result view.","selector":"[data-ug-part=\"output-tabs\"]","scope":"context"},
-        {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"The action group pushed to the end of the header with an auto inline-start margin; it holds the text-only Print Summary button.","keyIdea":"The HS action group gives the text-only print command a clear end position.","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
+        {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"The action group pushed to the end of the header with an auto inline-start margin; it holds the text-only Print Summary button.","keyIdea":"The ADM action group keeps Print Summary after the active result tab.","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
       ],
     },
     { id: 'disabled', name: 'Disabled button', apps: ['hcs', 'adm', 'hs', 'fd'], contextAnatomy: [
@@ -48,8 +48,8 @@ options: [
       { id: "header-actions", name: "Header actions", description: "The action group pushed to the end of the header; its Print Output button is disabled while the inputs are invalid." },
     ], source: { hcs: 'src/App.tsx', adm: 'src/app/layout/Workbench/Workbench.tsx', hs: 'src/hs/OutputPane.tsx', fd: 'src/components/Results.jsx' } ,
       contextLayers: [
-        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. Labelled \"Output, inputs invalid\".","keyIdea":"The Output pane frame, a surface-alt section that holds the header row.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
-        {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The PBS heading labels the pane whose output can be printed.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section that holds the header row. Labelled \"Output, inputs invalid\".","keyIdea":"The disabled HCS pane labels why its print command cannot run yet.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The HCS output heading labels the pane whose results can be printed.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
         {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"The action group pushed to the end of the header; its Print Output button is disabled while the inputs are invalid.","keyIdea":"The final header group disables printing until the HCS inputs produce a valid result.","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
       ],
     },

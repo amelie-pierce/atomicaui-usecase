@@ -19,18 +19,12 @@ export default defineUsecase({
       token: "Spinner",
       selector: "[class~=\"aui-spinner\"]",
       description: "The small default-colour spinner at scale \"sm\", announced as \"Updating Results\", centred above the caption in the Output pane.",
-      code: [
-        "<Spinner aui={{ scale: 'sm' }} aria-label=\"Updating Results\" />",
-      ].join("\n"),
     },
     {
       id: "ring",
       name: "Ring",
       selector: "[class~=\"aui-spinner-ring\"]",
       description: "The animated ring that turns while HCS and PFD recompute the results.",
-      code: [
-        "<Spinner aui={{ scale: 'sm' }} aria-label=\"Updating Results\" />",
-      ].join("\n"),
     },
   ],
 });

@@ -21,7 +21,6 @@ export default defineUsecase({
       token: "Button",
       description: "The lone Cancel Button in the upload dialog footer, small and in the default gray solid look, that dismisses the dialog while it waits for a dropped file.",
       selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
-      code: "<Button aui={{ scale: 'sm' }}>Cancel</Button>",
     },
     {
       id: "label",
@@ -30,7 +29,6 @@ export default defineUsecase({
       description: "The text \"Cancel\" that closes the Open from device dialog without uploading.",
       selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
       text: true,
-      code: "Cancel",
     },
   ],
 });

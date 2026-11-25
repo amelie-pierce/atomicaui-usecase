@@ -31,12 +31,6 @@ export default defineUsecase({
       token: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Flat print grid at scale "xs" with "all-cells" borders and no selection. ACE, ADM, HS and RWS override it with shape "none", a text-coloured border, compact profile or smaller 10/12 type.',
-      code: `<Table
-  aria-label="Connection"
-  aui={{ scale: 'xs' }}
-  border="all-cells"
-  borderStyle="tonal"
->`,
     },
     {
       id: 'head',
@@ -44,12 +38,6 @@ export default defineUsecase({
       token: 'Table.Head',
       selector: '[class~="aui-table-head"]',
       description: 'Header row printed with Model and Load (lb); ACE and ADM paint it muted with a surface foreground, HS and RWS use a secondary solid fill.',
-      code: `<Table.Head>
-  <Table.Row>
-    <Table.HeaderCell>Model</Table.HeaderCell>
-    <Table.HeaderCell>Load (lb)</Table.HeaderCell>
-  </Table.Row>
-</Table.Head>`,
     },
     {
       id: 'header-cell',
@@ -57,7 +45,6 @@ export default defineUsecase({
       token: 'Table.HeaderCell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'Printed column label without sort controls; its alignment is centre in ACE and RWS and left or start in ADM and HS.',
-      code: `<Table.HeaderCell>Load (lb)</Table.HeaderCell>`,
     },
     {
       id: 'body',
@@ -65,9 +52,6 @@ export default defineUsecase({
       token: 'Table.Body',
       selector: '[class~="aui-table-body"]',
       description: 'The printed rows of the report table.',
-      code: `<Table.Body>
-  <Table.Row>…</Table.Row>
-</Table.Body>`,
     },
     {
       id: 'row',
@@ -75,10 +59,6 @@ export default defineUsecase({
       token: 'Table.Row',
       selector: '[class~="aui-table-row"]',
       description: 'One printed record, Model B-200 with 2,210 lb; HS and RWS switch selectable and expandable off on the row.',
-      code: `<Table.Row>
-  <Table.Cell>Model B-200</Table.Cell>
-  <Table.Cell>2,210</Table.Cell>
-</Table.Row>`,
     },
     {
       id: 'cell',
@@ -86,7 +66,6 @@ export default defineUsecase({
       token: 'Table.Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Plain printed value; ACE sets 4px by 6px padding with centred text, ADM left-aligns it in the compact profile.',
-      code: `<Table.Cell>Model B-200</Table.Cell>`,
     },
   ],
 });

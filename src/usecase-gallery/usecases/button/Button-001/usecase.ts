@@ -32,7 +32,6 @@ export default defineUsecase({
       token: "Button",
       description: "The Print Output Button: scale \"sm\", surface color with tonal paint and flex \"none\" so it keeps its width at the end of the results pane header (HCS look; HS, FD and ADM scenes swap in a solid secondary black Button).",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button aui={{ scale: 'sm', color: 'surface', paint: 'tonal', sx: { flex: 'none' } }}>\n  …\n</Button>",
     },
     {
       id: "icon",
@@ -40,7 +39,6 @@ export default defineUsecase({
       token: "Button.Icon",
       description: "The print glyph before the label, at scale \"sm\" so it matches the small Button.",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
-      code: "<Button.Icon name=\"print\" aui={{ scale: 'sm' }} />",
     },
     {
       id: "label",
@@ -49,7 +47,6 @@ export default defineUsecase({
       description: "The text \"Print Output\" that names the action of printing the results.",
       selector: "[class~=\"aui-button\"]",
       text: true,
-      code: "Print Output",
     },
   ],
 });

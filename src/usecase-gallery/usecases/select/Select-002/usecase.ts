@@ -24,9 +24,6 @@ export default defineUsecase({
       token: 'Field',
       selector: '[class~="aui-field"]',
       description: 'Field at scale "sm" with a 4 gap and zero minimum width so the filter can shrink inside the column menu.',
-      code: `<Field aui={{ scale: 'sm', sx: { gap: '4', minWidth: '0' } }}>
-  {/* … */}
-</Field>`,
     },
     {
       id: 'label',
@@ -34,7 +31,6 @@ export default defineUsecase({
       token: 'Field.Label',
       selector: '[class~="aui-field-label"]',
       description: 'The "Search by option" label above the filter trigger.',
-      code: `<Field.Label>Search by option</Field.Label>`,
     },
     {
       id: 'trigger',
@@ -42,9 +38,6 @@ export default defineUsecase({
       token: 'Field.SelectTrigger',
       selector: '[class~="aui-select-trigger"]',
       description: 'Full-width outlined trigger with the "soft" shape and no height override, so it takes the scale default.',
-      code: `<Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', shape: 'soft', sx: { width: 'fill' } }}>
-  {/* … */}
-</Field.SelectTrigger>`,
     },
     {
       id: 'value',
@@ -53,7 +46,6 @@ export default defineUsecase({
       selector: '[class~="aui-select-value"]',
       text: true,
       description: 'Shows the current filter value, "Select all" by default.',
-      code: `<Field.SelectValue />`,
     },
     {
       id: 'chevron',
@@ -61,7 +53,6 @@ export default defineUsecase({
       token: 'Field.SelectChevron',
       selector: '[class~="aui-select-chevron"]',
       description: 'The chevron that tells the user the trigger opens a list of column values.',
-      code: `<Field.SelectChevron />`,
     },
     {
       id: 'popup',
@@ -69,9 +60,6 @@ export default defineUsecase({
       token: 'Field.SelectPopup',
       selector: '[class~="aui-select-popup"]',
       description: 'Popup that opens below the trigger, aligned to its start with alignItemWithTrigger off, at the trigger width.',
-      code: `<Field.SelectPopup matchTriggerWidth>
-  {/* … */}
-</Field.SelectPopup>`,
     },
     {
       id: 'list',
@@ -79,9 +67,6 @@ export default defineUsecase({
       token: 'Field.SelectList',
       selector: '[class~="aui-select-list"]',
       description: 'The list holding the Select all, Passed and Failed rows.',
-      code: `<Field.SelectList>
-  {/* … */}
-</Field.SelectList>`,
     },
     {
       id: 'item',
@@ -89,7 +74,6 @@ export default defineUsecase({
       token: 'Field.SelectItem',
       selector: '[class~="aui-select-item"]',
       description: 'A filter row whose label is written straight into the item; "Select all" clears the column filter.',
-      code: `<Field.SelectItem value="all">Select all</Field.SelectItem>`,
     },
   ],
 });

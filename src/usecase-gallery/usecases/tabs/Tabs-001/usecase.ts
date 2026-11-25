@@ -27,7 +27,6 @@ export default defineUsecase({
       token: 'Tabs',
       selector: '[class~="aui-tabs"]',
       description: 'Root that switches the pane between its views; Summary is selected first through defaultValue="summary". ADC lists Model and Information, HS lists Summary and Result.',
-      code: `<Tabs defaultValue="summary" aui={{ profile: 'no-padding' }}>`,
     },
     {
       id: 'list',
@@ -35,10 +34,6 @@ export default defineUsecase({
       token: 'Tabs.List',
       selector: '[class~="aui-tabs-list"]',
       description: 'The chip row in the pane header; ADC lets it wrap with flexWrap.',
-      code: `<Tabs.List>
-  <Tabs.Tab value="summary" …>Summary</Tabs.Tab>
-  <Tabs.Tab value="result" …>Result</Tabs.Tab>
-</Tabs.List>`,
     },
     {
       id: 'tab',
@@ -46,9 +41,6 @@ export default defineUsecase({
       token: 'Tabs.Tab',
       selector: '[class~="aui-tabs-tab"]',
       description: 'A 28px soft chip: surface-alt solid when idle and overlay solid when selected.',
-      code: `<Tabs.Tab value="summary" aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'overlay', paint: 'solid' } } }}>
-  Summary
-</Tabs.Tab>`,
     },
     {
       id: 'panel',
@@ -56,7 +48,6 @@ export default defineUsecase({
       token: 'Tabs.Panel',
       selector: '[class~="aui-tabs-panel"]',
       description: 'Content of the selected view, "Summary content" or "Result content" in the example.',
-      code: `<Tabs.Panel value="summary">Summary content</Tabs.Panel>`,
     },
   ],
 });

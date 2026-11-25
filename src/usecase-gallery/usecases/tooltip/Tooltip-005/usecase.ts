@@ -18,7 +18,6 @@ export default defineUsecase({
       name: 'Trigger wrapper',
       token: 'Tooltip.Trigger',
       description: 'The focusable inline-flex span (tabIndex 0) whose aria-label "Selection unavailable for Model C-300" carries the reason, so keyboard and screen reader users reach the disabled radio\'s explanation.',
-      code: `<Tooltip.Trigger render={<span data-ug-part="trigger" />} tabIndex={0} aria-label="Selection unavailable for Model C-300" closeOnClick={false} style={{ display: 'inline-flex' }}>`,
     },
     {
       id: 'radio',
@@ -26,7 +25,6 @@ export default defineUsecase({
       token: 'Radio',
       selector: '[data-ug-part="trigger"] [class~="aui-radio"]',
       description: 'The disabled, unselected "Model C-300" radio taken out of the tab order (tabIndex -1) so the wrapper receives the focus.',
-      code: `<Radio disabled selected={false} tabIndex={-1} aria-label="Model C-300" aui={{ scale: 'sm' }} />`,
     },
     {
       id: 'positioner',
@@ -34,7 +32,6 @@ export default defineUsecase({
       token: 'Tooltip.Positioner',
       selector: '[class~="aui-tooltip-positioner"]',
       description: 'Opens the reason above the wrapper with a 4px offset (side="top").',
-      code: `<Tooltip.Positioner side="top" sideOffset={4}>`,
     },
     {
       id: 'popup',
@@ -42,7 +39,6 @@ export default defineUsecase({
       token: 'Tooltip.Popup',
       selector: '[class~="aui-tooltip-popup"]',
       description: 'The default tooltip surface (scale "sm" in the HCS scene).',
-      code: `<Tooltip.Popup>Failed products can't be selected. See Why Not for the reason.</Tooltip.Popup>`,
     },
     {
       id: 'reason',
@@ -51,7 +47,6 @@ export default defineUsecase({
       selector: '[class~="aui-tooltip-popup"]',
       text: true,
       description: 'The sentence "Failed products can\'t be selected. See Why Not for the reason." that explains why the control is disabled.',
-      code: `<Tooltip.Popup>Failed products can't be selected. See Why Not for the reason.</Tooltip.Popup>`,
     },
   ],
 });

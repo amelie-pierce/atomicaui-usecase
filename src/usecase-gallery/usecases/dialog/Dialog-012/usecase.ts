@@ -19,9 +19,6 @@ export default defineUsecase({
       token: 'Dialog.Backdrop',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the expanded HS Output view.',
-      code: `<Dialog open modal={false}>
-  <Dialog.Portal container={host}>
-    <Dialog.Backdrop />`,
     },
     {
       id: 'popup',
@@ -29,7 +26,6 @@ export default defineUsecase({
       token: 'Dialog.Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label "Expanded Output".',
-      code: `<Dialog.Popup initialFocus={false} aria-label="Expanded Output" aui={{ shape: 'none', profile: 'no-padding', sx: { width: 'fill', height: 'fill', gap: '0' } }}>`,
     },
     {
       id: 'content-text',
@@ -37,9 +33,6 @@ export default defineUsecase({
       token: 'Type',
       text: true,
       description: 'The p3 line that stands for the content and its own toolbar (the scene reads "Output toolbar").',
-      code: `<Type data-ug-part="content-text" as="p" role="p3">
-  The content, with its own toolbar, goes here.
-</Type>`,
     },
     {
       id: 'table',
@@ -47,7 +40,6 @@ export default defineUsecase({
       token: 'Table',
       selector: '[class~="aui-table"]',
       description: 'The scene table labelled "Output" that stands for the Output tabs; the popup places it straight at the edge.',
-      code: `<Table aria-label="Output">`,
     },
     {
       id: 'header-cell',
@@ -55,7 +47,6 @@ export default defineUsecase({
       token: 'Table.HeaderCell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'The single "Load" column heading of the scene table.',
-      code: `<Table.HeaderCell>Load</Table.HeaderCell>`,
     },
     {
       id: 'cell',
@@ -63,7 +54,6 @@ export default defineUsecase({
       token: 'Table.Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'The "Dead" value cell of the one scene row.',
-      code: `<Table.Cell>Dead</Table.Cell>`,
     },
   ],
 });

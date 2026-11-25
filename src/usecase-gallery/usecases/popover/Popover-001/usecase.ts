@@ -21,9 +21,6 @@ export default defineUsecase({
       token: 'Popover.Trigger',
       selector: '[data-base-ui-click-trigger]',
       description: 'The text circle-question button labelled "Material help" beside the field label; it is a compact square in PBS and the example and a square in PFD and AGPD.',
-      code: `<Popover.Trigger render={<Button aria-label="Material help" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square-compact', shape: 'soft' }} />}>
-  <ContainedIcon name="circle-question" />
-</Popover.Trigger>`,
     },
     {
       id: 'trigger-icon',
@@ -31,7 +28,6 @@ export default defineUsecase({
       token: 'ContainedIcon',
       selector: '[data-base-ui-click-trigger] [class~="aui-contained-icon"]',
       description: 'The circle-question glyph inside the help trigger.',
-      code: `<ContainedIcon name="circle-question" />`,
     },
     {
       id: 'popup',
@@ -39,11 +35,6 @@ export default defineUsecase({
       token: 'Popover.Popup',
       selector: '[data-aui-popup-motion][role="dialog"]',
       description: 'The elevated soft surface (surface colour, solid, elevation 4) that opens above the trigger with a 4px offset: 320px wide, and up to 384px in PFD.',
-      code: `<Popover.Popup
-  initialFocus={false}
-  aria-label="Material help"
-  render={<View aui={{ color: 'surface', paint: 'solid', profile: 'default', shape: 'soft', elevation: 4, sx: { display: 'flex', alignItems: 'start', gap: '8', width: '320' } }} />}
->`,
     },
     {
       id: 'help-text',
@@ -51,21 +42,18 @@ export default defineUsecase({
       token: 'Type',
       text: true,
       description: 'The p3 sentence "Select the base material of the member."; in PBS and the example it fills the row beside the close X, in the other apps it sits under it.',
-      code: `<Type data-ug-part="help-text" as="p" role="p3" aui={{ sx: { flex: 'fill' } }}>Select the base material of the member.</Type>`,
     },
     {
       id: 'close-row',
       name: 'Close row',
       token: 'View',
       description: 'The end-aligned row above the text in AGPD that holds only the close X.',
-      code: `<View data-ug-part="close-row" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', justifyContent: 'end' } }}>`,
     },
     {
       id: 'close',
       name: 'Close',
       token: 'IconButton',
       description: 'The X that closes the popover: an xs icon button at the end of the row in PBS, in its own row in AGPD, and a square Button in PFD.',
-      code: `<IconButton data-ug-part="close" name="xmark" aria-label="Close" aui={{ scale: 'xs', paint: 'text', profile: 'square-compact', shape: 'soft' }} />`,
     },
   ],
 });

@@ -47,8 +47,6 @@ export interface AnatomyPart {
   selector?: string;
   /** Highlight only the direct text of the selected element, measured without touching the DOM. */
   text?: boolean;
-  /** Optional use-case-specific source excerpt. When absent, the gallery derives one from the rendered example source. */
-  code?: string;
 }
 
 export interface AccessibilityDoc {

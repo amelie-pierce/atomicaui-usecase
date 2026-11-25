@@ -31,18 +31,6 @@ export default defineUsecase({
       token: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Selectable results table: selectionMode "single" with indicatorType "radio" and no separate indicator column, so the radio lives in the first data cell. HCS, HS, PBS and FD use the 4px secondary edge bar; ADM uses between-rows lines with a raised selected row.',
-      code: `<Table
-  aria-label="Results"
-  aui={{ scale: 'sm', shape: 'soft', sx: { … } }}
-  border="all-cells"
-  borderStyle="tonal"
-  selectionMode="single"
-  indicatorType="radio"
-  indicatorColumn={false}
-  selectionToggleAui={{ scale: 'sm', sx: { minWidth: '24', minHeight: '24' }, states: { … } }}
-  rowAui={{ color: 'surface', paint: 'solid', states: { … } }}
-  headerCellAui={{ color: 'raised' }}
->`,
     },
     {
       id: 'head',
@@ -50,12 +38,6 @@ export default defineUsecase({
       token: 'Table.Head',
       selector: '[class~="aui-table-head"]',
       description: 'Raised header with the Model and Load (lb) labels (Product and Tension (lb) in ADM); its row is marked selectable={false} so it gets no radio.',
-      code: `<Table.Head>
-  <Table.Row data-aui-header-row selectable={false}>
-    <Table.HeaderCell>Model</Table.HeaderCell>
-    <Table.HeaderCell>Load (lb)</Table.HeaderCell>
-  </Table.Row>
-</Table.Head>`,
     },
     {
       id: 'header-cell',
@@ -63,7 +45,6 @@ export default defineUsecase({
       token: 'Table.HeaderCell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'Plain column heading on the raised band; no sort control in this use case.',
-      code: `<Table.HeaderCell>Load (lb)</Table.HeaderCell>`,
     },
     {
       id: 'body',
@@ -71,10 +52,6 @@ export default defineUsecase({
       token: 'Table.Body',
       selector: '[class~="aui-table-body"]',
       description: 'The two selectable candidates, Model B-200 and Model C-300.',
-      code: `<Table.Body>
-  <Table.Row selected selectionLabel="Model B-200">…</Table.Row>
-  <Table.Row selectionLabel="Model C-300">…</Table.Row>
-</Table.Body>`,
     },
     {
       id: 'row',
@@ -82,10 +59,6 @@ export default defineUsecase({
       token: 'Table.Row',
       selector: '[class~="aui-table-row"]',
       description: 'A selectable row; the selected one (Model B-200) carries the row surface and a 4px start edge bar, and RWS paints that look with selection="row" and no radio.',
-      code: `<Table.Row selected selectionLabel="Model B-200">
-  <Table.Cell>…</Table.Cell>
-  <Table.Cell>2,210</Table.Cell>
-</Table.Row>`,
     },
     {
       id: 'selection-toggle',
@@ -93,10 +66,6 @@ export default defineUsecase({
       token: 'Table.SelectionToggle',
       selector: '[class~="aui-table-cell"] [class~="aui-radio"]',
       description: '24px radio at the start of the first cell that selects the row, filled primary when selected; in ACE it sits above the model name.',
-      code: `<Table.Cell>
-  <Table.SelectionToggle />
-  Model B-200
-</Table.Cell>`,
     },
     {
       id: 'cell',
@@ -104,7 +73,6 @@ export default defineUsecase({
       token: 'Table.Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Data cell; the first one holds the radio and the model name, the second the load in lb (2,210 and 1,180).',
-      code: `<Table.Cell>2,210</Table.Cell>`,
     },
   ],
 });

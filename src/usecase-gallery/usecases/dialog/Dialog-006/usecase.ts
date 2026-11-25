@@ -19,9 +19,6 @@ export default defineUsecase({
       token: 'Dialog.Backdrop',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the Help Center window.',
-      code: `<Dialog open modal={false}>
-  <Dialog.Portal container={host}>
-    <Dialog.Backdrop />`,
     },
     {
       id: 'popup',
@@ -29,7 +26,6 @@ export default defineUsecase({
       token: 'Dialog.Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The small 360px Help Center window at scale "sm" with a soft shape (FD caps its own copy at 420px and pins it to the screen corner).',
-      code: `<Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }} style={{ '--aui-width': 'min(360px, 100%)' } as React.CSSProperties}>`,
     },
     {
       id: 'title',
@@ -37,14 +33,12 @@ export default defineUsecase({
       token: 'Dialog.Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title bar whose "Help Center" text is centred between 40px start and end padding, with no Spacer.',
-      code: `<Dialog.Title aui={{ scale: 'sm', color: 'raised', sx: { position: 'relative', justifyContent: 'center', paddingInlineStart: '40', paddingInlineEnd: '40' } }}>`,
     },
     {
       id: 'title-text',
       name: 'Title text',
       token: 'Dialog.Title',
       description: 'The centred words "Help Center" inside the title bar.',
-      code: `<span data-ug-part="title-text">Help Center</span>`,
     },
     {
       id: 'close',
@@ -52,7 +46,6 @@ export default defineUsecase({
       token: 'Dialog.Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X taken out of the flow and pinned to the inline end with position absolute and an 8px offset.',
-      code: `<Dialog.Close aria-label="Close Help Center" aui={{ scale: 'sm' }} style={{ position: 'absolute', insetInlineEnd: 'var(--p-px-8)', margin: 0 }} />`,
     },
     {
       id: 'body',
@@ -60,14 +53,12 @@ export default defineUsecase({
       token: 'Dialog.Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The body that holds the navigation column of help rows.',
-      code: `<Dialog.Body aui={{ scale: 'sm' }}>`,
     },
     {
       id: 'help-rows',
       name: 'Help rows',
       token: 'View',
       description: 'The nav View labelled "Help Center": a no-padding column with gap 8 whose rows are Feedback and Tutorials in the FD scene.',
-      code: `<View data-ug-part="help-rows" as="nav" aria-label="Help Center" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '8', width: 'fill' } }}>`,
     },
   ],
 });

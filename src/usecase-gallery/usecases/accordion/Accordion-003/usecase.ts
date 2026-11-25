@@ -24,7 +24,6 @@ export default defineUsecase({
       token: 'Accordion',
       selector: '[class~="aui-accordion"]',
       description: 'Template picker that opens both groups by default (openMultiple, defaultValue default and mine); the ACE and HS scenes wrap it in a RadioGroup in a Templates dialog.',
-      code: `<Accordion openMultiple defaultValue={['default', 'mine']}>`,
     },
     {
       id: 'item',
@@ -32,7 +31,6 @@ export default defineUsecase({
       token: 'Accordion.Item',
       selector: '[class~="aui-accordion-item"]',
       description: 'One template group, Default Templates or My Templates.',
-      code: `<Accordion.Item value="default">`,
     },
     {
       id: 'trigger',
@@ -40,10 +38,6 @@ export default defineUsecase({
       token: 'Accordion.Trigger',
       selector: '[class~="aui-accordion-trigger"]',
       description: 'Plain title row with no icon; ACE sets the name as an l4 Type, HS as bare text.',
-      code: `<Accordion.Trigger>
-  Default Templates
-  <Accordion.Chevron />
-</Accordion.Trigger>`,
     },
     {
       id: 'chevron',
@@ -51,7 +45,6 @@ export default defineUsecase({
       token: 'Accordion.Chevron',
       selector: '[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]',
       description: 'Chevron on the right of each group title.',
-      code: `<Accordion.Chevron />`,
     },
     {
       id: 'panel',
@@ -59,9 +52,6 @@ export default defineUsecase({
       token: 'Accordion.Panel',
       selector: '[class~="aui-accordion-panel"]',
       description: 'Rows of the group: Two-beam connection under Default Templates, and "Create your own template." (Header hanger in the dialogs) under My Templates.',
-      code: `<Accordion.Panel>
-  <Type as="p" role="p3">Two-beam connection</Type>
-</Accordion.Panel>`,
     },
     {
       id: 'radio',
@@ -69,9 +59,6 @@ export default defineUsecase({
       token: 'Radio',
       selector: '[class~="aui-accordion-panel"] [class~="aui-radio"]',
       description: 'Dialog scenes only: each template row is a radio with its name as Radio.Label, with one selected through RadioGroup defaultValue="2".',
-      code: `<Radio value="2" aui={{ ...SELECTION, sx: { flex: 'fill' } }}>
-  <Radio.Label>Header hanger</Radio.Label>
-</Radio>`,
     },
   ],
 });

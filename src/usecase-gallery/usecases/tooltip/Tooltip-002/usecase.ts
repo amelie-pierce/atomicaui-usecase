@@ -20,7 +20,6 @@ export default defineUsecase({
       name: 'Trigger',
       token: 'Tooltip.Trigger',
       description: 'The element the user already points at: a "Preview" Button in the example, a thumbnail-and-link View in PFD, the "Connection detail" link in RWS, and the solid secondary "A" mark Button in HS.',
-      code: `<Tooltip.Trigger render={<Button data-ug-part="trigger" aui={{ scale: 'sm' }} />}>Preview</Tooltip.Trigger>`,
     },
     {
       id: 'product-link',
@@ -28,7 +27,6 @@ export default defineUsecase({
       token: 'Type',
       text: true,
       description: 'The PFD underlined secondary link "Model C-300" beside the thumbnail.',
-      code: `<Type data-ug-part="product-link" as="a" role="l4" color="secondary" href="#" onClick={(event) => event.preventDefault()} aui={{ sx: { textDecoration: 'underline' } }}>Model C-300</Type>`,
     },
     {
       id: 'popup',
@@ -36,7 +34,6 @@ export default defineUsecase({
       token: 'Tooltip.Popup',
       selector: '[class~="aui-tooltip-popup"]',
       description: 'The default tooltip surface, which here holds an image instead of text: 192px wide in the example and RWS, 96px in PFD, 160px in HS.',
-      code: `<Tooltip.Popup><svg viewBox="0 0 192 128" role="img" aria-label="Connection detail" …>`,
     },
     {
       id: 'image',
@@ -44,7 +41,6 @@ export default defineUsecase({
       token: 'Tooltip.Popup',
       selector: '[class~="aui-tooltip-popup"] svg',
       description: 'The representative connection drawing (an svg with role="img") that the tooltip shows, such as "Connection detail" or "Model C-300 connection preview".',
-      code: `<svg viewBox="0 0 192 128" role="img" aria-label="Connection detail" style={{ width: 'var(--p-px-192)', aspectRatio: '4 / 3' }}>`,
     },
     {
       id: 'preview-title',
@@ -52,7 +48,6 @@ export default defineUsecase({
       token: 'Type',
       text: true,
       description: 'The HS-only bold l4 title "Hanger A" above the image.',
-      code: `<Type data-ug-part="preview-title" as="strong" role="l4" weight="bold">Hanger A</Type>`,
     },
   ],
 });

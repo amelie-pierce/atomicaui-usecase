@@ -21,7 +21,6 @@ export default defineUsecase({
       token: "Button",
       description: "The Prototype controls Button: small surface Button with elevation 3 so it floats above the page, toggling the controls panel (aria-expanded in the scene).",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button aui={{ scale: 'sm', color: 'surface', elevation: 3 }}>Prototype controls</Button>",
     },
     {
       id: "label",
@@ -30,7 +29,6 @@ export default defineUsecase({
       description: "The text \"Prototype controls\" that names the floating toggle.",
       selector: "[class~=\"aui-button\"]",
       text: true,
-      code: "Prototype controls",
     },
   ],
 });

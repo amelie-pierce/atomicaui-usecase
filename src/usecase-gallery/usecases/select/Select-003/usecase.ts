@@ -20,9 +20,6 @@ export default defineUsecase({
       token: 'Field',
       selector: '[class~="aui-field"]',
       description: 'Field at scale "sm" with a 3 gap that stacks the Corrosion Resistance label above the multi-select.',
-      code: `<Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-  {/* … */}
-</Field>`,
     },
     {
       id: 'label',
@@ -30,7 +27,6 @@ export default defineUsecase({
       token: 'Field.Label',
       selector: '[class~="aui-field-label"]',
       description: 'The "Corrosion Resistance" label at scale "sm".',
-      code: `<Field.Label aui={{ scale: 'sm' }}>Corrosion Resistance</Field.Label>`,
     },
     {
       id: 'trigger',
@@ -38,9 +34,6 @@ export default defineUsecase({
       token: 'Field.SelectTrigger',
       selector: '[class~="aui-select-trigger"]',
       description: 'The 28px outlined trigger that stays one line high while it lists every chosen option.',
-      code: `<Field.SelectTrigger aui={{ scale: 'sm', color: 'surface', paint: 'fixed', sx: { width: 'fill', height: '28', minHeight: '28', paddingBlockStart: '3', paddingBlockEnd: '3', fontSize: '16', lineHeight: '20' } }}>
-  {/* … */}
-</Field.SelectTrigger>`,
     },
     {
       id: 'value',
@@ -49,7 +42,6 @@ export default defineUsecase({
       selector: '[class~="aui-select-value"]',
       text: true,
       description: 'Written out as "Standard, Hot dip galvanized": with `multiple` the value is a comma-joined string of the chosen labels.',
-      code: `<Field.SelectValue>Standard, Hot dip galvanized</Field.SelectValue>`,
     },
     {
       id: 'chevron',
@@ -57,7 +49,6 @@ export default defineUsecase({
       token: 'Field.SelectChevron',
       selector: '[class~="aui-select-chevron"]',
       description: 'The chevron at the trigger end; the list stays open while rows are toggled.',
-      code: `<Field.SelectChevron />`,
     },
     {
       id: 'popup',
@@ -65,9 +56,6 @@ export default defineUsecase({
       token: 'Field.SelectPopup',
       selector: '[class~="aui-select-popup"]',
       description: 'Popup of the trigger width listing Standard, Hot dip galvanized and Stainless steel.',
-      code: `<Field.SelectPopup matchTriggerWidth>
-  {/* … */}
-</Field.SelectPopup>`,
     },
     {
       id: 'list',
@@ -75,9 +63,6 @@ export default defineUsecase({
       token: 'Field.SelectList',
       selector: '[class~="aui-select-list"]',
       description: 'The list holding the three corrosion options.',
-      code: `<Field.SelectList>
-  {/* … */}
-</Field.SelectList>`,
     },
     {
       id: 'item',
@@ -85,10 +70,6 @@ export default defineUsecase({
       token: 'Field.SelectItem',
       selector: '[class~="aui-select-item"]',
       description: 'A toggleable option row; both Standard and Hot dip galvanized start selected (the `multiple` defaultValue is an array).',
-      code: `<Field.SelectItem value="standard">
-  <Field.SelectItemText>Standard</Field.SelectItemText>
-  <Field.SelectItemIndicator />
-</Field.SelectItem>`,
     },
     {
       id: 'item-text',
@@ -96,7 +77,6 @@ export default defineUsecase({
       token: 'Field.SelectItemText',
       selector: '[class~="aui-select-item-text"]',
       description: 'The option name such as "Stainless steel".',
-      code: `<Field.SelectItemText>Standard</Field.SelectItemText>`,
     },
     {
       id: 'indicator',
@@ -104,7 +84,6 @@ export default defineUsecase({
       token: 'Field.SelectItemIndicator',
       selector: '[class~="aui-select-item-indicator"]',
       description: 'The indicator slot at the row end; the PFD scene leads each row with a checkbox icon instead.',
-      code: `<Field.SelectItemIndicator />`,
     },
     {
       id: 'checkbox-icon',
@@ -112,7 +91,6 @@ export default defineUsecase({
       token: 'ContainedIcon',
       selector: '[class~="aui-select-item"] > [class~="aui-contained-icon"]',
       description: 'In the PFD scene each row leads with a square-check icon when chosen and a square when not, with no indicator.',
-      code: `<ContainedIcon name="square-check" aria-hidden />`,
     },
   ],
 });

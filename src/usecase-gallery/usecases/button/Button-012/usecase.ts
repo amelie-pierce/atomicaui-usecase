@@ -21,7 +21,6 @@ export default defineUsecase({
       token: "Button",
       description: "The Launch General Tutorial Button on the last step of an HS tour: small secondary text paint with alignSelf \"start\" so it hugs the start of the coach-mark card.",
       selector: "[class~=\"aui-button\"]:not([aria-label=\"Close walkthrough\"])",
-      code: "<Button aui={{ scale: 'sm', paint: 'text', color: 'secondary', sx: { alignSelf: 'start' } }}>\n  LAUNCH GENERAL TUTORIAL\n</Button>",
     },
     {
       id: "label",
@@ -30,7 +29,6 @@ export default defineUsecase({
       description: "The capitalised text \"LAUNCH GENERAL TUTORIAL\" that starts the HS General Tutorial.",
       selector: "[class~=\"aui-button\"]:not([aria-label=\"Close walkthrough\"])",
       text: true,
-      code: "LAUNCH GENERAL TUTORIAL",
     },
   ],
 });

@@ -19,9 +19,6 @@ export default defineUsecase({
       token: 'Dialog.Backdrop',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim that blocks the app after the licence agreement was declined.',
-      code: `<Dialog open modal={false}>
-  <Dialog.Portal container={host}>
-    <Dialog.Backdrop />`,
     },
     {
       id: 'popup',
@@ -29,7 +26,6 @@ export default defineUsecase({
       token: 'Dialog.Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The default-size blocking notice, with no close X so it cannot be dismissed.',
-      code: `<Dialog.Popup initialFocus={false}>`,
     },
     {
       id: 'title',
@@ -37,7 +33,6 @@ export default defineUsecase({
       token: 'Dialog.Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised, text-only title "Website Application License Agreement" with no icon and no close X.',
-      code: `<Dialog.Title aui={{ color: 'raised' }}>Website Application License Agreement</Dialog.Title>`,
     },
     {
       id: 'description',
@@ -45,9 +40,6 @@ export default defineUsecase({
       token: 'Dialog.Description',
       selector: '[class~="aui-dialog-description"]',
       description: 'The explanation that the app cannot continue without agreement and that the user must relaunch it and accept (ACE spells out the EULA).',
-      code: `<Dialog.Description>
-  We can not continue without your agreement. To proceed, relaunch the application and accept the agreement.
-</Dialog.Description>`,
     },
     {
       id: 'actions',
@@ -55,14 +47,12 @@ export default defineUsecase({
       token: 'Dialog.Actions',
       selector: '[class~="aui-dialog-actions"]',
       description: 'The footer with align="center" that centres its single button.',
-      code: `<Dialog.Actions align="center">`,
     },
     {
       id: 'relaunch',
       name: 'Re-Launch',
       token: 'Dialog.Button',
       description: 'The only way forward: a solid secondary Re-Launch button with dismiss={false} so the notice stays until the app reloads.',
-      code: `<Dialog.Button data-ug-part="relaunch" dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Re-Launch</Dialog.Button>`,
     },
   ],
 });

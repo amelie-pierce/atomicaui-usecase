@@ -20,7 +20,6 @@ export default defineUsecase({
       token: 'Tabs',
       selector: '[class~="aui-tabs"]',
       description: 'The design rail root with no padding; Design 1 (d1) is selected by default.',
-      code: `<Tabs defaultValue="d1" aui={{ profile: 'no-padding' }}>`,
     },
     {
       id: 'list',
@@ -28,11 +27,6 @@ export default defineUsecase({
       token: 'Tabs.List',
       selector: '[class~="aui-tabs-list"]',
       description: 'Row holding the design chips and the add button; ADC lets it shrink with overflow="shrink".',
-      code: `<Tabs.List>
-  <Tabs.Tab value="d1" …>…</Tabs.Tab>
-  <Tabs.Tab value="d2" …>…</Tabs.Tab>
-  <Tabs.AddButton name="file-circle-plus" aria-label="Add new design" />
-</Tabs.List>`,
     },
     {
       id: 'tab',
@@ -40,15 +34,6 @@ export default defineUsecase({
       token: 'Tabs.Tab',
       selector: '[class~="aui-tabs-tab"]',
       description: 'One open design (Design 1, Design 2) rendered as a div chip with nativeButton={false} so it can hold buttons; the selected chip is raised and tonal.',
-      code: `<Tabs.Tab
-  value="d2"
-  nativeButton={false}
-  render={<div />}
-  aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'raised', paint: 'tonal' } } }}
->
-  <span>Design 2</span>
-  <Tabs.CloseButton aria-label="Close Design 2" />
-</Tabs.Tab>`,
     },
     {
       id: 'pin',
@@ -56,7 +41,6 @@ export default defineUsecase({
       token: 'Tabs.PinButton',
       selector: '[class~="aui-tabs-pin-button"]',
       description: 'Error-coloured circle-exclamation on Design 1, labelled "The design has an error".',
-      code: `<Tabs.PinButton name="circle-exclamation" aria-label="The design has an error" aui={{ color: 'error', profile: 'contained' }} />`,
     },
     {
       id: 'close',
@@ -64,7 +48,6 @@ export default defineUsecase({
       token: 'Tabs.CloseButton',
       selector: '[class~="aui-tabs-close-button"]',
       description: 'Per-design close action, for example "Close Design 1".',
-      code: `<Tabs.CloseButton aria-label="Close Design 1" />`,
     },
     {
       id: 'add',
@@ -72,7 +55,6 @@ export default defineUsecase({
       token: 'Tabs.AddButton',
       selector: '[class~="aui-tabs-add-button"]',
       description: 'File-circle-plus button at the end of the rail that opens a new design.',
-      code: `<Tabs.AddButton name="file-circle-plus" aria-label="Add new design" />`,
     },
   ],
 });

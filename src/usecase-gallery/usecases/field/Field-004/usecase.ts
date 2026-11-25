@@ -20,11 +20,6 @@ export default defineUsecase({
       token: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "The search wrapper at scale \"sm\"; the apps give it a minWidth of 112px and flex fill so it shares a toolbar row.",
-      code: [
-        "<Field aui={{ scale: 'sm' }}>",
-        "  …",
-        "</Field>",
-      ].join("\n"),
     },
     {
       id: "control",
@@ -32,12 +27,6 @@ export default defineUsecase({
       token: "Field.Control",
       selector: "[class~=\"aui-field-control\"]",
       description: "The 28px outlined row that holds the magnifying glass, the input and, in HCS, HS, PFD and FD, the clear button.",
-      code: [
-        "<Field.Control>",
-        "  <Field.Icon name=\"magnifying-glass\" />",
-        "  <Field.Input … />",
-        "</Field.Control>",
-      ].join("\n"),
     },
     {
       id: "icon",
@@ -45,9 +34,6 @@ export default defineUsecase({
       token: "Field.Icon",
       selector: "[class~=\"aui-field-control\"] > [class~=\"aui-contained-icon\"]",
       description: "The leading magnifying-glass icon that marks the box as a search.",
-      code: [
-        "<Field.Icon name=\"magnifying-glass\" />",
-      ].join("\n"),
     },
     {
       id: "input",
@@ -55,9 +41,6 @@ export default defineUsecase({
       token: "Field.Input",
       selector: "[class~=\"aui-field-control\"] > [class~=\"aui-input\"]",
       description: "The text input with the \"Search Table\" placeholder and aria-label, filling the rest of the row.",
-      code: [
-        "<Field.Input aria-label=\"Search Table\" placeholder=\"Search Table\" />",
-      ].join("\n"),
     },
     {
       id: "clear",
@@ -65,11 +48,6 @@ export default defineUsecase({
       token: "Field.Button",
       selector: "[class~=\"aui-field-button\"]",
       description: "The xmark button labelled \"Clear search\" at the end of the box; it only appears once the box has text, and PBS and RWS leave it out.",
-      code: [
-        "<Field.Button aria-label=\"Clear search\">",
-        "  <Field.ButtonIcon name=\"xmark\" />",
-        "</Field.Button>",
-      ].join("\n"),
     },
   ],
 });

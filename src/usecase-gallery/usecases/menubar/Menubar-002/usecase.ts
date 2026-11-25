@@ -30,9 +30,6 @@ export default defineUsecase({
       token: 'Menubar',
       selector: '[class~="aui-menubar"]',
       description: 'The "Top bar" strip with the File menu first; the other apps place About, Reset and Help Center after it.',
-      code: `<Menubar aria-label="Top bar">
-  {/* … */}
-</Menubar>`,
     },
     {
       id: 'trigger',
@@ -40,7 +37,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownTrigger',
       selector: '[class~="aui-menubar-trigger"]',
       description: 'The text trigger "File" that opens the device, template and print actions.',
-      code: `<Menubar.DropdownTrigger>File</Menubar.DropdownTrigger>`,
     },
     {
       id: 'popup',
@@ -48,9 +44,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownPopup',
       selector: '[class~="aui-dropdown-popup"]',
       description: 'The 192px wide menu surface, 4px below the trigger and aligned to its start.',
-      code: `<Menubar.DropdownPopup aui={{ sx: { width: '192' } }}>
-  {/* … */}
-</Menubar.DropdownPopup>`,
     },
     {
       id: 'item',
@@ -58,7 +51,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownItem',
       selector: '[class~="aui-dropdown-item"]',
       description: 'A plain action row: "Save to device" or "Open from device".',
-      code: `<Menubar.DropdownItem>Save to device</Menubar.DropdownItem>`,
     },
     {
       id: 'separator',
@@ -66,7 +58,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownSeparator',
       selector: '[class~="aui-dropdown-separator"]',
       description: 'The divider between the device actions and the Print submenu.',
-      code: `<Menubar.DropdownSeparator />`,
     },
     {
       id: 'submenu-trigger',
@@ -74,7 +65,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownSubmenuTrigger',
       selector: '[class~="aui-dropdown-submenu-trigger"]',
       description: 'The "Print" row with a trailing arrow; it opens a second popup to its right holding "Print output".',
-      code: `<Menubar.DropdownSubmenuTrigger>Print</Menubar.DropdownSubmenuTrigger>`,
     },
   ],
 });

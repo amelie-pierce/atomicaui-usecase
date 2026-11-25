@@ -21,7 +21,6 @@ export default defineUsecase({
       token: 'Tabs',
       selector: '[class~="aui-tabs"]',
       description: 'Check tabs at scale "sm" with a 12px gap between the strip and the panel; Connection is selected first.',
-      code: `<Tabs defaultValue="connection" aui={{ scale: 'sm', sx: { gap: '12' } }}>`,
     },
     {
       id: 'list',
@@ -29,10 +28,6 @@ export default defineUsecase({
       token: 'Tabs.List',
       selector: '[class~="aui-tabs-list"]',
       description: 'Strip of check tabs; reading the icons down the row summarises which checks passed.',
-      code: `<Tabs.List aui={{ scale: 'sm' }}>
-  <Tabs.Tab value="connection" …>…</Tabs.Tab>
-  <Tabs.Tab value="weld" …>…</Tabs.Tab>
-</Tabs.List>`,
     },
     {
       id: 'tab',
@@ -40,10 +35,6 @@ export default defineUsecase({
       token: 'Tabs.Tab',
       selector: '[class~="aui-tabs-tab"]',
       description: 'One check, Connection or Weld, with its status icon before the label.',
-      code: `<Tabs.Tab value="weld" aui={{ scale: 'sm' }}>
-  <Tabs.Icon name="xmark" aui={{ scale: 'sm', color: 'error' }} />
-  Weld
-</Tabs.Tab>`,
     },
     {
       id: 'icon',
@@ -51,7 +42,6 @@ export default defineUsecase({
       token: 'Tabs.Icon',
       selector: '[class~="aui-tabs-tab"] > [class~="aui-contained-icon"]',
       description: 'Leading result icon: a success check for Connection and an error xmark for Weld; FD uses circle-check and circle-exclamation through a plain Icon.',
-      code: `<Tabs.Icon name="check" aui={{ scale: 'sm', color: 'success' }} />`,
     },
     {
       id: 'panel',
@@ -59,7 +49,6 @@ export default defineUsecase({
       token: 'Tabs.Panel',
       selector: '[class~="aui-tabs-panel"]',
       description: 'Body for the selected check, "Connection check" or "Weld check".',
-      code: `<Tabs.Panel value="connection">Connection check</Tabs.Panel>`,
     },
   ],
 });

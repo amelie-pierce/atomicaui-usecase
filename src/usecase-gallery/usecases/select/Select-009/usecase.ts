@@ -19,9 +19,6 @@ export default defineUsecase({
       token: 'Field',
       selector: '[class~="aui-field"]',
       description: 'Label-less Field at scale "sm" with the "status-filter" class that places the select in the output toolbar.',
-      code: `<Field className="status-filter" aui={{ scale: 'sm' }}>
-  {/* … */}
-</Field>`,
     },
     {
       id: 'trigger',
@@ -29,9 +26,6 @@ export default defineUsecase({
       token: 'Field.SelectTrigger',
       selector: '[class~="aui-select-trigger"]',
       description: 'Full-width trigger labelled "Product status" for assistive tech only, in the kit default style (no surface or fixed colour).',
-      code: `<Field.SelectTrigger aria-label="Product status" aui={{ sx: { width: 'full' } }}>
-  {/* … */}
-</Field.SelectTrigger>`,
     },
     {
       id: 'value',
@@ -40,7 +34,6 @@ export default defineUsecase({
       selector: '[class~="aui-select-value"]',
       text: true,
       description: 'Shows "Passed products", the default status filter.',
-      code: `<Field.SelectValue />`,
     },
     {
       id: 'chevron',
@@ -48,7 +41,6 @@ export default defineUsecase({
       token: 'Field.SelectChevron',
       selector: '[class~="aui-select-chevron"]',
       description: 'The chevron at the trigger end.',
-      code: `<Field.SelectChevron />`,
     },
     {
       id: 'popup',
@@ -56,9 +48,6 @@ export default defineUsecase({
       token: 'Field.SelectPopup',
       selector: '[class~="aui-select-popup"]',
       description: 'Popup of the trigger width placed 5px below it, offering Passed, Failed and All products.',
-      code: `<Field.SelectPopup matchTriggerWidth>
-  {/* … */}
-</Field.SelectPopup>`,
     },
     {
       id: 'list',
@@ -66,9 +55,6 @@ export default defineUsecase({
       token: 'Field.SelectList',
       selector: '[class~="aui-select-list"]',
       description: 'The list of the three status rows.',
-      code: `<Field.SelectList>
-  {/* … */}
-</Field.SelectList>`,
     },
     {
       id: 'item',
@@ -76,10 +62,6 @@ export default defineUsecase({
       token: 'Field.SelectItem',
       selector: '[class~="aui-select-item"]',
       description: 'A status row; the chosen one is marked by a raised fill.',
-      code: `<Field.SelectItem value="passed">
-  <Field.SelectItemText>Passed products</Field.SelectItemText>
-  <Field.SelectItemIndicator />
-</Field.SelectItem>`,
     },
     {
       id: 'item-text',
@@ -87,7 +69,6 @@ export default defineUsecase({
       token: 'Field.SelectItemText',
       selector: '[class~="aui-select-item-text"]',
       description: 'The status wording, such as "Failed products".',
-      code: `<Field.SelectItemText>Passed products</Field.SelectItemText>`,
     },
     {
       id: 'indicator',
@@ -95,7 +76,6 @@ export default defineUsecase({
       token: 'Field.SelectItemIndicator',
       selector: '[class~="aui-select-item-indicator"]',
       description: 'Empty indicator slot at the row end.',
-      code: `<Field.SelectItemIndicator />`,
     },
   ],
 });

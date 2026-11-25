@@ -21,9 +21,6 @@ export default defineUsecase({
       token: 'Dialog.Trigger',
       selector: '[class~="aui-dialog-trigger"]',
       description: 'The secondary solid soft "Thickness Calculator" button of the ADM scene that opens the dialog from the base plate inputs; the example frame shows the dialog already open without it.',
-      code: `<Dialog.Trigger type="button" aui={{ color: 'secondary', paint: 'solid', scale: 'sm', shape: 'soft' }}>
-  Thickness Calculator
-</Dialog.Trigger>`,
     },
     {
       id: 'overlay',
@@ -31,9 +28,6 @@ export default defineUsecase({
       token: 'Dialog.Backdrop',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the Thickness Calculator while it is open over the ADM base plate page.',
-      code: `<Dialog open modal={false}>
-  <Dialog.Portal container={host}>
-    <Dialog.Backdrop />`,
     },
     {
       id: 'popup',
@@ -41,7 +35,6 @@ export default defineUsecase({
       token: 'Dialog.Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The default 480px calculator window (520px in the ADM scene) that keeps focus off the first control until the user acts.',
-      code: `<Dialog.Popup initialFocus={false}>`,
     },
     {
       id: 'title',
@@ -49,11 +42,6 @@ export default defineUsecase({
       token: 'Dialog.Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title bar reading "Thickness Calculator" with the close X at its end.',
-      code: `<Dialog.Title aui={{ color: 'raised' }}>
-  Thickness Calculator
-  <Dialog.Spacer />
-  <Dialog.Close aria-label="Close" />
-</Dialog.Title>`,
     },
     {
       id: 'title-text',
@@ -62,8 +50,6 @@ export default defineUsecase({
       selector: '[class~="aui-dialog-title"]',
       text: true,
       description: 'The words "Thickness Calculator" at the start of the title bar.',
-      code: `<Dialog.Title aui={{ color: 'raised' }}>
-  Thickness Calculator`,
     },
     {
       id: 'spacer',
@@ -71,7 +57,6 @@ export default defineUsecase({
       token: 'Dialog.Spacer',
       selector: '[class~="aui-dialog-spacer"]',
       description: 'The flexible gap between the calculator name and the close X.',
-      code: `<Dialog.Spacer />`,
     },
     {
       id: 'close',
@@ -79,7 +64,6 @@ export default defineUsecase({
       token: 'Dialog.Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X that returns the user to the base plate inputs without applying the calculation.',
-      code: `<Dialog.Close aria-label="Close" />`,
     },
     {
       id: 'body',
@@ -87,11 +71,6 @@ export default defineUsecase({
       token: 'Dialog.Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The scrolling body that holds the calculator inputs and result; the example shows a one-line placeholder.',
-      code: `<Dialog.Body>
-  <Type data-ug-part="calculator-text" as="p" role="p3">
-    The calculator inputs and result go here.
-  </Type>
-</Dialog.Body>`,
     },
     {
       id: 'calculator-text',
@@ -99,9 +78,6 @@ export default defineUsecase({
       token: 'Type',
       text: true,
       description: 'The p3 placeholder line that stands for the calculator inputs and result (the ADM scene reads "The calculator result goes here.").',
-      code: `<Type data-ug-part="calculator-text" as="p" role="p3">
-  The calculator inputs and result go here.
-</Type>`,
     },
   ],
 });

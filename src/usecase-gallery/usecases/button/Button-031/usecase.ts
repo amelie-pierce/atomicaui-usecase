@@ -19,23 +19,11 @@ export default defineUsecase({
     + 'Dialog close: HCS, ACE, ADM, PFD, PBS, HS, FD, AGPD and RWS (a raised Title with a Spacer and the 20x20 contained X; the scene is HCS, which sets scale "sm", the default, on the Title and the X; measured in the browser, HCS and the others render the same elements and styles and differ only in popup width, 384px vs 480px, and the aria-label; their licence gates set scale "sm" on a plain Title and the X, and PBS drops the X there); ADC (the X wrapped in a Tooltip, a solid secondary sm popup reading "Close", measured 59x28 on hover). '
     + 'Close without Title: PBS only (HeaderClose, the Remove and Duplicate dialogs): no Title, a View row with justifyContent "end" holding only the X. The dialog scenes keep the Title only: no body or footer.',
   anatomy: [
-    { id: 'popup', name: 'Popup', token: 'Dialog.Popup', selector: '[class~="aui-dialog-popup"]', description: 'The dialog surface: ADC and PBS use the default width, HCS a 384px popup.',
-      code: `<Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: '384' } }}>` },
-    { id: 'title', name: 'Title', token: 'Dialog.Title', selector: '[class~="aui-dialog-title"]', description: 'The raised title bar of the ADC Feedback Form and HCS Send feedback dialogs, with the heading and a spacer pushing Close to its end; PBS has no title.',
-      code: `<Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-  Send feedback
-  <Dialog.Spacer />
-  <Dialog.Close aria-label="Close Send feedback" aui={{ scale: 'sm' }} />
-</Dialog.Title>` },
-    { id: 'dialog-close', name: 'Dialog close', token: 'Dialog.Close', selector: '[class~="aui-dialog-close"]', description: 'The transparent xmark control at the end of the title (ADC wraps it in a Close tooltip, HCS names it Close Send feedback); in PBS it sits alone in a right-aligned row above the body.',
-      code: `<Dialog.Close aria-label="Close" />` },
-    { id: 'icon-button', name: 'Close button', token: 'IconButton', selector: '[class~="aui-button"]:not([class~="aui-dialog-close"])', description: 'The standalone 20px transparent xmark IconButton shown in the example before it is mounted as a Dialog.Close.',
-      code: `<IconButton name="xmark" aria-label="Close" aui={{ paint: 'text', profile: 'contained' }} />` },
-    { id: 'tooltip', name: 'Close tooltip', token: 'Tooltip.Popup', selector: '[class~="aui-tooltip-popup"]', description: 'ADC only: the secondary tooltip reading Close shown above the close control.',
-      code: `<Tooltip.Popup aui={{ paint: 'solid', color: 'secondary', scale: 'sm' }}>Close</Tooltip.Popup>` },
-    { id: 'body', name: 'Body', token: 'Dialog.Body', selector: '[class~="aui-dialog-body"]', description: 'PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1.',
-      code: `<Dialog.Body>
-  <Type as="p" role="p3">Are you sure you want to delete Connection 1</Type>
-</Dialog.Body>` },
+    { id: 'popup', name: 'Popup', token: 'Dialog.Popup', selector: '[class~="aui-dialog-popup"]', description: 'The dialog surface: ADC and PBS use the default width, HCS a 384px popup.' },
+    { id: 'title', name: 'Title', token: 'Dialog.Title', selector: '[class~="aui-dialog-title"]', description: 'The raised title bar of the ADC Feedback Form and HCS Send feedback dialogs, with the heading and a spacer pushing Close to its end; PBS has no title.' },
+    { id: 'dialog-close', name: 'Dialog close', token: 'Dialog.Close', selector: '[class~="aui-dialog-close"]', description: 'The transparent xmark control at the end of the title (ADC wraps it in a Close tooltip, HCS names it Close Send feedback); in PBS it sits alone in a right-aligned row above the body.' },
+    { id: 'icon-button', name: 'Close button', token: 'IconButton', selector: '[class~="aui-button"]:not([class~="aui-dialog-close"])', description: 'The standalone 20px transparent xmark IconButton shown in the example before it is mounted as a Dialog.Close.' },
+    { id: 'tooltip', name: 'Close tooltip', token: 'Tooltip.Popup', selector: '[class~="aui-tooltip-popup"]', description: 'ADC only: the secondary tooltip reading Close shown above the close control.' },
+    { id: 'body', name: 'Body', token: 'Dialog.Body', selector: '[class~="aui-dialog-body"]', description: 'PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1.' },
   ],
 });

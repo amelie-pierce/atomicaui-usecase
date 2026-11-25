@@ -35,7 +35,6 @@ export default defineUsecase({
       token: 'Accordion.Item',
       selector: '[class~="aui-accordion-item"]',
       description: 'One Input-pane section, Connection Type (open by default) or Load Properties; in the list layout (HCS, HS, PFD) items are flush with a 1px outlined line between them, in the cards layout (FD, PBS) each is a soft rounded card.',
-      code: `<Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>`,
     },
     {
       id: 'trigger',
@@ -43,9 +42,6 @@ export default defineUsecase({
       token: 'Accordion.Trigger',
       selector: '[class~="aui-accordion-trigger"]',
       description: 'Full-width surface title row, scale "sm" and shape "none", that opens or closes its section; openMultiple lets several stay open.',
-      code: `<Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-  …
-</Accordion.Trigger>`,
     },
     {
       id: 'icon',
@@ -53,7 +49,6 @@ export default defineUsecase({
       token: 'Accordion.Icon',
       selector: '[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]',
       description: 'Leading regular-weight topic icon, link for Connection Type and arrow-down for Load Properties; the FD and PBS card layouts omit it.',
-      code: `<Accordion.Icon name="link" weight="regular" aria-hidden />`,
     },
     {
       id: 'label',
@@ -61,7 +56,6 @@ export default defineUsecase({
       token: 'Accordion.Trigger',
       selector: '[class~="aui-accordion-trigger-content"]',
       description: 'Semi-bold l4 section name, "Connection Type" or "Load Properties" (upper case in the card layouts).',
-      code: `<Type as="span" role="l4" weight="semi-bold">Connection Type</Type>`,
     },
     {
       id: 'chevron',
@@ -69,7 +63,6 @@ export default defineUsecase({
       token: 'Accordion.Chevron',
       selector: '[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]',
       description: 'Disclosure chevron at the end of the row that turns with the open state.',
-      code: `<Accordion.Chevron />`,
     },
     {
       id: 'panel',
@@ -77,9 +70,6 @@ export default defineUsecase({
       token: 'Accordion.Panel',
       selector: '[class~="aui-accordion-panel"]',
       description: 'Body of the open section with default padding; Connection Type shows the placeholder "Section fields" while Load Properties has no panel.',
-      code: `<Accordion.Panel aui={{ profile: 'default' }}>
-  <Type as="p" role="p3">Section fields</Type>
-</Accordion.Panel>`,
     },
   ],
 });

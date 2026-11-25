@@ -29,7 +29,6 @@ export default defineUsecase({
       token: 'Tabs',
       selector: '[class~="aui-tabs"]',
       description: 'Top-level phone switch with no padding, spanning the viewport width (390px in the scenes). ADM, PBS and PFD start on Input.',
-      code: `<Tabs defaultValue="summary" aui={{ profile: 'no-padding' }}>`,
     },
     {
       id: 'list',
@@ -37,10 +36,6 @@ export default defineUsecase({
       token: 'Tabs.List',
       selector: '[class~="aui-tabs-list"]',
       description: 'One-line row of pane chips; in the ADM and PFD scenes it uses overflow="shrink" with gap 0 and scrolls horizontally when the labels do not fit.',
-      code: `<Tabs.List>
-  <Tabs.Tab value="summary" …>Summary</Tabs.Tab>
-  <Tabs.Tab value="result" …>Result</Tabs.Tab>
-</Tabs.List>`,
     },
     {
       id: 'tab',
@@ -48,9 +43,6 @@ export default defineUsecase({
       token: 'Tabs.Tab',
       selector: '[class~="aui-tabs-tab"]',
       description: 'One chip per pane with a short label (Summary and Result, or Input and Output in the scenes), kept on one line with whiteSpace nowrap.',
-      code: `<Tabs.Tab value="result" aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'overlay', paint: 'solid' } } }}>
-  Result
-</Tabs.Tab>`,
     },
     {
       id: 'add',
@@ -58,7 +50,6 @@ export default defineUsecase({
       token: 'Tabs.AddButton',
       selector: '[class~="aui-tabs-add-button"]',
       description: 'ADM only: a trailing rotate-right icon button labelled "Reset" at the end of the list.',
-      code: `<Tabs.AddButton name="rotate-right" aria-label="Reset" />`,
     },
     {
       id: 'panel',
@@ -66,7 +57,6 @@ export default defineUsecase({
       token: 'Tabs.Panel',
       selector: '[class~="aui-tabs-panel"]',
       description: 'The pane shown for the selected tab, "Summary content" or "Result content".',
-      code: `<Tabs.Panel value="result">Result content</Tabs.Panel>`,
     },
   ],
 });

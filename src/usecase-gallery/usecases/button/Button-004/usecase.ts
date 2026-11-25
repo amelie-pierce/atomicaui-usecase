@@ -22,7 +22,6 @@ export default defineUsecase({
       token: "Button",
       description: "The inline \"All Products\" Button inside a sentence: profile \"no-padding\" removes the box, inline-flex and an underline make it read as a warning-colored link; type=\"button\" keeps it from submitting.",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button\n  type=\"button\"\n  aui={{\n    scale: 'sm',\n    profile: 'no-padding',\n    color: 'warning',\n    paint: 'text',\n    sx: { display: 'inline-flex', textDecoration: 'underline' },\n  }}\n>\n  All Products\n</Button>",
     },
     {
       id: "label",
@@ -31,7 +30,6 @@ export default defineUsecase({
       description: "The underlined words \"All Products\" that sit in the middle of the sentence \"Selecting … to review all solutions\".",
       selector: "[class~=\"aui-button\"]",
       text: true,
-      code: "All Products",
     },
   ],
 });

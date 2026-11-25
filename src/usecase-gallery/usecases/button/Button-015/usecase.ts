@@ -22,7 +22,6 @@ export default defineUsecase({
       token: "Button",
       description: "The OK Button of an ADC notice dialog: solid primary (orange), small, the only action in the footer.",
       selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
-      code: "<Button aui={{ color: 'primary', paint: 'solid', scale: 'sm' }}>OK</Button>",
     },
     {
       id: "label",
@@ -31,7 +30,6 @@ export default defineUsecase({
       description: "The text \"OK\" that acknowledges the Maximum Number of Designs Reached notice.",
       selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
       text: true,
-      code: "OK",
     },
   ],
 });

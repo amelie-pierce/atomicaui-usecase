@@ -29,17 +29,19 @@ The tree is Components grid (`#/`) > component page (`#/Button`) > use case (`#B
 2. Write `example.tsx` for the first option and `options/<option-id>/example.tsx` for every additional option. Each Component UI must be the exact control or component rendered for that option.
 3. Write `usecase.ts` with `uiType`, `title`, `apps`, `summary`, `where`, `when`, `how`, a specific `anatomy` array and `options`. Each option names the UI, lists its apps, records its source path and has a `scene.tsx`.
 4. Build each scene from the real app source, keeping it minimal but faithful. Do not replace app-specific visible structure with generic filler or a shared scene when the UI differs.
-5. Re-audit Anatomy whenever the UI changes. Every visible part needs one shared part id and an exact selector or `data-ug-part` link. Include a specific description, usage notes, states, accessibility information and a code sample for every part. Anatomy code samples render as plain inline text, never as a block code box (`pre`, Copy bar). Hide only parts the selected option genuinely does not render.
+5. Re-audit Anatomy whenever the UI changes. Every visible part needs one shared part id and an exact selector or `data-ug-part` link. Include a specific description, usage notes, states and accessibility information for every part. Anatomy steps carry no code: no code sample or code block under a step, only the step title, its token and its description. Hide only parts the selected option genuinely does not render.
 
 ## Detail page = one selection of options
 
-Every use case uses the same selection model. The option list is a vertical radio group on the LEFT, above the Document; it drives the Component UI, In context UI, app badges, Anatomy and one complete Document. The right column holds the preview with a `Component` / `In context` toggle (the only toggle; options never go there). There is no Document/Code tab.
+Every use case uses the same selection model. The left column is the preview: its header holds the option select on the left and the `Component` / `In context` toggle on the right (the only toggle), and the chosen option's UI shows below it, one view at a time. The option select drives the Component UI, In context UI, app badges, Anatomy and one complete Document. The right column is that Document. There is no Document/Code tab.
 
 - List every distinct UI of the action, including enabled and disabled states. Option names describe what the UI is, never the app.
 - Each option has `options/<id>/scene.tsx`; the first option uses the use case's `example.tsx`, and every later option has its own `example.tsx`.
 - The union of option `apps` must equal the use case `apps`; the catalog validates this. The selected option's app badges and document must match.
 - The document includes complete prose, Anatomy and both Component UI and In context code sections. Save and Copy use the selected In context code.
-- Check every option in the browser: all visible parts are present and hoverable, the page is not blank, deep links such as `#Dialog-002` work, and the console has no errors.
+- Anatomy highlight is one-way: hovering or focusing a step highlights its element in the preview; hovering the preview never changes Anatomy.
+- A preview never scrolls. `hooks/use-stage-fit.ts` zooms content that is larger than its stage down to fit; never clip it with `overflow: hidden` or a per-use-case size hack.
+- Check every option in the browser: all visible parts are present and hoverable, the preview has no scrollbar, the page is not blank, deep links such as `#Dialog-002` work, and the console has no errors.
 
 ## In context rules
 
@@ -51,7 +53,7 @@ Every use case uses the same selection model. The option list is a vertical radi
 
 ## Anatomy and document quality
 
-Anatomy is authored data in each `usecase.ts`, not generic component boilerplate. Audit the mounted Component and In context UI together. For a dialog, for example, include only what the selected UI renders, such as overlay, container, header/title, close icon, body/content, footer and action buttons, each linked to the exact element. A selector must resolve to the part in the preview; nested parts use the shared id and the existing highlight logic. Descriptions, usage, state, accessibility and code must name the actual labels, controls, props and behavior of that option.
+Anatomy is authored data in each `usecase.ts`, not generic component boilerplate. Audit the mounted Component and In context UI together. For a dialog, for example, include only what the selected UI renders, such as overlay, container, header/title, close icon, body/content, footer and action buttons, each linked to the exact element. A selector must resolve to the part in the preview; nested parts use the shared id and the existing highlight logic. Descriptions, usage, state and accessibility must name the actual labels, controls, props and behavior of that option.
 
 ## Renumber ids
 
@@ -61,5 +63,5 @@ Ids are `<Component>-<NNN>`, contiguous from 001 per component in tree order. Wh
 
 1. `npm run build` passes and every component page renders all use-case cards.
 2. Catalog validation finds no missing option, scene, example, anatomy link or app mismatch.
-3. In a real browser, sweep every use case and every option. Confirm Component UI, In context UI, Anatomy hover highlights, descriptions, code samples and badges all change together; verify representative deep links including `#Dialog-001` and `#Dialog-002`, no blank pages and no console errors.
+3. In a real browser, sweep every use case and every option. Confirm Component UI, In context UI, Anatomy highlights, descriptions, the document's code and badges all change together; verify representative deep links including `#Dialog-001` and `#Dialog-002`, no blank pages and no console errors.
 4. Update `_vaults/atomicaui-usecase-prototype/wiki/gallery/adding-use-cases.md` only for durable facts learned in the task.

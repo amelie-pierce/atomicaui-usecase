@@ -19,7 +19,6 @@ export default defineUsecase({
       token: 'Card',
       selector: '[class~="aui-card"]',
       description: '224px wide raised surface card with elevation 4 that floats beside the option list in a popover.',
-      code: `<Card aui={{ scale: 'sm', color: 'surface', paint: 'solid', shape: 'soft', elevation: 4, sx: { width: '224' } }}>`,
     },
     {
       id: 'body',
@@ -27,10 +26,6 @@ export default defineUsecase({
       token: 'Card.Body',
       selector: '[class~="aui-card-body"]',
       description: 'Stacks the option name above its illustration.',
-      code: `<Card.Body aui={{ scale: 'sm' }}>
-  <Card.Title>Glulam</Card.Title>
-  <ContainedImage … />
-</Card.Body>`,
     },
     {
       id: 'title',
@@ -38,7 +33,6 @@ export default defineUsecase({
       token: 'Card.Title',
       selector: '[class~="aui-card-title"]',
       description: 'Name of the highlighted option, "Glulam".',
-      code: `<Card.Title>Glulam</Card.Title>`,
     },
     {
       id: 'illustration',
@@ -46,7 +40,6 @@ export default defineUsecase({
       token: 'ContainedImage',
       selector: '[class~="aui-contained-image"]',
       description: '4:3 generic illustration of Glulam, fitted whole with fit="contain".',
-      code: `<ContainedImage src={MOCK_IMAGE_SRC} alt="Generic illustration of Glulam" fit="contain" ratio="4:3" />`,
     },
   ],
 });

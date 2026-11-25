@@ -24,7 +24,6 @@ export default defineUsecase({
       token: "Button",
       description: "The Download CSV Button: secondary text paint, scale \"sm\", soft shape and flex \"none\" so it never shrinks in the wrapping toolbar row after the search field and count.",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button aui={{ color: 'secondary', paint: 'text', scale: 'sm', shape: 'soft', sx: { flex: 'none' } }}>\n  …\n</Button>",
     },
     {
       id: "icon",
@@ -32,7 +31,6 @@ export default defineUsecase({
       token: "Button.Icon",
       description: "The CSV file glyph that sits before the label and tells the export format.",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
-      code: "<Button.Icon name=\"file-csv\" />",
     },
     {
       id: "label",
@@ -41,7 +39,6 @@ export default defineUsecase({
       description: "The label \"Download CSV\" (written in capitals in RWS) that exports the rows the table shows.",
       selector: "[class~=\"aui-button\"]",
       text: true,
-      code: "Download CSV",
     },
   ],
 });

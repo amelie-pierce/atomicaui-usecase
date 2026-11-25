@@ -19,11 +19,6 @@ export default defineUsecase({
       token: "List",
       selector: "[class~=\"aui-list\"]",
       description: "The \"Columns\" list of the Configure columns popover, one row per results-table column.",
-      code: [
-        "<List aria-label=\"Columns\">",
-        "  …",
-        "</List>",
-      ].join("\n"),
     },
     {
       id: "row",
@@ -31,12 +26,6 @@ export default defineUsecase({
       token: "List.Item",
       selector: "[class~=\"aui-list-item\"]",
       description: "The Model row: the column name at the start and its switch in the row actions at the end.",
-      code: [
-        "<List.Item id=\"model\">",
-        "  <List.ItemText>Model</List.ItemText>",
-        "  <List.ItemActions>…</List.ItemActions>",
-        "</List.Item>",
-      ].join("\n"),
     },
     {
       id: "row-text",
@@ -44,9 +33,6 @@ export default defineUsecase({
       token: "List.ItemText",
       selector: "[class~=\"aui-list-item-text\"]",
       description: "The column name \"Model\" that names what the switch shows or hides.",
-      code: [
-        "<List.ItemText>Model</List.ItemText>",
-      ].join("\n"),
     },
     {
       id: "row-actions",
@@ -54,11 +40,6 @@ export default defineUsecase({
       token: "List.ItemActions",
       selector: "[class~=\"aui-list-item-actions\"]",
       description: "The trailing slot at the end of the row that holds the switch.",
-      code: [
-        "<List.ItemActions>",
-        "  …",
-        "</List.ItemActions>",
-      ].join("\n"),
     },
     {
       id: "switch",
@@ -66,18 +47,12 @@ export default defineUsecase({
       token: "Switch",
       selector: "[class~=\"aui-switch\"]",
       description: "The on/off control, on by default, with no visible label; its aria-label \"Show Model\" names it and the selected track is solid primary.",
-      code: [
-        "<Switch aria-label=\"Show Model\" defaultSelected aui={{ states: { selected: { color: 'primary', paint: 'solid' } } }} />",
-      ].join("\n"),
     },
     {
       id: "thumb",
       name: "Thumb",
       selector: "[class~=\"aui-switch-thumb\"]",
       description: "The movable thumb that sits at the end of the track while the column is shown.",
-      code: [
-        "<Switch aria-label=\"Show Model\" defaultSelected … />",
-      ].join("\n"),
     },
   ],
 });

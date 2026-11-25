@@ -21,9 +21,6 @@ export default defineUsecase({
       token: 'Dialog.Backdrop',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the Calculation Report window in ADC; the preview stage stays visible because the dialog is non-modal here.',
-      code: `<Dialog open modal={false}>
-  <Dialog.Portal container={host}>
-    <Dialog.Backdrop />`,
     },
     {
       id: 'popup',
@@ -31,7 +28,6 @@ export default defineUsecase({
       token: 'Dialog.Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The plain 520px report window at the default scale; the ADC app makes it draggable and resizable, which the example leaves out.',
-      code: `<Dialog.Popup initialFocus={false} style={{ '--aui-width': 'min(520px, 100%)' } as React.CSSProperties}>`,
     },
     {
       id: 'title',
@@ -39,11 +35,6 @@ export default defineUsecase({
       token: 'Dialog.Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title bar that names the report "Calculation Report" and ends in the close X.',
-      code: `<Dialog.Title aui={{ color: 'raised' }}>
-  Calculation Report
-  <Dialog.Spacer />
-  <Dialog.Close aria-label="Close" />
-</Dialog.Title>`,
     },
     {
       id: 'title-text',
@@ -52,8 +43,6 @@ export default defineUsecase({
       selector: '[class~="aui-dialog-title"]',
       text: true,
       description: 'The words "Calculation Report" at the start of the title bar.',
-      code: `<Dialog.Title aui={{ color: 'raised' }}>
-  Calculation Report`,
     },
     {
       id: 'spacer',
@@ -61,7 +50,6 @@ export default defineUsecase({
       token: 'Dialog.Spacer',
       selector: '[class~="aui-dialog-spacer"]',
       description: 'The gap that pushes the close X to the end of the title bar, ahead of the "Close" tooltip in the ADC scene.',
-      code: `<Dialog.Spacer />`,
     },
     {
       id: 'close',
@@ -69,7 +57,6 @@ export default defineUsecase({
       token: 'Dialog.Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X of the report window; the ADC scene wraps it in a "Close" tooltip trigger.',
-      code: `<Dialog.Close aria-label="Close" />`,
     },
     {
       id: 'body',
@@ -77,11 +64,6 @@ export default defineUsecase({
       token: 'Dialog.Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The body of the report window; in the ADC scene it uses the no-padding profile so the document View reaches the popup edges.',
-      code: `<Dialog.Body>
-  <Type data-ug-part="preview-text" as="p" role="p3">
-    The preview of the report goes here.
-  </Type>
-</Dialog.Body>`,
     },
     {
       id: 'preview-text',
@@ -89,19 +71,12 @@ export default defineUsecase({
       token: 'Type',
       text: true,
       description: 'The p3 line "The preview of the report goes here." that stands in for the generated report in the Dialog frame.',
-      code: `<Type data-ug-part="preview-text" as="p" role="p3">
-  The preview of the report goes here.
-</Type>`,
     },
     {
       id: 'document',
       name: 'Report document',
       token: 'View',
       description: 'The centred role="document" View of the ADC scene that shows "Report preview for Design 1" over a line about the generated PDF.',
-      code: `<View
-  data-ug-part="document"
-  role="document"
-  aria-label="Calculation report preview"`,
     },
   ],
 });

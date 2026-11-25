@@ -19,7 +19,6 @@ export default defineUsecase({
       token: 'Panels',
       selector: '[class~="aui-panels"]',
       description: 'Horizontal split group, 560px wide and 160px tall at most, that places the panes side by side.',
-      code: `<Panels orientation="horizontal" aui={{ scale: 'sm' }} style={{ inlineSize: 'min(100%, 560px)', blockSize: 160 }}>`,
     },
     {
       id: 'panel',
@@ -27,14 +26,6 @@ export default defineUsecase({
       token: 'Panels.Panel',
       selector: '[class~="aui-panels-panel"]',
       description: 'Two surface-alt soft panes, Input (id "input", 50% default width) and 3D Viewer, each at least 120px wide with a semi-bold l3 heading.',
-      code: `<Panels.Panel
-  id="input"
-  defaultSize="50%"
-  minSize="120px"
-  aui={{ profile: 'block-padding', scale: 'sm', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0' } }}
->
-  <Type as="h2" role="l3" weight="semi-bold">Input</Type>
-</Panels.Panel>`,
     },
     {
       id: 'resize-handle',
@@ -42,7 +33,6 @@ export default defineUsecase({
       token: 'Panels.ResizeHandle',
       selector: '[class~="aui-panels-resize-handle"]',
       description: '6px primary vertical bar between Input and 3D Viewer that the user drags to change the widths.',
-      code: `<Panels.ResizeHandle aria-label="Resize Input and 3D Viewer panels" color="primary" width="6px" />`,
     },
   ],
 });

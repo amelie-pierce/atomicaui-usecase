@@ -19,7 +19,6 @@ export default defineUsecase({
       name: 'Trigger',
       token: 'Tooltip.Trigger',
       description: 'The selection target: a 96 by 80 surface image Button labelled "Show in 3D" in the example and RWS, or the PFD "Embedded Strap" card (a View as button, at least 96px square).',
-      code: `<Tooltip.Trigger render={<Button data-ug-part="trigger" aria-label="Show in 3D" aui={{ color: 'surface', paint: 'text', shape: 'soft', sx: { width: '96', height: '80' } }} />}>`,
     },
     {
       id: 'thumbnail',
@@ -27,7 +26,6 @@ export default defineUsecase({
       token: 'Tooltip.Trigger',
       selector: '[data-ug-part="trigger"] > svg',
       description: 'The connection image drawn inside the trigger as an aria-hidden svg (72px wide in the example, 64px in the PFD card).',
-      code: `<svg viewBox="0 0 192 128" aria-hidden="true" style={{ width: 'var(--p-px-72)', aspectRatio: '4 / 3' }}>`,
     },
     {
       id: 'card-label',
@@ -35,7 +33,6 @@ export default defineUsecase({
       token: 'Type',
       text: true,
       description: 'The PFD card caption "Embedded Strap" under the image.',
-      code: `<Type data-ug-part="card-label" as="span" role="p3">Embedded Strap</Type>`,
     },
     {
       id: 'positioner',
@@ -43,7 +40,6 @@ export default defineUsecase({
       token: 'Tooltip.Positioner',
       selector: '[class~="aui-tooltip-positioner"]',
       description: 'Opens the note to the right of the image button with a 4px offset (side="right"); PFD uses the default side.',
-      code: `<Tooltip.Positioner side="right" sideOffset={4}>`,
     },
     {
       id: 'popup',
@@ -51,7 +47,6 @@ export default defineUsecase({
       token: 'Tooltip.Popup',
       selector: '[class~="aui-tooltip-popup"]',
       description: 'The text tooltip surface; in PFD it is allowed to grow to 384px for the longer note.',
-      code: `<Tooltip.Popup>Show in 3D</Tooltip.Popup>`,
     },
     {
       id: 'note',
@@ -60,7 +55,6 @@ export default defineUsecase({
       selector: '[class~="aui-tooltip-popup"]',
       text: true,
       description: 'The explanation text: "Show in 3D" in the example and RWS, "Use with a continuous strap along the plate." in PFD.',
-      code: `<Tooltip.Popup>Show in 3D</Tooltip.Popup>`,
     },
   ],
 });

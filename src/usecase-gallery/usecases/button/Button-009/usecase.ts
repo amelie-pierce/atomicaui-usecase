@@ -25,7 +25,6 @@ export default defineUsecase({
       token: "Button",
       description: "The View options Button in the corner of the 3D viewer: small, surface color with tonal paint, acting as the trigger of the camera and visibility popover.",
       selector: "[class~=\"aui-button\"]",
-      code: "<Button aui={{ scale: 'sm', color: 'surface', paint: 'tonal' }}>View options</Button>",
     },
     {
       id: "label",
@@ -34,7 +33,6 @@ export default defineUsecase({
       description: "The text \"View options\" that names the popover of camera and visibility controls.",
       selector: "[class~=\"aui-button\"]",
       text: true,
-      code: "View options",
     },
   ],
 });

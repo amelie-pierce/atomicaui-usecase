@@ -19,11 +19,6 @@ export default defineUsecase({
       token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The compact solid success chip at scale \"xs\" that reports one check category on an FD result card; a failed category turns red.",
-      code: [
-        "<Chip aui={{ color: 'success', paint: 'solid', scale: 'xs' }}>",
-        "  …",
-        "</Chip>",
-      ].join("\n"),
     },
     {
       id: "icon",
@@ -31,9 +26,6 @@ export default defineUsecase({
       token: "Chip.Icon",
       selector: "[class~=\"aui-chip-icon\"]",
       description: "The \"circle-check\" icon at the start of the chip (an exclamation when the check fails).",
-      code: [
-        "<Chip.Icon name=\"circle-check\" />",
-      ].join("\n"),
     },
     {
       id: "label",
@@ -42,9 +34,6 @@ export default defineUsecase({
       selector: "[class~=\"aui-chip-label\"]",
       text: true,
       description: "The category name \"Anchorage\".",
-      code: [
-        "<Chip.Label>Anchorage</Chip.Label>",
-      ].join("\n"),
     },
   ],
 });

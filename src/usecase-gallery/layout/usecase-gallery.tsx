@@ -63,8 +63,8 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   }
   if (!original || !group || !usecase) return null;
   const panes = {
-    render: <RenderPane usecase={usecase} option={option} anatomy={anatomy} hoveredPartId={activePartId} onPartChange={onPartChange} onAvailablePartsChange={onAvailablePartsChange} />,
-    detail: <DetailPane usecase={usecase} option={option} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availableParts?.key === previewKey ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} onOptionChange={(optionId) => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })} />,
+    render: <RenderPane usecase={usecase} option={option} anatomy={anatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })} />,
+    detail: <DetailPane usecase={usecase} option={option} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availableParts?.key === previewKey ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} />,
   };
   return (
     <div className="ug ug--usecase">

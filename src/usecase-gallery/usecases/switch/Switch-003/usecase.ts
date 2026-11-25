@@ -19,11 +19,6 @@ export default defineUsecase({
       token: "List",
       selector: "[class~=\"aui-list\"]",
       description: "The \"Load conditions\" list of the ADM input panel, three rows each with a name and a switch.",
-      code: [
-        "<List aria-label=\"Load conditions\">",
-        "  …",
-        "</List>",
-      ].join("\n"),
     },
     {
       id: "row",
@@ -31,12 +26,6 @@ export default defineUsecase({
       token: "List.Item",
       selector: "[class~=\"aui-list-item\"]",
       description: "The Wind load row with the name at the start and its switch at the end.",
-      code: [
-        "<List.Item id=\"wind\">",
-        "  <List.ItemText>Wind load</List.ItemText>",
-        "  <List.ItemActions>…</List.ItemActions>",
-        "</List.Item>",
-      ].join("\n"),
     },
     {
       id: "row-text",
@@ -44,9 +33,6 @@ export default defineUsecase({
       token: "List.ItemText",
       selector: "[class~=\"aui-list-item-text\"]",
       description: "The condition name \"Wind load\".",
-      code: [
-        "<List.ItemText>Wind load</List.ItemText>",
-      ].join("\n"),
     },
     {
       id: "row-actions",
@@ -54,11 +40,6 @@ export default defineUsecase({
       token: "List.ItemActions",
       selector: "[class~=\"aui-list-item-actions\"]",
       description: "The slot at the end of the row that holds the switch.",
-      code: [
-        "<List.ItemActions>",
-        "  …",
-        "</List.ItemActions>",
-      ].join("\n"),
     },
     {
       id: "switch",
@@ -66,18 +47,12 @@ export default defineUsecase({
       token: "Switch",
       selector: "[class~=\"aui-switch\"]",
       description: "The off-by-default control whose unselected track is a surface-tonal white fill with a thin outlined border; selected it is solid primary.",
-      code: [
-        "<Switch aria-label=\"Wind load\" aui={{ states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }} />",
-      ].join("\n"),
     },
     {
       id: "thumb",
       name: "Thumb",
       selector: "[class~=\"aui-switch-thumb\"]",
       description: "The thumb at the start of the white track while the load is off.",
-      code: [
-        "<Switch aria-label=\"Wind load\" … />",
-      ].join("\n"),
     },
   ],
 });

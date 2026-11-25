@@ -23,9 +23,6 @@ export default defineUsecase({
       token: 'Menubar',
       selector: '[class~="aui-menubar"]',
       description: 'The strip named "Drawer" that holds the Settings row inside the phone drawer.',
-      code: `<Menubar aria-label="Drawer">
-  {/* … */}
-</Menubar>`,
     },
     {
       id: 'trigger',
@@ -33,7 +30,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownTrigger',
       selector: '[class~="aui-menubar-trigger"]',
       description: 'The text row "Settings" that opens the menu; it replaces the gear of the desktop bar.',
-      code: `<Menubar.DropdownTrigger>Settings</Menubar.DropdownTrigger>`,
     },
     {
       id: 'popup',
@@ -41,9 +37,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownPopup',
       selector: '[class~="aui-dropdown-popup"]',
       description: 'Menu labelled "Settings", opened below the row (side "bottom") and centred on it (align "center").',
-      code: `<Menubar.DropdownPopup aria-label="Settings">
-  {/* … */}
-</Menubar.DropdownPopup>`,
     },
     {
       id: 'group',
@@ -51,9 +44,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownGroup',
       selector: '[class~="aui-dropdown-group"]',
       description: 'The Pane Orientation group with its heading and rows.',
-      code: `<Menubar.DropdownGroup>
-  {/* … */}
-</Menubar.DropdownGroup>`,
     },
     {
       id: 'group-label',
@@ -61,7 +51,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownGroupLabel',
       selector: '[class~="aui-dropdown-group-label"]',
       description: 'The "Pane Orientation" caption above the radio rows (and "Pane Layout" in the scenes).',
-      code: `<Menubar.DropdownGroupLabel>Pane Orientation</Menubar.DropdownGroupLabel>`,
     },
     {
       id: 'radio-group',
@@ -69,9 +58,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownRadioGroup',
       selector: '[class~="aui-dropdown-radio-group"]',
       description: 'Single-choice set with Vertical chosen; the ADM and ACE scenes add Horizontal and Grid.',
-      code: `<Menubar.DropdownRadioGroup defaultValue="vertical">
-  {/* … */}
-</Menubar.DropdownRadioGroup>`,
     },
     {
       id: 'radio-item',
@@ -79,11 +65,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownRadioItem',
       selector: '[class~="aui-dropdown-radio-item"]',
       description: 'The "Vertical" row with its table-columns icon and a hidden indicator.',
-      code: `<Menubar.DropdownRadioItem value="vertical">
-  <Menubar.Icon name="table-columns" />
-  Vertical
-  <Menubar.DropdownRadioItemIndicator hidden />
-</Menubar.DropdownRadioItem>`,
     },
     {
       id: 'item-icon',
@@ -91,7 +72,6 @@ export default defineUsecase({
       token: 'Menubar.Icon',
       selector: '[class~="aui-dropdown-radio-item"] > [class~="aui-contained-icon"]',
       description: 'The leading glyph of a row, table-columns for Vertical.',
-      code: `<Menubar.Icon name="table-columns" />`,
     },
     {
       id: 'item',
@@ -99,10 +79,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownItem',
       selector: '[class~="aui-dropdown-item"]',
       description: 'The "Reset layout to default" row of the ACE and ADM scenes.',
-      code: `<Menubar.DropdownItem>
-  <Menubar.Icon name="rotate-left" />
-  Reset layout to default
-</Menubar.DropdownItem>`,
     },
     {
       id: 'separator',
@@ -110,7 +86,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownSeparator',
       selector: '[class~="aui-dropdown-separator"]',
       description: 'The divider between the orientation group and the layout group in the scenes.',
-      code: `<Menubar.DropdownSeparator />`,
     },
     {
       id: 'checkbox-item',
@@ -118,9 +93,6 @@ export default defineUsecase({
       token: 'Menubar.DropdownCheckboxItem',
       selector: '[class~="aui-dropdown-checkbox-item"]',
       description: 'The "Auto-Rotate 3D Model" check row that the ADM scene adds because ADM has a 3D model.',
-      code: `<Menubar.DropdownCheckboxItem defaultChecked>
-  {/* … */}
-</Menubar.DropdownCheckboxItem>`,
     },
   ],
 });

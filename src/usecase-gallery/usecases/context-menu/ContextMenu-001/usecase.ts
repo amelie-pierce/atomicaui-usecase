@@ -19,14 +19,6 @@ export default defineUsecase({
       token: 'ContextMenu.Trigger',
       selector: '[class~="aui-tabs-tab"]',
       description: 'The "Design 1" tab is the right-click area: a Tabs.Tab with nativeButton off rendered through ContextMenu.Trigger as a div, which takes no aui.',
-      code: `<Tabs.Tab
-  value="d1"
-  nativeButton={false}
-  render={<ContextMenu.Trigger render={<div />} />}
-  aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'raised', paint: 'tonal' } } }}
->
-  {/* … */}
-</Tabs.Tab>`,
     },
     {
       id: 'popup',
@@ -34,9 +26,6 @@ export default defineUsecase({
       token: 'ContextMenu.Popup',
       selector: '[class~="aui-dropdown-popup"]',
       description: 'The menu labelled "Tab options", opened at the pointer in the app and anchored under the tab in the scene.',
-      code: `<ContextMenu.Popup aria-label="Tab options">
-  {/* … */}
-</ContextMenu.Popup>`,
     },
     {
       id: 'item',
@@ -44,10 +33,6 @@ export default defineUsecase({
       token: 'ContextMenu.Item',
       selector: '[class~="aui-dropdown-item"]',
       description: 'A plain action row: Close, Close all other designs, Rename, Duplicate or Move to top; choosing one runs it and closes the menu.',
-      code: `<ContextMenu.Item>
-  <ContextMenu.Icon name="xmark" />
-  Close
-</ContextMenu.Item>`,
     },
     {
       id: 'icon',
@@ -55,7 +40,6 @@ export default defineUsecase({
       token: 'ContextMenu.Icon',
       selector: '[class~="aui-dropdown-item"] > [class~="aui-contained-icon"]',
       description: 'The leading glyph of each row: xmark, ban, pen, copy and arrow-up.',
-      code: `<ContextMenu.Icon name="xmark" />`,
     },
     {
       id: 'separator',
@@ -63,7 +47,6 @@ export default defineUsecase({
       token: 'ContextMenu.Separator',
       selector: '[class~="aui-dropdown-separator"]',
       description: 'The divider between the close actions (Close, Close all other designs) and the edit actions (Rename, Duplicate, Move to top).',
-      code: `<ContextMenu.Separator />`,
     },
   ],
 });

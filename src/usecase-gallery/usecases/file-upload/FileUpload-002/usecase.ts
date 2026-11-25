@@ -5,10 +5,10 @@ export default defineUsecase({
   title: 'Feedback attachments dropzone',
   apps: ['adm', 'pfd', 'pbs', 'hs', 'agpd', 'rws'],
     layers: [
-        {"id":"chips","partId":"chips","title":"Attached file chip","explanation":"The scene lists each attached file above the area as a default Chip with its name.","keyIdea":"The scene lists each attached file above the area as a default Chip with its name.","selector":"[class~=\"aui-chip\"]"},
-        {"id":"upload","partId":"upload","title":"Upload area","explanation":"The dashed multi-file drop surface (multiple) in the Feedback form attachment block, with the idle message.","keyIdea":"The dashed multi-file drop surface (multiple) in the Feedback form attachment block, with the idle message.","selector":"[class~=\"aui-file-upload\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"The upload icon at the top of the drop area.","keyIdea":"The upload icon at the top of the drop area.","selector":"[class~=\"aui-file-upload-icon\"]"},
-        {"id":"action","partId":"action","title":"Browse action","explanation":"The \"Browse\" action that opens the file picker so several files can be added one after another.","keyIdea":"The \"Browse\" action that opens the file picker so several files can be added one after another.","selector":"[class~=\"aui-file-upload-action\"]"},
+        {"id":"chips","partId":"chips","title":"Attached file chip","explanation":"The scene lists each attached file above the area as a default Chip with its name.","keyIdea":"An attached-file chip keeps each selected filename inspectable before submission.","selector":"[class~=\"aui-chip\"]"},
+        {"id":"upload","partId":"upload","title":"Upload area","explanation":"The dashed multi-file drop surface (multiple) in the Feedback form attachment block, with the idle message.","keyIdea":"The multi-file surface accepts repeated additions while keeping dropping available.","selector":"[class~=\"aui-file-upload\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The upload icon at the top of the drop area.","keyIdea":"The upload symbol marks the region where more attachments can be added.","selector":"[class~=\"aui-file-upload-icon\"]"},
+        {"id":"action","partId":"action","title":"Browse action","explanation":"The \"Browse\" action that opens the file picker so several files can be added one after another.","keyIdea":"Browse lets users add files one at a time from the device picker.","selector":"[class~=\"aui-file-upload-action\"]"},
       ],
 options: [
     { id: "adm-attachments", contextAnatomy: [
@@ -16,8 +16,8 @@ options: [
       { id: 'limits', name: 'Limits line', description: 'The muted "Up to 5 files, 10 MB each." caption under the dropzone.' },
     ], name: "Feedback attachments", apps: ["adm","pfd","pbs","hs","agpd","rws"], source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
       contextLayers: [
-        {"id":"context-form","partId":"form","title":"Attachment block","explanation":"The column that stacks the attached-file chips, the dropzone and the limits line inside the feedback form.","keyIdea":"The column that stacks the attached-file chips, the dropzone and the limits line inside the feedback form.","selector":"[data-ug-part=\"form\"]","scope":"context"},
-        {"id":"context-limits","partId":"limits","title":"Limits line","explanation":"The muted \"Up to 5 files, 10 MB each.\" caption under the dropzone.","keyIdea":"The muted \"Up to 5 files, 10 MB each.\" caption under the dropzone.","selector":"[data-ug-part=\"limits\"]","scope":"context"},
+        {"id":"context-form","partId":"form","title":"Attachment block","explanation":"The column that stacks the attached-file chips, the dropzone and the limits line inside the feedback form.","keyIdea":"The attachment block groups current files, the add-file target and its constraints.","selector":"[data-ug-part=\"form\"]","scope":"context"},
+        {"id":"context-limits","partId":"limits","title":"Limits line","explanation":"The muted \"Up to 5 files, 10 MB each.\" caption under the dropzone.","keyIdea":"The limits line states the per-file size and total count before users attach more.","selector":"[data-ug-part=\"limits\"]","scope":"context"},
       ],
     },
   ],

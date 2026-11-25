@@ -16,14 +16,12 @@ export default defineUsecase({
     {
       id: "chip",
       name: "Chip",
-      token: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The secondary solid chip at scale \"xs\" with soft corners that marks the whole app state, shown in the ADC beta notice and beside the menu.",
     },
     {
       id: "label",
       name: "Label",
-      token: "Chip.Label",
       selector: "[class~=\"aui-chip-label\"]",
       text: true,
       description: "The word BETA that states the status.",

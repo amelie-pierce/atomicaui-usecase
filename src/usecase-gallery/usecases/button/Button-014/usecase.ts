@@ -18,21 +18,18 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The Add job Button under the Job tally table: solid secondary, small, stretching across the ACE column.",
       selector: "[class~=\"aui-button\"]",
     },
     {
       id: "icon",
       name: "Icon",
-      token: "Button.Icon",
       description: "The plus glyph before the label, marked aria-hidden since the label already says what it does.",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The text \"Add job\" that appends an empty job entry.",
       selector: "[class~=\"aui-button\"]",
       text: true,

@@ -26,21 +26,18 @@ export default defineUsecase({
     {
       id: 'menubar',
       name: 'Menubar',
-      token: 'Menubar',
       selector: '[class~="aui-menubar"]',
       description: 'The "Top bar" strip that holds the action button; the HS scene shows it with File and Help Center beside About and Reset.',
     },
     {
       id: 'button',
       name: 'Button',
-      token: 'Menubar.Button',
       selector: '[class~="aui-button"]',
       description: 'The plain About button that runs one action, here the about dialog, with no list of choices.',
     },
     {
       id: 'label',
       name: 'Label',
-      token: 'Menubar.Button',
       selector: '[class~="aui-button"]',
       text: true,
       description: 'The visible word "About" (Reset in the HS scene) that names the action.',
@@ -48,7 +45,6 @@ export default defineUsecase({
     {
       id: 'trigger',
       name: 'Menu trigger',
-      token: 'Menubar.DropdownTrigger',
       selector: '[class~="aui-menubar-trigger"]',
       description: 'In the HS scene the File and Help Center triggers sit around the buttons so the bar shows both kinds.',
     },

@@ -25,21 +25,18 @@ export default defineUsecase({
     {
       id: 'table',
       name: 'Table',
-      token: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Framed results grid: scale "sm", soft shape, a 1px outlined border and "all-cells" tonal borders. It scrolls on its own (scroll "self"), pins the first column with frozenColumns={1} and is sortable.',
     },
     {
       id: 'head',
       name: 'Header',
-      token: 'Table.Head',
       selector: '[class~="aui-table-head"]',
       description: 'Raised header band holding the single row of sortable column headings, Model and Load (lb).',
     },
     {
       id: 'header-cell',
       name: 'Header cell',
-      token: 'Table.HeaderCell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'Centred raised heading with a 128px width that matches its body column; the label sits in one span so a wrapped label stays a single flex item.',
     },
@@ -52,21 +49,18 @@ export default defineUsecase({
     {
       id: 'body',
       name: 'Body',
-      token: 'Table.Body',
       selector: '[class~="aui-table-body"]',
       description: 'The two result rows, Model B-200 (2,210) and Model C-300 (1,180), scrolling under the pinned header.',
     },
     {
       id: 'row',
       name: 'Row',
-      token: 'Table.Row',
       selector: '[class~="aui-table-row"]',
       description: 'One candidate product, a plain read-only row with no selection or expander.',
     },
     {
       id: 'cell',
       name: 'Cell',
-      token: 'Table.Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Value cell using the same 128px width token as its header; the model name is left-aligned in the pinned first column and the load is centred.',
     },

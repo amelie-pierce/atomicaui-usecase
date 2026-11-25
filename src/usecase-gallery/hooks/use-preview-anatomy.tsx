@@ -33,13 +33,14 @@ function measure(stage: HTMLElement, target: Element | undefined, textOnly: bool
   const stageRect = stage.getBoundingClientRect();
   if (!targetRect.width || !targetRect.height) return null;
   const radius = textOnly ? '2px' : getComputedStyle(target).borderRadius || '0px';
-  return {
-    left: targetRect.left - stageRect.left + stage.scrollLeft,
-    top: targetRect.top - stageRect.top + stage.scrollTop,
-    width: targetRect.width,
-    height: targetRect.height,
-    radius,
-  };
+  // The overlay lives outside the stage's scroll area and sits over the stage's box, so it is cut to that box:
+  // a part larger than the stage (a dialog's scrim) is highlighted only where it is visible.
+  const left = Math.max(targetRect.left, stageRect.left);
+  const top = Math.max(targetRect.top, stageRect.top);
+  const right = Math.min(targetRect.right, stageRect.right);
+  const bottom = Math.min(targetRect.bottom, stageRect.bottom);
+  if (right <= left || bottom <= top) return null;
+  return { left: left - stageRect.left, top: top - stageRect.top, width: right - left, height: bottom - top, radius };
 }
 
 /**

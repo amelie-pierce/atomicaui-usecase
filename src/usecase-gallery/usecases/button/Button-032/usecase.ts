@@ -24,12 +24,12 @@ export default defineUsecase({
     + 'HS: a Tooltip above it, 4px offset, up to 384px, so it has no close. ADM: the same square Button with a Tooltip above it, 8px offset, painted solid secondary at scale "sm", up to 256px. PFD and AGPD (one group): the same square Button opening a popover, top, 4px offset, a surface card up to 384px. '
     + 'Each help scene keeps one labelled field and one sentence of help text.',
   anatomy: [
-    { id: 'help', name: 'Help button', token: 'IconButton', selector: '[class~="aui-button"][aria-label*="elp"]', description: 'The 20px transparent secondary circle-question button that sits beside the field label; the Look select swaps it for the 28px ghost version. In scenes it is a Button around a ContainedIcon (square or square-compact, RWS fixed at 20px).' },
-    { id: 'help-icon', name: 'Help icon', token: 'ContainedIcon', selector: '[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The circle-question glyph centred in the help button.' },
-    { id: 'label', name: 'Field label', token: 'Field.Label', selector: '[class~="aui-field-label"]', description: 'The label (Material, or Download Duration in HCS) that names the control the help explains.' },
-    { id: 'control', name: 'Field control', token: 'Field.Control', selector: '[class~="aui-field-control"]', description: 'The input (Steel) in ADM, HS, PBS, PFD and RWS scenes that the help text describes.' },
-    { id: 'tooltip', name: 'Help tooltip', token: 'Tooltip.Popup', selector: '[class~="aui-tooltip-popup"]', description: 'ADM and HS open the explanation as a tooltip above the button, up to 256px (ADM) or 384px (HS) wide.' },
-    { id: 'popover', name: 'Help popover', token: 'Popover.Popup', selector: '[data-aui-popup-motion][role="dialog"]', description: 'PBS, PFD and RWS open the explanation in a solid popover (320px or 384px max) above the button.' },
-    { id: 'select', name: 'Select trigger', token: 'Select.Trigger', selector: '[class~="aui-select-trigger"]', description: 'HCS only: the Snow (115) select under the Download Duration label.' },
+    { id: 'help', name: 'Help button', selector: '[class~="aui-button"][aria-label*="elp"]', description: 'The 20px transparent secondary circle-question button that sits beside the field label; the Look select swaps it for the 28px ghost version. In scenes it is a Button around a ContainedIcon (square or square-compact, RWS fixed at 20px).' },
+    { id: 'help-icon', name: 'Help icon', selector: '[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The circle-question glyph centred in the help button.' },
+    { id: 'label', name: 'Field label', selector: '[class~="aui-field-label"]', description: 'The label (Material, or Download Duration in HCS) that names the control the help explains.' },
+    { id: 'control', name: 'Field control', selector: '[class~="aui-field-control"]', description: 'The input (Steel) in ADM, HS, PBS, PFD and RWS scenes that the help text describes.' },
+    { id: 'tooltip', name: 'Help tooltip', selector: '[class~="aui-tooltip-popup"]', description: 'ADM and HS open the explanation as a tooltip above the button, up to 256px (ADM) or 384px (HS) wide.' },
+    { id: 'popover', name: 'Help popover', selector: '[data-aui-popup-motion][role="dialog"]', description: 'PBS, PFD and RWS open the explanation in a solid popover (320px or 384px max) above the button.' },
+    { id: 'select', name: 'Select trigger', selector: '[class~="aui-select-trigger"]', description: 'HCS only: the Snow (115) select under the Download Duration label.' },
   ],
 });

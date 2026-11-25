@@ -63,7 +63,7 @@ export default defineUsecase({
   anatomy: [
     {
       id: 'button',
-      token: 'Button',
+      name: 'Button',
       selector: '[data-ug-part="button"]',
       description: 'The visible Submit action for this UI.',
     },
@@ -83,13 +83,13 @@ The catalog loads `Scene` and `Example` from `options/<id>/scene.tsx` and `examp
 
 ## Anatomy and document quality
 
-Anatomy is authored per use case and option, not generic boilerplate. Re-audit it against the mounted UI whenever the option changes. Every visible part must have one shared part id linked to the exact element through a selector or `data-ug-part`. Include a specific description, usage notes, states and accessibility information for every part. Anatomy steps carry no code: no code sample or code block under a step. Hide only a part the selected UI genuinely does not render.
+Anatomy is authored per use case and option, not generic boilerplate. Re-audit it against the mounted UI whenever the option changes. Every visible part must have one shared part id linked to the exact element through a selector or `data-ug-part`. Include a specific description, usage notes, states and accessibility information for every part. Anatomy steps show only the part's name and its description: no code sample, code block, or component-token chip (`Button.Icon`) under a step. Hide only a part the selected UI genuinely does not render.
 
-For a dialog, list the actual rendered shell and content: overlay when present, container/popup, header/title, close icon, body/content, footer and each action button. If a body contains a form, accordion or radio list, describe the actual visible controls and keep their code in the selected option's document. Hovering or focusing a step highlights its element in the preview; the preview never changes Anatomy.
+For a dialog, list the actual rendered shell and content: overlay when present, container/popup, header/title, close icon, body/content, footer and each action button. If a body contains a form, accordion or radio list, describe the actual visible controls and keep their code in the selected option's document. Hovering or keyboard-focusing a step highlights its element in the preview (a mouse click does not keep the highlight); the preview never changes Anatomy. The highlight is an out-of-flow overlay that sits beside the scrolling stage, never inside it, so it cannot change the stage's scroll size.
 
 ## In context scenes
 
-`scene.tsx` is the selected option's real app context. It receives `{ children, host }`, places the Component UI where the source app places it and retains every visible part of that UI. `host` is the stage's content wrapper, which `hooks/use-stage-fit.ts` zooms down when the content is larger than the stage. Keep scenes minimal but faithful; use mock data only for content. Record source paths for the apps listed on the option and explain deliberate omissions in `how`.
+`scene.tsx` is the selected option's real app context. It receives `{ children, host }`, places the Component UI where the source app places it and retains every visible part of that UI. `host` is the stage's content wrapper, which `hooks/use-stage-fit.ts` zooms down when the content is larger than the stage. The fit counts content only: a fixed backdrop or viewport frames the stage and is skipped, so a dialog that fits is not shrunk, and fully transparent content (a popup not yet placed) is skipped until it is shown. A preview never scrolls and never clips; a component that does not fit is scaled, and nothing in the stage (a highlight, outline, shadow or fixed frame) may add to its scroll size. Keep scenes minimal but faithful; use mock data only for content. Record source paths for the apps listed on the option and explain deliberate omissions in `how`.
 
 Portaled Dialog, Popover and Tooltip parts use the stage host and preview-only props (`open`, `modal={false}`, `container={host}`, `anchor={host}`) that `catalog/snippet.ts` strips from copied code. Popover and Tooltip scenes are open and non-modal so the visible popup can be inspected. The stage is the preview's frame; do not add a page-covering overlay outside it.
 

@@ -18,7 +18,6 @@ export default defineUsecase({
     {
       id: "checkbox",
       name: "Checkbox",
-      token: "Checkbox",
       selector: "[class~=\"aui-checkbox\"]",
       description: "The filter toggle, checked by default so passed validations are listed in the checks table right below it; selected is solid primary.",
     },
@@ -31,14 +30,12 @@ export default defineUsecase({
     {
       id: "icon",
       name: "Icon",
-      token: "Checkbox.Icon",
       selector: "[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]",
       description: "The \"check\" mark inside the box while \"Show passed validations\" is on.",
     },
     {
       id: "label",
       name: "Label",
-      token: "Checkbox.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The caption \"Show passed validations\" that names the filter in the Why not details column of FD.",
     },

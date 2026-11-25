@@ -23,25 +23,21 @@ export default defineUsecase({
     {
       id: "reset",
       name: "Reset button",
-      token: "IconButton",
       description: "The icon-only rotate-left button at the start of the footer that resets the columns to their default order and visibility.",
     },
     {
       id: "actions",
       name: "Action group",
-      token: "View",
       description: "The row at the end of the footer that holds Cancel and Save with an 8px gap.",
     },
     {
       id: "cancel",
       name: "Cancel",
-      token: "Button",
       description: "The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS).",
     },
     {
       id: "save",
       name: "Save",
-      token: "Button",
       description: "The solid secondary Save Button that applies the column changes (scale \"sm\" in HCS, default scale in HS).",
     },
   ],

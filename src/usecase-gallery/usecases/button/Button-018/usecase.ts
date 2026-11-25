@@ -19,14 +19,12 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The Select products Button that stands in for the Products field: extra small, surface color with fixed (bordered) paint, soft shape and full width with content at the start.",
       selector: "[class~=\"aui-button\"]",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The placeholder text \"Select products\" shown until hover or focus swaps in the picker.",
       selector: "[class~=\"aui-button\"]",
       text: true,

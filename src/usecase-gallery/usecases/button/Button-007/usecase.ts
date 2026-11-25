@@ -19,14 +19,12 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill.",
       selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The text \"Close\" that dismisses the info dialog, the only choice it offers.",
       selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
       text: true,

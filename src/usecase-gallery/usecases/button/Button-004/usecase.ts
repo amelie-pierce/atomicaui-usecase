@@ -19,14 +19,12 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The inline \"All Products\" Button inside a sentence: profile \"no-padding\" removes the box, inline-flex and an underline make it read as a warning-colored link; type=\"button\" keeps it from submitting.",
       selector: "[class~=\"aui-button\"]",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The underlined words \"All Products\" that sit in the middle of the sentence \"Selecting … to review all solutions\".",
       selector: "[class~=\"aui-button\"]",
       text: true,

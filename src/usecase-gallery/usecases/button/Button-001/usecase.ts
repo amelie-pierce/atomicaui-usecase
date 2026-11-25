@@ -29,21 +29,18 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The Print Output Button: scale \"sm\", surface color with tonal paint and flex \"none\" so it keeps its width at the end of the results pane header (HCS look; HS, FD and ADM scenes swap in a solid secondary black Button).",
       selector: "[class~=\"aui-button\"]",
     },
     {
       id: "icon",
       name: "Icon",
-      token: "Button.Icon",
       description: "The print glyph before the label, at scale \"sm\" so it matches the small Button.",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The text \"Print Output\" that names the action of printing the results.",
       selector: "[class~=\"aui-button\"]",
       text: true,

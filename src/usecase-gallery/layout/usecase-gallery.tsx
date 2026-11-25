@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
 import { catalog, allUsecases, componentAliases } from '../catalog/catalog';
 import { withOption } from '../catalog/app-views';
 import { COMPONENTS_HASH, componentHash, useRoute } from '../hooks/use-route';
@@ -62,8 +62,9 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
     return group ? <div className="ug"><ComponentPage group={group} /></div> : null;
   }
   if (!original || !group || !usecase) return null;
+  // The option change is a transition: the shown UI stays until the next option's lazy example has loaded, so the stage never blanks.
   const panes = {
-    render: <RenderPane usecase={usecase} option={option} anatomy={anatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })} />,
+    render: <RenderPane usecase={usecase} option={option} anatomy={anatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId }))} />,
     detail: <DetailPane usecase={usecase} option={option} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availableParts?.key === previewKey ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} />,
   };
   return (

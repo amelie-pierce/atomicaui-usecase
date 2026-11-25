@@ -16,28 +16,24 @@ export default defineUsecase({
     {
       id: 'menubar',
       name: 'Menubar',
-      token: 'Menubar',
       selector: '[class~="aui-menubar"]',
       description: 'The "Top bar" strip that holds the one summary button at its right side.',
     },
     {
       id: 'button',
       name: 'Button',
-      token: 'Menubar.Button',
       selector: '[class~="aui-button"]',
       description: 'Tonal button (color "surface", paint "tonal", aria-label "Settings") that sums up region, language and design code and opens the settings popover.',
     },
     {
       id: 'icon',
       name: 'Icon',
-      token: 'Menubar.Icon',
       selector: '[class~="aui-button"] > [class~="aui-contained-icon"]',
       description: 'The globe glyph that leads the summary.',
     },
     {
       id: 'label',
       name: 'Label',
-      token: 'Menubar.Button',
       selector: '[class~="aui-button"]',
       text: true,
       description: 'The summary text "US", "EN" and "IBC 2018" shown in one line.',
@@ -45,7 +41,6 @@ export default defineUsecase({
     {
       id: 'divider',
       name: 'Divider',
-      token: 'Menubar.Divider',
       selector: '[class~="aui-menubar-divider"]',
       description: 'The thin separators between country, language and design code (two in this example).',
     },

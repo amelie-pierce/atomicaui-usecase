@@ -24,28 +24,24 @@ export default defineUsecase({
     {
       id: 'tabs',
       name: 'Tabs',
-      token: 'Tabs',
       selector: '[class~="aui-tabs"]',
       description: 'Root that switches the pane between its views; Summary is selected first through defaultValue="summary". ADC lists Model and Information, HS lists Summary and Result.',
     },
     {
       id: 'list',
       name: 'List',
-      token: 'Tabs.List',
       selector: '[class~="aui-tabs-list"]',
       description: 'The chip row in the pane header; ADC lets it wrap with flexWrap.',
     },
     {
       id: 'tab',
       name: 'Tab',
-      token: 'Tabs.Tab',
       selector: '[class~="aui-tabs-tab"]',
       description: 'A 28px soft chip: surface-alt solid when idle and overlay solid when selected.',
     },
     {
       id: 'panel',
       name: 'Panel',
-      token: 'Tabs.Panel',
       selector: '[class~="aui-tabs-panel"]',
       description: 'Content of the selected view, "Summary content" or "Result content" in the example.',
     },

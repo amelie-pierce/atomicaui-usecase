@@ -18,14 +18,12 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The Launch General Tutorial Button on the last step of an HS tour: small secondary text paint with alignSelf \"start\" so it hugs the start of the coach-mark card.",
       selector: "[class~=\"aui-button\"]:not([aria-label=\"Close walkthrough\"])",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The capitalised text \"LAUNCH GENERAL TUTORIAL\" that starts the HS General Tutorial.",
       selector: "[class~=\"aui-button\"]:not([aria-label=\"Close walkthrough\"])",
       text: true,

@@ -19,7 +19,6 @@ export default defineUsecase({
     {
       id: "switch",
       name: "Switch",
-      token: "Switch",
       selector: "[class~=\"aui-switch\"]",
       description: "The on/off control, on by default, with a solid primary track when selected; each app places it in a popover, a table toolbar or a dialog.",
     },
@@ -32,7 +31,6 @@ export default defineUsecase({
     {
       id: "label",
       name: "Label",
-      token: "Switch.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The option text \"Group by model\" beside the switch; the scenes swap it for Show Optimized Models, Send me a copy or the ADM draft switches.",
     },

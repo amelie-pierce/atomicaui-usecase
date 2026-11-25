@@ -16,7 +16,7 @@ export default defineUsecase({
     + 'In context the scene is the 3D Viewer pane with Reset view overlaid at the top end, 62px down and 12px in (the app\'s `.f02-controls-desktop`, here a gallery rule, since the kit sx has no inset axis); the projection radios and the Object Visibility checkboxes under it are left out. '
     + 'The canvas is a framed stand-in: the app draws a live three.js scene.',
   anatomy: [
-    { id: 'button', name: 'Reset view', token: 'IconButton', selector: '[class~="aui-button"]', description: 'The small soft-shaped IconButton with primary orange color and a 1px outlined border that floats over the 3D viewer to reset the camera.' },
-    { id: 'icon', name: 'Bullseye icon', token: 'IconButton', selector: '[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])', description: 'The bullseye glyph, drawn in the primary color on a transparent surface.' },
+    { id: 'button', name: 'Reset view', selector: '[class~="aui-button"]', description: 'The small soft-shaped IconButton with primary orange color and a 1px outlined border that floats over the 3D viewer to reset the camera.' },
+    { id: 'icon', name: 'Bullseye icon', selector: '[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])', description: 'The bullseye glyph, drawn in the primary color on a transparent surface.' },
   ],
 });

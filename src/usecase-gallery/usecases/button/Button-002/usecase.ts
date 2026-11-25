@@ -21,21 +21,18 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The Download CSV Button: secondary text paint, scale \"sm\", soft shape and flex \"none\" so it never shrinks in the wrapping toolbar row after the search field and count.",
       selector: "[class~=\"aui-button\"]",
     },
     {
       id: "icon",
       name: "Icon",
-      token: "Button.Icon",
       description: "The CSV file glyph that sits before the label and tells the export format.",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The label \"Download CSV\" (written in capitals in RWS) that exports the rows the table shows.",
       selector: "[class~=\"aui-button\"]",
       text: true,

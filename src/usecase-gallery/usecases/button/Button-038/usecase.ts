@@ -14,9 +14,9 @@ export default defineUsecase({
   when: 'Use it for the destructive action of a row; name the button with the row id in its aria-label (Remove <job> or <connection>).',
   how: 'One trash IconButton, aui color "secondary", paint "text", scale "sm" and the default square profile. The other columns are left out. One group, HS and PBS.',
   anatomy: [
-    { id: 'remove', name: 'Remove', token: 'IconButton', selector: '[class~="aui-button"][aria-label^="Remove"]', description: 'The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click.' },
-    { id: 'remove-icon', name: 'Trash icon', token: 'IconButton', selector: '[class~="aui-button"][aria-label^="Remove"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The trash glyph centred in the button.' },
-    { id: 'cell', name: 'Remove cell', token: 'Table.Cell', selector: '[class~="aui-table-cell"]:last-child', description: 'The last cell of the Job 1 row that holds the trash button next to the job name.' },
-    { id: 'header-cell', name: 'Remove header', token: 'Table.HeaderCell', selector: '[class~="aui-table-header-cell"]:last-child', description: 'The unlabeled column heading (aria-label Remove) above the trash buttons.' },
+    { id: 'remove', name: 'Remove', selector: '[class~="aui-button"][aria-label^="Remove"]', description: 'The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click.' },
+    { id: 'remove-icon', name: 'Trash icon', selector: '[class~="aui-button"][aria-label^="Remove"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The trash glyph centred in the button.' },
+    { id: 'cell', name: 'Remove cell', selector: '[class~="aui-table-cell"]:last-child', description: 'The last cell of the Job 1 row that holds the trash button next to the job name.' },
+    { id: 'header-cell', name: 'Remove header', selector: '[class~="aui-table-header-cell"]:last-child', description: 'The unlabeled column heading (aria-label Remove) above the trash buttons.' },
   ],
 });

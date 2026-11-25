@@ -20,10 +20,10 @@ export default defineUsecase({
     + 'HS renders the same as HCS: its trigger takes color "secondary" while its column is sorted or filtered (the filter glyph while filtered), which computes to the same near-black text, no fill and the same hover as the HCS "surface" kebab, so HCS and HS are one group. '
     + 'PFD (own group): the horizontal ellipsis glyph, secondary while sorted, the menu opens under the trigger towards the next column (bottom, start) and starts with a Close Button (profile "square", scale "sm", secondary text, alignSelf end) above the Sort radios; Search by text and Search by option are left out.',
   anatomy: [
-    { id: 'options', name: 'Column options', token: 'IconButton', selector: '[class~="aui-button"][aria-label*="column options" i]', description: 'The xs square-compact transparent button that opens the column menu; HCS uses the ellipsis-vertical glyph and PFD the horizontal ellipsis.' },
-    { id: 'options-icon', name: 'Icon', token: 'IconButton', selector: '[class~="aui-button"][aria-label*="column options" i] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The vertical or horizontal ellipsis glyph, centred in the button.' },
-    { id: 'header-cell', name: 'Column header', token: 'Table.HeaderCell', selector: '[class~="aui-table-header-cell"]', description: 'The raised Model and Load (lb) headings; each takes its options button through the actions prop, and Load (lb) is sorted ascending.' },
-    { id: 'popup', name: 'Column menu', token: 'Popover.Popup', selector: '[data-aui-popup-motion][role="dialog"]', description: 'The 256px popover opened under the Load (lb) heading with a Sort radio group; PFD adds a Close button at its end.' },
-    { id: 'radio', name: 'Sort option', token: 'Radio', selector: '[class~="aui-radio"]', description: 'The three sort choices (A to Z, Z to A, None), with the ascending one selected in primary.' },
+    { id: 'options', name: 'Column options', selector: '[class~="aui-button"][aria-label*="column options" i]', description: 'The xs square-compact transparent button that opens the column menu; HCS uses the ellipsis-vertical glyph and PFD the horizontal ellipsis.' },
+    { id: 'options-icon', name: 'Icon', selector: '[class~="aui-button"][aria-label*="column options" i] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The vertical or horizontal ellipsis glyph, centred in the button.' },
+    { id: 'header-cell', name: 'Column header', selector: '[class~="aui-table-header-cell"]', description: 'The raised Model and Load (lb) headings; each takes its options button through the actions prop, and Load (lb) is sorted ascending.' },
+    { id: 'popup', name: 'Column menu', selector: '[data-aui-popup-motion][role="dialog"]', description: 'The 256px popover opened under the Load (lb) heading with a Sort radio group; PFD adds a Close button at its end.' },
+    { id: 'radio', name: 'Sort option', selector: '[class~="aui-radio"]', description: 'The three sort choices (A to Z, Z to A, None), with the ascending one selected in primary.' },
   ],
 });

@@ -19,14 +19,12 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The Show Plate Option Button at the start of the lock popup: extra small, primary text paint, with no fill so it reads as an accent link under the explanatory line.",
       selector: "[class~=\"aui-button\"]:not([aria-label=\"Thickness is locked\"])",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The text \"Show Plate Option\" that reveals the option controlling the locked field.",
       selector: "[class~=\"aui-button\"]:not([aria-label=\"Thickness is locked\"])",
       text: true,
@@ -34,7 +32,6 @@ export default defineUsecase({
     {
       id: "popup",
       name: "Popup",
-      token: "Popover.Popup",
       description: "The 288px popup that opens from the lock icon, holding the line \"Controlled by Plate Option, currently ...\" above this Button.",
       selector: "[data-aui-popup-motion][role=\"dialog\"]",
     },

@@ -17,10 +17,10 @@ export default defineUsecase({
     + 'The trigger is a Panels.Trigger, the kit trigger that renders the IconButton, whose targetId is the panel id, and a real Panels group holds the Input panel at its 40px collapsed size: the rail is a column that fills the panel height with the trigger at the top centre, beside the viewer pane, which is cut to its title (no canvas); the Input panel holds only its title; the vertical rail of the engineering layout (angle-down, trigger at the start corner) is not shown. '
     + 'One group, HCS only.',
   anatomy: [
-    { id: 'expand', name: 'Expand Input', token: 'IconButton', selector: '[class~="aui-button"][aria-label="Expand Input"]:not([class~="aui-panels-trigger"])', description: 'The 28px square transparent secondary angle-right button that reopens the collapsed Input panel.' },
-    { id: 'trigger', name: 'Panel trigger', token: 'Panels.Trigger', selector: '[class~="aui-panels-trigger"]', description: 'HCS rail: the same button rendered as a Panels.Trigger that targets the hcs-input panel from the 40px collapsed rail.' },
-    { id: 'tooltip', name: 'Tooltip', token: 'Tooltip.Popup', selector: '[class~="aui-tooltip-popup"]', description: 'The Expand Input label shown below the button.' },
-    { id: 'panel', name: 'Panel', token: 'Panels.Panel', selector: '[class~="aui-panels-panel"]', description: 'The Input panel, collapsible to 40px (minSize 400px when open), next to the 3D Viewer panel.' },
-    { id: 'handle', name: 'Resize handle', token: 'Panels.ResizeHandle', selector: '[class~="aui-panels-resize-handle"]', description: 'The 8px primary handle between the Input and 3D Viewer panels.' },
+    { id: 'expand', name: 'Expand Input', selector: '[class~="aui-button"][aria-label="Expand Input"]:not([class~="aui-panels-trigger"])', description: 'The 28px square transparent secondary angle-right button that reopens the collapsed Input panel.' },
+    { id: 'trigger', name: 'Panel trigger', selector: '[class~="aui-panels-trigger"]', description: 'HCS rail: the same button rendered as a Panels.Trigger that targets the hcs-input panel from the 40px collapsed rail.' },
+    { id: 'tooltip', name: 'Tooltip', selector: '[class~="aui-tooltip-popup"]', description: 'The Expand Input label shown below the button.' },
+    { id: 'panel', name: 'Panel', selector: '[class~="aui-panels-panel"]', description: 'The Input panel, collapsible to 40px (minSize 400px when open), next to the 3D Viewer panel.' },
+    { id: 'handle', name: 'Resize handle', selector: '[class~="aui-panels-resize-handle"]', description: 'The 8px primary handle between the Input and 3D Viewer panels.' },
   ],
 });

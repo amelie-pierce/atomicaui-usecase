@@ -23,14 +23,12 @@ export default defineUsecase({
     {
       id: "group",
       name: "Radio group",
-      token: "RadioGroup",
       selector: "[class~=\"aui-radio-group\"]",
       description: "The projection group named by aria-label \"Camera projection\", Perspective selected by default; it sits among the 3D viewer controls.",
     },
     {
       id: "radio",
       name: "Radio",
-      token: "Radio",
       selector: "[class~=\"aui-radio\"]",
       description: "Perspective or Orthographic: a solid surface circle with a 1px outlined border when off and solid primary when chosen.",
     },
@@ -43,7 +41,6 @@ export default defineUsecase({
     {
       id: "label",
       name: "Label",
-      token: "Radio.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The projection name, Perspective or Orthographic; PBS wraps each radio in a tooltip.",
     },

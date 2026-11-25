@@ -16,7 +16,6 @@ export default defineUsecase({
     {
       id: "spinner",
       name: "Spinner",
-      token: "Spinner",
       selector: "[class~=\"aui-spinner\"]",
       description: "The extra-large info-coloured spinner, hidden from assistive technology (role \"presentation\", aria-hidden) because the message below carries the meaning.",
     },

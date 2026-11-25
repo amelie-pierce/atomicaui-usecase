@@ -25,7 +25,6 @@ export default defineUsecase({
     {
       id: "upload",
       name: "Upload area",
-      token: "FileUpload",
       selector: "[class~=\"aui-file-upload\"]",
       description: "The dashed single-file drop surface (multiple={false}) with the idle message, shown in the body of the upload dialog.",
     },

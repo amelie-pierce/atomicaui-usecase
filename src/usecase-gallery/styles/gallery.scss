@@ -122,7 +122,8 @@ $narrow: 840px;
   align-items: center;
   justify-content: space-between;
   gap: var(--p-px-12);
-  padding: var(--p-px-16) var(--p-px-24) 0;
+  // No padding of its own, so it lines up with the stage; the margin is the space between the two.
+  margin-block-end: var(--p-px-12);
 }
 
 // The select takes the free width up to a readable measure and wraps before the toggle does.
@@ -147,8 +148,22 @@ $narrow: 840px;
   min-block-size: var(--p-px-160);
 }
 
-.ug-render__stage[hidden] {
+.ug-render__stage[hidden],
+.ug-render__viewport[hidden] {
   display: none;
+}
+
+// Holds the Component stage and the Anatomy highlight side by side, so the highlight never takes part in the stage's scroll size.
+.ug-render__viewport {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  min-block-size: var(--p-px-160);
+}
+
+.ug-render__viewport > .ug-render__stage {
+  flex: 1 1 0;
+  min-inline-size: 0;
 }
 
 // The content of a stage. `useStageFit` scales it down from its top centre when it is larger than the stage, so it never scrolls.

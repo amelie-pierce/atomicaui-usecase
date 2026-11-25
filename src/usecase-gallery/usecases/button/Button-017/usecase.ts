@@ -19,21 +19,18 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The report-ready Button in the ADC status bar: solid info (blue), extra small, soft shape.",
       selector: "[class~=\"aui-button\"]",
     },
     {
       id: "icon",
       name: "Icon",
-      token: "Button.Icon",
       description: "The file glyph before the label that marks the item as a report.",
       selector: "[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The text \"Report is ready\" in a span, which reads \"Report is ready (outdated)\" when inputs changed.",
       selector: "[class~=\"aui-button\"] > span",
       text: true,

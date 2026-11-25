@@ -27,7 +27,6 @@ export default defineUsecase({
     {
       id: "checkbox",
       name: "Checkbox",
-      token: "Checkbox",
       selector: "[class~=\"aui-checkbox\"]",
       description: "The checkable control, at scale \"sm\", checked by default: a surface-tonal box with an outlined border when off and a solid primary box when on.",
     },
@@ -40,21 +39,18 @@ export default defineUsecase({
     {
       id: "icon",
       name: "Icon",
-      token: "Checkbox.Icon",
       selector: "[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]",
       description: "The \"check\" mark inside the indicator; the HS, PFD, PBS, AGPD, RWS, ADM and FD feedback dialogs show it when the option is on.",
     },
     {
       id: "label",
       name: "Label",
-      token: "Checkbox.Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The caption \"Send me a copy of my responses\" beside the box, answering the optional yes or no question at the end of the form.",
     },
     {
       id: "form-field",
       name: "Form field",
-      token: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "The feedback-form text fields (name, email, subject) above the checkbox in the dialog scenes, each a Field with a label and an input.",
     },

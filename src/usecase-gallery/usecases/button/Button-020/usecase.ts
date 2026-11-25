@@ -19,7 +19,6 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "One carousel pager dot: an empty solid Button with no children and an aria-label of \"1 / 3\"; primary (orange) for the current page, surface-alt for the others.",
       selector: "[class~=\"aui-button\"][aria-label*=\" / \"]",
     },

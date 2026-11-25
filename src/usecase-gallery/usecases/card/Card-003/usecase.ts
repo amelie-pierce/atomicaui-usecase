@@ -16,28 +16,24 @@ export default defineUsecase({
     {
       id: 'card',
       name: 'Card',
-      token: 'Card',
       selector: '[class~="aui-card"]',
       description: '224px wide raised surface card with elevation 4 that floats beside the option list in a popover.',
     },
     {
       id: 'body',
       name: 'Body',
-      token: 'Card.Body',
       selector: '[class~="aui-card-body"]',
       description: 'Stacks the option name above its illustration.',
     },
     {
       id: 'title',
       name: 'Title',
-      token: 'Card.Title',
       selector: '[class~="aui-card-title"]',
       description: 'Name of the highlighted option, "Glulam".',
     },
     {
       id: 'illustration',
       name: 'Illustration',
-      token: 'ContainedImage',
       selector: '[class~="aui-contained-image"]',
       description: '4:3 generic illustration of Glulam, fitted whole with fit="contain".',
     },

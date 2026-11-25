@@ -18,14 +18,12 @@ export default defineUsecase({
     {
       id: "container",
       name: "Container",
-      token: "Button",
       description: "The Add to Job List Button: a solid secondary (black) small Button, text only, first in the HS Output toolbar row.",
       selector: "[class~=\"aui-button\"]",
     },
     {
       id: "label",
       name: "Label",
-      token: "Button",
       description: "The text \"Add to Job List\" that adds the chosen result to the job list.",
       selector: "[class~=\"aui-button\"]",
       text: true,

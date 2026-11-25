@@ -35,7 +35,7 @@ The tree is component > UI type > use case. A use case is one business action su
 
 Every use case has `options` in `usecase.ts`. One option is one distinct rendered UI of the action, including an enabled/disabled state, icon treatment, app-specific structure or context. Option names describe the UI, never the app. Apps with identical rendered UI can share an option; a measured difference gets a different option.
 
-The detail page has exactly one option selector. Choosing it updates the Component UI, In context UI, Anatomy, app badges and complete Document together. There is no Component/In context tab or toggle and no Document/Code tab. The document contains both Component UI and In context code sections, plus complete API and Anatomy details. Save and Copy use the selected In context code.
+The detail page has exactly one option selector, a vertical radio group on the left above the Document. Choosing it updates the Component UI, In context UI, Anatomy, app badges and complete Document together. The right column shows the preview with a `Component` / `In context` toggle for the two views; there is no Document/Code tab. The document contains both Component UI and In context code sections, plus complete API and Anatomy details. Save and Copy use the selected In context code.
 
 Example shape:
 
@@ -84,7 +84,7 @@ The catalog loads `Scene` and `Example` from `options/<id>/scene.tsx` and `examp
 
 ## Anatomy and document quality
 
-Anatomy is authored per use case and option, not generic boilerplate. Re-audit it against the mounted UI whenever the option changes. Every visible part must have one shared part id linked to the exact element through a selector or `data-ug-part`. Include a specific description, usage notes, states, accessibility information and a code sample for every part. Hide only a part the selected UI genuinely does not render.
+Anatomy is authored per use case and option, not generic boilerplate. Re-audit it against the mounted UI whenever the option changes. Every visible part must have one shared part id linked to the exact element through a selector or `data-ug-part`. Include a specific description, usage notes, states, accessibility information and a code sample for every part (rendered as plain inline text in Anatomy, not as a block code box). Hide only a part the selected UI genuinely does not render.
 
 For a dialog, list the actual rendered shell and content: overlay when present, container/popup, header/title, close icon, body/content, footer and each action button. If a body contains a form, accordion or radio list, describe the actual visible controls and keep their code in the selected option's document. The existing Anatomy hook and highlight overlay use these links for hover and keyboard focus.
 

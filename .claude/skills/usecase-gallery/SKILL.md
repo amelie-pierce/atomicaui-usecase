@@ -29,11 +29,11 @@ The tree is Components grid (`#/`) > component page (`#/Button`) > use case (`#B
 2. Write `example.tsx` for the first option and `options/<option-id>/example.tsx` for every additional option. Each Component UI must be the exact control or component rendered for that option.
 3. Write `usecase.ts` with `uiType`, `title`, `apps`, `summary`, `where`, `when`, `how`, a specific `anatomy` array and `options`. Each option names the UI, lists its apps, records its source path and has a `scene.tsx`.
 4. Build each scene from the real app source, keeping it minimal but faithful. Do not replace app-specific visible structure with generic filler or a shared scene when the UI differs.
-5. Re-audit Anatomy whenever the UI changes. Every visible part needs one shared part id and an exact selector or `data-ug-part` link. Include a specific description, usage notes, states, accessibility information and a code sample for every part. Hide only parts the selected option genuinely does not render.
+5. Re-audit Anatomy whenever the UI changes. Every visible part needs one shared part id and an exact selector or `data-ug-part` link. Include a specific description, usage notes, states, accessibility information and a code sample for every part. Anatomy code samples render as plain inline text, never as a block code box (`pre`, Copy bar). Hide only parts the selected option genuinely does not render.
 
 ## Detail page = one selection of options
 
-Every use case uses the same selection model. One option list at the top drives the Component UI, In context UI, app badges, Anatomy and one complete Document. There is no Component/In context tab, no view toggle and no Document/Code tab.
+Every use case uses the same selection model. The option list is a vertical radio group on the LEFT, above the Document; it drives the Component UI, In context UI, app badges, Anatomy and one complete Document. The right column holds the preview with a `Component` / `In context` toggle (the only toggle; options never go there). There is no Document/Code tab.
 
 - List every distinct UI of the action, including enabled and disabled states. Option names describe what the UI is, never the app.
 - Each option has `options/<id>/scene.tsx`; the first option uses the use case's `example.tsx`, and every later option has its own `example.tsx`.

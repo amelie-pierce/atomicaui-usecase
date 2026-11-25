@@ -114,30 +114,30 @@ $narrow: 840px;
   gap: var(--p-px-4);
 }
 
-// The selection control of a selection-based use case, at the top of the page under the breadcrumb.
+// The selection control of a use case, at the top of the left column; it drives the preview and the document.
 .ug-options {
-  flex: none;
-  flex-wrap: wrap;
   margin: 0;
+  padding-block: var(--p-px-12);
 }
 
-// Both UIs of the chosen option stack in the left pane, each in a stage of its own; the pane scrolls when they do not fit.
+.ug-render__toggle {
+  flex: none;
+  align-self: flex-start;
+  margin-block-end: var(--p-px-8);
+}
+
+// The Component and In context UIs of the chosen option share the right pane, one at a time; the pane scrolls when it does not fit.
 .ug-render--split {
   overflow: auto;
 }
 
 .ug-render--split .ug-render__stage {
-  flex: none;
+  flex: 1 1 auto;
   min-block-size: var(--p-px-160);
 }
 
-.ug-render__heading {
-  flex: none;
-  margin: 0 0 var(--p-px-8);
-}
-
-.ug-render--split .ug-render__stage + .ug-render__heading {
-  margin-block-start: var(--p-px-16);
+.ug-render__stage[hidden] {
+  display: none;
 }
 
 .ug-render__stage {
@@ -356,8 +356,9 @@ $narrow: 840px;
 }
 
 .ug-docs__anatomy-code {
-  margin-inline-start: calc(var(--p-px-16) * 2);
-  margin-block-start: var(--p-px-4);
+  margin: var(--p-px-4) 0 0 calc(var(--p-px-16) * 2);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 .ug-docs__anatomy-button {
@@ -516,7 +517,8 @@ $narrow: 840px;
 }
 
 .ug-site__section-head {
-  background: var(--theme-surface-alt);
+  padding: 0;
+  background: var(--theme-surface);
   border-block-end: var(--p-px-1) solid var(--theme-raised);
 }
 
@@ -596,7 +598,6 @@ $narrow: 840px;
   overflow: hidden;
   block-size: calc(var(--p-px-16) * 10);
   background: var(--theme-surface);
-  border-block-end: var(--p-px-1) solid var(--theme-raised);
   pointer-events: none;
   user-select: none;
 }
@@ -609,6 +610,9 @@ $narrow: 840px;
   block-size: 100%;
   min-block-size: 0;
   box-sizing: border-box;
+  // The card's own border and radius frame the thumbnail; the stage's border and radius would clash with them.
+  border: 0;
+  border-radius: 0;
   // Overflow runs off the right/bottom edge, which is the extent the fit measures.
   justify-content: safe center;
   overflow: visible;

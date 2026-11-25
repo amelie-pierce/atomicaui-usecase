@@ -7,7 +7,6 @@ import { ComponentPage } from '../ui/component-page';
 import { ComponentsPage } from '../ui/components-page';
 import { DetailPane } from '../ui/detail-pane';
 import { DetailToolbar } from '../ui/detail-toolbar';
-import { OptionBar } from '../ui/option-bar';
 import { RenderPane } from '../ui/render-pane';
 import { DetailLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
@@ -65,12 +64,11 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   if (!original || !group || !usecase) return null;
   const panes = {
     render: <RenderPane usecase={usecase} option={option} anatomy={anatomy} hoveredPartId={activePartId} onPartChange={onPartChange} onAvailablePartsChange={onAvailablePartsChange} />,
-    detail: <DetailPane usecase={usecase} option={option} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availableParts?.key === previewKey ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} />,
+    detail: <DetailPane usecase={usecase} option={option} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availableParts?.key === previewKey ? availableParts.ids : undefined} onPartChange={onPartChange} onSelectPart={onSelectPart} onOptionChange={(optionId) => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })} />,
   };
   return (
     <div className="ug ug--usecase">
       <DetailToolbar crumbs={[{ label: 'Components', href: COMPONENTS_HASH }, { label: group.title, href: componentHash(group.id) }, { label: usecase.id }]} usecase={usecase} option={option} />
-      <OptionBar options={usecase.options} active={option} onChange={(optionId) => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })} />
       <div className="ug__body">
         {narrow ? <StackedLayout {...panes} /> : <DetailLayout {...panes} />}
       </div>

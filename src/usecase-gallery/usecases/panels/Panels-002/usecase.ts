@@ -7,9 +7,9 @@ export default defineUsecase({
   title: 'Stacked',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
     layers: [
-        {"id":"panels","partId":"panels","title":"Panels","explanation":"Vertical split group that stacks the panes, 560px wide and 160px tall at most.","keyIdea":"Vertical split group that stacks the panes, 560px wide and 160px tall at most.","selector":"[class~=\"aui-panels\"]"},
-        {"id":"panel","partId":"panel","title":"Panel","explanation":"Input on top (50% default height) and Output below, both surface-alt soft panes that may shrink to 40px high.","keyIdea":"Input on top (50% default height) and Output below, both surface-alt soft panes that may shrink to 40px high.","selector":"[class~=\"aui-panels-panel\"]"},
-        {"id":"resize-handle","partId":"resize-handle","title":"Resize handle","explanation":"6px primary horizontal bar between Input and Output; its label is \"Resize Input and Output panels\" in the example and \"Resize Input and results panels\" in the HCS scene.","keyIdea":"6px primary horizontal bar between Input and Output; its label is \"Resize Input and Output panels\" in the example and \"Resize Input and results panels\" in the HCS scene.","selector":"[class~=\"aui-panels-resize-handle\"]"},
+        {"id":"panels","partId":"panels","title":"Panels","explanation":"Vertical split group that stacks the panes, 560px wide and 160px tall at most.","keyIdea":"The vertical root places input above output when the workspace needs a stacked reading order.","selector":"[class~=\"aui-panels\"]"},
+        {"id":"panel","partId":"panel","title":"Panel","explanation":"Input on top (50% default height) and Output below, both surface-alt soft panes that may shrink to 40px high.","keyIdea":"The top and bottom panes retain separate identities while sharing the same width.","selector":"[class~=\"aui-panels-panel\"]"},
+        {"id":"resize-handle","partId":"resize-handle","title":"Resize handle","explanation":"6px primary horizontal bar between Input and Output; its label is \"Resize Input and Output panels\" in the example and \"Resize Input and results panels\" in the HCS scene.","keyIdea":"Dragging this horizontal grip reallocates height between the input and output areas.","selector":"[class~=\"aui-panels-resize-handle\"]"},
       ],
 options: [
     { id: "hcs-stacked", showContext: false, name: "Stacked", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"] ,

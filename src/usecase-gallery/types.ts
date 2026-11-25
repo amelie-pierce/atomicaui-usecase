@@ -56,7 +56,7 @@ export interface UsecaseOptionDoc {
   /** Parts added by this option's scene; component anatomy is included automatically in the In context view. */
   contextAnatomy?: AnatomyPart[];
   /** Extra lesson layers that this option's In context scene adds. */
-  contextLayers?: LayerStep[];
+  contextLayers: LayerStep[];
   /** View-specific documentation for the scene. Omitted fields share the use case's general prose. */
   contextDocument?: Partial<UsecaseViewDoc>;
   /** The source file of the scene per app of the option; overrides the use case's `source` for these apps. */
@@ -70,8 +70,6 @@ export interface AnatomyPart {
   description: string;
   /** In context, component anatomy is measured inside the selected example and context anatomy around it. */
   scope?: 'component' | 'context';
-  /** A concise design principle for the interactive layer lesson. */
-  keyIdea?: string;
   /** A selector scoped to the preview stage. Omit when the example uses data-ug-part. */
   selector?: string;
   /** Highlight only the direct text of the selected element, measured without touching the DOM. */
@@ -133,7 +131,7 @@ export interface UsecaseDoc {
   aliases?: string[];
   anatomy: AnatomyPart[];
   /** Component build order, from its outer wrapper to its detailed contents. */
-  layers?: LayerStep[];
+  layers: LayerStep[];
   usage?: string;
   behavior?: string;
   variants?: string;

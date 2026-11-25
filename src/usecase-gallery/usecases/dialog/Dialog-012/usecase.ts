@@ -12,14 +12,14 @@ export default defineUsecase({
   apps: ['hs'],
     layers: [
         {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the expanded HS Output view.","keyIdea":"The scrim frames the expanded output as a focused view.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label \"Expanded Output\".","keyIdea":"A screen-filling popup lets the output table use the full available area."Expanded Output\".","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label \"Expanded Output\".","keyIdea":"A screen-filling popup lets the output table use the full available area.","selector":"[class~=\"aui-dialog-popup\"]"},
       ],
 options: [
     { id: "hs-expanded-output", name: "Expanded output", source: {"hs":"src/hs/OutputTabs.tsx"}, contextAnatomy: CONTEXT_ANATOMY ,
       contextLayers: [
-        {"id":"context-table","partId":"table","title":"Output table","explanation":"The table labelled \"Output\" that stands for the Output tabs; the popup places it straight at the edge.","keyIdea":"The table presents the selected output content in the expanded window."Output\" that stands for the Output tabs; the popup places it straight at the edge.","selector":"[class~=\"aui-table\"]","scope":"context"},
-        {"id":"context-header-cell","partId":"header-cell","title":"Column heading","explanation":"The single \"Load\" column heading.","keyIdea":"The Load heading labels the table column before its value."Load\" column heading.","selector":"[class~=\"aui-table-header-cell\"]","scope":"context"},
-        {"id":"context-cell","partId":"cell","title":"Value cell","explanation":"The \"Dead\" value cell of the one row.","keyIdea":"The Dead cell communicates the row result beneath its heading."Dead\" value cell of the one row.","selector":"[class~=\"aui-table-cell\"]","scope":"context"},
+        {"id":"context-table","partId":"table","title":"Output table","explanation":"The table labelled \"Output\" that stands for the Output tabs; the popup places it straight at the edge.","keyIdea":"The table presents the selected output content in the expanded window.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-header-cell","partId":"header-cell","title":"Column heading","explanation":"The single \"Load\" column heading.","keyIdea":"The Load heading labels the table column before its value.","selector":"[class~=\"aui-table-header-cell\"]","scope":"context"},
+        {"id":"context-cell","partId":"cell","title":"Value cell","explanation":"The \"Dead\" value cell of the one row.","keyIdea":"The Dead cell communicates the row result beneath its heading.","selector":"[class~=\"aui-table-cell\"]","scope":"context"},
       ],
     },
   ],

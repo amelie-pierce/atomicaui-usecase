@@ -6,7 +6,7 @@ export default defineUsecase({
   apps: ['hcs', 'ace', 'adm', 'adc'],
   options: [
     { id: "hcs-reset", showContext: false, name: "Reset confirm", apps: ["hcs","ace","adm"], source: {"hcs":"src/components/HcsResetDialog.tsx","ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx","adm":"src/features/top-navigation/components/ResetDialog.tsx"} },
-    { id: "adc-reset", name: "Reset confirm — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    { id: "adc-reset", showContext: false, name: "Reset confirm — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
   ],
   source: { hcs: 'src/components/HcsResetDialog.tsx', ace: 'src/features/reset-inputs/ui/ResetInputsAction.tsx', adm: 'src/features/top-navigation/components/ResetDialog.tsx', adc: 'src/adc/Workspace.tsx' },
   summary: 'A confirmation that interrupts the user: a warning icon title with a close X, a description of what is lost, and a Cancel next to the destructive action.',

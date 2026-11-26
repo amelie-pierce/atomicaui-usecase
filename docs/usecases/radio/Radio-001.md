@@ -80,7 +80,7 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Input pane** — Soft Input panel holds the plate-connection field. Selector: `[data-ug-part="input-pane"]`.
+1. **Input pane** — Soft Input panel holds the plate-connection control and its value. Selector: `[data-ug-part="input-pane"]`.
 2. **Pane title** — The semi-bold "Input" heading at the top of the pane. Selector: `[data-ug-part="input-title"]`.
 3. **Radio group** — Row group defaults to Welded; FD shows its Yes or No variant. Selector: `[class~="aui-radio-group"]`.
 4. **Group label** — Plate connection label starts the full-width row with 4px gap. Selector: `[class~="aui-radio-group"] > [class~="aui-label"]`.

@@ -53,7 +53,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 ## Component layer steps
 
 1. **Field** — Small field stacks Type above the picker with a 3px gap. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Type" label above the input group. Selector: `[class~="aui-field-label"]`.
+2. **Label** — Type label sits above the Glulam picker in the small field. Selector: `[class~="aui-field-label"]`.
 3. **Input group** — Small fixed-surface row matches the Input pane’s 28px fields. Selector: `[class~="aui-combobox-input-group"]`.
 4. **Input** — Glulam field filters three timber types as the user types. Selector: `[class~="aui-combobox-input"]`.
 5. **Trigger** — End button labelled Open Type reveals the list. Selector: `[class~="aui-combobox-trigger"]`.
@@ -88,7 +88,7 @@ In context view: Shown.
 1. **Preview card** — Elevated 224px card previews the highlighted timber type beside the list. Selector: `[class~="aui-card"]`.
 2. **Preview title** — The type name, Glulam, shown above the preview picture. Selector: `[class~="aui-card-title"]`.
 3. **Field** — Small field stacks Type above the picker with a 3px gap. Selector: `[class~="aui-field"]`.
-4. **Label** — The "Type" label above the input group. Selector: `[class~="aui-field-label"]`.
+4. **Label** — Type label sits above the Glulam picker in the small field. Selector: `[class~="aui-field-label"]`.
 5. **Input group** — Small fixed-surface row matches the Input pane’s 28px fields. Selector: `[class~="aui-combobox-input-group"]`.
 6. **Input** — Glulam field filters three timber types as the user types. Selector: `[class~="aui-combobox-input"]`.
 7. **Trigger** — End button labelled Open Type reveals the list. Selector: `[class~="aui-combobox-trigger"]`.

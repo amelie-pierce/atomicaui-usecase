@@ -86,9 +86,9 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Feedback dialog** — Feedback dialog contains the response-copy choice. Selector: `[class~="aui-dialog-popup"]`.
+1. **Feedback dialog** — Feedback dialog groups the optional response-copy choice inside the form. Selector: `[class~="aui-dialog-popup"]`.
 2. **Feedback title bar** — Raised title bar places Close at the end. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — The X Dialog.Close that dismisses the dialog. Selector: `[class~="aui-dialog-close"]`.
+3. **Close button** — X closes this feedback dialog without submitting its form. Selector: `[class~="aui-dialog-close"]`.
 4. **Feedback form body** — Email and copy preference share this body; other form parts are omitted. Selector: `[class~="aui-dialog-body"]`.
 5. **Checkbox** — Small checkbox starts checked, with tonal off and solid primary on. Selector: `[class~="aui-checkbox"]`.
 6. **Indicator** — Box shows whether feedback responses will include a copy. Selector: `[class~="aui-checkbox-indicator"]`.
@@ -185,9 +185,9 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Feedback dialog** — Feedback dialog contains the response-copy choice. Selector: `[class~="aui-dialog-popup"]`.
+1. **Feedback dialog** — Feedback dialog groups the optional response-copy choice inside the form. Selector: `[class~="aui-dialog-popup"]`.
 2. **Feedback title bar** — Raised title bar places Close at the end. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — The X Dialog.Close that dismisses the dialog. Selector: `[class~="aui-dialog-close"]`.
+3. **Close button** — X closes this feedback dialog without submitting its form. Selector: `[class~="aui-dialog-close"]`.
 4. **Feedback form body** — Email and copy preference share this body; other form parts are omitted. Selector: `[class~="aui-dialog-body"]`.
 5. **Checkbox** — Small checkbox starts checked, with tonal off and solid primary on. Selector: `[class~="aui-checkbox"]`.
 6. **Indicator** — Box shows whether feedback responses will include a copy. Selector: `[class~="aui-checkbox-indicator"]`.
@@ -275,9 +275,9 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Feedback dialog** — Feedback dialog contains the response-copy choice. Selector: `[class~="aui-dialog-popup"]`.
+1. **Feedback dialog** — Feedback dialog groups the optional response-copy choice inside the form. Selector: `[class~="aui-dialog-popup"]`.
 2. **Feedback title bar** — Raised title bar places Close at the end. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — The X Dialog.Close that dismisses the dialog. Selector: `[class~="aui-dialog-close"]`.
+3. **Close button** — X closes this feedback dialog without submitting its form. Selector: `[class~="aui-dialog-close"]`.
 4. **Footer actions** — Split footer places checkbox before Cancel and Send. Selector: `[class~="aui-dialog-actions"]`.
 5. **Cancel** — The default Dialog.Button that closes the dialog without sending. Selector: `[data-ug-part="cancel"]`.
 6. **Send** — The solid primary Dialog.Button that submits the feedback. Selector: `[data-ug-part="send"]`.

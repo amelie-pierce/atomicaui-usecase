@@ -49,7 +49,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 1. **Design tab trigger** — Design 1 tab opens its secondary menu on right-click. Selector: `[class~="aui-tabs-tab"]`.
 2. **Menu surface** — Tab options popup sits beside the tab and groups actions. Selector: `[class~="aui-dropdown-popup"]`.
-3. **Close action** — First row closes the current design’s tab. Selector: `[data-ug-part="close-action"]`.
+3. **Close action** — First row closes the current Design 1 tab. Selector: `[data-ug-part="close-action"]`.
 4. **Close other designs** — This row closes every other design while keeping the current tab. Selector: `[data-ug-part="close-others-action"]`.
 5. **Action group divider** — Divider separates close commands from editing and duplication actions. Selector: `[class~="aui-dropdown-separator"]`.
 6. **Rename action** — Rename action opens the current design’s name editor. Selector: `[data-ug-part="rename-action"]`.

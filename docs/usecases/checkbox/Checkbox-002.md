@@ -53,8 +53,8 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Indicator** — Box shows whether Galvanized is included; off uses an outlined tonal style. Selector: `[class~="aui-checkbox-indicator"]`.
 3. **Icon** — The "check" mark rendered inside the box when Galvanized is on. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
 4. **Label** — Galvanized caption identifies the property; ADM places its field label above. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
-5. **Fieldset** — ACE groups the checkbox under a titled group, with a Fieldset and a legend above the option. Selector: `[class~="aui-fieldset"]`.
-6. **Legend** — The group title that sits above the checkbox in the ACE titled scene. Selector: `[class~="aui-fieldset-legend"]`.
+5. **Fieldset** — ACE uses a titled fieldset to name this checkbox group. Selector: `[class~="aui-fieldset"]`.
+6. **Legend** — ACE legend names the checkbox option before the control. Selector: `[class~="aui-fieldset-legend"]`.
 7. **Field label** — Form label introduces the checkbox when it has no caption. Selector: `[class~="aui-field-label"]`.
 
 ## Apps

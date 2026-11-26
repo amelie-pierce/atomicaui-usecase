@@ -11,11 +11,11 @@ export default defineUsecase({
   apps: ['fd'],
     layers: [
         {"id":"field","partId":"field","title":"Field","explanation":"Small field stacks Country above the picker with a 3px gap.","keyIdea":"The outer Field keeps the Country label attached to the searchable choice control.","selector":"[class~=\"aui-field\"]"},
-        {"id":"label","partId":"label","title":"Label","explanation":"The \"Country\" label above the input group.","keyIdea":"The Country label gives the query box a purpose before it receives a value.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"Country label sits above the picker in the small field.","keyIdea":"The Country label gives the query box a purpose before it receives a value.","selector":"[class~=\"aui-field-label\"]"},
         {"id":"input-group","partId":"input-group","title":"Input group","explanation":"Small full-width row joins the text input and chevron button.","keyIdea":"Joining the input and trigger avoids a visual gap that could make one control look like two.","selector":"[class~=\"aui-combobox-input-group\"]"},
         {"id":"input","partId":"input","title":"Input","explanation":"Search filters three countries; choosing Canada fills the field.","keyIdea":"Typing narrows the country choices while the selected country remains visible in the field.","selector":"[class~=\"aui-combobox-input\"]"},
         {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"End button opens and closes the country list.","keyIdea":"The end button opens the list when users prefer browsing over typing a query.","selector":"[class~=\"aui-combobox-trigger\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"The chevron-down glyph inside the trigger button.","keyIdea":"The downward chevron signals that the country control can expand into more choices.","selector":"[class~=\"aui-combobox-icon\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"Magnifier glyph appears inside the Country search field.","keyIdea":"The downward chevron signals that the country control can expand into more choices.","selector":"[class~=\"aui-combobox-icon\"]"},
         {"id":"popup","partId":"popup","title":"Popup","explanation":"Open non-modal popup matches the group width and sits 4px below.","keyIdea":"The anchored popup keeps country suggestions connected to the control that filters them.","selector":"[class~=\"aui-combobox-popup\"]"},
         {"id":"empty","partId":"empty","title":"Empty","explanation":"No result found appears when no country matches the search.","keyIdea":"A no-match message explains why the filtered list has no country to select.","selector":"[class~=\"aui-combobox-empty\"]"},
         {"id":"list","partId":"list","title":"List","explanation":"The list that renders one row per matching country.","keyIdea":"The list contains only matching country rows so the query has a visible result.","selector":"[class~=\"aui-combobox-list\"]"},
@@ -26,7 +26,7 @@ options: [
     { id: "fd-license-country", name: "Country picker", source: {"fd":"src/components/LicenseGate.jsx"}, contextAnatomy: CONTEXT_ANATOMY ,
       contextLayers: [
         {"id":"context-licence-dialog","partId":"licence-dialog","title":"License Agreement dialog","explanation":"FD licence gate hosts Country in a raised-title non-modal dialog.","keyIdea":"The FD license gate keeps the country picker inside the agreement task that requires it.","selector":"[class~=\"aui-dialog-popup\"]","scope":"context"},
-        {"id":"context-dialog-body","partId":"dialog-body","title":"Dialog body","explanation":"Dialog body contains the full Country picker.","keyIdea":"The dialog body groups the country selection with the rest of the license content.","selector":"[class~=\"aui-dialog-body\"]","scope":"context"},
+        {"id":"context-dialog-body","partId":"dialog-body","title":"Dialog body","explanation":"Licence dialog body contains the full Country picker field.","keyIdea":"The dialog body groups the country selection with the rest of the license content.","selector":"[class~=\"aui-dialog-body\"]","scope":"context"},
       ],
     },
   ],

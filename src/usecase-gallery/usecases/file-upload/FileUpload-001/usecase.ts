@@ -23,7 +23,7 @@ options: [
         {"id":"context-dialog","partId":"dialog","title":"Upload dialog","explanation":"Dialog body hosts the dropzone opened by Open from device.","keyIdea":"The ACE upload dialog places its drop area inside the task opened from Open from device.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
         {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"Raised title names the JSON upload and places Close at the end.","keyIdea":"The title tells users the expected file format before they select one.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
         {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"Title-row X closes the dialog and is labelled Cancel.","keyIdea":"The X exits the upload dialog without invoking the file picker.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
-        {"id":"context-dialog-cancel","partId":"dialog-cancel","title":"Cancel button","explanation":"Cancel closes the dialog without uploading.","keyIdea":"Cancel closes the task after the drop surface has been considered.","selector":"[data-ug-part=\"dialog-cancel\"]","scope":"context"},
+        {"id":"context-dialog-cancel","partId":"dialog-cancel","title":"Cancel button","explanation":"Cancel action closes the upload dialog without choosing a file.","keyIdea":"Cancel closes the task after the drop surface has been considered.","selector":"[data-ug-part=\"dialog-cancel\"]","scope":"context"},
       ],
     },
   ],

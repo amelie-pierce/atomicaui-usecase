@@ -25,7 +25,7 @@ export default defineUsecase({
 options: [
     { id: "agpd-inline", contextAnatomy: INPUT_PANEL_CONTEXT, name: "Labelled group", apps: ["agpd","rws","pbs"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx","pbs":"src/InputFields.tsx"} ,
       contextLayers: [
-        {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"Soft Input panel holds the plate-connection field.","keyIdea":"The AGPD pane groups plate connection with the other inputs that define the model.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
+        {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"Soft Input panel holds the plate-connection control and its value.","keyIdea":"The AGPD pane groups plate connection with the other inputs that define the model.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
         {"id":"context-input-title","partId":"input-title","title":"Pane title","explanation":"The semi-bold \"Input\" heading at the top of the pane.","keyIdea":"The pane title tells users which workspace section contains this connection setting.","selector":"[data-ug-part=\"input-title\"]","scope":"context"},
       ],
     },

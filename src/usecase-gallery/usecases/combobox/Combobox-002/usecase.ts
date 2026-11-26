@@ -11,7 +11,7 @@ export default defineUsecase({
   apps: ['hcs'],
     layers: [
         {"id":"field","partId":"field","title":"Field","explanation":"Small field stacks Type above the picker with a 3px gap.","keyIdea":"The Field wrapper keeps the Type prompt and its searchable selection together.","selector":"[class~=\"aui-field\"]"},
-        {"id":"label","partId":"label","title":"Label","explanation":"The \"Type\" label above the input group.","keyIdea":"The Type label tells users which timber classification the query will change.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"Type label sits above the Glulam picker in the small field.","keyIdea":"The Type label tells users which timber classification the query will change.","selector":"[class~=\"aui-field-label\"]"},
         {"id":"input-group","partId":"input-group","title":"Input group","explanation":"Small fixed-surface row matches the Input pane’s 28px fields.","keyIdea":"A surface input group keeps search and expansion controls aligned with neighboring fields.","selector":"[class~=\"aui-combobox-input-group\"]"},
         {"id":"input","partId":"input","title":"Input","explanation":"Glulam field filters three timber types as the user types.","keyIdea":"Typing filters the timber choices while the current Glulam value stays visible.","selector":"[class~=\"aui-combobox-input\"]"},
         {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"End button labelled Open Type reveals the list.","keyIdea":"The named Open Type action gives keyboard and screen-reader users an explicit list control.","selector":"[class~=\"aui-combobox-trigger\"]"},

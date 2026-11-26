@@ -84,7 +84,7 @@ In context view: Shown.
 1. **Upload dialog** — Dialog body hosts the dropzone opened by Open from device. Selector: `[data-ug-part="dialog"]`.
 2. **Dialog title** — Raised title names the JSON upload and places Close at the end. Selector: `[data-ug-part="dialog-title"]`.
 3. **Close button** — Title-row X closes the dialog and is labelled Cancel. Selector: `[data-ug-part="dialog-close"]`.
-4. **Cancel button** — Cancel closes the dialog without uploading. Selector: `[data-ug-part="dialog-cancel"]`.
+4. **Cancel button** — Cancel action closes the upload dialog without choosing a file. Selector: `[data-ug-part="dialog-cancel"]`.
 5. **Upload area** — Dashed single-file drop surface appears inside the upload dialog. Selector: `[class~="aui-file-upload"]`.
 6. **Icon** — The upload icon at the top of the drop area. Selector: `[class~="aui-file-upload-icon"]`.
 7. **Body** — Row below icon pairs the upload prompt with Browse. Selector: `[class~="aui-file-upload-body"]`.

@@ -52,11 +52,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 ## Component layer steps
 
 1. **Field** — Small field stacks Country above the picker with a 3px gap. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Country" label above the input group. Selector: `[class~="aui-field-label"]`.
+2. **Label** — Country label sits above the picker in the small field. Selector: `[class~="aui-field-label"]`.
 3. **Input group** — Small full-width row joins the text input and chevron button. Selector: `[class~="aui-combobox-input-group"]`.
 4. **Input** — Search filters three countries; choosing Canada fills the field. Selector: `[class~="aui-combobox-input"]`.
 5. **Trigger** — End button opens and closes the country list. Selector: `[class~="aui-combobox-trigger"]`.
-6. **Icon** — The chevron-down glyph inside the trigger button. Selector: `[class~="aui-combobox-icon"]`.
+6. **Icon** — Magnifier glyph appears inside the Country search field. Selector: `[class~="aui-combobox-icon"]`.
 7. **Popup** — Open non-modal popup matches the group width and sits 4px below. Selector: `[class~="aui-combobox-popup"]`.
 8. **Empty** — No result found appears when no country matches the search. Selector: `[class~="aui-combobox-empty"]`.
 9. **List** — The list that renders one row per matching country. Selector: `[class~="aui-combobox-list"]`.
@@ -87,13 +87,13 @@ In context view: Shown.
 #### In context layer steps
 
 1. **License Agreement dialog** — FD licence gate hosts Country in a raised-title non-modal dialog. Selector: `[class~="aui-dialog-popup"]`.
-2. **Dialog body** — Dialog body contains the full Country picker. Selector: `[class~="aui-dialog-body"]`.
+2. **Dialog body** — Licence dialog body contains the full Country picker field. Selector: `[class~="aui-dialog-body"]`.
 3. **Field** — Small field stacks Country above the picker with a 3px gap. Selector: `[class~="aui-field"]`.
-4. **Label** — The "Country" label above the input group. Selector: `[class~="aui-field-label"]`.
+4. **Label** — Country label sits above the picker in the small field. Selector: `[class~="aui-field-label"]`.
 5. **Input group** — Small full-width row joins the text input and chevron button. Selector: `[class~="aui-combobox-input-group"]`.
 6. **Input** — Search filters three countries; choosing Canada fills the field. Selector: `[class~="aui-combobox-input"]`.
 7. **Trigger** — End button opens and closes the country list. Selector: `[class~="aui-combobox-trigger"]`.
-8. **Icon** — The chevron-down glyph inside the trigger button. Selector: `[class~="aui-combobox-icon"]`.
+8. **Icon** — Magnifier glyph appears inside the Country search field. Selector: `[class~="aui-combobox-icon"]`.
 9. **Popup** — Open non-modal popup matches the group width and sits 4px below. Selector: `[class~="aui-combobox-popup"]`.
 10. **Empty** — No result found appears when no country matches the search. Selector: `[class~="aui-combobox-empty"]`.
 11. **List** — The list that renders one row per matching country. Selector: `[class~="aui-combobox-list"]`.

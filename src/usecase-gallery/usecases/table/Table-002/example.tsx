@@ -16,7 +16,7 @@ export default function Example() {
         states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } },
       }}
       rowAui={{
-        color: 'surface',
+        color: 'surface-alt',
         paint: 'solid',
         states: {
           unselected: { color: 'surface', paint: 'solid' },

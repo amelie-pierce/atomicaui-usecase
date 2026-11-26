@@ -15,14 +15,6 @@ export default function Example() {
         sx: { minWidth: '24', minHeight: '24' },
         states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } },
       }}
-      rowAui={{
-        color: 'surface',
-        paint: 'solid',
-        states: {
-          unselected: { color: 'surface', paint: 'solid' },
-          selected: { color: 'surface', paint: 'solid', sx: { borderColor: 'secondary', borderInlineStartWidth: '4' } },
-        },
-      }}
       headerCellAui={{ color: 'raised' }}
     >
       <Table.Head>

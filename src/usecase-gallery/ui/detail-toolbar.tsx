@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useCopy } from '../hooks/use-copy';
 import { Button } from '../kit';
-import type { Crumb } from './breadcrumb';
-import { Breadcrumb } from './breadcrumb';
 import type { Usecase, UsecaseOption } from '../types';
 
 type SaveStatus = 'idle' | 'saved' | 'failed';
 
-export function DetailToolbar({ crumbs, usecase, option }: { crumbs: Crumb[]; usecase: Usecase; option: UsecaseOption }) {
+export function DetailToolbar({ usecase, option }: { usecase: Usecase; option: UsecaseOption }) {
   const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
   const saveTimer = useRef<ReturnType<typeof setTimeout>>();
   const share = useCopy();
@@ -33,8 +31,7 @@ export function DetailToolbar({ crumbs, usecase, option }: { crumbs: Crumb[]; us
     saveTimer.current = setTimeout(() => setSaveStatus('idle'), 2000);
   };
 
-  return <header className="ug-toolbar">
-    <Breadcrumb crumbs={crumbs} />
+  return <header className="ug-toolbar" aria-label="Use case actions">
     <div className="ug-toolbar__actions" aria-label="Document actions">
       <Button aui={{ color: saveStatus === 'failed' ? 'error' : 'secondary', paint: 'text', scale: 'sm' }} onClick={save}>{saveStatus === 'saved' ? 'Saved' : saveStatus === 'failed' ? 'Save failed' : 'Save'}</Button>
       <Button aui={{ color: share.status === 'failed' ? 'error' : 'secondary', paint: 'text', scale: 'sm' }} onClick={() => share.copy(window.location.href)}>{share.status === 'copied' ? 'Link copied' : share.status === 'failed' ? 'Share failed' : 'Share'}</Button>

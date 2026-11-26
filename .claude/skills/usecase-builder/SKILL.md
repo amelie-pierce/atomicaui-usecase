@@ -16,7 +16,7 @@ description: Load before adding or changing a use case, its option UI, documenta
 
 ## One use case = one business action
 
-The tree is Components grid (`#/`) > component page (`#/Button`) > use case (`#Button-007`). A use case is one business action: Submit, Download CSV, Back to top, Accept licence, Reset inputs or Delete template. A composite UI whose action is the whole modal belongs to Dialog or AlertDialog, not Button. The title names the action.
+The single-page gallery keeps Components > UI type > use case in a collapsible left tree. A use case is one business action: Submit, Download CSV, Back to top, Accept licence, Reset inputs or Delete template. A composite UI whose action is the whole modal belongs to Dialog or AlertDialog, not Button. The title names the action. The tree uses the catalog order and UI-type grouping; the active component and UI type expand around the selected case. `#/Component` opens that component's first case, `#/Component/UseCaseId` selects a case, legacy `#UseCaseId` links still work, and unknown hashes fall back to the first catalog case.
 
 - UI types distinguish structure (for example Button's Single button, Button group and Icon button), not the place where the UI appears.
 - Apps with the same rendered UI may share one option. A visibly different state, structure, icon, close affordance, scale, label treatment or context is a separate option; a different business action is a separate use case.
@@ -44,7 +44,7 @@ Record every placement decision and its reason in the PR description. Never renu
 
 ## Detail page = one selection of options
 
-Every use case uses the same selection model. The left column is the preview: its header holds the option select on the left and the `Component` / `In context` toggle on the right (the only toggle), and the chosen option's UI shows below it, one view at a time. The option select and the view toggle drive the preview, app badges and the whole right-hand Document (prose, Anatomy, references, code) together. The right column is that Document. There is no Document/Code tab.
+Every use case uses the same selection model. The left pane is the collapsible component tree. The center pane is the preview: its header holds the `Component` / `In context` toggle and option select, and the chosen option's UI shows below it, one view at a time. The right pane is the complete Document (prose, Anatomy, references, code) with the `Document` / `Layer` control. The option select and view toggle drive the preview and document together. There is no Document/Code tab or page-navigation breadcrumb. The preview stays pinned within its pane while the document pane scrolls; at narrow widths the tree, preview and document stack into one scrolling column.
 
 - List every distinct UI of the action, including enabled and disabled states. Option names describe what the UI is, never the app.
 - Each option has `options/<id>/scene.tsx`; the first option uses the use case's `example.tsx`, and every later option has its own `example.tsx`.
@@ -84,7 +84,7 @@ Ids are `<Component>-<NNN>`, contiguous from 001 per component in tree order. Ne
 
 ## Check the work
 
-1. `npm run build` passes and every component page renders all use-case cards.
+1. `npm run build` passes and the single-page tree renders every catalog component, UI type and use case.
 2. Catalog validation finds no missing option, scene, example, anatomy link or app mismatch.
 3. In a real browser, sweep every use case and every option, checking every layer step and navigation boundary in Component and In context views. Confirm Component UI, In context UI, Anatomy highlights, descriptions, the document's code and badges all change together; verify representative deep links including `#Dialog-001` and `#Dialog-002`, no blank pages, no flicker, no preview scrollbar and no console errors.
 4. Update `_vaults/atomicaui-usecase-prototype/wiki/gallery/adding-use-cases.md` only for durable facts learned in the task.

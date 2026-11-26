@@ -1,6 +1,6 @@
 # usecase-gallery
 
-A read-only gallery of AtomicAUI component use cases. The URL hash routes to the components grid (`#/`), a component page (`#/Button`) or a use-case detail page (`#Button-002`). Each detail page has one option selector, a Component UI preview, an In context UI preview and one complete document with prose, Anatomy, API and code.
+A read-only, single-page gallery of AtomicAUI component use cases. A component tree stays in the left pane, with the selected component's UI-type groups and use cases nested below it. Selecting a use case keeps its preview and complete document open beside the tree. Hashes such as `#/Button` open that component's first use case and `#/Button/Button-002` select a specific case; legacy `#Button-002` links continue to work. Each selected case has one option selector, a Component UI preview, an In context UI preview and one complete document with prose, Anatomy, API and code.
 
 ## Structure
 
@@ -11,7 +11,7 @@ src/usecase-gallery/
   kit.ts                  the only import boundary for AtomicAUI
   catalog/                glob discovery, validation and snippet extraction
   hooks/                  routing, stage hosting, stage fit and Anatomy highlighting
-  ui/                     gallery pages and detail panes
+  ui/                     tree navigation and detail panes
   styles/gallery.scss     layout and token-based chrome
   usecases/
     <component>/
@@ -29,7 +29,7 @@ Everything under `usecases/` is discovered automatically. Never edit `src/vendor
 
 ## One use case = one business action
 
-The tree is component > UI type > use case. A use case is one business action such as Submit, Download CSV, Reset inputs or Delete template. The title names that action. UI types distinguish structure, not where the component is used. A composite UI whose action is the whole modal belongs to Dialog or AlertDialog, not Button.
+The tree is component > UI type > use case, rendered with the kit's `TreeView`. Components follow the catalog order; the active component and UI type expand for the selected use case. A use case is one business action such as Submit, Download CSV, Reset inputs or Delete template. The title names that action. UI types distinguish structure, not where the component is used. A composite UI whose action is the whole modal belongs to Dialog or AlertDialog, not Button.
 
 ## Options: the selection-based detail page
 

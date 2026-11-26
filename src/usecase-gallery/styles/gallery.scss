@@ -134,6 +134,7 @@ $narrow: 840px;
 }
 
 .ug-render__toggle {
+  --theme-primary: var(--p-palette-orange-600);
   flex: none;
   inline-size: max-content;
 }
@@ -176,6 +177,19 @@ $narrow: 840px;
   align-content: safe center;
   justify-content: center;
   gap: var(--p-px-16);
+}
+
+.ug-preview-placeholder {
+  flex: 1 1 100%;
+  inline-size: 100%;
+  min-block-size: var(--p-px-320);
+  border-radius: var(--p-px-8);
+  background: var(--theme-surface-alt);
+}
+
+.ug-preview-placeholder--thumb {
+  min-block-size: var(--p-px-160);
+  background: var(--theme-surface);
 }
 
 .ug-render__component-portal-host {
@@ -743,6 +757,7 @@ $narrow: 840px;
   // The card's own border and radius frame the thumbnail; the stage's border and radius would clash with them.
   border: 0;
   border-radius: 0;
+  padding: var(--p-px-0);
   // Overflow runs off the right/bottom edge, which is the extent the fit measures.
   justify-content: safe center;
   overflow: visible;
@@ -752,6 +767,10 @@ $narrow: 840px;
 // An example's own start alignment (a lone button) would pin it to the top of the frame.
 .ug-thumb__stage.ug-render__stage > * {
   align-self: center;
+}
+
+.ug-thumb__fit {
+  min-block-size: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {

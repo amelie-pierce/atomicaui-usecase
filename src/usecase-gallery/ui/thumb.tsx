@@ -1,6 +1,7 @@
-import { Suspense, useLayoutEffect, useRef, useState } from 'react';
+import { Suspense, useCallback, useState } from 'react';
 import type { ComponentType } from 'react';
 import { StageHostContext } from '../hooks/use-stage-host';
+import { useStageFit } from '../hooks/use-stage-fit';
 
 /** What a card's live render needs: the example of a use case. */
 interface ThumbProps {
@@ -9,77 +10,25 @@ interface ThumbProps {
 
 /**
  * A live render of an example inside a card: the real component, inert so a click on the card navigates, and scaled
- * down to fit when it is larger than the frame (a dialog, a table). The stage stretches to the frame divided by the
- * scale, so an example that fills its container (a dialog) still fills the frame.
+ * down to fit when it is larger than the frame (a dialog, a table). The content wrapper is zoomed while its stage
+ * stays frame-sized, so percentage-sized content keeps a stable layout while it is measured.
  */
 export function Thumb({ Example }: ThumbProps) {
-  const frame = useRef<HTMLDivElement>(null);
-  const stage = useRef<HTMLDivElement | null>(null);
-  const [host, setHost] = useState<HTMLElement | null>(null);
-  const scale = useRef(1);
-  const size = useRef({ width: 0, height: 0 });
-  const [fit, setFit] = useState({ width: 0, height: 0, scale: 1 });
-
-  useLayoutEffect(() => {
-    const frameEl = frame.current;
-    const stageEl = stage.current;
-    if (!frameEl || !stageEl) return;
-    // The content's extent is the farthest edge of any element in the stage: a dialog popup clips or centres inside its
-    // viewport, so the stage's own scroll size would miss it. Rects are scaled by the current transform.
-    const measure = () => {
-      const { clientWidth: width, clientHeight: height } = frameEl;
-      const origin = stageEl.getBoundingClientRect();
-      const applied = scale.current;
-      let right = 1;
-      let bottom = 1;
-      for (const element of stageEl.querySelectorAll('*')) {
-        const rect = element.getBoundingClientRect();
-        right = Math.max(right, (rect.right - origin.left) / applied);
-        bottom = Math.max(bottom, (rect.bottom - origin.top) / applied);
-      }
-      // Bare text beside an element is no element, so its overflow only shows in the stage's scroll size.
-      if (stageEl.scrollWidth > stageEl.clientWidth) right = Math.max(right, stageEl.scrollWidth);
-      if (stageEl.scrollHeight > stageEl.clientHeight) bottom = Math.max(bottom, stageEl.scrollHeight);
-      // Floored: content sized in percent of the stage (a Card) grows with the stage, so an unbounded fit would shrink it to nothing.
-      const next = Math.max(0.5, Math.min(1, width / right, height / bottom));
-      if (Math.abs(next - applied) < 0.005 && width === size.current.width && height === size.current.height) return;
-      scale.current = next;
-      size.current = { width, height };
-      setFit({ width, height, scale: next });
-    };
-    measure();
-    const resize = new ResizeObserver(measure);
-    resize.observe(frameEl);
-    resize.observe(stageEl);
-    const mutate = new MutationObserver(measure);
-    mutate.observe(stageEl, { childList: true, subtree: true });
-    return () => {
-      resize.disconnect();
-      mutate.disconnect();
-    };
-  }, []);
+  const [fit, setFit] = useState<HTMLDivElement | null>(null);
+  const [host, setHostState] = useState<HTMLElement | null>(null);
+  const setFitElement = useCallback((node: HTMLDivElement | null) => setFit((current) => current === node ? current : node), []);
+  const setHost = useCallback((node: HTMLDivElement | null) => setHostState((current) => current === node ? current : node), []);
+  useStageFit(fit);
 
   return (
-    <div className="ug-thumb" ref={frame} aria-hidden="true" inert>
-      <div
-        className="ug-render__stage ug-thumb__stage"
-        ref={(element) => {
-          stage.current = element;
-          setHost(element);
-        }}
-        style={{
-          inlineSize: fit.width / fit.scale || undefined,
-          blockSize: fit.height / fit.scale || undefined,
-          transform: `translate(-50%, -50%) scale(${fit.scale})`,
-        }}
-      >
-        <Suspense fallback={null}>
-          {host && (
-            <StageHostContext.Provider value={host}>
-              <Example />
-            </StageHostContext.Provider>
-          )}
-        </Suspense>
+    <div className="ug-thumb" aria-hidden="true" inert>
+      <div className="ug-render__stage ug-thumb__stage" style={{ transform: 'translate(-50%, -50%)' }}>
+        <div className="ug-render__fit ug-thumb__fit" ref={setFitElement}>
+          <div ref={setHost} className="ug-render__component-portal-host" />
+          <Suspense fallback={<div className="ug-preview-placeholder ug-preview-placeholder--thumb" aria-hidden="true" />}>
+            {host && <StageHostContext.Provider value={host}><Example /></StageHostContext.Provider>}
+          </Suspense>
+        </div>
       </div>
     </div>
   );

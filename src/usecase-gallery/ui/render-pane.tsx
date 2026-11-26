@@ -11,8 +11,8 @@ const MODES: { value: PreviewMode; label: string }[] = [
   { value: 'component', label: 'Component' },
   { value: 'context', label: 'In context' },
 ];
-function PreviewLoading() {
-  return <Type as="p" role="l3" color="muted">Loading preview…</Type>;
+function PreviewPlaceholder() {
+  return <div className="ug-preview-placeholder" aria-hidden="true" />;
 }
 
 function LayerVisibilityStyles({ layers, layerIndex, enabled }: { layers: LayerStep[]; layerIndex: number; enabled: boolean }) {
@@ -41,12 +41,10 @@ function ContextStage({ option, hidden, anatomy, hoveredPartId, onAvailableParts
             <div ref={setComponentHost} className="ug-render__component-portal-host" />
           </span>
           {fit && (
-            <Suspense fallback={<PreviewLoading />}>
+            <Suspense fallback={<PreviewPlaceholder />}>
               {contextHost && componentHost && <Scene host={contextHost}>
                 <span data-ug-component-root style={{ display: 'contents' }}>
-                  <Suspense fallback={<PreviewLoading />}>
-                    <StageHostContext.Provider value={componentHost}><Example /></StageHostContext.Provider>
-                  </Suspense>
+                  <StageHostContext.Provider value={componentHost}><Example /></StageHostContext.Provider>
                 </span>
               </Scene>}
             </Suspense>
@@ -107,7 +105,7 @@ export function RenderPane({
               key={value}
               value={value}
               render={(props, { pressed }) => (
-                <Button {...props} aui={{ scale: 'sm', color: 'secondary', paint: pressed ? 'solid' : 'text' }}>
+                <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>
                   {label}
                 </Button>
               )}
@@ -123,7 +121,7 @@ export function RenderPane({
             {fit && (
               <span data-ug-component-root style={{ display: 'contents' }}>
                 <div ref={setComponentHost} className="ug-render__component-portal-host" />
-                <Suspense fallback={<PreviewLoading />}>
+                <Suspense fallback={<PreviewPlaceholder />}>
                   {componentHost && <StageHostContext.Provider value={componentHost}><Example /></StageHostContext.Provider>}
                 </Suspense>
               </span>

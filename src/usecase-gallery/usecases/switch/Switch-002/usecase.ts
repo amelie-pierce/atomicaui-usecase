@@ -32,7 +32,7 @@ options: [
       contextLayers: [
         {"id":"context-dialog","partId":"dialog","title":"Feedback dialog","explanation":"The Dialog popup, titled Feedback Form, that hosts the switch.","keyIdea":"The feedback dialog keeps response-copy preference within the submission task.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
         {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"Raised title bar names the task and places Close at the end.","keyIdea":"The Feedback Form title names the form whose copy preference is being changed.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
-        {"id":"context-dialog-body","partId":"dialog-body","title":"Dialog body","explanation":"Column body holds Include base plate switch vertically.","keyIdea":"The body places the opt-in beside the feedback fields it governs.","selector":"[data-ug-part=\"dialog-body\"]","scope":"context"},
+        {"id":"context-dialog-body","partId":"dialog-body","title":"Dialog body","explanation":"Column body holds the Send me a copy switch vertically.","keyIdea":"The body places the opt-in beside the feedback fields it governs.","selector":"[data-ug-part=\"dialog-body\"]","scope":"context"},
         {"id":"context-dialog-actions","partId":"dialog-actions","title":"Dialog actions","explanation":"The footer with a Cancel button and a solid secondary Send button.","keyIdea":"The footer separates canceling the form from sending the selected response.","selector":"[data-ug-part=\"dialog-actions\"]","scope":"context"},
       ],
     },

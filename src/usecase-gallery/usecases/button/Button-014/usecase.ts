@@ -7,7 +7,7 @@ export default defineUsecase({
   apps: ['ace'],
     layers: [
         {"id":"container","partId":"container","title":"Container","explanation":"Small solid secondary Add job spans the ACE column.","keyIdea":"The compact action adds another job beneath the tally table.","selector":"[class~=\"aui-button\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"Hidden plus glyph precedes the Add job label.","keyIdea":"The plus icon signals that the button creates an additional job row.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"Decorative plus glyph precedes the Add job label.","keyIdea":"The plus icon signals that the button creates an additional job row.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
       ],
 options: [
     { id: "ace-button", name: "Add new entry", apps: ["ace"], contextAnatomy: [

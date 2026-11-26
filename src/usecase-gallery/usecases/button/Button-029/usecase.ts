@@ -39,7 +39,7 @@ options: [
     { id: "hcs-help-close", contextAnatomy: HCS_CONTEXT, name: "Help popover close", apps: ["hcs"], source: {"hcs":"src/components/HcsDownloadDurationHelp.tsx"} ,
       contextLayers: [
         {"id":"context-help-intro","partId":"help-intro","title":"Help intro","explanation":"Intro line explains the code’s load-duration adjustment rules.","keyIdea":"The intro line frames the detailed duration notes below it.","selector":"[data-ug-part=\"help-intro\"]","scope":"context"},
-        {"id":"context-duration-notes","partId":"duration-notes","title":"Duration notes","explanation":"List gives five quoted load-duration labels with their explanations.","keyIdea":"The notes list pairs each load-duration category with its explanation.","selector":"[data-ug-part=\"duration-notes\"]","scope":"context"},
+        {"id":"context-duration-notes","partId":"duration-notes","title":"Duration notes","explanation":"List gives quoted load-duration labels with their explanations.","keyIdea":"The notes list pairs each load-duration category with its explanation.","selector":"[data-ug-part=\"duration-notes\"]","scope":"context"},
       ],
     },
     { id: "pfd-help-close", contextAnatomy: PFD_CONTEXT, name: "Popover close icon", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} ,
@@ -54,7 +54,7 @@ options: [
     },
     { id: "agpd-help-close", contextAnatomy: AGPD_CONTEXT, name: "Field help close icon", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} ,
       contextLayers: [
-        {"id":"context-close-row","partId":"close-row","title":"Close row","explanation":"End-aligned row contains only the dialog close X.","keyIdea":"The close row separates dismissal from the help copy below.","selector":"[data-ug-part=\"close-row\"]","scope":"context"},
+        {"id":"context-close-row","partId":"close-row","title":"Close row","explanation":"End-aligned row contains only the popover close X.","keyIdea":"The close row separates dismissal from the help copy below.","selector":"[data-ug-part=\"close-row\"]","scope":"context"},
         {"id":"context-help-text","partId":"help-text","title":"Help text","explanation":"Text explains how to select the member’s base material.","keyIdea":"The help copy sits under the close control for a clear reading order.","selector":"[data-ug-part=\"help-text\"]","scope":"context"},
       ],
     },

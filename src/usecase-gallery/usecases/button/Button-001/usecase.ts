@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Print output button',
   apps: ['hcs', 'adm', 'hs', 'fd'],
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Tonal Print Output button stays at header end; app styling varies.","keyIdea":"The control stays at the results header edge so Print Output remains easy to reach.","selector":"[class~=\"aui-button\"]"},
+        {"id":"container","partId":"container","title":"Container","explanation":"Print Output button sits at header end; app styling varies.","keyIdea":"The control stays at the results header edge so Print Output remains easy to reach.","selector":"[class~=\"aui-button\"]"},
         {"id":"icon","partId":"icon","title":"Icon","explanation":"Small print glyph sits before its button label.","keyIdea":"The printer glyph signals that this action produces a hard-copy result.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])","unchanged":true},
       ],
 options: [

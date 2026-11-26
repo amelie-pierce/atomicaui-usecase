@@ -15,7 +15,7 @@ options: [
       { id: "hint-text", name: "Hint text", description: "The line \"Controlled by Plate Option\" and its current value \"All Plates based on the stock model\"." },
     ], source: {"agpd":"src/agpd/inputs.tsx"} ,
       contextLayers: [
-        {"id":"context-lock-trigger","partId":"lock-trigger","title":"Lock trigger","explanation":"Square lock button follows the label and reveals a hint.","keyIdea":"The lock trigger reveals why this field cannot be edited directly.","selector":"[data-ug-part=\"lock-trigger\"]","scope":"context"},
+        {"id":"context-lock-trigger","partId":"lock-trigger","title":"Lock trigger","explanation":"Square lock button reveals the Plate Option hint above it.","keyIdea":"The lock trigger reveals why this field cannot be edited directly.","selector":"[data-ug-part=\"lock-trigger\"]","scope":"context"},
         {"id":"context-hint-text","partId":"hint-text","title":"Hint text","explanation":"Hint shows Plate Option ownership and the current All Plates value.","keyIdea":"The hint pairs the controlling option with its current selected value.","selector":"[data-ug-part=\"hint-text\"]","scope":"context"},
       ],
     },

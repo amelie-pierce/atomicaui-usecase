@@ -17,7 +17,7 @@ options: [
       contextLayers: [
         {"id":"context-top-bar","partId":"top-bar","title":"Top bar","explanation":"The top bar Menubar that holds both action buttons and menu triggers.","keyIdea":"The top bar places global actions and menus in one persistent navigation strip.","selector":"[class~=\"aui-menubar\"][aria-label=\"Top bar\"]","scope":"context"},
         {"id":"context-file-menu","partId":"file-menu","title":"File menu trigger","explanation":"File trigger opens the dropdown of file actions.","keyIdea":"The File trigger exposes device and project actions without taking room in the bar.","selector":"[data-ug-part=\"file-menu\"]","scope":"context"},
-        {"id":"context-reset","partId":"reset","title":"Reset button","explanation":"Reset button restores the menubar to its default design.","keyIdea":"Reset remains a direct neighbor to About so restoring defaults does not require a submenu.","selector":"[data-ug-part=\"reset\"]","scope":"context"},
+        {"id":"context-reset","partId":"reset","title":"Reset button","explanation":"Reset button beside About restores the design to its defaults.","keyIdea":"Reset remains a direct neighbor to About so restoring defaults does not require a submenu.","selector":"[data-ug-part=\"reset\"]","scope":"context"},
         {"id":"context-help-menu","partId":"help-menu","title":"Help Center trigger","explanation":"The Help Center dropdown trigger at the end of the bar.","keyIdea":"Help Center sits at the end of the bar as the entry to support destinations.","selector":"[data-ug-part=\"help-menu\"]","scope":"context"},
       ],
     },

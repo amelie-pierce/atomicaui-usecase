@@ -6,7 +6,7 @@ export default defineUsecase({
 
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Full-width tutorial row puts its topic left and arrow right.","keyIdea":"A full-row text control gives each tutorial a generous activation target.","selector":"[data-ug-part=\"container\"]"},
+        {"id":"container","partId":"container","title":"Container","explanation":"Full-width outlined row names a tutorial that users can start.","keyIdea":"A full-row text control gives each tutorial a generous activation target.","selector":"[data-ug-part=\"container\"]"},
         {"id":"icon","partId":"icon","title":"Icon","explanation":"Trailing arrow signals that the tutorial tour starts.","keyIdea":"The trailing arrow marks the topic row as an entry point to a guided tour.","selector":"[data-ug-part=\"icon\"]","code":["Dialog","Button"],"unchanged":true},
       ],
 options: [

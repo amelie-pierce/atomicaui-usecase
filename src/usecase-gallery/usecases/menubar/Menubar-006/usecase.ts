@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Settings summary',
   apps: ['hs', 'fd', 'ace'],
     layers: [
-        {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"Top bar holds one summary button at the right edge.","keyIdea":"The top bar keeps a single settings summary reachable from the right side of the page.","selector":"[class~=\"aui-menubar\"]"},
+        {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"Top bar holds a single settings summary button.","keyIdea":"The top bar keeps a single settings summary reachable from the right side of the page.","selector":"[class~=\"aui-menubar\"]"},
         {"id":"button","partId":"button","title":"Button","explanation":"Tonal Settings button summarizes region, language, and design code.","keyIdea":"The tonal summary button combines current region and design details into its accessible name.","selector":"[class~=\"aui-button\"]"},
         {"id":"icon","partId":"icon","title":"Icon","explanation":"Globe glyph leads the region and language settings summary button.","keyIdea":"The globe glyph cues users that the summary includes locale information.","selector":"[class~=\"aui-button\"] > [class~=\"aui-contained-icon\"]","unchanged":true},
         {"id":"divider","partId":"divider","title":"Divider","explanation":"Two thin dividers separate country, language, and design code.","keyIdea":"Thin dividers separate country, language, and design code so each value can be scanned.","selector":"[class~=\"aui-menubar-divider\"]"},

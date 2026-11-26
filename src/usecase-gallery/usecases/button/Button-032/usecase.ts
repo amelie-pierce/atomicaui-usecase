@@ -14,7 +14,7 @@ export default defineUsecase({
   title: 'Open field help button',
   apps: ['hcs', 'pbs', 'rws', 'hs', 'adm', 'pfd', 'agpd'],
     layers: [
-        {"id":"help","partId":"help","title":"Help button","explanation":"20px help icon sits by the label; Look uses 28px variant.","keyIdea":"The 20px transparent secondary circle-question button that sits beside the field label; the Look select swaps it for the 28px ghost version.","selector":"[class~=\"aui-button\"][aria-label*=\"elp\"]"},
+        {"id":"help","partId":"help","title":"Help button","explanation":"Circle-question button sits by the label at 20px or 28px.","keyIdea":"The 20px transparent secondary circle-question button that sits beside the field label; the Look select swaps it for the 28px ghost version.","selector":"[class~=\"aui-button\"][aria-label*=\"elp\"]"},
         {"id":"help-icon","partId":"help-icon","title":"Help icon","explanation":"The circle-question glyph centred in the help button.","keyIdea":"The question glyph marks the source of the nearby field guidance.","selector":"[class~=\"aui-button\"][aria-label*=\"elp\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])","unchanged":true},
         {"id":"label","partId":"label","title":"Field label","explanation":"Material or Download Duration label names the explained control.","keyIdea":"The label tells users which input the help content describes.","selector":"[class~=\"aui-field-label\"]","code":["IconButton"],"unchanged":true},
         {"id":"control","partId":"control","title":"Field control","explanation":"Steel field is the control described by the help text.","keyIdea":"The control shows the current material choice that the help explains.","selector":"[class~=\"aui-field-control\"]","code":["IconButton"],"unchanged":true},
@@ -26,7 +26,7 @@ options: [
     { id: "hcs-field-help", contextAnatomy: HCS_CONTEXT, name: "Ghost, 20px", apps: ["hcs"], source: {"hcs":"src/App.tsx"} ,
       contextLayers: [
         {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The surface-alt Input pane that frames the Load Properties field.","keyIdea":"The input pane frames the field and its explanatory control.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
-        {"id":"context-label-row","partId":"label-row","title":"Label row","explanation":"Flex row places Material label and help button above the control.","keyIdea":"The ADM label row pairs Material with the question trigger above the input.","selector":"[data-ug-part=\"label-row\"]","scope":"context"},
+        {"id":"context-label-row","partId":"label-row","title":"Label row","explanation":"Flex row places Download Duration label and help button above select.","keyIdea":"The ADM label row pairs Material with the question trigger above the input.","selector":"[data-ug-part=\"label-row\"]","scope":"context"},
       ],
     },
     { id: "pbs-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "20px help icon", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} ,

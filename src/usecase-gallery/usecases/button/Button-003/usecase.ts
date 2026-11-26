@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Reset to default button',
 
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Small raised Reset to default sits beside beam inputs.","keyIdea":"The compact reset control restores the beam values without taking over the side panel.","selector":"[class~=\"aui-button\"]"},
+        {"id":"container","partId":"container","title":"Container","explanation":"Small raised Reset to default sits below the beam input.","keyIdea":"The compact reset control restores the beam values without taking over the side panel.","selector":"[class~=\"aui-button\"]"},
         {"id":"icon","partId":"icon","title":"Icon","explanation":"The counter-clockwise arrow that signals returning the group to its defaults.","keyIdea":"The reverse arrow communicates a return to the default beam settings.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
       ],
 options: [

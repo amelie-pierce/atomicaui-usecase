@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Switch with bordered off state',
   apps: ['adm'],
     layers: [
-        {"id":"list","partId":"list","title":"List","explanation":"Three-row Load conditions list pairs each name with a switch.","keyIdea":"The list makes each load condition independently available for inclusion.","selector":"[class~=\"aui-list\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"Load conditions list pairs each load name with a switch.","keyIdea":"The list makes each load condition independently available for inclusion.","selector":"[class~=\"aui-list\"]"},
         {"id":"row","partId":"row","title":"Row","explanation":"Wind load row places its switch after the label.","keyIdea":"The row keeps Wind load’s name beside the control that toggles it.","selector":"[class~=\"aui-list-item\"]"},
         {"id":"row-text","partId":"row-text","title":"Row text","explanation":"Wind load label names this input switch row.","keyIdea":"The label names which load condition will be included in the calculation.","selector":"[class~=\"aui-list-item-text\"]"},
         {"id":"row-actions","partId":"row-actions","title":"Row actions","explanation":"The slot at the end of the row that holds the switch.","keyIdea":"The trailing slot reserves a consistent end position for each condition switch.","selector":"[class~=\"aui-list-item-actions\"]"},

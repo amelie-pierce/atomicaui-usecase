@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Close info dialog button',
   apps: ['pbs', 'agpd', 'rws', 'fd'],
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Small Close footer button appears gray in PBS, black in FD.","keyIdea":"The single footer action closes the informational prompt after its instructions.","selector":"[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])"},
+        {"id":"container","partId":"container","title":"Container","explanation":"Close footer button appears gray in PBS, black in FD.","keyIdea":"The single footer action closes the informational prompt after its instructions.","selector":"[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])"},
       ],
 options: [
     { id: "pbs-close", name: "Secondary solid", apps: ["pbs","agpd","rws"], contextAnatomy: [
@@ -16,7 +16,7 @@ options: [
       { id: "dialog-footer", name: "Dialog footer", description: "The Actions row at the end that holds the single Close button." },
     ], source: {"pbs":"src/WorkspaceTools.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
       contextLayers: [
-        {"id":"context-dialog","partId":"dialog","title":"Dialog","explanation":"Explore More Applications dialog hosts one information action.","keyIdea":"The PBS dialog shell presents the home-screen directions above a clear exit.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog","partId":"dialog","title":"Dialog","explanation":"Add to Your Home Screen dialog hosts one information action.","keyIdea":"The PBS dialog shell presents the home-screen directions above a clear exit.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
         {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"Raised title names the information dialog beside Close.","keyIdea":"The title bar identifies which installation guidance is open.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
         {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"Title X closes the info dialog with its dialog-specific label.","keyIdea":"The close icon gives users a direct way to dismiss the guidance.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
         {"id":"context-dialog-body","partId":"dialog-body","title":"Dialog body","explanation":"The scrollable body with the Android \"Add to Home Screen\" instructions.","keyIdea":"The scrollable body keeps the Android steps readable in a bounded window.","selector":"[data-ug-part=\"dialog-body\"]","scope":"context"},

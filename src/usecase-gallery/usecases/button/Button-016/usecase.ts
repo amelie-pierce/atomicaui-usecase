@@ -14,7 +14,7 @@ options: [
       { id: "dot", name: "Pager dots", description: "The two round buttons, one per page (1 / 2 and 2 / 2): the current page in primary, the other in surface-alt." },
     ], source: {"fd":"src/components/InputPane.jsx"} ,
       contextLayers: [
-        {"id":"context-pager","partId":"pager","title":"Carousel footer","explanation":"Eight-pixel row places View all after carousel dots.","keyIdea":"The footer aligns page position with the route to all items.","selector":"[data-ug-part=\"pager\"]","scope":"context"},
+        {"id":"context-pager","partId":"pager","title":"Carousel footer","explanation":"Pager row places View all after dots with 8px gaps.","keyIdea":"The footer aligns page position with the route to all items.","selector":"[data-ug-part=\"pager\"]","scope":"context"},
         {"id":"context-dot","partId":"dot","title":"Pager dots","explanation":"Two page buttons use primary for current and surface-alt otherwise.","keyIdea":"The dots show the current page and the remaining carousel page.","selector":"[data-ug-part=\"dot\"]","scope":"context"},
       ],
     },

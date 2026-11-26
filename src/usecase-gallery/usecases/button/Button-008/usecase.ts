@@ -19,7 +19,7 @@ options: [
       contextLayers: [
         {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"Surface-alt Output pane includes its title and toolbar.","keyIdea":"The HCS output frame groups its heading and table controls as one section.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
         {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The HCS heading identifies the result area above its toolbar.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
-        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"Toolbar wraps search above Reset filters with 8px gaps.","keyIdea":"The HCS toolbar lets search use the full line while reset stays beside it.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
+        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"Toolbar row places search before Reset filters with 8px gaps.","keyIdea":"The HCS toolbar lets search use the full line while reset stays beside it.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
         {"id":"context-search","partId":"search","title":"Search field","explanation":"Magnifier Field contains Model and a clear X button.","keyIdea":"The populated search field shows the active Model filter and its clear affordance.","selector":"[data-ug-part=\"search\"]","scope":"context"},
       ],
     },
@@ -32,7 +32,7 @@ options: [
       contextLayers: [
         {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"Surface-alt Output pane includes its title and toolbar.","keyIdea":"The FD output frame keeps the heading and filtered table controls together.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
         {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The FD heading labels the results before its filtering tools.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
-        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"Toolbar wraps search above Reset filters with 8px gaps.","keyIdea":"The FD toolbar reserves the flexible space for search and leaves reset accessible.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
+        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"Toolbar row places search before Reset filters with 8px gaps.","keyIdea":"The FD toolbar reserves the flexible space for search and leaves reset accessible.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
         {"id":"context-search","partId":"search","title":"Search field","explanation":"Magnifier Field contains Model and a clear X button.","keyIdea":"The FD search field exposes the current Model query and its clear action.","selector":"[data-ug-part=\"search\"]","scope":"context"},
       ],
     },

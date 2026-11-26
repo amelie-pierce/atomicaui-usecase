@@ -12,7 +12,7 @@ export default defineUsecase({
 
   apps: ['hcs'],
     layers: [
-        {"id":"collapse","partId":"collapse","title":"Collapse all","explanation":"Transparent secondary button collapses every Input section; HCS uses angle-left.","keyIdea":"The collapse control folds every input section with one action.","selector":"[class~=\"aui-button\"][aria-label^=\"Collapse\"]"},
+        {"id":"collapse","partId":"collapse","title":"Collapse all","explanation":"Transparent secondary button collapses every Input section at once.","keyIdea":"The collapse control folds every input section with one action.","selector":"[class~=\"aui-button\"][aria-label^=\"Collapse\"]"},
         {"id":"collapse-icon","partId":"collapse-icon","title":"Icon","explanation":"The arrows-to-line glyph, which becomes expand when all sections are closed.","keyIdea":"The arrows-to-line glyph indicates that sections can be gathered together.","selector":"[class~=\"aui-button\"][aria-label^=\"Collapse\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])","unchanged":true},
         {"id":"tooltip","partId":"tooltip","title":"Tooltip","explanation":"HCS shows the Collapse Input label beneath its button.","keyIdea":"The HCS tooltip names the pane-level collapse action.","selector":"[class~=\"aui-tooltip-popup\"]","code":["IconButton"],"unchanged":true},
         {"id":"item","partId":"item","title":"Section","explanation":"Connection Type and Load Properties sections collapse together.","keyIdea":"The section item represents one expandable group in the input pane.","selector":"[class~=\"aui-accordion-item\"]","code":["IconButton"],"unchanged":true},

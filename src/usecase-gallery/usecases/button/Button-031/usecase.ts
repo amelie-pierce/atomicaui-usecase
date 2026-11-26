@@ -14,7 +14,7 @@ export default defineUsecase({
 
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
     layers: [
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"ADC and PBS use default feedback width; HCS uses 384px.","keyIdea":"The dialog surface gives feedback or deletion confirmation a focused boundary.","selector":"[class~=\"aui-dialog-popup\"]","code":["IconButton"]},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"ADC and PBS use the default width; HCS uses 384px.","keyIdea":"The dialog surface gives feedback or deletion confirmation a focused boundary.","selector":"[class~=\"aui-dialog-popup\"]","code":["IconButton"]},
         {"id":"title","partId":"title","title":"Title","explanation":"Raised title pairs Send feedback or Feedback Form with Close.","keyIdea":"The raised title identifies the feedback or confirmation request.","selector":"[class~=\"aui-dialog-title\"]","code":["IconButton","Dialog"],"unchanged":true},
         {"id":"dialog-close","partId":"dialog-close","title":"Dialog close","explanation":"Transparent X closes the dialog; PBS places it above body.","keyIdea":"The close control is the direct exit from the feedback or confirmation surface.","selector":"[class~=\"aui-dialog-close\"]","code":["IconButton"],"unchanged":true},
         {"id":"icon-button","partId":"icon-button","title":"Close button","explanation":"Example shows a transparent 20px X before Dialog.Close.","keyIdea":"The icon-only button models the close control before Dialog owns it.","selector":"[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])","code":["Dialog"],"unchanged":true},

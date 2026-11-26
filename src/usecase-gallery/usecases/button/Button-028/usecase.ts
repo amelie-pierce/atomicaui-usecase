@@ -20,24 +20,24 @@ export default defineUsecase({
         {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The solid angle-right glyph that points to the collapsed content.","keyIdea":"The chevron signals that the row can open to show more detail.","selector":"[class~=\"aui-button\"][aria-label^=\"Why Not\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])","code":["View"],"unchanged":true},
         {"id":"expand-trigger","partId":"expand-trigger","title":"Table expand trigger","explanation":"HCS and HS expand group rows before the semi-bold model name.","keyIdea":"The table-owned trigger expands grouped results where no Button is used.","selector":"[class~=\"aui-table-expand-trigger\"]","code":["Button"]},
         {"id":"row","partId":"row","title":"Row","explanation":"Model row or A-100 group row opens with its expander.","keyIdea":"The expandable row represents either one model or a grouped result.","selector":"[class~=\"aui-table-row\"]","code":["Button"],"unchanged":true},
-        {"id":"cell","partId":"cell","title":"Model cell","explanation":"Model cell pairs chevron and name with a 12px gap.","keyIdea":"The model cell pairs the result label with its expansion affordance.","selector":"[class~=\"aui-table-cell\"]","code":["Button"],"unchanged":true},
+        {"id":"cell","partId":"cell","title":"Model cell","explanation":"Model cell pairs the expander chevron with its name.","keyIdea":"The model cell pairs the result label with its expansion affordance.","selector":"[class~=\"aui-table-cell\"]","code":["Button"],"unchanged":true},
       ],
 options: [
     { id: "hcs-results", contextAnatomy: RESULTS_CONTEXT, name: "Results table", apps: ["hcs","fd"], source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx"} ,
       contextLayers: [
-        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"Connector table is cropped to the raised Model heading.","keyIdea":"The results table frames the model column and its expandable rows.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"Connector table is cropped to its raised Model column.","keyIdea":"The results table frames the model column and its expandable rows.","selector":"[class~=\"aui-table\"]","scope":"context"},
         {"id":"context-failed-expander","partId":"failed-expander","title":"Failed-model expander","explanation":"Error-coloured expander marks the failed Model C-300 row.","keyIdea":"The failed-model trigger uses error color to identify the row needing attention.","selector":"[aria-label=\"Why Not for Model C-300\"]","scope":"context","code":["View"]},
       ],
     },
     { id: "hcs-group", contextAnatomy: GROUP_CONTEXT, name: "Group model row", apps: ["hcs","adc"], source: {"hcs":"src/components/F01Results.tsx","adc":"src/adc/components/ProductsPicker.tsx"} ,
       contextLayers: [
-        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"Connector table is cropped to the raised Model heading.","keyIdea":"The HCS table keeps the grouped result label beside its expander.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"Connector table is cropped to its raised Model column.","keyIdea":"The HCS table keeps the grouped result label beside its expander.","selector":"[class~=\"aui-table\"]","scope":"context"},
         {"id":"context-group-label","partId":"group-label","title":"Group label","explanation":"Semi-bold A-100 label shows its two-member count beside the expander.","keyIdea":"The member count clarifies how many models the group contains.","selector":"[data-ug-part=\"group-label\"]","scope":"context"},
       ],
     },
     { id: "hs-group", contextAnatomy: GROUP_CONTEXT, name: "Counted model row", apps: ["hs"], source: {"hs":"src/hs/ResultsTable.tsx"} ,
       contextLayers: [
-        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"Connector table is cropped to the raised Model heading.","keyIdea":"The grouped row sits in the results table above its expanded members.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"Connector table is cropped to its raised Model column.","keyIdea":"The grouped row sits in the results table above its expanded members.","selector":"[class~=\"aui-table\"]","scope":"context"},
         {"id":"context-group-label","partId":"group-label","title":"Group label","explanation":"Semi-bold A-100 label shows its two-member count beside the expander.","keyIdea":"The A-100 label and count describe the rows available inside the group.","selector":"[data-ug-part=\"group-label\"]","scope":"context"},
       ],
     },

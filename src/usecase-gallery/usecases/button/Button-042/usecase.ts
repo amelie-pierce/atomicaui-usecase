@@ -16,7 +16,7 @@ export default defineUsecase({
 options: [
     { id: "adc-recalculate", contextAnatomy: CONTEXT_ANATOMY, name: "Results header", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
       contextLayers: [
-        {"id":"context-results-row","partId":"results-row","title":"Results row","explanation":"Header places Recalculate before N and V with 16px gap.","keyIdea":"The results row groups recalculation with its N and V measurements.","selector":"[data-ug-part=\"results-row\"]","scope":"context"},
+        {"id":"context-results-row","partId":"results-row","title":"Results row","explanation":"Results row places Recalculate before N and V with 16px gap.","keyIdea":"The results row groups recalculation with its N and V measurements.","selector":"[data-ug-part=\"results-row\"]","scope":"context"},
       ],
     },
   ],

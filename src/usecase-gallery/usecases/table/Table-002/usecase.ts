@@ -20,7 +20,7 @@ export default defineUsecase({
         {"id":"body","partId":"body","title":"Body","explanation":"The two selectable candidates, Model B-200 and Model C-300.","keyIdea":"The body contains only the candidates available for selection.","selector":"[class~=\"aui-table-body\"]"},
         {"id":"row","partId":"row","title":"Row","explanation":"Selected B-200 row uses a surface and 4px leading bar.","keyIdea":"The row surface and start edge make the chosen candidate visible beyond its radio.","selector":"[class~=\"aui-table-row\"]"},
         {"id":"cell","partId":"cell","title":"Cell","explanation":"First cell pairs radio and model; second shows the load.","keyIdea":"The first cell keeps the selection marker with the model name it selects.","selector":"[class~=\"aui-table-cell\"]"},
-        {"id":"selection-toggle","partId":"selection-toggle","title":"Selection radio","explanation":"24px radio selects the row; ACE places it above the model.","keyIdea":"The radio exposes the same row choice with a control that supports single selection.","selector":"[class~=\"aui-table-cell\"] [class~=\"aui-radio\"]"},
+        {"id":"selection-toggle","partId":"selection-toggle","title":"Selection radio","explanation":"24px radio selects the row; ACE places it above the model.","keyIdea":"The radio exposes the same row choice with a control that supports single selection.","selector":"[class~=\"aui-table-cell\"] [class~=\"aui-radio\"]","unchanged":true},
       ],
 options: [
     { id: "hcs-selection", name: "Row selection", showContext: false, apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} ,

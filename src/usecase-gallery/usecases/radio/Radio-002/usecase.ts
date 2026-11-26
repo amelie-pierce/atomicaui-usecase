@@ -14,7 +14,7 @@ export default defineUsecase({
     layers: [
         {"id":"group","partId":"group","title":"Radio group","explanation":"Camera projection group defaults to Perspective in viewer controls.","keyIdea":"The projection group treats camera perspective as one exclusive viewer setting.","selector":"[class~=\"aui-radio-group\"]"},
         {"id":"radio","partId":"radio","title":"Radio","explanation":"Perspective and Orthographic circles switch from outlined to solid primary.","keyIdea":"The radio surface distinguishes the active camera mode from the inactive one.","selector":"[class~=\"aui-radio\"]"},
-        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The circle that marks the active camera projection.","keyIdea":"A centered marker makes the active projection visible within its radio.","selector":"[class~=\"aui-radio-indicator\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The circle that marks the active camera projection.","keyIdea":"A centered marker makes the active projection visible within its radio.","selector":"[class~=\"aui-radio-indicator\"]","code":["RadioGroup"]},
         {"id":"label","partId":"label","title":"Label","explanation":"Projection name appears beside each radio; PBS adds a tooltip.","keyIdea":"The choice label identifies whether the viewer uses Perspective or Orthographic projection.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
       ],
 options: [

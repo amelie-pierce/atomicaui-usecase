@@ -1,0 +1,32 @@
+import { readdir, readFile } from 'node:fs/promises';
+import { stripTypeScriptTypes } from 'node:module';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { assertLayerCode } from '../src/usecase-gallery/catalog/layer-code.ts';
+import { toContextSnippet, toSnippet } from '../src/usecase-gallery/catalog/snippet.ts';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const usecasesRoot = path.join(root, 'src/usecase-gallery/usecases');
+const directories = async (directory) => (await readdir(directory, { withFileTypes: true })).filter((entry) => entry.isDirectory()).map((entry) => path.join(directory, entry.name));
+
+async function loadUsecase(dir) {
+  const source = (await readFile(path.join(dir, 'usecase.ts'), 'utf8')).replace(/^import\s+\{\s*defineUsecase\s*\}\s+from\s+['"][^'"]+['"];?\s*/m, 'const defineUsecase = (value) => value;\n');
+  const doc = (await import(`data:text/javascript;base64,${Buffer.from(stripTypeScriptTypes(source)).toString('base64')}`)).default;
+  const exampleCode = async (index, option) => toSnippet(await readFile(path.join(dir, index === 0 ? 'example.tsx' : `options/${option.id}/example.tsx`), 'utf8'));
+  return {
+    id: path.basename(dir),
+    layers: doc.layers,
+    options: doc.options.map((option, index) => ({
+      ...option,
+      loadExampleCode: () => exampleCode(index, option),
+      loadCode: async () => toContextSnippet(await readFile(path.join(dir, `options/${option.id}/scene.tsx`), 'utf8'), await exampleCode(index, option)),
+    })),
+  };
+}
+
+const usecases = [];
+for (const component of await directories(usecasesRoot)) {
+  for (const dir of await directories(component)) usecases.push(await loadUsecase(dir));
+}
+await assertLayerCode(usecases);
+console.log(`Layer code validated for ${usecases.length} use cases.`);

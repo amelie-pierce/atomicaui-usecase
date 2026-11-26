@@ -12,10 +12,10 @@ export default defineUsecase({
   apps: ['pbs'],
     layers: [
         {"id":"add","partId":"add","title":"Add","explanation":"Tonal secondary plus action adds the row to Connection List.","keyIdea":"The plus action adds the displayed model to the connection list.","selector":"[class~=\"aui-button\"][aria-label=\"Add to Connection List\"]"},
-        {"id":"add-icon","partId":"add-icon","title":"Plus icon","explanation":"Centered plus glyph identifies the Add to Connection List action.","keyIdea":"The plus glyph communicates adding the result row.","selector":"[class~=\"aui-button\"][aria-label=\"Add to Connection List\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-        {"id":"tooltip","partId":"tooltip","title":"Tooltip","explanation":"PBS tooltip repeats Add to Connection List above the action.","keyIdea":"The tooltip names the list destination before the add action.","selector":"[class~=\"aui-tooltip-popup\"]"},
-        {"id":"cell","partId":"cell","title":"Add cell","explanation":"Centered Model A-100 cell contains the add action.","keyIdea":"The first result cell gives each model its own add control.","selector":"[class~=\"aui-table-cell\"]:first-child"},
-        {"id":"header-cell","partId":"header-cell","title":"Add header","explanation":"The unlabeled column heading (aria-label Add) over the add buttons.","keyIdea":"The unlabeled heading identifies the add-action column accessibly.","selector":"[class~=\"aui-table-header-cell\"]:first-child"},
+        {"id":"add-icon","partId":"add-icon","title":"Plus icon","explanation":"Centered plus glyph identifies the Add to Connection List action.","keyIdea":"The plus glyph communicates adding the result row.","selector":"[class~=\"aui-button\"][aria-label=\"Add to Connection List\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])","unchanged":true},
+        {"id":"tooltip","partId":"tooltip","title":"Tooltip","explanation":"PBS tooltip repeats Add to Connection List above the action.","keyIdea":"The tooltip names the list destination before the add action.","selector":"[class~=\"aui-tooltip-popup\"]","code":["IconButton"],"unchanged":true},
+        {"id":"cell","partId":"cell","title":"Add cell","explanation":"Centered Model A-100 cell contains the add action.","keyIdea":"The first result cell gives each model its own add control.","selector":"[class~=\"aui-table-cell\"]:first-child","code":["IconButton"],"unchanged":true},
+        {"id":"header-cell","partId":"header-cell","title":"Add header","explanation":"The unlabeled column heading (aria-label Add) over the add buttons.","keyIdea":"The unlabeled heading identifies the add-action column accessibly.","selector":"[class~=\"aui-table-header-cell\"]:first-child","code":["IconButton"],"unchanged":true},
       ],
 options: [
     { id: "pbs-row", contextAnatomy: CONTEXT_ANATOMY, name: "Row add icon", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,

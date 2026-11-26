@@ -11,9 +11,9 @@ export default defineUsecase({
   apps: ['fd'],
     layers: [
         {"id":"info","partId":"info","title":"Info button","explanation":"Extra-small transparent circle-info explains the Fastener Pattern column.","keyIdea":"The info action opens an explanation for the column heading.","selector":"[class~=\"aui-button\"][aria-label=\"Fastener Pattern\"], [class~=\"aui-button\"][aria-label=\"Column info\"]"},
-        {"id":"info-icon","partId":"info-icon","title":"Info icon","explanation":"The circle-info glyph that signals a note about the column.","keyIdea":"The circle glyph signals supporting information about this result field.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-        {"id":"header-cell","partId":"header-cell","title":"Column header","explanation":"Raised Fastener Pattern cell pairs heading and help icon with 4px gap.","keyIdea":"The raised header combines the column name with its help affordance.","selector":"[class~=\"aui-table-header-cell\"]"},
-        {"id":"popup","partId":"popup","title":"Info popover","explanation":"384px solid popover explains fastener counts per row.","keyIdea":"The popover clarifies how fasteners are counted for a row.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
+        {"id":"info-icon","partId":"info-icon","title":"Info icon","explanation":"The circle-info glyph that signals a note about the column.","keyIdea":"The circle glyph signals supporting information about this result field.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])","unchanged":true},
+        {"id":"header-cell","partId":"header-cell","title":"Column header","explanation":"Raised Fastener Pattern cell pairs heading and help icon with 4px gap.","keyIdea":"The raised header combines the column name with its help affordance.","selector":"[class~=\"aui-table-header-cell\"]","code":["IconButton"],"unchanged":true},
+        {"id":"popup","partId":"popup","title":"Info popover","explanation":"384px solid popover explains fastener counts per row.","keyIdea":"The popover clarifies how fasteners are counted for a row.","selector":"[data-aui-popup-motion][role=\"dialog\"]","code":["IconButton","View"],"unchanged":true},
       ],
 options: [
     { id: "fd-header-info", contextAnatomy: CONTEXT_ANATOMY, name: "Header info", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} ,

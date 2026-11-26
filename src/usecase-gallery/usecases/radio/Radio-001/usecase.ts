@@ -19,7 +19,7 @@ export default defineUsecase({
         {"id":"group","partId":"group","title":"Radio group","explanation":"Row group defaults to Welded; FD shows its Yes or No variant.","keyIdea":"The group collects related plate-connection choices while ensuring only one can be active.","selector":"[class~=\"aui-radio-group\"]"},
         {"id":"group-label","partId":"group-label","title":"Group label","explanation":"Plate connection label starts the full-width row with 4px gap.","keyIdea":"The field label names the decision shared by all radio choices.","selector":"[class~=\"aui-radio-group\"] > [class~=\"aui-label\"]"},
         {"id":"radio","partId":"radio","title":"Radio","explanation":"Welded and Bolted circles use tonal unselected and solid primary selected states.","keyIdea":"Each radio offers one connection type as the mutually exclusive value.","selector":"[class~=\"aui-radio\"]"},
-        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The circle that shows which option is chosen.","keyIdea":"The inner circle shows which connection type currently supplies the field value.","selector":"[class~=\"aui-radio-indicator\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The circle that shows which option is chosen.","keyIdea":"The inner circle shows which connection type currently supplies the field value.","selector":"[class~=\"aui-radio-indicator\"]","code":["RadioGroup"]},
         {"id":"label","partId":"label","title":"Label","explanation":"The option text, Welded or Bolted, beside its circle.","keyIdea":"The option text lets users distinguish Welded from Bolted without interpreting the control shape.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
       ],
 options: [

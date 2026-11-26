@@ -5,10 +5,10 @@ export default defineUsecase({
   title: 'Feedback attachments dropzone',
   apps: ['adm', 'pfd', 'pbs', 'hs', 'agpd', 'rws'],
     layers: [
-        {"id":"chips","partId":"chips","title":"Attached file chip","explanation":"Attached filename chips appear above the upload area.","keyIdea":"An attached-file chip keeps each selected filename inspectable before submission.","selector":"[class~=\"aui-chip\"]"},
-        {"id":"upload","partId":"upload","title":"Upload area","explanation":"Dashed multi-file drop surface adds attachments to the feedback form.","keyIdea":"The multi-file surface accepts repeated additions while keeping dropping available.","selector":"[class~=\"aui-file-upload\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"The upload icon at the top of the drop area.","keyIdea":"The upload symbol marks the region where more attachments can be added.","selector":"[class~=\"aui-file-upload-icon\"]"},
-        {"id":"action","partId":"action","title":"Browse action","explanation":"Browse opens the picker for adding files one at a time.","keyIdea":"Browse lets users add files one at a time from the device picker.","selector":"[class~=\"aui-file-upload-action\"]"},
+        {"id":"chips","partId":"chips","title":"Attached file chip","explanation":"Attached filename chips appear above the upload area.","keyIdea":"An attached-file chip keeps each selected filename inspectable before submission.","selector":"[class~=\"aui-chip\"]","code":["FileUpload"]},
+        {"id":"upload","partId":"upload","title":"Upload area","explanation":"Dashed multi-file drop surface adds attachments to the feedback form.","keyIdea":"The multi-file surface accepts repeated additions while keeping dropping available.","selector":"[class~=\"aui-file-upload\"]","unchanged":true},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The upload icon at the top of the drop area.","keyIdea":"The upload symbol marks the region where more attachments can be added.","selector":"[class~=\"aui-file-upload-icon\"]","code":["FileUpload"],"unchanged":true},
+        {"id":"action","partId":"action","title":"Browse action","explanation":"Browse opens the picker for adding files one at a time.","keyIdea":"Browse lets users add files one at a time from the device picker.","selector":"[class~=\"aui-file-upload-action\"]","code":["FileUpload"],"unchanged":true},
       ],
 options: [
     { id: "adm-attachments", contextAnatomy: [

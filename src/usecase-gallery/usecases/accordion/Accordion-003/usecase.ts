@@ -17,7 +17,7 @@ export default defineUsecase({
         {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Plain title row opens the group without a leading icon.","keyIdea":"A plain title row keeps group disclosure focused on the category name rather than decoration.","selector":"[class~=\"aui-accordion-trigger\"]"},
         {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"Chevron on the right of each group title.","keyIdea":"The right-side chevron exposes whether templates in that category are available to scan.","selector":"[class~=\"aui-accordion-trigger\"] > [class~=\"aui-accordion-chevron\"]"},
         {"id":"panel","partId":"panel","title":"Panel","explanation":"Panel lists each group's templates, including Create your own.","keyIdea":"The panel reveals the actual template rows only after its category is open.","selector":"[class~=\"aui-accordion-panel\"]"},
-        {"id":"radio","partId":"radio","title":"Template radio","explanation":"Each dialog row uses Radio.Label; template two starts selected.","keyIdea":"The radio control marks one template as the current choice in the dialog scene.","selector":"[class~=\"aui-accordion-panel\"] [class~=\"aui-radio\"]"},
+        {"id":"radio","partId":"radio","title":"Template radio","explanation":"Each dialog row uses Radio.Label; template two starts selected.","keyIdea":"The radio control marks one template as the current choice in the dialog scene.","selector":"[class~=\"aui-accordion-panel\"] [class~=\"aui-radio\"]","unchanged":true},
       ],
 options: [
     { id: "ace-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Styled template groups", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} ,

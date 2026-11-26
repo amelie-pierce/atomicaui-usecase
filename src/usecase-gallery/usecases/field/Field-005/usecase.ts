@@ -6,7 +6,7 @@ export default defineUsecase({
   apps: ['hcs', 'hs', 'pbs', 'pfd', 'fd', 'rws', 'agpd', 'adm', 'ace', 'adc'],
     layers: [
         {"id":"field","partId":"field","title":"Field","explanation":"Wrapper pairs Description with a multiline box; app labels vary.","keyIdea":"The wrapper keeps the Description prompt associated with the larger text-entry area.","selector":"[class~=\"aui-field\"]"},
-        {"id":"label","partId":"label","title":"Label","explanation":"Description label sits above; AGPD names its unlabeled box accessibly.","keyIdea":"The label names the long-form information expected in the box.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"Description label sits above; AGPD names its unlabeled box accessibly.","keyIdea":"The label names the long-form information expected in the box.","selector":"[class~=\"aui-field-label\"]","code":["View"]},
         {"id":"textarea","partId":"textarea","title":"Textarea","explanation":"Five-row textarea has its own outline and vertical resizing.","keyIdea":"A tall resizable box gives users room for a multi-line description without a second control frame.","selector":"[class~=\"aui-textarea\"]"},
       ],
 options: [

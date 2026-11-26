@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run validate:layer-code && vite build",
+    "validate:layer-code": "node scripts/validate-layer-code.mjs",
     "docs:usecases": "node scripts/generate-usecase-docs.mjs"
   },
   "dependencies": {

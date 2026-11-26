@@ -11,7 +11,7 @@ export default defineUsecase({
   apps: ['agpd'],
     layers: [
         {"id":"call","partId":"call","title":"Call","explanation":"Pill-shaped primary phone button links to Call dealer.","keyIdea":"The pill-shaped call action opens the dealer phone link.","selector":"[class~=\"aui-button\"]"},
-        {"id":"call-icon","partId":"call-icon","title":"Phone icon","explanation":"The phone glyph centred in the round button.","keyIdea":"The phone glyph identifies the action as a call.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
+        {"id":"call-icon","partId":"call-icon","title":"Phone icon","explanation":"The phone glyph centred in the round button.","keyIdea":"The phone glyph identifies the action as a call.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])","unchanged":true},
       ],
 options: [
     { id: "agpd-dealer-contact", contextAnatomy: CONTEXT_ANATOMY, name: "Dealer contact", apps: ["agpd"], source: {"agpd":"src/agpd/QuoteDialog.tsx"} ,

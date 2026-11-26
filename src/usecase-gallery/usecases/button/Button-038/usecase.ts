@@ -12,9 +12,9 @@ export default defineUsecase({
   apps: ['hs', 'pbs'],
     layers: [
         {"id":"remove","partId":"remove","title":"Remove","explanation":"28px trash button removes Job 1 and opens confirmation.","keyIdea":"The row action removes the named job after the confirmation flow.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"]"},
-        {"id":"remove-icon","partId":"remove-icon","title":"Trash icon","explanation":"Trash glyph appears at the end of the job row.","keyIdea":"The trash glyph conveys removal of the job row.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-        {"id":"cell","partId":"cell","title":"Remove cell","explanation":"Last Job 1 cell pairs the job name with its trash action.","keyIdea":"The final cell reserves a stable position for row removal.","selector":"[class~=\"aui-table-cell\"]:last-child"},
-        {"id":"header-cell","partId":"header-cell","title":"Remove header","explanation":"The unlabeled column heading (aria-label Remove) above the trash buttons.","keyIdea":"The blank heading labels the removal column for assistive technology.","selector":"[class~=\"aui-table-header-cell\"]:last-child"},
+        {"id":"remove-icon","partId":"remove-icon","title":"Trash icon","explanation":"Trash glyph appears at the end of the job row.","keyIdea":"The trash glyph conveys removal of the job row.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])","unchanged":true},
+        {"id":"cell","partId":"cell","title":"Remove cell","explanation":"Last Job 1 cell pairs the job name with its trash action.","keyIdea":"The final cell reserves a stable position for row removal.","selector":"[class~=\"aui-table-cell\"]:last-child","code":["IconButton"],"unchanged":true},
+        {"id":"header-cell","partId":"header-cell","title":"Remove header","explanation":"The unlabeled column heading (aria-label Remove) above the trash buttons.","keyIdea":"The blank heading labels the removal column for assistive technology.","selector":"[class~=\"aui-table-header-cell\"]:last-child","code":["IconButton"],"unchanged":true},
       ],
 options: [
     { id: "hs-remove", contextAnatomy: CONTEXT_ANATOMY, name: "Remove", apps: ["hs","pbs"], source: {"hs":"src/hs/OutputPane.tsx","pbs":"src/ResultsSection.tsx"} ,

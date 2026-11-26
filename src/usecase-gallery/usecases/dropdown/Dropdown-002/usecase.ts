@@ -10,7 +10,7 @@ export default defineUsecase({
   apps: ['adc'],
     layers: [
         {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Square soft trigger opens hidden designs beyond the visible tab rail.","keyIdea":"The square trigger opens a list of designs hidden beyond the visible tab rail.","selector":"[class~=\"aui-dropdown-trigger\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"The ellipsis-vertical glyph that is the only content of the trigger.","keyIdea":"The vertical ellipsis indicates additional actions or items beyond the current view.","selector":"[class~=\"aui-dropdown-trigger\"] > [class~=\"aui-contained-icon\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The ellipsis-vertical glyph that is the only content of the trigger.","keyIdea":"The vertical ellipsis indicates additional actions or items beyond the current view.","selector":"[class~=\"aui-dropdown-trigger\"] > [class~=\"aui-contained-icon\"]","unchanged":true},
         {"id":"popup","partId":"popup","title":"Popup","explanation":"Small popup aligns to trigger start and scrolls after 256px height.","keyIdea":"A height cap keeps many hidden designs scrollable within the phone stage.","selector":"[class~=\"aui-dropdown-popup\"]"},
         {"id":"item","partId":"item","title":"Item","explanation":"Plain unselected row activates Design 3, 4, or 5.","keyIdea":"Each plain row activates one hidden design and none is preselected.","selector":"[class~=\"aui-dropdown-item\"]"},
       ],

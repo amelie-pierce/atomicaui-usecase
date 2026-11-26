@@ -6,7 +6,7 @@ export default defineUsecase({
   apps: ['pfd', 'rws'],
     layers: [
         {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Surface image action opens a 3D preview; PFD uses its card.","keyIdea":"The image button remains the selection action that opens its 3D explanation.","selector":"[data-ug-part=\"trigger\"]"},
-        {"id":"thumbnail","partId":"thumbnail","title":"Thumbnail","explanation":"Aria-hidden connection drawing decorates the trigger without extra reading.","keyIdea":"An aria-hidden thumbnail decorates the trigger without adding redundant accessible content.","selector":"[data-ug-part=\"trigger\"] > svg"},
+        {"id":"thumbnail","partId":"thumbnail","title":"Thumbnail","explanation":"Aria-hidden connection drawing decorates the trigger without extra reading.","keyIdea":"An aria-hidden thumbnail decorates the trigger without adding redundant accessible content.","selector":"[data-ug-part=\"trigger\"] > svg","unchanged":true},
         {"id":"positioner","partId":"positioner","title":"Positioner","explanation":"Tooltip opens beside the image with a four-pixel gap.","keyIdea":"The positioner keeps the note beside its originating connection image.","selector":"[class~=\"aui-tooltip-positioner\"]"},
         {"id":"popup","partId":"popup","title":"Popup","explanation":"Text surface expands to 384px for the longer PFD note.","keyIdea":"The popup holds the text explanation, expanding when PFD needs a longer description.","selector":"[class~=\"aui-tooltip-popup\"]"},
       ],

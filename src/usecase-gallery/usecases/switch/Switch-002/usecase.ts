@@ -6,8 +6,8 @@ export default defineUsecase({
   apps: ['hcs', 'hs', 'adm', 'pbs', 'rws', 'ace'],
     layers: [
         {"id":"switch","partId":"switch","title":"Switch","explanation":"On-by-default switch appears in popovers, toolbars, or dialogs.","keyIdea":"The switch changes one setting while allowing the same control to appear in several app contexts.","selector":"[class~=\"aui-switch\"]"},
-        {"id":"thumb","partId":"thumb","title":"Thumb","explanation":"Thumb slides to track end when Group by model is enabled.","keyIdea":"The sliding thumb makes the binary setting position visible as it changes.","selector":"[class~=\"aui-switch-thumb\"]"},
-        {"id":"label","partId":"label","title":"Label","explanation":"App labels include Group by model and Send me a copy.","keyIdea":"The option label explains the behavior affected by the switch.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
+        {"id":"thumb","partId":"thumb","title":"Thumb","explanation":"Thumb slides to track end when Group by model is enabled.","keyIdea":"The sliding thumb makes the binary setting position visible as it changes.","selector":"[class~=\"aui-switch-thumb\"]","code":["Switch"],"unchanged":true},
+        {"id":"label","partId":"label","title":"Label","explanation":"App labels include Group by model and Send me a copy.","keyIdea":"The option label explains the behavior affected by the switch.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]","unchanged":true},
       ],
 options: [
     { id: "hcs-labelled", name: "Labelled switch", contextAnatomy: [{ id: 'columns-trigger', name: 'Configure columns trigger', description: 'The table-columns IconButton, labelled Configure columns, that opens the popover under it.' }, { id: 'columns-popover', name: 'Configure columns popover', description: 'The elevated popover, 320px wide, anchored under the trigger that holds the column list.' }], apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnVisibility.tsx","hs":"src/hs/ColumnVisibility.tsx"} ,

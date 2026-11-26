@@ -53,8 +53,8 @@ function openingTagLines(code: string, start: number) {
 function linesOf(code: string, compound: string, step: LayerStep) {
   const starts: number[] = [];
   const classNames = [...compound.matchAll(/\[class~=["']aui-([^"']+)["']\]/g)].map(([, className]) => className);
-  for (const match of code.matchAll(/<([A-Z][\w.]*)(?=[\s/>])/g)) {
-    if (step.code ? match[1] === step.code : classNames.some((className) => tagMatchesClass(match[1], className))) starts.push(match.index);
+  for (const match of code.matchAll(/<([A-Za-z][\w.-]*)(?=[\s/>])/g)) {
+    if (step.code ? step.code.includes(match[1]) : classNames.some((className) => tagMatchesClass(match[1], className))) starts.push(match.index);
   }
   for (const [, marker] of compound.matchAll(/data-ug-part=["']([^"']+)["']/g)) {
     for (const match of code.matchAll(new RegExp(`data-ug-part=["']${marker}["']`, 'g'))) {
@@ -73,7 +73,7 @@ function linesOf(code: string, compound: string, step: LayerStep) {
 /**
  * The 0-based lines of `code` that write the element a layer step reveals: whole opening tags, matched exactly by an authored
  * `code` tag, a `data-ug-part` marker or the class's component. An element a component renders itself has no tag of its own,
- * so the step falls back to the nearest enclosing selector that does, then to the root tag of the code.
+ * so the step resolves through the nearest enclosing selector that does.
  */
 export function layerCodeLines(code: string, step: LayerStep | undefined) {
   if (!step) return new Set<number>();
@@ -83,15 +83,25 @@ export function layerCodeLines(code: string, step: LayerStep | undefined) {
     const lines = linesOf(code, compound, { ...step, code: undefined });
     if (lines.size) return lines;
   }
-  const root = /<[A-Z][\w.]*(?=[\s/>])|<[a-z][\w-]*(?=[\s/>])/.exec(code);
-  return root ? new Set(range(openingTagLines(code, root.index))) : new Set<number>();
+  return new Set<number>();
 }
 
-const range = ({ first, last }: { first: number; last: number }) => Array.from({ length: last - first + 1 }, (_, index) => first + index);
+/** The steps of one view whose code highlight is missing, or repeats the step before without being authored `unchanged`. */
+export function layerCodeProblems(code: string, layers: LayerStep[]) {
+  const problems: string[] = [];
+  let previous: string | undefined;
+  for (const layer of layers) {
+    const lines = [...layerCodeLines(code, layer)].sort((a, b) => a - b).join(',');
+    if (!lines) problems.push(`"${layer.id}" highlights no code line`);
+    else if (lines === previous && !layer.unchanged) problems.push(`"${layer.id}" highlights the same code as the step before`);
+    previous = lines;
+  }
+  return problems;
+}
 
-/** Rejects a layer step whose code view would highlight nothing, in either view of every option. */
+/** Rejects layer steps whose code view highlights nothing, or does not change from the previous step, in either view of every option. */
 export async function assertLayerCode(usecases: Usecase[]) {
-  const missing: string[] = [];
+  const problems: string[] = [];
   for (const usecase of usecases) {
     for (const option of usecase.options) {
       const views = [
@@ -99,9 +109,9 @@ export async function assertLayerCode(usecases: Usecase[]) {
         { label: 'In context', code: await option.loadCode(), layers: [...option.contextLayers, ...usecase.layers] },
       ];
       for (const { label, code, layers } of views) {
-        for (const layer of layers) if (!layerCodeLines(code, layer).size) missing.push(`${usecase.id} ${label} (${option.id}) layer "${layer.id}"`);
+        for (const problem of layerCodeProblems(code, layers)) problems.push(`${usecase.id} ${label} (${option.id}) ${problem}`);
       }
     }
   }
-  if (missing.length) throw new Error(`[usecase-gallery] layer steps highlight no code line: ${missing.join(', ')}`);
+  if (problems.length) throw new Error(`[usecase-gallery] layer code: ${problems.join('; ')}`);
 }

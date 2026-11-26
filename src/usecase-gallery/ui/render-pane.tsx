@@ -5,7 +5,7 @@ import { StageHostContext } from '../hooks/use-stage-host';
 import type { AnatomyPart } from '../types';
 import { AnatomyOverlay, usePreviewAnatomy } from '../hooks/use-preview-anatomy';
 import { useStageFit } from '../hooks/use-stage-fit';
-import { layerTarget, layerVisibilityCss } from '../hooks/use-layer-visibility';
+import { footprintAttribute, layerTarget, layerVisibilityCss } from '../hooks/use-layer-visibility';
 import { OptionBar } from './option-bar';
 const MODES: { value: PreviewMode; label: string }[] = [
   { value: 'component', label: 'Component' },
@@ -17,22 +17,27 @@ function PreviewPlaceholder() {
 
 function LayerVisibilityStyles({ layers, layerIndex, enabled }: { layers: LayerStep[]; layerIndex: number; enabled: boolean }) {
   const styleRef = useRef<HTMLStyleElement>(null);
-  const [empty, setEmpty] = useState<{ layer?: LayerStep; empty: boolean }>({ empty: false });
   const active = layers[layerIndex];
   useLayoutEffect(() => {
     const fit = styleRef.current?.parentElement;
     if (!enabled || !active || !fit) return;
-    const measure = () => {
+    const mark = () => {
       const targets = [...fit.querySelectorAll(layerTarget(active))];
-      const isEmpty = targets.length > 0 && targets.some((target) => !target.getBoundingClientRect().width || !target.getBoundingClientRect().height);
-      setEmpty((current) => current.layer === active ? (current.empty || !isEmpty ? current : { layer: active, empty: true }) : { layer: active, empty: isEmpty });
+      for (const target of targets) target.removeAttribute(footprintAttribute);
+      for (const target of targets) {
+        const { width, height } = target.getBoundingClientRect();
+        if (!width || !height) target.setAttribute(footprintAttribute, '');
+      }
     };
-    measure();
-    const observer = new MutationObserver(measure);
+    mark();
+    const observer = new MutationObserver(mark);
     observer.observe(fit, { childList: true, subtree: true });
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      for (const target of fit.querySelectorAll(`[${footprintAttribute}]`)) target.removeAttribute(footprintAttribute);
+    };
   }, [enabled, active]);
-  const css = useMemo(() => enabled ? layerVisibilityCss(layers, layerIndex, empty.layer === active && empty.empty) : '', [enabled, layers, layerIndex, empty, active]);
+  const css = useMemo(() => enabled ? layerVisibilityCss(layers, layerIndex) : '', [enabled, layers, layerIndex]);
   return <style ref={styleRef} data-ug-layer-styles>{css}</style>;
 }
 

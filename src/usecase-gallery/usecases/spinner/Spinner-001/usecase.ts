@@ -6,7 +6,7 @@ export default defineUsecase({
   apps: ['hcs', 'pfd'],
     layers: [
         {"id":"spinner","partId":"spinner","title":"Spinner","explanation":"Small default-colour spinner announces Updating Results while data recomputes.","keyIdea":"The status wrapper signals that recalculation is still in progress.","selector":"[class~=\"aui-spinner\"]"},
-        {"id":"ring","partId":"ring","title":"Ring","explanation":"The animated ring that turns while HCS and PFD recompute the results.","keyIdea":"The rotating ring shows ongoing work without implying a determinate percentage.","selector":"[class~=\"aui-spinner-ring\"]"},
+        {"id":"ring","partId":"ring","title":"Ring","explanation":"The animated ring that turns while HCS and PFD recompute the results.","keyIdea":"The rotating ring shows ongoing work without implying a determinate percentage.","selector":"[class~=\"aui-spinner-ring\"]","code":["Spinner"],"unchanged":true},
       ],
 options: [
     { id: "pfd-updating", name: "Updating results", source: {"hcs":"src/components/F01Results.tsx","pfd":"src/pfd/OutputPane.tsx"}, contextDocument: {

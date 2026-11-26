@@ -6,7 +6,7 @@ export default defineUsecase({
   apps: ['adc'],
     layers: [
         {"id":"spinner","partId":"spinner","title":"Spinner","explanation":"Extra-large info spinner stays hidden; the message supplies accessible status.","keyIdea":"The presentation-only spinner provides motion while accessible status comes from the accompanying message.","selector":"[class~=\"aui-spinner\"]"},
-        {"id":"ring","partId":"ring","title":"Ring","explanation":"Large animated ring appears above the report-generation message.","keyIdea":"A larger ring gives the dialog’s report-generation task a visible progress cue.","selector":"[class~=\"aui-spinner-ring\"]"},
+        {"id":"ring","partId":"ring","title":"Ring","explanation":"Large animated ring appears above the report-generation message.","keyIdea":"A larger ring gives the dialog’s report-generation task a visible progress cue.","selector":"[class~=\"aui-spinner-ring\"]","code":["Spinner"],"unchanged":true},
       ],
 options: [
     { id: "adc-report", name: "Generating report", contextAnatomy: [{ id: 'message', name: 'Status message', description: 'The semi-bold p1 text under the spinner, "Your design report is being generated. Please keep this window open.", which carries the status since the spinner is hidden from assistive tech.' }], source: {"adc":"src/adc/components/ReportFlow.tsx"} ,

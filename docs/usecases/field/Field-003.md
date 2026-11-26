@@ -29,9 +29,9 @@ AtomicAUI components imported by this use case: `Field`, `View`
 The source snippets below are authoritative for the complete prop values and composition. These styling values are the ones explicitly present in the selected examples and scenes:
 
 - `scale`: `sm`
-- `color`: `error`
 - `profile`: `no-padding`
 - `paint`: `text`
+- `color`: `error`
 
 ### Authored API props
 
@@ -75,17 +75,19 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-003/example.tsx`
 
 ```tsx
-import { Field } from '../../../kit';
+import { Field, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <Field invalid aui={{ scale: 'sm', sx: { gap: '3' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Quantity</Field.Label>
-      <Field.Control aui={{ scale: 'sm' }}>
-        <Field.Input defaultValue="0" aria-label="Quantity" aria-invalid />
-      </Field.Control>
-      <Field.Error match aui={{ color: 'error', scale: 'sm' }}>Enter a whole number from 1 to 999.</Field.Error>
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field invalid aui={{ scale: 'sm', sx: { gap: '3' } }}>
+        <Field.Label aui={{ scale: 'sm' }}>Quantity</Field.Label>
+        <Field.Control aui={{ scale: 'sm' }}>
+          <Field.Input defaultValue="0" aria-label="Quantity" aria-invalid />
+        </Field.Control>
+        <Field.Error match aui={{ color: 'error', scale: 'sm' }}>Enter a whole number from 1 to 999.</Field.Error>
+      </Field>
+    </View>
   );
 }
 ```
@@ -127,17 +129,19 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-003/options/hcs-error/example.tsx`
 
 ```tsx
-import { Field } from '../../../../../kit';
+import { Field, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field invalid aui={{ scale: 'sm', sx: { gap: '3' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Quantity</Field.Label>
-      <Field.Control aui={{ scale: 'sm' }}>
-        <Field.Input defaultValue="0" aria-label="Quantity" aria-invalid />
-      </Field.Control>
-      <Field.Error match aui={{ color: 'error', scale: 'sm' }}>Enter a whole number from 1 to 999.</Field.Error>
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field invalid aui={{ scale: 'sm', sx: { gap: '3' } }}>
+        <Field.Label aui={{ scale: 'sm' }}>Quantity</Field.Label>
+        <Field.Control aui={{ scale: 'sm' }}>
+          <Field.Input defaultValue="0" aria-label="Quantity" aria-invalid />
+        </Field.Control>
+        <Field.Error match role="alert" aui={{ color: 'error', scale: 'sm', sx: { fontSize: '14', lineHeight: '20' } }}>Enter a whole number from 1 to 999.</Field.Error>
+      </Field>
+    </View>
   );
 }
 ```
@@ -178,17 +182,19 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-003/options/rws-error/example.tsx`
 
 ```tsx
-import { Field } from '../../../../../kit';
+import { Field, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field invalid aui={{ scale: 'sm', sx: { gap: '3' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Quantity</Field.Label>
-      <Field.Control aui={{ scale: 'sm' }}>
-        <Field.Input defaultValue="0" aria-label="Quantity" aria-invalid />
-      </Field.Control>
-      <Field.Error match aui={{ color: 'error', scale: 'sm' }}>Enter a whole number from 1 to 999.</Field.Error>
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field invalid aui={{ scale: 'sm', sx: { gap: '3' } }}>
+        <Field.Label aui={{ scale: 'sm' }}>Quantity</Field.Label>
+        <Field.Control aui={{ scale: 'sm', sx: { minWidth: '0', borderColor: 'error' } }}>
+          <Field.Input defaultValue="0" aria-label="Quantity" aria-invalid />
+        </Field.Control>
+        <Field.Error match aui={{ color: 'error' }}>Enter a whole number from 1 to 999.</Field.Error>
+      </Field>
+    </View>
   );
 }
 ```
@@ -229,17 +235,19 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-003/options/adc-error/example.tsx`
 
 ```tsx
-import { Field } from '../../../../../kit';
+import { Field, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field invalid aui={{ scale: 'sm', sx: { gap: '3' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Quantity</Field.Label>
-      <Field.Control aui={{ scale: 'sm' }}>
-        <Field.Input defaultValue="0" aria-label="Quantity" aria-invalid />
-      </Field.Control>
-      <Field.Error match aui={{ color: 'error', scale: 'sm' }}>Enter a whole number from 1 to 999.</Field.Error>
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field invalid aui={{ scale: 'sm', sx: { flexDirection: 'row', alignItems: 'center', gap: '8', flexWrap: 'wrap', width: 'fill' } }}>
+        <Field.Label aui={{ sx: { width: '96', textAlign: 'end', flex: 'none' } }}>Name</Field.Label>
+        <Field.Control aui={{ color: 'error', sx: { flex: 'fill', minWidth: '0' } }}>
+          <Field.Input required defaultValue="" />
+        </Field.Control>
+        <Field.Error match role="alert" aui={{ scale: 'sm', color: 'error', sx: { flexBasis: 'full', textAlign: 'end' } }}>Name is required.</Field.Error>
+      </Field>
+    </View>
   );
 }
 ```

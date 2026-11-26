@@ -19,7 +19,7 @@ export function layerVisibilityCss(layers: LayerStep[], activeIndex: number) {
     })
     .filter(Boolean)
     .join('\n');
-  if (!active || !/\b(container|wrapper|popup|dialog|panel|body|viewport|pane|frame|region|group|list|row|layout|section|card)\b/i.test(active.title)) return hidden;
+  if (!active || !/\b(container|wrapper|popup|dialog|panel|body|viewport|pane|frame|region|group|list|row|layout|section|card|item)\b/i.test(active.title)) return hidden;
   const footprint = `${targetFor(active)} { box-sizing: border-box; min-inline-size: min(100%, var(--p-px-160)); min-block-size: var(--p-px-96); padding: var(--p-px-16); border: var(--p-px-1) dashed var(--theme-primary); background: var(--theme-surface-alt) !important; }`;
   return [hidden, footprint].filter(Boolean).join('\n');
 }

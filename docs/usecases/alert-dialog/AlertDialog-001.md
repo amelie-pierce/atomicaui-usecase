@@ -162,19 +162,20 @@ export default function Example() {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }} style={{ '--aui-width': 'min(560px, 100%)' } as React.CSSProperties}>
-            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-              <Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />
+          <Dialog.Popup initialFocus={false} style={{ '--aui-width': 'min(640px, 100%)' } as React.CSSProperties}>
+            <Dialog.Title aui={{ color: 'raised' }}>
+              <Dialog.Icon name="triangle-exclamation" aui={{ color: 'warning', paint: 'text' }} />
               <span data-ug-part="title-text">Warning: Reset Inputs?</span>
               <Dialog.Spacer />
-              <Dialog.Close aria-label="Close Reset" aui={{ scale: 'sm' }} />
+              <Dialog.Close aria-label="Close" />
             </Dialog.Title>
-            <Dialog.Description aui={{ scale: 'sm' }}>
-              You are about to reset all input fields. This cannot be undone.
+            <Dialog.Description>
+              Restore factory defaults for the current design or all designs. Project information and design names are preserved.
             </Dialog.Description>
-            <Dialog.Actions aui={{ scale: 'sm' }}>
-              <Dialog.Button data-ug-part="cancel" aui={{ scale: 'sm' }}>Cancel</Dialog.Button>
-              <Dialog.Button data-ug-part="confirm" aui={{ scale: 'sm', color: 'secondary', paint: 'solid' }}>Reset</Dialog.Button>
+            <Dialog.Actions align="split" aui={{ sx: { flexWrap: 'wrap' } }}>
+              <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="reset-current" aui={{ color: 'error', paint: 'text', sx: { whiteSpace: 'nowrap' } }}>Reset Current Design to Standard</Dialog.Button>
+              <Dialog.Button data-ug-part="confirm" aui={{ color: 'error', paint: 'solid', sx: { whiteSpace: 'nowrap' } }}>Reset All Designs to Standard</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

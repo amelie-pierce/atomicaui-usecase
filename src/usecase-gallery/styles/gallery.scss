@@ -179,16 +179,19 @@ $narrow: 840px;
   gap: var(--p-px-16);
 }
 
+// Out of flow, so it adds nothing to what `useStageFit` measures; the wrapper is stage-tall only while it shows.
+.ug-render__fit:has(.ug-preview-placeholder) {
+  min-block-size: 100%;
+}
+
 .ug-preview-placeholder {
-  flex: 1 1 100%;
-  inline-size: 100%;
-  min-block-size: var(--p-px-320);
+  position: absolute;
+  inset: 0;
   border-radius: var(--p-px-8);
   background: var(--theme-surface-alt);
 }
 
 .ug-preview-placeholder--thumb {
-  min-block-size: var(--p-px-160);
   background: var(--theme-surface);
 }
 

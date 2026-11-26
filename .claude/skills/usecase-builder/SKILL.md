@@ -49,7 +49,7 @@ Every use case uses the same selection model. Desktop has three resizable panels
 - List every distinct UI of the action, including enabled and disabled states. Option names describe what the UI is, never the app.
 - Each option has `options/<id>/scene.tsx`; the first option uses the use case's `example.tsx`, and every later option has its own `example.tsx`.
 - The union of option `apps` must equal the use case `apps`; the catalog validates this. The selected option's app badges and document must match.
-- The document follows the selected view and shows only that view's code (`example.tsx` for Component, the composed scene snippet for In context). Save and Copy use the selected view's code.
+- The document follows the selected view and shows only that view's code (`example.tsx` for Component, the composed scene snippet for In context). The document's Copy buttons copy the selected view's code.
 - Anatomy highlight is one-way: hovering or keyboard-focusing a step highlights its element in the preview; hovering the preview never changes Anatomy, and a mouse click on a step leaves no sticky highlight.
 - The highlight overlay is a sibling of the scrolling stage (`ug-render__viewport`), never a child: inside the stage it counts as scrollable overflow and toggles a scrollbar on and off in a loop (the `#Dialog-007` scrim flash). Nothing added by the gallery chrome may change the stage's scroll size.
 - A preview never scrolls. `hooks/use-stage-fit.ts` zooms content that is larger than its stage down to fit, in one measurement and without hunting; it skips fixed backdrop/viewport frames. Never clip it with `overflow: hidden` or a per-use-case size hack.

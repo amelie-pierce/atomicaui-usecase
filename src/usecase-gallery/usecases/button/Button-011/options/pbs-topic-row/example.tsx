@@ -20,7 +20,7 @@ export default function Example() {
         },
       }}
     >
-      HS: General Tutorial
+      PBS: General Tutorial
       <Button.Icon data-ug-part="icon" name="arrow-right" aui={{ scale: 'sm' }} />
     </Button>
   );

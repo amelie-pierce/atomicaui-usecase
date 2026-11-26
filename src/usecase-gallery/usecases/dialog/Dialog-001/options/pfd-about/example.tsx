@@ -1,4 +1,4 @@
-import { Dialog, Type, View } from '../../../../../kit';
+import { Accordion, Button, Dialog, List, Type, View } from '../../../../../kit';
 import { useStageHost } from '../../../../../hooks/use-stage-host';
 
 export default function Example() {
@@ -20,10 +20,33 @@ export default function Example() {
                   Release history
                 </Type>
               </View>
-              <View data-ug-part="notes-column" aui={{ scale: 'sm', paint: 'text', sx: { flex: 'fill', minWidth: '0' } }}>
-                <Type data-ug-part="notes-text" as="p" role="p3">
-                  Release notes
-                </Type>
+              <View data-ug-part="notes-column" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '16', flex: 'fill', minWidth: '0' } }}>
+                <Type as="h2" role="h5">Post-to-Foundation Designer</Type>
+                <Type as="p" role="p3" color="muted">PFD streamlines the design of anchorage and holdown solutions for specific uplift loads.</Type>
+                <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '4' } }}>
+                  <Type as="p" role="p3" color="muted">Key Features:</Type>
+                  <List data-ug-part="key-features" aui={{ paint: 'text', profile: 'no-padding', scale: 'xs' }}>
+                    <List.Item aui={{ sx: { alignItems: 'start' } }}>
+                      <List.ItemText>
+                        <Type as="span" role="p3" color="muted"><Type as="strong" role="p3" weight="semi-bold">Dynamic UI:</Type>{' '}the inputs follow the selected design code.</Type>
+                      </List.ItemText>
+                    </List.Item>
+                  </List>
+                </View>
+                <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', justifyContent: 'end' } }}>
+                  <Button data-ug-part="toggle-all" aui={{ paint: 'text', scale: 'xs' }}>Collapse all</Button>
+                </View>
+                <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['global']}>
+                  <Accordion.Item value="global">
+                    <Accordion.Header>
+                      <Accordion.Trigger>
+                        <Type as="span" role="l3" weight="semi-bold">Global changes (1 update)</Type>
+                        <Accordion.Chevron />
+                      </Accordion.Trigger>
+                    </Accordion.Header>
+                    <Accordion.Panel>Resize the Input, 3D Viewer, and Output panels to suit your workspace.</Accordion.Panel>
+                  </Accordion.Item>
+                </Accordion>
               </View>
             </View>
             <Dialog.Actions data-ug-part="footer" aui={{ scale: 'sm' }}>

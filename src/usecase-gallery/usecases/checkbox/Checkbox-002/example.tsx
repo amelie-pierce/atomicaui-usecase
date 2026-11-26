@@ -1,7 +1,8 @@
-import { Checkbox } from '../../../kit';
+import { Checkbox, View } from '../../../kit';
 
 export default function Example() {
   return (
+    <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }} style={{ inlineSize: 'min(100%, 280px)' }}>
     <Checkbox defaultSelected aui={{
       scale: 'sm',
       states: {
@@ -10,7 +11,8 @@ export default function Example() {
       },
     }}>
       <Checkbox.Icon name="check" />
-      <Checkbox.Label>Galvanized</Checkbox.Label>
+      <Checkbox.Label aui={{ scale: 'sm' }}>Same inputs as Left Hip</Checkbox.Label>
     </Checkbox>
+    </View>
   );
 }

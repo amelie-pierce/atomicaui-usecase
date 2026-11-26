@@ -28,9 +28,9 @@ AtomicAUI components imported by this use case: `Table`, `View`
 
 The source snippets below are authoritative for the complete prop values and composition. These styling values are the ones explicitly present in the selected examples and scenes:
 
-- `scale`: `xs`
 - `paint`: `solid`, `text`
 - `profile`: `compact`, `no-padding`
+- `scale`: `xs`
 - `shape`: `none`
 - `color`: `secondary`
 
@@ -72,29 +72,32 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/table/Table-006/example.tsx`
 
 ```tsx
-import { Table } from '../../../kit';
+import { Table, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <Table
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>
+      <Table
         aria-label="Connection"
-        aui={{ scale: 'xs' }}
+        aui={{ profile: 'no-padding', scale: 'xs', shape: 'none', sx: { width: 'fill', borderColor: 'text' } }}
         border="all-cells"
-        borderStyle="tonal"
+        scroll="parent"
+        selectionMode="none"
       >
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell>Model</Table.HeaderCell>
-            <Table.HeaderCell>Load (lb)</Table.HeaderCell>
+            <Table.HeaderCell aui={{ profile: 'no-padding', scale: 'xs', sx: { paddingInlineStart: '4', paddingInlineEnd: '4', paddingBlockStart: '6', paddingBlockEnd: '6', textAlign: 'center', background: 'muted', foreground: 'surface', whiteSpace: 'normal' } }}>Model</Table.HeaderCell>
+            <Table.HeaderCell aui={{ profile: 'no-padding', scale: 'xs', sx: { paddingInlineStart: '4', paddingInlineEnd: '4', paddingBlockStart: '6', paddingBlockEnd: '6', textAlign: 'center', background: 'muted', foreground: 'surface', whiteSpace: 'normal' } }}>Load (lb)</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
           <Table.Row>
-            <Table.Cell>Model B-200</Table.Cell>
-            <Table.Cell>2,210</Table.Cell>
+            <Table.Cell aui={{ profile: 'no-padding', scale: 'xs', sx: { paddingInlineStart: '4', paddingInlineEnd: '4', paddingBlockStart: '6', paddingBlockEnd: '6', textAlign: 'center' } }}>Model B-200</Table.Cell>
+            <Table.Cell aui={{ profile: 'no-padding', scale: 'xs', sx: { paddingInlineStart: '4', paddingInlineEnd: '4', paddingBlockStart: '6', paddingBlockEnd: '6', textAlign: 'center' } }}>2,210</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>
+    </View>
   );
 }
 ```
@@ -146,29 +149,31 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/table/Table-006/options/adm-print/example.tsx`
 
 ```tsx
-import { Table } from '../../../../../kit';
+import { Table, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Table
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>
+      <Table
         aria-label="Connection"
-        aui={{ scale: 'xs' }}
+        aui={{ profile: 'no-padding', scale: 'xs', shape: 'none', sx: { width: 'fill', borderColor: 'text', textAlign: 'left' } }}
         border="all-cells"
-        borderStyle="tonal"
+        scroll="parent"
       >
         <Table.Head>
           <Table.Row>
-            <Table.HeaderCell>Model</Table.HeaderCell>
-            <Table.HeaderCell>Load (lb)</Table.HeaderCell>
+            <Table.HeaderCell aui={{ profile: 'compact', scale: 'xs', sx: { textAlign: 'left', background: 'muted', foreground: 'surface' } }}>Model</Table.HeaderCell>
+            <Table.HeaderCell aui={{ profile: 'compact', scale: 'xs', sx: { textAlign: 'left', background: 'muted', foreground: 'surface' } }}>Load (lb)</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
           <Table.Row>
-            <Table.Cell>Model B-200</Table.Cell>
-            <Table.Cell>2,210</Table.Cell>
+            <Table.Cell aui={{ profile: 'compact', scale: 'xs', sx: { textAlign: 'left' } }}>Model B-200</Table.Cell>
+            <Table.Cell aui={{ profile: 'compact', scale: 'xs', sx: { textAlign: 'left' } }}>2,210</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>
+    </View>
   );
 }
 ```
@@ -218,29 +223,33 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/table/Table-006/options/hs-print/example.tsx`
 
 ```tsx
-import { Table } from '../../../../../kit';
+import { Table, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Table
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>
+      <Table
         aria-label="Connection"
-        aui={{ scale: 'xs' }}
+        a11y="table"
         border="all-cells"
-        borderStyle="tonal"
+        aui={{ scale: 'xs', profile: 'compact', sx: { width: 'fill', fontSize: '10', lineHeight: '12' } }}
+        headerCellAui={{ color: 'secondary', paint: 'solid', sx: { textAlign: 'start', whiteSpace: 'nowrap', borderColor: 'secondary' } }}
+        cellAui={{ sx: { textAlign: 'center', borderColor: 'secondary' } }}
       >
         <Table.Head>
-          <Table.Row>
+          <Table.Row data-aui-header-row selectable={false} expandable={false}>
             <Table.HeaderCell>Model</Table.HeaderCell>
             <Table.HeaderCell>Load (lb)</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          <Table.Row>
+          <Table.Row selectable={false} expandable={false}>
             <Table.Cell>Model B-200</Table.Cell>
             <Table.Cell>2,210</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>
+    </View>
   );
 }
 ```
@@ -293,29 +302,33 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/table/Table-006/options/rws-print/example.tsx`
 
 ```tsx
-import { Table } from '../../../../../kit';
+import { Table, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Table
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>
+      <Table
         aria-label="Connection"
-        aui={{ scale: 'xs' }}
+        a11y="table"
         border="all-cells"
-        borderStyle="tonal"
+        aui={{ scale: 'xs', profile: 'compact', sx: { width: 'fill', fontSize: '10', lineHeight: '12' } }}
+        headerCellAui={{ color: 'secondary', paint: 'solid', sx: { textAlign: 'center', borderColor: 'secondary' } }}
+        cellAui={{ sx: { textAlign: 'center', borderColor: 'secondary' } }}
       >
         <Table.Head>
-          <Table.Row>
+          <Table.Row data-aui-header-row selectable={false} expandable={false}>
             <Table.HeaderCell>Model</Table.HeaderCell>
             <Table.HeaderCell>Load (lb)</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body>
-          <Table.Row>
+          <Table.Row selectable={false} expandable={false}>
             <Table.Cell>Model B-200</Table.Cell>
             <Table.Cell>2,210</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>
+    </View>
   );
 }
 ```
@@ -368,11 +381,12 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/table/Table-006/options/pbs-print/example.tsx`
 
 ```tsx
-import { Table } from '../../../../../kit';
+import { Table, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Table
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>
+      <Table
         aria-label="Connection"
         aui={{ scale: 'xs' }}
         border="all-cells"
@@ -391,6 +405,7 @@ export default function Example() {
           </Table.Row>
         </Table.Body>
       </Table>
+    </View>
   );
 }
 ```

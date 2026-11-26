@@ -10,11 +10,11 @@ export default function Example() {
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false}>
             <Dialog.Title aui={{ color: 'raised' }}>
-              New from Template
+              Templates
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close" />
             </Dialog.Title>
-            <Dialog.Body>
+            <Dialog.Body aui={{ sx: { overflow: 'auto', minHeight: '0' } }}>
               <Type data-ug-part="template-text" as="p" role="p3">
                 The list of templates goes here.
               </Type>

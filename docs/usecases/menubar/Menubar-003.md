@@ -71,24 +71,36 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/menubar/Menubar-003/example.tsx`
 
 ```tsx
-import { Menubar } from '../../../kit';
+import { useStageHost } from '../../../hooks/use-stage-host';
+import { Menubar, View } from '../../../kit';
 
 export default function Example() {
+  const host = useStageHost();
   return (
-    <Menubar aria-label="Top bar">
-      <Menubar.Dropdown>
-        <Menubar.DropdownTrigger>Help Center</Menubar.DropdownTrigger>
-        <Menubar.DropdownPortal>
-          <Menubar.DropdownPositioner sideOffset={4} align="start">
-            <Menubar.DropdownPopup aui={{ sx: { width: '192' } }}>
-              <Menubar.DropdownItem>Feedback</Menubar.DropdownItem>
-              <Menubar.DropdownItem>Tutorials</Menubar.DropdownItem>
-              <Menubar.DropdownItem>Add to Home Screen</Menubar.DropdownItem>
-            </Menubar.DropdownPopup>
-          </Menubar.DropdownPositioner>
-        </Menubar.DropdownPortal>
-      </Menubar.Dropdown>
-    </Menubar>
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 10)', inlineSize: 'min(100%, calc(var(--p-px-16) * 36))' }}>
+      <Menubar aria-label="Main navigation" aui={{ scale: 'sm' }}>
+        <Menubar.Dropdown open>
+          <Menubar.DropdownTrigger>Help Center</Menubar.DropdownTrigger>
+          <Menubar.DropdownPortal container={host}>
+            <Menubar.DropdownPositioner align="start" sideOffset={4} className="ug-anchored">
+              <Menubar.DropdownPopup aui={{ sx: { width: '288' } }}>
+                <Menubar.DropdownSubmenuRoot open>
+                  <Menubar.DropdownSubmenuTrigger>Tutorials</Menubar.DropdownSubmenuTrigger>
+                  <Menubar.DropdownPortal container={host}>
+                    <Menubar.DropdownPositioner side="right" align="start" sideOffset={4} className="ug-anchored">
+                      <Menubar.DropdownPopup>
+                        <Menubar.DropdownItem>HCS: General Tutorial</Menubar.DropdownItem>
+                      </Menubar.DropdownPopup>
+                    </Menubar.DropdownPositioner>
+                  </Menubar.DropdownPortal>
+                </Menubar.DropdownSubmenuRoot>
+                <Menubar.DropdownItem>Feedback Form</Menubar.DropdownItem>
+              </Menubar.DropdownPopup>
+            </Menubar.DropdownPositioner>
+          </Menubar.DropdownPortal>
+        </Menubar.Dropdown>
+      </Menubar>
+    </View>
   );
 }
 ```
@@ -142,24 +154,28 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/menubar/Menubar-003/options/pbs-help-center/example.tsx`
 
 ```tsx
-import { Menubar } from '../../../../../kit';
+import { useStageHost } from '../../../../../hooks/use-stage-host';
+import { Menubar, View } from '../../../../../kit';
 
 export default function Example() {
+  const host = useStageHost();
   return (
-    <Menubar aria-label="Top bar">
-      <Menubar.Dropdown>
-        <Menubar.DropdownTrigger>Help Center</Menubar.DropdownTrigger>
-        <Menubar.DropdownPortal>
-          <Menubar.DropdownPositioner sideOffset={4} align="start">
-            <Menubar.DropdownPopup aui={{ sx: { width: '192' } }}>
-              <Menubar.DropdownItem>Feedback</Menubar.DropdownItem>
-              <Menubar.DropdownItem>Tutorials</Menubar.DropdownItem>
-              <Menubar.DropdownItem>Add to Home Screen</Menubar.DropdownItem>
-            </Menubar.DropdownPopup>
-          </Menubar.DropdownPositioner>
-        </Menubar.DropdownPortal>
-      </Menubar.Dropdown>
-    </Menubar>
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 10)', inlineSize: 'min(100%, calc(var(--p-px-16) * 24))' }}>
+      <Menubar aria-label="Application navigation" aui={{ scale: 'sm' }}>
+        <Menubar.Dropdown open>
+          <Menubar.DropdownTrigger>Help Center</Menubar.DropdownTrigger>
+          <Menubar.DropdownPortal container={host}>
+            <Menubar.DropdownPositioner align="start" sideOffset={4} className="ug-anchored">
+              <Menubar.DropdownPopup aui={{ sx: { width: '192' } }}>
+                <Menubar.DropdownItem>Feedback</Menubar.DropdownItem>
+                <Menubar.DropdownItem>Tutorials</Menubar.DropdownItem>
+                <Menubar.DropdownItem>Add to Home Screen</Menubar.DropdownItem>
+              </Menubar.DropdownPopup>
+            </Menubar.DropdownPositioner>
+          </Menubar.DropdownPortal>
+        </Menubar.Dropdown>
+      </Menubar>
+    </View>
   );
 }
 ```

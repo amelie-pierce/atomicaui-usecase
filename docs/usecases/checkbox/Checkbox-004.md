@@ -76,27 +76,13 @@ import { Checkbox, Type, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexWrap: 'wrap', gap: '8', alignItems: 'center' } }}>
-      <Type as="span" role="l4" weight="semi-bold">
-        Object Visibility
-      </Type>
-      <Checkbox defaultSelected aui={{
-        scale: 'sm',
-        states: {
-          unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-          selected: { color: 'primary', paint: 'solid' },
-        },
-      }}>
-        <Checkbox.Label>Wall</Checkbox.Label>
+    <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Type role="l3" weight="semi-bold">Object Visibility</Type>
+      <Checkbox defaultSelected aui={{ scale: 'sm', states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }}>
+        <Checkbox.Label aui={{ scale: 'sm' }}>Supporting Beam</Checkbox.Label>
       </Checkbox>
-      <Checkbox defaultSelected aui={{
-        scale: 'sm',
-        states: {
-          unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-          selected: { color: 'primary', paint: 'solid' },
-        },
-      }}>
-        <Checkbox.Label>Roof</Checkbox.Label>
+      <Checkbox defaultSelected aui={{ scale: 'sm', states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }}>
+        <Checkbox.Label aui={{ scale: 'sm' }}>Supported Beam</Checkbox.Label>
       </Checkbox>
     </View>
   );
@@ -154,28 +140,16 @@ import { Checkbox, Type, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexWrap: 'wrap', gap: '8', alignItems: 'center' } }}>
-      <Type as="span" role="l4" weight="semi-bold">
-        Object Visibility
-      </Type>
-      <Checkbox defaultSelected aui={{
-        scale: 'sm',
-        states: {
-          unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-          selected: { color: 'primary', paint: 'solid' },
-        },
-      }}>
-        <Checkbox.Label>Wall</Checkbox.Label>
-      </Checkbox>
-      <Checkbox defaultSelected aui={{
-        scale: 'sm',
-        states: {
-          unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-          selected: { color: 'primary', paint: 'solid' },
-        },
-      }}>
-        <Checkbox.Label>Roof</Checkbox.Label>
-      </Checkbox>
+    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '4' } }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Type role="l5" weight="bold" aui={{ sx: { paddingBlockStart: '4' } }}>Object Visibility</Type>
+      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '4' } }}>
+        <Checkbox defaultSelected aui={{ scale: 'xs', shape: 'soft', states: { unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } }, selected: { paint: 'solid', color: 'primary' } } }}>
+          <Checkbox.Label>Concrete</Checkbox.Label>
+        </Checkbox>
+        <Checkbox defaultSelected aui={{ scale: 'xs', shape: 'soft', states: { unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } }, selected: { paint: 'solid', color: 'primary' } } }}>
+          <Checkbox.Label>Anchors</Checkbox.Label>
+        </Checkbox>
+      </View>
     </View>
   );
 }
@@ -232,32 +206,24 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/checkbox/Checkbox-004/options/adm-visibility/example.tsx`
 
 ```tsx
-import { Checkbox, Type, View } from '../../../../../kit';
+import { Checkbox, Field, Type, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexWrap: 'wrap', gap: '8', alignItems: 'center' } }}>
-      <Type as="span" role="l4" weight="semi-bold">
-        Object Visibility
-      </Type>
-      <Checkbox defaultSelected aui={{
-        scale: 'sm',
-        states: {
-          unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-          selected: { color: 'primary', paint: 'solid' },
-        },
-      }}>
-        <Checkbox.Label>Wall</Checkbox.Label>
-      </Checkbox>
-      <Checkbox defaultSelected aui={{
-        scale: 'sm',
-        states: {
-          unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-          selected: { color: 'primary', paint: 'solid' },
-        },
-      }}>
-        <Checkbox.Label>Roof</Checkbox.Label>
-      </Checkbox>
+    <View aui={{ paint: 'text', elevation: 0, profile: 'compact', sx: { display: 'flex', flexDirection: 'column', alignItems: 'start', gap: '4' } }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Type role="l5" weight="semi-bold">Object visibility</Type>
+      <Field aui={{ scale: 'sm', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6', width: 'fill' } }}>
+        <Checkbox aria-label="Base plate" defaultSelected aui={{ states: { unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } }, selected: { paint: 'solid', color: 'primary' } } }}>
+          <Checkbox.Icon name="check" layer="duotone" />
+        </Checkbox>
+        <Field.Label>Base plate</Field.Label>
+      </Field>
+      <Field aui={{ scale: 'sm', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6', width: 'fill' } }}>
+        <Checkbox aria-label="Anchors" defaultSelected aui={{ states: { unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } }, selected: { paint: 'solid', color: 'primary' } } }}>
+          <Checkbox.Icon name="check" layer="duotone" />
+        </Checkbox>
+        <Field.Label>Anchors</Field.Label>
+      </Field>
     </View>
   );
 }
@@ -314,32 +280,24 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/checkbox/Checkbox-004/options/fd-visibility/example.tsx`
 
 ```tsx
-import { Checkbox, Type, View } from '../../../../../kit';
+import { Checkbox, Field, Type, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexWrap: 'wrap', gap: '8', alignItems: 'center' } }}>
-      <Type as="span" role="l4" weight="semi-bold">
-        Object Visibility
-      </Type>
-      <Checkbox defaultSelected aui={{
-        scale: 'sm',
-        states: {
-          unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-          selected: { color: 'primary', paint: 'solid' },
-        },
-      }}>
-        <Checkbox.Label>Wall</Checkbox.Label>
-      </Checkbox>
-      <Checkbox defaultSelected aui={{
-        scale: 'sm',
-        states: {
-          unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-          selected: { color: 'primary', paint: 'solid' },
-        },
-      }}>
-        <Checkbox.Label>Roof</Checkbox.Label>
-      </Checkbox>
+    <View aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', alignItems: 'start', gap: '4' } }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Type role="l5" weight="semi-bold">Object visibility</Type>
+      <Field aui={{ scale: 'sm', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6', width: 'fill' } }}>
+        <Checkbox aria-label="Base plate" defaultSelected aui={{ scale: 'sm', states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }}>
+          <Checkbox.Icon name="check" />
+        </Checkbox>
+        <Field.Label>Base plate</Field.Label>
+      </Field>
+      <Field aui={{ scale: 'sm', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '6', width: 'fill' } }}>
+        <Checkbox aria-label="Fasteners" aui={{ scale: 'sm', states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }}>
+          <Checkbox.Icon name="check" />
+        </Checkbox>
+        <Field.Label>Fasteners</Field.Label>
+      </Field>
     </View>
   );
 }
@@ -402,26 +360,12 @@ import { Checkbox, Type, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexWrap: 'wrap', gap: '8', alignItems: 'center' } }}>
-      <Type as="span" role="l4" weight="semi-bold">
-        Object Visibility
-      </Type>
-      <Checkbox defaultSelected aui={{
-        scale: 'sm',
-        states: {
-          unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-          selected: { color: 'primary', paint: 'solid' },
-        },
-      }}>
+    <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flexWrap: 'wrap', gap: '8', alignItems: 'center' } }} style={{ inlineSize: 'min(100%, 420px)' }}>
+      <Type as="span" role="l4" weight="semi-bold">Object Visibility</Type>
+      <Checkbox defaultSelected aui={{ scale: 'sm', states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }}>
         <Checkbox.Label>Wall</Checkbox.Label>
       </Checkbox>
-      <Checkbox defaultSelected aui={{
-        scale: 'sm',
-        states: {
-          unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-          selected: { color: 'primary', paint: 'solid' },
-        },
-      }}>
+      <Checkbox defaultSelected aui={{ scale: 'sm', states: { unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } }, selected: { color: 'primary', paint: 'solid' } } }}>
         <Checkbox.Label>Roof</Checkbox.Label>
       </Checkbox>
     </View>

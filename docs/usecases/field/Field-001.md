@@ -75,17 +75,18 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-001/example.tsx`
 
 ```tsx
-import { Field, Type } from '../../../kit';
+import { Field, Symbol, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Fc perp</Field.Label>
-      <Field.Control aui={{ scale: 'sm' }}>
-        <Field.Input defaultValue="650" aria-label="Fc perp" inputMode="decimal" aui={{ sx: { textAlign: 'end' } }} />
-        <Type as="span" role="l4" family="mono">psi</Type>
-      </Field.Control>
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
+        <Field.Label aui={{ scale: 'sm' }}>Fc perp</Field.Label>
+        <Field.Control aui={{ scale: 'sm', sx: { height: '28', minHeight: '28', paddingBlockStart: '3', paddingBlockEnd: '3', paddingInlineStart: '8', paddingInlineEnd: '8', fontSize: '16', lineHeight: '20' } }} aria-label="Fc perp" defaultValue="650">
+          <Symbol>psi</Symbol>
+        </Field.Control>
+      </Field>
+    </View>
   );
 }
 ```
@@ -126,17 +127,19 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-001/options/hs-number/example.tsx`
 
 ```tsx
-import { Field, Type } from '../../../../../kit';
+import { Field, Type, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Fc perp</Field.Label>
-      <Field.Control aui={{ scale: 'sm' }}>
-        <Field.Input defaultValue="650" aria-label="Fc perp" inputMode="decimal" aui={{ sx: { textAlign: 'end' } }} />
-        <Type as="span" role="l4" family="mono">psi</Type>
-      </Field.Control>
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
+        <Field.Label aui={{ scale: 'sm' }}>Fc perp</Field.Label>
+        <Field.Control aui={{ scale: 'sm' }}>
+          <Field.Input defaultValue="650" aria-label="Fc perp" inputMode="decimal" aui={{ sx: { textAlign: 'end' } }} />
+          <Type as="span" role="l4" family="mono">psi</Type>
+        </Field.Control>
+      </Field>
+    </View>
   );
 }
 ```
@@ -178,17 +181,23 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-001/options/fd-number/example.tsx`
 
 ```tsx
-import { Field, Type } from '../../../../../kit';
+import { Field, Type, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Fc perp</Field.Label>
-      <Field.Control aui={{ scale: 'sm' }}>
-        <Field.Input defaultValue="650" aria-label="Fc perp" inputMode="decimal" aui={{ sx: { textAlign: 'end' } }} />
-        <Type as="span" role="l4" family="mono">psi</Type>
-      </Field.Control>
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
+        <Field.Label aui={{ scale: 'sm' }}>Fc perp</Field.Label>
+        <Field.NumberField defaultValue={650}>
+          <Field.NumberFieldGroup>
+            <Field.NumberFieldInput aui={{ sx: { textAlign: 'end' } }} />
+            <Field.NumberFieldUnit>
+              <Type as="span" family="mono">psi</Type>
+            </Field.NumberFieldUnit>
+          </Field.NumberFieldGroup>
+        </Field.NumberField>
+      </Field>
+    </View>
   );
 }
 ```
@@ -234,17 +243,25 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-001/options/adm-number/example.tsx`
 
 ```tsx
-import { Field, Type } from '../../../../../kit';
+import { Field, Symbol, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Fc perp</Field.Label>
-      <Field.Control aui={{ scale: 'sm' }}>
-        <Field.Input defaultValue="650" aria-label="Fc perp" inputMode="decimal" aui={{ sx: { textAlign: 'end' } }} />
-        <Type as="span" role="l4" family="mono">psi</Type>
-      </Field.Control>
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field aui={{ scale: 'sm', sx: { display: 'flex', flexDirection: 'column', width: 'fill', gap: '4' } }}>
+        <View aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', width: 'fill' } }}>
+          <Field.Label aui={{ sx: { flex: 'fill', flexBasis: 'half', minWidth: '0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }}>Fc perp</Field.Label>
+          <Field.NumberField defaultValue={650} aui={{ sx: { flex: 'fill', flexBasis: 'half', minWidth: '0' } }}>
+            <Field.NumberFieldGroup aui={{ color: 'surface', paint: 'fixed' }}>
+              <Field.NumberFieldInput aui={{ sx: { textAlign: 'end' } }} />
+              <Field.NumberFieldUnit>
+                <Symbol>psi</Symbol>
+              </Field.NumberFieldUnit>
+            </Field.NumberFieldGroup>
+          </Field.NumberField>
+        </View>
+      </Field>
+    </View>
   );
 }
 ```

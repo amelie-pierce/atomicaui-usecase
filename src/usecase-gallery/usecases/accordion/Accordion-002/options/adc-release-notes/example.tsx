@@ -1,28 +1,22 @@
-import { Accordion, Chip, Type, View } from '../../../../../kit';
+import { Accordion, Icon, Type, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['global']}>
-      <Accordion.Item value="global">
+    <Accordion defaultValue={['initial']}>
+      <Accordion.Item value="initial" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
         <Accordion.Header>
-          <Accordion.Trigger>
-            <span>
-              <Type as="span" role="l3" weight="semi-bold">Global changes</Type>{' '}
-              <Type as="span" role="l5" color="muted">(1 update)</Type>
-            </span>
+          <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
+            <Type as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
             <Accordion.Chevron />
           </Accordion.Trigger>
         </Accordion.Header>
-        <Accordion.Panel>
-          <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', alignItems: 'start', gap: '12', paddingBlockStart: '8', paddingBlockEnd: '8' } }}>
-            <View aui={{ scale: 'sm', paint: 'text', sx: { width: '160', flex: 'none' } }}>
-              <Chip aui={{ scale: 'sm', color: 'warning', paint: 'solid' }}>
-                <Chip.Label>IMPROVEMENT</Chip.Label>
-              </Chip>
+        <Accordion.Panel aui={{ profile: 'default' }}>
+          <View aui={{ paint: 'text', profile: 'no-padding', scale: 'sm', sx: { display: 'flex', flexDirection: 'column', alignItems: 'start', gap: '8' } }}>
+            <View aui={{ color: 'warning', paint: 'solid', shape: 'soft', scale: 'sm', profile: 'default', sx: { display: 'flex', alignItems: 'center', gap: '4' } }}>
+              <Icon name="wand-magic-sparkles" aria-hidden="true" style={{ color: 'inherit' }} />
+              <Type role="l4">Initial</Type>
             </View>
-            <Type as="p" role="p3" aui={{ scale: 'sm', sx: { flex: 'fill', minWidth: '0' } }}>
-              Resize the Input, 3D Viewer, and Output panels to suit your workspace.
-            </Type>
+            <Type role="l4">Initial release of the application</Type>
           </View>
         </Accordion.Panel>
       </Accordion.Item>

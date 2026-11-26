@@ -5,9 +5,9 @@ export default function Example() {
     <>
       <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
         <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
-        Previous
+        PREVIOUS
       </Button>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>End</Button>
+      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>END</Button>
     </>
   );
 }

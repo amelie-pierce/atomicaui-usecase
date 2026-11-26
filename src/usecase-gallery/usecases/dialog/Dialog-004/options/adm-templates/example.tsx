@@ -8,7 +8,7 @@ export default function Example() {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false}>
+          <Dialog.Popup initialFocus={false} style={{ '--aui-width': 'min(520px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ color: 'raised' }}>
               New from Template
               <Dialog.Spacer />

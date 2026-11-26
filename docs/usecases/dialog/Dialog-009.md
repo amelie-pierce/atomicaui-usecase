@@ -188,7 +188,8 @@ In context view: Shown.
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-009/options/adc-feedback/example.tsx`
 
 ```tsx
-import { Dialog, Field, Input, Textarea, View } from '../../../../../kit';
+import type { CSSProperties } from 'react';
+import { Checkbox, Dialog, Field, Tooltip, View } from '../../../../../kit';
 import { useStageHost } from '../../../../../hooks/use-stage-host';
 
 export default function Example() {
@@ -198,31 +199,41 @@ export default function Example() {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: '384' } }}>
-            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-              Send feedback
+          <Dialog.Popup initialFocus={false} style={{ '--aui-width': 'min(560px, 100%)' } as CSSProperties}>
+            <Dialog.Title aui={{ color: 'raised' }}>
+              Feedback Form
               <Dialog.Spacer />
-              <Dialog.Close aria-label="Close Send feedback" aui={{ scale: 'sm' }} />
+              <Tooltip.Provider>
+                <Tooltip>
+                  <Tooltip.Trigger render={<Dialog.Close aria-label="Close" />} />
+                  <Tooltip.Portal>
+                    <Tooltip.Positioner side="top" sideOffset={8}>
+                      <Tooltip.Popup aui={{ paint: 'solid', color: 'secondary', scale: 'sm' }}>Close</Tooltip.Popup>
+                    </Tooltip.Positioner>
+                  </Tooltip.Portal>
+                </Tooltip>
+              </Tooltip.Provider>
             </Dialog.Title>
-            <Dialog.Description aui={{ scale: 'sm', sx: { flex: 'none' } }}>
-              Tell us about your experience.
-            </Dialog.Description>
-            <Dialog.Body aui={{ scale: 'sm' }}>
+            <Dialog.Body>
               <form id="feedback-form">
-                <View data-ug-part="form-column" aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '16', minWidth: '0' } }}>
-                  <Field aui={{ scale: 'sm', sx: { flex: 'none', width: 'fill' } }}>
-                    <Field.Label aui={{ scale: 'sm' }}>Email</Field.Label>
-                    <Input aui={{ scale: 'sm' }} type="email" required />
+                <View data-ug-part="form-column" aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '16' } }}>
+                  <Field>
+                    <Field.Label>Email</Field.Label>
+                    <Field.Control><Field.Input type="email" /></Field.Control>
                   </Field>
-                  <Field aui={{ scale: 'sm', sx: { flex: 'none', width: 'fill' } }}>
-                    <Field.Label aui={{ scale: 'sm' }}>Description</Field.Label>
-                    <Textarea aui={{ scale: 'sm' }} required rows={4} />
+                  <Field>
+                    <Field.Label>Description</Field.Label>
+                    <Field.Textarea rows={4} />
                   </Field>
                 </View>
               </form>
             </Dialog.Body>
-            <Dialog.Actions aui={{ scale: 'sm' }}>
-              <Dialog.Button data-ug-part="send" dismiss={false} type="submit" form="feedback-form" aui={{ scale: 'sm', color: 'secondary' }}>Submit</Dialog.Button>
+            <Dialog.Actions align="split">
+              <Checkbox aui={{ states: { unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } }, selected: { paint: 'solid', color: 'primary' } } }}>
+                <Checkbox.Label>Send me a copy of my responses</Checkbox.Label>
+              </Checkbox>
+              <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="send" aui={{ color: 'primary', paint: 'solid' }} disabled>Send</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>
@@ -311,31 +322,29 @@ export default function Example() {
       <Dialog.Portal container={host}>
         <Dialog.Backdrop />
         <Dialog.Viewport>
-          <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: '384' } }}>
-            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
+          <Dialog.Popup initialFocus={false}>
+            <Dialog.Title aui={{ color: 'raised' }}>
               Send feedback
               <Dialog.Spacer />
-              <Dialog.Close aria-label="Close Send feedback" aui={{ scale: 'sm' }} />
+              <Dialog.Close aria-label="Close Send feedback" />
             </Dialog.Title>
-            <Dialog.Description aui={{ scale: 'sm', sx: { flex: 'none' } }}>
-              Tell us about your experience.
-            </Dialog.Description>
-            <Dialog.Body aui={{ scale: 'sm' }}>
+            <Dialog.Body>
               <form id="feedback-form">
-                <View data-ug-part="form-column" aui={{ paint: 'text', scale: 'sm', sx: { flex: 'none', display: 'flex', flexDirection: 'column', gap: '16', minWidth: '0' } }}>
-                  <Field aui={{ scale: 'sm', sx: { flex: 'none', width: 'fill' } }}>
-                    <Field.Label aui={{ scale: 'sm' }}>Email</Field.Label>
-                    <Input aui={{ scale: 'sm' }} type="email" required />
+                <View data-ug-part="form-column" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
+                  <Field>
+                    <Field.Label>Email</Field.Label>
+                    <Input type="email" required />
                   </Field>
-                  <Field aui={{ scale: 'sm', sx: { flex: 'none', width: 'fill' } }}>
-                    <Field.Label aui={{ scale: 'sm' }}>Description</Field.Label>
-                    <Textarea aui={{ scale: 'sm' }} required rows={4} />
+                  <Field>
+                    <Field.Label>Description</Field.Label>
+                    <Textarea required rows={4} />
                   </Field>
                 </View>
               </form>
             </Dialog.Body>
-            <Dialog.Actions aui={{ scale: 'sm' }}>
-              <Dialog.Button data-ug-part="send" dismiss={false} type="submit" form="feedback-form" aui={{ scale: 'sm', color: 'secondary' }}>Submit</Dialog.Button>
+            <Dialog.Actions>
+              <Dialog.Button data-ug-part="cancel" dismiss={false}>Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="send" dismiss={false} aui={{ color: 'secondary', paint: 'solid' }}>Send</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

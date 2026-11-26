@@ -66,7 +66,13 @@ Apps: HCS
 
 In context source: HCS: `src/components/ColumnVisibility.tsx`
 
-In context view: Hidden by the authored option setting.
+In context view: Shown.
+
+#### In context structure additions
+
+1. **Output header** — The heading row of the Output pane, which holds the Configure columns trigger beside its title. Selector: `[data-ug-part="output-header"]`.
+2. **Output title** — The Output heading that identifies the results whose columns the popover configures. Selector: `[data-ug-part="output-title"]`.
+3. **Configure columns trigger** — The table-columns button that anchors the open popover to the results pane. Selector: `[data-ug-part="column-trigger"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/popover/Popover-002/example.tsx`
 
@@ -120,14 +126,15 @@ import { MOCK_OUTPUT_COLUMNS } from '../../../../../mock-data';
 export default function HcsConfigureColumnsScene({ host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 18)', inlineSize: 'min(100%, calc(var(--p-px-16) * 24))' }}>
-      <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
-        <Type as="h2" role="l3" weight="semi-bold">Output</Type>
+      <View data-ug-part="output-header" aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
+        <Type data-ug-part="output-title" as="h2" role="l3" weight="semi-bold">Output</Type>
       <Popover open>
         <Popover.Trigger
           render={
             <IconButton
               name="table-columns"
               aria-label="Configure columns"
+              data-ug-part="column-trigger"
               aui={{ color: 'secondary', paint: 'text', scale: 'sm', profile: 'contained', shape: 'soft' }}
             />
           }
@@ -188,7 +195,13 @@ Apps: HS
 
 In context source: HS: `src/hs/ColumnVisibility.tsx`
 
-In context view: Hidden by the authored option setting.
+In context view: Shown.
+
+#### In context structure additions
+
+1. **Output header** — The heading row of the Output pane, which holds the Configure columns trigger beside its title. Selector: `[data-ug-part="output-header"]`.
+2. **Output title** — The Output heading that identifies the results whose columns the popover configures. Selector: `[data-ug-part="output-title"]`.
+3. **Configure columns trigger** — The table-columns button that anchors the open popover to the results pane. Selector: `[data-ug-part="column-trigger"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/popover/Popover-002/options/hs-configure-columns/example.tsx`
 
@@ -241,11 +254,11 @@ import { MOCK_OUTPUT_COLUMNS } from '../../../../../mock-data';
 export default function HsConfigureColumnsScene({ host }: ContextProps) {
   return (
     <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 18)', inlineSize: 'min(100%, calc(var(--p-px-16) * 24))' }}>
-      <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
-        <Type as="h2" role="l3" weight="semi-bold">Output</Type>
+      <View data-ug-part="output-header" aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
+        <Type data-ug-part="output-title" as="h2" role="l3" weight="semi-bold">Output</Type>
         <Popover open>
           <Popover.Trigger
-            render={<IconButton name="table-columns" aria-label="Configure columns" aui={{ color: 'secondary', paint: 'text', scale: 'sm', shape: 'soft' }} />}
+            render={<IconButton name="table-columns" aria-label="Configure columns" data-ug-part="column-trigger" aui={{ color: 'secondary', paint: 'text', scale: 'sm', shape: 'soft' }} />}
           />
           <Popover.Portal container={host}>
             <Popover.Positioner side="bottom" align="end" sideOffset={4} className="ug-anchored">

@@ -164,7 +164,7 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-008/options/fd-save/example.tsx`
 
 ```tsx
-import { Dialog, Field, View } from '../../../../../kit';
+import { Button, Dialog, Field, View } from '../../../../../kit';
 import { useStageHost } from '../../../../../hooks/use-stage-host';
 
 export default function Example() {
@@ -180,19 +180,18 @@ export default function Example() {
               <Dialog.Spacer />
               <Dialog.Close aria-label="Cancel" />
             </Dialog.Title>
-            <Dialog.Body>
+            <Dialog.Body aui={{ sx: { overflow: 'auto', minHeight: '0' } }}>
               <View data-ug-part="form-column" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', gap: '16', width: 'fill' } }}>
                 <Field>
-                  <Field.Label>Template name</Field.Label>
                   <Field.Control>
-                    <Field.Input type="text" placeholder="Please enter a name" />
+                    <Field.Input type="text" placeholder="Please enter a name" aria-label="Please enter a name" />
                   </Field.Control>
                 </Field>
               </View>
             </Dialog.Body>
             <Dialog.Actions>
-              <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
-              <Dialog.Button data-ug-part="save" dismiss={false} disabled aui={{ color: 'secondary', paint: 'solid' }}>Save</Dialog.Button>
+              <Button data-ug-part="cancel">Cancel</Button>
+              <Button data-ug-part="save" aui={{ color: 'primary' }} disabled>Save</Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

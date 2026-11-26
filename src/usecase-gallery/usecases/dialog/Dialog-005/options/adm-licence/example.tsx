@@ -9,14 +9,14 @@ export default function Example() {
         <Dialog.Backdrop />
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: 'fill', height: 'fill' } }}>
-            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
+            <Dialog.Title aui={{ scale: 'sm' }}>
               Website Application License Agreement
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close Website Application License Agreement" aui={{ scale: 'sm' }} />
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
               <Type data-ug-part="licence-text" role="p2" aui={{ sx: { flex: 'none' } }}>
-                1. The licence text goes here; the Body scrolls when it is longer than the popup.
+                Review the application licence agreement before continuing. Your acceptance is required to use this application.
               </Type>
             </Dialog.Body>
           </Dialog.Popup>

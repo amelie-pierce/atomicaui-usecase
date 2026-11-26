@@ -72,14 +72,16 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-005/example.tsx`
 
 ```tsx
-import { Field } from '../../../kit';
+import { Field, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm' }}>
-      <Field.Label>Description</Field.Label>
-      <Field.Textarea rows={5} resizable="vertical" />
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field>
+        <Field.Label>Description</Field.Label>
+        <Field.Textarea rows={5} />
+      </Field>
+    </View>
   );
 }
 ```
@@ -118,14 +120,16 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-005/options/adc-textarea-beside/example.tsx`
 
 ```tsx
-import { Field } from '../../../../../kit';
+import { Field, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm' }}>
-      <Field.Label>Description</Field.Label>
-      <Field.Textarea rows={5} resizable="vertical" />
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field aui={{ scale: 'sm', sx: { flexDirection: 'row', alignItems: 'start', gap: '8', width: 'fill' } }}>
+        <Field.Label aui={{ sx: { width: '96', textAlign: 'end', flex: 'none' } }}>Comment</Field.Label>
+        <Field.Textarea rows={5} aui={{ scale: 'sm', sx: { flex: 'fill', minWidth: '0' } }} />
+      </Field>
+    </View>
   );
 }
 ```
@@ -163,14 +167,15 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/field/Field-005/options/agpd-textarea-nolabel/example.tsx`
 
 ```tsx
-import { Field } from '../../../../../kit';
+import { Field, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm' }}>
-      <Field.Label>Description</Field.Label>
-      <Field.Textarea rows={5} resizable="vertical" />
-    </Field>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field aui={{ scale: 'sm' }}>
+        <Field.Textarea rows={4} placeholder="Add project notes" aria-label="Add project notes" />
+      </Field>
+    </View>
   );
 }
 ```

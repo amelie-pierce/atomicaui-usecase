@@ -1,13 +1,13 @@
-import { Button } from '../../../../../kit';
+import { Button, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
+    <View className="ug-tour__nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
+      <Button style={{ fontWeight: 700 }} aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
         <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
-        Previous
+        PREVIOUS
       </Button>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>End</Button>
-    </>
+      <Button style={{ fontWeight: 700 }} aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>END</Button>
+    </View>
   );
 }

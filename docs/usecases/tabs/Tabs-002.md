@@ -29,9 +29,7 @@ AtomicAUI components imported by this use case: `Tabs`, `View`
 The source snippets below are authoritative for the complete prop values and composition. These styling values are the ones explicitly present in the selected examples and scenes:
 
 - `profile`: `no-padding`
-- `color`: `overlay`, `surface-alt`
-- `paint`: `solid`, `text`
-- `shape`: `soft`
+- `paint`: `text`
 
 ### Authored API props
 
@@ -72,21 +70,21 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/tabs/Tabs-002/example.tsx`
 
 ```tsx
-import { Tabs } from '../../../kit';
+import { Tabs, View } from '../../../kit';
 
 export default function Example() {
   return (
-    <Tabs defaultValue="summary" aui={{ profile: 'no-padding' }}>
-      <Tabs.List>
-        <Tabs.Tab value="summary" aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'overlay', paint: 'solid' } } }}>
-          Summary
-        </Tabs.Tab>
-        <Tabs.Tab value="result" aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'overlay', paint: 'solid' } } }}>
-          Result
-        </Tabs.Tab>
-      </Tabs.List>
-      <Tabs.Panel value="summary">Summary content</Tabs.Panel>
-      <Tabs.Panel value="result">Result content</Tabs.Panel>
+    <Tabs defaultValue="input" aui={{ profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 390px)' }}>
+      <View.ScrollArea aui={{ paint: 'text', profile: 'no-padding', sx: { flex: 'none' } }}>
+        <View.ScrollAreaViewport style={{ overflowY: 'hidden' }}>
+          <Tabs.List overflow="shrink" aui={{ sx: { gap: '0', flex: 'none' } }}>
+            <Tabs.Tab value="input" aui={{ sx: { whiteSpace: 'nowrap' } }}>Input</Tabs.Tab>
+            <Tabs.Tab value="output" aui={{ sx: { whiteSpace: 'nowrap' } }}>Output</Tabs.Tab>
+          </Tabs.List>
+        </View.ScrollAreaViewport>
+      </View.ScrollArea>
+      <Tabs.Panel value="input">Input content</Tabs.Panel>
+      <Tabs.Panel value="output">Output content</Tabs.Panel>
     </Tabs>
   );
 }
@@ -130,21 +128,20 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/tabs/Tabs-002/options/adm-phone-tabs/example.tsx`
 
 ```tsx
-import { Tabs } from '../../../../../kit';
+import { Tabs, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Tabs defaultValue="summary" aui={{ profile: 'no-padding' }}>
-      <Tabs.List>
-        <Tabs.Tab value="summary" aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'overlay', paint: 'solid' } } }}>
-          Summary
-        </Tabs.Tab>
-        <Tabs.Tab value="result" aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'overlay', paint: 'solid' } } }}>
-          Result
-        </Tabs.Tab>
-      </Tabs.List>
-      <Tabs.Panel value="summary">Summary content</Tabs.Panel>
-      <Tabs.Panel value="result">Result content</Tabs.Panel>
+    <Tabs defaultValue="input" aui={{ profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 390px)' }}>
+      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flexDirection: 'column', flex: 'none', width: 'fill', overflowX: 'auto', overflowY: 'hidden' } }}>
+        <Tabs.List overflow="shrink" aui={{ sx: { gap: '0', flex: 'none' } }}>
+          <Tabs.Tab value="input" aui={{ sx: { whiteSpace: 'nowrap' } }}><span>Input</span></Tabs.Tab>
+          <Tabs.Tab value="output" aui={{ sx: { whiteSpace: 'nowrap' } }}><span>Output</span></Tabs.Tab>
+          <Tabs.AddButton name="rotate-right" aria-label="Reset" />
+        </Tabs.List>
+      </View>
+      <Tabs.Panel value="input">Input content</Tabs.Panel>
+      <Tabs.Panel value="output">Output content</Tabs.Panel>
     </Tabs>
   );
 }
@@ -187,21 +184,19 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/tabs/Tabs-002/options/pbs-phone-tabs/example.tsx`
 
 ```tsx
-import { Tabs } from '../../../../../kit';
+import { Tabs, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Tabs defaultValue="summary" aui={{ profile: 'no-padding' }}>
-      <Tabs.List>
-        <Tabs.Tab value="summary" aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'overlay', paint: 'solid' } } }}>
-          Summary
-        </Tabs.Tab>
-        <Tabs.Tab value="result" aui={{ color: 'surface-alt', paint: 'solid', shape: 'soft', states: { selected: { color: 'overlay', paint: 'solid' } } }}>
-          Result
-        </Tabs.Tab>
-      </Tabs.List>
-      <Tabs.Panel value="summary">Summary content</Tabs.Panel>
-      <Tabs.Panel value="result">Result content</Tabs.Panel>
+    <Tabs defaultValue="input" aui={{ profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 390px)' }}>
+      <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', flex: 'fill', minWidth: '0', overflowX: 'auto', overflowY: 'hidden' } }}>
+        <Tabs.List aui={{ sx: { flex: 'none' } }}>
+          <Tabs.Tab value="input" aui={{ sx: { whiteSpace: 'nowrap' } }}>Input</Tabs.Tab>
+          <Tabs.Tab value="output" aui={{ sx: { whiteSpace: 'nowrap' } }}>Output</Tabs.Tab>
+        </Tabs.List>
+      </View>
+      <Tabs.Panel value="input">Input content</Tabs.Panel>
+      <Tabs.Panel value="output">Output content</Tabs.Panel>
     </Tabs>
   );
 }

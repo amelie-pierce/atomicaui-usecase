@@ -1,5 +1,11 @@
 import { defineUsecase } from '../../../define';
 
+const CONTEXT_ANATOMY = [
+  { id: 'output-header', name: 'Output header', selector: '[data-ug-part="output-header"]', description: 'The heading row of the Output pane, which holds the Configure columns trigger beside its title.' },
+  { id: 'output-title', name: 'Output title', selector: '[data-ug-part="output-title"]', description: 'The Output heading that identifies the results whose columns the popover configures.' },
+  { id: 'column-trigger', name: 'Configure columns trigger', selector: '[data-ug-part="column-trigger"]', description: 'The table-columns button that anchors the open popover to the results pane.' },
+];
+
 export default defineUsecase({
   uiType: 'Popover',
   title: 'Form popover with footer',
@@ -16,14 +22,18 @@ export default defineUsecase({
         {"id":"save","partId":"save","title":"Save","explanation":"The solid secondary Save that applies the column layout (scale \"sm\" in HCS, default scale in HS).","keyIdea":"Save commits the column visibility and ordering to the results table.","selector":"[data-ug-part=\"save\"]"},
       ],
 options: [
-    { id: "hcs-configure-columns", showContext: false, name: "Configure columns", apps: ["hcs"], source: {"hcs":"src/components/ColumnVisibility.tsx"} ,
+    { id: "hcs-configure-columns", showContext: true, contextAnatomy: CONTEXT_ANATOMY, name: "Configure columns", apps: ["hcs"], source: {"hcs":"src/components/ColumnVisibility.tsx"} ,
       contextLayers: [
-
+        { id: 'context-output-header', partId: 'output-header', title: 'Output header', explanation: 'The pane heading row with the Configure columns button beside Output.', keyIdea: 'The HCS results header places column settings at the pane they change.', selector: '[data-ug-part="output-header"]', scope: 'context' },
+        { id: 'context-output-title', partId: 'output-title', title: 'Output title', explanation: 'The Output heading at the start of the pane header.', keyIdea: 'The HCS Output label identifies the results whose columns are being configured.', selector: '[data-ug-part="output-title"]', scope: 'context' },
+        { id: 'context-column-trigger', partId: 'column-trigger', title: 'Configure columns trigger', explanation: 'The contained table-columns button that opens this popover.', keyIdea: 'The HCS contained trigger anchors the popover to the results header.', selector: '[data-ug-part="column-trigger"]', scope: 'context' },
       ],
     },
-    { id: "hs-configure-columns", showContext: false, name: "Configure columns — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ColumnVisibility.tsx"} ,
+    { id: "hs-configure-columns", showContext: true, contextAnatomy: CONTEXT_ANATOMY, name: "Configure columns — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ColumnVisibility.tsx"} ,
       contextLayers: [
-
+        { id: 'context-output-header', partId: 'output-header', title: 'Output header', explanation: 'The pane heading row with the Configure columns button beside Output.', keyIdea: 'The HS results header keeps column settings alongside the pane they affect.', selector: '[data-ug-part="output-header"]', scope: 'context' },
+        { id: 'context-output-title', partId: 'output-title', title: 'Output title', explanation: 'The Output heading at the start of the pane header.', keyIdea: 'The HS Output label names the results whose columns are being configured.', selector: '[data-ug-part="output-title"]', scope: 'context' },
+        { id: 'context-column-trigger', partId: 'column-trigger', title: 'Configure columns trigger', explanation: 'The secondary text table-columns button that opens this popover.', keyIdea: 'The HS text trigger locates the popover at the end of the Output header.', selector: '[data-ug-part="column-trigger"]', scope: 'context' },
       ],
     },
   ],

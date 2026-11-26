@@ -101,7 +101,7 @@ export function buildCatalog({ metas, docs, examples, sources, options = {}, opt
     validateLayers(id, usecase.layers, 'Component', usecaseKeyIdeas, catalogKeyIdeaCounts);
     if (!group.uiTypes.includes(doc.uiType)) fail(`${id} sets uiType "${doc.uiType}", which is not in uiTypes of ${component}.meta.ts (${group.uiTypes.join(', ')})`);
     if (!optionDocs?.length) fail(`${id} must define at least one option`);
-    usecase.options = buildOptions(usecase, optionDocs, key, optionByKey, optionSourceByKey, usecaseKeyIdeas, catalogKeyIdeaCounts);
+    usecase.options = buildOptions(usecase, optionDocs, key, optionByKey, optionSourceByKey);
     for (const option of usecase.options) {
       if (option.contextLayers.length) validateLayers(id, option.contextLayers, `In context (${option.id})`, usecaseKeyIdeas, catalogKeyIdeaCounts);
       else if (option.contextAnatomy.length) fail(`${id} option "${option.id}" is missing authored In context layer steps`);
@@ -149,7 +149,7 @@ function groupByUiType({ id, title, uiTypes }: ComponentMeta, usecases: Usecase[
  * the use case's `example.tsx`, every other option brings `options/<id>/example.tsx`. The apps of the options must be
  * exactly the apps of the use case, so the Document badges and the control say the same thing.
  */
-function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, files: Map<string, Loader<ComponentType<ContextProps> | ComponentType>>, sources: Map<string, Loader<string>>, usecaseKeyIdeas: Set<string>, catalogKeyIdeaCounts: Map<string, number>): UsecaseOption[] {
+function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, files: Map<string, Loader<ComponentType<ContextProps> | ComponentType>>, sources: Map<string, Loader<string>>): UsecaseOption[] {
   const { id } = usecase;
   const ids = new Set<string>();
   const options = docs.map((raw, index): UsecaseOption => {

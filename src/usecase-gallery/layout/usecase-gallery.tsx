@@ -56,6 +56,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
     return !anatomyIds.has(partId) || availablePartIds.includes(partId);
   }) : authoredLayers;
   const activeLayerIndex = Math.min(layerIndex, Math.max(0, layers.length - 1));
+  const visibleLayerIndex = Math.max(0, authoredLayers.indexOf(layers[activeLayerIndex]));
   useEffect(() => {
     if (selectedPart && selectedPart.usecaseId !== selectedId) setSelectedPart(undefined);
     if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
@@ -90,7 +91,7 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   if (!original || !group || !usecase) return null;
   // The option change is a transition: the shown UI stays until the next option's lazy example has loaded, so the stage never blanks.
   const panes = {
-    render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={(next) => { setViewMode(next); setLayerIndex(0); }} anatomy={anatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => { setLayerIndex(0); startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })); }} layers={layers} layerIndex={activeLayerIndex} layerMode={documentMode === 'layers'} />,
+    render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={(next) => { setViewMode(next); setLayerIndex(0); }} anatomy={anatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => { setLayerIndex(0); startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })); }} layers={authoredLayers} layerIndex={visibleLayerIndex} layerMode={documentMode === 'layers'} />,
     detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} documentMode={documentMode} onDocumentModeChange={(next) => { setDocumentMode(next); setLayerIndex(0); }} layers={layers} layerIndex={activeLayerIndex} onLayerChange={onLayerChange} />,
   };
   return (

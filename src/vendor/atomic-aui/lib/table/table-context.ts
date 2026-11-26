@@ -157,6 +157,13 @@ export interface TableContextValue {
   frozenSlots: number;
   /** The Root's scroll ownership — `Table.Footer` renders a fixed div under `self`, a `<tfoot>` otherwise. */
   scroll: TableScrollMode;
+  /**
+   * Uncontrolled USER-COMPOSED `selectionMode="single"` mutual-exclusion state (`undefined` = untouched so
+   * `defaultSelected` still seeds the initial row; `string` = that row's id is selected; `null` = none).
+   */
+  singleComposedSelectedId?: string | null;
+  setSingleComposedSelectedId?: (id: string | null, onDeselect?: () => void) => void;
+  registerDefaultSingleComposed?: (id: string, onDeselect?: () => void) => void;
 }
 
 const TableContext = React.createContext<TableContextValue | null>(null);
@@ -176,9 +183,8 @@ export interface TableRowContextValue {
   /** The active cell state — set only when the resolved selection target routes to the cell. */
   activeCellState?: TableRowStateKey;
   /**
-   * The row's nesting depth (`row.depth`, 0 = top level). A nested row (depth ≥ 1) wraps each cell's
-   * content in the grid height-tween box so its disclosure GROWS / SHRINKS; a top-level row renders its
-   * cells plainly (the wrapper carries a per-frame layout cost — kept off the common flat-table path).
+   * The row's nesting depth (`row.depth`, 0 = top level). Drives the `--aui-table-depth` CSS indent on
+   * nested child rows; nested rows mount and unmount instantly without height tweening (G31).
    */
   depth?: number;
   /** Whether the row's selection TOGGLE should render (canSelect AND the per-level visibility is on). */

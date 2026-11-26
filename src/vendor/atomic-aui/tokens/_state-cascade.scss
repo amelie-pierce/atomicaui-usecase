@@ -236,6 +236,81 @@ $aui-focus-ring-offset: var(--aui-focus-offset, calc(-1 * var(--aui-focus-width,
     place-items: center;
     text-align: center;}}
 
+.aui-avatar-group {
+  column-gap: var(--aui-column-gap, var(--p-px-0));
+  :where(&) {
+    display: inline-flex;
+    align-items: center;
+    isolation: isolate;}}
+
+.aui-avatar-group[data-aui-explicit-gap] {
+  column-gap: var(--aui-column-gap, var(--aui-gap));}
+
+.aui-avatar-group[data-aui-explicit-separator] {
+  --aui-avatar-group-separator: var(--aui-border-color);}
+
+.aui-avatar-group-item {
+  display: inline-flex;
+  position: relative;
+  flex: 0 0 auto;
+  &:not(:first-child) { margin-inline-start: calc(-1 * var(--p-px-8)); }
+  .aui-avatar {
+    outline: var(--p-px-2) solid var(--aui-avatar-group-separator, var(--theme-surface));
+  }}
+
+.aui-banner {
+  // Full width of its container (the former `width`/`placement` props are gone).
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  :where(&) {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: var(--aui-gap, var(--p-px-16));
+  }
+  // Title→description gap defaults to 4px (the spacing token); `aui.sx.rowGap` overrides it. Outside
+  // `:where` so it beats the frame's scale `gap`, which otherwise sets the row gap to the scale gap.
+  row-gap: var(--aui-row-gap, var(--p-px-4));
+}
+.aui-banner-icon { grid-column: 1; grid-row: 1 / span 2; align-self: start; }
+.aui-banner-title { grid-column: 2; grid-row: 1; align-self: end; min-inline-size: 0; }
+.aui-banner-description { grid-column: 2; grid-row: 2; align-self: start; min-inline-size: 0; }
+.aui-banner-actions {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  flex-wrap: wrap;
+  gap: var(--p-px-8);
+  min-inline-size: 0;
+}
+.aui-banner-actions > .aui-input { min-inline-size: 0; }
+.aui-banner-close { grid-column: 4; grid-row: 1; align-self: start; }
+.aui-banner-countdown { grid-column: 3; grid-row: 1 / span 2; align-self: center; font-variant-numeric: tabular-nums; }
+.aui-banner[data-aui-banner-scale='xs'] .aui-banner-description { display: none; }
+.aui-banner[data-aui-banner-scale='xs'] .aui-banner-title { grid-row: 1 / span 2; align-self: center; }
+.aui-banner[data-aui-banner-scale='xs'] .aui-banner-icon { align-self: center; }
+.aui-banner[data-aui-banner-scale='xs'] .aui-banner-close { grid-row: 1 / span 2; align-self: center; }
+.aui-banner:not([data-aui-banner-color='surface-alt']) .aui-banner-description { color: inherit; }
+@media (max-width: 40em) {
+  .aui-banner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+  .aui-banner-actions,
+  .aui-banner-countdown {
+    grid-column: 2 / span 2;
+    grid-row: 3;
+  }
+  .aui-banner-actions > * { flex: 1 1 auto; }
+  .aui-banner-close { grid-column: 3; }
+}
+@media (max-width: 28em) {
+  .aui-banner-actions { flex-direction: column; align-items: stretch; }
+}
+
 // ─── Card tile + ContainedImage (ADC CardItemGrid/User Template) ──────────────
 // Card splits the Figma layers into stable DOM markers: Root > Frame > Surface / Card.Image /
 // Card.Content / StateLayer / OnClick. Root is the scale-bearing `.aui-frame` so all four padding
@@ -617,6 +692,127 @@ $aui-focus-ring-offset: var(--aui-focus-offset, calc(-1 * var(--aui-focus-width,
   block-size: auto;
   margin-block: var(--p-px-0);
   margin-inline: var(--p-px-4);}
+
+// ─── TreeView (nested single-select tree → markers .aui-tree-view*) ───────────────────────────
+// TreeView is a WAI-ARIA tree: `.aui-tree-view` (role=tree) is a stateless `.aui-frame` surface,
+// `.aui-tree-view-item` (role=treeitem) is a structural wrapper, and `.aui-tree-view-item-content` is the
+// visible selectable ROW (a `.aui-frame` + `.aui-stateful`). The nested `.aui-tree-view-group` indents one
+// glyph-width per level by default (1lh = the row's line box); `indent` is emitted as the root's
+// `data-aui-tree-view-indent` attribute and mapped below to the `--tree-view-indent` custom property
+// (a `--p-px-*` spacing token), so no inline style is written. Row padding and the arrow-icon-label gap are the
+// row's `aui.sx.padding*` / `aui.sx.gap` (`--aui-gap`).
+// `.aui-tree-view-scroll-area` (TreeView.ScrollArea) fills its parent's height by default, so a tree in a
+// bounded sidebar or panel scrolls with no size of its own. Only the FALLBACK of the frame's
+// `height: var(--aui-height, auto)` changes, so `aui.sx.height` (which sets `--aui-height`) still wins.
+// In a parent with no set height it simply grows with the tree (nothing to scroll).
+.aui-view-scroll-area.aui-tree-view-scroll-area {
+  height: var(--aui-height, 100%);
+}
+.aui-tree-view {
+  :where(&) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;}}
+.aui-tree-view[data-aui-tree-view-indent='0'] {
+  --tree-view-indent: var(--p-px-0);}
+.aui-tree-view[data-aui-tree-view-indent='2'] {
+  --tree-view-indent: var(--p-px-2);}
+.aui-tree-view[data-aui-tree-view-indent='4'] {
+  --tree-view-indent: var(--p-px-4);}
+.aui-tree-view[data-aui-tree-view-indent='6'] {
+  --tree-view-indent: var(--p-px-6);}
+.aui-tree-view[data-aui-tree-view-indent='8'] {
+  --tree-view-indent: var(--p-px-8);}
+.aui-tree-view[data-aui-tree-view-indent='12'] {
+  --tree-view-indent: var(--p-px-12);}
+.aui-tree-view[data-aui-tree-view-indent='16'] {
+  --tree-view-indent: var(--p-px-16);}
+.aui-tree-view[data-aui-tree-view-indent='20'] {
+  --tree-view-indent: var(--p-px-20);}
+.aui-tree-view[data-aui-tree-view-indent='24'] {
+  --tree-view-indent: var(--p-px-24);}
+.aui-tree-view-item {
+  display: block;
+  outline: none;}
+.aui-tree-view-group {
+  padding-inline-start: var(--tree-view-indent, 1lh);}
+.aui-tree-view-item-content {
+  user-select: none;
+  gap: var(--aui-gap, var(--p-px-4));
+  :where(&) {
+    display: flex;
+    align-items: center;}}
+.aui-tree-view-item-content.aui-stateful:not([aria-disabled='true']) {
+  cursor: default;}
+// The ring sits on the focusable treeitem, but is DRAWN on its row (the item also wraps the nested group,
+// so ringing the item would box every descendant). Inside offset keeps an ancestor clip from cutting it.
+.aui-tree-view-item:focus-visible > .aui-tree-view-item-content {
+  outline: var(--aui-focus-width, var(--p-px-2)) solid var(--aui-focus-color, var(--theme-info));
+  outline-offset: #{$aui-focus-ring-offset};}
+.aui-tree-view-item[data-disabled] > .aui-tree-view-item-content {
+  cursor: not-allowed;}
+.aui-tree-view-chevron,
+.aui-tree-view-item-icon {
+  flex: 0 0 auto;}
+.aui-tree-view-chevron {
+  display: inline-grid;
+  place-items: center;
+  line-height: 1;
+  transition: transform var(--p-ms-120) ease;}
+.aui-tree-view-chevron[data-aui-leaf] {
+  visibility: hidden;}
+.aui-tree-view-item[aria-expanded='true'] > .aui-tree-view-item-content .aui-tree-view-chevron {
+  transform: rotate(90deg);}
+.aui-tree-view-item-text {
+  flex: 1 1 auto;
+  min-inline-size: 0;}
+
+// ─── Pagination parts ────────────────────────────────────────
+// Root nav is a frame.
+// List wraps rows.
+// Links are Buttons.
+// Steps are IconButtons.
+.aui-pagination {
+  :where(&) {
+    display: flex;
+    align-items: center;}}
+.aui-pagination-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: var(--aui-row-gap, var(--aui-gap, var(--p-px-4)));
+  column-gap: var(--aui-column-gap, var(--aui-gap, var(--p-px-4)));
+  margin: var(--p-px-0);
+  padding-block-start: var(--aui-padding-block-start-effective, var(--aui-padding-block-start, var(--p-px-0)));
+  padding-block-end: var(--aui-padding-block-end-effective, var(--aui-padding-block-end, var(--p-px-0)));
+  padding-inline-start: var(--aui-padding-inline-start-effective, var(--aui-padding-inline-start, var(--p-px-0)));
+  padding-inline-end: var(--aui-padding-inline-end-effective, var(--aui-padding-inline-end, var(--p-px-0)));
+  list-style: none;}
+.aui-pagination-item {
+  display: block;
+  padding-block-start: var(--aui-padding-block-start-effective, var(--aui-padding-block-start, var(--p-px-0)));
+  padding-block-end: var(--aui-padding-block-end-effective, var(--aui-padding-block-end, var(--p-px-0)));
+  padding-inline-start: var(--aui-padding-inline-start-effective, var(--aui-padding-inline-start, var(--p-px-0)));
+  padding-inline-end: var(--aui-padding-inline-end-effective, var(--aui-padding-inline-end, var(--p-px-0)));}
+.aui-pagination-link {
+  justify-content: center;
+  min-inline-size: var(--p-px-32);
+  font-variant-numeric: tabular-nums;}
+.aui-pagination-ellipsis {
+  display: inline-grid;
+  place-items: center;
+  padding-inline: var(--p-px-8);
+  color: var(--aui-fg, var(--theme-muted));
+  user-select: none;}
+// Screen-reader text ("More pages") rides the token-backed visually-hidden clip box.
+.aui-pagination-label {
+  position: absolute;
+  inline-size: var(--p-px-1);
+  block-size: var(--p-px-1);
+  padding: var(--p-px-0);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;}
 
 // ─── sx.accent hue materialization for mark-control hosts ──────────────────────
 // --aui-accent is `@property inherits:false`, so child marks (thumb/glyph/dot) CANNOT
@@ -5164,7 +5360,9 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
 // Table now consumes the REAL generated `aui-scale-<profile>-<tier>` cells (default/compact/
 // block-padding/…) like every other component, so this block is the STRUCTURAL + STATE cascade only.
 .aui-table {
-  inline-size: 100%;
+  // Read `--aui-width` first so root `aui.sx.width` / inline `--aui-width` stays live while unset
+  // tables default to filling their container's inline axis (G9).
+  inline-size: var(--aui-width, 100%);
   border-collapse: separate;
   border-spacing: 0;
   // #R4 ROUTE the grid border COLOUR off the root's `aui.sx.borderColor`. The root's
@@ -5175,14 +5373,12 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
   // it reaches every <td>/<th> unmasked. The `--theme-outlined` fallback is a belt-and-suspenders safety
   // net only — with the prop default the root `--aui-border-color` is always set.
   --aui-table-border-color: var(--aui-border-color, var(--theme-outlined));}
-// Default text alignment, dropped to 0,0,0 (`:where`) so a consumer `aui.sx.textAlign`
-// (`.aui-text-align-*`, 0,1,0) still WINS on the Table root — mirrors `:where(.aui-select-trigger)` /
-// `:where(.aui-accordion-trigger)`. A plain-class `text-align` here loads after `generated/` and MASKED
-// the layer-3 utility by source order → the root's `textAlign` knob (TABLE_SX_AXES = the full surface)
-// was DEAD (browser-verified: `.aui-table.aui-text-align-center` computed `start`). `start` still applies
-// as the default (beats the UA) and cascades to cells (text-align inherits).
+// Default text alignment + F3 tabular lining figures, dropped to 0,0,0 (`:where`) so a consumer
+// `aui.sx.textAlign` (`.aui-text-align-*`, 0,1,0) or font-variant override still WINS on the Table root —
+// mirrors `:where(.aui-select-trigger)` / `:where(.aui-accordion-trigger)`. Both properties inherit to cells.
 :where(.aui-table) {
-  text-align: start;}
+  text-align: start;
+  font-variant-numeric: tabular-nums lining-nums;}
 
 // FILL the available block size (locked decision 5): `fit=fill` stretches the table to its flex/grid
 // parent's height; `contained` (default) hugs content. SCSS-cascade-first — a data-attr, not a TS branch.
@@ -5261,12 +5457,13 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
 // never scrolls on either axis and is exactly the Root's width (the viewport), whatever `minInlineSize`
 // does to the header/body tables. `bodyFit="content"` makes the body region a `0 1 auto` flex item: it
 // hugs its rows, and only shrinks (→ scrolls) once they are taller than the room the Root offers.
-.aui-table[data-aui-scroll='self'] > .aui-table-footer {
-  flex: 0 0 auto;
-  inline-size: 100%;
+.aui-table-footer {
   box-sizing: border-box;
   border-block-start: var(--aui-stroke-width-context, var(--p-px-1)) solid
     color-mix(in srgb, var(--theme-muted, currentColor) 25%, transparent);}
+.aui-table[data-aui-scroll='self'] > .aui-table-footer {
+  flex: 0 0 auto;
+  inline-size: 100%;}
 .aui-table[data-aui-scroll='self'][data-aui-body-fit='content'] > .aui-table-scroll-region {
   flex: 0 1 auto;}
 // the Root itself hugs header + rows + footer and is capped at its parent's height (a block parent, or a
@@ -5298,6 +5495,7 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
   position: sticky;
   inset-inline-start: var(--aui-table-frozen-offset, 0px);
   z-index: 1;
+  // G9-ok: sticky frozen cells layer --aui-bg / --aui-table-row-bg over an opaque surface so scrolled cells cannot bleed through.
   background:
     linear-gradient(var(--aui-table-frozen-band), var(--aui-table-frozen-band)),
     var(--aui-table-frozen-surface, var(--theme-surface));}
@@ -5378,14 +5576,12 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
   --aui-table-row-bg: var(--aui-bg, transparent);}
 
 // #R2 (2026-06-28) selection=row carries the FULL state appearance to every cell. The FILL already flows
-// (--aui-table-row-bg) and the CONTENT colour inherits (--aui-fg); this paints the state's LEADING-EDGE
+// (--aui-table-row-bg) and the CONTENT colour inherits (--aui-fg); this records the state's LEADING-EDGE
 // ACCENT (e.g. rowAui.states.selected.sx.borderInlineStartWidth) on the row's FIRST cell as an INSET
-// box-shadow bar — using box-shadow (not border-width) so it composes WITH, never clobbers, the grid
-// border in `border=all-cells` mode. The width comes from the row's republished accent alias, the colour
-// from the inherited state --aui-border-color. Zero width (no accent) renders nothing.
+// box-shadow layer — composed below with per-cell invalid + elevation shadows so none clobbers another.
 .aui-table-row[data-selected] > :first-child,
 .aui-table-row[data-indeterminate] > :first-child {
-  box-shadow: inset var(--aui-table-row-accent-inline-start, 0px) 0 0 0
+  --aui-table-cell-accent-shadow: inset var(--aui-table-row-accent-inline-start, 0px) 0 0 0
     var(--aui-table-row-border-color, transparent);}
 
 // An expanded row's block-end divider uses the same UNIFIED grid hairline colour as the tonal grid —
@@ -5411,11 +5607,20 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
 
 // ── R8 per-cell validation (2026-07-26) ────────────────────────────────────────────────────────────
 // An INVALID cell recolours; it never changes its box treatment (the Field law — invalid flips COLOR
-// only, never `paint`). So the marker paints an error-toned EDGE via an inset shadow rather than a
-// background: an invalid cell inside a striped, hovered or selected row keeps that row's surface, and
-// the two signals stack instead of fighting.
+// only, never `paint`). So the marker records an error-toned EDGE via an inset shadow layer rather than a
+// background: an invalid cell inside a striped, hovered or selected row keeps that row's surface AND its
+// leading-edge selection accent / elevation shadow (composed together in one multi-layer `box-shadow`).
 .aui-table-cell[data-aui-invalid] {
-  box-shadow: inset 0 0 0 var(--p-px-1) var(--theme-error);}
+  --aui-table-cell-invalid-shadow: inset 0 0 0 var(--p-px-1) var(--theme-error);}
+
+.aui-table-row[data-selected] > :first-child,
+.aui-table-row[data-indeterminate] > :first-child,
+.aui-table-cell[data-aui-invalid] {
+  box-shadow:
+    var(--aui-table-cell-invalid-shadow, 0 0 0 0 transparent),
+    var(--aui-table-cell-accent-shadow, 0 0 0 0 transparent),
+    0 var(--el-shadow-offset-y, 0px) var(--el-shadow-blur, 0px) var(--el-shadow-spread, 0rem)
+      var(--el-shadow-color, transparent);}
 
 // `Table.CellError` — the message under the cell's control. `display: block` puts it on its own line
 // (a control and its error never share a line inside a cell), and the block-start gap keeps it off the
@@ -5438,7 +5643,9 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
   // `<th>`'s own alignment places — a sortable header sits EXACTLY where a plain one does.
   display: inline-flex;
   align-items: center;
-  gap: var(--aui-gap, var(--p-px-4));
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  gap: var(--p-px-4);
   background: none;
   border: 0;
   padding: 0;
@@ -5449,6 +5656,9 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
   // The fleet's control cursor (Button's native `<button>`, the Select trigger, the menu rows all
   // resolve to `default` — `_state-cascade.scss` §Button/§Select), NOT `pointer` (L12 / rule §0a).
   cursor: default;}
+.aui-table-sort-button:focus-visible {
+  outline: var(--aui-focus-width, var(--p-px-2)) solid var(--aui-focus-color, var(--theme-info));
+  outline-offset: #{$aui-focus-ring-offset};}
 
 // header ACTIONS. Only a header with `actions` renders this wrapper (the plain header
 // DOM is untouched). The label box takes the free space and inherits the <th>'s text-align (so the
@@ -5467,6 +5677,33 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
   flex: 0 0 auto;
   align-items: center;
   gap: var(--p-px-2);}
+
+// Centered headers (`aui-text-align-center` on the header cell or inherited from Table / Row):
+// 1. Balance `.aui-table-header-content` with a 3-track grid `[minmax(0,1fr) auto minmax(max-content,1fr)]`
+//    so the label centers across the FULL `<th>` width rather than the leftover width west of `actions`,
+//    while still shrinking the leading track first so `actions` never overlaps on narrow columns.
+// 2. Take the invisible unsorted `.aui-table-sort-indicator` (`data-aui-sort='none'`) out of inline flow so
+//    its 18px box + gap do not push centered header text left at rest. When `actions` already occupy the
+//    trailing edge, suppress the unsorted hover-preview glyph so it cannot collide with the action trigger.
+:is(.aui-table-header-cell.aui-text-align-center, .aui-text-align-center .aui-table-header-cell) {
+  > .aui-table-header-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto) minmax(max-content, 1fr);
+    column-gap: var(--p-px-2);
+    &::before {
+      content: '';}
+    > .aui-table-header-actions {
+      justify-self: end;}}
+  .aui-table-sort-button[data-aui-sort='none'] {
+    position: relative;
+    gap: 0;
+    > .aui-table-sort-indicator {
+      position: absolute;
+      inset-inline-start: calc(100% + var(--p-px-2));
+      pointer-events: none;}}
+  &[data-aui-table-header-actions] .aui-table-sort-button[data-aui-sort='none']:is(:hover, :focus-visible)
+    > .aui-table-sort-indicator {
+    opacity: 0;}}
 
 // The chevron holds its box when unsorted so activating a header never reflows the row; it FADES in
 // instead. Revealed on hover/focus as the "this column sorts" hint, and pinned visible once the column
@@ -5513,9 +5750,18 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
 // Cells default to `display:table-cell` (native `<td>`/`<th>` already are; this also rescues a
 // polymorphic `as`-div). Set at 0,0,0 (`:where`) — author beats the UA `block` default for a div, yet
 // the layer-3 `aui.sx.display` utility (`.aui-display-*`, 0,1,0) still WINS so the `display` knob is
-// LIVE on Table.Cell/HeaderCell. Mirrors the Table ROOT, which never forces `<table>`'s display either.
+// LIVE on Table.Cell/HeaderCell. Reset the per-cell shadow layers here too so nested tables never inherit
+// an outer row's selection accent or invalid shadow.
 :where(.aui-table-cell, .aui-table-header-cell) {
-  display: table-cell;}
+  display: table-cell;
+  --aui-table-cell-accent-shadow: 0 0 0 0 transparent;
+  --aui-table-cell-invalid-shadow: 0 0 0 0 transparent;}
+
+// Default header weight via the shared `--aui-typography-weight` hook at 0,0,0 (`:where`), loaded AFTER
+// `_300-typography-typescale.scss` so it beats `:where(.aui-typography-typescale-default)` while yielding
+// to any consumer `aui.sx.typographyStyle` (`.aui-typography-style-*`, 0,1,0) (G9).
+:where(.aui-table-header-cell) {
+  --aui-typography-weight: var(--p-weight-semi-bold);}
 
 .aui-table-cell,
 .aui-table-header-cell {
@@ -5534,31 +5780,25 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
   // Style reads the sx `borderStyle` hook — mirrors the `.aui-frame` chain.
   border-style: var(--aui-border-style, solid);
   border-width: 0;
-  border-color: transparent;
-  outline-offset: calc(var(--p-px-1) * -1);}
+  border-color: transparent;}
 
-// PAINTED-cell hook: when a cell carries its OWN surface (paint != text, or sx.background), it paints
-// `--aui-bg` over the row band so the cell's chroma wins instead of the inherited row colour.
+// PAINTED-cell hook: the SINGLE bg-source switch for BOTH `<td>` and `<th>`. When `resolveCellSurface`
+// reports `painted` (default solid `overlay` header, non-`text` cell paint, or `sx.background`), this
+// switches the bg source to `--aui-bg` over the row band; `paint:'text'` omits the hook so the row band
+// (`--aui-table-row-bg`) shows through unmasked.
 .aui-table-cell[data-aui-table-cell-painted],
 .aui-table-header-cell[data-aui-table-cell-painted] {
   background: var(--aui-bg, var(--aui-table-row-bg, transparent));}
 
-.aui-table-header-cell {
-  font-weight: var(--p-weight-semi-bold);
-  // #4 the header paints its OWN surface (default solid `raised`): read `--aui-bg` DIRECTLY so the solid
-  // tint wins over the (transparent) inherited row band. A `paint:'text'` override leaves `--aui-bg`
-  // unset → falls back to the row band → transparent (a flat header). Source-order-after the shared
-  // `.aui-table-cell, .aui-table-header-cell` rule (equal specificity) so this wins for the header.
-  background: var(--aui-bg, var(--aui-table-row-bg, transparent));}
-
 .aui-table-cell:focus-visible,
 .aui-table-header-cell:focus-visible {
-  outline: var(--aui-focus-width, var(--p-px-2)) solid var(--aui-focus-color, var(--theme-focus));}
+  outline: var(--aui-focus-width, var(--p-px-2)) solid var(--aui-focus-color, var(--theme-info));
+  outline-offset: #{$aui-focus-ring-offset};}
 
 // TREE mode roves ROWS, so the focus ring lands on the row's first cell area.
 .aui-table[data-aui-a11y='tree'] .aui-table-row:focus-visible {
-  outline: var(--aui-focus-width, var(--p-px-2)) solid var(--aui-focus-color, var(--theme-focus));
-  outline-offset: calc(var(--p-px-1) * -1);}
+  outline: var(--aui-focus-width, var(--p-px-2)) solid var(--aui-focus-color, var(--theme-info));
+  outline-offset: #{$aui-focus-ring-offset};}
 
 .aui-table-cell--control {
   inline-size: 1%;
@@ -5577,15 +5817,17 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
 
 // GROUPED / TREE depth indent (locked decision 5): getSubRows renders real depth-indented child rows.
 // The indent is a pure CSS cascade off `--aui-table-depth` (stamped by the row from `row.depth`) on the
-// FIRST data cell — no JS measurement.
+// FIRST data cell — no JS measurement. Reads the local G53 effective padding hook before nominal padding.
 .aui-table-row[data-depth] > .aui-table-cell:first-child,
 .aui-table-row[data-depth] > .aui-table-cell--control + .aui-table-cell {
+  // G9-ok: calc() adds the depth indent on top of --aui-padding-inline-start-effective (honors cell sx padding).
   padding-inline-start: calc(
-    var(--aui-padding-inline-start, var(--p-px-8)) + var(--aui-table-depth, 0) * var(--p-px-16)
+    var(--aui-padding-inline-start-effective, var(--aui-padding-inline-start, var(--p-px-8))) +
+      var(--aui-table-depth, 0) * var(--p-px-16)
   );}
 
-.aui-table-expanded-row > .aui-table-cell {
-  background: color-mix(in srgb, var(--theme-raised) 62%, transparent);}
+.aui-table-expanded-row {
+  --aui-table-row-bg: color-mix(in srgb, var(--theme-raised) 62%, transparent);}
 
 .aui-table-expanded-region {
   display: block;}
@@ -6311,3 +6553,352 @@ $aui-scale-tiers: xs, sm, md, lg, xl;
 @media (prefers-reduced-motion: reduce) {
   .aui-carousel-dot {
     transition: none;}}
+
+// ── Chart frame + tooltip (BarChart and every future chart kind; tokens in _chart-tokens.scss) ──
+// Frame: the chart fills its container's inline size; numeric text is tabular-lining
+// (archetype rule: chart numerals are uniformly tabular).
+.aui-chart {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+  color: var(--aui-viz-fg);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+// Tooltip: the library paints its card with INLINE styles that read `--ts-chart-tooltip-*`, so a
+// class rule on the element cannot win; map those hooks to AtomicAUI roles instead. The element is
+// often portaled outside `.aui-chart`, so each value carries its own `--theme-*` fallback chain.
+.aui-chart-tooltip {
+  --ts-chart-tooltip-background: var(--theme-surface, Canvas);
+  --ts-chart-tooltip-color: var(--theme-text, CanvasText);
+  --ts-chart-tooltip-border: var(--p-px-1) solid var(--theme-outlined, color-mix(in srgb, CanvasText 18%, transparent));
+  --ts-chart-tooltip-border-radius: var(--p-px-6);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+// The radar tooltip card (own interaction layer): the same surface tokens as the library tooltip above.
+.aui-chart-tooltip-card {
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  max-inline-size: min(var(--p-px-384), 80%);
+  padding: var(--p-px-8, 0.5rem) var(--p-px-12, 0.75rem);
+  border: var(--ts-chart-tooltip-border);
+  border-radius: var(--ts-chart-tooltip-border-radius);
+  background: var(--ts-chart-tooltip-background);
+  color: var(--ts-chart-tooltip-color);
+  box-shadow: 0 var(--p-px-6) var(--p-px-24) 0 var(--theme-shadow-15);
+  font-size: var(--p-px-12);
+  font-weight: var(--p-weight-medium);
+  line-height: 1.3;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.aui-chart-tooltip-title {
+  display: flex;
+  align-items: center;
+  gap: var(--p-px-6, 0.375rem);
+  margin-block-end: var(--p-px-4, 0.25rem);
+  font-weight: var(--p-weight-semi-bold);
+}
+.aui-chart-tooltip-rows {
+  display: grid;
+  gap: var(--p-px-2, 0.125rem);
+}
+.aui-chart-tooltip-row {
+  display: grid;
+  grid-template-columns: var(--p-px-10, 0.625rem) minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--p-px-8, 0.5rem);
+}
+.aui-chart-tooltip-swatch {
+  inline-size: var(--p-px-10, 0.625rem);
+  block-size: var(--p-px-10, 0.625rem);
+  border-radius: var(--p-px-2);
+  flex: none;
+}
+.aui-chart-tooltip-value {
+  text-align: end;
+  font-family: var(--p-font-jetbrains-mono), monospace;
+  font-variant-numeric: tabular-nums;
+}
+.aui-chart-tooltip-secondary {
+  margin-inline-start: var(--p-px-6, 0.375rem);
+  color: var(--aui-viz-muted);
+}
+
+// Chart body = legend + plot. `data-legend-position` picks the flex direction and which side the
+// legend sits on; `--aui-chart-plot-gap` is the legend↔plot space, `--aui-chart-legend-gap` the
+// space between legend items, `data-legend-align` the alignment along the legend's own axis.
+.aui-chart-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--aui-chart-plot-gap, var(--p-px-12, 0.75rem));
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+// DOM order is legend, then plot: `top`/`left` keep it, `bottom`/`right` reverse it.
+.aui-chart-body[data-legend-position='bottom'] { flex-direction: column-reverse; }
+.aui-chart-body[data-legend-position='left'] { flex-direction: row; }
+.aui-chart-body[data-legend-position='right'] { flex-direction: row-reverse; }
+.aui-chart-plot {
+  position: relative;
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+// Left-to-right reveal for Area and Line (the frame sets `data-aui-reveal="sweep"` + the duration/easing
+// vars when `animation` is on). The whole marks layer is clipped from its right edge inwards. Bars use the
+// library's own grow-from-baseline instead; Pie and Radar keep their defaults. Reduced motion: no reveal.
+@keyframes aui-chart-sweep {
+  from { clip-path: inset(calc(-1 * var(--aui-chart-reveal-bleed)) 100% calc(-1 * var(--aui-chart-reveal-bleed)) calc(-1 * var(--aui-chart-reveal-bleed))); }
+  to { clip-path: inset(calc(-1 * var(--aui-chart-reveal-bleed))); }
+}
+.aui-chart[data-aui-reveal='sweep'] .ts-chart__marks {
+  animation: aui-chart-sweep var(--aui-chart-reveal-duration, var(--p-ms-480)) var(--aui-chart-reveal-easing, ease-out) backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .aui-chart[data-aui-reveal='sweep'] .ts-chart__marks { animation: none; }
+}
+
+.aui-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--aui-chart-legend-gap, var(--p-px-16, 1rem));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--aui-viz-fg);
+  font-size: var(--p-px-12, 0.75rem);
+  justify-content: center;
+}
+.aui-chart-legend[data-align='start'] { justify-content: flex-start; }
+.aui-chart-legend[data-align='end'] { justify-content: flex-end; }
+.aui-chart-body[data-legend-position='left'] > .aui-chart-legend,
+.aui-chart-body[data-legend-position='right'] > .aui-chart-legend {
+  flex: 0 0 auto;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.aui-chart-body[data-legend-position='left'] > .aui-chart-legend[data-align='start'],
+.aui-chart-body[data-legend-position='right'] > .aui-chart-legend[data-align='start'] { justify-content: flex-start; }
+.aui-chart-body[data-legend-position='left'] > .aui-chart-legend[data-align='end'],
+.aui-chart-body[data-legend-position='right'] > .aui-chart-legend[data-align='end'] { justify-content: flex-end; }
+.aui-chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--p-px-6, 0.375rem);
+}
+// Clickable legend (`clickable`): each item is a real button toggling its series/slice. Hidden items
+// dim (no strikethrough); hover/active use the same state tokens as other interactive surfaces.
+.aui-chart-legend-button {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--p-px-6, 0.375rem);
+  padding: var(--p-px-2, 0.125rem) var(--p-px-6, 0.375rem);
+  border-radius: var(--p-px-4, 0.25rem);
+  color: inherit;
+  cursor: pointer;
+  &:hover { background: var(--aui-viz-cursor, color-mix(in srgb, currentColor 10%, transparent)); }
+  &:active { background: color-mix(in srgb, currentColor 16%, transparent); }
+  &:focus-visible {
+    outline: var(--aui-focus-width, var(--p-px-2)) solid var(--aui-focus-color, var(--theme-info));
+    outline-offset: #{$aui-focus-ring-offset};
+  }
+}
+.aui-chart-legend-item[data-hidden] .aui-chart-legend-button {
+  color: var(--theme-on-disabled);
+}
+.aui-chart-legend-item[data-hidden] .aui-chart-legend-swatch {
+  background: var(--theme-disabled);
+}
+.aui-chart-legend-button[aria-disabled='true'] { cursor: default; }
+.aui-chart-legend-swatch {
+  flex: none;
+  inline-size: var(--p-px-10, 0.625rem);
+  block-size: var(--p-px-10, 0.625rem);
+  border-radius: var(--p-px-2);
+  background: var(--aui-chart-swatch);
+}
+.aui-chart-legend[data-shape='circle'] .aui-chart-legend-swatch { border-radius: 50%; }
+.aui-chart-legend-icon {
+  display: inline-flex;
+  flex: none;
+  line-height: 0;
+}
+
+.aui-slider {
+  --aui-slider-thumb-size: calc(var(--aui-dot-size, var(--p-px-8)) * 2);
+  inline-size: var(--aui-width, 100%);
+  max-inline-size: var(--aui-max-width, 100%);
+  color: var(--aui-fg, currentColor);}
+
+:where(.aui-slider) {
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--aui-column-gap, var(--aui-gap, var(--p-px-8)));
+  row-gap: var(--aui-row-gap, var(--aui-gap, var(--p-px-6)));}
+
+.aui-slider-label {
+  grid-column: 1;
+  color: var(--theme-on-surface);
+  user-select: none;}
+.aui-slider-value {
+  grid-column: 2;
+  justify-self: end;
+  color: var(--theme-on-surface-alt);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;}
+
+.aui-slider-control {
+  grid-column: 1 / -1;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  inline-size: 100%;
+  row-gap: var(--p-px-6);
+  padding-inline: calc(var(--aui-slider-thumb-size) / 2);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;}
+
+:where(.aui-slider-track) {
+  --aui-min-width: var(--p-px-0);
+  --aui-min-height: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);}
+.aui-slider-track {
+  inline-size: 100%;
+  block-size: var(--aui-height, max(var(--p-px-2), calc(var(--aui-dot-size, var(--p-px-8)) * 0.5)));
+  box-shadow: inset 0 0 0 var(--p-px-1) var(--theme-outlined);
+  padding-inline-start: var(--aui-padding-inline-start-effective, var(--aui-padding-inline-start, var(--p-px-0)));
+  padding-inline-end: var(--aui-padding-inline-end-effective, var(--aui-padding-inline-end, var(--p-px-0)));
+  padding-block-start: var(--aui-padding-block-start-effective, var(--aui-padding-block-start, var(--p-px-0)));
+  padding-block-end: var(--aui-padding-block-end-effective, var(--aui-padding-block-end, var(--p-px-0)));}
+
+:where(.aui-slider-indicator) {
+  --aui-min-width: var(--p-px-0);
+  --aui-min-height: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);}
+.aui-slider-indicator {
+  block-size: var(--aui-height, 100%);
+  padding-inline-start: var(--aui-padding-inline-start-effective, var(--aui-padding-inline-start, var(--p-px-0)));
+  padding-inline-end: var(--aui-padding-inline-end-effective, var(--aui-padding-inline-end, var(--p-px-0)));
+  padding-block-start: var(--aui-padding-block-start-effective, var(--aui-padding-block-start, var(--p-px-0)));
+  padding-block-end: var(--aui-padding-block-end-effective, var(--aui-padding-block-end, var(--p-px-0)));}
+
+:where(.aui-slider-thumb) {
+  --aui-min-width: var(--p-px-0);
+  --aui-min-height: var(--p-px-0);
+  --aui-padding-inline-start: var(--p-px-0);
+  --aui-padding-inline-end: var(--p-px-0);
+  --aui-padding-block-start: var(--p-px-0);
+  --aui-padding-block-end: var(--p-px-0);}
+.aui-slider-thumb {
+  --aui-slider-thumb: max(
+    var(--aui-width, var(--aui-height, var(--aui-slider-thumb-size))),
+    var(--aui-min-width, var(--p-px-0)),
+    var(--aui-min-height, var(--p-px-0)));
+  box-sizing: border-box;
+  inline-size: var(--aui-slider-thumb);
+  block-size: var(--aui-slider-thumb);
+  min-inline-size: var(--aui-slider-thumb);
+  min-block-size: var(--aui-slider-thumb);
+  padding-inline-start: var(--aui-padding-inline-start-effective, var(--aui-padding-inline-start, var(--p-px-0)));
+  padding-inline-end: var(--aui-padding-inline-end-effective, var(--aui-padding-inline-end, var(--p-px-0)));
+  padding-block-start: var(--aui-padding-block-start-effective, var(--aui-padding-block-start, var(--p-px-0)));
+  padding-block-end: var(--aui-padding-block-end-effective, var(--aui-padding-block-end, var(--p-px-0)));
+  cursor: grab;
+  touch-action: none;}
+.aui-slider-thumb[data-dragging] { cursor: grabbing;}
+.aui-slider-thumb:has(input:focus-visible) {
+  outline: var(--aui-focus-width, var(--p-px-2)) solid var(--aui-focus-color, var(--theme-info));
+  outline-offset: var(--aui-focus-offset, var(--p-px-2));}
+.aui-slider[data-disabled] .aui-slider-control { opacity: 0.55;}
+.aui-slider[data-disabled] .aui-slider-thumb { cursor: not-allowed;}
+
+.aui-slider-ticks {
+  position: relative;
+  inline-size: 100%;
+  min-block-size: var(--p-px-4);
+  pointer-events: none;}
+.aui-slider-ticks--labels {
+  block-size: calc(var(--p-px-4) + var(--p-px-2) + var(--p-px-12));}
+.aui-slider-tick {
+  position: absolute;
+  inset-inline-start: var(--aui-slider-tick-offset, 0%);
+  inset-block-start: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(calc(-50% * var(--aui-slider-tick-direction, 1)));
+  white-space: nowrap;}
+.aui-slider-tick:dir(rtl) { --aui-slider-tick-direction: -1;}
+.aui-slider-tick-mark {
+  inline-size: var(--p-px-1);
+  block-size: var(--p-px-4);
+  border-radius: var(--p-px-1);
+  background: var(--theme-outlined);}
+.aui-slider-tick-label {
+  margin-block-start: var(--p-px-2);
+  color: var(--theme-muted);
+  font-size: var(--typography-typescale-l7-font-size, var(--p-px-10));
+  line-height: var(--typography-typescale-l7-line-height, var(--p-px-12));
+  font-variant-numeric: tabular-nums;}
+.aui-slider-tick:first-child .aui-slider-tick-label {
+  transform: translateX(calc(50% * var(--aui-slider-tick-direction, 1)));}
+.aui-slider-tick:last-child .aui-slider-tick-label {
+  transform: translateX(calc(-50% * var(--aui-slider-tick-direction, 1)));}
+
+.aui-slider[data-orientation='vertical'] {
+  inline-size: var(--aui-width, auto);}
+.aui-slider[data-orientation='vertical'] .aui-slider-control {
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  block-size: var(--aui-slider-vertical-length, var(--p-px-160));
+  padding-inline: var(--p-px-0);
+  padding-block: calc(var(--aui-slider-thumb-size) / 2);
+  column-gap: var(--p-px-6);
+  row-gap: var(--p-px-0);}
+.aui-slider[data-orientation='vertical'] .aui-slider-track {
+  inline-size: var(--aui-height, max(var(--p-px-2), calc(var(--aui-dot-size, var(--p-px-8)) * 0.5)));
+  block-size: 100%;}
+.aui-slider[data-orientation='vertical'] .aui-slider-indicator {
+  inline-size: 100%;}
+.aui-slider[data-orientation='vertical'] .aui-slider-ticks {
+  inline-size: auto;
+  block-size: 100%;
+  min-block-size: var(--p-px-0);
+  min-inline-size: var(--p-px-10);}
+.aui-slider[data-orientation='vertical'] .aui-slider-ticks--labels {
+  block-size: 100%;
+  min-inline-size: auto;}
+.aui-slider[data-orientation='vertical'] .aui-slider-tick {
+  inset-inline-start: 0;
+  inset-block-start: calc(100% - var(--aui-slider-tick-offset, 0%));
+  flex-direction: row;
+  transform: translateY(-50%);
+  column-gap: var(--p-px-4);}
+.aui-slider[data-orientation='vertical'] .aui-slider-tick-mark {
+  inline-size: var(--p-px-4);
+  block-size: var(--p-px-1);}
+.aui-slider[data-orientation='vertical'] .aui-slider-tick:first-child .aui-slider-tick-label {
+  transform: translateY(-50%);}
+.aui-slider[data-orientation='vertical'] .aui-slider-tick:last-child .aui-slider-tick-label {
+  transform: translateY(50%);}

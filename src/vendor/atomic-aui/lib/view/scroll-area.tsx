@@ -231,9 +231,12 @@ const ScrollAreaRoot = React.forwardRef<HTMLDivElement, ScrollAreaProps>(functio
     const bars = autoScrollbars(scrollAxis);
     content = (
       <>
+        {/* Keyed by axis: switching axes (e.g. vertical -> auto) remounts the Viewport. Re-rendering the same
+            element would make React REMOVE the dropped overflow longhand, and that removal also wipes Base UI's
+            inline `overflow:scroll` shorthand, so the Viewport stopped clipping and the content spilled out. */}
         {React.createElement(
           ScrollAreaViewport,
-          overflow ? { style: overflow } : null,
+          overflow ? { key: scrollAxis, style: overflow } : { key: scrollAxis },
           children,
         )}
         {bars.map((orientation) =>

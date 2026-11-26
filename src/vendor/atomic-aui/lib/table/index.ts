@@ -2,7 +2,8 @@
 // (`src/index.ts`) imports from one path regardless of the internal module split.
 
 export { Table } from './table';
-export type { TableRootProps, TableSectionProps } from './table';
+export { TABLE_SX_AXES } from './use-recipe';
+export type { TableRootProps, TableSectionProps, TableFooterProps } from './table';
 export type { TableRowProps, TableSelectionToggleProps, TableExpandTriggerProps } from './table-row';
 export type {
   TableCellProps,

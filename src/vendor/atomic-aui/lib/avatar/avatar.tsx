@@ -11,6 +11,7 @@ import { Avatar as AvatarPrimitive } from '@base-ui/react/avatar';
 import { createAtomicComponent } from '../../core/factory/create-atomic-component';
 import { createAtomicPart } from '../../core/factory/create-atomic-part';
 import { useAvatarRecipe } from './use-recipe';
+import { AvatarGroupScaleContext } from './group-scale-context';
 import type { AvatarAui } from './use-recipe';
 
 export {
@@ -87,12 +88,16 @@ const AvatarRoot = React.forwardRef<HTMLSpanElement, AvatarProps>(function Avata
 ) {
   // Avatar is passive: ignore stray JS/cast `disabled` before the shared stateless recipe sees it.
   const avatarProps = { ...(props as AvatarProps & { disabled?: unknown }) };
+  const groupScale = React.useContext(AvatarGroupScaleContext);
+  if (groupScale !== undefined && avatarProps.aui?.scale === undefined) {
+    avatarProps.aui = { ...avatarProps.aui, scale: groupScale };
+  }
   delete avatarProps.disabled;
   return React.createElement(_AvatarRoot as React.ElementType, { ref, ...avatarProps });
 });
 AvatarRoot.displayName = 'Avatar';
 
-interface AvatarComponent
+export interface AvatarComponent
   extends React.ForwardRefExoticComponent<AvatarProps & React.RefAttributes<HTMLSpanElement>> {
   Image: typeof AvatarImage;
   Fallback: typeof AvatarFallback;

@@ -1,9 +1,11 @@
 // Table — a compound data table wrapping TanStack react-table v8.
 //
-// `Table` IS the root <table> (no `Table.Root`) and the host namespace for six flat parts:
+// `Table` IS the root <table> (no `Table.Root`) and the host namespace for nine flat parts:
 //   Table.Head / Table.Body / Table.Foot  — <thead>/<tbody>/<tfoot> (auto-render from the model)
-//   Table.Row                              — selectable / expandable <tr>  (table-row.tsx)
-//   Table.HeaderCell / Table.Cell          — <th>/<td>                      (table-cell.tsx)
+//   Table.Footer                          — fixed non-scrolling footer bar (<div> under scroll="self", <tfoot> under "parent")
+//   Table.Row                             — selectable / expandable <tr>   (table-row.tsx)
+//   Table.HeaderCell / Table.Cell         — <th>/<td>                       (table-cell.tsx)
+//   Table.SelectionToggle / ExpandTrigger — row control parts               (table-row.tsx)
 //
 // Two construction modes (both self-sufficient): DATA (`<Table data columns />` — the Root auto-assembles
 // Head + Body from the TanStack model) or USER-COMPOSED (author the section/row/cell tree by hand). The
@@ -54,6 +56,7 @@ import {
 import {
   ROVE_SELECTOR,
   isInteractiveTarget,
+  isTableSortButton,
   moveTableFocus,
   moveTreeFocus,
   setCurrentTarget,
@@ -397,6 +400,7 @@ const TableRootInner = React.forwardRef<HTMLTableElement, TableRootProps>(functi
     selectionTarget,
     minInlineSize,
     frozenColumns = 0,
+    role: roleProp,
     className,
     style,
     children,
@@ -431,6 +435,25 @@ const TableRootInner = React.forwardRef<HTMLTableElement, TableRootProps>(functi
   const [internalSelection, setInternalSelection] = React.useState<RowSelectionState>(() => defaultRowSelection ?? {});
   const [internalExpanded, setInternalExpanded] = React.useState<ExpandedState>(() => defaultExpanded ?? {});
   const [internalSorting, setInternalSorting] = React.useState<SortingState>(() => defaultSorting ?? []);
+  // Mutual exclusion for uncontrolled USER-COMPOSED rows under `selectionMode="single"` (`undefined` =
+  // untouched so a row's `defaultSelected` still seeds the initial selection).
+  const [singleComposedSelectedId, setSingleComposedSelectedIdState] = React.useState<string | null | undefined>(
+    undefined,
+  );
+  const singleComposedActiveRef = React.useRef<{ id: string; onDeselect?: () => void } | null>(null);
+  const registerDefaultSingleComposed = React.useCallback((id: string, onDeselect?: () => void) => {
+    if (!singleComposedActiveRef.current) {
+      singleComposedActiveRef.current = { id, onDeselect };
+    }
+  }, []);
+  const setSingleComposedSelectedId = React.useCallback((id: string | null, onDeselect?: () => void) => {
+    const prev = singleComposedActiveRef.current;
+    if (prev && prev.id !== id) {
+      prev.onDeselect?.();
+    }
+    singleComposedActiveRef.current = id ? { id, onDeselect } : null;
+    setSingleComposedSelectedIdState(id);
+  }, []);
   const resolvedSelection = rowSelection ?? internalSelection;
   const resolvedExpanded = expanded ?? internalExpanded;
   const resolvedSorting = sorting ?? internalSorting;
@@ -528,7 +551,7 @@ const TableRootInner = React.forwardRef<HTMLTableElement, TableRootProps>(functi
   const handleKeyDown = React.useCallback(
     (event: React.KeyboardEvent<HTMLTableElement>) => {
       onKeyDown?.(event);
-      if (event.defaultPrevented || isInteractiveTarget(event.target)) return;
+      if (event.defaultPrevented || (isInteractiveTarget(event.target) && !isTableSortButton(event.target))) return;
       const root = rootRef.current;
       // `table` mode has no grid/tree roving — arrow keys fall through to the browser default.
       if (!root || a11yMode === 'table') return;
@@ -685,7 +708,7 @@ const TableRootInner = React.forwardRef<HTMLTableElement, TableRootProps>(functi
       const target = (event.target as unknown as { closest?: <T>(s: string) => T | null })?.closest?.<HTMLElement>(selector) ?? null;
       if (target) setCurrentTarget(root, selector, target);
     },
-    [a11yMode],
+    [a11yMode, onFocus],
   );
 
   const context = React.useMemo<TableContextValue>(
@@ -714,6 +737,9 @@ const TableRootInner = React.forwardRef<HTMLTableElement, TableRootProps>(functi
       renderExpandedRow: renderExpandedRow as ((row: DataRow) => React.ReactNode) | undefined,
       frozenSlots,
       scroll,
+      singleComposedSelectedId,
+      setSingleComposedSelectedId,
+      registerDefaultSingleComposed,
     }),
     [
       a11yMode,
@@ -752,6 +778,9 @@ const TableRootInner = React.forwardRef<HTMLTableElement, TableRootProps>(functi
       resolvedSorting,
       sortable,
       renderHeaderActions,
+      singleComposedSelectedId,
+      setSingleComposedSelectedId,
+      registerDefaultSingleComposed,
     ],
   );
 
@@ -794,7 +823,7 @@ const TableRootInner = React.forwardRef<HTMLTableElement, TableRootProps>(functi
   // The role + data-attr surface is identical across both scroll modes (parent = <table>, self = <div>);
   // factor it so the two roots can't drift.
   const rootDataProps = {
-    role: rootRole,
+    role: roleProp ?? rootRole,
     'data-aui-border': borderPlacement === 'none' ? undefined : borderPlacement,
     'data-aui-border-style': borderPlacement === 'none' ? undefined : borderStyle,
     'data-aui-striped': striped || undefined,
@@ -921,7 +950,7 @@ function sectionRole(mode: TableA11yMode | undefined): 'rowgroup' | 'presentatio
 }
 
 const TableHead = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(function TableHead(
-  { className, children, ...rest },
+  { role: roleProp, className, children, ...rest },
   ref,
 ) {
   const ctx = useTableContext();
@@ -957,7 +986,7 @@ const TableHead = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(f
     <thead
       ref={ref}
       {...rest}
-      role={sectionRole(ctx?.a11y)}
+      role={roleProp ?? sectionRole(ctx?.a11y)}
       className={mergeAuiClasses(['aui-table-head', className])}
     >
       {content}
@@ -967,7 +996,7 @@ const TableHead = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(f
 TableHead.displayName = 'Table.Head';
 
 const TableBody = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(function TableBody(
-  { className, children, ...rest },
+  { role: roleProp, className, children, ...rest },
   ref,
 ) {
   const ctx = useTableContext();
@@ -983,7 +1012,7 @@ const TableBody = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(f
     <tbody
       ref={ref}
       {...rest}
-      role={sectionRole(ctx?.a11y)}
+      role={roleProp ?? sectionRole(ctx?.a11y)}
       className={mergeAuiClasses(['aui-table-body', className])}
     >
       {content}
@@ -993,7 +1022,7 @@ const TableBody = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(f
 TableBody.displayName = 'Table.Body';
 
 const TableFoot = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(function TableFoot(
-  { className, children, ...rest },
+  { role: roleProp, className, children, ...rest },
   ref,
 ) {
   const ctx = useTableContext();
@@ -1001,7 +1030,7 @@ const TableFoot = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(f
     <tfoot
       ref={ref}
       {...rest}
-      role={sectionRole(ctx?.a11y)}
+      role={roleProp ?? sectionRole(ctx?.a11y)}
       className={mergeAuiClasses(['aui-table-foot', className])}
     >
       {children}
@@ -1010,7 +1039,7 @@ const TableFoot = React.forwardRef<HTMLTableSectionElement, TableSectionProps>(f
 });
 TableFoot.displayName = 'Table.Foot';
 
-export interface TableFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface TableFooterProps extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode;
 }
 
@@ -1021,16 +1050,24 @@ export interface TableFooterProps extends React.HTMLAttributes<HTMLDivElement> {
  * Under `scroll="self"` it renders as a `<div>` below the body; under `scroll="parent"` (where a `<div>`
  * cannot sit in a `<table>`) it degrades to a `<tfoot>` with one full-width cell.
  */
-const TableFooter = React.forwardRef<HTMLDivElement, TableFooterProps>(function TableFooter(
-  { className, children, ...rest },
+const TableFooter = React.forwardRef<HTMLElement, TableFooterProps>(function TableFooter(
+  { role: roleProp, className, children, ...rest },
   ref,
 ) {
   const ctx = useTableContext();
   if (ctx && ctx.scroll !== 'self') {
+    const isTree = ctx.a11y === 'tree';
+    const defaultCellRole = isTree ? 'presentation' : ctx.a11y === 'table' ? 'cell' : 'gridcell';
     return (
       <tfoot role={sectionRole(ctx.a11y)} className="aui-table-foot aui-table-footer-section">
-        <tr role="row">
-          <td colSpan={1000} className={mergeAuiClasses(['aui-table-footer', className])}>
+        <tr role={isTree ? 'presentation' : 'row'}>
+          <td
+            ref={ref as React.Ref<never>}
+            {...rest}
+            role={roleProp ?? defaultCellRole}
+            colSpan={1000}
+            className={mergeAuiClasses(['aui-table-footer', className])}
+          >
             {children}
           </td>
         </tr>
@@ -1038,7 +1075,12 @@ const TableFooter = React.forwardRef<HTMLDivElement, TableFooterProps>(function 
     );
   }
   return (
-    <div ref={ref} {...rest} className={mergeAuiClasses(['aui-table-footer', className])}>
+    <div
+      ref={ref as React.Ref<HTMLDivElement>}
+      {...rest}
+      role={roleProp}
+      className={mergeAuiClasses(['aui-table-footer', className])}
+    >
       {children}
     </div>
   );
@@ -1046,6 +1088,12 @@ const TableFooter = React.forwardRef<HTMLDivElement, TableFooterProps>(function 
 TableFooter.displayName = 'Table.Footer';
 
 interface TableComponent {
+  <TData extends RowData = RowData>(
+    props: TableRootProps<TData> & { scroll: 'self' } & React.RefAttributes<HTMLDivElement>,
+  ): React.ReactElement | null;
+  <TData extends RowData = RowData>(
+    props: TableRootProps<TData> & React.RefAttributes<HTMLTableElement | HTMLDivElement>,
+  ): React.ReactElement | null;
   <TData extends RowData = RowData>(
     props: TableRootProps<TData> & React.RefAttributes<HTMLTableElement>,
   ): React.ReactElement | null;

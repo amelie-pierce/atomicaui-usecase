@@ -457,8 +457,8 @@ $narrow: 840px;
 
 .ug-docs__mode-toggle {
   align-self: flex-start;
+  inline-size: max-content;
   max-inline-size: 100%;
-  flex-wrap: wrap;
   margin-block-end: var(--p-px-16);
 }
 

@@ -28,8 +28,8 @@ AtomicAUI components imported by this use case: `Menubar`, `View`
 
 The source snippets below are authoritative for the complete prop values and composition. These styling values are the ones explicitly present in the selected examples and scenes:
 
-- `profile`: `no-padding`, `square`
 - `paint`: `text`
+- `profile`: `no-padding`, `square`
 - `scale`: `sm`
 
 ### Authored API props
@@ -77,33 +77,85 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/menubar/Menubar-004/example.tsx`
 
 ```tsx
-import { Menubar } from '../../../kit';
+import { useStageHost } from '../../../hooks/use-stage-host';
+import { Menubar, View } from "../../../kit";
 
 export default function Example() {
+  const host = useStageHost();
   return (
-    <Menubar aria-label="Top bar">
-      <Menubar.Dropdown>
-        <Menubar.DropdownTrigger aria-label="Settings" aui={{ profile: 'square' }}>
-          <Menubar.Icon name="gear" />
-        </Menubar.DropdownTrigger>
-        <Menubar.DropdownPortal>
-          <Menubar.DropdownPositioner align="end" sideOffset={4}>
-            <Menubar.DropdownPopup aria-label="Settings">
-              <Menubar.DropdownGroup>
-                <Menubar.DropdownGroupLabel>Pane Orientation</Menubar.DropdownGroupLabel>
-                <Menubar.DropdownRadioGroup defaultValue="vertical">
-                  <Menubar.DropdownRadioItem value="vertical">
-                    <Menubar.Icon name="table-columns" />
-                    Vertical
-                    <Menubar.DropdownRadioItemIndicator hidden />
-                  </Menubar.DropdownRadioItem>
-                </Menubar.DropdownRadioGroup>
-              </Menubar.DropdownGroup>
-            </Menubar.DropdownPopup>
-          </Menubar.DropdownPositioner>
-        </Menubar.DropdownPortal>
-      </Menubar.Dropdown>
-    </Menubar>
+    <View
+      aui={{
+        paint: "text",
+        profile: "no-padding",
+        sx: { display: "flex", justifyContent: "end", alignItems: "start" },
+      }}
+      style={{
+        minBlockSize: "calc(var(--p-px-16) * 28)",
+        inlineSize: "min(100%, calc(var(--p-px-16) * 24))",
+      }}
+    >
+      <Menubar aria-label="Top bar" aui={{ scale: "sm" }}>
+        <Menubar.Dropdown open modal={false} aui={{ scale: "sm" }}>
+          <Menubar.DropdownTrigger
+            aria-label="Settings"
+            aui={{ scale: "sm", profile: "square" }}
+          >
+            <Menubar.Icon name="gear" />
+          </Menubar.DropdownTrigger>
+          <Menubar.DropdownPortal container={host}>
+            <Menubar.DropdownPositioner
+              align="end"
+              sideOffset={4}
+              className="ug-anchored"
+            >
+              <Menubar.DropdownPopup
+                aria-label="Settings"
+                aui={{ scale: "sm" }}
+              >
+                <Menubar.DropdownGroup>
+                  <Menubar.DropdownGroupLabel>
+                    Pane Orientation
+                  </Menubar.DropdownGroupLabel>
+                  <Menubar.DropdownRadioGroup defaultValue="vertical">
+                    <Menubar.DropdownRadioItem value="vertical">
+                      <Menubar.Icon name="table-columns" />
+                      Vertical
+                      <Menubar.DropdownRadioItemIndicator hidden />
+                    </Menubar.DropdownRadioItem>
+                    <Menubar.DropdownRadioItem value="horizontal">
+                      <Menubar.Icon name="table-rows" />
+                      Horizontal
+                      <Menubar.DropdownRadioItemIndicator hidden />
+                    </Menubar.DropdownRadioItem>
+                    <Menubar.DropdownRadioItem value="grid">
+                      <Menubar.Icon name="grid-2" />
+                      Grid
+                      <Menubar.DropdownRadioItemIndicator hidden />
+                    </Menubar.DropdownRadioItem>
+                  </Menubar.DropdownRadioGroup>
+                </Menubar.DropdownGroup>
+                <Menubar.DropdownSeparator />
+                <Menubar.DropdownGroup>
+                  <Menubar.DropdownGroupLabel>
+                    Pane Layout
+                  </Menubar.DropdownGroupLabel>
+                  <Menubar.DropdownItem>
+                    <Menubar.Icon name="rotate-left" />
+                    Reset layout to default
+                  </Menubar.DropdownItem>
+                </Menubar.DropdownGroup>
+                <Menubar.DropdownSeparator />
+                <Menubar.DropdownCheckboxItem defaultChecked>
+                  <Menubar.Icon name="rotate" />
+                  Auto-Rotate 3D Model
+                  <Menubar.DropdownCheckboxItemIndicator hidden />
+                </Menubar.DropdownCheckboxItem>
+              </Menubar.DropdownPopup>
+            </Menubar.DropdownPositioner>
+          </Menubar.DropdownPortal>
+        </Menubar.Dropdown>
+      </Menubar>
+    </View>
   );
 }
 ```
@@ -205,33 +257,77 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/menubar/Menubar-004/options/ace-gear-menu/example.tsx`
 
 ```tsx
-import { Menubar } from '../../../../../kit';
+import { useStageHost } from '../../../../../hooks/use-stage-host';
+import type { ContextProps } from "../../../../../types";
+import { Menubar, View } from "../../../../../kit";
 
 export default function Example() {
+  const host = useStageHost();
   return (
-    <Menubar aria-label="Top bar">
-      <Menubar.Dropdown>
-        <Menubar.DropdownTrigger aria-label="Settings" aui={{ profile: 'square' }}>
-          <Menubar.Icon name="gear" />
-        </Menubar.DropdownTrigger>
-        <Menubar.DropdownPortal>
-          <Menubar.DropdownPositioner align="end" sideOffset={4}>
-            <Menubar.DropdownPopup aria-label="Settings">
-              <Menubar.DropdownGroup>
-                <Menubar.DropdownGroupLabel>Pane Orientation</Menubar.DropdownGroupLabel>
-                <Menubar.DropdownRadioGroup defaultValue="vertical">
-                  <Menubar.DropdownRadioItem value="vertical">
-                    <Menubar.Icon name="table-columns" />
-                    Vertical
-                    <Menubar.DropdownRadioItemIndicator hidden />
-                  </Menubar.DropdownRadioItem>
-                </Menubar.DropdownRadioGroup>
-              </Menubar.DropdownGroup>
-            </Menubar.DropdownPopup>
-          </Menubar.DropdownPositioner>
-        </Menubar.DropdownPortal>
-      </Menubar.Dropdown>
-    </Menubar>
+    <View
+      aui={{
+        paint: "text",
+        profile: "no-padding",
+        sx: { display: "flex", justifyContent: "end", alignItems: "start" },
+      }}
+      style={{
+        minBlockSize: "calc(var(--p-px-16) * 28)",
+        inlineSize: "min(100%, calc(var(--p-px-16) * 24))",
+      }}
+    >
+      <Menubar aria-label="Top bar">
+        <Menubar.Dropdown open modal={false}>
+          <Menubar.DropdownTrigger
+            aria-label="Settings"
+            aui={{ profile: "square" }}
+          >
+            <Menubar.Icon name="gear" />
+          </Menubar.DropdownTrigger>
+          <Menubar.DropdownPortal container={host}>
+            <Menubar.DropdownPositioner
+              align="end"
+              sideOffset={4}
+              className="ug-anchored"
+            >
+              <Menubar.DropdownPopup aria-label="Settings">
+                <Menubar.DropdownGroup>
+                  <Menubar.DropdownGroupLabel>
+                    Pane Orientation
+                  </Menubar.DropdownGroupLabel>
+                  <Menubar.DropdownRadioGroup defaultValue="vertical">
+                    <Menubar.DropdownRadioItem value="vertical">
+                      <Menubar.Icon name="table-columns" />
+                      Vertical
+                      <Menubar.DropdownRadioItemIndicator hidden />
+                    </Menubar.DropdownRadioItem>
+                    <Menubar.DropdownRadioItem value="horizontal">
+                      <Menubar.Icon name="table-rows" />
+                      Horizontal
+                      <Menubar.DropdownRadioItemIndicator hidden />
+                    </Menubar.DropdownRadioItem>
+                    <Menubar.DropdownRadioItem value="grid">
+                      <Menubar.Icon name="grid-2" />
+                      Grid
+                      <Menubar.DropdownRadioItemIndicator hidden />
+                    </Menubar.DropdownRadioItem>
+                  </Menubar.DropdownRadioGroup>
+                </Menubar.DropdownGroup>
+                <Menubar.DropdownSeparator />
+                <Menubar.DropdownGroup>
+                  <Menubar.DropdownGroupLabel>
+                    Pane Layout
+                  </Menubar.DropdownGroupLabel>
+                  <Menubar.DropdownItem>
+                    <Menubar.Icon name="rotate-left" />
+                    Reset layout to default
+                  </Menubar.DropdownItem>
+                </Menubar.DropdownGroup>
+              </Menubar.DropdownPopup>
+            </Menubar.DropdownPositioner>
+          </Menubar.DropdownPortal>
+        </Menubar.Dropdown>
+      </Menubar>
+    </View>
   );
 }
 ```

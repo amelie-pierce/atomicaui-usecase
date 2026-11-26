@@ -541,6 +541,7 @@ $narrow: 840px;
 }
 
 .ug-docs__mode-toggle {
+  flex: none;
   align-self: flex-start;
   inline-size: max-content;
   max-inline-size: 100%;

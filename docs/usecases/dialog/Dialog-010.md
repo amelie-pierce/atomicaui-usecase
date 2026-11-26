@@ -51,11 +51,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Overlay** — The scrim behind the ADM welcome prompt. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The small 384px welcome window at scale "sm", sized through the --aui-dialog-width variable the app sets. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The plain (not raised) title bar reading "Welcome to ADM" with the close X at its end. Selector: `[class~="aui-dialog-title"]`.
+1. **Overlay** — Scrim dims the ADM workspace behind its welcome prompt. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — Small 384px Welcome window uses the app-set dialog width. Selector: `[class~="aui-dialog-popup"]`.
+3. **Title bar** — Plain title says Welcome to ADM with Close at its end. Selector: `[class~="aui-dialog-title"]`.
 4. **Close** — The close X that dismisses the welcome prompt without starting the tour. Selector: `[class~="aui-dialog-close"]`.
-5. **Body** — The body that holds one welcome sentence. Selector: `[class~="aui-dialog-body"]`.
+5. **Body** — Body holds only the Welcome to ADM sentence. Selector: `[class~="aui-dialog-body"]`.
 6. **Footer** — The footer that offers Close and Start Walkthrough. Selector: `[class~="aui-dialog-actions"]`.
 7. **Close button** — The default gray Dialog.Button labelled Close; dismiss={false} leaves closing to the app. Selector: `[data-ug-part="dismiss-button"]`.
 8. **Start Walkthrough** — The solid secondary button that starts the guided tour. Selector: `[data-ug-part="start"]`.

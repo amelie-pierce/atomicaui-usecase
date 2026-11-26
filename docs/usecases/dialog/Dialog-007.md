@@ -52,15 +52,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Overlay** — The scrim behind the licence gate, which the user cannot pass without answering. Selector: `[class~="aui-dialog-backdrop"]`.
+1. **Overlay** — Scrim blocks the licence gate until the user responds. Selector: `[class~="aui-dialog-backdrop"]`.
 2. **Popup** — The full-size gate window: scale "sm" with width and height "fill". Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The title bar naming the "Website Application License Agreement" (ACE prefixes the app name and leaves the bar plain instead of raised). Selector: `[class~="aui-dialog-title"]`.
-4. **Close** — The close X, which counts as declining the licence (labelled "Do Not Accept" in the ACE scene). Selector: `[class~="aui-dialog-close"]`.
-5. **Description** — The fixed line "Review and accept to start using the HCS prototype." between the title and the scrolling text (ACE says "to start using ACE."). Selector: `[class~="aui-dialog-description"]`.
-6. **Body** — The scrolling body that holds the licence text the user reads to the end before Accept becomes available. Selector: `[class~="aui-dialog-body"]`.
-7. **Footer** — The footer at scale "sm" that holds the Do Not Accept and Accept pair at the end. Selector: `[class~="aui-dialog-actions"]`.
-8. **Do Not Accept** — The surface-alt solid soft button that declines the licence; dismiss={false} keeps the gate open until the app reacts. Selector: `[data-ug-part="decline"]`.
-9. **Accept** — The secondary solid soft button labelled "Accept Application License Agreement"; the scenes enable it once the text is read to the end. Selector: `[data-ug-part="accept"]`.
+3. **Title bar** — HCS raises the licence title; ACE adds its app name. Selector: `[class~="aui-dialog-title"]`.
+4. **Close** — Close X declines the licence; ACE labels it Do Not Accept. Selector: `[class~="aui-dialog-close"]`.
+5. **Description** — Fixed prompt stays between title and scrolling licence text. Selector: `[class~="aui-dialog-description"]`.
+6. **Body** — Scrollable body holds licence text until the user reads to the end. Selector: `[class~="aui-dialog-body"]`.
+7. **Footer** — Small footer groups Do Not Accept and Accept at the end. Selector: `[class~="aui-dialog-actions"]`.
+8. **Do Not Accept** — Soft surface-alt decline stays open until the app responds. Selector: `[data-ug-part="decline"]`.
+9. **Accept** — Secondary Accept unlocks after users read the full agreement. Selector: `[data-ug-part="accept"]`.
 
 ## Apps
 

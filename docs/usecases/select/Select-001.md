@@ -53,16 +53,16 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Field** — Field at scale "sm" with a 3 gap that stacks the label above the select; the ADM, ADC and ACE scenes lay it out as a row with the label beside the trigger. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Download Duration" label at scale "sm". In the label-beside scenes it is nowrap with an ellipsis and shares the row with the trigger. Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — Outlined trigger (color "surface", paint "fixed") filling the field width, 28px high with 16/20 text; it opens the Dead, Snow and Roof choices. Selector: `[class~="aui-select-trigger"]`.
-4. **Chevron** — The chevron at the end of the trigger that marks it as a list opener. Selector: `[class~="aui-select-chevron"]`.
-5. **Popup** — Popup that matches the trigger width and sits 4px below it, listing Dead (90), Snow (115) and Roof (125). Selector: `[class~="aui-select-popup"]`.
+1. **Field** — Small field stacks label above list; several app scenes place label beside. Selector: `[class~="aui-field"]`.
+2. **Label** — Download Duration label truncates inline when paired beside the trigger. Selector: `[class~="aui-field-label"]`.
+3. **Trigger** — Outlined 28px trigger opens Dead, Snow, and Roof durations. Selector: `[class~="aui-select-trigger"]`.
+4. **Chevron** — Trailing chevron marks the trigger as a list opener. Selector: `[class~="aui-select-chevron"]`.
+5. **Popup** — Popup matches trigger width and lists three duration counts. Selector: `[class~="aui-select-popup"]`.
 6. **List** — The scrolling list inside the popup that holds the three duration rows. Selector: `[class~="aui-select-list"]`.
-7. **Item** — One duration row; the chosen one is marked by a raised fill rather than a glyph. Selector: `[class~="aui-select-item"]`.
+7. **Item** — Duration row marks its chosen value with a raised fill. Selector: `[class~="aui-select-item"]`.
 8. **Item text** — The row label, for example "Dead (90)" or "Roof (125)". Selector: `[class~="aui-select-item-text"]`.
-9. **Indicator** — The empty indicator slot at the end of a row; the AGPD and ACE scenes draw a check icon in it for the chosen row. Selector: `[class~="aui-select-item-indicator"]`.
-10. **Check icon** — The 16px check on the chosen row in the AGPD and ACE scenes; the base example leaves the indicator empty. Selector: `[class~="aui-select-item-indicator"] [class~="aui-contained-icon"]`.
+9. **Indicator** — Empty end slot holds checks only in AGPD and ACE. Selector: `[class~="aui-select-item-indicator"]`.
+10. **Check icon** — AGPD and ACE show a 16px check on the chosen row. Selector: `[class~="aui-select-item-indicator"] [class~="aui-contained-icon"]`.
 
 ## Apps
 

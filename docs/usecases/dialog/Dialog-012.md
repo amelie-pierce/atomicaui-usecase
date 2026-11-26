@@ -44,7 +44,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 ## Component layer steps
 
 1. **Overlay** — The scrim behind the expanded HS Output view. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label "Expanded Output". Selector: `[class~="aui-dialog-popup"]`.
+2. **Popup** — No-padding square popup fills the screen and is named Expanded Output. Selector: `[class~="aui-dialog-popup"]`.
 
 ## Apps
 
@@ -70,11 +70,11 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Output table** — The table labelled "Output" that stands for the Output tabs; the popup places it straight at the edge. Selector: `[class~="aui-table"]`.
-2. **Column heading** — The single "Load" column heading. Selector: `[class~="aui-table-header-cell"]`.
+1. **Output table** — Output table fills the square popup where output tabs would appear. Selector: `[class~="aui-table"]`.
+2. **Column heading** — Single Load column heading anchors the result values. Selector: `[class~="aui-table-header-cell"]`.
 3. **Value cell** — The "Dead" value cell of the one row. Selector: `[class~="aui-table-cell"]`.
 4. **Overlay** — The scrim behind the expanded HS Output view. Selector: `[class~="aui-dialog-backdrop"]`.
-5. **Popup** — The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label "Expanded Output". Selector: `[class~="aui-dialog-popup"]`.
+5. **Popup** — No-padding square popup fills the screen and is named Expanded Output. Selector: `[class~="aui-dialog-popup"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-012/example.tsx`
 

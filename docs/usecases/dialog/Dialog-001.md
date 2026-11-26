@@ -103,13 +103,13 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **History header** — The bordered strip that puts the Release history heading and the muted "1 version" count on one line. Selector: `[data-ug-part="history-header"]`.
-2. **Search field** — The "Search releases" Field with a magnifying-glass icon that filters the version list. Selector: `[class~="aui-field"]`.
-3. **Version list** — The "Release history" listbox with one selected row marked by a 4px secondary start border. Selector: `[class~="aui-list"][role="listbox"]`.
+1. **History header** — Bordered header pairs Release history title with a muted version count. Selector: `[data-ug-part="history-header"]`.
+2. **Search field** — Search releases field filters versions with a magnifier icon. Selector: `[class~="aui-field"]`.
+3. **Version list** — Release history listbox selects one row with a 4px start border. Selector: `[class~="aui-list"][role="listbox"]`.
 4. **Version number** — The bold version 1.0.0 of the selected release row. Selector: `[data-ug-part="version"]`.
 5. **CURRENT chip** — The tonal primary CURRENT chip that marks the installed release. Selector: `[data-ug-part="history-column"] [class~="aui-chip"]`.
-6. **App header** — The bordered header above the notes: the app name as an h5 over a muted summary line. Selector: `[data-ug-part="notes-header"]`.
-7. **Release notes accordion** — The accordion of release sections, open on "Global changes (1 update)", whose panel pairs an IMPROVEMENT chip with the change text. Selector: `[class~="aui-accordion"]`.
+6. **App header** — Bordered notes header stacks the app name over its summary. Selector: `[data-ug-part="notes-header"]`.
+7. **Release notes accordion** — Open Global changes accordion pairs IMPROVEMENT chip with change details. Selector: `[class~="aui-accordion"]`.
 8. **Overlay** — The scrim dims the app behind the About dialog while leaving the stage visible. Selector: `[class~="aui-dialog-backdrop"]`.
 9. **Popup container** — The wide popup defines the surface and zero-gap frame that contains the title and body. Selector: `[class~="aui-dialog-popup"]`.
 10. **Title bar** — The raised title bar sits at the start of the popup and carries the dialog label. Selector: `[class~="aui-dialog-title"]`.
@@ -304,15 +304,15 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **History header** — The bordered strip that puts the Release history heading and the muted "1 version" count on one line. Selector: `[data-ug-part="history-header"]`.
-2. **Search field** — The "Search releases" Field with a magnifying-glass icon that filters the version list. Selector: `[class~="aui-field"]`.
-3. **Version list** — The "Release history" listbox with one selected row marked by a 4px secondary start border. Selector: `[class~="aui-list"][role="listbox"]`.
+1. **History header** — Bordered header pairs Release history title with a muted version count. Selector: `[data-ug-part="history-header"]`.
+2. **Search field** — Search releases field filters versions with a magnifier icon. Selector: `[class~="aui-field"]`.
+3. **Version list** — Release history listbox selects one row with a 4px start border. Selector: `[class~="aui-list"][role="listbox"]`.
 4. **Version number** — The bold version 1.0.0 of the selected release row. Selector: `[data-ug-part="version"]`.
 5. **CURRENT chip** — The tonal primary CURRENT chip that marks the installed release. Selector: `[data-ug-part="history-column"] [class~="aui-chip"]`.
-6. **App header** — The bordered header above the notes: the app name as an h5 over a muted summary line. Selector: `[data-ug-part="notes-header"]`.
-7. **Key Features list** — The xs List under a muted "Key Features:" label that lists features such as Dynamic UI. Selector: `[data-ug-part="key-features"]`.
-8. **Collapse all button** — The right-aligned xs text button that expands or collapses every release section; shown as Collapse all. Selector: `[data-ug-part="toggle-all"]`.
-9. **Release notes accordion** — The accordion of release sections, open on "Global changes (1 update)", whose panel pairs an IMPROVEMENT chip with the change text. Selector: `[class~="aui-accordion"]`.
+6. **App header** — Bordered notes header stacks the app name over its summary. Selector: `[data-ug-part="notes-header"]`.
+7. **Key Features list** — Extra-small list places features such as Dynamic UI under its label. Selector: `[data-ug-part="key-features"]`.
+8. **Collapse all button** — Right-aligned Collapse all button expands or closes release sections. Selector: `[data-ug-part="toggle-all"]`.
+9. **Release notes accordion** — Open Global changes accordion pairs IMPROVEMENT chip with change details. Selector: `[class~="aui-accordion"]`.
 10. **Overlay** — The scrim dims the app behind the About dialog while leaving the stage visible. Selector: `[class~="aui-dialog-backdrop"]`.
 11. **Popup container** — The wide popup defines the surface and zero-gap frame that contains the title and body. Selector: `[class~="aui-dialog-popup"]`.
 12. **Title bar** — The raised title bar sits at the start of the popup and carries the dialog label. Selector: `[class~="aui-dialog-title"]`.

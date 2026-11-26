@@ -56,16 +56,16 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 1. **Overlay** — The scrim behind the Save as Template form. Selector: `[class~="aui-dialog-backdrop"]`.
 2. **Popup** — The default-width form window (ADM uses 480px, HS the same default). Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar reading "Save as Template" with the close X at its end. Selector: `[class~="aui-dialog-title"]`.
-4. **Close** — The close X that cancels the form (labelled "Cancel" in ACE and "Close Save as Template" in FD). Selector: `[class~="aui-dialog-close"]`.
-5. **Body** — The body that holds the template name form; the FD body scrolls with overflow auto. Selector: `[class~="aui-dialog-body"]`.
+3. **Title bar** — Raised Save as Template title ends with Close. Selector: `[class~="aui-dialog-title"]`.
+4. **Close** — Close cancels the form; ACE says Cancel and FD names the dialog. Selector: `[class~="aui-dialog-close"]`.
+5. **Body** — Form body scrolls in FD when template fields exceed its height. Selector: `[class~="aui-dialog-body"]`.
 6. **Form column** — The no-padding column with gap 16 that stacks the form's single field. Selector: `[data-ug-part="form-column"]`.
-7. **Name field** — The Template name field; FD drops the visible label and relies on the placeholder and aria-label. Selector: `[class~="aui-field"]`.
+7. **Name field** — Template name uses a label, except FD relies on its placeholder. Selector: `[class~="aui-field"]`.
 8. **Name label** — The visible label "Template name" above the input. Selector: `[class~="aui-field-label"]`.
 9. **Name input** — The text input with the placeholder "Please enter a name". Selector: `[class~="aui-field"] input`.
 10. **Footer** — The footer that holds Cancel and Save at the end. Selector: `[class~="aui-dialog-actions"]`.
-11. **Cancel** — The default Dialog.Button that closes the form without saving (FD renders a plain Button that looks the same). Selector: `[data-ug-part="cancel"]`.
-12. **Save** — The secondary solid Save, disabled until the name is valid; FD swaps it for a primary-coloured Button. Selector: `[data-ug-part="save"]`.
+11. **Cancel** — Default Cancel closes the form without saving a template. Selector: `[data-ug-part="cancel"]`.
+12. **Save** — Secondary Save stays disabled until the name is valid. Selector: `[data-ug-part="save"]`.
 
 ## Apps
 

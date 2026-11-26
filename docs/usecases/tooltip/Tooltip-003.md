@@ -48,10 +48,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Trigger** — The selection target: a 96 by 80 surface image Button labelled "Show in 3D" in the example and RWS, or the PFD "Embedded Strap" card (a View as button, at least 96px square). Selector: `[data-ug-part="trigger"]`.
-2. **Thumbnail** — The connection image drawn inside the trigger as an aria-hidden svg (72px wide in the example, 64px in the PFD card). Selector: `[data-ug-part="trigger"] > svg`.
-3. **Positioner** — Opens the note to the right of the image button with a 4px offset (side="right"); PFD uses the default side. Selector: `[class~="aui-tooltip-positioner"]`.
-4. **Popup** — The text tooltip surface; in PFD it is allowed to grow to 384px for the longer note. Selector: `[class~="aui-tooltip-popup"]`.
+1. **Trigger** — Surface image action opens a 3D preview; PFD uses its card. Selector: `[data-ug-part="trigger"]`.
+2. **Thumbnail** — Aria-hidden connection drawing decorates the trigger without extra reading. Selector: `[data-ug-part="trigger"] > svg`.
+3. **Positioner** — Tooltip opens beside the image with a four-pixel gap. Selector: `[class~="aui-tooltip-positioner"]`.
+4. **Popup** — Text surface expands to 384px for the longer PFD note. Selector: `[class~="aui-tooltip-popup"]`.
 
 ## Apps
 

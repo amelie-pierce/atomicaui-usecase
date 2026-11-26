@@ -45,10 +45,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Attached file chip** — The scene lists each attached file above the area as a default Chip with its name. Selector: `[class~="aui-chip"]`.
-2. **Upload area** — The dashed multi-file drop surface (multiple) in the Feedback form attachment block, with the idle message. Selector: `[class~="aui-file-upload"]`.
+1. **Attached file chip** — Attached filename chips appear above the upload area. Selector: `[class~="aui-chip"]`.
+2. **Upload area** — Dashed multi-file drop surface adds attachments to the feedback form. Selector: `[class~="aui-file-upload"]`.
 3. **Icon** — The upload icon at the top of the drop area. Selector: `[class~="aui-file-upload-icon"]`.
-4. **Browse action** — The "Browse" action that opens the file picker so several files can be added one after another. Selector: `[class~="aui-file-upload-action"]`.
+4. **Browse action** — Browse opens the picker for adding files one at a time. Selector: `[class~="aui-file-upload-action"]`.
 
 ## Apps
 
@@ -78,12 +78,12 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Attachment block** — The column that stacks the attached-file chips, the dropzone and the limits line inside the feedback form. Selector: `[data-ug-part="form"]`.
-2. **Limits line** — The muted "Up to 5 files, 10 MB each." caption under the dropzone. Selector: `[data-ug-part="limits"]`.
-3. **Attached file chip** — The scene lists each attached file above the area as a default Chip with its name. Selector: `[class~="aui-chip"]`.
-4. **Upload area** — The dashed multi-file drop surface (multiple) in the Feedback form attachment block, with the idle message. Selector: `[class~="aui-file-upload"]`.
+1. **Attachment block** — Form column groups attached files, dropzone, and upload limits. Selector: `[data-ug-part="form"]`.
+2. **Limits line** — Muted caption sets five-file and 10 MB per-file limits. Selector: `[data-ug-part="limits"]`.
+3. **Attached file chip** — Attached filename chips appear above the upload area. Selector: `[class~="aui-chip"]`.
+4. **Upload area** — Dashed multi-file drop surface adds attachments to the feedback form. Selector: `[class~="aui-file-upload"]`.
 5. **Icon** — The upload icon at the top of the drop area. Selector: `[class~="aui-file-upload-icon"]`.
-6. **Browse action** — The "Browse" action that opens the file picker so several files can be added one after another. Selector: `[class~="aui-file-upload-action"]`.
+6. **Browse action** — Browse opens the picker for adding files one at a time. Selector: `[class~="aui-file-upload-action"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/file-upload/FileUpload-002/example.tsx`
 

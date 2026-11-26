@@ -47,9 +47,9 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Trigger** — The element the user already points at: a "Preview" Button in the example, a thumbnail-and-link View in PFD, the "Connection detail" link in RWS, and the solid secondary "A" mark Button in HS. Selector: `[data-ug-part="trigger"]`.
-2. **Popup** — The default tooltip surface, which here holds an image instead of text: 192px wide in the example and RWS, 96px in PFD, 160px in HS. Selector: `[class~="aui-tooltip-popup"]`.
-3. **Preview image** — The representative connection drawing (an svg with role="img") that the tooltip shows, such as "Connection detail" or "Model C-300 connection preview". Selector: `[class~="aui-tooltip-popup"] svg`.
+1. **Trigger** — Hovering or focusing the existing action reveals its image preview. Selector: `[data-ug-part="trigger"]`.
+2. **Popup** — Image tooltip widths vary by app: 96px, 160px, or 192px. Selector: `[class~="aui-tooltip-popup"]`.
+3. **Preview image** — Connection drawing previews the named detail without adding another control. Selector: `[class~="aui-tooltip-popup"] svg`.
 
 ## Apps
 

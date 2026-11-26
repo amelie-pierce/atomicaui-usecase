@@ -43,7 +43,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Spinner** — The small default-colour spinner at scale "sm", announced as "Updating Results" while results are recomputed. Selector: `[class~="aui-spinner"]`.
+1. **Spinner** — Small default-colour spinner announces Updating Results while data recomputes. Selector: `[class~="aui-spinner"]`.
 2. **Ring** — The animated ring that turns while HCS and PFD recompute the results. Selector: `[class~="aui-spinner-ring"]`.
 
 ## Apps
@@ -79,7 +79,7 @@ In context view: Shown.
 #### In context layer steps
 
 1. **Output pane** — The pane that centers the progress indicator while results update. Selector: `[data-ug-part="pane"]`.
-2. **Spinner** — The small default-colour spinner at scale "sm", announced as "Updating Results" while results are recomputed. Selector: `[class~="aui-spinner"]`.
+2. **Spinner** — Small default-colour spinner announces Updating Results while data recomputes. Selector: `[class~="aui-spinner"]`.
 3. **Ring** — The animated ring that turns while HCS and PFD recompute the results. Selector: `[class~="aui-spinner-ring"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/spinner/Spinner-001/example.tsx`

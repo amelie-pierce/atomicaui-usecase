@@ -46,8 +46,8 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Trigger wrapper** — The focusable inline-flex span (tabIndex 0) whose aria-label "Selection unavailable for Model C-300" carries the reason, so keyboard and screen reader users reach the disabled radio's explanation. Selector: `[data-ug-part="trigger"]`.
-2. **Disabled radio** — The disabled, unselected "Model C-300" radio taken out of the tab order (tabIndex -1) so the wrapper receives the focus. Selector: `[data-ug-part="trigger"] [class~="aui-radio"]`.
+1. **Trigger wrapper** — Focusable wrapper announces why Model C-300 is unavailable. Selector: `[data-ug-part="trigger"]`.
+2. **Disabled radio** — Disabled Model C-300 radio stays unfocusable while its wrapper receives focus. Selector: `[data-ug-part="trigger"] [class~="aui-radio"]`.
 3. **Positioner** — Opens the reason above the wrapper with a 4px offset (side="top"). Selector: `[class~="aui-tooltip-positioner"]`.
 4. **Popup** — The default tooltip surface (scale "sm" in the HCS scene). Selector: `[class~="aui-tooltip-popup"]`.
 

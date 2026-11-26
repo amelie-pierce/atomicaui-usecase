@@ -44,10 +44,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Upload area** — The dashed single-file drop surface (multiple={false}) with the idle message, shown in the body of the upload dialog. Selector: `[class~="aui-file-upload"]`.
+1. **Upload area** — Dashed single-file drop surface appears inside the upload dialog. Selector: `[class~="aui-file-upload"]`.
 2. **Icon** — The upload icon at the top of the drop area. Selector: `[class~="aui-file-upload-icon"]`.
-3. **Body** — The row below the icon that holds the prompt and the browse action. Selector: `[class~="aui-file-upload-body"]`.
-4. **Browse action** — The "Browse" action that opens the device file picker as the alternative to dropping. Selector: `[class~="aui-file-upload-action"]`.
+3. **Body** — Row below icon pairs the upload prompt with Browse. Selector: `[class~="aui-file-upload-body"]`.
+4. **Browse action** — Browse opens the device picker as an alternative to dropping. Selector: `[class~="aui-file-upload-action"]`.
 
 ## Apps
 
@@ -81,14 +81,14 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Upload dialog** — The Dialog that hosts the dropzone in its body, opened by the app's Open from device action. Selector: `[data-ug-part="dialog"]`.
-2. **Dialog title** — The raised title row reading "Upload JSON file", with the close X pushed to the end. Selector: `[data-ug-part="dialog-title"]`.
-3. **Close button** — The X at the end of the title row that dismisses the dialog (labelled "Cancel"). Selector: `[data-ug-part="dialog-close"]`.
-4. **Cancel button** — The Cancel button in the dialog actions that closes the dialog without uploading. Selector: `[data-ug-part="dialog-cancel"]`.
-5. **Upload area** — The dashed single-file drop surface (multiple={false}) with the idle message, shown in the body of the upload dialog. Selector: `[class~="aui-file-upload"]`.
+1. **Upload dialog** — Dialog body hosts the dropzone opened by Open from device. Selector: `[data-ug-part="dialog"]`.
+2. **Dialog title** — Raised title names the JSON upload and places Close at the end. Selector: `[data-ug-part="dialog-title"]`.
+3. **Close button** — Title-row X closes the dialog and is labelled Cancel. Selector: `[data-ug-part="dialog-close"]`.
+4. **Cancel button** — Cancel closes the dialog without uploading. Selector: `[data-ug-part="dialog-cancel"]`.
+5. **Upload area** — Dashed single-file drop surface appears inside the upload dialog. Selector: `[class~="aui-file-upload"]`.
 6. **Icon** — The upload icon at the top of the drop area. Selector: `[class~="aui-file-upload-icon"]`.
-7. **Body** — The row below the icon that holds the prompt and the browse action. Selector: `[class~="aui-file-upload-body"]`.
-8. **Browse action** — The "Browse" action that opens the device file picker as the alternative to dropping. Selector: `[class~="aui-file-upload-action"]`.
+7. **Body** — Row below icon pairs the upload prompt with Browse. Selector: `[class~="aui-file-upload-body"]`.
+8. **Browse action** — Browse opens the device picker as an alternative to dropping. Selector: `[class~="aui-file-upload-action"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/file-upload/FileUpload-001/example.tsx`
 

@@ -49,12 +49,12 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Trigger** — Outlined text trigger (color "surface", paint "fixed", 1px "outlined" border on all four sides, nowrap) labelled "Product filter" for assistive tech. Selector: `[class~="aui-dropdown-trigger"]`.
+1. **Trigger** — Outlined, nowrap Product filter trigger exposes its accessible name. Selector: `[class~="aui-dropdown-trigger"]`.
 2. **Chevron** — The chevron at the end of the trigger at scale "sm". Selector: `[class~="aui-dropdown-chevron"]`.
-3. **Popup** — Popup at scale "sm" that matches the trigger width, 4px below it and aligned to its start. Selector: `[class~="aui-dropdown-popup"]`.
-4. **Radio group** — The group with value "passed" that makes exactly one of the three filters current. Selector: `[class~="aui-dropdown-radio-group"]`.
-5. **Radio item** — A filter row with its label and count (Passed Products (9), Failed Products (3), All Products (12)); closeOnClick closes the list after a choice. Selector: `[class~="aui-dropdown-radio-item"]`.
-6. **Indicator** — Empty transparent span at the row end; the chosen row shows by its raised fill, not a glyph. Selector: `[class~="aui-dropdown-radio-item-indicator"]`.
+3. **Popup** — Small popup matches trigger width, start alignment, and 4px gap. Selector: `[class~="aui-dropdown-popup"]`.
+4. **Radio group** — Group value passed keeps exactly one of the three filters current. Selector: `[class~="aui-dropdown-radio-group"]`.
+5. **Radio item** — Each row shows filter name and count, then closes after selection. Selector: `[class~="aui-dropdown-radio-item"]`.
+6. **Indicator** — Chosen row uses raised fill; its end span stays empty. Selector: `[class~="aui-dropdown-radio-item-indicator"]`.
 
 ## Apps
 

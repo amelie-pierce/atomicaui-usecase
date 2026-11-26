@@ -5,9 +5,9 @@ export default defineUsecase({
   title: 'Text button tooltip',
   apps: ['pfd', 'rws', 'hs'],
     layers: [
-        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The element the user already points at: a \"Preview\" Button in the example, a thumbnail-and-link View in PFD, the \"Connection detail\" link in RWS, and the solid secondary \"A\" mark Button in HS.","keyIdea":"The existing action or link remains the source of the preview explanation.","selector":"[data-ug-part=\"trigger\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"The default tooltip surface, which here holds an image instead of text: 192px wide in the example and RWS, 96px in PFD, 160px in HS.","keyIdea":"The tooltip surface can contain a visual preview without turning it into another selectable control.","selector":"[class~=\"aui-tooltip-popup\"]"},
-        {"id":"image","partId":"image","title":"Preview image","explanation":"The representative connection drawing (an svg with role=\"img\") that the tooltip shows, such as \"Connection detail\" or \"Model C-300 connection preview\".","keyIdea":"The image gives the connection tooltip concrete visual detail instead of repeating the trigger label.","selector":"[class~=\"aui-tooltip-popup\"] svg"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Hovering or focusing the existing action reveals its image preview.","keyIdea":"The existing action or link remains the source of the preview explanation.","selector":"[data-ug-part=\"trigger\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Image tooltip widths vary by app: 96px, 160px, or 192px.","keyIdea":"The tooltip surface can contain a visual preview without turning it into another selectable control.","selector":"[class~=\"aui-tooltip-popup\"]"},
+        {"id":"image","partId":"image","title":"Preview image","explanation":"Connection drawing previews the named detail without adding another control.","keyIdea":"The image gives the connection tooltip concrete visual detail instead of repeating the trigger label.","selector":"[class~=\"aui-tooltip-popup\"] svg"},
       ],
 options: [
     { id: "pfd-image-preview", name: "Image preview", showContext: false, apps: ["pfd"], source: {"pfd":"src/pfd/ResultsTable.tsx"} ,

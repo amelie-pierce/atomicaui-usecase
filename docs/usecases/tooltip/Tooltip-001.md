@@ -46,7 +46,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Icon button trigger** — The Settings gear button is the control whose accessible label is repeated in the tooltip. Selector: `[data-ug-part="trigger"]`.
+1. **Icon button trigger** — Settings gear opens the help label that repeats its accessible name. Selector: `[data-ug-part="trigger"]`.
 2. **Tooltip positioner** — The positioner places the tooltip below the trigger with a four-pixel offset. Selector: `[class~="aui-tooltip-positioner"]`.
 3. **Tooltip surface** — The small popup provides a surface for the trigger label. Selector: `[class~="aui-tooltip-popup"]`.
 4. **Settings label** — The word Settings repeats the button accessible name for sighted users. Selector: `[data-ug-part="tooltip-label"]`.

@@ -5,16 +5,16 @@ export default defineUsecase({
   title: 'Hugging segments',
   apps: ['agpd'],
     layers: [
-        {"id":"group","partId":"group","title":"Group","explanation":"The fastener switch named \"Fastener\", with STN22 chosen, that sizes to its labels and draws no outline of its own.","keyIdea":"The group keeps fastener choices mutually exclusive while sizing to their labels.","selector":"[class~=\"aui-toggle-group\"]"},
-        {"id":"item","partId":"item","title":"Item","explanation":"One option, STN22 or SDWB, rendered through a text Button at scale \"xs\" with zero padding so only the segment shows.","keyIdea":"A text button exposes each fastener without adding extra inner padding.","selector":"[class~=\"aui-toggle-group\"] > button"},
-        {"id":"segment","partId":"segment","title":"Segment","explanation":"The span that paints the pressed option solid secondary with soft corners and 6px inline padding, so each segment hugs its label.","keyIdea":"The segment fill distinguishes the selected fastener from its neighbor.","selector":"[class~=\"aui-toggle-group\"] > button [class~=\"aui-view\"]"},
-        {"id":"text","partId":"text","title":"Option text","explanation":"The fastener name, STN22 or SDWB, in a Type role \"l5\" at medium weight.","keyIdea":"The concise code names the exact fastener option being applied.","selector":"[class~=\"aui-toggle-group\"] > button [data-aui-typeface]"},
-        {"id":"field","partId":"field","title":"Field below","explanation":"The Diameter / Style field that the switch sits above and drives in the AGPD scene.","keyIdea":"The Diameter and Style field shows which value the fastener selection affects.","selector":"[class~=\"aui-field-control\"]"},
+        {"id":"group","partId":"group","title":"Group","explanation":"STN22-selected fastener group sizes itself to the option labels.","keyIdea":"The group keeps fastener choices mutually exclusive while sizing to their labels.","selector":"[class~=\"aui-toggle-group\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"STN22 and SDWB appear as text buttons without added padding.","keyIdea":"A text button exposes each fastener without adding extra inner padding.","selector":"[class~=\"aui-toggle-group\"] > button"},
+        {"id":"segment","partId":"segment","title":"Segment","explanation":"Pressed segment uses soft secondary fill with 6px side padding.","keyIdea":"The segment fill distinguishes the selected fastener from its neighbor.","selector":"[class~=\"aui-toggle-group\"] > button [class~=\"aui-view\"]"},
+        {"id":"text","partId":"text","title":"Option text","explanation":"Fastener code uses medium-weight l5 type at compact scale.","keyIdea":"The concise code names the exact fastener option being applied.","selector":"[class~=\"aui-toggle-group\"] > button [data-aui-typeface]"},
+        {"id":"field","partId":"field","title":"Field below","explanation":"Diameter and Style field sits below the fastener choice.","keyIdea":"The Diameter and Style field shows which value the fastener selection affects.","selector":"[class~=\"aui-field-control\"]"},
       ],
 options: [
     { id: "agpd-fastener", name: "Fastener switch", contextAnatomy: [{ id: 'diameter-field', name: 'Diameter and style field', description: 'The Diameter and Style field control, showing 1/4 in, hex head, that the segments sit above and switch.' }], source: {"agpd":"src/agpd/inputs.tsx"} ,
       contextLayers: [
-        {"id":"context-diameter-field","partId":"diameter-field","title":"Diameter and style field","explanation":"The Diameter and Style field control, showing 1/4 in, hex head, that the segments sit above and switch.","keyIdea":"The field remains visible below the segments so users can inspect the resulting diameter and style.","selector":"[data-ug-part=\"diameter-field\"]","scope":"context"},
+        {"id":"context-diameter-field","partId":"diameter-field","title":"Diameter and style field","explanation":"Field shows 1/4 inch and hex head beneath the segments.","keyIdea":"The field remains visible below the segments so users can inspect the resulting diameter and style.","selector":"[data-ug-part=\"diameter-field\"]","scope":"context"},
       ],
     },
   ],

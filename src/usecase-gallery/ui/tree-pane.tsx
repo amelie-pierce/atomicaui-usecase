@@ -44,6 +44,10 @@ export function TreePane({ groups, activeComponentId, activeUsecase, title, fami
   }, [selected, expandedValue]);
 
   const selectValue = (value: string) => {
+    if (value === activeGroup?.id || value === typeValue(activeGroup?.id ?? '', activeTypeIndex)) {
+      setExpandedValue((current) => current.includes(value) ? current.filter((key) => key !== value) : [...current, value]);
+      return;
+    }
     const usecase = groups.flatMap((group) => group.uiTypeGroups.flatMap((type) => type.usecases)).find((candidate) => candidate.id === value);
     if (usecase) {
       window.location.hash = usecaseHash(usecase.id, usecase.componentId);

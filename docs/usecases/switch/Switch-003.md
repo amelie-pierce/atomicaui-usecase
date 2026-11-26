@@ -47,15 +47,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Switch** — The off-by-default control whose unselected track is a surface-tonal white fill with a thin outlined border; selected it is solid primary. Selector: `[class~="aui-switch"]`.
 6. **Thumb** — The thumb at the start of the white track while the load is off. Selector: `[class~="aui-switch-thumb"]`.
 
-## Component layer steps
-
-1. **List** — Three-row Load conditions list pairs each name with a switch. Selector: `[class~="aui-list"]`.
-2. **Row** — Wind load row places its switch after the label. Selector: `[class~="aui-list-item"]`.
-3. **Row text** — Wind load label names this input switch row. Selector: `[class~="aui-list-item-text"]`.
-4. **Row actions** — The slot at the end of the row that holds the switch. Selector: `[class~="aui-list-item-actions"]`.
-5. **Switch** — Off track is white and outlined; on track is solid primary. Selector: `[class~="aui-switch"]`.
-6. **Thumb** — Thumb rests at the left edge while the load is off. Selector: `[class~="aui-switch-thumb"]`.
-
 ## Apps
 
 - ADM (`adm`)
@@ -77,18 +68,6 @@ In context view: Shown.
 1. **Input pane** — The Input side pane (an aside, soft, surface-alt) that holds the form sections. Part marker: `data-ug-part="input-pane"`.
 2. **Load conditions section** — The Accordion item, open, that groups the load condition rows. Part marker: `data-ug-part="section"`.
 3. **Section header** — The Load conditions trigger, a semi-bold l4 label with a chevron, that collapses the section. Part marker: `data-ug-part="section-title"`.
-
-#### In context layer steps
-
-1. **Input pane** — Soft Input side pane holds the form sections. Selector: `[data-ug-part="input-pane"]`.
-2. **Load conditions section** — The Accordion item, open, that groups the load condition rows. Selector: `[data-ug-part="section"]`.
-3. **Section header** — Semi-bold Load conditions trigger expands or collapses the section. Selector: `[data-ug-part="section-title"]`.
-4. **List** — Three-row Load conditions list pairs each name with a switch. Selector: `[class~="aui-list"]`.
-5. **Row** — Wind load row places its switch after the label. Selector: `[class~="aui-list-item"]`.
-6. **Row text** — Wind load label names this input switch row. Selector: `[class~="aui-list-item-text"]`.
-7. **Row actions** — The slot at the end of the row that holds the switch. Selector: `[class~="aui-list-item-actions"]`.
-8. **Switch** — Off track is white and outlined; on track is solid primary. Selector: `[class~="aui-switch"]`.
-9. **Thumb** — Thumb rests at the left edge while the load is off. Selector: `[class~="aui-switch-thumb"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/switch/Switch-003/example.tsx`
 

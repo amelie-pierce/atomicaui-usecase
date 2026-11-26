@@ -46,14 +46,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Column menu** — The 256px popover opened under the Load (lb) heading with a Sort radio group; PFD adds a Close button at its end. Selector: `[data-aui-popup-motion][role="dialog"]`.
 5. **Sort option** — The three sort choices (A to Z, Z to A, None), with the ascending one selected in primary. Selector: `[class~="aui-radio"]`.
 
-## Component layer steps
-
-1. **Column options** — Compact square transparent button opens the menu; apps vary ellipsis direction. Selector: `[class~="aui-button"][aria-label*="column options" i]`.
-2. **Icon** — The vertical or horizontal ellipsis glyph, centred in the button. Selector: `[class~="aui-button"][aria-label*="column options" i] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Column header** — Raised Model and Load headings hold options; Load sorts ascending. Selector: `[class~="aui-table-header-cell"]`.
-4. **Column menu** — 256px sort menu opens under Load; PFD adds a Close action. Selector: `[data-aui-popup-motion][role="dialog"]`.
-5. **Sort option** — Three sort choices include A to Z, Z to A, and None. Selector: `[class~="aui-radio"]`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -76,16 +68,6 @@ In context view: Shown.
 
 1. **Results table** — The sortable Connector calculation results Table with the Model and Load (lb) columns. Selector: `[class~="aui-table"]`.
 2. **Result rows** — The two body rows, ordered by the ascending Load (lb) sort chosen in the menu. Selector: `[class~="aui-table-body"]`.
-
-#### In context layer steps
-
-1. **Results table** — Sortable results table has Model and Load columns. Selector: `[class~="aui-table"]`.
-2. **Result rows** — Two result rows follow the ascending Load sort. Selector: `[class~="aui-table-body"]`.
-3. **Column options** — Compact square transparent button opens the menu; apps vary ellipsis direction. Selector: `[class~="aui-button"][aria-label*="column options" i]`.
-4. **Icon** — The vertical or horizontal ellipsis glyph, centred in the button. Selector: `[class~="aui-button"][aria-label*="column options" i] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-5. **Column header** — Raised Model and Load headings hold options; Load sorts ascending. Selector: `[class~="aui-table-header-cell"]`.
-6. **Column menu** — 256px sort menu opens under Load; PFD adds a Close action. Selector: `[data-aui-popup-motion][role="dialog"]`.
-7. **Sort option** — Three sort choices include A to Z, Z to A, and None. Selector: `[class~="aui-radio"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-035/example.tsx`
 
@@ -180,17 +162,6 @@ In context view: Shown.
 1. **Results table** — The sortable Connector calculation results Table with the Model and Load (lb) columns. Selector: `[class~="aui-table"]`.
 2. **Result rows** — The two body rows, ordered by the ascending Load (lb) sort chosen in the menu. Selector: `[class~="aui-table-body"]`.
 3. **Menu close** — The Close button at the end of the menu popover, above the Sort radios. Selector: `[data-aui-popup-motion][role="dialog"] [class~="aui-button"][aria-label="Close"]`.
-
-#### In context layer steps
-
-1. **Results table** — Sortable results table has Model and Load columns. Selector: `[class~="aui-table"]`.
-2. **Result rows** — Two result rows follow the ascending Load sort. Selector: `[class~="aui-table-body"]`.
-3. **Menu close** — PFD Close action sits above the sort radio group. Selector: `[data-aui-popup-motion][role="dialog"] [class~="aui-button"][aria-label="Close"]`.
-4. **Column options** — Compact square transparent button opens the menu; apps vary ellipsis direction. Selector: `[class~="aui-button"][aria-label*="column options" i]`.
-5. **Icon** — The vertical or horizontal ellipsis glyph, centred in the button. Selector: `[class~="aui-button"][aria-label*="column options" i] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-6. **Column header** — Raised Model and Load headings hold options; Load sorts ascending. Selector: `[class~="aui-table-header-cell"]`.
-7. **Column menu** — 256px sort menu opens under Load; PFD adds a Close action. Selector: `[data-aui-popup-motion][role="dialog"]`.
-8. **Sort option** — Three sort choices include A to Z, Z to A, and None. Selector: `[class~="aui-radio"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-035/options/pfd-column-menu/example.tsx`
 

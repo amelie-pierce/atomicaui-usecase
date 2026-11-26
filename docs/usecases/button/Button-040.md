@@ -46,14 +46,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Add cell** — The centred first cell of the Model A-100 row that holds the button. Selector: `[class~="aui-table-cell"]:first-child`.
 5. **Add header** — The unlabeled column heading (aria-label Add) over the add buttons. Selector: `[class~="aui-table-header-cell"]:first-child`.
 
-## Component layer steps
-
-1. **Add** — Tonal secondary plus action adds the row to Connection List. Selector: `[class~="aui-button"][aria-label="Add to Connection List"]`.
-2. **Plus icon** — Centered plus glyph identifies the Add to Connection List action. Selector: `[class~="aui-button"][aria-label="Add to Connection List"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Tooltip** — PBS tooltip repeats Add to Connection List above the action. Selector: `[class~="aui-tooltip-popup"]`.
-4. **Add cell** — Centered Model A-100 cell contains the add action. Selector: `[class~="aui-table-cell"]:first-child`.
-5. **Add header** — The unlabeled column heading (aria-label Add) over the add buttons. Selector: `[class~="aui-table-header-cell"]:first-child`.
-
 ## Apps
 
 - PBS (`pbs`)
@@ -74,16 +66,6 @@ In context view: Shown.
 
 1. **Results table** — The Table of connection results; the add column comes first, then the Model column. Selector: `[class~="aui-table"]`.
 2. **Model cell** — The Model A-100 label of the row that the plus button adds. Selector: `[class~="aui-table-body"] [class~="aui-table-cell"]:last-child`.
-
-#### In context layer steps
-
-1. **Results table** — Connection results table starts with Add, then Model. Selector: `[class~="aui-table"]`.
-2. **Model cell** — The Model A-100 label of the row that the plus button adds. Selector: `[class~="aui-table-body"] [class~="aui-table-cell"]:last-child`.
-3. **Add** — Tonal secondary plus action adds the row to Connection List. Selector: `[class~="aui-button"][aria-label="Add to Connection List"]`.
-4. **Plus icon** — Centered plus glyph identifies the Add to Connection List action. Selector: `[class~="aui-button"][aria-label="Add to Connection List"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-5. **Tooltip** — PBS tooltip repeats Add to Connection List above the action. Selector: `[class~="aui-tooltip-popup"]`.
-6. **Add cell** — Centered Model A-100 cell contains the add action. Selector: `[class~="aui-table-cell"]:first-child`.
-7. **Add header** — The unlabeled column heading (aria-label Add) over the add buttons. Selector: `[class~="aui-table-header-cell"]:first-child`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-040/example.tsx`
 

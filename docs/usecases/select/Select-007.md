@@ -53,20 +53,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 11. **Item text** — The plate name next to the picture. Selector: `[class~="aui-select-item-text"]`.
 12. **Indicator** — End-of-row slot; the AGPD scene draws a check icon here on the chosen plate. Selector: `[class~="aui-select-item-indicator"]`.
 
-## Component layer steps
-
-1. **Field** — Small field stays 224px wide for picture choices. Selector: `[class~="aui-field"]`.
-2. **Label** — Base plate label sits above the picture-select trigger. Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — Full-width outlined trigger shows the chosen plate name. Selector: `[class~="aui-select-trigger"]`.
-4. **Chevron** — End chevron marks the plate trigger as a dropdown. Selector: `[class~="aui-select-chevron"]`.
-5. **Popup** — Popup lists Plate A, Plate B, and Plate C. Selector: `[class~="aui-select-popup"]`.
-6. **List** — Popup list holds exactly three available plate rows. Selector: `[class~="aui-select-list"]`.
-7. **Item** — Plate row starts with a picture tile, name, and indicator. Selector: `[class~="aui-select-item"]`.
-8. **Image tile** — Soft primary tile frames each plate picture with 4px padding. Selector: `[class~="aui-select-item"] > [class~="aui-view"]`.
-9. **Image** — Image glyph stands in for the real plate pictures. Selector: `[class~="aui-select-item"] > [class~="aui-view"] > [class~="aui-contained-icon"]`.
-10. **Item text** — Plate name appears beside the option picture in each row. Selector: `[class~="aui-select-item-text"]`.
-11. **Indicator** — AGPD places a check in the chosen plate’s end slot. Selector: `[class~="aui-select-item-indicator"]`.
-
 ## Apps
 
 - RWS (`rws`)

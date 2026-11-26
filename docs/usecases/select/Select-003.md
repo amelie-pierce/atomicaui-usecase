@@ -51,19 +51,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 10. **Indicator** — The indicator slot at the row end; the PFD scene leads each row with a checkbox icon instead. Selector: `[class~="aui-select-item-indicator"]`.
 11. **Checkbox icon** — In the PFD scene each row leads with a square-check icon when chosen and a square when not, with no indicator. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
 
-## Component layer steps
-
-1. **Field** — Small field stacks Corrosion Resistance above the multi-select. Selector: `[class~="aui-field"]`.
-2. **Label** — Small Corrosion Resistance label appears above the multi-select. Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — 28px outlined trigger stays one line for chosen options. Selector: `[class~="aui-select-trigger"]`.
-4. **Chevron** — Trailing chevron opens a list that stays open during selection. Selector: `[class~="aui-select-chevron"]`.
-5. **Popup** — Popup lists Standard, Hot dip galvanized, and Stainless steel. Selector: `[class~="aui-select-popup"]`.
-6. **List** — Popup list holds the three corrosion resistance choices. Selector: `[class~="aui-select-list"]`.
-7. **Item** — Standard and Hot dip galvanized start selected in the multi-select. Selector: `[class~="aui-select-item"]`.
-8. **Item text** — Option name appears beside its control, such as Stainless steel. Selector: `[class~="aui-select-item-text"]`.
-9. **Indicator** — End slot marks selection; PFD uses leading checkbox icons instead. Selector: `[class~="aui-select-item-indicator"]`.
-10. **Checkbox icon** — PFD leads each row with a checked or empty square icon. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
-
 ## Apps
 
 - PBS (`pbs`)

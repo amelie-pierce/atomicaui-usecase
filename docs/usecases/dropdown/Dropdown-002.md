@@ -45,13 +45,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 3. **Popup** — Popup at scale "sm", capped at 256px high and scrolling vertically when many designs are hidden, aligned to the trigger start. Selector: `[class~="aui-dropdown-popup"]`.
 4. **Item** — A plain row for one hidden design: Design 3, Design 4 or Design 5. None is selected; choosing one activates that tab. Selector: `[class~="aui-dropdown-item"]`.
 
-## Component layer steps
-
-1. **Trigger** — Square soft trigger opens hidden designs beyond the visible tab rail. Selector: `[class~="aui-dropdown-trigger"]`.
-2. **Icon** — The ellipsis-vertical glyph that is the only content of the trigger. Selector: `[class~="aui-dropdown-trigger"] > [class~="aui-contained-icon"]`.
-3. **Popup** — Small popup aligns to trigger start and scrolls after 256px height. Selector: `[class~="aui-dropdown-popup"]`.
-4. **Item** — Plain unselected row activates Design 3, 4, or 5. Selector: `[class~="aui-dropdown-item"]`.
-
 ## Apps
 
 - ADC (`adc`)
@@ -71,14 +64,6 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Visible tab** — The "Design 1" chip tab after the trigger; it stands for the design tab rail whose overflow the ellipsis menu lists. Selector: `[class~="aui-tabs-tab"]`.
-
-#### In context layer steps
-
-1. **Visible tab** — Design 1 chip represents the overflowed tab rail. Selector: `[class~="aui-tabs-tab"]`.
-2. **Trigger** — Square soft trigger opens hidden designs beyond the visible tab rail. Selector: `[class~="aui-dropdown-trigger"]`.
-3. **Icon** — The ellipsis-vertical glyph that is the only content of the trigger. Selector: `[class~="aui-dropdown-trigger"] > [class~="aui-contained-icon"]`.
-4. **Popup** — Small popup aligns to trigger start and scrolls after 256px height. Selector: `[class~="aui-dropdown-popup"]`.
-5. **Item** — Plain unselected row activates Design 3, 4, or 5. Selector: `[class~="aui-dropdown-item"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/dropdown/Dropdown-002/example.tsx`
 

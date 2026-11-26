@@ -44,13 +44,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Popup** — The default tooltip surface (scale "sm" in the HCS scene). Selector: `[class~="aui-tooltip-popup"]`.
 5. **Reason** — The sentence "Failed products can't be selected. See Why Not for the reason." that explains why the control is disabled. Selector: `[class~="aui-tooltip-popup"]`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Trigger wrapper** — Focusable wrapper announces why Model C-300 is unavailable. Selector: `[data-ug-part="trigger"]`.
-2. **Disabled radio** — Disabled Model C-300 radio stays unfocusable while its wrapper receives focus. Selector: `[data-ug-part="trigger"] [class~="aui-radio"]`.
-3. **Positioner** — Opens the reason above the wrapper with a 4px offset (side="top"). Selector: `[class~="aui-tooltip-positioner"]`.
-4. **Popup** — The default tooltip surface (scale "sm" in the HCS scene). Selector: `[class~="aui-tooltip-popup"]`.
-
 ## Apps
 
 - HCS (`hcs`)

@@ -43,13 +43,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Label** — The summary text "US", "EN" and "IBC 2018" shown in one line. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 5. **Divider** — The thin separators between country, language and design code (two in this example). Selector: `[class~="aui-menubar-divider"]`.
 
-## Component layer steps
-
-1. **Menubar** — Top bar holds one summary button at the right edge. Selector: `[class~="aui-menubar"]`.
-2. **Button** — Tonal Settings button summarizes region, language, and design code. Selector: `[class~="aui-button"]`.
-3. **Icon** — Globe glyph leads the region and language settings summary button. Selector: `[class~="aui-button"] > [class~="aui-contained-icon"]`.
-4. **Divider** — Two thin dividers separate country, language, and design code. Selector: `[class~="aui-menubar-divider"]`.
-
 ## Apps
 
 - HS (`hs`)

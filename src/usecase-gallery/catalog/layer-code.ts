@@ -50,11 +50,12 @@ function openingTagLines(code: string, start: number) {
   return { first, last: first + code.slice(start, end).split('\n').length - 1 };
 }
 
-function linesOf(code: string, compound: string, step: LayerStep) {
+/** The lines of the opening tags that write `compound`'s element (class component or `data-ug-part` marker), or that are one of `tags`. */
+function linesOf(code: string, compound: string, tags: string[] = []) {
   const starts: number[] = [];
   const classNames = [...compound.matchAll(/\[class~=["']aui-([^"']+)["']\]/g)].map(([, className]) => className);
   for (const match of code.matchAll(/<([A-Za-z][\w.-]*)(?=[\s/>])/g)) {
-    if (step.code ? step.code.includes(match[1]) : classNames.some((className) => tagMatchesClass(match[1], className))) starts.push(match.index);
+    if (tags.includes(match[1]) || classNames.some((className) => tagMatchesClass(match[1], className))) starts.push(match.index);
   }
   for (const [, marker] of compound.matchAll(/data-ug-part=["']([^"']+)["']/g)) {
     for (const match of code.matchAll(new RegExp(`data-ug-part=["']${marker}["']`, 'g'))) {
@@ -71,19 +72,20 @@ function linesOf(code: string, compound: string, step: LayerStep) {
 }
 
 /**
- * The 0-based lines of `code` that write the element a layer step reveals: whole opening tags, matched exactly by an authored
- * `code` tag, a `data-ug-part` marker or the class's component. An element a component renders itself has no tag of its own,
- * so the step resolves through the nearest enclosing selector that does.
+ * The 0-based lines of `code` that write the element a layer step reveals: whole opening tags, matched by the step's own
+ * `data-ug-part` marker or class component. An element a component renders itself has no tag of its own, so the step
+ * resolves through its authored `code` tags, then the nearest enclosing selector that is written.
  */
 export function layerCodeLines(code: string, step: LayerStep | undefined) {
   if (!step) return new Set<number>();
-  const own = step.code ? linesOf(code, '', step) : undefined;
-  if (own?.size) return own;
-  for (const compound of compoundsOutward(step.selector ?? '')) {
-    const lines = linesOf(code, compound, { ...step, code: undefined });
-    if (lines.size) return lines;
+  const [own = '', ...enclosing] = compoundsOutward(step.selector ?? '');
+  let lines = linesOf(code, own);
+  if (!lines.size) lines = linesOf(code, '', step.code);
+  for (const compound of enclosing) {
+    if (lines.size) break;
+    lines = linesOf(code, compound);
   }
-  return new Set<number>();
+  return lines;
 }
 
 /** The steps of one view whose code highlight is missing, or repeats the step before without being authored `unchanged`. */

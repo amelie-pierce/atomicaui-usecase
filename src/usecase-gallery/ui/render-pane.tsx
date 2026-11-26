@@ -26,7 +26,8 @@ function LayerVisibilityStyles({ layers, layerIndex, enabled }: { layers: LayerS
       for (const target of targets) target.removeAttribute(footprintAttribute);
       for (const target of targets) {
         const { width, height } = target.getBoundingClientRect();
-        if (!width || !height) target.setAttribute(footprintAttribute, '');
+        const spacer = width > 0 && !target.firstChild;
+        if ((!width || !height) && !spacer) target.setAttribute(footprintAttribute, '');
       }
     };
     mark();

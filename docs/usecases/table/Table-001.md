@@ -48,16 +48,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Row** — One candidate product, a plain read-only row with no selection or expander. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
 7. **Cell** — Value cell using the same 128px width token as its header; the model name is left-aligned in the pinned first column and the load is centred. Selector: `[class~="aui-table-cell"]`.
 
-## Component layer steps
-
-1. **Table** — Soft framed grid scrolls independently, pins its first column, and sorts. Selector: `[class~="aui-table"]`.
-2. **Header** — Raised header holds sortable Model and Load labels. Selector: `[class~="aui-table-head"]`.
-3. **Header cell** — Raised centered heading matches its 128px column width. Selector: `[class~="aui-table-header-cell"]`.
-4. **Sort button** — Sort control toggles direction and names the chosen column. Selector: `[class~="aui-table-sort-button"]`.
-5. **Body** — Two result rows scroll beneath the pinned header. Selector: `[class~="aui-table-body"]`.
-6. **Row** — One candidate product, a plain read-only row with no selection or expander. Selector: `[class~="aui-table-row"]`.
-7. **Cell** — 128px value cells left-align models and center the load. Selector: `[class~="aui-table-cell"]`.
-
 ## Apps
 
 - HCS (`hcs`)

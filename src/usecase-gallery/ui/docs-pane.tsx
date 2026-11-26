@@ -1,4 +1,4 @@
-import { Suspense, use, useEffect, useState } from 'react';
+import { Suspense, use } from 'react';
 import { APPS } from '../apps';
 import type { AppKey } from '../apps';
 import { layerCodeLines, stripPartMarkers } from '../catalog/layer-code';
@@ -88,14 +88,7 @@ function LayerCode({ code, layers, index }: { code: Promise<string>; layers: Lay
 }
 
 function LayerLesson({ layers, index, onChange, code }: { layers: LayerStep[]; index: number; onChange: (index: number) => void; code: Promise<string> }) {
-  const [autoplay, setAutoplay] = useState(false);
   const active = layers[index] ?? layers[0];
-  useEffect(() => {
-    if (!autoplay) return;
-    if (index >= layers.length - 1) { setAutoplay(false); return; }
-    const timer = window.setTimeout(() => onChange(index + 1), 900);
-    return () => window.clearTimeout(timer);
-  }, [autoplay, index, layers.length, onChange]);
   if (!active) return <Type as="p" role="l3" color="muted">No layer steps are authored for this view.</Type>;
   const onNavigationKey = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'ArrowRight') { event.preventDefault(); onChange(Math.min(index + 1, layers.length - 1)); }
@@ -105,7 +98,6 @@ function LayerLesson({ layers, index, onChange, code }: { layers: LayerStep[]; i
   };
   return <div className="ug-layer-lesson" aria-label="Layer lesson">
     <div className="ug-layer-lesson__copy" aria-live="polite" aria-atomic="true">
-      <Type as="p" role="l3" color="muted">Step {index + 1} of {layers.length}</Type>
       <Type as="h3" role="h5" weight="bold">{active.title}</Type>
       <Type as="p" role="l3">{active.explanation}</Type>
     </div>
@@ -118,10 +110,8 @@ function LayerLesson({ layers, index, onChange, code }: { layers: LayerStep[]; i
       })}
     </nav>
     <div className="ug-layer-lesson__back-next">
-      <Button aui={{ color: 'secondary', paint: 'outlined', scale: 'sm' }} disabled={index === 0} onClick={() => { setAutoplay(false); onChange(Math.max(index - 1, 0)); }}>Back</Button>
-      <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} onClick={() => { setAutoplay(false); onChange(0); }}>Replay</Button>
-      <Button aui={{ color: autoplay ? 'primary' : 'secondary', paint: autoplay ? 'tonal' : 'text', scale: 'sm' }} aria-pressed={autoplay} onClick={() => setAutoplay((playing) => !playing)}>{autoplay ? 'Pause' : 'Autoplay'}</Button>
-      <Button aui={{ color: 'primary', paint: 'solid', scale: 'sm' }} disabled={index === layers.length - 1} onClick={() => { setAutoplay(false); onChange(Math.min(index + 1, layers.length - 1)); }}>Next</Button>
+      <Button aui={{ color: 'secondary', paint: 'outlined', scale: 'sm' }} disabled={index === 0} onClick={() => onChange(Math.max(index - 1, 0))}>Back</Button>
+      <Button aui={{ color: 'primary', paint: 'solid', scale: 'sm' }} disabled={index === layers.length - 1} onClick={() => onChange(Math.min(index + 1, layers.length - 1))}>Next</Button>
     </div>
     <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><LayerCode code={code} layers={layers} index={index} /></Suspense>
   </div>;

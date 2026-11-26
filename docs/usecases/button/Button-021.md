@@ -45,13 +45,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 3. **Cancel** — The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS). Part marker: `data-ug-part="cancel"`.
 4. **Save** — The solid secondary Save Button that applies the column changes (scale "sm" in HCS, default scale in HS). Part marker: `data-ug-part="save"`.
 
-## Component layer steps
-
-1. **Reset button** — Start reset icon restores columns to default order and visibility. Selector: `[data-ug-part="reset"]`.
-2. **Action group** — Footer pairs Cancel and Save with an 8px gap. Selector: `[data-ug-part="actions"]`.
-3. **Cancel** — Text Cancel closes the popover and discards pending changes. Selector: `[data-ug-part="cancel"]`.
-4. **Save** — Solid secondary Save applies the output column changes. Selector: `[data-ug-part="save"]`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -73,15 +66,6 @@ In context view: Shown.
 
 1. **Configure columns popover** — The elevated popover opened under the table-columns IconButton that holds the column list and this footer. Part marker: `data-ug-part="popover"`.
 2. **Column list** — The reorderable List of Output columns, each with a visibility Switch and a drag handle. Part marker: `data-ug-part="columns"`.
-
-#### In context layer steps
-
-1. **Configure columns popover** — Elevated popover contains the output columns and footer actions. Selector: `[data-ug-part="popover"]`.
-2. **Column list** — Reorderable Output list pairs each column with visibility and drag controls. Selector: `[data-ug-part="columns"]`.
-3. **Reset button** — Start reset icon restores columns to default order and visibility. Selector: `[data-ug-part="reset"]`.
-4. **Action group** — Footer pairs Cancel and Save with an 8px gap. Selector: `[data-ug-part="actions"]`.
-5. **Cancel** — Text Cancel closes the popover and discards pending changes. Selector: `[data-ug-part="cancel"]`.
-6. **Save** — Solid secondary Save applies the output column changes. Selector: `[data-ug-part="save"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-021/example.tsx`
 
@@ -185,15 +169,6 @@ In context view: Shown.
 
 1. **Configure columns popover** — The elevated popover opened under the table-columns IconButton that holds the column list and this footer. Part marker: `data-ug-part="popover"`.
 2. **Column list** — The reorderable List of Output columns, each with a visibility Switch and a drag handle. Part marker: `data-ug-part="columns"`.
-
-#### In context layer steps
-
-1. **Configure columns popover** — Elevated popover contains the output columns and footer actions. Selector: `[data-ug-part="popover"]`.
-2. **Column list** — Reorderable Output list pairs each column with visibility and drag controls. Selector: `[data-ug-part="columns"]`.
-3. **Reset button** — Start reset icon restores columns to default order and visibility. Selector: `[data-ug-part="reset"]`.
-4. **Action group** — Footer pairs Cancel and Save with an 8px gap. Selector: `[data-ug-part="actions"]`.
-5. **Cancel** — Text Cancel closes the popover and discards pending changes. Selector: `[data-ug-part="cancel"]`.
-6. **Save** — Solid secondary Save applies the output column changes. Selector: `[data-ug-part="save"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-021/options/hs-configure-columns/example.tsx`
 

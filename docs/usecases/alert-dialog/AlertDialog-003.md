@@ -55,23 +55,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 14. **Reset all designs** — The ADC solid error button "Reset All Designs to Standard". Part marker: `data-ug-part="reset-all"`.
 15. **Close tooltip** — The ADC tooltip that labels the close X "Close" on hover. Selector: `[class~="aui-tooltip-popup"]`.
 
-## Component layer steps
-
-1. **Overlay** — Scrim keeps the reset confirm separate from the active workspace. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — Soft reset window varies from 384px to 640px across apps. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — Raised warning title names Reset Inputs before users decide. Selector: `[class~="aui-dialog-title"]`.
-4. **Warning icon** — Warning triangle leads the title and signals destructive work. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
-5. **Spacer** — Flexible gap separates the title from its close control. Selector: `[class~="aui-dialog-spacer"]`.
-6. **Close** — Close Reset leaves without triggering either reset action. Selector: `[class~="aui-dialog-close"]`.
-7. **Body** — HS wraps its reset warning in a separate dialog body. Selector: `[class~="aui-dialog-body"]`.
-8. **Description** — Warning says inputs and project settings cannot be recovered. Selector: `[class~="aui-dialog-description"]`.
-9. **Footer** — Footer groups Cancel and reset actions; ADC wraps its choices. Selector: `[class~="aui-dialog-actions"]`.
-10. **Cancel** — Cancel leaves every input unchanged and closes the alert. Selector: `[data-ug-part="cancel"]`.
-11. **Reset** — Secondary Reset clears every input in these apps. Selector: `[data-ug-part="confirm"]`.
-12. **Reset current design** — ADC offers a text action to reset only this design. Selector: `[data-ug-part="reset-current"]`.
-13. **Reset all designs** — Solid error button resets all designs to standard. Selector: `[data-ug-part="reset-all"]`.
-14. **Close tooltip** — ADC tooltip labels the close icon while hovered. Selector: `[class~="aui-tooltip-popup"]`.
-
 ## Apps
 
 - HCS (`hcs`)

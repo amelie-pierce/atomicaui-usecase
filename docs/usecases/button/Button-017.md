@@ -43,11 +43,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Icon** — The file glyph before the label that marks the item as a report. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 3. **Label** — The text "Report is ready" in a span, which reads "Report is ready (outdated)" when inputs changed. Selector: `[class~="aui-button"] > span`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Container** — Extra-small soft blue report-ready button appears in the ADC status bar. Selector: `[class~="aui-button"]`.
-2. **Icon** — File glyph marks the report before its text label. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
-
 ## Apps
 
 - ADC (`adc`)

@@ -47,16 +47,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Cell** — Value cell; the limit state name is left-aligned through its own aui, the figures stay right-aligned. Selector: `[class~="aui-table-cell"]`.
 7. **Status dot** — ADM only: the Ratio cell leads with a coloured success dot before the 41% value. Selector: `[class~="aui-table-cell"] [class~="aui-symbol"]`.
 
-## Component layer steps
-
-1. **Table** — Soft framed summary uses right-aligned values and between-row borders. Selector: `[class~="aui-table"]`.
-2. **Header** — Raised header names Limit state, Demand, and Capacity columns. Selector: `[class~="aui-table-head"]`.
-3. **Header cell** — Limit state aligns left while numeric headings align right. Selector: `[class~="aui-table-header-cell"]`.
-4. **Body** — Two material rows show demand and capacity values. Selector: `[class~="aui-table-body"]`.
-5. **Row** — One limit state with its demand and capacity values. Selector: `[class~="aui-table-row"]`.
-6. **Cell** — Names align left while numeric figures align right. Selector: `[class~="aui-table-cell"]`.
-7. **Status dot** — ADM adds a success dot before the Ratio percentage. Selector: `[class~="aui-table-cell"] [class~="aui-symbol"]`.
-
 ## Apps
 
 - ADM (`adm`)

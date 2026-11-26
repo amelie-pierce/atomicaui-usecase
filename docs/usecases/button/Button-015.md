@@ -41,10 +41,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Container** — The OK Button of an ADC notice dialog: solid primary (orange), small, the only action in the footer. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
 2. **Label** — The text "OK" that acknowledges the Maximum Number of Designs Reached notice. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Container** — Small orange OK is the notice dialog’s only footer action. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
-
 ## Apps
 
 - ADC (`adc`)
@@ -68,15 +64,6 @@ In context view: Shown.
 3. **Error icon** — The error-colored circle-xmark icon before the title. Part marker: `data-ug-part="error-icon"`.
 4. **Close button** — The X at the end of the title, shown in a "Close" tooltip. Part marker: `data-ug-part="dialog-close"`.
 5. **Message** — The text that a Project can contain at most 15 Designs. Part marker: `data-ug-part="message"`.
-
-#### In context layer steps
-
-1. **Dialog** — Alert dialog shows the notice and its only action. Selector: `[data-ug-part="dialog"]`.
-2. **Dialog title** — The raised title bar "Maximum Number of Designs Reached". Selector: `[data-ug-part="dialog-title"]`.
-3. **Error icon** — Error-coloured circle-xmark appears before the alert dialog title. Selector: `[data-ug-part="error-icon"]`.
-4. **Close button** — Title X shows a Close tooltip before dismissing the notice. Selector: `[data-ug-part="dialog-close"]`.
-5. **Message** — The text that a Project can contain at most 15 Designs. Selector: `[data-ug-part="message"]`.
-6. **Container** — Small orange OK is the notice dialog’s only footer action. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-015/example.tsx`
 

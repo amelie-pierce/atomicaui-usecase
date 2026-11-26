@@ -54,22 +54,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 13. **Item text** — The product name, such as "Anchor A2" or "Rod B1". Selector: `[class~="aui-select-item-text"]`.
 14. **Indicator** — Empty slot (`{null}`) at the row end; no check is drawn. Selector: `[class~="aui-select-item-indicator"]`.
 
-## Component layer steps
-
-1. **Field row** — Horizontal field shares one line between Product label and trigger. Selector: `[class~="aui-field"]`.
-2. **Label** — Product label uses half the row and truncates with ellipsis. Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — Trigger fills the other half; FD adds the chosen product icon. Selector: `[class~="aui-select-trigger"]`.
-4. **Trigger icon** — FD grouped trigger leads with the chosen product’s flag. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`.
-5. **Chevron** — End chevron marks the product trigger as a dropdown. Selector: `[class~="aui-select-chevron"]`.
-6. **Popup** — Popup of the trigger width holding two groups, Anchors and Rods. Selector: `[class~="aui-select-popup"]`.
-7. **List** — The list that stacks the Anchors and Rods groups. Selector: `[class~="aui-select-list"]`.
-8. **Group** — Related rows group Anchor A1, Anchor A2, or Rod B1. Selector: `[class~="aui-select-group"]`.
-9. **Group label** — The heading above each family, "Anchors" and "Rods". Selector: `[class~="aui-select-group-label"]`.
-10. **Item** — Raised fill marks the selected product within its group. Selector: `[class~="aui-select-item"]`.
-11. **Item icon** — FD places a flag before each grouped product name. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
-12. **Item text** — The product name, such as "Anchor A2" or "Rod B1". Selector: `[class~="aui-select-item-text"]`.
-13. **Indicator** — Empty slot (`{null}`) at the row end; no check is drawn. Selector: `[class~="aui-select-item-indicator"]`.
-
 ## Apps
 
 - ADC (`adc`)

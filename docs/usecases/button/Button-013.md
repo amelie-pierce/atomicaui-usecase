@@ -42,10 +42,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Container** — The Add to Job List Button: a solid secondary (black) small Button, text only, first in the HS Output toolbar row. Selector: `[class~="aui-button"]`.
 2. **Label** — The text "Add to Job List" that adds the chosen result to the job list. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Container** — Small solid secondary Add to Job List starts the toolbar. Selector: `[class~="aui-button"]`.
-
 ## Apps
 
 - HS (`hs`)
@@ -66,12 +62,6 @@ In context view: Shown.
 
 1. **Output toolbar** — The wrapping row of small controls (8px gap) that starts with Add to Job List. Part marker: `data-ug-part="toolbar"`.
 2. **Search field** — The Search Table Field with a magnifying-glass icon that fills the rest of the line. Part marker: `data-ug-part="search"`.
-
-#### In context layer steps
-
-1. **Output toolbar** — Wrapping row begins with Add to Job List and uses 8px gaps. Selector: `[data-ug-part="toolbar"]`.
-2. **Search field** — Search Table field fills the remaining toolbar width. Selector: `[data-ug-part="search"]`.
-3. **Container** — Small solid secondary Add to Job List starts the toolbar. Selector: `[class~="aui-button"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-013/example.tsx`
 

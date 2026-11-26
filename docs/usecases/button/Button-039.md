@@ -43,11 +43,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Reset view** — The small soft-shaped IconButton with primary orange color and a 1px outlined border that floats over the 3D viewer to reset the camera. Selector: `[class~="aui-button"]`.
 2. **Bullseye icon** — The bullseye glyph, drawn in the primary color on a transparent surface. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
-## Component layer steps
-
-1. **Reset view** — Small orange outlined soft IconButton resets the 3D camera. Selector: `[class~="aui-button"]`.
-2. **Bullseye icon** — The bullseye glyph, drawn in the primary color on a transparent surface. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -69,14 +64,6 @@ In context view: Shown.
 1. **3D Viewer pane** — The surface-alt 3D Viewer section that frames the header and the scene. Selector: `[data-ug-part="viewer-pane"]`.
 2. **Viewer title** — The semi-bold 3D Viewer heading in the 28px header. Selector: `[data-ug-part="viewer-title"]`.
 3. **Scene canvas** — The framed stand-in for the live 3D canvas, with Reset view overlaid at its top end. Selector: `[data-ug-part="viewer-canvas"]`.
-
-#### In context layer steps
-
-1. **3D Viewer pane** — The surface-alt 3D Viewer section that frames the header and the scene. Selector: `[data-ug-part="viewer-pane"]`.
-2. **Viewer title** — The semi-bold 3D Viewer heading in the 28px header. Selector: `[data-ug-part="viewer-title"]`.
-3. **Scene canvas** — Framed canvas stand-in places Reset view at its upper edge. Selector: `[data-ug-part="viewer-canvas"]`.
-4. **Reset view** — Small orange outlined soft IconButton resets the 3D camera. Selector: `[class~="aui-button"]`.
-5. **Bullseye icon** — The bullseye glyph, drawn in the primary color on a transparent surface. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-039/example.tsx`
 

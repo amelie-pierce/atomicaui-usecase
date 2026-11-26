@@ -46,15 +46,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Popup** — The default tooltip surface for the one-line note. Selector: `[class~="aui-tooltip-popup"]`.
 7. **Note** — The note "Show the model in perspective" that explains what the option does. Selector: `[class~="aui-tooltip-popup"]`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Radio group** — Small unpadded Camera projection group gives each option its tooltip. Selector: `[class~="aui-radio-group"]`.
-2. **Trigger** — Wrapper keeps tooltip open while arrow keys select Perspective. Selector: `[data-ug-part="trigger"]`.
-3. **Radio** — The "Perspective" radio at scale "sm", selected by default. Selector: `[class~="aui-radio"]`.
-4. **Radio label** — The visible option name "Perspective" beside the radio. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
-5. **Positioner** — Tooltip sits above the radio with a 4px gap; RWS uses below. Selector: `[class~="aui-tooltip-positioner"]`.
-6. **Popup** — The default tooltip surface for the one-line note. Selector: `[class~="aui-tooltip-popup"]`.
-
 ## Apps
 
 - PBS (`pbs`)

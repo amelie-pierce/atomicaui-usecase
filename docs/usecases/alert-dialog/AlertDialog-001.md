@@ -52,20 +52,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 11. **Reset** — The solid destructive button: a secondary Reset in HCS, ACE and ADM, and the solid error "Reset All Designs to Standard" in ADC. Part marker: `data-ug-part="confirm"`.
 12. **Reset current design** — The ADC-only text error button "Reset Current Design to Standard" that offers the narrower reset. Part marker: `data-ug-part="reset-current"`.
 
-## Component layer steps
-
-1. **Overlay** — Scrim interrupts the workspace before the Reset Inputs confirmation. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — Soft confirm window sizes vary by app, from 480px to 640px. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — Raised title names Reset Inputs beside its warning and close controls. Selector: `[class~="aui-dialog-title"]`.
-4. **Warning icon** — Triangle-exclamation glyph signals caution before the warning is read. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
-5. **Spacer** — Flexible gap pushes the close control to the title bar end. Selector: `[class~="aui-dialog-spacer"]`.
-6. **Close** — Close Reset dismisses the dialog without changing any inputs. Selector: `[class~="aui-dialog-close"]`.
-7. **Description** — Warning explains reset fields cannot be restored after confirmation. Selector: `[class~="aui-dialog-description"]`.
-8. **Footer** — Footer groups the safe exit and reset choices after the warning. Selector: `[class~="aui-dialog-actions"]`.
-9. **Cancel** — Cancel backs out and keeps current inputs unchanged. Selector: `[data-ug-part="cancel"]`.
-10. **Reset** — Reset clears the selected inputs with a destructive button. Selector: `[data-ug-part="confirm"]`.
-11. **Reset current design** — ADC offers a text action to reset only this design. Selector: `[data-ug-part="reset-current"]`.
-
 ## Apps
 
 - HCS (`hcs`)

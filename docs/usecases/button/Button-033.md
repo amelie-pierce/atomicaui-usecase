@@ -46,14 +46,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Section** — The Connection Type and Load Properties sections of the Input pane that the button collapses or expands together. Selector: `[class~="aui-accordion-item"]`.
 5. **Section trigger** — The header row of each section with its icon, semi-bold name and chevron. Selector: `[class~="aui-accordion-trigger"]`.
 
-## Component layer steps
-
-1. **Collapse all** — Transparent secondary button collapses every Input section; HCS uses angle-left. Selector: `[class~="aui-button"][aria-label^="Collapse"]`.
-2. **Icon** — The arrows-to-line glyph, which becomes expand when all sections are closed. Selector: `[class~="aui-button"][aria-label^="Collapse"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Tooltip** — HCS shows the Collapse Input label beneath its button. Selector: `[class~="aui-tooltip-popup"]`.
-4. **Section** — Connection Type and Load Properties sections collapse together. Selector: `[class~="aui-accordion-item"]`.
-5. **Section trigger** — Section header pairs its icon and name with a chevron. Selector: `[class~="aui-accordion-trigger"]`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -75,17 +67,6 @@ In context view: Shown.
 1. **Input pane** — The surface-alt Input pane that frames the header and the section card. Selector: `[data-ug-part="input-pane"]`.
 2. **Collapse Input** — The angle-left button at the start of the header that collapses the whole pane, with its Collapse Input tooltip. Selector: `[class~="aui-button"][aria-label="Collapse Input"]`.
 3. **Pane title** — The semi-bold Input heading in the header, before the spacer and Collapse all. Selector: `[data-ug-part="pane-title"]`.
-
-#### In context layer steps
-
-1. **Input pane** — The surface-alt Input pane that frames the header and the section card. Selector: `[data-ug-part="input-pane"]`.
-2. **Collapse Input** — HCS header starts with a pane-collapse button and tooltip. Selector: `[class~="aui-button"][aria-label="Collapse Input"]`.
-3. **Pane title** — Semi-bold Input title sits beside Collapse all in the header. Selector: `[data-ug-part="pane-title"]`.
-4. **Collapse all** — Transparent secondary button collapses every Input section; HCS uses angle-left. Selector: `[class~="aui-button"][aria-label^="Collapse"]`.
-5. **Icon** — The arrows-to-line glyph, which becomes expand when all sections are closed. Selector: `[class~="aui-button"][aria-label^="Collapse"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-6. **Tooltip** — HCS shows the Collapse Input label beneath its button. Selector: `[class~="aui-tooltip-popup"]`.
-7. **Section** — Connection Type and Load Properties sections collapse together. Selector: `[class~="aui-accordion-item"]`.
-8. **Section trigger** — Section header pairs its icon and name with a chevron. Selector: `[class~="aui-accordion-trigger"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-033/example.tsx`
 

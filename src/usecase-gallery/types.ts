@@ -13,7 +13,7 @@ export interface LayerStep {
   explanation: string;
   keyIdea: string;
   selector?: string;
-  /** JSX tags (e.g. `Dialog.Popup`) that write the target in the option views of this step, for elements whose class or marker is not in the code. */
+  /** JSX tags (e.g. `Dialog.Popup`) that write the target in the option views of this step, used only where its class or marker is not in the code. */
   code?: string[];
   /** The step adds nothing to the code beyond the step before it, so its highlight may repeat. */
   unchanged?: boolean;

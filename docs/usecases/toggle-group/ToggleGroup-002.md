@@ -46,14 +46,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Option text** — The fastener name, STN22 or SDWB, in a Type role "l5" at medium weight. Selector: `[class~="aui-toggle-group"] > button [data-aui-typeface]`.
 5. **Field below** — The Diameter / Style field that the switch sits above and drives in the AGPD scene. Selector: `[class~="aui-field-control"]`.
 
-## Component layer steps
-
-1. **Group** — STN22-selected fastener group sizes itself to the option labels. Selector: `[class~="aui-toggle-group"]`.
-2. **Item** — STN22 and SDWB appear as text buttons without added padding. Selector: `[class~="aui-toggle-group"] > button`.
-3. **Segment** — Pressed segment uses soft secondary fill with 6px side padding. Selector: `[class~="aui-toggle-group"] > button [class~="aui-view"]`.
-4. **Option text** — Fastener code uses medium-weight l5 type at compact scale. Selector: `[class~="aui-toggle-group"] > button [data-aui-typeface]`.
-5. **Field below** — Diameter and Style field sits below the fastener choice. Selector: `[class~="aui-field-control"]`.
-
 ## Apps
 
 - AGPD (`agpd`)
@@ -73,15 +65,6 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Diameter and style field** — The Diameter and Style field control, showing 1/4 in, hex head, that the segments sit above and switch. Part marker: `data-ug-part="diameter-field"`.
-
-#### In context layer steps
-
-1. **Diameter and style field** — Field shows 1/4 inch and hex head beneath the segments. Selector: `[data-ug-part="diameter-field"]`.
-2. **Group** — STN22-selected fastener group sizes itself to the option labels. Selector: `[class~="aui-toggle-group"]`.
-3. **Item** — STN22 and SDWB appear as text buttons without added padding. Selector: `[class~="aui-toggle-group"] > button`.
-4. **Segment** — Pressed segment uses soft secondary fill with 6px side padding. Selector: `[class~="aui-toggle-group"] > button [class~="aui-view"]`.
-5. **Option text** — Fastener code uses medium-weight l5 type at compact scale. Selector: `[class~="aui-toggle-group"] > button [data-aui-typeface]`.
-6. **Field below** — Diameter and Style field sits below the fastener choice. Selector: `[class~="aui-field-control"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/toggle-group/ToggleGroup-002/example.tsx`
 

@@ -46,15 +46,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Number field** — FD, AGPD, ADM and ADC wrap the value in a Field.NumberField group instead of a plain input, with no steppers, so the number is parsed and aligned at the end. Selector: `[class~="aui-number-field"]`.
 6. **Unit** — The "psi" unit after the value, a mono role "l4" Type here; HS, PFD and RWS render it 14px semi-bold, FD and AGPD as a 16px regular mono unit. Selector: `[class~="aui-field-control"] > [data-aui-typeface], [class~="aui-number-field-unit"]`.
 
-## Component layer steps
-
-1. **Field** — Small stacked number field; some apps put its 137px label beside it. Selector: `[class~="aui-field"]`.
-2. **Label** — Fc perp label sits above; inline variants truncate within half the row. Selector: `[class~="aui-field-label"]`.
-3. **Control** — Outlined 28px row keeps the value beside its unit. Selector: `[class~="aui-field-control"]`.
-4. **Input** — End-aligned 650 accepts decimal entry beside the unit. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`.
-5. **Number field** — FD, AGPD, ADM, ADC use a stepper-free parsed number group. Selector: `[class~="aui-number-field"]`.
-6. **Unit** — Mono psi label follows the number; weight and size vary by app. Selector: `[class~="aui-field-control"] > [data-aui-typeface], [class~="aui-number-field-unit"]`.
-
 ## Apps
 
 - HCS (`hcs`)

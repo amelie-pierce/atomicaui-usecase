@@ -48,16 +48,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`.
 7. **Sort option** — A sort choice such as "Sort A to Z" or "Sort Z to A"; the table scenes add "(Smallest to Largest)" hints and a None option, selected options are solid primary. Selector: `[class~="aui-radio"]`.
 
-## Component layer steps
-
-1. **Trigger** — Kebab opens Column options beside the Load header. Selector: `[data-base-ui-click-trigger]`.
-2. **Results table** — Connector results table places kebab actions in its headers. Selector: `[class~="aui-table"]`.
-3. **Sortable header cell** — Sorted Load header holds kebab; dots turn horizontal in PFD. Selector: `[data-ug-part="header-cell"]`.
-4. **Popup** — 256px sort menu opens at the cell end, except PFD. Selector: `[data-aui-popup-motion][role="dialog"]`.
-5. **Close** — PFD close button sits above Sort choices in the popup. Selector: `[data-ug-part="close"]`.
-6. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`.
-7. **Sort option** — Sort choices include hints and None; selected option is solid primary. Selector: `[class~="aui-radio"]`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -80,18 +70,6 @@ In context view: Shown.
 
 1. **Result rows** — The table body rows under the header; with Load sorted A to Z they follow the chosen order. Part marker: `data-ug-part="rows"`.
 2. **Neighbouring header cell** — The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to. Part marker: `data-ug-part="other-header"`.
-
-#### In context layer steps
-
-1. **Result rows** — A to Z sorting orders the table body rows. Selector: `[data-ug-part="rows"]`.
-2. **Neighbouring header cell** — Model header shows its own kebab beside the open menu’s Load header. Selector: `[data-ug-part="other-header"]`.
-3. **Trigger** — Kebab opens Column options beside the Load header. Selector: `[data-base-ui-click-trigger]`.
-4. **Results table** — Connector results table places kebab actions in its headers. Selector: `[class~="aui-table"]`.
-5. **Sortable header cell** — Sorted Load header holds kebab; dots turn horizontal in PFD. Selector: `[data-ug-part="header-cell"]`.
-6. **Popup** — 256px sort menu opens at the cell end, except PFD. Selector: `[data-aui-popup-motion][role="dialog"]`.
-7. **Close** — PFD close button sits above Sort choices in the popup. Selector: `[data-ug-part="close"]`.
-8. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`.
-9. **Sort option** — Sort choices include hints and None; selected option is solid primary. Selector: `[class~="aui-radio"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/popover/Popover-003/example.tsx`
 
@@ -196,18 +174,6 @@ In context view: Shown.
 
 1. **Result rows** — The table body rows under the header; with Load sorted A to Z they follow the chosen order. Part marker: `data-ug-part="rows"`.
 2. **Neighbouring header cell** — The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to. Part marker: `data-ug-part="other-header"`.
-
-#### In context layer steps
-
-1. **Result rows** — A to Z sorting orders the table body rows. Selector: `[data-ug-part="rows"]`.
-2. **Neighbouring header cell** — Model header shows its own kebab beside the open menu’s Load header. Selector: `[data-ug-part="other-header"]`.
-3. **Trigger** — Kebab opens Column options beside the Load header. Selector: `[data-base-ui-click-trigger]`.
-4. **Results table** — Connector results table places kebab actions in its headers. Selector: `[class~="aui-table"]`.
-5. **Sortable header cell** — Sorted Load header holds kebab; dots turn horizontal in PFD. Selector: `[data-ug-part="header-cell"]`.
-6. **Popup** — 256px sort menu opens at the cell end, except PFD. Selector: `[data-aui-popup-motion][role="dialog"]`.
-7. **Close** — PFD close button sits above Sort choices in the popup. Selector: `[data-ug-part="close"]`.
-8. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`.
-9. **Sort option** — Sort choices include hints and None; selected option is solid primary. Selector: `[class~="aui-radio"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/popover/Popover-003/options/pfd-column-menu/example.tsx`
 

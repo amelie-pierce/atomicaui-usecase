@@ -54,21 +54,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 12. **Indicator** — In the ACE licence gate scene this slot holds a check icon on the chosen row; the base example keeps it empty. Selector: `[class~="aui-select-item-indicator"]`.
 13. **Check icon** — The check drawn at the end of the chosen country row in the ACE scene. Selector: `[class~="aui-select-item-indicator"] [class~="aui-contained-icon"]`.
 
-## Component layer steps
-
-1. **Field** — Small full-width field sits above the licence accept checkbox. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Country" label above the licence gate trigger. Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — Flag-led licence trigger uses app-default scale and height. Selector: `[class~="aui-select-trigger"]`.
-4. **Trigger icon** — The flag icon that leads the trigger and mirrors the chosen row. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`.
-5. **Chevron** — The chevron at the end of the trigger. Selector: `[class~="aui-select-chevron"]`.
-6. **Popup** — Popup sits 4px below and lists three countries. Selector: `[class~="aui-select-popup"]`.
-7. **List** — The list of Canada, United States and Mexico rows. Selector: `[class~="aui-select-list"]`.
-8. **Item** — Country row pairs its flag and name with a trailing check slot. Selector: `[class~="aui-select-item"]`.
-9. **Item icon** — Flag icon appears before each country name in the list. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
-10. **Item text** — The country name: Canada, United States or Mexico. Selector: `[class~="aui-select-item-text"]`.
-11. **Indicator** — ACE shows a check here; the base example leaves it empty. Selector: `[class~="aui-select-item-indicator"]`.
-12. **Check icon** — ACE draws a check at the chosen country’s row end. Selector: `[class~="aui-select-item-indicator"] [class~="aui-contained-icon"]`.
-
 ## Apps
 
 - ACE (`ace`)
@@ -103,31 +88,6 @@ In context view: Shown.
 8. **Dialog actions** — The footer groups the decline and acceptance actions. Selector: `[data-ug-part="licence-actions"]`.
 9. **Decline action** — Do Not Accept closes the agreement without accepting it. Selector: `[data-ug-part="decline"]`.
 10. **Accept action** — Accept Application License Agreement completes the gate. Selector: `[data-ug-part="accept"]`.
-
-#### In context layer steps
-
-1. **Backdrop** — The backdrop separates the licence gate from the app beneath it. Selector: `[data-ug-part="licence-backdrop"]`.
-2. **Dialog** — The modal frame contains the agreement and its controls. Selector: `[data-ug-part="licence-dialog"]`.
-3. **Title** — The title names the agreement and places Do Not Accept at the end. Selector: `[data-ug-part="licence-title"]`.
-4. **Instruction** — The sentence directs the user to review the agreement before starting ACE. Selector: `[data-ug-part="licence-description"]`.
-5. **Agreement body** — The body contains the licence copy followed by the country field. Selector: `[data-ug-part="licence-body"]`.
-6. **Agreement text** — The user reviews the displayed licence terms before accepting. Selector: `[data-ug-part="licence-copy"]`.
-7. **Country field position** — The country selection follows the licence terms inside the same body. Selector: `[data-ug-part="licence-country"]`.
-8. **Dialog actions** — The footer holds the two ways to leave the gate. Selector: `[data-ug-part="licence-actions"]`.
-9. **Decline action** — Do Not Accept exits without agreeing to the terms. Selector: `[data-ug-part="decline"]`.
-10. **Accept action** — The acceptance button completes the licence gate. Selector: `[data-ug-part="accept"]`.
-11. **Field** — Small full-width field sits above the licence accept checkbox. Selector: `[class~="aui-field"]`.
-12. **Label** — The "Country" label above the licence gate trigger. Selector: `[class~="aui-field-label"]`.
-13. **Trigger** — Flag-led licence trigger uses app-default scale and height. Selector: `[class~="aui-select-trigger"]`.
-14. **Trigger icon** — The flag icon that leads the trigger and mirrors the chosen row. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`.
-15. **Chevron** — The chevron at the end of the trigger. Selector: `[class~="aui-select-chevron"]`.
-16. **Popup** — Popup sits 4px below and lists three countries. Selector: `[class~="aui-select-popup"]`.
-17. **List** — The list of Canada, United States and Mexico rows. Selector: `[class~="aui-select-list"]`.
-18. **Item** — Country row pairs its flag and name with a trailing check slot. Selector: `[class~="aui-select-item"]`.
-19. **Item icon** — Flag icon appears before each country name in the list. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
-20. **Item text** — The country name: Canada, United States or Mexico. Selector: `[class~="aui-select-item-text"]`.
-21. **Indicator** — ACE shows a check here; the base example leaves it empty. Selector: `[class~="aui-select-item-indicator"]`.
-22. **Check icon** — ACE draws a check at the chosen country’s row end. Selector: `[class~="aui-select-item-indicator"] [class~="aui-contained-icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/select/Select-005/example.tsx`
 

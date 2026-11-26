@@ -45,17 +45,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Icon** — The leading glyph of each row: xmark, ban, pen, copy and arrow-up. Selector: `[class~="aui-dropdown-item"] > [class~="aui-contained-icon"]`.
 5. **Separator** — The divider between the close actions (Close, Close all other designs) and the edit actions (Rename, Duplicate, Move to top). Selector: `[class~="aui-dropdown-separator"]`.
 
-## Component layer steps
-
-1. **Design tab trigger** — Design 1 tab opens its secondary menu on right-click. Selector: `[class~="aui-tabs-tab"]`.
-2. **Menu surface** — Tab options popup sits beside the tab and groups actions. Selector: `[class~="aui-dropdown-popup"]`.
-3. **Close action** — First row closes the current Design 1 tab. Selector: `[data-ug-part="close-action"]`.
-4. **Close other designs** — This row closes every other design while keeping the current tab. Selector: `[data-ug-part="close-others-action"]`.
-5. **Action group divider** — Divider separates close commands from editing and duplication actions. Selector: `[class~="aui-dropdown-separator"]`.
-6. **Rename action** — Rename action opens the current design’s name editor. Selector: `[data-ug-part="rename-action"]`.
-7. **Duplicate action** — Duplicate action creates a copy of this design. Selector: `[data-ug-part="duplicate-action"]`.
-8. **Move to top action** — Final row moves this design to the tab rail’s start. Selector: `[data-ug-part="move-to-top-action"]`.
-
 ## Apps
 
 - ADC (`adc`)

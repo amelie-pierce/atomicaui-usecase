@@ -48,16 +48,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Help popover** — PBS, PFD and RWS open the explanation in a solid popover (320px or 384px max) above the button. Selector: `[data-aui-popup-motion][role="dialog"]`.
 7. **Select trigger** — HCS only: the Snow (115) select under the Download Duration label. Selector: `[class~="aui-select-trigger"]`.
 
-## Component layer steps
-
-1. **Help button** — 20px help icon sits by the label; Look uses 28px variant. Selector: `[class~="aui-button"][aria-label*="elp"]`.
-2. **Help icon** — The circle-question glyph centred in the help button. Selector: `[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Field label** — Material or Download Duration label names the explained control. Selector: `[class~="aui-field-label"]`.
-4. **Field control** — Steel field is the control described by the help text. Selector: `[class~="aui-field-control"]`.
-5. **Help tooltip** — ADM and HS show a tooltip above the button, sized per app. Selector: `[class~="aui-tooltip-popup"]`.
-6. **Help popover** — PBS, PFD, and RWS show a solid popover above the button. Selector: `[data-aui-popup-motion][role="dialog"]`.
-7. **Select trigger** — HCS only: the Snow (115) select under the Download Duration label. Selector: `[class~="aui-select-trigger"]`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -84,18 +74,6 @@ In context view: Shown.
 
 1. **Input pane** — The surface-alt Input pane that frames the Load Properties field. Selector: `[data-ug-part="input-pane"]`.
 2. **Label row** — The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control. Selector: `[data-ug-part="label-row"]`.
-
-#### In context layer steps
-
-1. **Input pane** — The surface-alt Input pane that frames the Load Properties field. Selector: `[data-ug-part="input-pane"]`.
-2. **Label row** — Flex row places Material label and help button above the control. Selector: `[data-ug-part="label-row"]`.
-3. **Help button** — 20px help icon sits by the label; Look uses 28px variant. Selector: `[class~="aui-button"][aria-label*="elp"]`.
-4. **Help icon** — The circle-question glyph centred in the help button. Selector: `[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-5. **Field label** — Material or Download Duration label names the explained control. Selector: `[class~="aui-field-label"]`.
-6. **Field control** — Steel field is the control described by the help text. Selector: `[class~="aui-field-control"]`.
-7. **Help tooltip** — ADM and HS show a tooltip above the button, sized per app. Selector: `[class~="aui-tooltip-popup"]`.
-8. **Help popover** — PBS, PFD, and RWS show a solid popover above the button. Selector: `[data-aui-popup-motion][role="dialog"]`.
-9. **Select trigger** — HCS only: the Snow (115) select under the Download Duration label. Selector: `[class~="aui-select-trigger"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-032/example.tsx`
 
@@ -156,17 +134,6 @@ In context view: Shown.
 
 1. **Label row** — The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control. Selector: `[data-ug-part="label-row"]`.
 
-#### In context layer steps
-
-1. **Label row** — Flex row places Material label and help button above the control. Selector: `[data-ug-part="label-row"]`.
-2. **Help button** — 20px help icon sits by the label; Look uses 28px variant. Selector: `[class~="aui-button"][aria-label*="elp"]`.
-3. **Help icon** — The circle-question glyph centred in the help button. Selector: `[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-4. **Field label** — Material or Download Duration label names the explained control. Selector: `[class~="aui-field-label"]`.
-5. **Field control** — Steel field is the control described by the help text. Selector: `[class~="aui-field-control"]`.
-6. **Help tooltip** — ADM and HS show a tooltip above the button, sized per app. Selector: `[class~="aui-tooltip-popup"]`.
-7. **Help popover** — PBS, PFD, and RWS show a solid popover above the button. Selector: `[data-aui-popup-motion][role="dialog"]`.
-8. **Select trigger** — HCS only: the Snow (115) select under the Download Duration label. Selector: `[class~="aui-select-trigger"]`.
-
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-032/options/pbs-field-help/example.tsx`
 
 ```tsx
@@ -222,17 +189,6 @@ In context view: Shown.
 
 1. **Label row** — The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control. Selector: `[data-ug-part="label-row"]`.
 
-#### In context layer steps
-
-1. **Label row** — Flex row places Material label and help button above the control. Selector: `[data-ug-part="label-row"]`.
-2. **Help button** — 20px help icon sits by the label; Look uses 28px variant. Selector: `[class~="aui-button"][aria-label*="elp"]`.
-3. **Help icon** — The circle-question glyph centred in the help button. Selector: `[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-4. **Field label** — Material or Download Duration label names the explained control. Selector: `[class~="aui-field-label"]`.
-5. **Field control** — Steel field is the control described by the help text. Selector: `[class~="aui-field-control"]`.
-6. **Help tooltip** — ADM and HS show a tooltip above the button, sized per app. Selector: `[class~="aui-tooltip-popup"]`.
-7. **Help popover** — PBS, PFD, and RWS show a solid popover above the button. Selector: `[data-aui-popup-motion][role="dialog"]`.
-8. **Select trigger** — HCS only: the Snow (115) select under the Download Duration label. Selector: `[class~="aui-select-trigger"]`.
-
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-032/options/rws-field-help/example.tsx`
 
 ```tsx
@@ -287,17 +243,6 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Label row** — The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control. Selector: `[data-ug-part="label-row"]`.
-
-#### In context layer steps
-
-1. **Label row** — Flex row places Material label and help button above the control. Selector: `[data-ug-part="label-row"]`.
-2. **Help button** — 20px help icon sits by the label; Look uses 28px variant. Selector: `[class~="aui-button"][aria-label*="elp"]`.
-3. **Help icon** — The circle-question glyph centred in the help button. Selector: `[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-4. **Field label** — Material or Download Duration label names the explained control. Selector: `[class~="aui-field-label"]`.
-5. **Field control** — Steel field is the control described by the help text. Selector: `[class~="aui-field-control"]`.
-6. **Help tooltip** — ADM and HS show a tooltip above the button, sized per app. Selector: `[class~="aui-tooltip-popup"]`.
-7. **Help popover** — PBS, PFD, and RWS show a solid popover above the button. Selector: `[data-aui-popup-motion][role="dialog"]`.
-8. **Select trigger** — HCS only: the Snow (115) select under the Download Duration label. Selector: `[class~="aui-select-trigger"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-032/options/hs-field-help/example.tsx`
 
@@ -355,17 +300,6 @@ In context view: Shown.
 
 1. **Label row** — The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control. Selector: `[data-ug-part="label-row"]`.
 
-#### In context layer steps
-
-1. **Label row** — Flex row places Material label and help button above the control. Selector: `[data-ug-part="label-row"]`.
-2. **Help button** — 20px help icon sits by the label; Look uses 28px variant. Selector: `[class~="aui-button"][aria-label*="elp"]`.
-3. **Help icon** — The circle-question glyph centred in the help button. Selector: `[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-4. **Field label** — Material or Download Duration label names the explained control. Selector: `[class~="aui-field-label"]`.
-5. **Field control** — Steel field is the control described by the help text. Selector: `[class~="aui-field-control"]`.
-6. **Help tooltip** — ADM and HS show a tooltip above the button, sized per app. Selector: `[class~="aui-tooltip-popup"]`.
-7. **Help popover** — PBS, PFD, and RWS show a solid popover above the button. Selector: `[data-aui-popup-motion][role="dialog"]`.
-8. **Select trigger** — HCS only: the Snow (115) select under the Download Duration label. Selector: `[class~="aui-select-trigger"]`.
-
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-032/options/adm-field-help/example.tsx`
 
 ```tsx
@@ -421,17 +355,6 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Label row** — The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control. Selector: `[data-ug-part="label-row"]`.
-
-#### In context layer steps
-
-1. **Label row** — Flex row places Material label and help button above the control. Selector: `[data-ug-part="label-row"]`.
-2. **Help button** — 20px help icon sits by the label; Look uses 28px variant. Selector: `[class~="aui-button"][aria-label*="elp"]`.
-3. **Help icon** — The circle-question glyph centred in the help button. Selector: `[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-4. **Field label** — Material or Download Duration label names the explained control. Selector: `[class~="aui-field-label"]`.
-5. **Field control** — Steel field is the control described by the help text. Selector: `[class~="aui-field-control"]`.
-6. **Help tooltip** — ADM and HS show a tooltip above the button, sized per app. Selector: `[class~="aui-tooltip-popup"]`.
-7. **Help popover** — PBS, PFD, and RWS show a solid popover above the button. Selector: `[data-aui-popup-motion][role="dialog"]`.
-8. **Select trigger** — HCS only: the Snow (115) select under the Download Duration label. Selector: `[class~="aui-select-trigger"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-032/options/pfd-field-help/example.tsx`
 

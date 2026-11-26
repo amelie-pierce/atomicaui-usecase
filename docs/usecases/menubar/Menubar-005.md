@@ -49,20 +49,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 10. **Separator** — The divider between the orientation group and the layout group in the scenes. Selector: `[class~="aui-dropdown-separator"]`.
 11. **Checkbox item** — The "Auto-Rotate 3D Model" check row that the ADM scene adds because ADM has a 3D model. Selector: `[class~="aui-dropdown-checkbox-item"]`.
 
-## Component layer steps
-
-1. **Menubar** — Drawer strip holds Settings as a phone menu row. Selector: `[class~="aui-menubar"]`.
-2. **Trigger** — Settings text row opens the menu in place of the desktop gear. Selector: `[class~="aui-menubar-trigger"]`.
-3. **Popup** — Settings menu opens below and centers on the row. Selector: `[class~="aui-dropdown-popup"]`.
-4. **Group** — The Pane Orientation group with its heading and rows. Selector: `[class~="aui-dropdown-group"]`.
-5. **Group label** — Pane Orientation label names the radio choices; apps may say Pane Layout. Selector: `[class~="aui-dropdown-group-label"]`.
-6. **Radio group** — Single-choice group starts at Vertical; apps can add Horizontal and Grid. Selector: `[class~="aui-dropdown-radio-group"]`.
-7. **Radio item** — The "Vertical" row with its table-columns icon and a hidden indicator. Selector: `[class~="aui-dropdown-radio-item"]`.
-8. **Row icon** — The leading glyph of a row, table-columns for Vertical. Selector: `[class~="aui-dropdown-radio-item"] > [class~="aui-contained-icon"]`.
-9. **Item** — The "Reset layout to default" row of the ACE and ADM scenes. Selector: `[class~="aui-dropdown-item"]`.
-10. **Separator** — Thin divider separates orientation choices from layout choices. Selector: `[class~="aui-dropdown-separator"]`.
-11. **Checkbox item** — ADM adds Auto-Rotate because its scene has a 3D model. Selector: `[class~="aui-dropdown-checkbox-item"]`.
-
 ## Apps
 
 - ADM (`adm`)

@@ -41,11 +41,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Label** — The attached file name, screenshot.png. Selector: `[class~="aui-chip-label"]`. Direct text is highlighted.
 3. **Dismiss** — The X button at the end, labelled "Remove screenshot.png", that detaches the file. Selector: `[class~="aui-chip-dismiss"]`.
 
-## Component layer steps
-
-1. **Chip** — Default chip represents one attached file in feedback forms. Selector: `[class~="aui-chip"]`.
-2. **Dismiss** — End X removes the attached screenshot from the feedback form. Selector: `[class~="aui-chip-dismiss"]`.
-
 ## Apps
 
 - ADM (`adm`)
@@ -71,13 +66,6 @@ In context view: Shown.
 
 1. **Attachment heading** — The "Attach Screenshot or Markups" l4 caption above the attached files. Part marker: `data-ug-part="attach-label"`.
 2. **Attachment row** — The wrapping flex row (8px gap) that lists one Chip per attached file, such as screenshot.png and markup.pdf. Part marker: `data-ug-part="attachment-row"`.
-
-#### In context layer steps
-
-1. **Attachment heading** — The "Attach Screenshot or Markups" l4 caption above the attached files. Selector: `[data-ug-part="attach-label"]`.
-2. **Attachment row** — Wrapping row lists each attached file chip with an 8px gap. Selector: `[data-ug-part="attachment-row"]`.
-3. **Chip** — Default chip represents one attached file in feedback forms. Selector: `[class~="aui-chip"]`.
-4. **Dismiss** — End X removes the attached screenshot from the feedback form. Selector: `[class~="aui-chip-dismiss"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/chip/Chip-005/example.tsx`
 

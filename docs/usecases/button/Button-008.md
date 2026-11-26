@@ -44,11 +44,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Icon** — The filter glyph with a cross that signals removing the active filters, at scale "sm". Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 3. **Label** — The text "Reset filters" shown while a search or status filter is active. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Container** — Small Reset filters button removes the active table filters. Selector: `[class~="aui-button"]`.
-2. **Icon** — Filter glyph with a cross signals that active filters will clear. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -74,15 +69,6 @@ In context view: Shown.
 2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`.
 3. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it. Part marker: `data-ug-part="toolbar"`.
 4. **Search field** — The Field with a magnifying-glass icon, the entered text "Model" and a clear (x) button. Part marker: `data-ug-part="search"`.
-
-#### In context layer steps
-
-1. **Output pane** — Surface-alt Output pane includes its title and toolbar. Selector: `[data-ug-part="output-pane"]`.
-2. **Output title** — The "Output" heading at the start of the pane header. Selector: `[data-ug-part="output-title"]`.
-3. **Output toolbar** — Toolbar wraps search above Reset filters with 8px gaps. Selector: `[data-ug-part="toolbar"]`.
-4. **Search field** — Magnifier Field contains Model and a clear X button. Selector: `[data-ug-part="search"]`.
-5. **Container** — Small Reset filters button removes the active table filters. Selector: `[class~="aui-button"]`.
-6. **Icon** — Filter glyph with a cross signals that active filters will clear. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-008/example.tsx`
 
@@ -150,15 +136,6 @@ In context view: Shown.
 2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`.
 3. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it. Part marker: `data-ug-part="toolbar"`.
 4. **Search field** — The Field with a magnifying-glass icon, the entered text "Model" and a clear (x) button. Part marker: `data-ug-part="search"`.
-
-#### In context layer steps
-
-1. **Output pane** — Surface-alt Output pane includes its title and toolbar. Selector: `[data-ug-part="output-pane"]`.
-2. **Output title** — The "Output" heading at the start of the pane header. Selector: `[data-ug-part="output-title"]`.
-3. **Output toolbar** — Toolbar wraps search above Reset filters with 8px gaps. Selector: `[data-ug-part="toolbar"]`.
-4. **Search field** — Magnifier Field contains Model and a clear X button. Selector: `[data-ug-part="search"]`.
-5. **Container** — Small Reset filters button removes the active table filters. Selector: `[class~="aui-button"]`.
-6. **Icon** — Filter glyph with a cross signals that active filters will clear. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-008/options/fd-toolbar/example.tsx`
 

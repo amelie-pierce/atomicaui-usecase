@@ -45,15 +45,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Description** — The detail line "Your project was saved to the device." taken from the description passed to manager.add. Selector: `[class~="aui-toast-description"]`.
 7. **Close** — The close X that Toast adds so the user can dismiss the message before it times out. Selector: `[class~="aui-toast-close"]`.
 
-## Component layer steps
-
-1. **Viewport** — Toast portal pins stacked notices at the pane top end with insets. Selector: `[class~="aui-toast-viewport"]`.
-2. **Toast** — Toast stack adds one success notice for each saved project. Selector: `[class~="aui-toast"]`.
-3. **Content** — Toast content places its title and detail beside the icon. Selector: `[class~="aui-toast-content"]`.
-4. **Icon** — Success icon marks completion before readers scan notification text. Selector: `[class~="aui-toast-icon"]`.
-5. **Description** — This detail says your project was saved to the device. Selector: `[class~="aui-toast-description"]`.
-6. **Close** — Close button dismisses the notice before its timeout expires. Selector: `[class~="aui-toast-close"]`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -83,17 +74,6 @@ In context view: Shown.
 
 1. **Work area pane** — The relatively positioned pane at the app root over which the toast viewport floats at its top end. Part marker: `data-ug-part="pane"`.
 2. **Pane title** — The semi-bold l3 Input heading of the pane the toast appears over. Part marker: `data-ug-part="pane-title"`.
-
-#### In context layer steps
-
-1. **Work area pane** — Positioned work pane anchors the floating toast viewport above content. Selector: `[data-ug-part="pane"]`.
-2. **Pane title** — Input heading names the work area beneath the toast. Selector: `[data-ug-part="pane-title"]`.
-3. **Viewport** — Toast portal pins stacked notices at the pane top end with insets. Selector: `[class~="aui-toast-viewport"]`.
-4. **Toast** — Toast stack adds one success notice for each saved project. Selector: `[class~="aui-toast"]`.
-5. **Content** — Toast content places its title and detail beside the icon. Selector: `[class~="aui-toast-content"]`.
-6. **Icon** — Success icon marks completion before readers scan notification text. Selector: `[class~="aui-toast-icon"]`.
-7. **Description** — This detail says your project was saved to the device. Selector: `[class~="aui-toast-description"]`.
-8. **Close** — Close button dismisses the notice before its timeout expires. Selector: `[class~="aui-toast-close"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/toast/Toast-001/example.tsx`
 

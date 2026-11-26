@@ -48,15 +48,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 7. **Body** — The body of the report window; in the ADC scene it uses the no-padding profile so the document View reaches the popup edges. Selector: `[class~="aui-dialog-body"]`.
 8. **Preview text** — The p3 line "The preview of the report goes here." that stands in for the generated report in the Dialog frame. Part marker: `data-ug-part="preview-text"`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Overlay** — Scrim behind Calculation Report leaves the preview stage visible. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — Plain 520px report window; ADC adds drag and resize behavior. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — Raised title names Calculation Report and ends with Close. Selector: `[class~="aui-dialog-title"]`.
-4. **Spacer** — Spacer pushes the Close action to the title bar end. Selector: `[class~="aui-dialog-spacer"]`.
-5. **Close** — Report X closes the window; ADC wraps it in a tooltip. Selector: `[class~="aui-dialog-close"]`.
-6. **Body** — No-padding body lets the document view reach both popup edges. Selector: `[class~="aui-dialog-body"]`.
-
 ## Apps
 
 - ADC (`adc`)
@@ -76,16 +67,6 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Report document** — The centred role="document" View that shows "Report preview for Design 1" over a line about the generated PDF. Part marker: `data-ug-part="document"`.
-
-#### In context layer steps
-
-1. **Report document** — Centered document preview names Design 1 and its generated PDF. Selector: `[data-ug-part="document"]`.
-2. **Overlay** — Scrim behind Calculation Report leaves the preview stage visible. Selector: `[class~="aui-dialog-backdrop"]`.
-3. **Popup** — Plain 520px report window; ADC adds drag and resize behavior. Selector: `[class~="aui-dialog-popup"]`.
-4. **Title bar** — Raised title names Calculation Report and ends with Close. Selector: `[class~="aui-dialog-title"]`.
-5. **Spacer** — Spacer pushes the Close action to the title bar end. Selector: `[class~="aui-dialog-spacer"]`.
-6. **Close** — Report X closes the window; ADC wraps it in a tooltip. Selector: `[class~="aui-dialog-close"]`.
-7. **Body** — No-padding body lets the document view reach both popup edges. Selector: `[class~="aui-dialog-body"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-002/example.tsx`
 

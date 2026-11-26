@@ -45,13 +45,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 3. **Column header** — The raised Fastener Pattern heading cell that carries the text and the info button with a 4px gap. Selector: `[class~="aui-table-header-cell"]`.
 4. **Info popover** — The 384px solid popover below the heading that states Fasteners are counted per row. Selector: `[data-aui-popup-motion][role="dialog"]`.
 
-## Component layer steps
-
-1. **Info button** — Extra-small transparent circle-info explains the Fastener Pattern column. Selector: `[class~="aui-button"][aria-label="Fastener Pattern"], [class~="aui-button"][aria-label="Column info"]`.
-2. **Info icon** — The circle-info glyph that signals a note about the column. Selector: `[class~="aui-button"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Column header** — Raised Fastener Pattern cell pairs heading and help icon with 4px gap. Selector: `[class~="aui-table-header-cell"]`.
-4. **Info popover** — 384px solid popover explains fastener counts per row. Selector: `[data-aui-popup-motion][role="dialog"]`.
-
 ## Apps
 
 - FD (`fd`)
@@ -71,14 +64,6 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Results table** — The Table whose raised header row holds the Fastener Pattern heading and its info button. Selector: `[class~="aui-table"]`.
-
-#### In context layer steps
-
-1. **Results table** — Raised Fastener Pattern header and help action sit in the results table. Selector: `[class~="aui-table"]`.
-2. **Info button** — Extra-small transparent circle-info explains the Fastener Pattern column. Selector: `[class~="aui-button"][aria-label="Fastener Pattern"], [class~="aui-button"][aria-label="Column info"]`.
-3. **Info icon** — The circle-info glyph that signals a note about the column. Selector: `[class~="aui-button"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-4. **Column header** — Raised Fastener Pattern cell pairs heading and help icon with 4px gap. Selector: `[class~="aui-table-header-cell"]`.
-5. **Info popover** — 384px solid popover explains fastener counts per row. Selector: `[data-aui-popup-motion][role="dialog"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-034/example.tsx`
 

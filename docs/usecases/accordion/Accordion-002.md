@@ -49,16 +49,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 7. **Change chip** — Coloured solid chip that tags the type of change: warning IMPROVEMENT here, success FEATURE in the Europe group. Selector: `[class~="aui-chip"]`.
 8. **Chip label** — Upper-case change type, IMPROVEMENT or FEATURE. Selector: `[class~="aui-chip-label"]`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Accordion** — Release notes open Global changes first and allow other groups. Selector: `[class~="aui-accordion"]`.
-2. **Item** — One release group collects related changes, such as Global changes. Selector: `[class~="aui-accordion-item"]`.
-3. **Trigger** — Title row opens the group and shows its muted update count. Selector: `[class~="aui-accordion-trigger"]`.
-4. **Title and count** — Bold group name sits beside its muted count, such as one update. Selector: `[class~="aui-accordion-trigger-content"]`.
-5. **Chevron** — Chevron at the title row's end shows whether notes are open. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
-6. **Panel** — Panel aligns each change badge beside its explanatory sentence. Selector: `[class~="aui-accordion-panel"]`.
-7. **Change chip** — Solid chip labels each change as IMPROVEMENT or FEATURE. Selector: `[class~="aui-chip"]`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -90,20 +80,6 @@ In context view: Shown.
 2. **About title bar** — The raised Dialog.Title reading "About", with the Close About button at its end. Selector: `[class~="aui-dialog-title"]`.
 3. **Close button** — The X Dialog.Close (aria-label "Close About") that dismisses the dialog. Selector: `[class~="aui-dialog-close"]`.
 4. **Release notes body** — The padded View under the title bar that holds the release notes Accordion (the Release history column and app header are left out). Part marker: `data-ug-part="about-body"`.
-
-#### In context layer steps
-
-1. **About dialog** — About popup holds release notes beside version navigation. Selector: `[class~="aui-dialog-popup"]`.
-2. **About title bar** — Raised About title keeps the Close button at its end. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — Close About dismisses the dialog without changing the selected version. Selector: `[class~="aui-dialog-close"]`.
-4. **Release notes body** — Padded body holds release notes below the About title bar. Selector: `[data-ug-part="about-body"]`.
-5. **Accordion** — Release notes open Global changes first and allow other groups. Selector: `[class~="aui-accordion"]`.
-6. **Item** — One release group collects related changes, such as Global changes. Selector: `[class~="aui-accordion-item"]`.
-7. **Trigger** — Title row opens the group and shows its muted update count. Selector: `[class~="aui-accordion-trigger"]`.
-8. **Title and count** — Bold group name sits beside its muted count, such as one update. Selector: `[class~="aui-accordion-trigger-content"]`.
-9. **Chevron** — Chevron at the title row's end shows whether notes are open. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
-10. **Panel** — Panel aligns each change badge beside its explanatory sentence. Selector: `[class~="aui-accordion-panel"]`.
-11. **Change chip** — Solid chip labels each change as IMPROVEMENT or FEATURE. Selector: `[class~="aui-chip"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-002/example.tsx`
 
@@ -211,20 +187,6 @@ In context view: Shown.
 3. **Close button** — The X Dialog.Close (aria-label "Close About") that dismisses the dialog. Selector: `[class~="aui-dialog-close"]`.
 4. **Dialog body** — The Dialog.Body under the title bar that holds the release Accordion (the app description and Close footer are left out). Selector: `[class~="aui-dialog-body"]`.
 
-#### In context layer steps
-
-1. **About dialog** — About popup frames one release entry in the application shell. Selector: `[class~="aui-dialog-popup"]`.
-2. **About title bar** — ADC title bar names the release dialog before version details. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — Close About gives ADC readers a direct exit from release details. Selector: `[class~="aui-dialog-close"]`.
-4. **Dialog body** — Dialog body holds the release Accordion beneath the About heading. Selector: `[class~="aui-dialog-body"]`.
-5. **Accordion** — Release notes open Global changes first and allow other groups. Selector: `[class~="aui-accordion"]`.
-6. **Item** — One release group collects related changes, such as Global changes. Selector: `[class~="aui-accordion-item"]`.
-7. **Trigger** — Title row opens the group and shows its muted update count. Selector: `[class~="aui-accordion-trigger"]`.
-8. **Title and count** — Bold group name sits beside its muted count, such as one update. Selector: `[class~="aui-accordion-trigger-content"]`.
-9. **Chevron** — Chevron at the title row's end shows whether notes are open. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
-10. **Panel** — Panel aligns each change badge beside its explanatory sentence. Selector: `[class~="aui-accordion-panel"]`.
-11. **Change chip** — Solid chip labels each change as IMPROVEMENT or FEATURE. Selector: `[class~="aui-chip"]`.
-
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-002/options/adc-release-notes/example.tsx`
 
 ```tsx
@@ -318,20 +280,6 @@ In context view: Shown.
 2. **About title bar** — The raised Dialog.Title reading "About", with the Close About button at its end. Selector: `[class~="aui-dialog-title"]`.
 3. **Close button** — The X Dialog.Close (aria-label "Close About") that dismisses the dialog. Selector: `[class~="aui-dialog-close"]`.
 4. **Release notes body** — The padded View under the title bar that holds the release notes Accordion (the Release history column and app header are left out). Part marker: `data-ug-part="about-body"`.
-
-#### In context layer steps
-
-1. **About dialog** — About popup groups regional notes inside the app workspace. Selector: `[class~="aui-dialog-popup"]`.
-2. **About title bar** — Raised About header separates regional notes from the application. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — Close About exits regional notes without changing the parent dialog. Selector: `[class~="aui-dialog-close"]`.
-4. **Release notes body** — Padded body keeps regional update groups below the title bar. Selector: `[data-ug-part="about-body"]`.
-5. **Accordion** — Release notes open Global changes first and allow other groups. Selector: `[class~="aui-accordion"]`.
-6. **Item** — One release group collects related changes, such as Global changes. Selector: `[class~="aui-accordion-item"]`.
-7. **Trigger** — Title row opens the group and shows its muted update count. Selector: `[class~="aui-accordion-trigger"]`.
-8. **Title and count** — Bold group name sits beside its muted count, such as one update. Selector: `[class~="aui-accordion-trigger-content"]`.
-9. **Chevron** — Chevron at the title row's end shows whether notes are open. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
-10. **Panel** — Panel aligns each change badge beside its explanatory sentence. Selector: `[class~="aui-accordion-panel"]`.
-11. **Change chip** — Solid chip labels each change as IMPROVEMENT or FEATURE. Selector: `[class~="aui-chip"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-002/options/ace-other-regions/example.tsx`
 

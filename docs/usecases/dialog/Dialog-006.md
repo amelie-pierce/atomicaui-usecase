@@ -48,16 +48,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Body** — The body that holds the navigation column of help rows. Selector: `[class~="aui-dialog-body"]`.
 7. **Help rows** — The nav View labelled "Help Center": a no-padding column with gap 8 whose rows are Feedback and Tutorials in the FD scene. Part marker: `data-ug-part="help-rows"`.
 
-## Component layer steps
-
-1. **Overlay** — Scrim dims content behind the Help Center window. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — Small soft Help Center window is 360px; FD uses 420px. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — Raised centered title leaves 40px padding at each end. Selector: `[class~="aui-dialog-title"]`.
-4. **Title text** — The centred words "Help Center" inside the title bar. Selector: `[data-ug-part="title-text"]`.
-5. **Close** — Absolutely positioned Close X sits 8px from the inline end. Selector: `[class~="aui-dialog-close"]`.
-6. **Body** — The body that holds the navigation column of help rows. Selector: `[class~="aui-dialog-body"]`.
-7. **Help rows** — Help Center navigation lists Feedback and Tutorials in FD. Selector: `[data-ug-part="help-rows"]`.
-
 ## Apps
 
 - FD (`fd`)

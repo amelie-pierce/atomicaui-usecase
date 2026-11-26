@@ -44,14 +44,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Label** — The caption "Send me a copy of my responses" beside the box, answering the optional yes or no question at the end of the form. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 5. **Form field** — The feedback-form text fields (name, email, subject) above the checkbox in the dialog scenes, each a Field with a label and an input. Selector: `[class~="aui-field"]`.
 
-## Component layer steps
-
-1. **Checkbox** — Small checkbox starts checked, with tonal off and solid primary on. Selector: `[class~="aui-checkbox"]`.
-2. **Indicator** — Box shows whether feedback responses will include a copy. Selector: `[class~="aui-checkbox-indicator"]`.
-3. **Icon** — Check mark appears across seven feedback scenes when selected. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
-4. **Label** — Caption asks whether users want a copy of their responses. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
-5. **Form field** — Name, email, and subject fields precede this optional feedback choice. Selector: `[class~="aui-field"]`.
-
 ## Apps
 
 - ADM (`adm`)
@@ -83,18 +75,6 @@ In context view: Shown.
 2. **Feedback title bar** — The raised Dialog.Title with the Close button at its end. Selector: `[class~="aui-dialog-title"]`.
 3. **Close button** — The X Dialog.Close that dismisses the dialog. Selector: `[class~="aui-dialog-close"]`.
 4. **Feedback form body** — The Dialog.Body whose column holds the Email field and, as its last row, the "Send me a copy of my responses" checkbox (the description, dropzone and footer are left out). Selector: `[class~="aui-dialog-body"]`.
-
-#### In context layer steps
-
-1. **Feedback dialog** — Feedback dialog groups the optional response-copy choice inside the form. Selector: `[class~="aui-dialog-popup"]`.
-2. **Feedback title bar** — Raised title bar places Close at the end. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — X closes this feedback dialog without submitting its form. Selector: `[class~="aui-dialog-close"]`.
-4. **Feedback form body** — Email and copy preference share this body; other form parts are omitted. Selector: `[class~="aui-dialog-body"]`.
-5. **Checkbox** — Small checkbox starts checked, with tonal off and solid primary on. Selector: `[class~="aui-checkbox"]`.
-6. **Indicator** — Box shows whether feedback responses will include a copy. Selector: `[class~="aui-checkbox-indicator"]`.
-7. **Icon** — Check mark appears across seven feedback scenes when selected. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
-8. **Label** — Caption asks whether users want a copy of their responses. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
-9. **Form field** — Name, email, and subject fields precede this optional feedback choice. Selector: `[class~="aui-field"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/checkbox/Checkbox-001/example.tsx`
 
@@ -183,18 +163,6 @@ In context view: Shown.
 3. **Close button** — The X Dialog.Close that dismisses the dialog. Selector: `[class~="aui-dialog-close"]`.
 4. **Feedback form body** — The Dialog.Body whose column holds the Email field and, as its last row, the "Send me a copy of my responses" checkbox (the description, dropzone and footer are left out). Selector: `[class~="aui-dialog-body"]`.
 
-#### In context layer steps
-
-1. **Feedback dialog** — Feedback dialog groups the optional response-copy choice inside the form. Selector: `[class~="aui-dialog-popup"]`.
-2. **Feedback title bar** — Raised title bar places Close at the end. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — X closes this feedback dialog without submitting its form. Selector: `[class~="aui-dialog-close"]`.
-4. **Feedback form body** — Email and copy preference share this body; other form parts are omitted. Selector: `[class~="aui-dialog-body"]`.
-5. **Checkbox** — Small checkbox starts checked, with tonal off and solid primary on. Selector: `[class~="aui-checkbox"]`.
-6. **Indicator** — Box shows whether feedback responses will include a copy. Selector: `[class~="aui-checkbox-indicator"]`.
-7. **Icon** — Check mark appears across seven feedback scenes when selected. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
-8. **Label** — Caption asks whether users want a copy of their responses. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
-9. **Form field** — Name, email, and subject fields precede this optional feedback choice. Selector: `[class~="aui-field"]`.
-
 #### Component UI source — `src/usecase-gallery/usecases/checkbox/Checkbox-001/options/hs-form/example.tsx`
 
 ```tsx
@@ -272,20 +240,6 @@ In context view: Shown.
 4. **Footer actions** — The split Dialog.Actions footer: the checkbox at the start, then Cancel and Send. Selector: `[class~="aui-dialog-actions"]`.
 5. **Cancel** — The default Dialog.Button that closes the dialog without sending. Part marker: `data-ug-part="cancel"`.
 6. **Send** — The solid primary Dialog.Button that submits the feedback. Part marker: `data-ug-part="send"`.
-
-#### In context layer steps
-
-1. **Feedback dialog** — Feedback dialog groups the optional response-copy choice inside the form. Selector: `[class~="aui-dialog-popup"]`.
-2. **Feedback title bar** — Raised title bar places Close at the end. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — X closes this feedback dialog without submitting its form. Selector: `[class~="aui-dialog-close"]`.
-4. **Footer actions** — Split footer places checkbox before Cancel and Send. Selector: `[class~="aui-dialog-actions"]`.
-5. **Cancel** — The default Dialog.Button that closes the dialog without sending. Selector: `[data-ug-part="cancel"]`.
-6. **Send** — The solid primary Dialog.Button that submits the feedback. Selector: `[data-ug-part="send"]`.
-7. **Checkbox** — Small checkbox starts checked, with tonal off and solid primary on. Selector: `[class~="aui-checkbox"]`.
-8. **Indicator** — Box shows whether feedback responses will include a copy. Selector: `[class~="aui-checkbox-indicator"]`.
-9. **Icon** — Check mark appears across seven feedback scenes when selected. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
-10. **Label** — Caption asks whether users want a copy of their responses. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
-11. **Form field** — Name, email, and subject fields precede this optional feedback choice. Selector: `[class~="aui-field"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/checkbox/Checkbox-001/options/adc-footer/example.tsx`
 

@@ -47,16 +47,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Next** — Borderless secondary text button that advances to the next step; its arrow-right trails the label so the pair reads as back and forward. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
 7. **Trailing icon** — The arrow-right glyph after Next, the mirror of the arrow-left before Previous. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
 
-## Component layer steps
-
-1. **Walkthrough card** — 328px elevated coach mark pairs step copy with footer navigation. Selector: `[role="region"][aria-label="Walkthrough"]`.
-2. **Close** — Corner X dismisses the tour independently of step navigation. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`.
-3. **Navigation row** — Footer places Previous and Next with the counter at the far end. Selector: `[data-ug-part="step-nav"]`.
-4. **Previous** — Arrow-left text action moves back; some apps capitalize the label. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-5. **Arrow-left icon** — Arrow-left glyph marks the Previous action in the footer. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`.
-6. **Next** — Arrow-right after Next marks the forward navigation action. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-7. **Trailing icon** — The arrow-right glyph after Next, the mirror of the arrow-left before Previous. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -86,19 +76,6 @@ In context view: Shown.
 1. **Spotlight target** — The page element the tour is pointing at, here the Beam Properties section header that the card sits beside (a stand-in for the app page). Selector: `[class~="ug-tour__target"]`.
 2. **Step title** — The medium-weight heading of the step (Split-Pane Slider, Multi Design or Beam Properties) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
 3. **Step counter** — The muted step count at the end of the navigation row (for example 2 / 4) that tells where the user is in the tour. Selector: `[data-ug-part="step-counter"]`.
-
-#### In context layer steps
-
-1. **Spotlight target** — Beam Properties header is the target beside this coach mark. Selector: `[class~="ug-tour__target"]`.
-2. **Step title** — Step heading leaves room at its end for Close. Selector: `[data-ug-part="step-title"]`.
-3. **Step counter** — Muted count marks the tour position, for example 2 / 4. Selector: `[data-ug-part="step-counter"]`.
-4. **Walkthrough card** — 328px elevated coach mark pairs step copy with footer navigation. Selector: `[role="region"][aria-label="Walkthrough"]`.
-5. **Close** — Corner X dismisses the tour independently of step navigation. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`.
-6. **Navigation row** — Footer places Previous and Next with the counter at the far end. Selector: `[data-ug-part="step-nav"]`.
-7. **Previous** — Arrow-left text action moves back; some apps capitalize the label. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-8. **Arrow-left icon** — Arrow-left glyph marks the Previous action in the footer. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`.
-9. **Next** — Arrow-right after Next marks the forward navigation action. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-10. **Trailing icon** — The arrow-right glyph after Next, the mirror of the arrow-left before Previous. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-023/example.tsx`
 
@@ -171,19 +148,6 @@ In context view: Shown.
 1. **Spotlight target** — The page element the tour is pointing at, here the Beam Properties section header that the card sits beside (a stand-in for the app page). Selector: `[class~="ug-tour__target"]`.
 2. **Step title** — The medium-weight heading of the step (Split-Pane Slider, Multi Design or Beam Properties) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
 3. **Step counter** — The muted step count at the end of the navigation row (for example 2 / 4) that tells where the user is in the tour. Selector: `[data-ug-part="step-counter"]`.
-
-#### In context layer steps
-
-1. **Spotlight target** — Beam Properties header is the target beside this coach mark. Selector: `[class~="ug-tour__target"]`.
-2. **Step title** — Step heading leaves room at its end for Close. Selector: `[data-ug-part="step-title"]`.
-3. **Step counter** — Muted count marks the tour position, for example 2 / 4. Selector: `[data-ug-part="step-counter"]`.
-4. **Walkthrough card** — 328px elevated coach mark pairs step copy with footer navigation. Selector: `[role="region"][aria-label="Walkthrough"]`.
-5. **Close** — Corner X dismisses the tour independently of step navigation. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`.
-6. **Navigation row** — Footer places Previous and Next with the counter at the far end. Selector: `[data-ug-part="step-nav"]`.
-7. **Previous** — Arrow-left text action moves back; some apps capitalize the label. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-8. **Arrow-left icon** — Arrow-left glyph marks the Previous action in the footer. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`.
-9. **Next** — Arrow-right after Next marks the forward navigation action. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-10. **Trailing icon** — The arrow-right glyph after Next, the mirror of the arrow-left before Previous. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-023/options/ace-step-nav/example.tsx`
 
@@ -264,19 +228,6 @@ In context view: Shown.
 1. **Spotlight target** — The page element the tour is pointing at, here the Beam Properties section header that the card sits beside (a stand-in for the app page). Selector: `[class~="ug-tour__target"]`.
 2. **Step title** — The medium-weight heading of the step (Split-Pane Slider, Multi Design or Beam Properties) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
 3. **Step counter** — The muted step count at the end of the navigation row (for example 2 / 4) that tells where the user is in the tour. Selector: `[data-ug-part="step-counter"]`.
-
-#### In context layer steps
-
-1. **Spotlight target** — Beam Properties header is the target beside this coach mark. Selector: `[class~="ug-tour__target"]`.
-2. **Step title** — Step heading leaves room at its end for Close. Selector: `[data-ug-part="step-title"]`.
-3. **Step counter** — Muted count marks the tour position, for example 2 / 4. Selector: `[data-ug-part="step-counter"]`.
-4. **Walkthrough card** — 328px elevated coach mark pairs step copy with footer navigation. Selector: `[role="region"][aria-label="Walkthrough"]`.
-5. **Close** — Corner X dismisses the tour independently of step navigation. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`.
-6. **Navigation row** — Footer places Previous and Next with the counter at the far end. Selector: `[data-ug-part="step-nav"]`.
-7. **Previous** — Arrow-left text action moves back; some apps capitalize the label. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-8. **Arrow-left icon** — Arrow-left glyph marks the Previous action in the footer. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`.
-9. **Next** — Arrow-right after Next marks the forward navigation action. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-10. **Trailing icon** — The arrow-right glyph after Next, the mirror of the arrow-left before Previous. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-023/options/adm-step-nav/example.tsx`
 

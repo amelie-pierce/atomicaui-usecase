@@ -44,15 +44,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Footer** — The footer with align="center" that centres its single button. Selector: `[class~="aui-dialog-actions"]`.
 6. **Re-Launch** — The only way forward: a solid secondary Re-Launch button with dismiss={false} so the notice stays until the app reloads. Part marker: `data-ug-part="relaunch"`.
 
-## Component layer steps
-
-1. **Overlay** — Scrim blocks the app after the licence agreement is declined. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — Blocking notice stays open until the user relaunches. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title** — Raised text heading names the Website Application License Agreement. Selector: `[class~="aui-dialog-title"]`.
-4. **Description** — User must relaunch and accept the agreement before continuing. Selector: `[class~="aui-dialog-description"]`.
-5. **Footer** — Centered footer gives the notice one available action. Selector: `[class~="aui-dialog-actions"]`.
-6. **Re-Launch** — Re-Launch stays visible until the app reloads to accept terms. Selector: `[data-ug-part="relaunch"]`.
-
 ## Apps
 
 - ACE (`ace`)

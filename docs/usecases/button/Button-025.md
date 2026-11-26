@@ -46,14 +46,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Header cell** — The unlabeled first column heading (aria-label "Edit or duplicate") above the action buttons. Selector: `[class~="aui-table-header-cell"]:first-child`.
 5. **Button stack** — PBS only: the column (gap 8, centred) that stacks Edit above Duplicate inside the cell. Selector: `[data-ug-part="row-actions"]`.
 
-## Component layer steps
-
-1. **First cell** — First saved-list cell pairs Edit and Duplicate side by side or stacked. Selector: `[class~="aui-table-cell"]:first-child`.
-2. **Edit** — Tonal secondary Edit reopens the saved job or connection. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-3. **Duplicate** — Matching tonal Duplicate copies the selected saved row. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-4. **Header cell** — Unnamed first column labels its action buttons for assistive technology. Selector: `[class~="aui-table-header-cell"]:first-child`.
-5. **Button stack** — PBS centers Edit above Duplicate with an 8px gap. Selector: `[data-ug-part="row-actions"]`.
-
 ## Apps
 
 - HS (`hs`)
@@ -75,16 +67,6 @@ In context view: Shown.
 
 1. **Job List table** — The Table that lists the saved rows; only the first action column and the Job column are kept. Selector: `[class~="aui-table"]`.
 2. **Job cell** — The row label (Job 1) beside the action cell. Selector: `[class~="aui-table-body"] [class~="aui-table-cell"]:last-child`.
-
-#### In context layer steps
-
-1. **Job List table** — Table keeps the saved-row action column beside Job or Connection. Selector: `[class~="aui-table"]`.
-2. **Job cell** — The row label (Job 1) beside the action cell. Selector: `[class~="aui-table-body"] [class~="aui-table-cell"]:last-child`.
-3. **First cell** — First saved-list cell pairs Edit and Duplicate side by side or stacked. Selector: `[class~="aui-table-cell"]:first-child`.
-4. **Edit** — Tonal secondary Edit reopens the saved job or connection. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-5. **Duplicate** — Matching tonal Duplicate copies the selected saved row. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-6. **Header cell** — Unnamed first column labels its action buttons for assistive technology. Selector: `[class~="aui-table-header-cell"]:first-child`.
-7. **Button stack** — PBS centers Edit above Duplicate with an 8px gap. Selector: `[data-ug-part="row-actions"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-025/example.tsx`
 
@@ -145,16 +127,6 @@ In context view: Shown.
 
 1. **Connection List table** — The Table that lists the saved rows; only the first action column and the Connection column are kept. Selector: `[class~="aui-table"]`.
 2. **Connection cell** — The row label (Connection 1) beside the action cell. Selector: `[class~="aui-table-body"] [class~="aui-table-cell"]:last-child`.
-
-#### In context layer steps
-
-1. **Connection List table** — Table keeps the saved-row action column beside Job or Connection. Selector: `[class~="aui-table"]`.
-2. **Connection cell** — The row label (Connection 1) beside the action cell. Selector: `[class~="aui-table-body"] [class~="aui-table-cell"]:last-child`.
-3. **First cell** — First saved-list cell pairs Edit and Duplicate side by side or stacked. Selector: `[class~="aui-table-cell"]:first-child`.
-4. **Edit** — Tonal secondary Edit reopens the saved job or connection. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-5. **Duplicate** — Matching tonal Duplicate copies the selected saved row. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-6. **Header cell** — Unnamed first column labels its action buttons for assistive technology. Selector: `[class~="aui-table-header-cell"]:first-child`.
-7. **Button stack** — PBS centers Edit above Duplicate with an 8px gap. Selector: `[data-ug-part="row-actions"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-025/options/pbs-edit/example.tsx`
 

@@ -46,13 +46,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Popup** — The text tooltip surface; in PFD it is allowed to grow to 384px for the longer note. Selector: `[class~="aui-tooltip-popup"]`.
 6. **Note** — The explanation text: "Show in 3D" in the example and RWS, "Use with a continuous strap along the plate." in PFD. Selector: `[class~="aui-tooltip-popup"]`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Trigger** — Surface image action opens a 3D preview; PFD uses its card. Selector: `[data-ug-part="trigger"]`.
-2. **Thumbnail** — Aria-hidden connection drawing decorates the trigger without extra reading. Selector: `[data-ug-part="trigger"] > svg`.
-3. **Positioner** — Tooltip opens beside the image with a four-pixel gap. Selector: `[class~="aui-tooltip-positioner"]`.
-4. **Popup** — Text surface expands to 384px for the longer PFD note. Selector: `[class~="aui-tooltip-popup"]`.
-
 ## Apps
 
 - PFD (`pfd`)

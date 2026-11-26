@@ -16,7 +16,7 @@ export default defineUsecase({
 
   apps: ['hcs', 'hs', 'fd', 'adc'],
     layers: [
-        {"id":"button","partId":"button","title":"Expand button","explanation":"24px square text control opens Why Not for one model row.","keyIdea":"The row button reveals the explanation attached to a model result.","selector":"[class~=\"aui-button\"][aria-label^=\"Why Not\"]","code":["View"],"unchanged":true},
+        {"id":"button","partId":"button","title":"Expand button","explanation":"24px square text control opens Why Not for one model row.","keyIdea":"The row button reveals the explanation attached to a model result.","selector":"[class~=\"aui-button\"][aria-label^=\"Why Not\"]","code":["View"]},
         {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The solid angle-right glyph that points to the collapsed content.","keyIdea":"The chevron signals that the row can open to show more detail.","selector":"[class~=\"aui-button\"][aria-label^=\"Why Not\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])","code":["View"],"unchanged":true},
         {"id":"expand-trigger","partId":"expand-trigger","title":"Table expand trigger","explanation":"HCS and HS expand group rows before the semi-bold model name.","keyIdea":"The table-owned trigger expands grouped results where no Button is used.","selector":"[class~=\"aui-table-expand-trigger\"]","code":["Button"]},
         {"id":"row","partId":"row","title":"Row","explanation":"Model row or A-100 group row opens with its expander.","keyIdea":"The expandable row represents either one model or a grouped result.","selector":"[class~=\"aui-table-row\"]","code":["Button"],"unchanged":true},

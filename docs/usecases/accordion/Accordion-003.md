@@ -45,15 +45,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Panel** — Rows of the group: Two-beam connection under Default Templates, and "Create your own template." (Header hanger in the dialogs) under My Templates. Selector: `[class~="aui-accordion-panel"]`.
 6. **Template radio** — Dialog scenes only: each template row is a radio with its name as Radio.Label, with one selected through RadioGroup defaultValue="2". Selector: `[class~="aui-accordion-panel"] [class~="aui-radio"]`.
 
-## Component layer steps
-
-1. **Accordion** — Template picker opens both Default Templates and My Templates groups. Selector: `[class~="aui-accordion"]`.
-2. **Item** — One collapsible category holds its own template choices. Selector: `[class~="aui-accordion-item"]`.
-3. **Trigger** — Plain title row opens the group without a leading icon. Selector: `[class~="aui-accordion-trigger"]`.
-4. **Chevron** — Chevron on the right of each group title. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
-5. **Panel** — Panel lists each group's templates, including Create your own. Selector: `[class~="aui-accordion-panel"]`.
-6. **Template radio** — Each dialog row uses Radio.Label; template two starts selected. Selector: `[class~="aui-accordion-panel"] [class~="aui-radio"]`.
-
 ## Apps
 
 - ACE (`ace`)
@@ -78,19 +69,6 @@ In context view: Shown.
 2. **Templates title bar** — The raised Dialog.Title reading "Templates", with the Close Templates button at its end. Selector: `[class~="aui-dialog-title"]`.
 3. **Close button** — The X Dialog.Close (aria-label "Close Templates") that dismisses the dialog. Selector: `[class~="aui-dialog-close"]`.
 4. **Templates body** — The scrollable Dialog.Body holding the RadioGroup that wraps the Default Templates and My Templates groups (the Cancel and Create footer is left out). Selector: `[class~="aui-dialog-body"]`.
-
-#### In context layer steps
-
-1. **Templates dialog** — Templates popup frames grouped choices as one selection task. Selector: `[class~="aui-dialog-popup"]`.
-2. **Templates title bar** — Raised Templates title names the task beside its close control. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — Close Templates exits selection without choosing a row. Selector: `[class~="aui-dialog-close"]`.
-4. **Templates body** — Scrollable dialog body holds both template groups above the footer. Selector: `[class~="aui-dialog-body"]`.
-5. **Accordion** — Template picker opens both Default Templates and My Templates groups. Selector: `[class~="aui-accordion"]`.
-6. **Item** — One collapsible category holds its own template choices. Selector: `[class~="aui-accordion-item"]`.
-7. **Trigger** — Plain title row opens the group without a leading icon. Selector: `[class~="aui-accordion-trigger"]`.
-8. **Chevron** — Chevron on the right of each group title. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
-9. **Panel** — Panel lists each group's templates, including Create your own. Selector: `[class~="aui-accordion-panel"]`.
-10. **Template radio** — Each dialog row uses Radio.Label; template two starts selected. Selector: `[class~="aui-accordion-panel"] [class~="aui-radio"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-003/example.tsx`
 
@@ -214,19 +192,6 @@ In context view: Shown.
 2. **Templates title bar** — The raised Dialog.Title reading "Templates", with the Close Templates button at its end. Selector: `[class~="aui-dialog-title"]`.
 3. **Close button** — The X Dialog.Close (aria-label "Close Templates") that dismisses the dialog. Selector: `[class~="aui-dialog-close"]`.
 4. **Templates body** — The scrollable Dialog.Body holding the RadioGroup that wraps the Default Templates and My Templates groups (the Cancel and Create footer is left out). Selector: `[class~="aui-dialog-body"]`.
-
-#### In context layer steps
-
-1. **Templates dialog** — Templates popup frames grouped choices for this app's selection task. Selector: `[class~="aui-dialog-popup"]`.
-2. **Templates title bar** — Raised Templates title keeps its close control beside the heading. Selector: `[class~="aui-dialog-title"]`.
-3. **Close button** — Close Templates leaves the picker without changing selected template. Selector: `[class~="aui-dialog-close"]`.
-4. **Templates body** — Scrollable dialog body holds both template groups above the footer. Selector: `[class~="aui-dialog-body"]`.
-5. **Accordion** — Template picker opens both Default Templates and My Templates groups. Selector: `[class~="aui-accordion"]`.
-6. **Item** — One collapsible category holds its own template choices. Selector: `[class~="aui-accordion-item"]`.
-7. **Trigger** — Plain title row opens the group without a leading icon. Selector: `[class~="aui-accordion-trigger"]`.
-8. **Chevron** — Chevron on the right of each group title. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
-9. **Panel** — Panel lists each group's templates, including Create your own. Selector: `[class~="aui-accordion-panel"]`.
-10. **Template radio** — Each dialog row uses Radio.Label; template two starts selected. Selector: `[class~="aui-accordion-panel"] [class~="aui-radio"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-003/options/hs-template-groups/example.tsx`
 

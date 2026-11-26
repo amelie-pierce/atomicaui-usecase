@@ -16,7 +16,7 @@ export default defineUsecase({
 
   apps: ['hs', 'pbs'],
     layers: [
-        {"id":"cell","partId":"cell","title":"First cell","explanation":"First saved-list cell pairs Edit and Duplicate side by side or stacked.","keyIdea":"The first table cell makes row actions available before the saved item name.","selector":"[class~=\"aui-table-cell\"]:first-child","code":["Button"]},
+        {"id":"cell","partId":"cell","title":"First cell","explanation":"First saved-list cell pairs Edit and Duplicate side by side or stacked.","keyIdea":"The first table cell makes row actions available before the saved item name.","selector":"[class~=\"aui-table-cell\"]:first-child","code":["Button"],"unchanged":true},
         {"id":"edit","partId":"edit","title":"Edit","explanation":"Tonal secondary Edit reopens the saved job or connection.","keyIdea":"Edit reopens the saved job or connection so its values can be changed.","selector":"[class~=\"aui-button\"]:not([aria-label]):first-of-type","unchanged":true},
         {"id":"duplicate","partId":"duplicate","title":"Duplicate","explanation":"Matching tonal Duplicate copies the selected saved row.","keyIdea":"Duplicate creates a second saved row with the same starting values.","selector":"[class~=\"aui-button\"]:not([aria-label]):last-of-type","unchanged":true},
         {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Unnamed first column labels its action buttons for assistive technology.","keyIdea":"The blank header names the action column for assistive technology.","selector":"[class~=\"aui-table-header-cell\"]:first-child","code":["Button"],"unchanged":true},

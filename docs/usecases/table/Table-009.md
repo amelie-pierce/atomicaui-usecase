@@ -51,19 +51,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 9. **Input** — The editable numeric text, right-aligned. Selector: `[class~="aui-number-field-group"] [class~="aui-input"]`.
 10. **Unit** — The "in" unit that follows each value. Selector: `[class~="aui-number-field-unit"]`.
 
-## Component layer steps
-
-1. **Table** — Soft self-scrolling editable grid fills the available width. Selector: `[class~="aui-table"]`.
-2. **Header** — Column headings #, Column Spacing and Row Spacing. Selector: `[class~="aui-table-head"]`.
-3. **Header cell** — Heading for one editable spacing column; # is fixed at 32px. Selector: `[class~="aui-table-header-cell"]`.
-4. **Body** — Rows of anchor spacings the user edits in place. Selector: `[class~="aui-table-body"]`.
-5. **Row** — Anchor 1 row holds X and Y spacing inputs. Selector: `[class~="aui-table-row"]`.
-6. **Cell** — Body cell shows the 32px row number or input wrapper. Selector: `[class~="aui-table-cell"]`.
-7. **Number field** — X spacing starts at 6 and Y at 8; minimum is 1. Selector: `[class~="aui-number-field"]`.
-8. **Input group** — Fixed surface frame holding the input and its unit. Selector: `[class~="aui-number-field-group"]`.
-9. **Input** — Right-aligned input displays the editable spacing number value. Selector: `[class~="aui-number-field-group"] [class~="aui-input"]`.
-10. **Unit** — The inch unit follows each entered spacing value. Selector: `[class~="aui-number-field-unit"]`.
-
 ## Apps
 
 - ADM (`adm`)

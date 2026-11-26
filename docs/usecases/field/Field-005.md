@@ -42,12 +42,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Label** — The "Description" label above the box; in the AGPD quote notes there is no label and an aria-label names the box. Selector: `[class~="aui-field-label"]`.
 3. **Textarea** — The five-row box that draws its own 1px slate outline, 4px radius and 3/8 padding, so no Field.Control surrounds it; it resizes vertically only. Selector: `[class~="aui-textarea"]`.
 
-## Component layer steps
-
-1. **Field** — Wrapper pairs Description with a multiline box; app labels vary. Selector: `[class~="aui-field"]`.
-2. **Label** — Description label sits above; AGPD names its unlabeled box accessibly. Selector: `[class~="aui-field-label"]`.
-3. **Textarea** — Five-row textarea has its own outline and vertical resizing. Selector: `[class~="aui-textarea"]`.
-
 ## Apps
 
 - HCS (`hcs`)

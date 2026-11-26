@@ -49,16 +49,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 7. **List** — The list holding the Select all, Passed and Failed rows. Selector: `[class~="aui-select-list"]`.
 8. **Item** — A filter row whose label is written straight into the item; "Select all" clears the column filter. Selector: `[class~="aui-select-item"]`.
 
-## Component layer steps
-
-1. **Field** — Small field can shrink inside the column menu. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Search by option" label above the filter trigger. Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — Full-width soft outlined trigger uses the default height. Selector: `[class~="aui-select-trigger"]`.
-4. **Chevron** — Chevron signals that the trigger opens column values. Selector: `[class~="aui-select-chevron"]`.
-5. **Popup** — Popup aligns to trigger start and matches its width. Selector: `[class~="aui-select-popup"]`.
-6. **List** — The list holding the Select all, Passed and Failed rows. Selector: `[class~="aui-select-list"]`.
-7. **Item** — Filter row labels options; Select all clears the filter. Selector: `[class~="aui-select-item"]`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -88,19 +78,6 @@ In context view: Shown.
 1. **Column menu** — The menu groups a text search, sort actions and the option filter for one table column. Selector: `[data-ug-part="column-menu"]`.
 2. **Text search** — The text field narrows the column by free-form text. Selector: `[data-ug-part="column-search"]`.
 3. **Sort actions** — Ascending and descending actions sit above the option filter. Selector: `[data-ug-part="sort-actions"]`.
-
-#### In context layer steps
-
-1. **Column menu** — The popover groups controls for one table column. Selector: `[data-ug-part="column-menu"]`.
-2. **Text search** — Free-form search narrows the values in the selected column. Selector: `[data-ug-part="column-search"]`.
-3. **Sort actions** — The two controls sort the table in either direction. Selector: `[data-ug-part="sort-actions"]`.
-4. **Field** — Small field can shrink inside the column menu. Selector: `[class~="aui-field"]`.
-5. **Label** — The "Search by option" label above the filter trigger. Selector: `[class~="aui-field-label"]`.
-6. **Trigger** — Full-width soft outlined trigger uses the default height. Selector: `[class~="aui-select-trigger"]`.
-7. **Chevron** — Chevron signals that the trigger opens column values. Selector: `[class~="aui-select-chevron"]`.
-8. **Popup** — Popup aligns to trigger start and matches its width. Selector: `[class~="aui-select-popup"]`.
-9. **List** — The list holding the Select all, Passed and Failed rows. Selector: `[class~="aui-select-list"]`.
-10. **Item** — Filter row labels options; Select all clears the filter. Selector: `[class~="aui-select-item"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/select/Select-002/example.tsx`
 
@@ -214,19 +191,6 @@ In context view: Shown.
 1. **Column menu** — The column popover contains the text search, sort actions and fixed-value filter. Selector: `[data-ug-part="column-menu"]`.
 2. **Text search** — The text field narrows the selected table column. Selector: `[data-ug-part="column-search"]`.
 3. **Sort actions** — Ascending and descending actions sit above the option filter. Selector: `[data-ug-part="sort-actions"]`.
-
-#### In context layer steps
-
-1. **Column menu** — The popover gathers tools for filtering and ordering one column. Selector: `[data-ug-part="column-menu"]`.
-2. **Text search** — The input searches for arbitrary text within the column. Selector: `[data-ug-part="column-search"]`.
-3. **Sort actions** — Ascending and descending controls order rows independently of filtering. Selector: `[data-ug-part="sort-actions"]`.
-4. **Field** — Small field can shrink inside the column menu. Selector: `[class~="aui-field"]`.
-5. **Label** — The "Search by option" label above the filter trigger. Selector: `[class~="aui-field-label"]`.
-6. **Trigger** — Full-width soft outlined trigger uses the default height. Selector: `[class~="aui-select-trigger"]`.
-7. **Chevron** — Chevron signals that the trigger opens column values. Selector: `[class~="aui-select-chevron"]`.
-8. **Popup** — Popup aligns to trigger start and matches its width. Selector: `[class~="aui-select-popup"]`.
-9. **List** — The list holding the Select all, Passed and Failed rows. Selector: `[class~="aui-select-list"]`.
-10. **Item** — Filter row labels options; Select all clears the filter. Selector: `[class~="aui-select-item"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/select/Select-002/options/pfd-column-filter/example.tsx`
 

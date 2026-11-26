@@ -48,16 +48,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Cell** — Data cell; the first one holds the radio and the model name, the second the load in lb (2,210 and 1,180). Selector: `[class~="aui-table-cell"]`.
 7. **Selection radio** — 24px radio at the start of the first cell that selects the row, filled primary when selected; in ACE it sits above the model name. Selector: `[class~="aui-table-cell"] [class~="aui-radio"]`.
 
-## Component layer steps
-
-1. **Table** — Single-select grid places its radio inside the first data cell. Selector: `[class~="aui-table"]`.
-2. **Header** — Raised header is not selectable and contains model and load labels. Selector: `[class~="aui-table-head"]`.
-3. **Header cell** — Plain raised heading names columns without a sort control. Selector: `[class~="aui-table-header-cell"]`.
-4. **Body** — The two selectable candidates, Model B-200 and Model C-300. Selector: `[class~="aui-table-body"]`.
-5. **Row** — Selected B-200 row uses a surface and 4px leading bar. Selector: `[class~="aui-table-row"]`.
-6. **Cell** — First cell pairs radio and model; second shows the load. Selector: `[class~="aui-table-cell"]`.
-7. **Selection radio** — 24px radio selects the row; ACE places it above the model. Selector: `[class~="aui-table-cell"] [class~="aui-radio"]`.
-
 ## Apps
 
 - HCS (`hcs`)

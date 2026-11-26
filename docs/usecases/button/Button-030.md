@@ -45,13 +45,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 3. **Close icon** — The xmark glyph inside the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
 4. **Next** — The step button that is the only navigation on step 1 / 6 (Next with arrow-right); Close is the way out without finishing. Selector: `[class~="aui-button"]:not([aria-label])`.
 
-## Component layer steps
-
-1. **Walkthrough card** — 328px coach mark pairs Connection Type guidance with navigation. Selector: `[role="region"][aria-label="Walkthrough"]`.
-2. **Close** — 20px transparent corner X dismisses the HCS walkthrough. Selector: `[class~="aui-button"][aria-label^="Close"]`.
-3. **Close icon** — Xmark glyph appears inside the close button itself. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-4. **Next** — Step 1 shows Next with arrow-right as its only navigation. Selector: `[class~="aui-button"]:not([aria-label])`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -81,16 +74,6 @@ In context view: Shown.
 1. **Spotlight target** — The Connection Type section header that the first step points at, beside the card (a stand-in for the app page). Selector: `[class~="ug-tour__target"]`.
 2. **Step title** — The medium-weight Connection Type heading with room reserved at its end so its text stops short of the close X. Selector: `[data-ug-part="step-title"]`.
 3. **Step counter** — The muted 1 / 6 step count at the end of the footer row, beside Next. Selector: `[data-ug-part="step-counter"]`.
-
-#### In context layer steps
-
-1. **Spotlight target** — Connection Type heading is the target beside the coach mark. Selector: `[class~="ug-tour__target"]`.
-2. **Step title** — Connection Type heading leaves room for the close X. Selector: `[data-ug-part="step-title"]`.
-3. **Step counter** — Muted footer shows the first position, 1 / 6, beside Next. Selector: `[data-ug-part="step-counter"]`.
-4. **Walkthrough card** — 328px coach mark pairs Connection Type guidance with navigation. Selector: `[role="region"][aria-label="Walkthrough"]`.
-5. **Close** — 20px transparent corner X dismisses the HCS walkthrough. Selector: `[class~="aui-button"][aria-label^="Close"]`.
-6. **Close icon** — Xmark glyph appears inside the close button itself. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-7. **Next** — Step 1 shows Next with arrow-right as its only navigation. Selector: `[class~="aui-button"]:not([aria-label])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-030/example.tsx`
 

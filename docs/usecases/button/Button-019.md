@@ -41,10 +41,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Container** — The Prototype controls Button: small surface Button with elevation 3 so it floats above the page, toggling the controls panel (aria-expanded in the scene). Selector: `[class~="aui-button"]`.
 2. **Label** — The text "Prototype controls" that names the floating toggle. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Container** — Elevated Prototype controls button toggles the panel above the page. Selector: `[class~="aui-button"]`.
-
 ## Apps
 
 - HCS (`hcs`)

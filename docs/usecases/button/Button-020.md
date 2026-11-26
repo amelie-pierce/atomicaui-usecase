@@ -39,10 +39,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 1. **Container** — One carousel pager dot: an empty solid Button with no children and an aria-label of "1 / 3"; primary (orange) for the current page, surface-alt for the others. Selector: `[class~="aui-button"][aria-current]`.
 
-## Component layer steps
-
-1. **Container** — Empty pager dot labels 1 of 3 and highlights the current page. Selector: `[class~="aui-button"][aria-current]`.
-
 ## Apps
 
 - FD (`fd`)
@@ -63,12 +59,6 @@ In context view: Shown.
 
 1. **Pager** — The row that holds one dot per page with an 8px gap. Part marker: `data-ug-part="pager"`.
 2. **Other pages** — The surface-alt dots for the pages that are not current (2 / 3 and 3 / 3). Part marker: `data-ug-part="other-dot"`.
-
-#### In context layer steps
-
-1. **Pager** — The row that holds one dot per page with an 8px gap. Selector: `[data-ug-part="pager"]`.
-2. **Other pages** — Surface-alt dots mark the two pages that are not current. Selector: `[data-ug-part="other-dot"]`.
-3. **Container** — Empty pager dot labels 1 of 3 and highlights the current page. Selector: `[class~="aui-button"][aria-current]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-020/example.tsx`
 

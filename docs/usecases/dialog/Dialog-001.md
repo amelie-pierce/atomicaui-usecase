@@ -51,22 +51,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 10. **Notes column** — The flexible column that fills the rest of the width and shows the notes of the chosen release; the example holds only the "Release notes" placeholder. Part marker: `data-ug-part="notes-column"`.
 11. **Notes text** — The p3 "Release notes" placeholder line that stands in for the notes in the Dialog frame. Part marker: `data-ug-part="notes-text"`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Overlay** — The scrim dims the app behind the About dialog while leaving the stage visible. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup container** — The wide popup defines the surface and zero-gap frame that contains the title and body. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar sits at the start of the popup and carries the dialog label. Selector: `[class~="aui-dialog-title"]`.
-4. **Title text** — The word “About” names the window. Selector: `[data-ug-part="title-text"]`.
-5. **Flexible spacer** — The spacer pushes the close control to the far edge of the title bar. Selector: `[class~="aui-dialog-spacer"]`.
-6. **Close control** — The labelled close X dismisses the About dialog. Selector: `[class~="aui-dialog-close"]`.
-7. **Body row** — The body starts a two-column layout beneath the title bar. Selector: `[data-ug-part="body"]`.
-8. **Release history column** — The 224px start column holds the release heading and version navigation. Selector: `[data-ug-part="history-column"]`.
-9. **Release history heading** — The bold heading labels the version list. Selector: `[data-ug-part="history-heading"]`.
-10. **Notes column** — The flexible column shows the selected release notes. Selector: `[data-ug-part="notes-column"]`.
-11. **Notes content** — The placeholder line represents the notes for the selected release. Selector: `[data-ug-part="notes-text"]`.
-12. **Footer actions** — The footer holds the Close action button beneath the body, so the way to finish the dialog sits last. Selector: `[data-ug-part="footer"]`.
-13. **Close action** — The secondary Close button is the footer’s final action and dismisses the About dialog. Selector: `[data-ug-part="footer-close"]`.
-
 ## Apps
 
 - HCS (`hcs`)
@@ -100,29 +84,6 @@ In context view: Shown.
 5. **CURRENT chip** — The tonal primary CURRENT chip that marks the installed release. Selector: `[data-ug-part="history-column"] [class~="aui-chip"]`.
 6. **App header** — The bordered header above the notes: the app name as an h5 over a muted summary line. Part marker: `data-ug-part="notes-header"`.
 7. **Release notes accordion** — The accordion of release sections, open on "Global changes (1 update)", whose panel pairs an IMPROVEMENT chip with the change text. Selector: `[class~="aui-accordion"]`.
-
-#### In context layer steps
-
-1. **History header** — Bordered header pairs Release history title with a muted version count. Selector: `[data-ug-part="history-header"]`.
-2. **Search field** — Search releases field filters versions with a magnifier icon. Selector: `[class~="aui-field"]`.
-3. **Version list** — Release history listbox selects one row with a 4px start border. Selector: `[class~="aui-list"][role="listbox"]`.
-4. **Version number** — The bold version 1.0.0 of the selected release row. Selector: `[data-ug-part="version"]`.
-5. **CURRENT chip** — The tonal primary CURRENT chip that marks the installed release. Selector: `[data-ug-part="history-column"] [class~="aui-chip"]`.
-6. **App header** — Bordered notes header stacks the app name over its summary. Selector: `[data-ug-part="notes-header"]`.
-7. **Release notes accordion** — Open Global changes accordion pairs IMPROVEMENT chip with change details. Selector: `[class~="aui-accordion"]`.
-8. **Overlay** — The scrim dims the app behind the About dialog while leaving the stage visible. Selector: `[class~="aui-dialog-backdrop"]`.
-9. **Popup container** — The wide popup defines the surface and zero-gap frame that contains the title and body. Selector: `[class~="aui-dialog-popup"]`.
-10. **Title bar** — The raised title bar sits at the start of the popup and carries the dialog label. Selector: `[class~="aui-dialog-title"]`.
-11. **Title text** — The word “About” names the window. Selector: `[data-ug-part="title-text"]`.
-12. **Flexible spacer** — The spacer pushes the close control to the far edge of the title bar. Selector: `[class~="aui-dialog-spacer"]`.
-13. **Close control** — The labelled close X dismisses the About dialog. Selector: `[class~="aui-dialog-close"]`.
-14. **Body row** — The body starts a two-column layout beneath the title bar. Selector: `[data-ug-part="body"]`.
-15. **Release history column** — The 224px start column holds the release heading and version navigation. Selector: `[data-ug-part="history-column"]`.
-16. **Release history heading** — The bold heading labels the version list. Selector: `[data-ug-part="history-heading"]`.
-17. **Notes column** — The flexible column shows the selected release notes. Selector: `[data-ug-part="notes-column"]`.
-18. **Notes content** — The placeholder line represents the notes for the selected release. Selector: `[data-ug-part="notes-text"]`.
-19. **Footer actions** — The footer holds the Close action button beneath the body, so the way to finish the dialog sits last. Selector: `[data-ug-part="footer"]`.
-20. **Close action** — The secondary Close button is the footer’s final action and dismisses the About dialog. Selector: `[data-ug-part="footer-close"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-001/example.tsx`
 
@@ -301,31 +262,6 @@ In context view: Shown.
 7. **Key Features list** — The xs List under a muted "Key Features:" label that lists features such as Dynamic UI. Part marker: `data-ug-part="key-features"`.
 8. **Collapse all button** — The right-aligned xs text button that expands or collapses every release section; shown as Collapse all. Part marker: `data-ug-part="toggle-all"`.
 9. **Release notes accordion** — The accordion of release sections, open on "Global changes (1 update)", whose panel pairs an IMPROVEMENT chip with the change text. Selector: `[class~="aui-accordion"]`.
-
-#### In context layer steps
-
-1. **History header** — Bordered header pairs Release history title with a muted version count. Selector: `[data-ug-part="history-header"]`.
-2. **Search field** — Search releases field filters versions with a magnifier icon. Selector: `[class~="aui-field"]`.
-3. **Version list** — Release history listbox selects one row with a 4px start border. Selector: `[class~="aui-list"][role="listbox"]`.
-4. **Version number** — The bold version 1.0.0 of the selected release row. Selector: `[data-ug-part="version"]`.
-5. **CURRENT chip** — The tonal primary CURRENT chip that marks the installed release. Selector: `[data-ug-part="history-column"] [class~="aui-chip"]`.
-6. **App header** — Bordered notes header stacks the app name over its summary. Selector: `[data-ug-part="notes-header"]`.
-7. **Key Features list** — Extra-small list places features such as Dynamic UI under its label. Selector: `[data-ug-part="key-features"]`.
-8. **Collapse all button** — Right-aligned Collapse all button expands or closes release sections. Selector: `[data-ug-part="toggle-all"]`.
-9. **Release notes accordion** — Open Global changes accordion pairs IMPROVEMENT chip with change details. Selector: `[class~="aui-accordion"]`.
-10. **Overlay** — The scrim dims the app behind the About dialog while leaving the stage visible. Selector: `[class~="aui-dialog-backdrop"]`.
-11. **Popup container** — The wide popup defines the surface and zero-gap frame that contains the title and body. Selector: `[class~="aui-dialog-popup"]`.
-12. **Title bar** — The raised title bar sits at the start of the popup and carries the dialog label. Selector: `[class~="aui-dialog-title"]`.
-13. **Title text** — The word “About” names the window. Selector: `[data-ug-part="title-text"]`.
-14. **Flexible spacer** — The spacer pushes the close control to the far edge of the title bar. Selector: `[class~="aui-dialog-spacer"]`.
-15. **Close control** — The labelled close X dismisses the About dialog. Selector: `[class~="aui-dialog-close"]`.
-16. **Body row** — The body starts a two-column layout beneath the title bar. Selector: `[data-ug-part="body"]`.
-17. **Release history column** — The 224px start column holds the release heading and version navigation. Selector: `[data-ug-part="history-column"]`.
-18. **Release history heading** — The bold heading labels the version list. Selector: `[data-ug-part="history-heading"]`.
-19. **Notes column** — The flexible column shows the selected release notes. Selector: `[data-ug-part="notes-column"]`.
-20. **Notes content** — The placeholder line represents the notes for the selected release. Selector: `[data-ug-part="notes-text"]`.
-21. **Footer actions** — The footer holds the Close action button beneath the body, so the way to finish the dialog sits last. Selector: `[data-ug-part="footer"]`.
-22. **Close action** — The secondary Close button is the footer’s final action and dismisses the About dialog. Selector: `[data-ug-part="footer-close"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-001/options/pfd-about/example.tsx`
 

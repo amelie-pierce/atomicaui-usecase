@@ -48,7 +48,7 @@ options: [
       contextLayers: [
         {"id":"context-about-dialog","partId":"about-dialog","title":"About dialog","explanation":"About popup groups regional notes inside the app workspace.","keyIdea":"The ACE-family dialog places the regional update groups in the app’s About workspace.","selector":"[class~=\"aui-dialog-popup\"]","scope":"context"},
         {"id":"context-about-title","partId":"about-title","title":"About title bar","explanation":"Raised About header separates regional notes from the application.","keyIdea":"Its raised header distinguishes the regional notes window from the underlying application.","selector":"[class~=\"aui-dialog-title\"]","scope":"context"},
-        {"id":"context-about-close","partId":"about-close","title":"Close button","explanation":"Close About exits regional notes without changing the parent dialog.","keyIdea":"The Close About control exits regional notes without changing the parent dialog state.","selector":"[class~=\"aui-dialog-close\"]","scope":"context"},
+        {"id":"context-about-close","partId":"about-close","title":"Close button","explanation":"Close About dismisses the dialog that holds the regional notes.","keyIdea":"The Close About control exits regional notes without changing the parent dialog state.","selector":"[class~=\"aui-dialog-close\"]","scope":"context"},
         {"id":"context-about-body","partId":"about-body","title":"Release notes body","explanation":"Padded body keeps regional update groups below the title bar.","keyIdea":"This body keeps regional update groups together beneath the dialog title and close affordance.","selector":"[data-ug-part=\"about-body\"]","scope":"context"},
       ],
     },

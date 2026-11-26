@@ -46,15 +46,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Chevron** — The disclosure chevron at the end of the trigger. Selector: `[class~="aui-select-chevron"]`.
 6. **Description** — The help line "Adhesive anchors need a cure time." under the control, 16/20 body-colour text, always visible. Selector: `[class~="aui-field-description"]`.
 
-## Component layer steps
-
-1. **Field** — Wrapper groups Anchor type, select, and help; ACE adds a label row. Selector: `[class~="aui-field"]`.
-2. **Label** — Anchor type names the select; ACE places it beside the trigger. Selector: `[class~="aui-field-label"]`.
-3. **Select trigger** — Closed 28px trigger shows Adhesive; open choices appear in Select-001. Selector: `[class~="aui-select-trigger"]`.
-4. **Value** — Selected Adhesive value appears in the closed select trigger. Selector: `[class~="aui-select-value"]`.
-5. **Chevron** — The disclosure chevron at the end of the trigger. Selector: `[class~="aui-select-chevron"]`.
-6. **Description** — Help line says adhesive anchors need cure time below the select. Selector: `[class~="aui-field-description"]`.
-
 ## Apps
 
 - FD (`fd`)

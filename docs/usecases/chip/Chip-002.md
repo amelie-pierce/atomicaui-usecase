@@ -43,10 +43,6 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Chip** — The secondary solid chip at scale "xs" with soft corners that marks the whole app state, shown in the ADC beta notice and beside the menu. Selector: `[class~="aui-chip"]`.
 2. **Label** — The word BETA that states the status. Selector: `[class~="aui-chip-label"]`. Direct text is highlighted.
 
-## Component layer steps
-
-1. **Chip** — Extra-small soft secondary chip marks beta app state. Selector: `[class~="aui-chip"]`.
-
 ## Apps
 
 - ADC (`adc`)
@@ -67,12 +63,6 @@ In context view: Shown.
 
 1. **Beta notice banner** — The warning solid region labelled "Beta release notice" that starts with the BETA Chip, then a triangle-exclamation icon and the message. Part marker: `data-ug-part="beta-banner"`.
 2. **Banner message** — The l3 text "Beta Release: We are actively refining this application." with the lead-in in bold. Part marker: `data-ug-part="beta-message"`.
-
-#### In context layer steps
-
-1. **Beta notice banner** — Warning region places BETA chip, alert icon, then message. Selector: `[data-ug-part="beta-banner"]`.
-2. **Banner message** — Bold lead-in introduces the beta release’s active refinement notice. Selector: `[data-ug-part="beta-message"]`.
-3. **Chip** — Extra-small soft secondary chip marks beta app state. Selector: `[class~="aui-chip"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/chip/Chip-002/example.tsx`
 

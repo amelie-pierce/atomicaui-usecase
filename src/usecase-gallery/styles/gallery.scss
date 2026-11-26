@@ -451,8 +451,6 @@ $narrow: 840px;
   gap: var(--p-px-16);
 }
 
-.ug-layer-lesson__topline,
-.ug-layer-lesson__controls,
 .ug-layer-lesson__back-next {
   display: flex;
   align-items: center;
@@ -460,7 +458,6 @@ $narrow: 840px;
   gap: var(--p-px-8);
 }
 
-.ug-layer-lesson__topline > p,
 .ug-layer-lesson__copy > p,
 .ug-layer-lesson__idea > p {
   margin: 0;
@@ -531,14 +528,6 @@ $narrow: 840px;
 
 .ug-layer-lesson__back-next > :first-child {
   margin-inline-end: auto;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ug-layer-lesson,
-  .ug-layer-lesson * {
-    transition: none !important;
-    animation: none !important;
-  }
 }
 
 .ug-docs__copy-block {

@@ -75,7 +75,7 @@ Anatomy is authored data in each `usecase.ts`, not generic component boilerplate
 - If a text node needs its own layer, wrap it in a marked element (for example `<span data-ug-part="title-text">About</span>`). Never mutate React-owned text or preview nodes to reveal a step. `hooks/use-layer-visibility.ts` returns CSS rules from the active lesson state; component selectors stay within the example root and its dedicated portal host, while context selectors can target scene content inside or outside the portal host.
 - In context lessons list the selected option's outer scene layers first, then Component layers inside it. Keep lesson content with use-case and option data; the shared lesson UI only presents it.
 - The preview hides every layer after the active step. A later part must not be visible, focusable or interactive until reached. Layer selection changes the preview and lesson together; changing use case, option, or Component / In context restarts at the first step.
-- The Document / Layer control belongs to the right pane. Lessons provide numbered step navigation, Back, Next, Replay, Autoplay / Pause, a step title, explanation and key idea. Keep buttons keyboard accessible and the step list usable at narrow widths.
+- The Document / Layer control belongs to the right pane. Lessons provide numbered step navigation, Back and Next controls, a step title, explanation and key idea. Keep buttons keyboard accessible and the step list usable at narrow widths.
 - Use AtomicAUI tokens, fonts, components and icons only. Keep Anatomy hover one-way and ensure hiding or revealing layers never introduces preview scrollbars or flicker.
 
 ## Renumber ids

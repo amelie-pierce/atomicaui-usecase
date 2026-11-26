@@ -1,7 +1,8 @@
-import { Table } from '../../../../../kit';
+import { Table, View } from '../../../../../kit';
 
 export default function Example() {
   return (
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>
     <Table
       aria-label="Governing ratios"
       border="between-rows"
@@ -28,5 +29,6 @@ export default function Example() {
         </Table.Row>
       </Table.Body>
     </Table>
+    </View>
   );
 }

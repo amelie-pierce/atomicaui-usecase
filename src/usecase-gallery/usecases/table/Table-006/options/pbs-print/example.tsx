@@ -1,8 +1,9 @@
-import { Table } from '../../../../../kit';
+import { Table, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Table
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 480px)' }}>
+      <Table
         aria-label="Connection"
         aui={{ scale: 'xs' }}
         border="all-cells"
@@ -21,5 +22,6 @@ export default function Example() {
           </Table.Row>
         </Table.Body>
       </Table>
+    </View>
   );
 }

@@ -11,8 +11,21 @@ export default defineUsecase({
   title: 'Back to top and Table Notes buttons',
 
   apps: ['hcs', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  options: [
-    { id: "hcs-output-header", contextAnatomy: CONTEXT_ANATOMY, name: "Output header", apps: ["hcs","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/useOutputNavigation.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/useOutputNavigation.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/useOutputNavigation.jsx","agpd":"src/agpd/outputNavigation.tsx","rws":"src/rws/outputNavigation.tsx"} },
+    layers: [
+        {"id":"back-to-top","partId":"back-to-top","title":"Back to top","explanation":"Secondary text button that scrolls to the top of the long table; its accessible name matches the visible label.","keyIdea":"Back to top returns readers to the start of the long results table.","selector":"[class~=\"aui-button\"][aria-label=\"Back to top\"]"},
+        {"id":"back-icon","partId":"back-icon","title":"Arrow-up icon","explanation":"The arrow-up glyph that shows the direction of the jump.","keyIdea":"The up arrow previews the direction of the table jump.","selector":"[class~=\"aui-button\"][aria-label=\"Back to top\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"table-notes","partId":"table-notes","title":"Table Notes","explanation":"Secondary text button that jumps down to the table notes; its accessible name \"Jump to table notes\" is longer than the visible Table Notes label.","keyIdea":"Table Notes moves readers to the supporting notes below the results.","selector":"[class~=\"aui-button\"][aria-label=\"Jump to table notes\"]"},
+        {"id":"notes-icon","partId":"notes-icon","title":"Arrow-down icon","explanation":"The arrow-down glyph that points toward the notes below the table.","keyIdea":"The down arrow points from the table toward its notes.","selector":"[class~=\"aui-button\"][aria-label=\"Jump to table notes\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"print","partId":"print","title":"Print Output","explanation":"HCS Output header only: the tonal surface Print Output button with a print icon that sits right after the two jump buttons.","keyIdea":"The HCS print control follows both navigation shortcuts in the header.","selector":"[class~=\"aui-button\"]:not([aria-label])"},
+      ],
+options: [
+    { id: "hcs-output-header", contextAnatomy: CONTEXT_ANATOMY, name: "Output header", apps: ["hcs","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/useOutputNavigation.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/useOutputNavigation.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/useOutputNavigation.jsx","agpd":"src/agpd/outputNavigation.tsx","rws":"src/rws/outputNavigation.tsx"} ,
+      contextLayers: [
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The surface-alt Output section that frames the header row.","keyIdea":"The pane frames output navigation and its result content together.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The semi-bold Output heading at the start of the header row.","keyIdea":"The heading identifies the output section above the helper actions.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
+        {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"The end-aligned group with the two scroll helpers followed by the tonal Print Output button, wrapping when space runs out.","keyIdea":"The action group keeps print and scroll shortcuts aligned at the header end.","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/useOutputNavigation.tsx', pfd: 'src/pfd/useOutputNavigation.tsx', pbs: 'src/useOutputNavigation.tsx', hs: 'src/hs/useOutputNavigation.tsx', fd: 'src/components/useOutputNavigation.jsx', agpd: 'src/agpd/outputNavigation.tsx', rws: 'src/rws/outputNavigation.tsx' },
   summary: 'Two quiet text Buttons with a leading icon sit together in a header: an arrow jumps to the top of a long table and another down to its notes.',

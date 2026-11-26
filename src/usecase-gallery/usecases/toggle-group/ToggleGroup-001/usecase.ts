@@ -4,8 +4,21 @@ export default defineUsecase({
   uiType: 'ToggleGroup',
   title: 'Labelled segments',
   apps: ['hs', 'adc'],
-  options: [
-    { id: "hs-settings", name: "Settings popover", contextAnatomy: [{ id: 'settings-trigger', name: 'Settings button', description: 'The text Button labelled Settings that opens the popover under it.' }, { id: 'settings-popover', name: 'Settings popover', description: 'The elevated popover, 288px wide, anchored under the trigger that holds one Field per setting.' }], source: {"hs":"src/hs/SettingsPanel.tsx","adc":"src/adc/components/AppConfigurationPopover.tsx"} },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"The wrapper at scale \"sm\", filling the popover width, that ties the \"Units\" label to the segment row.","keyIdea":"The wrapper binds the Units prompt to its mutually exclusive segments.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Units\" label above the segments, referenced by aria-labelledby so the group is named.","keyIdea":"The label names the measurement system before the user chooses a segment.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"group","partId":"group","title":"Group","explanation":"The single-select group (multiple={false}) with Metric chosen, whose segments share the full width.","keyIdea":"The group makes Metric and Imperial one selection rather than two independent buttons.","selector":"[class~=\"aui-toggle-group\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"One option, Metric or Imperial, rendered through a text Button at scale \"xs\" with no padding that flexes to fill.","keyIdea":"Each option provides one system choice while sharing the available group width.","selector":"[class~=\"aui-toggle-group\"] > button"},
+        {"id":"segment","partId":"segment","title":"Segment","explanation":"The inner span that paints the segment: solid secondary with soft corners when pressed, plain text on surface otherwise.","keyIdea":"The inner segment fill shows which system is pressed without changing the group outline.","selector":"[class~=\"aui-toggle-group\"] > button [class~=\"aui-view\"]"},
+        {"id":"text","partId":"text","title":"Option text","explanation":"The Metric or Imperial name in a Type role \"l5\" at medium weight.","keyIdea":"The option name stays readable at the compact scale of the segmented control.","selector":"[class~=\"aui-toggle-group\"] > button [data-aui-typeface]"},
+      ],
+options: [
+    { id: "hs-settings", name: "Settings popover", contextAnatomy: [{ id: 'settings-trigger', name: 'Settings button', description: 'The text Button labelled Settings that opens the popover under it.' }, { id: 'settings-popover', name: 'Settings popover', description: 'The elevated popover, 288px wide, anchored under the trigger that holds one Field per setting.' }], source: {"hs":"src/hs/SettingsPanel.tsx","adc":"src/adc/components/AppConfigurationPopover.tsx"} ,
+      contextLayers: [
+        {"id":"context-settings-trigger","partId":"settings-trigger","title":"Settings button","explanation":"The text Button labelled Settings that opens the popover under it.","keyIdea":"Settings is the entry point for preferences that contain the unit selector.","selector":"[data-ug-part=\"settings-trigger\"]","scope":"context"},
+        {"id":"context-settings-popover","partId":"settings-popover","title":"Settings popover","explanation":"The elevated popover, 288px wide, anchored under the trigger that holds one Field per setting.","keyIdea":"The popover groups unit preferences beside the control that opens them.","selector":"[data-ug-part=\"settings-popover\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hs: 'src/hs/SettingsPanel.tsx', adc: 'src/adc/components/AppConfigurationPopover.tsx' },
   summary: 'A labelled row of full-width segments where exactly one option is on, the chosen one a solid secondary segment.',

@@ -4,8 +4,20 @@ export default defineUsecase({
   uiType: 'Alert / Confirm',
   title: 'Single centered action',
   apps: ['ace', 'hs'],
-  options: [
-    { id: "ace-relaunch", showContext: false, name: "Relaunch notice", apps: ["ace","hs"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","hs":"src/hs/LicenseGate.tsx"} },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim that blocks the app after the licence agreement was declined.","keyIdea":"The overlay stops attention from returning to the declined agreement beneath the notice.","selector":"[class~=\"aui-dialog-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The default-size blocking notice, with no close X so it cannot be dismissed.","keyIdea":"A non-dismissible surface makes the required next action unmistakable.","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title","explanation":"The raised, text-only title \"Website Application License Agreement\" with no icon and no close X.","keyIdea":"The text-only heading gives the agreement notice a clear subject without a decorative warning.","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"description","partId":"description","title":"Description","explanation":"The explanation that the app cannot continue without agreement and that the user must relaunch it and accept (ACE spells out the EULA).","keyIdea":"Explain both why work cannot continue and how the user can proceed again.","selector":"[class~=\"aui-dialog-description\"]"},
+        {"id":"actions","partId":"actions","title":"Footer","explanation":"The footer with align=\"center\" that centres its single button.","keyIdea":"Center the lone next step so the blocking notice does not imply alternate choices.","selector":"[class~=\"aui-dialog-actions\"]"},
+        {"id":"relaunch","partId":"relaunch","title":"Re-Launch","explanation":"The only way forward: a solid secondary Re-Launch button with dismiss={false} so the notice stays until the app reloads.","keyIdea":"A persistent relaunch action is the only route forward after declining the agreement.","selector":"[data-ug-part=\"relaunch\"]"},
+      ],
+options: [
+    { id: "ace-relaunch", showContext: false, name: "Relaunch notice", apps: ["ace","hs"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","hs":"src/hs/LicenseGate.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { ace: 'src/features/eula/ui/EulaGate.tsx', hs: 'src/hs/LicenseGate.tsx' },
   summary: 'A blocking notice with no close X and one solid button centred in the footer, the only way forward.',

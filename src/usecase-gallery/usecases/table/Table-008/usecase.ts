@@ -4,8 +4,21 @@ export default defineUsecase({
   uiType: 'Data table',
   title: 'Print table totals row',
   apps: ['ace'],
-  options: [
-    { id: "ace-print-totals", name: "Print table", showContext: false, apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} },
+    layers: [
+        {"id":"table","partId":"table","title":"Table","explanation":"Print report table at scale \"xs\": no profile padding, shape \"none\", a text-coloured border, all cells ruled, scroll=\"parent\" and selectionMode \"none\".","keyIdea":"The print table carries line items and totals without introducing selection behavior.","selector":"[class~=\"aui-table\"]"},
+        {"id":"head","partId":"head","title":"Header","explanation":"Muted header band printed with Model and Qty.","keyIdea":"A muted heading band separates report labels from the printed values.","selector":"[class~=\"aui-table-head\"]"},
+        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Centred label on the muted fill with a surface-coloured foreground and wrapping allowed.","keyIdea":"Centered headings stay readable on the report’s softer background.","selector":"[class~=\"aui-table-header-cell\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The line items being totalled, here Model B-200 with quantity 4.","keyIdea":"The body lists the items that contribute to the final quantity.","selector":"[class~=\"aui-table-body\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"One printed line item.","keyIdea":"Each row keeps one model and its quantity together in the printed output.","selector":"[class~=\"aui-table-row\"]"},
+        {"id":"cell","partId":"cell","title":"Cell","explanation":"Centred cell with 4px inline and 6px block padding shared through the CELL constant.","keyIdea":"Shared padding keeps every printed cell aligned in the report grid.","selector":"[class~=\"aui-table-cell\"]"},
+        {"id":"foot","partId":"foot","title":"Foot","explanation":"Totals row at the bottom of the print table, its Total label and sum set in bold typographyStyle.","keyIdea":"The footer makes the aggregate visible after the contributing line items.","selector":"[class~=\"aui-table-foot\"]"},
+      ],
+options: [
+    { id: "ace-print-totals", name: "Print table", showContext: false, apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     ace: 'src/features/print/ui/report-primitives.tsx',
@@ -42,7 +55,7 @@ export default defineUsecase({
     {
       id: 'row',
       name: 'Row',
-      selector: '[class~="aui-table-row"]',
+      selector: '[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]',
       description: 'One printed line item.',
     },
     {

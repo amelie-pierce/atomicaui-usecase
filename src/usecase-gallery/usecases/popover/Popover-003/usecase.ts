@@ -9,9 +9,28 @@ export default defineUsecase({
   uiType: 'Popover',
   title: 'Column menu',
   apps: ['hcs', 'hs', 'pfd'],
-  options: [
-    { id: "hcs-column-menu", contextAnatomy: CONTEXT_ANATOMY, name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} },
-    { id: "pfd-column-menu", contextAnatomy: CONTEXT_ANATOMY, name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} },
+    layers: [
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The ellipsis-vertical \"Column options\" icon button, an xs kebab with a compact square profile; in the table scenes the popover anchors to the Load (lb) kebab instead.","keyIdea":"The kebab opens actions for the specific column whose heading contains it.","selector":"[data-base-ui-click-trigger]"},
+        {"id":"table","partId":"table","title":"Results table","explanation":"The \"Connector calculation results\" table of the HCS and PFD scenes whose headers host the kebab.","keyIdea":"The results table supplies column context for the sort menu shown above it.","selector":"[class~=\"aui-table\"]"},
+        {"id":"header-cell","partId":"header-cell","title":"Sortable header cell","explanation":"The Load (lb) header, sorted ascending, whose actions slot carries the kebab (vertical dots in HCS, horizontal in PFD).","keyIdea":"The Load heading identifies which column the sort choices will reorder.","selector":"[data-ug-part=\"header-cell\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The 256px elevated column opened under the kebab, aligned to the cell end in HCS and the example and to its start in PFD.","keyIdea":"The anchored popup groups ordering actions beside the column that they affect.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The PFD square Close button that starts the popup, end-aligned above the Sort choices.","keyIdea":"The PFD close control dismisses sorting without changing the current order.","selector":"[data-ug-part=\"close\"]"},
+        {"id":"sort-group","partId":"sort-group","title":"Sort group","explanation":"The RadioGroup labelled \"Sort\" that holds the ordering choices.","keyIdea":"A labeled radio group makes the sort direction one mutually exclusive choice.","selector":"[class~=\"aui-radio-group\"]"},
+        {"id":"sort-radio","partId":"sort-radio","title":"Sort option","explanation":"A sort choice such as \"Sort A to Z\" or \"Sort Z to A\"; the table scenes add \"(Smallest to Largest)\" hints and a None option, selected options are solid primary.","keyIdea":"Each radio option states the resulting ordering so users can choose intentionally.","selector":"[class~=\"aui-radio\"]"},
+      ],
+options: [
+    { id: "hcs-column-menu", contextAnatomy: CONTEXT_ANATOMY, name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} ,
+      contextLayers: [
+        {"id":"context-rows","partId":"rows","title":"Result rows","explanation":"The table body rows under the header; with Load sorted A to Z they follow the chosen order.","keyIdea":"The result rows make the selected ascending order visible beneath the menu.","selector":"[data-ug-part=\"rows\"]","scope":"context"},
+        {"id":"context-other-header","partId":"other-header","title":"Neighbouring header cell","explanation":"The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to.","keyIdea":"The neighboring Model header shows that Load sorting applies within the same table.","selector":"[data-ug-part=\"other-header\"]","scope":"context"},
+      ],
+    },
+    { id: "pfd-column-menu", contextAnatomy: CONTEXT_ANATOMY, name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} ,
+      contextLayers: [
+        {"id":"context-rows","partId":"rows","title":"Result rows","explanation":"The table body rows under the header; with Load sorted A to Z they follow the chosen order.","keyIdea":"The PFD result rows reveal the chosen Load ordering in its table layout.","selector":"[data-ug-part=\"rows\"]","scope":"context"},
+        {"id":"context-other-header","partId":"other-header","title":"Neighbouring header cell","explanation":"The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to.","keyIdea":"The adjacent Model header provides a stable point of comparison for the sorted Load column.","selector":"[data-ug-part=\"other-header\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/ColumnMenu.tsx', hs: 'src/hs/ColumnMenu.tsx', pfd: 'src/pfd/ColumnMenu.tsx' },
   summary: 'A popover of choices opened from the kebab of a table header cell: the Sort radios for that column.',
@@ -34,7 +53,7 @@ export default defineUsecase({
     {
       id: 'header-cell',
       name: 'Sortable header cell',
-      selector: '[class~="aui-table-header-cell"]',
+      selector: '[data-ug-part="header-cell"]',
       description: 'The Load (lb) header, sorted ascending, whose actions slot carries the kebab (vertical dots in HCS, horizontal in PFD).',
     },
     {

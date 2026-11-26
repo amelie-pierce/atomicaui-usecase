@@ -4,11 +4,38 @@ export default defineUsecase({
   uiType: 'Switch',
   title: 'Switch with label',
   apps: ['hcs', 'hs', 'adm', 'pbs', 'rws', 'ace'],
-  options: [
-    { id: "hcs-labelled", name: "Labelled switch", contextAnatomy: [{ id: 'columns-trigger', name: 'Configure columns trigger', description: 'The table-columns IconButton, labelled Configure columns, that opens the popover under it.' }, { id: 'columns-popover', name: 'Configure columns popover', description: 'The elevated popover, 320px wide, anchored under the trigger that holds the column list.' }], apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnVisibility.tsx","hs":"src/hs/ColumnVisibility.tsx"} },
-    { id: "adm-labelled", name: "Labelled switch — UI variant 2", contextAnatomy: [{ id: 'dialog', name: 'Base plate dialog', description: 'The Dialog popup, titled Base plate, that hosts the switch.' }, { id: 'dialog-title', name: 'Dialog title', description: 'The raised title bar with the Base plate heading and a Close button at the end.' }, { id: 'dialog-body', name: 'Dialog body', description: 'The body area that holds the Include base plate switch in a column.' }], apps: ["adm"], source: {"adm":"src/features/viewer/components/EditModals/BasePlateModal.tsx"} },
-    { id: "pbs-labelled", name: "Labelled switch — UI variant 3", showContext: false, apps: ["pbs","rws"], source: {"pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx"} },
-    { id: "ace-labelled", name: "Labelled switch — UI variant 4", contextAnatomy: [{ id: 'dialog', name: 'Feedback dialog', description: 'The Dialog popup, titled Feedback Form, that hosts the switch.' }, { id: 'dialog-title', name: 'Dialog title', description: 'The raised title bar with the Feedback Form heading and a Cancel close button at the end.' }, { id: 'dialog-body', name: 'Dialog body', description: 'The body area that holds the Send me a copy switch.' }, { id: 'dialog-actions', name: 'Dialog actions', description: 'The footer with a Cancel button and a solid secondary Send button.' }], apps: ["ace"], source: {"ace":"src/features/top-navigation/ui/FeedbackDialog.tsx"} },
+    layers: [
+        {"id":"switch","partId":"switch","title":"Switch","explanation":"The on/off control, on by default, with a solid primary track when selected; each app places it in a popover, a table toolbar or a dialog.","keyIdea":"The switch changes one setting while allowing the same control to appear in several app contexts.","selector":"[class~=\"aui-switch\"]"},
+        {"id":"thumb","partId":"thumb","title":"Thumb","explanation":"The thumb that slides to the end of the track when Group by model is on.","keyIdea":"The sliding thumb makes the binary setting position visible as it changes.","selector":"[class~=\"aui-switch-thumb\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The option text \"Group by model\" beside the switch; the scenes swap it for Show Optimized Models, Send me a copy or the ADM draft switches.","keyIdea":"The option label explains the behavior affected by the switch.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
+      ],
+options: [
+    { id: "hcs-labelled", name: "Labelled switch", contextAnatomy: [{ id: 'columns-trigger', name: 'Configure columns trigger', description: 'The table-columns IconButton, labelled Configure columns, that opens the popover under it.' }, { id: 'columns-popover', name: 'Configure columns popover', description: 'The elevated popover, 320px wide, anchored under the trigger that holds the column list.' }], apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnVisibility.tsx","hs":"src/hs/ColumnVisibility.tsx"} ,
+      contextLayers: [
+        {"id":"context-columns-trigger","partId":"columns-trigger","title":"Configure columns trigger","explanation":"The table-columns IconButton, labelled Configure columns, that opens the popover under it.","keyIdea":"The Configure columns trigger opens the control group for the results table.","selector":"[data-ug-part=\"columns-trigger\"]","scope":"context"},
+        {"id":"context-columns-popover","partId":"columns-popover","title":"Configure columns popover","explanation":"The elevated popover, 320px wide, anchored under the trigger that holds the column list.","keyIdea":"The anchored popover groups column visibility choices in the same surface.","selector":"[data-ug-part=\"columns-popover\"]","scope":"context"},
+      ],
+    },
+    { id: "adm-labelled", name: "Labelled switch — UI variant 2", contextAnatomy: [{ id: 'dialog', name: 'Base plate dialog', description: 'The Dialog popup, titled Base plate, that hosts the switch.' }, { id: 'dialog-title', name: 'Dialog title', description: 'The raised title bar with the Base plate heading and a Close button at the end.' }, { id: 'dialog-body', name: 'Dialog body', description: 'The body area that holds the Include base plate switch in a column.' }], apps: ["adm"], source: {"adm":"src/features/viewer/components/EditModals/BasePlateModal.tsx"} ,
+      contextLayers: [
+        {"id":"context-dialog","partId":"dialog","title":"Base plate dialog","explanation":"The Dialog popup, titled Base plate, that hosts the switch.","keyIdea":"The Base plate dialog places its setting inside the task that edits that component.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The raised title bar with the Base plate heading and a Close button at the end.","keyIdea":"The raised title identifies which component’s options are being changed.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-body","partId":"dialog-body","title":"Dialog body","explanation":"The body area that holds the Include base plate switch in a column.","keyIdea":"The dialog body separates the Include base plate setting from its footer actions.","selector":"[data-ug-part=\"dialog-body\"]","scope":"context"},
+      ],
+    },
+    { id: "pbs-labelled", name: "Labelled switch — UI variant 3", showContext: false, apps: ["pbs","rws"], source: {"pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "ace-labelled", name: "Labelled switch — UI variant 4", contextAnatomy: [{ id: 'dialog', name: 'Feedback dialog', description: 'The Dialog popup, titled Feedback Form, that hosts the switch.' }, { id: 'dialog-title', name: 'Dialog title', description: 'The raised title bar with the Feedback Form heading and a Cancel close button at the end.' }, { id: 'dialog-body', name: 'Dialog body', description: 'The body area that holds the Send me a copy switch.' }, { id: 'dialog-actions', name: 'Dialog actions', description: 'The footer with a Cancel button and a solid secondary Send button.' }], apps: ["ace"], source: {"ace":"src/features/top-navigation/ui/FeedbackDialog.tsx"} ,
+      contextLayers: [
+        {"id":"context-dialog","partId":"dialog","title":"Feedback dialog","explanation":"The Dialog popup, titled Feedback Form, that hosts the switch.","keyIdea":"The feedback dialog keeps response-copy preference within the submission task.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The raised title bar with the Feedback Form heading and a Cancel close button at the end.","keyIdea":"The Feedback Form title names the form whose copy preference is being changed.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-body","partId":"dialog-body","title":"Dialog body","explanation":"The body area that holds the Send me a copy switch.","keyIdea":"The body places the opt-in beside the feedback fields it governs.","selector":"[data-ug-part=\"dialog-body\"]","scope":"context"},
+        {"id":"context-dialog-actions","partId":"dialog-actions","title":"Dialog actions","explanation":"The footer with a Cancel button and a solid secondary Send button.","keyIdea":"The footer separates canceling the form from sending the selected response.","selector":"[data-ug-part=\"dialog-actions\"]","scope":"context"},
+      ],
+    },
   ],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx', adm: 'src/features/viewer/components/EditModals/BasePlateModal.tsx', pbs: 'src/ResultsSection.tsx', rws: 'src/rws/output.tsx', ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx' },
   summary: 'A switch with its own text beside it that turns one option on or off.',

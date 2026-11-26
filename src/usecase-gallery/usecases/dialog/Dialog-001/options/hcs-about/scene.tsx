@@ -10,7 +10,7 @@ export default function HcsAboutScene({ host }: ContextProps) {
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { gap: '0' } }} style={{ '--aui-width': 'min(860px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-              About
+              <span data-ug-part="title-text">About</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
@@ -98,6 +98,11 @@ export default function HcsAboutScene({ host }: ContextProps) {
                 </View>
               </View>
             </View>
+            <span data-ug-component-root style={{ display: 'contents' }}>
+              <Dialog.Actions data-ug-part="footer" aui={{ scale: 'sm' }}>
+                <Dialog.Button data-ug-part="footer-close" aui={{ scale: 'sm', color: 'secondary' }}>Close</Dialog.Button>
+              </Dialog.Actions>
+            </span>
           </Dialog.Popup>
         </Dialog.Viewport>
       </Dialog.Portal>

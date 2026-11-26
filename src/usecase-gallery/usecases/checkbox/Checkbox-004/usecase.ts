@@ -4,12 +4,39 @@ export default defineUsecase({
   uiType: 'Checkbox group',
   title: 'Object visibility checkbox group',
   apps: ['hcs', 'adc', 'adm', 'fd', 'hs', 'pbs', 'agpd', 'rws'],
-  options: [
-    { id: "hcs-visibility", showContext: false, name: "Object visibility", apps: ["hcs"], source: {"hcs":"src/App.tsx"} },
-    { id: "adc-visibility", showContext: false, name: "Object visibility — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} },
-    { id: "adm-visibility", showContext: false, name: "Object visibility — UI variant 3", apps: ["adm"], source: {"adm":"src/features/viewer/components/ViewerChrome.tsx"} },
-    { id: "fd-visibility", showContext: false, name: "Object visibility — UI variant 4", apps: ["fd"], source: {"fd":"src/components/Viewer.jsx"} },
-    { id: "hs-visibility", showContext: false, name: "Object visibility — UI variant 5", apps: ["hs","pbs","agpd","rws"], source: {"hs":"src/hs/ViewerPane.tsx","pbs":"src/Viewer.tsx","agpd":"src/agpd/Viewer.tsx","rws":"src/rws/Viewer.tsx"} },
+    layers: [
+        {"id":"title","partId":"title","title":"Group title","explanation":"The \"Object Visibility\" title, a Type role \"l4\" at semi-bold weight, that names the group of visibility checkboxes; some apps write it as a Field.Label.","keyIdea":"The group heading makes the visibility controls read as one model-display task.","selector":"[data-aui-typeface]"},
+        {"id":"checkbox","partId":"checkbox","title":"Checkbox","explanation":"One of the visibility checkboxes (Wall, Roof, and Base plate or Anchors in the scenes) that shows or hides that part of the 3D model; checked by default.","keyIdea":"Each checkbox independently controls whether its named model part is shown.","selector":"[class~=\"aui-checkbox\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The box that shows whether the model part is visible.","keyIdea":"The indicator gives every part a consistent visible-versus-hidden state.","selector":"[class~=\"aui-checkbox-indicator\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The \"check\" mark used in the ADC, ADM, FD, HCS and HS scenes; the compact example draws the box without one.","keyIdea":"The check glyph confirms that this model element is currently included in the view.","selector":"[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The part name beside the box, such as Wall or Roof, in the wrapped row of the 3D viewer controls.","keyIdea":"Naming the part beside its box lets users change visibility without guessing which object it affects.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
+      ],
+options: [
+    { id: "hcs-visibility", showContext: false, name: "Object visibility", apps: ["hcs"], source: {"hcs":"src/App.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adc-visibility", showContext: false, name: "Object visibility — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-visibility", showContext: false, name: "Object visibility — UI variant 3", apps: ["adm"], source: {"adm":"src/features/viewer/components/ViewerChrome.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "fd-visibility", showContext: false, name: "Object visibility — UI variant 4", apps: ["fd"], source: {"fd":"src/components/Viewer.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "hs-visibility", showContext: false, name: "Object visibility — UI variant 5", apps: ["hs","pbs","agpd","rws"], source: {"hs":"src/hs/ViewerPane.tsx","pbs":"src/Viewer.tsx","agpd":"src/agpd/Viewer.tsx","rws":"src/rws/Viewer.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     hcs: 'src/App.tsx',

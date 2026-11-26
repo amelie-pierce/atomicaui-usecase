@@ -4,9 +4,25 @@ export default defineUsecase({
   uiType: 'Field with description',
   title: 'Description under a field',
   apps: ['fd', 'rws', 'ace'],
-  options: [
-    { id: "fd-description", name: "Field description", apps: ["fd","rws"], note: "Label above; the description sits under the control.", source: {"fd":"src/components/ui.jsx","rws":"src/rws/inputs.tsx"}, showContext: false },
-    { id: "ace-description", name: "Field description — UI variant 2", apps: ["ace"], note: "Label beside; the description sits under the whole row.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"}, showContext: false },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"Stacked wrapper holding the \"Anchor type\" label, the select and the help line; in ACE it becomes a column with a label-and-select row above the note.","keyIdea":"The wrapper keeps the selection, its label and its short guidance in one field unit.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Anchor type\" label that names the select; ACE puts it beside the trigger, taking half the row.","keyIdea":"The Anchor type label identifies the category that the closed select will change.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"trigger","partId":"trigger","title":"Select trigger","explanation":"The closed 28px select trigger, surface coloured, that shows the chosen Adhesive option; the open list is Select-001.","keyIdea":"The trigger shows the current choice while reserving a clear target for opening the options.","selector":"[class~=\"aui-select-trigger\"]"},
+        {"id":"value","partId":"value","title":"Value","explanation":"The text of the chosen option, \"Adhesive\".","keyIdea":"The selected value remains visible so users can confirm the chosen anchor type at a glance.","selector":"[class~=\"aui-select-value\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The disclosure chevron at the end of the trigger.","keyIdea":"The chevron communicates that more anchor types are available in a list.","selector":"[class~=\"aui-select-chevron\"]"},
+        {"id":"description","partId":"description","title":"Description","explanation":"The help line \"Adhesive anchors need a cure time.\" under the control, 16/20 body-colour text, always visible.","keyIdea":"The cure-time note clarifies a consequence of choosing adhesive anchors before the field is used.","selector":"[class~=\"aui-field-description\"]"},
+      ],
+options: [
+    { id: "fd-description", name: "Field description", apps: ["fd","rws"], note: "Label above; the description sits under the control.", source: {"fd":"src/components/ui.jsx","rws":"src/rws/inputs.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "ace-description", name: "Field description — UI variant 2", apps: ["ace"], note: "Label beside; the description sits under the whole row.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { fd: 'src/components/ui.jsx', rws: 'src/rws/inputs.tsx', ace: 'src/features/estimator/ui/EstimatorInputPanel.tsx' },
   summary: 'A line of help text under a field that explains the chosen value.',

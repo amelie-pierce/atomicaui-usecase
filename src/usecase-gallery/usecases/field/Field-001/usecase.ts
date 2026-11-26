@@ -4,11 +4,35 @@ export default defineUsecase({
   uiType: 'Single-line field',
   title: 'Number field with unit',
   apps: ['hcs', 'hs', 'pfd', 'rws', 'fd', 'agpd', 'adm', 'adc', 'ace'],
-  options: [
-    { id: "hcs-number", name: "Number field", apps: ["hcs"], note: "Label above; the value starts at the control start and the unit follows it.", source: {"hcs":"src/App.tsx"}, showContext: false },
-    { id: "hs-number", name: "Number field — UI variant 2", apps: ["hs","pfd","rws"], note: "Label above; the value is end-aligned with a bold unit.", source: {"hs":"src/hs/InputFields.tsx","pfd":"src/pfd/fields.tsx","rws":"src/rws/inputs.tsx"}, showContext: false },
-    { id: "fd-number", name: "Number field — UI variant 3", apps: ["fd","agpd"], note: "Label above; the value is end-aligned with a regular unit.", source: {"fd":"src/components/ui.jsx","agpd":"src/agpd/controls.tsx"}, showContext: false },
-    { id: "adm-number", name: "Number field — UI variant 4", apps: ["adm","adc","ace"], note: "Label beside: label and control share the row, half each.", source: {"adm":"src/features/design-inputs/components/shared/FieldNumberRow.tsx","adc":"src/adc/components/NumberRow.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"}, showContext: false },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"Stacked number field at scale \"sm\" with a 3 gap; in the label-beside apps (ADM, ADC, ACE) it becomes a row that splits 137px for the label and 137px for the control.","keyIdea":"The Field wrapper keeps the pressure label and its numeric control aligned as one measurement.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Fc perp\" label above the control; the label-beside apps set it nowrap with an ellipsis and flex-basis half.","keyIdea":"The label identifies the measurement before the number or unit is read.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"control","partId":"control","title":"Control","explanation":"The 28px outlined control row with 3/8 padding that holds the value and the unit side by side.","keyIdea":"One outlined row makes the value and its unit feel like a single control.","selector":"[class~=\"aui-field-control\"]"},
+        {"id":"input","partId":"input","title":"Input","explanation":"The input showing 650, with inputMode \"decimal\" and the value aligned to the end so it sits next to the unit.","keyIdea":"Right alignment keeps decimal digits visually comparable as pressure values change.","selector":"[class~=\"aui-field-control\"] > [class~=\"aui-input\"]"},
+        {"id":"number-field","partId":"number-field","title":"Number field","explanation":"FD, AGPD, ADM and ADC wrap the value in a Field.NumberField group instead of a plain input, with no steppers, so the number is parsed and aligned at the end.","keyIdea":"The number-field group parses the value without exposing stepper controls that are absent from the design.","selector":"[class~=\"aui-number-field\"]"},
+        {"id":"unit","partId":"unit","title":"Unit","explanation":"The \"psi\" unit after the value, a mono role \"l4\" Type here; HS, PFD and RWS render it 14px semi-bold, FD and AGPD as a 16px regular mono unit.","keyIdea":"The psi suffix tells users which pressure scale the number uses.","selector":"[class~=\"aui-field-control\"] > [data-aui-typeface], [class~=\"aui-number-field-unit\"]"},
+      ],
+options: [
+    { id: "hcs-number", name: "Number field", apps: ["hcs"], note: "Label above; the value starts at the control start and the unit follows it.", source: {"hcs":"src/App.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "hs-number", name: "Number field — UI variant 2", apps: ["hs","pfd","rws"], note: "Label above; the value is end-aligned with a bold unit.", source: {"hs":"src/hs/InputFields.tsx","pfd":"src/pfd/fields.tsx","rws":"src/rws/inputs.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "fd-number", name: "Number field — UI variant 3", apps: ["fd","agpd"], note: "Label above; the value is end-aligned with a regular unit.", source: {"fd":"src/components/ui.jsx","agpd":"src/agpd/controls.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-number", name: "Number field — UI variant 4", apps: ["adm","adc","ace"], note: "Label beside: label and control share the row, half each.", source: {"adm":"src/features/design-inputs/components/shared/FieldNumberRow.tsx","adc":"src/adc/components/NumberRow.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hcs: 'src/App.tsx', hs: 'src/hs/InputFields.tsx', pfd: 'src/pfd/fields.tsx', rws: 'src/rws/inputs.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/controls.tsx', adm: 'src/features/design-inputs/components/shared/FieldNumberRow.tsx', adc: 'src/adc/components/NumberRow.tsx', ace: 'src/features/estimator/ui/EstimatorInputPanel.tsx' },
   summary: 'A labelled field with one outlined control that holds a number and shows its unit after the value.',

@@ -13,7 +13,7 @@ export default function PfdColumnMenuScene({ host }: ContextProps) {
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell data-ug-part="other-header" aui={{ color: 'raised' }} actions={<IconButton name="ellipsis" aria-label="Model column options" aui={{ color: 'surface', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} />}>Model</Table.HeaderCell>
-            <Table.HeaderCell aui={{ color: 'raised' }} sortDirection="asc" actions={<span ref={setAnchor}><IconButton name="ellipsis" aria-label="Load (lb) column options" aui={{ color: 'secondary', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} /></span>}>Load (lb)</Table.HeaderCell>
+            <Table.HeaderCell data-ug-part="header-cell" aui={{ color: 'raised' }} sortDirection="asc" actions={<span ref={setAnchor}><IconButton name="ellipsis" aria-label="Load (lb) column options" aui={{ color: 'secondary', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} /></span>}>Load (lb)</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body data-ug-part="rows">

@@ -4,8 +4,18 @@ export default defineUsecase({
   uiType: 'Tooltip on a disabled control',
   title: 'Disabled control tooltip',
   apps: ['hcs', 'fd', 'hs'],
-  options: [
-    { id: "hcs-disabled-radio", name: "Disabled control", apps: ["hcs","fd","hs"], showContext: false, source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx","hs":"src/hs/OutputPane.tsx"} },
+    layers: [
+        {"id":"trigger","partId":"trigger","title":"Trigger wrapper","explanation":"The focusable inline-flex span (tabIndex 0) whose aria-label \"Selection unavailable for Model C-300\" carries the reason, so keyboard and screen reader users reach the disabled radio's explanation.","keyIdea":"The focusable wrapper carries the disabled reason when the radio itself cannot receive focus.","selector":"[data-ug-part=\"trigger\"]"},
+        {"id":"radio","partId":"radio","title":"Disabled radio","explanation":"The disabled, unselected \"Model C-300\" radio taken out of the tab order (tabIndex -1) so the wrapper receives the focus.","keyIdea":"The disabled radio remains visibly unavailable while leaving focus on its explanation wrapper.","selector":"[data-ug-part=\"trigger\"] [class~=\"aui-radio\"]"},
+        {"id":"positioner","partId":"positioner","title":"Positioner","explanation":"Opens the reason above the wrapper with a 4px offset (side=\"top\").","keyIdea":"The positioner ties the unavailable reason to the option above it.","selector":"[class~=\"aui-tooltip-positioner\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The default tooltip surface (scale \"sm\" in the HCS scene).","keyIdea":"The popup displays why Model C-300 cannot be selected in this state.","selector":"[class~=\"aui-tooltip-popup\"]"},
+      ],
+options: [
+    { id: "hcs-disabled-radio", name: "Disabled control", apps: ["hcs","fd","hs"], showContext: false, source: {"hcs":"src/components/F01Results.tsx","fd":"src/components/Results.jsx","hs":"src/hs/OutputPane.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/Results.jsx', hs: 'src/hs/OutputPane.tsx' },
   summary: 'A control that cannot be used shows why in a tooltip on its wrapper.',

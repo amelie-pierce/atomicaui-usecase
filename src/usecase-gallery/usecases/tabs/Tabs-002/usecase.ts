@@ -4,10 +4,29 @@ export default defineUsecase({
   uiType: 'Segmented tabs',
   title: 'Phone workspace tabs',
   apps: ['pfd', 'hs', 'agpd', 'fd', 'adm', 'ace', 'pbs'],
-  options: [
-    { id: "pfd-phone-tabs", name: "Phone workspace tabs", showContext: false, apps: ["pfd","hs","agpd","fd"], note: "The row fills the phone width and shrinks its tabs.", source: {"pfd":"src/pfd/Workspace.tsx","hs":"src/App.tsx","agpd":"src/App.tsx","fd":"src/App.jsx"} },
-    { id: "adm-phone-tabs", name: "Phone workspace tabs — UI variant 2", showContext: false, apps: ["adm","ace"], note: "The row fills the phone width and shrinks its tabs; a Reset button ends the row.", source: {"adm":"src/app/layout/MobileWorkbench/MobileWorkbench.tsx","ace":"src/pages/estimator/EstimatorPage.tsx"} },
-    { id: "pbs-phone-tabs", name: "Phone workspace tabs — UI variant 3", showContext: false, apps: ["pbs"], note: "Every tab keeps its natural width (fit) and the row scrolls sideways.", source: {"pbs":"src/App.tsx"} },
+    layers: [
+        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"Top-level phone switch with no padding, spanning the viewport width (390px in the scenes). ADM, PBS and PFD start on Input.","keyIdea":"A full-width root turns phone navigation into one compact pane switch.","selector":"[class~=\"aui-tabs\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"One-line row of pane chips; in the ADM and PFD scenes it uses overflow=\"shrink\" with gap 0 and scrolls horizontally when the labels do not fit.","keyIdea":"The one-line list preserves a predictable horizontal path across narrow tab labels.","selector":"[class~=\"aui-tabs-list\"]"},
+        {"id":"tab","partId":"tab","title":"Tab","explanation":"One chip per pane with a short label (Summary and Result, or Input and Output in the scenes), kept on one line with whiteSpace nowrap.","keyIdea":"Each chip switches to one pane without wrapping its name onto another line.","selector":"[class~=\"aui-tabs-tab\"]"},
+        {"id":"add","partId":"add","title":"Reset button","explanation":"ADM only: a trailing rotate-right icon button labelled \"Reset\" at the end of the list.","keyIdea":"The reset action restores the default tab arrangement independently from choosing a pane.","selector":"[class~=\"aui-tabs-add-button\"]"},
+        {"id":"panel","partId":"panel","title":"Panel","explanation":"The pane shown for the selected tab, \"Summary content\" or \"Result content\".","keyIdea":"The selected panel shows the content for the active phone tab only.","selector":"[class~=\"aui-tabs-panel\"]"},
+      ],
+options: [
+    { id: "pfd-phone-tabs", name: "Phone workspace tabs", showContext: false, apps: ["pfd","hs","agpd","fd"], note: "The row fills the phone width and shrinks its tabs.", source: {"pfd":"src/pfd/Workspace.tsx","hs":"src/App.tsx","agpd":"src/App.tsx","fd":"src/App.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-phone-tabs", name: "Phone workspace tabs — UI variant 2", showContext: false, apps: ["adm","ace"], note: "The row fills the phone width and shrinks its tabs; a Reset button ends the row.", source: {"adm":"src/app/layout/MobileWorkbench/MobileWorkbench.tsx","ace":"src/pages/estimator/EstimatorPage.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "pbs-phone-tabs", name: "Phone workspace tabs — UI variant 3", showContext: false, apps: ["pbs"], note: "Every tab keeps its natural width (fit) and the row scrolls sideways.", source: {"pbs":"src/App.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     pfd: 'src/pfd/Workspace.tsx',

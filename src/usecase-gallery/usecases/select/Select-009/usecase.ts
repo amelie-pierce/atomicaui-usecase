@@ -4,8 +4,22 @@ export default defineUsecase({
   uiType: 'Filled select',
   title: 'Status filter',
   apps: ['fd'],
-  options: [
-    { id: "fd-status-filter", showContext: false, name: "Status filter", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"Label-less Field at scale \"sm\" with the \"status-filter\" class that places the select in the output toolbar.","keyIdea":"The label-less wrapper places status filtering in the results toolbar without losing its control role.","selector":"[class~=\"aui-field\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Full-width trigger labelled \"Product status\" for assistive tech only, in the kit default style (no surface or fixed colour).","keyIdea":"An assistive label names the filter even though the toolbar has no visible caption.","selector":"[class~=\"aui-select-trigger\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The chevron at the trigger end.","keyIdea":"The chevron tells users that product status can be switched from the current value.","selector":"[class~=\"aui-select-chevron\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup of the trigger width placed 5px below it, offering Passed, Failed and All products.","keyIdea":"The popup offers the three scopes that determine which products appear.","selector":"[class~=\"aui-select-popup\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"The list of the three status rows.","keyIdea":"One list keeps Passed, Failed, and All products available from the toolbar.","selector":"[class~=\"aui-select-list\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"A status row; the chosen one is marked by a raised fill.","keyIdea":"A status row chooses the result scope while the raised treatment marks the active filter.","selector":"[class~=\"aui-select-item\"]"},
+        {"id":"item-text","partId":"item-text","title":"Item text","explanation":"The status wording, such as \"Failed products\".","keyIdea":"The wording makes the filter outcome explicit before users apply it.","selector":"[class~=\"aui-select-item-text\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"Empty indicator slot at the row end.","keyIdea":"The empty slot preserves consistent row geometry without a redundant check icon.","selector":"[class~=\"aui-select-item-indicator\"]"},
+      ],
+options: [
+    { id: "fd-status-filter", showContext: false, name: "Status filter", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { fd: 'src/components/Results.jsx' },
   summary: 'A label-less select in the output toolbar that narrows the results by status.',

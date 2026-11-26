@@ -4,10 +4,31 @@ export default defineUsecase({
   uiType: 'Single checkbox',
   title: 'Input panel option checkbox',
   apps: ['hcs', 'hs', 'fd', 'adc', 'ace', 'pbs', 'agpd', 'adm'],
-  options: [
-    { id: "hcs-option", showContext: false, name: "Input panel option", apps: ["hcs","hs","fd","adc"], note: "A bare checkbox without a title.", source: {"hcs":"src/App.tsx","hs":"src/hs/InputFields.tsx","fd":"src/components/InputPane.jsx","adc":"src/adc/components/InputSections.tsx"} },
-    { id: "ace-titled", showContext: false, name: "Input panel option — UI variant 2", apps: ["ace","pbs","agpd"], note: "A title sits above the checkbox; PBS and AGPD use a smaller gap than ACE.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","pbs":"src/InputFields.tsx","agpd":"src/agpd/inputs.tsx"} },
-    { id: "adm-label-first", showContext: false, name: "Input panel option — UI variant 3", apps: ["adm"], note: "The label precedes the right-aligned checkbox.", source: {"adm":"src/features/design-inputs/components/GeometrySection/JointDistanceFields.tsx"} },
+    layers: [
+        {"id":"checkbox","partId":"checkbox","title":"Checkbox","explanation":"The checkable control for one yes or no input of an input section, checked by default, with the primary solid selected style.","keyIdea":"The checkable field stores a single binary input for the current option group.","selector":"[class~=\"aui-checkbox\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The box that shows the Galvanized state; HCS, HS, FD and ADC draw it with the same outlined, surface-tonal off style.","keyIdea":"The indicator shows whether Galvanized is included without repeating the text label.","selector":"[class~=\"aui-checkbox-indicator\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The \"check\" mark rendered inside the box when Galvanized is on.","keyIdea":"A check glyph makes the affirmative state recognizable in the selected box.","selector":"[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The caption \"Galvanized\" beside the box; the other apps use their own option text, such as Same inputs as Left Hip, and ADM instead puts a Field.Label (Center to joint) before a label-less checkbox.","keyIdea":"The adjacent caption identifies exactly which property the checked value controls.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
+        {"id":"group","partId":"group","title":"Fieldset","explanation":"ACE groups the checkbox under a titled group, with a Fieldset and a legend above the option.","keyIdea":"ACE groups the related option under a named fieldset so its scope is clear.","selector":"[class~=\"aui-fieldset\"]"},
+        {"id":"legend","partId":"legend","title":"Legend","explanation":"The group title that sits above the checkbox in the ACE titled scene.","keyIdea":"The legend names the group before users encounter its individual setting.","selector":"[class~=\"aui-fieldset-legend\"]"},
+        {"id":"field-label","partId":"field-label","title":"Field label","explanation":"The label of a Field above a checkbox in a form row.","keyIdea":"A field label can introduce the row when the checkbox itself has no caption.","selector":"[class~=\"aui-field-label\"]"},
+      ],
+options: [
+    { id: "hcs-option", showContext: false, name: "Input panel option", apps: ["hcs","hs","fd","adc"], note: "A bare checkbox without a title.", source: {"hcs":"src/App.tsx","hs":"src/hs/InputFields.tsx","fd":"src/components/InputPane.jsx","adc":"src/adc/components/InputSections.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "ace-titled", showContext: false, name: "Input panel option — UI variant 2", apps: ["ace","pbs","agpd"], note: "A title sits above the checkbox; PBS and AGPD use a smaller gap than ACE.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","pbs":"src/InputFields.tsx","agpd":"src/agpd/inputs.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-label-first", showContext: false, name: "Input panel option — UI variant 3", apps: ["adm"], note: "The label precedes the right-aligned checkbox.", source: {"adm":"src/features/design-inputs/components/GeometrySection/JointDistanceFields.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     hcs: 'src/App.tsx',

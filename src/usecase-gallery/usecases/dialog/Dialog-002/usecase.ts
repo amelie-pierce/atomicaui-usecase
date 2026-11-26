@@ -8,8 +8,20 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Report preview dialog',
   apps: ['adc'],
-  options: [
-    { id: "adc-report", name: "Report preview", apps: ["adc"], source: {"adc":"src/adc/components/ReportFlow.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the Calculation Report window in ADC; the preview stage stays visible because the dialog is non-modal here.","keyIdea":"The scrim holds attention on the calculation report while leaving the stage visible.","selector":"[class~=\"aui-dialog-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The plain 520px report window at the default scale; the ADC app makes it draggable and resizable, which the example leaves out.","keyIdea":"The plain window gives the report a bounded reading area that can grow in the app.","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title bar","explanation":"The raised title bar that names the report \"Calculation Report\" and ends in the close X.","keyIdea":"The title names the generated document before users inspect its preview.","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"spacer","partId":"spacer","title":"Spacer","explanation":"The gap that pushes the close X to the end of the title bar, ahead of the \"Close\" tooltip in the ADC scene.","keyIdea":"Flexible space separates the report name from its dismissal target.","selector":"[class~=\"aui-dialog-spacer\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The close X of the report window; the ADC scene wraps it in a \"Close\" tooltip trigger.","keyIdea":"The close X exits the preview without changing the report content.","selector":"[class~=\"aui-dialog-close\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The body of the report window; in the ADC scene it uses the no-padding profile so the document View reaches the popup edges.","keyIdea":"The body gives the report document its own region inside the popup.","selector":"[class~=\"aui-dialog-body\"]"},
+      ],
+options: [
+    { id: "adc-report", name: "Report preview", apps: ["adc"], source: {"adc":"src/adc/components/ReportFlow.tsx"}, contextAnatomy: CONTEXT_ANATOMY ,
+      contextLayers: [
+        {"id":"context-document","partId":"document","title":"Report document","explanation":"The centred role=\"document\" View that shows \"Report preview for Design 1\" over a line about the generated PDF.","keyIdea":"The centered document identifies which design the preview represents and how it will be produced.","selector":"[data-ug-part=\"document\"]","scope":"context"},
+      ],
+    },
   ],
   source: {
     adc: 'src/adc/components/ReportFlow.tsx',

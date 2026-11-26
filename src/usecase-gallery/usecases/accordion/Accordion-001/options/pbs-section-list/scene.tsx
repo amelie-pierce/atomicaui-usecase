@@ -6,7 +6,8 @@ export default function PbsListScene(_props: ContextProps) {
   return (
     <View data-ug-part="input-pane" as="aside" aria-label="Input" aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }} style={{ inlineSize: 'min(100%, 360px)' }}>
       <View aui={{ color: 'surface', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', width: 'fill', overflow: 'hidden', gap: '0' } }}>
-        <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
+        <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
@@ -26,7 +27,7 @@ export default function PbsListScene(_props: ContextProps) {
               </Accordion.Trigger>
             </Accordion.Header>
           </Accordion.Item>
-        </Accordion>
+        </Accordion></span>
       </View>
     </View>
   );

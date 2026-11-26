@@ -2,7 +2,7 @@ import { Button } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Button
+    <Button data-ug-part="container"
       aui={{
         scale: 'sm',
         paint: 'text',
@@ -21,7 +21,7 @@ export default function Example() {
       }}
     >
       HS: General Tutorial
-      <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
+      <Button.Icon data-ug-part="icon" name="arrow-right" aui={{ scale: 'sm' }} />
     </Button>
   );
 }

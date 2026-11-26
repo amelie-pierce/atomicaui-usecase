@@ -14,7 +14,13 @@ function selectorFor(part: AnatomyPart) {
 }
 
 function textNodesOf(element: Element) {
-  return [...element.childNodes].filter((node): node is Text => node.nodeType === Node.TEXT_NODE && !!node.textContent?.trim());
+  return [...element.childNodes].flatMap((node): Text[] => {
+    if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) return [node as Text];
+    if (node instanceof Element && node.hasAttribute('data-ug-layer-text')) {
+      return [...node.childNodes].filter((child): child is Text => child.nodeType === Node.TEXT_NODE && !!child.textContent?.trim());
+    }
+    return [];
+  });
 }
 
 function measure(stage: HTMLElement, target: Element | undefined, textOnly: boolean): OverlayRect | null {
@@ -77,6 +83,8 @@ export function usePreviewAnatomy(
           // A malformed optional selector should not make a preview unusable.
           elements = [];
         }
+        if (part.scope === 'component') elements = elements.filter((element) => element.closest('[data-ug-component-root]'));
+        if (part.scope === 'context') elements = elements.filter((element) => !element.closest('[data-ug-component-root]'));
         if (part.text) elements = elements.filter((element) => textNodesOf(element).length > 0);
         targets.set(part.id, elements);
       }

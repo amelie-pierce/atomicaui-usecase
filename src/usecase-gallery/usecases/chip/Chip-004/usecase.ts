@@ -8,8 +8,16 @@ export default defineUsecase({
   uiType: 'Status chip',
   title: 'Compact solid status',
   apps: ['fd'],
-  options: [
-    { id: "fd-checks", contextAnatomy: CONTEXT_ANATOMY, name: "Check categories", source: {"fd":"src/components/Results.jsx"} },
+    layers: [
+        {"id":"chip","partId":"chip","title":"Chip","explanation":"The compact solid success chip at scale \"xs\" that reports one check category on an FD result card; a failed category turns red.","keyIdea":"A compact chip summarizes one category outcome without taking over the result card.","selector":"[class~=\"aui-chip\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The \"circle-check\" icon at the start of the chip (an exclamation when the check fails).","keyIdea":"The status glyph lets users compare category checks by shape as well as color.","selector":"[class~=\"aui-chip-icon\"]"},
+      ],
+options: [
+    { id: "fd-checks", contextAnatomy: CONTEXT_ANATOMY, name: "Check categories", source: {"fd":"src/components/Results.jsx"} ,
+      contextLayers: [
+        {"id":"context-check-row","partId":"check-row","title":"Check category row","explanation":"The flex row (8px gap) that lists one Chip per check category: Anchorage passed and Bearing failed.","keyIdea":"The row groups related category outcomes so passed and failed checks can be compared together.","selector":"[data-ug-part=\"check-row\"]","scope":"context"},
+      ],
+    },
   ],
   source: { fd: 'src/components/Results.jsx' },
   summary: 'A compact solid chip with an icon for each check category of a result: green and a check when it passes, red and an exclamation when it fails.',

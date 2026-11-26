@@ -9,8 +9,20 @@ export default defineUsecase({
   uiType: 'Drawer',
   title: 'Mobile navigation drawer',
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-  options: [
-    { id: "ace-mobile-nav", name: "Mobile navigation", source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","pfd":"src/pfd/TopBar.tsx","pbs":"src/TopBar.tsx","hs":"src/hs/TopBar.tsx","fd":"src/App.jsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the drawer; in the ACE scene it starts 36px down so the top bar stays uncovered.","keyIdea":"The backdrop separates navigation from the phone content without covering the persistent top bar.","selector":"[class~=\"aui-drawer-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The 288px-wide, full-height, square no-padding panel labelled \"Navigation\" that slides in from the right edge on a phone.","keyIdea":"The full-height panel provides a dedicated surface for navigation on a narrow screen.","selector":"[class~=\"aui-drawer-popup\"]"},
+        {"id":"content","partId":"content","title":"Content","explanation":"The region that holds the vertical menubar of top bar actions.","keyIdea":"The content region gives the menu its space without mixing in page controls.","selector":"[class~=\"aui-drawer-content\"]"},
+        {"id":"menubar","partId":"menubar","title":"Vertical menubar","explanation":"The vertical Menubar at scale \"sm\" that stacks the actions full width.","keyIdea":"A vertical menubar stacks the main actions into one narrow navigation column.","selector":"[class~=\"aui-drawer-content\"] [class~=\"aui-menubar\"]"},
+        {"id":"item","partId":"item","title":"Menu rows","explanation":"The Save to device, Open from device and About rows of the example; the ACE scene adds Print.","keyIdea":"Each row maps a familiar top-bar action into the mobile drawer.","selector":"[class~=\"aui-drawer-content\"] [class~=\"aui-button\"]"},
+      ],
+options: [
+    { id: "ace-mobile-nav", name: "Mobile navigation", source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","pfd":"src/pfd/TopBar.tsx","pbs":"src/TopBar.tsx","hs":"src/hs/TopBar.tsx","fd":"src/App.jsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx"}, contextAnatomy: CONTEXT_ANATOMY ,
+      contextLayers: [
+        {"id":"context-top-bar","partId":"top-bar","title":"Top bar","explanation":"The phone top bar Menubar labelled \"Top bar\" that stays visible above the drawer; the drawer opens flush under it.","keyIdea":"The persistent top bar remains the visible anchor above the open navigation surface.","selector":"[class~=\"aui-menubar\"][aria-label=\"Top bar\"]","scope":"context"},
+        {"id":"context-toggle","partId":"toggle","title":"Navigation toggle","explanation":"The xmark icon button labelled \"Close navigation\" at the top bar; it toggles the drawer closed.","keyIdea":"The labelled toggle gives users a direct way to close navigation from the top bar.","selector":"[class~=\"aui-menubar\"][aria-label=\"Top bar\"] [class~=\"aui-button\"]","scope":"context"},
+      ],
+    },
   ],
   source: {
     ace: 'src/features/top-navigation/ui/AceNavBar.tsx',
@@ -48,7 +60,7 @@ export default defineUsecase({
     {
       id: 'menubar',
       name: 'Vertical menubar',
-      selector: '[class~="aui-menubar"]',
+      selector: '[class~="aui-drawer-content"] [class~="aui-menubar"]',
       description: 'The vertical Menubar at scale "sm" that stacks the actions full width.',
     },
     {

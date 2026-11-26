@@ -168,6 +168,7 @@ $narrow: 840px;
 
 // The content of a stage. `useStageFit` scales it down from its top centre when it is larger than the stage, so it never scrolls.
 .ug-render__fit {
+  position: relative;
   inline-size: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -175,6 +176,11 @@ $narrow: 840px;
   align-content: safe center;
   justify-content: center;
   gap: var(--p-px-16);
+}
+
+.ug-render__component-portal-host {
+  position: absolute;
+  inset: 0;
 }
 
 .ug-render__stage {
@@ -430,6 +436,109 @@ $narrow: 840px;
 
 .ug-docs__anatomy-description {
   color: var(--theme-on-surface-alt);
+}
+
+.ug-docs__mode-toggle {
+  align-self: flex-start;
+  max-inline-size: 100%;
+  flex-wrap: wrap;
+  margin-block-end: var(--p-px-16);
+}
+
+.ug-layer-lesson {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-16);
+}
+
+.ug-layer-lesson__topline,
+.ug-layer-lesson__controls,
+.ug-layer-lesson__back-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--p-px-8);
+}
+
+.ug-layer-lesson__topline > p,
+.ug-layer-lesson__copy > p,
+.ug-layer-lesson__idea > p {
+  margin: 0;
+}
+
+.ug-layer-lesson__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-8);
+  min-inline-size: 0;
+}
+
+.ug-layer-lesson__idea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-4);
+  padding: var(--p-px-12);
+  border-inline-start: var(--p-px-3) solid var(--theme-primary);
+  border-radius: var(--p-px-4);
+  background: var(--theme-surface-alt);
+}
+
+.ug-layer-lesson__steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--p-px-112)), 1fr));
+  gap: var(--p-px-4);
+  max-block-size: calc(var(--p-px-16) * 14);
+  overflow: auto;
+  padding: var(--p-px-2);
+}
+
+.ug-layer-lesson__step {
+  display: flex;
+  min-inline-size: 0;
+  min-block-size: var(--p-px-36);
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--p-px-8);
+  white-space: normal;
+  text-align: start;
+}
+
+.ug-layer-lesson__step-number {
+  flex: none;
+  display: grid;
+  inline-size: var(--p-px-24);
+  block-size: var(--p-px-24);
+  place-items: center;
+  border-radius: 50%;
+  background: var(--theme-raised);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--p-weight-bold);
+}
+
+.ug-layer-lesson__step.is-completed .ug-layer-lesson__step-number {
+  color: var(--theme-on-primary);
+  background: var(--theme-primary);
+}
+
+.ug-layer-lesson__step.is-upcoming {
+  color: var(--theme-on-surface-alt);
+}
+
+.ug-layer-lesson__step-title {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.ug-layer-lesson__back-next > :first-child {
+  margin-inline-end: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ug-layer-lesson,
+  .ug-layer-lesson * {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 .ug-docs__copy-block {

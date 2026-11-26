@@ -9,8 +9,16 @@ export default defineUsecase({
   title: 'Recalculate button',
 
   apps: ['adc'],
-  options: [
-    { id: "adc-recalculate", contextAnatomy: CONTEXT_ANATOMY, name: "Results header", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} },
+    layers: [
+        {"id":"recalculate","partId":"recalculate","title":"Recalculate","explanation":"The xs square solid warning (amber) soft button that re-runs the calculation once inputs change.","keyIdea":"The warning-colored control reruns the calculation after inputs change.","selector":"[class~=\"aui-button\"]"},
+        {"id":"icon","partId":"icon","title":"Rotate icon","explanation":"The arrows-rotate glyph that conveys running the calculation again.","keyIdea":"The rotate glyph communicates recalculation of the current result.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
+      ],
+options: [
+    { id: "adc-recalculate", contextAnatomy: CONTEXT_ANATOMY, name: "Results header", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
+      contextLayers: [
+        {"id":"context-results-row","partId":"results-row","title":"Results row","explanation":"The header row that places the Recalculate button before the N and V readouts with a 16px gap.","keyIdea":"The results row groups recalculation with its N and V measurements.","selector":"[data-ug-part=\"results-row\"]","scope":"context"},
+      ],
+    },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A small amber solid IconButton re-runs the calculation when the inputs have changed.',

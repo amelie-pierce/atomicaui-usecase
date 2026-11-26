@@ -5,14 +5,25 @@ export default defineUsecase({
   title: 'Acknowledge notice button',
 
   apps: ['adc'],
-  options: [
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"The OK Button of an ADC notice dialog: solid primary (orange), small, the only action in the footer.","keyIdea":"The primary OK action closes the design-limit notice.","selector":"[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])"},
+      ],
+options: [
     { id: "adc-ok", name: "Info OK", apps: ["adc"], contextAnatomy: [
       { id: "dialog", name: "Dialog", description: "The open alert dialog." },
       { id: "dialog-title", name: "Dialog title", description: "The raised title bar \"Maximum Number of Designs Reached\"." },
       { id: "error-icon", name: "Error icon", description: "The error-colored circle-xmark icon before the title." },
       { id: "dialog-close", name: "Close button", description: "The X at the end of the title, shown in a \"Close\" tooltip." },
       { id: "message", name: "Message", description: "The text that a Project can contain at most 15 Designs." },
-    ], source: {"adc":"src/adc/components/DesignCapacityDialog.tsx"} },
+    ], source: {"adc":"src/adc/components/DesignCapacityDialog.tsx"} ,
+      contextLayers: [
+        {"id":"context-dialog","partId":"dialog","title":"Dialog","explanation":"The open alert dialog.","keyIdea":"The dialog presents the design limit as a blocking notice.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The raised title bar \"Maximum Number of Designs Reached\".","keyIdea":"The heading names the limit that has been reached.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-error-icon","partId":"error-icon","title":"Error icon","explanation":"The error-colored circle-xmark icon before the title.","keyIdea":"The error glyph marks the notice as a capacity problem.","selector":"[data-ug-part=\"error-icon\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X at the end of the title, shown in a \"Close\" tooltip.","keyIdea":"The close icon provides a second way to dismiss the limit message.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-message","partId":"message","title":"Message","explanation":"The text that a Project can contain at most 15 Designs.","keyIdea":"The message states the maximum number of designs allowed in a project.","selector":"[data-ug-part=\"message\"]","scope":"context"},
+      ],
+    },
   ],
   source: { adc: 'src/adc/components/DesignCapacityDialog.tsx' },
   summary: 'A solid primary Button, orange with white text, is the lone OK that acknowledges a notice.',

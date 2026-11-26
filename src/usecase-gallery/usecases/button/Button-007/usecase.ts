@@ -4,21 +4,40 @@ export default defineUsecase({
   uiType: 'Single button',
   title: 'Close info dialog button',
   apps: ['pbs', 'agpd', 'rws', 'fd'],
-  options: [
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill.","keyIdea":"The single footer action closes the informational prompt after its instructions.","selector":"[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])"},
+      ],
+options: [
     { id: "pbs-close", name: "Secondary solid", apps: ["pbs","agpd","rws"], contextAnatomy: [
       { id: "dialog", name: "Dialog", description: "The open dialog titled \"Add to Your Home Screen\"." },
       { id: "dialog-title", name: "Dialog title", description: "The raised title bar with \"Add to Your Home Screen\" and the close X at the end." },
       { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog (aria-label \"Close Add to Your Home Screen\")." },
       { id: "dialog-body", name: "Dialog body", description: "The scrollable body with the Android \"Add to Home Screen\" instructions." },
       { id: "dialog-footer", name: "Dialog footer", description: "The Actions row at the end that holds the single Close button." },
-    ], source: {"pbs":"src/WorkspaceTools.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} },
+    ], source: {"pbs":"src/WorkspaceTools.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
+      contextLayers: [
+        {"id":"context-dialog","partId":"dialog","title":"Dialog","explanation":"The open dialog titled \"Add to Your Home Screen\".","keyIdea":"The PBS dialog shell presents the home-screen directions above a clear exit.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The raised title bar with \"Add to Your Home Screen\" and the close X at the end.","keyIdea":"The title bar identifies which installation guidance is open.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog (aria-label \"Close Add to Your Home Screen\").","keyIdea":"The close icon gives users a direct way to dismiss the guidance.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-dialog-body","partId":"dialog-body","title":"Dialog body","explanation":"The scrollable body with the Android \"Add to Home Screen\" instructions.","keyIdea":"The scrollable body keeps the Android steps readable in a bounded window.","selector":"[data-ug-part=\"dialog-body\"]","scope":"context"},
+        {"id":"context-dialog-footer","partId":"dialog-footer","title":"Dialog footer","explanation":"The Actions row at the end that holds the single Close button.","keyIdea":"The footer provides one clear completion action after the instructions.","selector":"[data-ug-part=\"dialog-footer\"]","scope":"context"},
+      ],
+    },
     { id: "fd-close", name: "Dark solid", apps: ["fd"], contextAnatomy: [
       { id: "dialog", name: "Dialog", description: "The open dialog titled \"Explore More Applications\"." },
       { id: "dialog-title", name: "Dialog title", description: "The raised title bar with \"Explore More Applications\" and the close X at the end." },
       { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog (aria-label \"Close Explore More Applications\")." },
       { id: "dialog-body", name: "Dialog body", description: "The scrollable body with the line \"Simpson Strong-Tie design applications.\"" },
       { id: "dialog-footer", name: "Dialog footer", description: "The Actions row at the end that holds the single Close button." },
-    ], source: {"fd":"src/App.jsx"} },
+    ], source: {"fd":"src/App.jsx"} ,
+      contextLayers: [
+        {"id":"context-dialog","partId":"dialog","title":"Dialog","explanation":"The open dialog titled \"Explore More Applications\".","keyIdea":"The FD dialog shell frames the application directory as an informational stop.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
+        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"The raised title bar with \"Explore More Applications\" and the close X at the end.","keyIdea":"The title names the directory prompt before its supporting sentence.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
+        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog (aria-label \"Close Explore More Applications\").","keyIdea":"The close icon exits the application directory prompt.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
+        {"id":"context-dialog-body","partId":"dialog-body","title":"Dialog body","explanation":"The scrollable body with the line \"Simpson Strong-Tie design applications.\"","keyIdea":"The body gives a short explanation of the available design applications.","selector":"[data-ug-part=\"dialog-body\"]","scope":"context"},
+        {"id":"context-dialog-footer","partId":"dialog-footer","title":"Dialog footer","explanation":"The Actions row at the end that holds the single Close button.","keyIdea":"The footer closes this informational dialog with one action.","selector":"[data-ug-part=\"dialog-footer\"]","scope":"context"},
+      ],
+    },
   ],
   source: { pbs: 'src/WorkspaceTools.tsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx', fd: 'src/App.jsx' },
   summary: 'Close is the lone button of an info dialog that only informs; its first look, the default gray one, is the example; the Look select shows the other.',

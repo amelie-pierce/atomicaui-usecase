@@ -11,7 +11,7 @@ export default function AdcResetScene({ host }: ContextProps) {
           <Dialog.Popup initialFocus={false} style={{ '--aui-width': 'min(640px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ color: 'raised' }}>
               <Dialog.Icon name="triangle-exclamation" aui={{ color: 'warning', paint: 'text' }} />
-              Warning: Reset Inputs?
+              <span data-ug-part="title-text">Warning: Reset Inputs?</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close" />
             </Dialog.Title>

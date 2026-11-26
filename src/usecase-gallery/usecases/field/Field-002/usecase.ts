@@ -4,9 +4,23 @@ export default defineUsecase({
   uiType: 'Single-line field',
   title: 'Text field',
   apps: ['hcs', 'hs', 'pbs', 'pfd', 'fd', 'rws', 'agpd', 'adm', 'ace', 'adc'],
-  options: [
-    { id: "hs-text", name: "Text field", apps: ["hcs","hs","pbs","pfd","fd","rws","agpd","adm","ace"], note: "Label above.", source: {"hcs":"src/components/F01Experience.tsx","hs":"src/hs/InputFields.tsx","pbs":"src/InputFields.tsx","pfd":"src/pfd/ShellDialogs.tsx","fd":"src/components/Feedback.jsx","rws":"src/rws/ShellDialogs.tsx","agpd":"src/agpd/ShellDialogs.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","ace":"src/features/top-navigation/ui/FeedbackDialog.tsx"}, showContext: false },
-    { id: "adc-text-beside", name: "Text field — UI variant 2", apps: ["adc"], note: "Label beside: a 96px end-aligned label, the control fills the rest of the row.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"Stacked text field with a 3 gap that ties the Connection ID label to its single-line control; ADC lays it out as a wrapping row with a 96px label.","keyIdea":"The wrapper connects the Connection ID prompt to the editable identifier.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Connection ID\" label above the control; in ADC it is a 96px end-aligned label with a required asterisk in the error colour.","keyIdea":"A persistent label tells users what the single-line value represents.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"control","partId":"control","title":"Control","explanation":"The 28px surface-coloured outlined frame, 3/8 padding and a 4px radius, that wraps the text input.","keyIdea":"The outlined frame separates the text-entry area from surrounding form content.","selector":"[class~=\"aui-field-control\"]"},
+        {"id":"input","partId":"input","title":"Input","explanation":"The editable line of text, prefilled with C-1042 and named by its aria-label.","keyIdea":"The editable value supplies the identifier that the labeled field is collecting.","selector":"[class~=\"aui-field-control\"] > [class~=\"aui-input\"]"},
+      ],
+options: [
+    { id: "hs-text", name: "Text field", apps: ["hcs","hs","pbs","pfd","fd","rws","agpd","adm","ace"], note: "Label above.", source: {"hcs":"src/components/F01Experience.tsx","hs":"src/hs/InputFields.tsx","pbs":"src/InputFields.tsx","pfd":"src/pfd/ShellDialogs.tsx","fd":"src/components/Feedback.jsx","rws":"src/rws/ShellDialogs.tsx","agpd":"src/agpd/ShellDialogs.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","ace":"src/features/top-navigation/ui/FeedbackDialog.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adc-text-beside", name: "Text field — UI variant 2", apps: ["adc"], note: "Label beside: a 96px end-aligned label, the control fills the rest of the row.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', hs: 'src/hs/InputFields.tsx', pbs: 'src/InputFields.tsx', pfd: 'src/pfd/ShellDialogs.tsx', fd: 'src/components/Feedback.jsx', rws: 'src/rws/ShellDialogs.tsx', agpd: 'src/agpd/ShellDialogs.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx', adc: 'src/adc/components/ProjectInfoField.tsx' },
   summary: 'A labelled field with one outlined control for a line of text.',

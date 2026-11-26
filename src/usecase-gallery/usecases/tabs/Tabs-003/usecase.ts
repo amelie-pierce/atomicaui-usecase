@@ -4,9 +4,24 @@ export default defineUsecase({
   uiType: 'Segmented tabs',
   title: 'Tabs with status icon',
   apps: ['hcs', 'fd'],
-  options: [
-    { id: "hcs-check-tabs", name: "Check result tabs", showContext: false, apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} },
-    { id: "fd-check-tabs", name: "Check result tabs — UI variant 2", showContext: false, apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
+    layers: [
+        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"Check tabs at scale \"sm\" with a 12px gap between the strip and the panel; Connection is selected first.","keyIdea":"The root coordinates check-result tabs with the detail panel beneath them.","selector":"[class~=\"aui-tabs\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"Strip of check tabs; reading the icons down the row summarises which checks passed.","keyIdea":"The strip lets status marks be scanned across the available checks.","selector":"[class~=\"aui-tabs-list\"]"},
+        {"id":"tab","partId":"tab","title":"Tab","explanation":"One check, Connection or Weld, with its status icon before the label.","keyIdea":"Each tab ties one named check to its corresponding detail panel.","selector":"[class~=\"aui-tabs-tab\"]"},
+        {"id":"icon","partId":"icon","title":"Status icon","explanation":"Leading result icon: a success check for Connection and an error xmark for Weld; FD uses circle-check and circle-exclamation through a plain Icon.","keyIdea":"A leading glyph communicates pass or failure before the check label is read.","selector":"[class~=\"aui-tabs-tab\"] > [class~=\"aui-contained-icon\"]"},
+        {"id":"panel","partId":"panel","title":"Panel","explanation":"Body for the selected check, \"Connection check\" or \"Weld check\".","keyIdea":"The panel explains the selected connection or weld check without mixing result details.","selector":"[class~=\"aui-tabs-panel\"]"},
+      ],
+options: [
+    { id: "hcs-check-tabs", name: "Check result tabs", showContext: false, apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "fd-check-tabs", name: "Check result tabs — UI variant 2", showContext: false, apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/RowExpansion.jsx' },
   summary: 'Tabs that each lead with a pass or fail icon, so the tab strip is also the summary of which checks passed.',

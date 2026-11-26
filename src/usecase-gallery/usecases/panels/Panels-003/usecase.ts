@@ -4,8 +4,19 @@ export default defineUsecase({
   uiType: 'Collapsible panel',
   title: 'Top rail',
   apps: ['hcs', 'ace', 'adm', 'hs', 'fd', 'agpd'],
-  options: [
-    { id: "hcs-top-rail", showContext: false, name: "Top rail", apps: ["hcs","ace","adm","hs","fd","agpd"], source: {"hcs":"src/components/HcsSplitLayout.tsx","ace":"src/pages/estimator/EstimatorPage.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx","fd":"src/components/InputPane.jsx","agpd":"src/App.tsx"} },
+    layers: [
+        {"id":"panels","partId":"panels","title":"Panels","explanation":"Vertical split group, 560px wide and 200px tall at most, whose top pane can fold to a rail.","keyIdea":"The root coordinates a resizable split even when its upper section can collapse.","selector":"[class~=\"aui-panels\"]"},
+        {"id":"panel","partId":"panel","title":"Collapsible panel","explanation":"The Input pane is collapsible with a 40px collapsedSize (starts at 40px in the HCS scene) and minSize 120px; the Output pane below stays open.","keyIdea":"Collapsing Input preserves a narrow rail while leaving Output available below.","selector":"[class~=\"aui-panels-panel\"]"},
+        {"id":"content","partId":"content","title":"Content","explanation":"HCS scene: the pane body that holds the Input heading beside the rail, hidden when the panel is collapsed.","keyIdea":"The HCS content region carries the input heading when the pane body is open.","selector":"[class~=\"aui-panels-content\"]"},
+        {"id":"trigger","partId":"trigger","title":"Expand trigger","explanation":"HCS scene: angle-down icon button labelled \"Expand Input\" on the 40px rail, with a bottom tooltip, that reopens the Input pane.","keyIdea":"The rail control restores the collapsed Input content without navigating away.","selector":"[class~=\"aui-panels-trigger\"]"},
+        {"id":"resize-handle","partId":"resize-handle","title":"Resize handle","explanation":"6px primary horizontal bar between Input and the results pane.","keyIdea":"This horizontal grip adjusts the boundary between the input and results sections.","selector":"[class~=\"aui-panels-resize-handle\"]"},
+      ],
+options: [
+    { id: "hcs-top-rail", showContext: false, name: "Top rail", apps: ["hcs","ace","adm","hs","fd","agpd"], source: {"hcs":"src/components/HcsSplitLayout.tsx","ace":"src/pages/estimator/EstimatorPage.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx","fd":"src/components/InputPane.jsx","agpd":"src/App.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { hcs: 'src/components/HcsSplitLayout.tsx', ace: 'src/pages/estimator/EstimatorPage.tsx', adm: 'src/features/design-inputs/components/InputsPanel/InputsPanel.tsx', hs: 'src/App.tsx', fd: 'src/components/InputPane.jsx', agpd: 'src/App.tsx' },
   summary: 'A collapsible Panels.Panel rests at a 40px rail and carries a Panels.Trigger that expands it again.',

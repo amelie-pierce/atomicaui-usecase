@@ -8,8 +8,18 @@ export default defineUsecase({
   uiType: 'Dropdown with icon trigger',
   title: 'Filled icon trigger',
   apps: ['adc'],
-  options: [
-    { id: "adc-hidden-designs", name: "Overflow list", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, contextAnatomy: CONTEXT_ANATOMY },
+    layers: [
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Square icon trigger labelled \"Show hidden designs\": color \"surface-alt\", paint \"solid\", soft shape, flex \"none\" with a default border.","keyIdea":"The square trigger opens a list of designs hidden beyond the visible tab rail.","selector":"[class~=\"aui-dropdown-trigger\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The ellipsis-vertical glyph that is the only content of the trigger.","keyIdea":"The vertical ellipsis indicates additional actions or items beyond the current view.","selector":"[class~=\"aui-dropdown-trigger\"] > [class~=\"aui-contained-icon\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup at scale \"sm\", capped at 256px high and scrolling vertically when many designs are hidden, aligned to the trigger start.","keyIdea":"A height cap keeps many hidden designs scrollable within the phone stage.","selector":"[class~=\"aui-dropdown-popup\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"A plain row for one hidden design: Design 3, Design 4 or Design 5. None is selected; choosing one activates that tab.","keyIdea":"Each plain row activates one hidden design and none is preselected.","selector":"[class~=\"aui-dropdown-item\"]"},
+      ],
+options: [
+    { id: "adc-hidden-designs", name: "Overflow list", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, contextAnatomy: CONTEXT_ANATOMY ,
+      contextLayers: [
+        {"id":"context-visible-tab","partId":"visible-tab","title":"Visible tab","explanation":"The \"Design 1\" chip tab after the trigger; it stands for the design tab rail whose overflow the ellipsis menu lists.","keyIdea":"The visible Design 1 tab shows the rail that overflowed into the hidden-design menu.","selector":"[class~=\"aui-tabs-tab\"]","scope":"context"},
+      ],
+    },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'An icon-only trigger opens a plain list of the items that no longer fit in a row; choosing one activates it.',

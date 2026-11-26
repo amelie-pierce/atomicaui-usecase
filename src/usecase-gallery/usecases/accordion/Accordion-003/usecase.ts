@@ -11,9 +11,31 @@ export default defineUsecase({
   uiType: 'Titled accordion',
   title: 'Plain title',
   apps: ['ace', 'hs', 'fd'],
-  options: [
-    { id: "ace-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Template groups", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} },
-    { id: "hs-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Template groups — UI variant 2", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} },
+    layers: [
+        {"id":"accordion","partId":"accordion","title":"Accordion","explanation":"Template picker that opens both groups by default (openMultiple, defaultValue default and mine); the ACE and HS scenes wrap it in a RadioGroup in a Templates dialog.","keyIdea":"The picker root coordinates multiple open template groups without nesting separate disclosure widgets.","selector":"[class~=\"aui-accordion\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"One template group, Default Templates or My Templates.","keyIdea":"Each item binds a template category heading to just its own choices.","selector":"[class~=\"aui-accordion-item\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Plain title row with no icon; ACE sets the name as an l4 Type, HS as bare text.","keyIdea":"A plain title row keeps group disclosure focused on the category name rather than decoration.","selector":"[class~=\"aui-accordion-trigger\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"Chevron on the right of each group title.","keyIdea":"The right-side chevron exposes whether templates in that category are available to scan.","selector":"[class~=\"aui-accordion-trigger\"] > [class~=\"aui-accordion-chevron\"]"},
+        {"id":"panel","partId":"panel","title":"Panel","explanation":"Rows of the group: Two-beam connection under Default Templates, and \"Create your own template.\" (Header hanger in the dialogs) under My Templates.","keyIdea":"The panel reveals the actual template rows only after its category is open.","selector":"[class~=\"aui-accordion-panel\"]"},
+        {"id":"radio","partId":"radio","title":"Template radio","explanation":"Dialog scenes only: each template row is a radio with its name as Radio.Label, with one selected through RadioGroup defaultValue=\"2\".","keyIdea":"The radio control marks one template as the current choice in the dialog scene.","selector":"[class~=\"aui-accordion-panel\"] [class~=\"aui-radio\"]"},
+      ],
+options: [
+    { id: "ace-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Template groups", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} ,
+      contextLayers: [
+        {"id":"context-templates-dialog","partId":"templates-dialog","title":"Templates dialog","explanation":"The Dialog popup titled Templates that lists the template groups.","keyIdea":"The ACE Templates popup frames the grouped choices as one selection task.","selector":"[class~=\"aui-dialog-popup\"]","scope":"context"},
+        {"id":"context-templates-title","partId":"templates-title","title":"Templates title bar","explanation":"The raised Dialog.Title reading \"Templates\", with the Close Templates button at its end.","keyIdea":"The raised Templates heading names the task before users compare available groups.","selector":"[class~=\"aui-dialog-title\"]","scope":"context"},
+        {"id":"context-templates-close","partId":"templates-close","title":"Close button","explanation":"The X Dialog.Close (aria-label \"Close Templates\") that dismisses the dialog.","keyIdea":"The labelled close button lets users leave template selection without choosing a row.","selector":"[class~=\"aui-dialog-close\"]","scope":"context"},
+        {"id":"context-templates-body","partId":"templates-body","title":"Templates body","explanation":"The scrollable Dialog.Body holding the RadioGroup that wraps the Default Templates and My Templates groups (the Cancel and Create footer is left out).","keyIdea":"The scrollable body keeps the radio choices reachable while the dialog shell stays fixed.","selector":"[class~=\"aui-dialog-body\"]","scope":"context"},
+      ],
+    },
+    { id: "hs-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Template groups — UI variant 2", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} ,
+      contextLayers: [
+        {"id":"context-templates-dialog","partId":"templates-dialog","title":"Templates dialog","explanation":"The Dialog popup titled Templates that lists the template groups.","keyIdea":"The HS family popup places template selection inside its app-specific dialog frame.","selector":"[class~=\"aui-dialog-popup\"]","scope":"context"},
+        {"id":"context-templates-title","partId":"templates-title","title":"Templates title bar","explanation":"The raised Dialog.Title reading \"Templates\", with the Close Templates button at its end.","keyIdea":"Its title bar labels the dialog while reserving a consistent close target at the end.","selector":"[class~=\"aui-dialog-title\"]","scope":"context"},
+        {"id":"context-templates-close","partId":"templates-close","title":"Close button","explanation":"The X Dialog.Close (aria-label \"Close Templates\") that dismisses the dialog.","keyIdea":"The HS close affordance exits the picker without changing the selected template.","selector":"[class~=\"aui-dialog-close\"]","scope":"context"},
+        {"id":"context-templates-body","partId":"templates-body","title":"Templates body","explanation":"The scrollable Dialog.Body holding the RadioGroup that wraps the Default Templates and My Templates groups (the Cancel and Create footer is left out).","keyIdea":"The body scroll region contains both template groups while the footer remains outside it.","selector":"[class~=\"aui-dialog-body\"]","scope":"context"},
+      ],
+    },
   ],
   source: {
     ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx',

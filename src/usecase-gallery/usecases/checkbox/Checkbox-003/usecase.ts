@@ -4,8 +4,18 @@ export default defineUsecase({
   uiType: 'Single checkbox',
   title: 'Show passed checks filter',
   apps: ['fd'],
-  options: [
-    { id: "fd-filter", showContext: false, name: "Table filter", apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} },
+    layers: [
+        {"id":"checkbox","partId":"checkbox","title":"Checkbox","explanation":"The filter toggle, checked by default so passed validations are listed in the checks table right below it; selected is solid primary.","keyIdea":"This filter determines whether passed validation rows stay in the results table.","selector":"[class~=\"aui-checkbox\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The box that shows whether passed rows are filtered in, outlined and surface-tonal while off.","keyIdea":"The empty outline marks the unchecked state before the filter is enabled.","selector":"[class~=\"aui-checkbox-indicator\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The \"check\" mark inside the box while \"Show passed validations\" is on.","keyIdea":"The tick confirms that passed validations will remain visible in the table.","selector":"[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The caption \"Show passed validations\" that names the filter in the Why not details column of FD.","keyIdea":"The caption states the filtering rule so users know what changing the box will hide.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
+      ],
+options: [
+    { id: "fd-filter", showContext: false, name: "Table filter", apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     fd: 'src/components/RowExpansion.jsx',

@@ -15,9 +15,27 @@ export default defineUsecase({
   uiType: 'Radio',
   title: 'Option radio group',
   apps: ['agpd', 'rws', 'pbs', 'fd'],
-  options: [
-    { id: "agpd-inline", contextAnatomy: INPUT_PANEL_CONTEXT, name: "Labelled group", apps: ["agpd","rws","pbs"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx","pbs":"src/InputFields.tsx"} },
-    { id: "fd-settings", contextAnatomy: SETTINGS_CONTEXT, name: "Labelled group — UI variant 2", apps: ["fd"], source: {"fd":"src/App.jsx"} },
+    layers: [
+        {"id":"group","partId":"group","title":"Radio group","explanation":"A row of radios (direction \"row\") with Welded selected by default; the FD Settings popover shows the same group as Yes or No.","keyIdea":"The group collects related plate-connection choices while ensuring only one can be active.","selector":"[class~=\"aui-radio-group\"]"},
+        {"id":"group-label","partId":"group-label","title":"Group label","explanation":"The \"Plate connection\" form label at the start of the row, laid out as a flex row that fills the width with a gap of 4.","keyIdea":"The field label names the decision shared by all radio choices.","selector":"[class~=\"aui-radio-group\"] > [class~=\"aui-label\"]"},
+        {"id":"radio","partId":"radio","title":"Radio","explanation":"One option, Welded or Bolted: a tonal surface circle with an outlined border when unselected and a solid primary circle when chosen.","keyIdea":"Each radio offers one connection type as the mutually exclusive value.","selector":"[class~=\"aui-radio\"]"},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The circle that shows which option is chosen.","keyIdea":"The inner circle shows which connection type currently supplies the field value.","selector":"[class~=\"aui-radio-indicator\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The option text, Welded or Bolted, beside its circle.","keyIdea":"The option text lets users distinguish Welded from Bolted without interpreting the control shape.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
+      ],
+options: [
+    { id: "agpd-inline", contextAnatomy: INPUT_PANEL_CONTEXT, name: "Labelled group", apps: ["agpd","rws","pbs"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx","pbs":"src/InputFields.tsx"} ,
+      contextLayers: [
+        {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The soft surface-alt section labelled \"Input panel\" that holds the plate connection field.","keyIdea":"The AGPD pane groups plate connection with the other inputs that define the model.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
+        {"id":"context-input-title","partId":"input-title","title":"Pane title","explanation":"The semi-bold \"Input\" heading at the top of the pane.","keyIdea":"The pane title tells users which workspace section contains this connection setting.","selector":"[data-ug-part=\"input-title\"]","scope":"context"},
+      ],
+    },
+    { id: "fd-settings", contextAnatomy: SETTINGS_CONTEXT, name: "Labelled group — UI variant 2", apps: ["fd"], source: {"fd":"src/App.jsx"} ,
+      contextLayers: [
+        {"id":"context-settings-trigger","partId":"settings-trigger","title":"Settings button","explanation":"The Settings Button that opens the popover under it.","keyIdea":"The Settings button is the anchor for preferences that are separate from the input form.","selector":"[data-ug-part=\"settings-trigger\"]","scope":"context"},
+        {"id":"context-settings-popup","partId":"settings-popup","title":"Settings popover","explanation":"The elevated popover that holds the settings, here the Auto-rotate 3D model group.","keyIdea":"The elevated settings surface keeps automatic rotation near its invoking control.","selector":"[data-ug-part=\"settings-popup\"]","scope":"context"},
+        {"id":"context-settings-title","partId":"settings-title","title":"Settings title","explanation":"The semi-bold \"Settings\" heading at the top of the popover.","keyIdea":"The heading names the preference group before the user changes a setting.","selector":"[data-ug-part=\"settings-title\"]","scope":"context"},
+      ],
+    },
   ],
   source: {
     agpd: 'src/agpd/inputs.tsx',

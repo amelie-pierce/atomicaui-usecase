@@ -4,11 +4,19 @@ export default defineUsecase({
   uiType: 'Single button',
   title: 'Show all products button',
 
-  options: [
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"The inline \"All Products\" Button inside a sentence: profile \"no-padding\" removes the box, inline-flex and an underline make it read as a warning-colored link; type=\"button\" keeps it from submitting.","keyIdea":"The inline control turns the suggested All Products route into part of the warning sentence.","selector":"[class~=\"aui-button\"]"},
+      ],
+options: [
     { id: "default", name: "Inline link", contextAnatomy: [
       { id: "notice", name: "No output results notice", description: "The tonal warning status with the triangle icon and the \"No Output Results\" heading." },
       { id: "try-list", name: "Suggestions list", description: "The \"You can try:\" bulleted list whose list item holds the inline All Products button." },
-    ] },
+    ] ,
+      contextLayers: [
+        {"id":"context-notice","partId":"notice","title":"No output results notice","explanation":"The tonal warning status with the triangle icon and the \"No Output Results\" heading.","keyIdea":"The warning notice explains why the output area has no result rows.","selector":"[data-ug-part=\"notice\"]","scope":"context"},
+        {"id":"context-try-list","partId":"try-list","title":"Suggestions list","explanation":"The \"You can try:\" bulleted list whose list item holds the inline All Products button.","keyIdea":"The suggestions list embeds the All Products route among recovery choices.","selector":"[data-ug-part=\"try-list\"]","scope":"context"},
+      ],
+    },
   ],
   apps: ['hcs'],
   source: { hcs: 'src/components/HcsNoOutputResults.tsx' },

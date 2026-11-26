@@ -1,9 +1,10 @@
-import { Suspense, use } from 'react';
+import { Suspense, use, useEffect, useId, useState } from 'react';
 import { APPS } from '../apps';
 import type { AppKey } from '../apps';
+import { useMediaQuery } from '../hooks/use-media-query';
 import { useCopy } from '../hooks/use-copy';
-import { Button, Chip, Type } from '../kit';
-import type { AnatomyPart, PreviewMode, Usecase, UsecaseOption } from '../types';
+import { Button, Chip, ToggleGroup, Type } from '../kit';
+import type { AnatomyPart, DocumentMode, LayerStep, PreviewMode, Usecase, UsecaseOption } from '../types';
 
 function AppBadges({ apps, label }: { apps: AppKey[]; label: string }) {
   return (
@@ -65,14 +66,66 @@ function CodeApiSection({ option, mode, api }: { option: UsecaseOption; mode: Pr
   </Section>;
 }
 
-export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, availablePartIds, onPartChange, onSelectPart }: { usecase: Usecase; option: UsecaseOption; mode: PreviewMode; componentName: string; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
+function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: number; onChange: (index: number) => void }) {
+  const [playing, setPlaying] = useState(false);
+  const navId = useId();
+  const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const active = layers[index] ?? layers[0];
+  useEffect(() => {
+    if (!playing || reducedMotion) return;
+    const timer = window.setInterval(() => onChange(Math.min(index + 1, layers.length - 1)), 2200);
+    return () => window.clearInterval(timer);
+  }, [playing, reducedMotion, index, layers.length, onChange]);
+  useEffect(() => {
+    if (index >= layers.length - 1) setPlaying(false);
+  }, [index, layers.length]);
+  if (!active) return <Type as="p" role="l3" color="muted">No layer steps are authored for this view.</Type>;
+  const onNavigationKey = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key === 'ArrowRight') { event.preventDefault(); onChange(Math.min(index + 1, layers.length - 1)); }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); onChange(Math.max(index - 1, 0)); }
+    if (event.key === 'Home') { event.preventDefault(); onChange(0); }
+    if (event.key === 'End') { event.preventDefault(); onChange(layers.length - 1); }
+  };
+  return <div className="ug-layer-lesson" aria-label="Layer by layer lesson">
+    <div className="ug-layer-lesson__topline"><Type as="p" role="l3" color="muted">Step {index + 1} of {layers.length}</Type><div className="ug-layer-lesson__controls">
+      <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} onClick={() => { setPlaying(false); onChange(0); }}>Replay</Button>
+      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }} aria-pressed={playing && !reducedMotion} disabled={reducedMotion || (!playing && index === layers.length - 1)} onClick={() => setPlaying((value) => !value)}>{playing && !reducedMotion ? 'Pause' : 'Autoplay'}</Button>
+    </div></div>
+    <div className="ug-layer-lesson__copy" aria-live="polite" aria-atomic="true">
+      <Type as="p" role="l3" color="muted">Layer {String(index + 1).padStart(2, '0')}</Type>
+      <Type as="h3" role="h5" weight="bold">{active.title}</Type>
+      <Type as="p" role="l3">{active.explanation}</Type>
+      <div className="ug-layer-lesson__idea"><Type as="p" role="l3" weight="semi-bold">Key idea</Type><Type as="p" role="l3">{active.keyIdea}</Type></div>
+    </div>
+    <nav className="ug-layer-lesson__steps" aria-label="Layer steps" id={navId} onKeyDown={onNavigationKey}>
+      {layers.map((step, stepIndex) => {
+        const state = stepIndex === index ? 'active' : stepIndex < index ? 'completed' : 'upcoming';
+        return <Button key={step.id} className={`ug-layer-lesson__step is-${state}`} aui={{ color: state === 'active' ? 'primary' : 'secondary', paint: state === 'active' ? 'solid' : 'text', scale: 'sm' }} aria-current={state === 'active' ? 'step' : undefined} aria-label={`Step ${stepIndex + 1}: ${step.title}, ${state}`} data-state={state} data-ug-layer-id={step.id} data-ug-layer-selector={step.selector ?? `[data-ug-part="${step.id}"]`} data-ug-layer-scope={step.scope ?? 'component'} onClick={() => onChange(stepIndex)}>
+          <span className="ug-layer-lesson__step-number">{stepIndex + 1}</span><span className="ug-layer-lesson__step-title">{step.title}</span>
+        </Button>;
+      })}
+    </nav>
+    <div className="ug-layer-lesson__back-next">
+      <Button aui={{ color: 'secondary', paint: 'outlined', scale: 'sm' }} disabled={index === 0} onClick={() => onChange(Math.max(index - 1, 0))}>Back</Button>
+      <Button aui={{ color: 'primary', paint: 'solid', scale: 'sm' }} disabled={index === layers.length - 1} onClick={() => onChange(Math.min(index + 1, layers.length - 1))}>Next</Button>
+    </div>
+  </div>;
+}
+
+export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, availablePartIds, onPartChange, onSelectPart, documentMode, onDocumentModeChange, layerIndex, onLayerChange, layers }: { usecase: Usecase; option: UsecaseOption; mode: PreviewMode; componentName: string; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void; documentMode: DocumentMode; onDocumentModeChange: (mode: DocumentMode) => void; layerIndex: number; onLayerChange: (index: number) => void; layers: LayerStep[] }) {
   const doc = mode === 'context' ? { ...usecase, ...option.contextDocument } : usecase;
   const parts = mode === 'context' ? [...usecase.anatomy, ...option.contextAnatomy] : usecase.anatomy;
   const hasAccessibility = !!doc.accessibility?.keyboard || !!doc.accessibility?.focus;
   const hasVariants = !!doc.variants || usecase.options.length > 0;
   return <div className="ug-docs">
-    <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div></header>
-    <div className="ug-docs__sections">
+    <ToggleGroup className="ug-docs__mode-toggle" aria-label="Document view" value={[documentMode]} onValueChange={([next]) => next && onDocumentModeChange(next as DocumentMode)}>
+      <ToggleGroup.Item value="document" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Document</Button>} />
+      <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Layer by layer</Button>} />
+    </ToggleGroup>
+    {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} /> : <>
+      <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div>
+      </header>
+      <div className="ug-docs__sections">
       {parts.length > 0 && <AnatomySection parts={parts} mode={mode} availablePartIds={availablePartIds} hoveredPartId={hoveredPartId} onPartChange={onPartChange} onSelectPart={onSelectPart} />}
       <Section id="usage" title="2. Usage / Behavior"><dl className="ug-docs__definition-list"><div><Type as="dt" role="l3" weight="semi-bold">Where</Type><Type as="dd" role="l3">{doc.where}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">When</Type><Type as="dd" role="l3">{doc.when}</Type></div><div><Type as="dt" role="l3" weight="semi-bold">How</Type><Type as="dd" role="l3">{doc.usage ?? doc.how}</Type></div>{doc.behavior && <div><Type as="dt" role="l3" weight="semi-bold">Behavior</Type><Type as="dd" role="l3">{doc.behavior}</Type></div>}</dl></Section>
       {hasVariants && <Section id="variants" title="3. Variants & States"><Type as="p" role="l3">{doc.variants ?? (mode === 'component' ? usecase.options.map((candidate) => candidate.name).join(' · ') : option.name)}</Type></Section>}
@@ -80,6 +133,7 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
       {(doc.prompt || doc.debugPrompt) && <Section id="prompts" title="5. Prompt / Debug prompt">{doc.prompt && <CopyBlock label="Prompt" text={doc.prompt} />}{doc.debugPrompt && <CopyBlock label="Debug prompt" text={doc.debugPrompt} />}</Section>}
       <Suspense fallback={<Section id="code-api" title="6. Code / API"><Type as="p" role="l3" color="muted">Loading code…</Type></Section>}><CodeApiSection option={option} mode={mode} api={doc.api} /></Suspense>
       {!!doc.related?.length && <Section id="related" title="7. Related components"><ul className="ug-docs__related">{doc.related.map((item) => <li key={item.href}><a href={item.href}>{item.label}</a></li>)}</ul></Section>}
-    </div>
+      </div>
+    </>}
   </div>;
 }

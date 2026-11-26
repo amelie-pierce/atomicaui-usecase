@@ -5,8 +5,22 @@ export default defineUsecase({
   title: 'Welcome dialog',
 
   apps: ['adm', 'fd'],
-  options: [
-    { id: "adm-welcome", name: "Welcome dialog", apps: ["adm","fd"], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","fd":"src/components/HelpCenter.jsx"}, showContext: false },
+    layers: [
+        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the ADM welcome prompt.","keyIdea":"The scrim focuses the first-run welcome prompt.","selector":"[class~=\"aui-dialog-backdrop\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The small 384px welcome window at scale \"sm\", sized through the --aui-dialog-width variable the app sets.","keyIdea":"A compact popup keeps the welcome message brief and easy to dismiss.","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title bar","explanation":"The plain (not raised) title bar reading \"Welcome to ADM\" with the close X at its end.","keyIdea":"The plain title bar identifies the ADM welcome step.","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"close","partId":"close","title":"Close","explanation":"The close X that dismisses the welcome prompt without starting the tour.","keyIdea":"The close icon dismisses the welcome without beginning the tour.","selector":"[class~=\"aui-dialog-close\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The body that holds one welcome sentence.","keyIdea":"A short body sentence introduces the walkthrough choice.","selector":"[class~=\"aui-dialog-body\"]"},
+        {"id":"actions","partId":"actions","title":"Footer","explanation":"The footer that offers Close and Start Walkthrough.","keyIdea":"The footer puts dismissal and tour entry side by side.","selector":"[class~=\"aui-dialog-actions\"]"},
+        {"id":"dismiss-button","partId":"dismiss-button","title":"Close button","explanation":"The default gray Dialog.Button labelled Close; dismiss={false} leaves closing to the app.","keyIdea":"Close dismisses this prompt while leaving app state handling to ADM.","selector":"[data-ug-part=\"dismiss-button\"]"},
+        {"id":"start","partId":"start","title":"Start Walkthrough","explanation":"The solid secondary button that starts the guided tour.","keyIdea":"Start Walkthrough begins the guided tour from the welcome prompt.","selector":"[data-ug-part=\"start\"]"},
+      ],
+options: [
+    { id: "adm-welcome", name: "Welcome dialog", apps: ["adm","fd"], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","fd":"src/components/HelpCenter.jsx"}, showContext: false ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: { adm: 'src/features/top-navigation/components/Tutorials.tsx', fd: 'src/components/HelpCenter.jsx' },
   summary: 'A welcome dialog that offers the guided tour: a gray Close and a solid Start Walkthrough.',

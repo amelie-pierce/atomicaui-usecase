@@ -5,12 +5,22 @@ export default defineUsecase({
   title: 'Download CSV button',
 
   apps: ['pfd', 'hs', 'rws'],
-  options: [
+    layers: [
+        {"id":"container","partId":"container","title":"Container","explanation":"The Download CSV Button: secondary text paint, scale \"sm\", soft shape and flex \"none\" so it never shrinks in the wrapping toolbar row after the search field and count.","keyIdea":"Keeping the export control fixed lets the search and count wrap without squeezing it.","selector":"[class~=\"aui-button\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"The CSV file glyph that sits before the label and tells the export format.","keyIdea":"The file glyph previews the CSV format before the download starts.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
+      ],
+options: [
     { id: "pfd-toolbar", name: "Table toolbar", apps: ["pfd","hs","rws"], contextAnatomy: [
       { id: "toolbar", name: "Output toolbar", description: "The wrapping row of small controls (8px gap) with the search field first, the count next and Download CSV last." },
       { id: "search", name: "Search field", description: "The Search Table Field with a magnifying-glass icon that fills the line." },
       { id: "count", name: "Result count", description: "The muted \"Showing 1 entry\" status text before Download CSV." },
-    ], source: {"pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx","rws":"src/rws/output.tsx"} },
+    ], source: {"pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx","rws":"src/rws/output.tsx"} ,
+      contextLayers: [
+        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"The wrapping row of small controls (8px gap) with the search field first, the count next and Download CSV last.","keyIdea":"The toolbar brings filtering, result count and export into one compact row.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
+        {"id":"context-search","partId":"search","title":"Search field","explanation":"The Search Table Field with a magnifying-glass icon that fills the line.","keyIdea":"The search field uses the remaining toolbar width to narrow table entries.","selector":"[data-ug-part=\"search\"]","scope":"context"},
+        {"id":"context-count","partId":"count","title":"Result count","explanation":"The muted \"Showing 1 entry\" status text before Download CSV.","keyIdea":"The count reports how many entries remain before export.","selector":"[data-ug-part=\"count\"]","scope":"context"},
+      ],
+    },
   ],
   source: { pfd: 'src/pfd/ResultsTable.tsx', hs: 'src/hs/ResultsTable.tsx', rws: 'src/rws/output.tsx' },
   summary: 'A quiet text Button with a leading icon runs one action in a toolbar: a CSV icon downloads the rows.',

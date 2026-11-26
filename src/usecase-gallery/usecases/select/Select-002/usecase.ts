@@ -4,9 +4,26 @@ export default defineUsecase({
   uiType: 'Field select',
   title: 'Column filter select',
   apps: ['hcs', 'hs', 'pfd'],
-  options: [
-    { id: "hcs-column-filter", showContext: false, name: "Column filter", apps: ["hcs","hs"], note: "The list opens below the trigger.", source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} },
-    { id: "pfd-column-filter", showContext: false, name: "Column filter — UI variant 2", apps: ["pfd"], note: "The list opens above the trigger.", source: {"pfd":"src/pfd/ColumnMenu.tsx"} },
+    layers: [
+        {"id":"field","partId":"field","title":"Field","explanation":"Field at scale \"sm\" with a 4 gap and zero minimum width so the filter can shrink inside the column menu.","keyIdea":"The Field gives a compact filter an accessible name inside the column menu.","selector":"[class~=\"aui-field\"]"},
+        {"id":"label","partId":"label","title":"Label","explanation":"The \"Search by option\" label above the filter trigger.","keyIdea":"Search by option explains that the select filters columns rather than selecting a product.","selector":"[class~=\"aui-field-label\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Full-width outlined trigger with the \"soft\" shape and no height override, so it takes the scale default.","keyIdea":"The soft outlined trigger groups all column-filter choices into one control.","selector":"[class~=\"aui-select-trigger\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"The chevron that tells the user the trigger opens a list of column values.","keyIdea":"The chevron hints that the filter’s values appear on demand.","selector":"[class~=\"aui-select-chevron\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup that opens below the trigger, aligned to its start with alignItemWithTrigger off, at the trigger width.","keyIdea":"Start alignment preserves a predictable list origin under the trigger.","selector":"[class~=\"aui-select-popup\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"The list holding the Select all, Passed and Failed rows.","keyIdea":"The list exposes Select all, Passed, and Failed as filter scopes.","selector":"[class~=\"aui-select-list\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"A filter row whose label is written straight into the item; \"Select all\" clears the column filter.","keyIdea":"Each row applies one scope, while Select all clears the narrower filter.","selector":"[class~=\"aui-select-item\"]"},
+      ],
+options: [
+    { id: "hcs-column-filter", showContext: false, name: "Column filter", apps: ["hcs","hs"], note: "The list opens below the trigger.", source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "pfd-column-filter", showContext: false, name: "Column filter — UI variant 2", apps: ["pfd"], note: "The list opens above the trigger.", source: {"pfd":"src/pfd/ColumnMenu.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     hcs: 'src/components/ColumnMenu.tsx',

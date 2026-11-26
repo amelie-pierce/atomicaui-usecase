@@ -13,12 +13,41 @@ export default defineUsecase({
     adm: 'src/features/multi-design/components/MultiDesignTable.tsx',
     ace: 'src/features/calculation/ui/CalculationOutput.tsx',
   },
-  options: [
-    { id: "hcs-selection", name: "Row selection", showContext: false, apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} },
-    { id: "hs-selection", name: "Row selection — UI variant 2", showContext: false, apps: ["hs","fd","pbs"], source: {"hs":"src/hs/ResultsTable.tsx","fd":"src/components/Results.jsx","pbs":"src/ResultsSection.tsx"} },
-    { id: "rws-selection", name: "Row selection — UI variant 3", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} },
-    { id: "adm-selection", name: "Row selection — UI variant 4", showContext: false, apps: ["adm"], source: {"adm":"src/features/multi-design/components/MultiDesignTable.tsx"} },
-    { id: "ace-selection", name: "Row selection — UI variant 5", showContext: false, apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} },
+    layers: [
+        {"id":"table","partId":"table","title":"Table","explanation":"Selectable results table: selectionMode \"single\" with indicatorType \"radio\" and no separate indicator column, so the radio lives in the first data cell. HCS, HS, PBS and FD use the 4px secondary edge bar; ADM uses between-rows lines with a raised selected row.","keyIdea":"The single-select grid turns candidate rows into one mutually exclusive choice.","selector":"[class~=\"aui-table\"]"},
+        {"id":"head","partId":"head","title":"Header","explanation":"Raised header with the Model and Load (lb) labels (Product and Tension (lb) in ADM); its row is marked selectable={false} so it gets no radio.","keyIdea":"A nonselectable header lets the candidate columns stay readable without looking like a choice.","selector":"[class~=\"aui-table-head\"]"},
+        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Plain column heading on the raised band; no sort control in this use case.","keyIdea":"Plain headings describe the data because this selection table does not sort.","selector":"[class~=\"aui-table-header-cell\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"The two selectable candidates, Model B-200 and Model C-300.","keyIdea":"The body contains only the candidates available for selection.","selector":"[class~=\"aui-table-body\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"A selectable row; the selected one (Model B-200) carries the row surface and a 4px start edge bar, and RWS paints that look with selection=\"row\" and no radio.","keyIdea":"The row surface and start edge make the chosen candidate visible beyond its radio.","selector":"[class~=\"aui-table-row\"]"},
+        {"id":"cell","partId":"cell","title":"Cell","explanation":"Data cell; the first one holds the radio and the model name, the second the load in lb (2,210 and 1,180).","keyIdea":"The first cell keeps the selection marker with the model name it selects.","selector":"[class~=\"aui-table-cell\"]"},
+        {"id":"selection-toggle","partId":"selection-toggle","title":"Selection radio","explanation":"24px radio at the start of the first cell that selects the row, filled primary when selected; in ACE it sits above the model name.","keyIdea":"The radio exposes the same row choice with a control that supports single selection.","selector":"[class~=\"aui-table-cell\"] [class~=\"aui-radio\"]"},
+      ],
+options: [
+    { id: "hcs-selection", name: "Row selection", showContext: false, apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "hs-selection", name: "Row selection — UI variant 2", showContext: false, apps: ["hs","fd","pbs"], source: {"hs":"src/hs/ResultsTable.tsx","fd":"src/components/Results.jsx","pbs":"src/ResultsSection.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "rws-selection", name: "Row selection — UI variant 3", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-selection", name: "Row selection — UI variant 4", showContext: false, apps: ["adm"], source: {"adm":"src/features/multi-design/components/MultiDesignTable.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "ace-selection", name: "Row selection — UI variant 5", showContext: false, apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   summary: 'A radio in the first cell selects one row of a results table; the selected row is marked by the row surface and an edge bar.',
   where: 'Output tables where one candidate is chosen: HCS F01Results.tsx, HS ResultsTable.tsx, FD Results.jsx, PBS ResultsSection.tsx (edit mode, in the action column), RWS output.tsx (bar only), ADM MultiDesignTable.tsx (Multi design dialog) and ACE CalculationOutput.tsx (the Order model radio).',
@@ -52,20 +81,20 @@ export default defineUsecase({
     {
       id: 'row',
       name: 'Row',
-      selector: '[class~="aui-table-row"]',
+      selector: '[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]',
       description: 'A selectable row; the selected one (Model B-200) carries the row surface and a 4px start edge bar, and RWS paints that look with selection="row" and no radio.',
-    },
-    {
-      id: 'selection-toggle',
-      name: 'Selection radio',
-      selector: '[class~="aui-table-cell"] [class~="aui-radio"]',
-      description: '24px radio at the start of the first cell that selects the row, filled primary when selected; in ACE it sits above the model name.',
     },
     {
       id: 'cell',
       name: 'Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Data cell; the first one holds the radio and the model name, the second the load in lb (2,210 and 1,180).',
+    },
+    {
+      id: 'selection-toggle',
+      name: 'Selection radio',
+      selector: '[class~="aui-table-cell"] [class~="aui-radio"]',
+      description: '24px radio at the start of the first cell that selects the row, filled primary when selected; in ACE it sits above the model name.',
     },
   ],
 });

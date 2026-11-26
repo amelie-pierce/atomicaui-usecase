@@ -8,13 +8,45 @@ export default defineUsecase({
   uiType: 'Section accordion',
   title: 'Flush sections',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-  options: [
-    { id: "hcs-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list", apps: ["hcs","ace","adm","hs","adc"], source: {"hcs":"src/App.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx","adc":"src/adc/Workspace.tsx"} },
-    { id: "pbs-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list — UI variant 2", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} },
-    { id: "fd-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list — UI variant 3", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
-    { id: "hcs-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards", apps: ["hcs","ace","adm","hs"], source: {"hcs":"src/App.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx"} },
-    { id: "pbs-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards — UI variant 2", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} },
-    { id: "fd-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards — UI variant 3", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} },
+    layers: [
+        {"id":"item","partId":"item","title":"Item","explanation":"One Input-pane section, Connection Type (open by default) or Load Properties; in the list layout (HCS, HS, PFD) items are flush with a 1px outlined line between them, in the cards layout (FD, PBS) each is a soft rounded card.","keyIdea":"A single expanded section keeps related inputs together without splitting the form into separate cards.","selector":"[class~=\"aui-accordion-item\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Full-width surface title row, scale \"sm\" and shape \"none\", that opens or closes its section; openMultiple lets several stay open.","keyIdea":"A full-width trigger makes the section title row one predictable place to open or close its group.","selector":"[class~=\"aui-accordion-trigger\"]"},
+        {"id":"label","partId":"label","title":"Title","explanation":"Semi-bold l4 section name, \"Connection Type\" or \"Load Properties\" (upper case in the card layouts).","keyIdea":"The section label tells users which input group will appear before they change its disclosure state.","selector":"[class~=\"aui-accordion-trigger-content\"]"},
+        {"id":"icon","partId":"icon","title":"Section icon","explanation":"Leading regular-weight topic icon, link for Connection Type and arrow-down for Load Properties; the FD and PBS card layouts omit it.","keyIdea":"The leading topic glyph helps distinguish sections whose names are close in meaning.","selector":"[class~=\"aui-accordion-trigger-content\"] [class~=\"aui-contained-icon\"]"},
+        {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"Disclosure chevron at the end of the row that turns with the open state.","keyIdea":"The turning chevron shows whether the section fields are currently available below the title row.","selector":"[class~=\"aui-accordion-trigger\"] > [class~=\"aui-accordion-chevron\"]"},
+        {"id":"panel","partId":"panel","title":"Panel","explanation":"Body of the open section with default padding; Connection Type shows the placeholder \"Section fields\" while Load Properties has no panel.","keyIdea":"The panel is where the selected section exposes its fields while closed groups stay out of the way.","selector":"[class~=\"aui-accordion-panel\"]"},
+      ],
+options: [
+    { id: "hcs-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list", apps: ["hcs","ace","adm","hs","adc"], source: {"hcs":"src/App.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx","adc":"src/adc/Workspace.tsx"} ,
+      contextLayers: [
+        {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"The HCS-family Input aside gives the section list a clear editing region beside the results.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
+      ],
+    },
+    { id: "pbs-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list — UI variant 2", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} ,
+      contextLayers: [
+        {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"The PBS-family surface-alt pane keeps its outlined groups together as one input area.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
+      ],
+    },
+    { id: "fd-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list — UI variant 3", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} ,
+      contextLayers: [
+        {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"FD separates its accordion rows from results by giving them a named Input region.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
+      ],
+    },
+    { id: "hcs-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards", apps: ["hcs","ace","adm","hs"], source: {"hcs":"src/App.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","adm":"src/features/design-inputs/components/InputsPanel/InputsPanel.tsx","hs":"src/App.tsx"} ,
+      contextLayers: [
+        {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"HCS uses this pane to frame the softer section cards as one continuous editing area.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
+      ],
+    },
+    { id: "pbs-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards — UI variant 2", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} ,
+      contextLayers: [
+        {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"The PBS card scene keeps the rounded input groups inside a distinct workspace boundary.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
+      ],
+    },
+    { id: "fd-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards — UI variant 3", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} ,
+      contextLayers: [
+        {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"FD groups its card-like sections in an aside so input controls read apart from output.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
+      ],
+    },
   ],
   source: {
     hcs: 'src/App.tsx',

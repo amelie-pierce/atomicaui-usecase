@@ -16,7 +16,7 @@ export default function AceTopicRowScene({ host }: ContextProps) {
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
               <View data-ug-part="topic-list" as="nav" aria-label="Help & Tutorials" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }}>
-                <Button
+                <Button data-ug-part="container"
                   aui={{
                     scale: 'sm',
                     paint: 'text',

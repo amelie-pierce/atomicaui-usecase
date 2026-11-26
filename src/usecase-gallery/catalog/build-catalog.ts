@@ -36,6 +36,30 @@ const fail = (message: string): never => {
   throw new Error(`[usecase-gallery] ${message}`);
 };
 
+function validateLayers(
+  id: string,
+  layers: Usecase['layers'],
+  label: string,
+  usecaseKeyIdeas: Set<string>,
+  catalogKeyIdeaCounts: Map<string, number>,
+) {
+  if (!layers.length) fail(`${id} has no ${label} layer steps`);
+  const ids = new Set<string>();
+  for (const layer of layers) {
+    const keyIdea = layer.keyIdea.trim();
+    if (!layer.id || !layer.title || !layer.explanation || !keyIdea || !layer.selector) fail(`${id} has an incomplete ${label} layer step`);
+    if (keyIdea === layer.explanation.trim()) fail(`${id} ${label} layer "${layer.id}" keyIdea must differ from its explanation`);
+    if (/\bbuilds on\b/i.test(keyIdea)) fail(`${id} ${label} layer "${layer.id}" uses the forbidden "builds on" keyIdea pattern`);
+    if (ids.has(layer.id)) fail(`${id} repeats ${label} layer id "${layer.id}"`);
+    ids.add(layer.id);
+    if (usecaseKeyIdeas.has(keyIdea)) fail(`${id} repeats keyIdea "${keyIdea}" across its layer steps`);
+    usecaseKeyIdeas.add(keyIdea);
+    const count = (catalogKeyIdeaCounts.get(keyIdea) ?? 0) + 1;
+    if (count > 3) fail(`keyIdea "${keyIdea}" is used on more than three layer steps in the catalog`);
+    catalogKeyIdeaCounts.set(keyIdea, count);
+  }
+}
+
 /** Pure assembly of the catalog from glob results, so the discovery rules live in one testable place. */
 export function buildCatalog({ metas, docs, examples, sources, options = {}, optionSources = {} }: CatalogSources): ComponentGroup[] {
   const groups = new Map<string, ComponentGroup & { usecases: Usecase[] }>();
@@ -48,6 +72,7 @@ export function buildCatalog({ metas, docs, examples, sources, options = {}, opt
   const optionByKey = new Map(Object.entries(options).map(([p, load]) => [optionKey(p), load]));
   const optionSourceByKey = new Map(Object.entries(optionSources).map(([p, load]) => [optionKey(p), load]));
   const ids = new Set<string>();
+  const catalogKeyIdeaCounts = new Map<string, number>();
 
   for (const [path, doc] of Object.entries(docs)) {
     const [component, id] = usecaseKey(path);
@@ -62,16 +87,25 @@ export function buildCatalog({ metas, docs, examples, sources, options = {}, opt
     const loadSource = sourceByPath.get(key) ?? fail(`${id} is missing example.tsx`);
     let code: Promise<string> | undefined;
     const { options: optionDocs, ...docFields } = doc;
+    const authoredLayers = doc.layers;
+    if (!authoredLayers?.length) fail(`${id} is missing authored Component layer steps`);
+    const usecaseKeyIdeas = new Set<string>();
     const usecase: Usecase = {
       ...docFields,
+      layers: authoredLayers,
       id,
       componentId: group.id,
       Example: lazy(() => loadExample().then((component) => ({ default: component }))),
       loadCode: () => (code ??= loadSource().then(toSnippet)),
     };
+    validateLayers(id, usecase.layers, 'Component', usecaseKeyIdeas, catalogKeyIdeaCounts);
     if (!group.uiTypes.includes(doc.uiType)) fail(`${id} sets uiType "${doc.uiType}", which is not in uiTypes of ${component}.meta.ts (${group.uiTypes.join(', ')})`);
     if (!optionDocs?.length) fail(`${id} must define at least one option`);
     usecase.options = buildOptions(usecase, optionDocs, key, optionByKey, optionSourceByKey);
+    for (const option of usecase.options) {
+      if (option.contextLayers.length) validateLayers(id, option.contextLayers, `In context (${option.id})`, usecaseKeyIdeas, catalogKeyIdeaCounts);
+      else if (option.contextAnatomy.length) fail(`${id} option "${option.id}" is missing authored In context layer steps`);
+    }
     group.usecases.push(usecase);
   }
 
@@ -119,7 +153,8 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
   const { id } = usecase;
   const ids = new Set<string>();
   const options = docs.map((raw, index): UsecaseOption => {
-    const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextDocument } = raw;
+    const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextLayers, contextDocument } = raw;
+    if (contextLayers === undefined) fail(`${id} option "${optionId}" is missing authored In context layer steps`);
     for (const app of [...apps, ...Object.keys(source ?? {})] as AppKey[]) {
       if (!apps.includes(app) || !usecase.apps.includes(app)) fail(`${id} sets the option "${optionId}" to app "${app}", which is not in its apps`);
     }
@@ -147,6 +182,7 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
       note,
       showContext,
       contextAnatomy,
+      contextLayers,
       contextDocument,
       Scene,
       Example,

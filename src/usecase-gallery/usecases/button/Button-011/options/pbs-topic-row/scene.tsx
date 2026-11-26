@@ -14,9 +14,9 @@ export default function PbsTopicRowScene({ host }: ContextProps) {
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
               <View data-ug-part="topic-list" as="nav" aria-label="Help & Tutorials" aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8', paddingBlockStart: '16', paddingBlockEnd: '16', paddingInlineStart: '16', paddingInlineEnd: '16' } }}>
-                <Button aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', justifyContent: 'between', gap: '8', width: 'fill', textAlign: 'start', whiteSpace: 'normal', borderColor: 'outlined', borderWidth: '1' } }}>
+                <Button data-ug-part="container" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', justifyContent: 'between', gap: '8', width: 'fill', textAlign: 'start', whiteSpace: 'normal', borderColor: 'outlined', borderWidth: '1' } }}>
                   PBS: General Tutorial
-                  <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
+                  <Button.Icon data-ug-part="icon" name="arrow-right" aui={{ scale: 'sm' }} />
                 </Button>
               </View>
             </Dialog.Body>

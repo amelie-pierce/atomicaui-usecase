@@ -15,9 +15,26 @@ export default defineUsecase({
   title: 'Edit and Duplicate row buttons',
 
   apps: ['hs', 'pbs'],
-  options: [
-    { id: "hs-edit", contextAnatomy: HS_CONTEXT, name: "Edit and Duplicate", apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} },
-    { id: "pbs-edit", contextAnatomy: PBS_CONTEXT, name: "Edit and Duplicate — UI variant 2", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} },
+    layers: [
+        {"id":"cell","partId":"cell","title":"First cell","explanation":"The first cell of a saved-list row: HS lays Edit and Duplicate side by side, left-aligned, while PBS stacks them in a centred column.","keyIdea":"The first table cell makes row actions available before the saved item name.","selector":"[class~=\"aui-table-cell\"]:first-child"},
+        {"id":"edit","partId":"edit","title":"Edit","explanation":"The tonal secondary Edit that reopens the saved job (HS) or connection (PBS) for changes.","keyIdea":"Edit reopens the saved job or connection so its values can be changed.","selector":"[class~=\"aui-button\"]:not([aria-label]):first-of-type"},
+        {"id":"duplicate","partId":"duplicate","title":"Duplicate","explanation":"The tonal secondary Duplicate that copies the row; same colour and size as Edit so the two read as a pair of equal row actions.","keyIdea":"Duplicate creates a second saved row with the same starting values.","selector":"[class~=\"aui-button\"]:not([aria-label]):last-of-type"},
+        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"The unlabeled first column heading (aria-label \"Edit or duplicate\") above the action buttons.","keyIdea":"The blank header names the action column for assistive technology.","selector":"[class~=\"aui-table-header-cell\"]:first-child"},
+        {"id":"stack","partId":"stack","title":"Button stack","explanation":"PBS only: the column (gap 8, centred) that stacks Edit above Duplicate inside the cell.","keyIdea":"PBS stacks row actions to fit its centered table cell.","selector":"[data-ug-part=\"row-actions\"]"},
+      ],
+options: [
+    { id: "hs-edit", contextAnatomy: HS_CONTEXT, name: "Edit and Duplicate", apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} ,
+      contextLayers: [
+        {"id":"context-list-table","partId":"list-table","title":"Job List table","explanation":"The Table that lists the saved rows; only the first action column and the Job column are kept.","keyIdea":"The HS table pairs saved-job controls with the job label.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-name-cell","partId":"name-cell","title":"Job cell","explanation":"The row label (Job 1) beside the action cell.","keyIdea":"The row label identifies which saved job its actions will affect.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-cell\"]:last-child","scope":"context"},
+      ],
+    },
+    { id: "pbs-edit", contextAnatomy: PBS_CONTEXT, name: "Edit and Duplicate — UI variant 2", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,
+      contextLayers: [
+        {"id":"context-list-table","partId":"list-table","title":"Connection List table","explanation":"The Table that lists the saved rows; only the first action column and the Connection column are kept.","keyIdea":"The PBS table uses the same action column for a saved connection.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-name-cell","partId":"name-cell","title":"Connection cell","explanation":"The row label (Connection 1) beside the action cell.","keyIdea":"The connection label gives Edit and Duplicate a clear row target.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-cell\"]:last-child","scope":"context"},
+      ],
+    },
   ],
   source: { hs: 'src/hs/OutputPane.tsx', pbs: 'src/ResultsSection.tsx' },
   summary: 'Two tonal labelled Buttons in the first cell of a saved-list row edit or duplicate that row.',

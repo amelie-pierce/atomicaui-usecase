@@ -24,7 +24,9 @@ export default function AgpdHelpCloseScene({ host }: ContextProps) {
               }
             >
               <View data-ug-part="close-row" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', justifyContent: 'end' } }}>
-                <IconButton name="xmark" aria-label="Close" aui={{ scale: 'xs' }} />
+                <span data-ug-component-root style={{ display: 'contents' }}>
+                  <IconButton name="xmark" aria-label="Close" aui={{ scale: 'xs' }} />
+                </span>
               </View>
               <Type data-ug-part="help-text" as="div" role="p3">Select the base material of the member.</Type>
             </Popover.Popup>

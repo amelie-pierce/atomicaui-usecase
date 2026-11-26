@@ -8,7 +8,9 @@ export default function FdAppsCloseScene({ host }: ContextProps) {
     <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', justifyContent: 'end' } }} style={{ minBlockSize: 'calc(var(--p-px-16) * 10)', inlineSize: 'min(100%, calc(var(--p-px-16) * 24))' }}>
       <Menubar aria-label="Top bar">
         <Popover open modal={false}>
-          <Popover.Trigger render={<Menubar.IconButton name="grip" aria-label="Apps" />} />
+          <span data-ug-component-root style={{ display: 'contents' }}>
+            <Popover.Trigger render={<Menubar.IconButton name="grip" aria-label="Apps" />} />
+          </span>
           <Popover.Portal container={host}>
             <Popover.Positioner side="bottom" align="end" sideOffset={8} className="ug-anchored">
               <Popover.Popup
@@ -24,9 +26,11 @@ export default function FdAppsCloseScene({ host }: ContextProps) {
               >
                 <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
                   <Type data-ug-part="apps-title" as="h2" role="l3" weight="semi-bold">Explore More Applications</Type>
-                  <Button aria-label="Close applications" aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}>
-                    <Icon name="xmark" />
-                  </Button>
+                  <span data-ug-component-root style={{ display: 'contents' }}>
+                    <Button aria-label="Close applications" aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}>
+                      <Icon name="xmark" />
+                    </Button>
+                  </span>
                 </View>
               </Popover.Popup>
             </Popover.Positioner>

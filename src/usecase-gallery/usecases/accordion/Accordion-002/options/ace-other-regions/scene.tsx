@@ -27,7 +27,8 @@ export default function AceOtherRegionsScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
             <View data-ug-part="about-body" aui={{ scale: 'sm', paint: 'text', profile: 'default' }}>
-              <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['other']}>
+              <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['other']}>
                 <Accordion.Item value="other">
                   {trigger('Updates for other regions', '1 update')}
                   <Accordion.Panel>
@@ -50,7 +51,7 @@ export default function AceOtherRegionsScene({ host }: ContextProps) {
                     </Accordion>
                   </Accordion.Panel>
                 </Accordion.Item>
-              </Accordion>
+              </Accordion></span>
             </View>
           </Dialog.Popup>
         </Dialog.Viewport>

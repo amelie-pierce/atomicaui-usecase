@@ -4,9 +4,25 @@ export default defineUsecase({
   uiType: 'Menubar with text triggers',
   title: 'File menu',
   apps: ['hs', 'adc', 'adm', 'ace', 'hcs', 'pbs', 'pfd', 'rws', 'agpd'],
-  options: [
-    { id: "hs-file-menu", showContext: false, name: "File menu", apps: ["hs","adc"], source: {"hs":"src/hs/TopBar.tsx","adc":"src/adc/Workspace.tsx"} },
-    { id: "adm-file-menu", showContext: false, name: "File menu — UI variant 2", apps: ["adm","ace","hcs","pbs","pfd","rws","agpd"], source: {"adm":"src/app/layout/NavBar/NavBar.tsx","ace":"src/features/top-navigation/ui/AceNavBar.tsx","hcs":"src/App.tsx","pbs":"src/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","rws":"src/rws/TopBar.tsx","agpd":"src/agpd/TopBar.tsx"} },
+    layers: [
+        {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"The \"Top bar\" strip with the File menu first; the other apps place About, Reset and Help Center after it.","keyIdea":"A single top bar keeps File first while leaving room for the other application actions.","selector":"[class~=\"aui-menubar\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The text trigger \"File\" that opens the device, template and print actions.","keyIdea":"The File trigger names the action group before its popup opens.","selector":"[class~=\"aui-menubar-trigger\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"The 192px wide menu surface, 4px below the trigger and aligned to its start.","keyIdea":"The narrow popup keeps file commands aligned to their own trigger.","selector":"[class~=\"aui-dropdown-popup\"]"},
+        {"id":"item","partId":"item","title":"Item","explanation":"A plain action row: \"Save to device\" or \"Open from device\".","keyIdea":"Each row runs one device action without implying that it has a nested menu.","selector":"[class~=\"aui-dropdown-item\"]"},
+        {"id":"separator","partId":"separator","title":"Separator","explanation":"The divider between the device actions and the Print submenu.","keyIdea":"A divider separates file transfer actions from the print submenu.","selector":"[class~=\"aui-dropdown-separator\"]"},
+        {"id":"submenu-trigger","partId":"submenu-trigger","title":"Submenu trigger","explanation":"The \"Print\" row with a trailing arrow; it opens a second popup to its right holding \"Print output\".","keyIdea":"The trailing arrow signals that Print opens a second level of commands.","selector":"[class~=\"aui-dropdown-submenu-trigger\"]"},
+      ],
+options: [
+    { id: "hs-file-menu", showContext: false, name: "File menu", apps: ["hs","adc"], source: {"hs":"src/hs/TopBar.tsx","adc":"src/adc/Workspace.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
+    { id: "adm-file-menu", showContext: false, name: "File menu — UI variant 2", apps: ["adm","ace","hcs","pbs","pfd","rws","agpd"], source: {"adm":"src/app/layout/NavBar/NavBar.tsx","ace":"src/features/top-navigation/ui/AceNavBar.tsx","hcs":"src/App.tsx","pbs":"src/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","rws":"src/rws/TopBar.tsx","agpd":"src/agpd/TopBar.tsx"} ,
+      contextLayers: [
+
+      ],
+    },
   ],
   source: {
     hs: 'src/hs/TopBar.tsx',

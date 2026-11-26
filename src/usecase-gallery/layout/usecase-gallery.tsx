@@ -1,13 +1,12 @@
 import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
 import { catalog, allUsecases, componentAliases } from '../catalog/catalog';
 import { withOption } from '../catalog/app-views';
-import { COMPONENTS_HASH, componentHash, useRoute } from '../hooks/use-route';
+import { useRoute } from '../hooks/use-route';
 import { useMediaQuery } from '../hooks/use-media-query';
-import { ComponentPage } from '../ui/component-page';
-import { ComponentsPage } from '../ui/components-page';
 import { DetailPane } from '../ui/detail-pane';
 import { DetailToolbar } from '../ui/detail-toolbar';
 import { RenderPane } from '../ui/render-pane';
+import { TreePane } from '../ui/tree-pane';
 import type { DocumentMode, PreviewMode } from '../types';
 import { DetailLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
@@ -16,17 +15,17 @@ import '../styles/gallery.scss';
 const NARROW = '(max-width: 840px)';
 
 export interface UsecaseGalleryProps {
-  /** Heading of the gallery site pages. */
+  /** Heading shown above the gallery tree. */
   title?: string;
 }
 
 export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const narrow = useMediaQuery(NARROW);
-  const route = useRoute(catalog.map((group) => group.id), allUsecases.map((usecase) => usecase.id), componentAliases);
+  const route = useRoute(catalog, componentAliases);
   const [interactedPart, setInteractedPart] = useState<{ id: string; source: 'hover' | 'focus' }>();
   const [availableParts, setAvailableParts] = useState<{ key: string; ids: string[] }>();
   const [selectedPart, setSelectedPart] = useState<{ usecaseId: string; partId: string }>();
-  const selectedId = route.page === 'usecase' ? route.usecaseId : '';
+  const selectedId = route.usecaseId;
   const selectedPartId = selectedPart?.usecaseId === selectedId ? selectedPart.partId : undefined;
   const [chosen, setChosen] = useState<{ usecaseId: string; optionId?: string }>();
   const [viewMode, setViewMode] = useState<PreviewMode>('component');
@@ -85,11 +84,6 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   }, [selectedId]);
   const onLayerChange = useCallback((index: number) => setLayerIndex(index), []);
   const onAvailablePartsChange = useCallback((ids: string[]) => setAvailableParts({ key: activePreviewKey, ids }), [activePreviewKey]);
-  if (route.page === 'components') return <div className="ug"><ComponentsPage groups={catalog} title={title} /></div>;
-  if (route.page === 'component') {
-    const group = catalog.find((candidate) => candidate.id === route.componentId);
-    return group ? <div className="ug"><ComponentPage group={group} /></div> : null;
-  }
   if (!original || !group || !usecase) return null;
   // The option change is a transition: the shown UI stays until the next option's lazy example has loaded, so the stage never blanks.
   const panes = {
@@ -98,9 +92,12 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   };
   return (
     <div className="ug ug--usecase">
-      <DetailToolbar crumbs={[{ label: 'Components', href: COMPONENTS_HASH }, { label: group.title, href: componentHash(group.id) }, { label: usecase.id }]} usecase={usecase} option={option} />
+      <DetailToolbar usecase={usecase} option={option} />
       <div className="ug__body">
-        {narrow ? <StackedLayout {...panes} /> : <DetailLayout {...panes} />}
+        <div className="ug-gallery-shell">
+          <TreePane groups={catalog} activeComponentId={group.id} activeUsecase={original} title={title} familyCount={catalog.length + Object.keys(componentAliases).length} />
+          {narrow ? <StackedLayout {...panes} /> : <DetailLayout {...panes} />}
+        </div>
       </div>
     </div>
   );

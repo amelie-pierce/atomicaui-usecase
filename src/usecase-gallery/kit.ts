@@ -1,4 +1,4 @@
 // The ONLY file in this folder that imports the AtomicAUI kit. When moving the gallery to another app,
 // point this re-export at that app's AtomicAUI package; nothing else changes.
-export { Accordion, Button, Card, Checkbox, Chip, Collapsible, ContainedIcon, ContainedImage, ContextMenu, Dialog, Dropdown, Field, Fieldset, FileUpload, Icon, IconButton, Input, List, Menubar, Panels, Popover, Radio, RadioGroup, Select, Switch, Symbol, Table, Tabs, Textarea, ToggleGroup, Tooltip, Type, View } from '../vendor/atomic-aui';
+export { Accordion, Button, Card, Checkbox, Chip, Collapsible, ContainedIcon, ContainedImage, ContextMenu, Dialog, Dropdown, Field, Fieldset, FileUpload, Icon, IconButton, Input, List, Menubar, Panels, Popover, Radio, RadioGroup, Select, Switch, Symbol, Table, Tabs, Textarea, ToggleGroup, Tooltip, TreeView, Type, View } from '../vendor/atomic-aui';
 export { CardGroup, Combobox, Drawer, Spinner, Toast, createToastManager, useToastManager } from '../vendor/atomic-aui';

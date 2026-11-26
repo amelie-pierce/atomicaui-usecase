@@ -4,7 +4,7 @@ export interface LayoutPanes {
   detail: ReactNode;
 }
 
-/** The preview with its option select stays on the left while the complete document scrolls on the right. */
+/** The center preview with its option select stays pinned while the complete document scrolls on the right. */
 export function DetailLayout({ render, detail }: LayoutPanes) {
   return (
     <div className="ug-layout">

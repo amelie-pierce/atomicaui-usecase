@@ -31,7 +31,75 @@ $narrow: 840px;
   white-space: nowrap;
 }
 
-// ── Use case shell ──────────────────────────────────────────────────────────
+// ── Single-page gallery shell ───────────────────────────────────────────────
+.ug-gallery-shell {
+  display: grid;
+  grid-template-columns: minmax(calc(var(--p-px-16) * 14), calc(var(--p-px-16) * 17)) minmax(0, 1fr);
+  align-items: stretch;
+  gap: var(--p-px-24);
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  min-block-size: 0;
+  block-size: 100%;
+  overflow: hidden;
+}
+
+.ug-tree-pane {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  min-block-size: 0;
+  overflow: hidden;
+  background: var(--theme-surface);
+  border: var(--p-px-1) solid var(--theme-raised);
+  border-radius: var(--p-px-8);
+}
+
+.ug-tree-pane__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-px-4);
+  flex: none;
+  padding: var(--p-px-12) var(--p-px-12) var(--p-px-8);
+  border-block-end: var(--p-px-1) solid var(--theme-raised);
+
+  :is(h1, p) {
+    margin: 0;
+  }
+}
+
+.ug-tree-pane__scroll {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow: auto;
+  padding: var(--p-px-8);
+}
+
+.ug-tree {
+  min-inline-size: 0;
+}
+
+.ug-tree__id {
+  flex: none;
+  white-space: nowrap;
+}
+
+.ug-tree__title {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.ug-tree__usecase {
+  display: grid;
+  grid-template-columns: var(--p-px-20) var(--p-px-20) minmax(0, 1fr);
+  align-items: start;
+
+  .ug-tree__id,
+  .ug-tree__title {
+    grid-column: 3;
+  }
+}
+
 .ug-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -54,7 +122,9 @@ $narrow: 840px;
 }
 
 .ug-layout__column--render {
-  align-self: stretch;
+  position: sticky;
+  inset-block-start: 0;
+  align-self: start;
 }
 
 .ug-layout__column--detail {
@@ -98,7 +168,7 @@ $narrow: 840px;
   z-index: 4;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: var(--p-px-16);
   flex: none;
   min-inline-size: 0;
@@ -616,204 +686,7 @@ $narrow: 840px;
   color: var(--p-palette-orange-600);
 }
 
-// ── Site pages: components grid (#/) and one component (#/Button) ───────────
-// A page scrolls inside the fixed shell; its grids go 4 columns on wide screens, then 3, 2 and 1 as the width shrinks.
-.ug-site {
-  display: flex;
-  flex-direction: column;
-  gap: var(--p-px-24);
-  inline-size: min(100%, calc(var(--p-px-320) * 4));
-  block-size: 100%;
-  min-inline-size: 0;
-  overflow: auto;
-  margin-inline: auto;
-  padding-block-end: var(--p-px-24);
-  --theme-primary: var(--p-palette-orange-600);
-}
-
-.ug-site__head {
-  display: flex;
-  flex-direction: column;
-  gap: var(--p-px-4);
-
-  :is(h1, p) {
-    margin: 0;
-  }
-}
-
-.ug-site__head {
-  padding-block-end: var(--p-px-12);
-  border-block-end: var(--p-px-1) solid var(--theme-raised);
-}
-
-// A section is a bordered panel on the page: a header band with the UI type title, its count and a chevron, then the grid.
-.ug-site__section {
-  flex: none;
-  background: var(--theme-surface);
-  border: var(--p-px-1) solid var(--theme-raised);
-  border-radius: var(--p-px-8);
-  overflow: hidden;
-
-  h2 {
-    margin: 0;
-  }
-
-  .ug-grid {
-    padding: var(--p-px-16);
-  }
-}
-
-.ug-site__section-head {
-  padding: 0;
-  background: var(--theme-surface);
-  border-block-end: var(--p-px-1) solid var(--theme-raised);
-}
-
-.ug-site__count {
-  margin-inline-end: auto;
-  padding-inline: var(--p-px-8);
-  border-radius: var(--p-px-12);
-  background: var(--theme-surface);
-  border: var(--p-px-1) solid var(--theme-raised);
-}
-
-.ug-grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--p-px-16);
-
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  @media (max-width: $narrow) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  @media (max-width: 520px) {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-.ug-grid__link {
-  display: block;
-  block-size: 100%;
-  color: inherit;
-  text-decoration: none;
-  border-radius: var(--p-px-8);
-
-  &:focus-visible {
-    outline: var(--p-px-2) solid var(--theme-info);
-    outline-offset: var(--p-px-2);
-  }
-
-  &:hover .ug-grid__card {
-    border-color: var(--theme-primary);
-  }
-}
-
-.ug-grid__card {
-  inline-size: 100%;
-  block-size: 100%;
-  overflow: hidden;
-  border: var(--p-px-1) solid var(--theme-raised);
-  box-shadow: 0 var(--p-px-1) var(--p-px-4) rgb(0 0 0 / 12%);
-  transition: border-color 160ms ease;
-}
-
-.ug-grid__content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--p-px-4);
-
-  :is(h2, h3, p) {
-    margin: 0;
-  }
-}
-
-.ug-grid__id {
-  font-variant-numeric: tabular-nums;
-}
-
-// The live render in the middle of a card: the real example, inert, scaled to fit (see ui/thumb.tsx).
-.ug-thumb {
-  position: relative;
-  flex: none;
-  overflow: hidden;
-  block-size: calc(var(--p-px-16) * 10);
-  background: var(--theme-surface);
-  pointer-events: none;
-  user-select: none;
-}
-
-.ug-thumb__stage.ug-render__stage {
-  position: absolute;
-  inset: 50% auto auto 50%;
-  // Frame-sized until the fit is measured, so wide content is laid out in full instead of in the half left of the 50% inset.
-  inline-size: 100%;
-  block-size: 100%;
-  min-block-size: 0;
-  box-sizing: border-box;
-  // The card's own border and radius frame the thumbnail; the stage's border and radius would clash with them.
-  border: 0;
-  border-radius: 0;
-  padding: var(--p-px-0);
-  // Overflow runs off the right/bottom edge, which is the extent the fit measures.
-  justify-content: safe center;
-  overflow: visible;
-  transform-origin: center;
-}
-
-// An example's own start alignment (a lone button) would pin it to the top of the frame.
-.ug-thumb__stage.ug-render__stage > * {
-  align-self: center;
-}
-
-.ug-thumb__fit {
-  min-block-size: 100%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ug-grid__card {
-    transition: none;
-  }
-}
-
-// ── Breadcrumb ──────────────────────────────────────────────────────────────
-.ug-crumbs__list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.ug-crumbs__item + .ug-crumbs__item::before {
-  content: '>';
-  padding-inline: var(--p-px-8);
-  color: var(--theme-on-surface-alt);
-}
-
-.ug-crumbs__link {
-  color: var(--p-palette-orange-600);
-  text-decoration: none;
-  border-radius: var(--p-px-4);
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  &:focus-visible {
-    outline: var(--p-px-2) solid var(--theme-info);
-    outline-offset: var(--p-px-2);
-  }
-}
-
-// The use case page: breadcrumb above the two-column detail layout.
+// The single-page shell: utility actions above the tree, preview and document panes.
 .ug--usecase {
   display: flex;
   flex-direction: column;
@@ -828,6 +701,18 @@ $narrow: 840px;
   min-block-size: 0;
   min-height: 0;
   overflow: hidden;
+}
+
+@media (max-width: 1100px) {
+  .ug-gallery-shell {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(var(--p-px-224), 32dvh) minmax(0, 1fr);
+    gap: var(--p-px-16);
+  }
+
+  .ug-tree-pane__header {
+    padding-block: var(--p-px-8);
+  }
 }
 
 // ── Narrow: one scrolling column ────────────────────────────────────────────
@@ -858,8 +743,23 @@ $narrow: 840px;
     overflow: visible;
   }
 
+  .ug-gallery-shell {
+    display: flex;
+    flex-direction: column;
+    block-size: auto;
+    overflow: visible;
+  }
+
+  .ug-tree-pane {
+    flex: none;
+    block-size: min(36dvh, calc(var(--p-px-16) * 24));
+    min-block-size: var(--p-px-224);
+  }
+
   .ug-layout {
     grid-template-columns: minmax(0, 1fr);
+    block-size: auto;
+    overflow: visible;
     gap: var(--p-px-16);
   }
 
@@ -873,6 +773,10 @@ $narrow: 840px;
     position: static;
     block-size: auto;
     min-block-size: var(--p-px-160);
+  }
+
+  .ug-layout__column--render {
+    position: static;
   }
 
   .ug-render__stage {

@@ -9,7 +9,7 @@ export default function Example() {
         selected: { color: 'primary', paint: 'solid' },
       },
     }}>
-      <Checkbox.Icon name="check" />
+      <Checkbox.Icon name="check" layer="duotone" />
       <Checkbox.Label>Send me a copy of my responses</Checkbox.Label>
     </Checkbox>
   );

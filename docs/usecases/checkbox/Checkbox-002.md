@@ -28,10 +28,10 @@ AtomicAUI components imported by this use case: `Checkbox`, `Field`, `Fieldset`,
 
 The source snippets below are authoritative for the complete prop values and composition. These styling values are the ones explicitly present in the selected examples and scenes:
 
-- `scale`: `sm`
-- `color`: `primary`, `surface`
 - `paint`: `solid`, `text`, `tonal`
 - `profile`: `default`, `no-padding`
+- `scale`: `sm`
+- `color`: `primary`, `surface`
 
 ### Authored API props
 
@@ -75,10 +75,11 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/checkbox/Checkbox-002/example.tsx`
 
 ```tsx
-import { Checkbox } from '../../../kit';
+import { Checkbox, View } from '../../../kit';
 
 export default function Example() {
   return (
+    <View aui={{ paint: 'text', profile: 'default', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }} style={{ inlineSize: 'min(100%, 280px)' }}>
     <Checkbox defaultSelected aui={{
       scale: 'sm',
       states: {
@@ -87,8 +88,9 @@ export default function Example() {
       },
     }}>
       <Checkbox.Icon name="check" />
-      <Checkbox.Label>Galvanized</Checkbox.Label>
+      <Checkbox.Label aui={{ scale: 'sm' }}>Same inputs as Left Hip</Checkbox.Label>
     </Checkbox>
+    </View>
   );
 }
 ```
@@ -133,10 +135,12 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/checkbox/Checkbox-002/options/ace-titled/example.tsx`
 
 ```tsx
-import { Checkbox } from '../../../../../kit';
+import { Checkbox, Fieldset } from '../../../../../kit';
 
 export default function Example() {
   return (
+    <Fieldset aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+    <Fieldset.Legend>Paste over both sides of crack</Fieldset.Legend>
     <Checkbox defaultSelected aui={{
       scale: 'sm',
       states: {
@@ -145,8 +149,9 @@ export default function Example() {
       },
     }}>
       <Checkbox.Icon name="check" />
-      <Checkbox.Label>Galvanized</Checkbox.Label>
+      <Checkbox.Label aui={{ scale: 'sm' }}>Yes</Checkbox.Label>
     </Checkbox>
+    </Fieldset>
   );
 }
 ```
@@ -192,20 +197,18 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/checkbox/Checkbox-002/options/adm-label-first/example.tsx`
 
 ```tsx
-import { Checkbox } from '../../../../../kit';
+import { Checkbox, Field, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Checkbox defaultSelected aui={{
-      scale: 'sm',
-      states: {
-        unselected: { color: 'surface', paint: 'tonal', sx: { borderColor: 'outlined' } },
-        selected: { color: 'primary', paint: 'solid' },
-      },
-    }}>
-      <Checkbox.Icon name="check" />
-      <Checkbox.Label>Galvanized</Checkbox.Label>
-    </Checkbox>
+    <View aui={{ paint: 'text', profile: 'no-padding' }} style={{ inlineSize: 'min(100%, 280px)' }}>
+      <Field aui={{ sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'end', width: 'fill', gap: '8' } }}>
+        <Field.Label>Center to joint</Field.Label>
+        <Checkbox aria-label="Center to joint" defaultSelected aui={{ states: { unselected: { paint: 'tonal', color: 'surface', sx: { borderColor: 'outlined' } }, selected: { paint: 'solid', color: 'primary' } } }}>
+          <Checkbox.Icon name="check" layer="duotone" />
+        </Checkbox>
+      </Field>
+    </View>
   );
 }
 ```

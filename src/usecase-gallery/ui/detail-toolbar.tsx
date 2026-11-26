@@ -36,7 +36,7 @@ export function DetailToolbar({
             if (event.key === 'Enter') onSearchSubmit();
           }}
         />
-        {searchQuery && <Field.Button aria-label="Clear search"><Field.ButtonIcon name="xmark" /></Field.Button>}
+        {searchQuery && <Field.Button aria-label="Clear search" onClick={() => onSearchChange('')}><Field.ButtonIcon name="xmark" /></Field.Button>}
       </Field.Control>
     </Field>
   </header>;

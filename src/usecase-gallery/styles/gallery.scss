@@ -1,7 +1,7 @@
 // Layout and chrome for the use case gallery. Color, type, spacing and shape come from AtomicAUI tokens
 // (CSS variables) and kit components only; the tokens stylesheet must be loaded by the host app.
 
-$narrow: 840px;
+$narrow: 960px;
 
 .ug {
   position: fixed;
@@ -127,6 +127,8 @@ $narrow: 840px;
 }
 
 .ug-detail {
+  display: flex;
+  flex-direction: column;
   min-inline-size: 0;
   min-block-size: 0;
   block-size: 100%;
@@ -143,6 +145,8 @@ $narrow: 840px;
 // palette's darker orange, the same step the high-contrast theme uses.
 .ug-docs {
   --theme-primary: var(--p-palette-orange-600);
+  flex: 1 1 auto;
+  min-block-size: 0;
 }
 
 .ug-toolbar {
@@ -155,14 +159,14 @@ $narrow: 840px;
   gap: var(--p-px-16);
   flex: none;
   min-inline-size: 0;
-  padding-block: var(--p-px-8) var(--p-px-12);
+  padding-block: var(--p-px-4);
   background: var(--theme-surface-alt);
   border-block-end: var(--p-px-1) solid var(--theme-raised);
 }
 
 .ug-toolbar--panels {
   position: fixed;
-  inset-block-start: var(--p-px-16);
+  inset-block-start: var(--p-px-8);
   inset-inline: var(--p-px-16);
   z-index: 8;
 }
@@ -180,11 +184,11 @@ $narrow: 840px;
   max-inline-size: calc(var(--p-px-16) * 36);
 }
 
-// The header of the left pane: the option select on the left, the Component / In context toggle on the right.
+// The preview header keeps the mode toggle on the left and the option select on the right.
 .ug-render__header {
   flex: none;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--p-px-12);
@@ -192,9 +196,9 @@ $narrow: 840px;
   margin-block-end: var(--p-px-12);
 }
 
-// The select takes the free width up to a readable measure and wraps before the toggle does.
+// The select takes the free width up to a readable measure while the mode toggle stays compact.
 .ug-options {
-  flex: 1 1 calc(var(--p-px-16) * 16);
+  flex: 1 1 0;
   min-inline-size: 0;
   max-inline-size: calc(var(--p-px-16) * 22);
 }
@@ -531,7 +535,7 @@ $narrow: 840px;
   align-self: flex-start;
   inline-size: max-content;
   max-inline-size: 100%;
-  margin-block-end: var(--p-px-16);
+  margin-block-end: var(--p-px-12);
 }
 
 .ug-layer-lesson {
@@ -703,7 +707,7 @@ $narrow: 840px;
   min-block-size: 0;
   min-height: 0;
   overflow: hidden;
-  padding-block-start: calc(var(--p-px-16) * 5);
+  padding-block-start: var(--p-px-48);
 }
 
 // ── Narrow: one scrolling column ────────────────────────────────────────────

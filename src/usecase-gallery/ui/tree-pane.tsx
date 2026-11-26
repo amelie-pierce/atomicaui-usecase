@@ -48,7 +48,13 @@ export function TreePane({ groups, activeComponentId, activeUsecase, collapsed, 
   useLayoutEffect(() => {
     const selectedItem = Array.from(treeRef.current?.querySelectorAll<HTMLElement>('[role="treeitem"]') ?? [])
       .find((item) => item.dataset.key === selected);
-    selectedItem?.scrollIntoView({ block: 'nearest' });
+    const scrollPane = treeRef.current?.parentElement;
+    const row = selectedItem?.querySelector<HTMLElement>(':scope > .aui-tree-view-item-content');
+    if (!scrollPane || !row) return;
+    const paneRect = scrollPane.getBoundingClientRect();
+    const rowRect = row.getBoundingClientRect();
+    if (rowRect.top < paneRect.top) scrollPane.scrollTop -= paneRect.top - rowRect.top;
+    else if (rowRect.bottom > paneRect.bottom) scrollPane.scrollTop += rowRect.bottom - paneRect.bottom;
   }, [selected, expandedValue]);
 
   const selectValue = (value: string) => {

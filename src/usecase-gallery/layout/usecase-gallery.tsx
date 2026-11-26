@@ -12,7 +12,7 @@ import { DetailLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
 
 /** Below this width the preview and detail columns stack into one scrolling column. */
-const NARROW = '(max-width: 840px)';
+const NARROW = '(max-width: 960px)';
 
 const TREE_COLLAPSED_KEY = 'atomicaui-usecase-tree-collapsed';
 

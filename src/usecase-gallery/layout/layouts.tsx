@@ -17,8 +17,10 @@ export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onT
       <Panels.Panel
         id="component-tree"
         className="ug-layout__column ug-layout__column--tree"
-        defaultSize={treeCollapsed ? '0%' : '25%'}
-        minSize="160px"
+        defaultSize={treeCollapsed ? '0%' : '384px'}
+        groupResizeBehavior="preserve-pixel-size"
+        minSize="384px"
+        maxSize="400px"
         collapsedSize="0%"
         collapsible
         onResize={onTreePanelResize}
@@ -26,12 +28,12 @@ export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onT
         {tree}
       </Panels.Panel>
       <Panels.ResizeHandle aria-label="Resize component tree and preview" />
-      <Panels.Panel id="component-preview" className="ug-layout__column ug-layout__column--render" defaultSize="50%" minSize="280px">
+      <Panels.Panel id="component-preview" className="ug-layout__column ug-layout__column--render" minSize="280px">
         {toolbar}
         {render}
       </Panels.Panel>
       <Panels.ResizeHandle aria-label="Resize preview and documentation" />
-      <Panels.Panel id="component-documentation" className="ug-layout__column ug-layout__column--detail" defaultSize="25%" minSize="220px">
+      <Panels.Panel id="component-documentation" className="ug-layout__column ug-layout__column--detail" defaultSize="280px" groupResizeBehavior="preserve-pixel-size" minSize="220px">
         {detail}
       </Panels.Panel>
     </Panels>

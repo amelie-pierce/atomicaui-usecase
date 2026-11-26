@@ -1,4 +1,5 @@
 import { buildCatalog, parentAliases } from './build-catalog';
+import { assertLayerCode } from './layer-code';
 import type { ComponentMeta } from '../types';
 
 // Discovery: adding a use case folder, or a whole component folder, needs no registry edit.
@@ -16,3 +17,5 @@ export const catalog = buildCatalog({
 });
 
 export const allUsecases = catalog.flatMap((group) => group.uiTypeGroups.flatMap((type) => type.usecases));
+
+if (import.meta.env.DEV) void assertLayerCode(allUsecases);

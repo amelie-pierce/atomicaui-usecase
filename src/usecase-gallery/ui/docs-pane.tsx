@@ -1,6 +1,7 @@
 import { Suspense, use, useEffect, useState } from 'react';
 import { APPS } from '../apps';
 import type { AppKey } from '../apps';
+import { layerCodeLines, stripPartMarkers } from '../catalog/layer-code';
 import { useCopy } from '../hooks/use-copy';
 import { Button, Chip, ToggleGroup, Type } from '../kit';
 import type { AnatomyPart, DocumentMode, LayerStep, PreviewMode, Usecase, UsecaseOption } from '../types';
@@ -43,7 +44,7 @@ function AnatomySection({ parts, mode, availablePartIds, hoveredPartId, onPartCh
 function CopyBlock({ label, text }: { label: string; text: string }) {
   const { status, copy } = useCopy();
   return <div className="ug-docs__copy-block">
-    <div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{label}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => copy(text)}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
+    <div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{label}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => copy(stripPartMarkers(text))}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
     <Type as="pre" role="l3" family="mono" className="ug-docs__prompt" tabIndex={0}><code>{text}</code></Type>
     <span role="status" className="ug-visually-hidden">{status === 'copied' ? `${label} copied` : status === 'failed' ? `${label} copy failed` : ''}</span>
   </div>;
@@ -51,8 +52,8 @@ function CopyBlock({ label, text }: { label: string; text: string }) {
 
 function CodeBlock({ code, label }: { code: Promise<string>; label: string }) {
   const { status, copy } = useCopy();
-  return <div className="ug-docs__copy-block"><div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{label}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => code.then(copy)}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
-    <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><Type as="pre" role="l3" family="mono" className="ug-docs__code" tabIndex={0}><code>{use(code)}</code></Type></Suspense>
+  return <div className="ug-docs__copy-block"><div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{label}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => code.then((text) => copy(stripPartMarkers(text)))}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
+    <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><Type as="pre" role="l3" family="mono" className="ug-docs__code" tabIndex={0}><code>{stripPartMarkers(use(code))}</code></Type></Suspense>
     <span role="status" className="ug-visually-hidden">{status === 'copied' ? 'Code copied' : status === 'failed' ? 'Code copy failed' : ''}</span>
   </div>;
 }
@@ -65,33 +66,6 @@ function CodeApiSection({ option, mode, api }: { option: UsecaseOption; mode: Pr
   </Section>;
 }
 
-function layerCodeLines(code: string, step: LayerStep | undefined) {
-  if (!step) return new Set<number>();
-  const selector = step.selector ?? '';
-  const className = selector.match(/\[class~=["']aui-([^"']+)["']\]/)?.[1];
-  const tag = className
-    ? className.split('-').map((word) => word[0]?.toUpperCase() + word.slice(1)).join('.')
-    : undefined;
-  const marker = selector.match(/data-ug-part=["']([^"']+)["']/)?.[1] ?? step.partId ?? step.id;
-  const lines = code.split('\n');
-  const matches = new Set<number>();
-  lines.forEach((line, lineIndex) => {
-    if ((tag && line.includes(`<${tag}`)) || line.includes(`data-ug-part="${marker}"`) || line.includes(`data-ug-part='${marker}'`)) matches.add(lineIndex);
-  });
-  return matches;
-}
-
-function shortStepDescription(text: string) {
-  const words = text.trim().split(/\s+/);
-  if (words.length <= 12) return text;
-  const firstClause = text.split(/(?<=[.;])\s+/)[0];
-  const clauseWords = firstClause.trim().split(/\s+/);
-  if (clauseWords.length >= 8 && clauseWords.length <= 12) return firstClause;
-  let short = words.slice(0, 12);
-  while (short.length > 8 && /^(and|or|but|as|at|by|for|from|in|into|of|on|onto|the|to|with|while|that|which|who|whose|where|when|if|so|than|then|this|these|those|a|an)$/i.test(short.at(-1)!.replace(/[,.!?;:]$/, ''))) short = short.slice(0, -1);
-  return short.join(' ').replace(/[,;:]$/, '');
-}
-
 function LayerCode({ code, layers, index }: { code: Promise<string>; layers: LayerStep[]; index: number }) {
   const text = use(code);
   const { status, copy } = useCopy();
@@ -101,10 +75,12 @@ function LayerCode({ code, layers, index }: { code: Promise<string>; layers: Lay
   return <details className="ug-layer-lesson__code" open>
     <summary>Code for this step</summary>
     <div className="ug-docs__copy-block">
-      <div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{layers[index]?.title ?? 'Current step'}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => copy(text)}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
+      <div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{layers[index]?.title ?? 'Current step'}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => copy(stripPartMarkers(text))}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
       <Type as="pre" role="l3" family="mono" className="ug-docs__code" tabIndex={0}><code>{lines.map((line, lineIndex) => {
+        const shown = stripPartMarkers(line);
+        if (!shown.trim() && line.trim()) return null;
         const added = current.has(lineIndex) && !previous.has(lineIndex);
-        return <span key={lineIndex} className={added ? 'is-added' : current.has(lineIndex) ? 'is-current' : undefined} aria-label={added ? 'Added for this step' : undefined}>{line}{lineIndex < lines.length - 1 ? '\n' : ''}</span>;
+        return <span key={lineIndex} className={added ? 'is-added' : current.has(lineIndex) ? 'is-current' : undefined} aria-label={added ? 'Added for this step' : undefined}>{shown}{lineIndex < lines.length - 1 ? '\n' : ''}</span>;
       })}</code></Type>
       <span role="status" className="ug-visually-hidden">{status === 'copied' ? 'Code copied' : status === 'failed' ? 'Code copy failed' : ''}</span>
     </div>
@@ -131,7 +107,7 @@ function LayerLesson({ layers, index, onChange, code }: { layers: LayerStep[]; i
     <div className="ug-layer-lesson__copy" aria-live="polite" aria-atomic="true">
       <Type as="p" role="l3" color="muted">Step {index + 1} of {layers.length}</Type>
       <Type as="h3" role="h5" weight="bold">{active.title}</Type>
-      <Type as="p" role="l3">{shortStepDescription(active.explanation)}</Type>
+      <Type as="p" role="l3">{active.explanation}</Type>
     </div>
     <nav className="ug-layer-lesson__steps" aria-label="Layer steps" onKeyDown={onNavigationKey}>
       {layers.map((step, stepIndex) => {

@@ -2,24 +2,18 @@ import type { LayerStep } from '../types';
 
 const fitScope = '.ug-render__fit[data-ug-layer-mode="true"]';
 
-/** Build the hidden-layer rules as React-rendered CSS; preview nodes stay under React ownership. */
-export function layerVisibilityCss(layers: LayerStep[], activeIndex: number) {
+/** Selector of the elements a layer reveals, relative to the preview's fit element. */
+export const layerTarget = (layer: LayerStep) => {
+  const selector = layer.selector ?? `[data-ug-part="${layer.id}"]`;
+  return layer.scope === 'context' ? `:is(${selector})` : `[data-ug-component-root] :is(${selector})`;
+};
+
+/** Build the hidden-layer rules as React-rendered CSS; preview nodes stay under React ownership. A `footprint` gives the active target a visible box. */
+export function layerVisibilityCss(layers: LayerStep[], activeIndex: number, footprint = false) {
   const active = layers[activeIndex];
-  const targetFor = (layer: LayerStep) => {
-    const selector = layer.selector ?? `[data-ug-part="${layer.id}"]`;
-    return layer.scope === 'context'
-      ? `${fitScope} :is(${selector})`
-      : `${fitScope} [data-ug-component-root] :is(${selector})`;
-  };
   const hidden = layers
-    .map((layer, index) => {
-      if (index <= activeIndex) return '';
-      const target = targetFor(layer);
-      return `${target} { display: none !important; }`;
-    })
-    .filter(Boolean)
-    .join('\n');
-  if (!active || !/\b(container|wrapper|popup|dialog|panel|body|viewport|pane|frame|region|group|list|row|layout|section|card|item|menu|field|surface)\b/i.test(active.title)) return hidden;
-  const footprint = `${targetFor(active)} { box-sizing: border-box; min-inline-size: min(80vw, var(--p-px-320)); min-block-size: var(--p-px-160); padding: var(--p-px-16); border: var(--p-px-1) dashed var(--theme-primary); background: var(--theme-surface-alt) !important; }`;
-  return [hidden, footprint].filter(Boolean).join('\n');
+    .map((layer, index) => index > activeIndex ? `${fitScope} ${layerTarget(layer)} { display: none !important; }` : '')
+    .filter(Boolean);
+  if (footprint && active) hidden.push(`${fitScope} ${layerTarget(active)} { box-sizing: border-box; min-inline-size: min(80vw, var(--p-px-320)); min-block-size: var(--p-px-160); padding: var(--p-px-16); border: var(--p-px-1) dashed var(--theme-primary); background: var(--theme-surface-alt) !important; }`);
+  return hidden.join('\n');
 }

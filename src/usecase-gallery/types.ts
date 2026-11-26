@@ -13,6 +13,8 @@ export interface LayerStep {
   explanation: string;
   keyIdea: string;
   selector?: string;
+  /** JSX tag (e.g. `Dialog.Popup`) that writes the target, for elements whose class or marker is not in the code. */
+  code?: string;
   /** Reveal the target's direct text as its own layer. */
   text?: boolean;
   /** Component layers target the selected example; context layers target the whole scene. */

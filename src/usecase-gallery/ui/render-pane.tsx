@@ -1,11 +1,11 @@
-import { Suspense, useCallback, useMemo, useRef, useState } from 'react';
+import { Suspense, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Button, ToggleGroup, Type } from '../kit';
 import type { LayerStep, PreviewMode, Usecase, UsecaseOption } from '../types';
 import { StageHostContext } from '../hooks/use-stage-host';
 import type { AnatomyPart } from '../types';
 import { AnatomyOverlay, usePreviewAnatomy } from '../hooks/use-preview-anatomy';
 import { useStageFit } from '../hooks/use-stage-fit';
-import { layerVisibilityCss } from '../hooks/use-layer-visibility';
+import { layerTarget, layerVisibilityCss } from '../hooks/use-layer-visibility';
 import { OptionBar } from './option-bar';
 const MODES: { value: PreviewMode; label: string }[] = [
   { value: 'component', label: 'Component' },
@@ -16,8 +16,24 @@ function PreviewPlaceholder() {
 }
 
 function LayerVisibilityStyles({ layers, layerIndex, enabled }: { layers: LayerStep[]; layerIndex: number; enabled: boolean }) {
-  const css = useMemo(() => enabled ? layerVisibilityCss(layers, layerIndex) : '', [enabled, layers, layerIndex]);
-  return css ? <style data-ug-layer-styles>{css}</style> : null;
+  const styleRef = useRef<HTMLStyleElement>(null);
+  const [empty, setEmpty] = useState<{ layer?: LayerStep; empty: boolean }>({ empty: false });
+  const active = layers[layerIndex];
+  useLayoutEffect(() => {
+    const fit = styleRef.current?.parentElement;
+    if (!enabled || !active || !fit) return;
+    const measure = () => {
+      const targets = [...fit.querySelectorAll(layerTarget(active))];
+      const isEmpty = targets.length > 0 && targets.some((target) => !target.getBoundingClientRect().width || !target.getBoundingClientRect().height);
+      setEmpty((current) => current.layer === active ? (current.empty || !isEmpty ? current : { layer: active, empty: true }) : { layer: active, empty: isEmpty });
+    };
+    measure();
+    const observer = new MutationObserver(measure);
+    observer.observe(fit, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [enabled, active]);
+  const css = useMemo(() => enabled ? layerVisibilityCss(layers, layerIndex, empty.layer === active && empty.empty) : '', [enabled, layers, layerIndex, empty, active]);
+  return <style ref={styleRef} data-ug-layer-styles>{css}</style>;
 }
 
 function withActiveLayerPart(anatomy: AnatomyPart[], layer: LayerStep | undefined, defaultScope?: 'component' | 'context') {

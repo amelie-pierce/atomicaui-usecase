@@ -153,6 +153,7 @@ $narrow: 840px;
 // The theme primary is too light for small text (about 3.2:1 on white); resolve documentation links to the
 // palette's darker orange, the same step the high-contrast theme uses.
 .ug-docs {
+  --theme-primary: var(--p-palette-orange-600);
   flex: 1 1 auto;
   min-block-size: 0;
 }

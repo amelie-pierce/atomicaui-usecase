@@ -46,7 +46,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Recalculate** — The xs square solid warning (amber) soft button that re-runs the calculation once inputs change. Selector: `[class~="aui-button"]`.
+1. **Recalculate** — Extra-small amber warning button reruns the calculation after input changes. Selector: `[class~="aui-button"]`.
 2. **Rotate icon** — The arrows-rotate glyph that conveys running the calculation again. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 ## Apps
@@ -71,8 +71,8 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Results row** — The header row that places the Recalculate button before the N and V readouts with a 16px gap. Selector: `[data-ug-part="results-row"]`.
-2. **Recalculate** — The xs square solid warning (amber) soft button that re-runs the calculation once inputs change. Selector: `[class~="aui-button"]`.
+1. **Results row** — Header places Recalculate before N and V with 16px gap. Selector: `[data-ug-part="results-row"]`.
+2. **Recalculate** — Extra-small amber warning button reruns the calculation after input changes. Selector: `[class~="aui-button"]`.
 3. **Rotate icon** — The arrows-rotate glyph that conveys running the calculation again. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-042/example.tsx`

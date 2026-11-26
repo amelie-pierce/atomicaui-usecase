@@ -48,10 +48,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Link stack** — The no-padding column, start-aligned, that stacks Edit above Delete so the row keeps its light, text-like look. Selector: `[data-ug-part="link-stack"]`.
-2. **Edit** — Secondary text Edit with profile no-padding, so it reads as a link rather than a button. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
+1. **Link stack** — No-padding column stacks Edit above Delete at the start. Selector: `[data-ug-part="link-stack"]`.
+2. **Edit** — No-padding secondary Edit reads like a text link. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
 3. **Delete** — Secondary text Delete, styled like Edit; it is not tinted as destructive. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-4. **Actions cell** — ACE Job tally: the left-aligned first cell of the row that holds the stacked links next to the Job 1 value. Selector: `[class~="aui-table-cell"]:first-child`.
+4. **Actions cell** — ACE Job tally cell places both links beside Job 1. Selector: `[class~="aui-table-cell"]:first-child`.
 5. **Actions header** — The unlabeled Actions column heading (raised) above the links. Selector: `[class~="aui-table-header-cell"]:first-child`.
 
 ## Apps
@@ -77,12 +77,12 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Job tally table** — The Table of jobs; the Edit and Delete links live in its first column next to the Job column. Selector: `[class~="aui-table"]`.
+1. **Job tally table** — Jobs table puts Edit and Delete links beside the Job column. Selector: `[class~="aui-table"]`.
 2. **Job cell** — The Job 1 label in the row beside the link cell. Selector: `[class~="aui-table-body"] [class~="aui-table-cell"]:last-child`.
-3. **Link stack** — The no-padding column, start-aligned, that stacks Edit above Delete so the row keeps its light, text-like look. Selector: `[data-ug-part="link-stack"]`.
-4. **Edit** — Secondary text Edit with profile no-padding, so it reads as a link rather than a button. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
+3. **Link stack** — No-padding column stacks Edit above Delete at the start. Selector: `[data-ug-part="link-stack"]`.
+4. **Edit** — No-padding secondary Edit reads like a text link. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
 5. **Delete** — Secondary text Delete, styled like Edit; it is not tinted as destructive. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-6. **Actions cell** — ACE Job tally: the left-aligned first cell of the row that holds the stacked links next to the Job 1 value. Selector: `[class~="aui-table-cell"]:first-child`.
+6. **Actions cell** — ACE Job tally cell places both links beside Job 1. Selector: `[class~="aui-table-cell"]:first-child`.
 7. **Actions header** — The unlabeled Actions column heading (raised) above the links. Selector: `[class~="aui-table-header-cell"]:first-child`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-026/example.tsx`

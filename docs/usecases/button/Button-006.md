@@ -42,7 +42,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Container** — The lone Cancel Button in the upload dialog footer, small and in the default gray solid look, that dismisses the dialog while it waits for a dropped file. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+1. **Container** — Small gray Cancel waits for a file or dismisses the upload dialog. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
 
 ## Apps
 
@@ -76,12 +76,12 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Dialog** — The open dialog titled "Upload JSON File". Selector: `[data-ug-part="dialog"]`.
-2. **Dialog title** — The raised title bar with "Upload JSON File" and the close X at the end. Selector: `[data-ug-part="dialog-title"]`.
-3. **Close button** — The X in the title that closes the dialog like Cancel (aria-label "Cancel"). Selector: `[data-ug-part="dialog-close"]`.
-4. **Upload area** — The dialog body that holds the file upload drop zone ("Drop files here" with a Browse action). Selector: `[data-ug-part="upload-body"]`.
+1. **Dialog** — Upload JSON File dialog hosts the file dropzone and actions. Selector: `[data-ug-part="dialog"]`.
+2. **Dialog title** — Raised title says Upload JSON File beside its Close X. Selector: `[data-ug-part="dialog-title"]`.
+3. **Close button** — Title X closes the dialog and is labelled Cancel. Selector: `[data-ug-part="dialog-close"]`.
+4. **Upload area** — Dialog body contains the Drop files here zone and Browse. Selector: `[data-ug-part="upload-body"]`.
 5. **Dialog footer** — The Actions row at the end that holds the single Cancel button. Selector: `[data-ug-part="dialog-footer"]`.
-6. **Container** — The lone Cancel Button in the upload dialog footer, small and in the default gray solid look, that dismisses the dialog while it waits for a dropped file. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+6. **Container** — Small gray Cancel waits for a file or dismisses the upload dialog. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-006/example.tsx`
 

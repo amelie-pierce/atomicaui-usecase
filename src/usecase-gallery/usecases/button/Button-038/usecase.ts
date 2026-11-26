@@ -11,15 +11,15 @@ export default defineUsecase({
 
   apps: ['hs', 'pbs'],
     layers: [
-        {"id":"remove","partId":"remove","title":"Remove","explanation":"The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click.","keyIdea":"The row action removes the named job after the confirmation flow.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"]"},
-        {"id":"remove-icon","partId":"remove-icon","title":"Trash icon","explanation":"The trash glyph centred in the button.","keyIdea":"The trash glyph conveys removal of the job row.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-        {"id":"cell","partId":"cell","title":"Remove cell","explanation":"The last cell of the Job 1 row that holds the trash button next to the job name.","keyIdea":"The final cell reserves a stable position for row removal.","selector":"[class~=\"aui-table-cell\"]:last-child"},
+        {"id":"remove","partId":"remove","title":"Remove","explanation":"28px trash button removes Job 1 and opens confirmation.","keyIdea":"The row action removes the named job after the confirmation flow.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"]"},
+        {"id":"remove-icon","partId":"remove-icon","title":"Trash icon","explanation":"Trash glyph appears at the end of the job row.","keyIdea":"The trash glyph conveys removal of the job row.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
+        {"id":"cell","partId":"cell","title":"Remove cell","explanation":"Last Job 1 cell pairs the job name with its trash action.","keyIdea":"The final cell reserves a stable position for row removal.","selector":"[class~=\"aui-table-cell\"]:last-child"},
         {"id":"header-cell","partId":"header-cell","title":"Remove header","explanation":"The unlabeled column heading (aria-label Remove) above the trash buttons.","keyIdea":"The blank heading labels the removal column for assistive technology.","selector":"[class~=\"aui-table-header-cell\"]:last-child"},
       ],
 options: [
     { id: "hs-remove", contextAnatomy: CONTEXT_ANATOMY, name: "Remove", apps: ["hs","pbs"], source: {"hs":"src/hs/OutputPane.tsx","pbs":"src/ResultsSection.tsx"} ,
       contextLayers: [
-        {"id":"context-jobs-table","partId":"jobs-table","title":"Jobs table","explanation":"The Table of jobs; the trash button sits in its last column after the Job column.","keyIdea":"The jobs table groups each row with its trailing remove action.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-jobs-table","partId":"jobs-table","title":"Jobs table","explanation":"Jobs table places the trash action after the Job column.","keyIdea":"The jobs table groups each row with its trailing remove action.","selector":"[class~=\"aui-table\"]","scope":"context"},
         {"id":"context-job-name","partId":"job-name","title":"Job cell","explanation":"The Job 1 label that the Remove Job 1 button belongs to.","keyIdea":"The job label identifies which entry the remove control belongs to.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-cell\"]:first-child","scope":"context"},
       ],
     },

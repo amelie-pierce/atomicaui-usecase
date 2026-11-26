@@ -48,11 +48,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Value chip** — The 12 in value chip (aria-label "Edit Width, 12 in") that opens the editor popover; it stands alone here rather than floating over the 3D model. Selector: `[data-base-ui-click-trigger]`.
-2. **Editor popup** — The surface (solid, sm, soft, elevation 4) opened 8px to the right of the chip, holding the Width number field and the Cancel and Save buttons in one row. Selector: `[data-aui-popup-motion][role="dialog"]`.
-3. **Button row** — The row at the end of the popup that keeps Cancel and Save together with a 4px gap and no growth, so the Width field takes the remaining width. Selector: `[data-ug-part="edit-actions"]`.
-4. **Cancel** — The filled gray surface-alt Cancel that abandons the edit; ADC fills it like a dialog Cancel. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-5. **Save** — The solid secondary Save that commits the new Width value; it follows Cancel and is the only emphasised action. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
+1. **Value chip** — 12 in value chip opens its width editor. Selector: `[data-base-ui-click-trigger]`.
+2. **Editor popup** — Soft popup sits 8px beside the chip with field and actions. Selector: `[data-aui-popup-motion][role="dialog"]`.
+3. **Button row** — End row keeps Cancel and Save together without taking field width. Selector: `[data-ug-part="edit-actions"]`.
+4. **Cancel** — Filled gray Cancel discards the pending Width change. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
+5. **Save** — Solid secondary Save commits the new Width value. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
 
 ## Apps
 
@@ -76,12 +76,12 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Width field** — The labelled Width number field (12 with an in unit) at the start of the popup, which Cancel and Save commit or discard. Selector: `[data-aui-popup-motion][role="dialog"] [class~="aui-field"]`.
-2. **Value chip** — The 12 in value chip (aria-label "Edit Width, 12 in") that opens the editor popover; it stands alone here rather than floating over the 3D model. Selector: `[data-base-ui-click-trigger]`.
-3. **Editor popup** — The surface (solid, sm, soft, elevation 4) opened 8px to the right of the chip, holding the Width number field and the Cancel and Save buttons in one row. Selector: `[data-aui-popup-motion][role="dialog"]`.
-4. **Button row** — The row at the end of the popup that keeps Cancel and Save together with a 4px gap and no growth, so the Width field takes the remaining width. Selector: `[data-ug-part="edit-actions"]`.
-5. **Cancel** — The filled gray surface-alt Cancel that abandons the edit; ADC fills it like a dialog Cancel. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-6. **Save** — The solid secondary Save that commits the new Width value; it follows Cancel and is the only emphasised action. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
+1. **Width field** — Width field starts at 12 inches beside the actions. Selector: `[data-aui-popup-motion][role="dialog"] [class~="aui-field"]`.
+2. **Value chip** — 12 in value chip opens its width editor. Selector: `[data-base-ui-click-trigger]`.
+3. **Editor popup** — Soft popup sits 8px beside the chip with field and actions. Selector: `[data-aui-popup-motion][role="dialog"]`.
+4. **Button row** — End row keeps Cancel and Save together without taking field width. Selector: `[data-ug-part="edit-actions"]`.
+5. **Cancel** — Filled gray Cancel discards the pending Width change. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
+6. **Save** — Solid secondary Save commits the new Width value. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-022/example.tsx`
 

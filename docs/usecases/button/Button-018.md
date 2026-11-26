@@ -44,7 +44,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Container** — The Select products Button that stands in for the Products field: extra small, surface color with fixed (bordered) paint, soft shape and full width with content at the start. Selector: `[class~="aui-button"]`.
+1. **Container** — Full-width fixed-surface Select products button stands in for the field. Selector: `[class~="aui-button"]`.
 
 ## Apps
 

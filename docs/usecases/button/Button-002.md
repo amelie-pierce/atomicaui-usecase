@@ -46,8 +46,8 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Container** — The Download CSV Button: secondary text paint, scale "sm", soft shape and flex "none" so it never shrinks in the wrapping toolbar row after the search field and count. Selector: `[class~="aui-button"]`.
-2. **Icon** — The CSV file glyph that sits before the label and tells the export format. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Container** — Small secondary Download CSV stays fixed after search and count. Selector: `[class~="aui-button"]`.
+2. **Icon** — CSV glyph identifies the downloaded file format for users. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 ## Apps
 
@@ -75,11 +75,11 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field first, the count next and Download CSV last. Selector: `[data-ug-part="toolbar"]`.
+1. **Output toolbar** — Wrapping toolbar places search, count, and Download CSV with 8px gaps. Selector: `[data-ug-part="toolbar"]`.
 2. **Search field** — The Search Table Field with a magnifying-glass icon that fills the line. Selector: `[data-ug-part="search"]`.
 3. **Result count** — The muted "Showing 1 entry" status text before Download CSV. Selector: `[data-ug-part="count"]`.
-4. **Container** — The Download CSV Button: secondary text paint, scale "sm", soft shape and flex "none" so it never shrinks in the wrapping toolbar row after the search field and count. Selector: `[class~="aui-button"]`.
-5. **Icon** — The CSV file glyph that sits before the label and tells the export format. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+4. **Container** — Small secondary Download CSV stays fixed after search and count. Selector: `[class~="aui-button"]`.
+5. **Icon** — CSV glyph identifies the downloaded file format for users. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-002/example.tsx`
 

@@ -6,7 +6,7 @@ export default defineUsecase({
 
   apps: ['hs'],
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"The Add to Job List Button: a solid secondary (black) small Button, text only, first in the HS Output toolbar row.","keyIdea":"The toolbar action adds the current result to the saved job list.","selector":"[class~=\"aui-button\"]"},
+        {"id":"container","partId":"container","title":"Container","explanation":"Small solid secondary Add to Job List starts the toolbar.","keyIdea":"The toolbar action adds the current result to the saved job list.","selector":"[class~=\"aui-button\"]"},
       ],
 options: [
     { id: "hs-button", name: "Add selected result", apps: ["hs"], contextAnatomy: [
@@ -14,8 +14,8 @@ options: [
       { id: "search", name: "Search field", description: "The Search Table Field with a magnifying-glass icon that fills the rest of the line." },
     ], source: {"hs":"src/hs/OutputPane.tsx"} ,
       contextLayers: [
-        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"The wrapping row of small controls (8px gap) that starts with Add to Job List.","keyIdea":"The toolbar keeps the job-list action beside table search.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
-        {"id":"context-search","partId":"search","title":"Search field","explanation":"The Search Table Field with a magnifying-glass icon that fills the rest of the line.","keyIdea":"The search field takes the remaining toolbar width after the action.","selector":"[data-ug-part=\"search\"]","scope":"context"},
+        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"Wrapping row begins with Add to Job List and uses 8px gaps.","keyIdea":"The toolbar keeps the job-list action beside table search.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
+        {"id":"context-search","partId":"search","title":"Search field","explanation":"Search Table field fills the remaining toolbar width.","keyIdea":"The search field takes the remaining toolbar width after the action.","selector":"[data-ug-part=\"search\"]","scope":"context"},
       ],
     },
   ],

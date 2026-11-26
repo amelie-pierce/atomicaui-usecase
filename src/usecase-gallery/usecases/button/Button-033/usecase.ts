@@ -12,18 +12,18 @@ export default defineUsecase({
 
   apps: ['hcs'],
     layers: [
-        {"id":"collapse","partId":"collapse","title":"Collapse all","explanation":"The transparent secondary arrows-to-line button (aria-label Collapse all) that folds every Input section; in HCS it is the angle-left Collapse Input button at the start of the header.","keyIdea":"The collapse control folds every input section with one action.","selector":"[class~=\"aui-button\"][aria-label^=\"Collapse\"]"},
+        {"id":"collapse","partId":"collapse","title":"Collapse all","explanation":"Transparent secondary button collapses every Input section; HCS uses angle-left.","keyIdea":"The collapse control folds every input section with one action.","selector":"[class~=\"aui-button\"][aria-label^=\"Collapse\"]"},
         {"id":"collapse-icon","partId":"collapse-icon","title":"Icon","explanation":"The arrows-to-line glyph, which becomes expand when all sections are closed.","keyIdea":"The arrows-to-line glyph indicates that sections can be gathered together.","selector":"[class~=\"aui-button\"][aria-label^=\"Collapse\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-        {"id":"tooltip","partId":"tooltip","title":"Tooltip","explanation":"The Collapse Input label shown below the button in the HCS panel header.","keyIdea":"The HCS tooltip names the pane-level collapse action.","selector":"[class~=\"aui-tooltip-popup\"]"},
-        {"id":"item","partId":"item","title":"Section","explanation":"The Connection Type and Load Properties sections of the Input pane that the button collapses or expands together.","keyIdea":"The section item represents one expandable group in the input pane.","selector":"[class~=\"aui-accordion-item\"]"},
-        {"id":"trigger","partId":"trigger","title":"Section trigger","explanation":"The header row of each section with its icon, semi-bold name and chevron.","keyIdea":"The trigger row combines a section name, icon and disclosure chevron.","selector":"[class~=\"aui-accordion-trigger\"]"},
+        {"id":"tooltip","partId":"tooltip","title":"Tooltip","explanation":"HCS shows the Collapse Input label beneath its button.","keyIdea":"The HCS tooltip names the pane-level collapse action.","selector":"[class~=\"aui-tooltip-popup\"]"},
+        {"id":"item","partId":"item","title":"Section","explanation":"Connection Type and Load Properties sections collapse together.","keyIdea":"The section item represents one expandable group in the input pane.","selector":"[class~=\"aui-accordion-item\"]"},
+        {"id":"trigger","partId":"trigger","title":"Section trigger","explanation":"Section header pairs its icon and name with a chevron.","keyIdea":"The trigger row combines a section name, icon and disclosure chevron.","selector":"[class~=\"aui-accordion-trigger\"]"},
       ],
 options: [
     { id: "hcs-panel-header", contextAnatomy: CONTEXT_ANATOMY, name: "Panel header", apps: ["hcs"], source: {"hcs":"src/App.tsx"} ,
       contextLayers: [
         {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The surface-alt Input pane that frames the header and the section card.","keyIdea":"The input pane frames both its global header and its property sections.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
-        {"id":"context-collapse-input","partId":"collapse-input","title":"Collapse Input","explanation":"The angle-left button at the start of the header that collapses the whole pane, with its Collapse Input tooltip.","keyIdea":"The pane control collapses the entire input region, beyond one section.","selector":"[class~=\"aui-button\"][aria-label=\"Collapse Input\"]","scope":"context"},
-        {"id":"context-pane-title","partId":"pane-title","title":"Pane title","explanation":"The semi-bold Input heading in the header, before the spacer and Collapse all.","keyIdea":"The header title identifies the panel affected by Collapse all.","selector":"[data-ug-part=\"pane-title\"]","scope":"context"},
+        {"id":"context-collapse-input","partId":"collapse-input","title":"Collapse Input","explanation":"HCS header starts with a pane-collapse button and tooltip.","keyIdea":"The pane control collapses the entire input region, beyond one section.","selector":"[class~=\"aui-button\"][aria-label=\"Collapse Input\"]","scope":"context"},
+        {"id":"context-pane-title","partId":"pane-title","title":"Pane title","explanation":"Semi-bold Input title sits beside Collapse all in the header.","keyIdea":"The header title identifies the panel affected by Collapse all.","selector":"[data-ug-part=\"pane-title\"]","scope":"context"},
       ],
     },
   ],

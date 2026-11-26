@@ -10,15 +10,15 @@ export default defineUsecase({
 
   apps: ['fd'],
     layers: [
-        {"id":"info","partId":"info","title":"Info button","explanation":"The xs transparent secondary circle-info button that explains a column; in FD it is a Button with Button.Icon beside the Fastener Pattern heading.","keyIdea":"The info action opens an explanation for the column heading.","selector":"[class~=\"aui-button\"][aria-label=\"Fastener Pattern\"], [class~=\"aui-button\"][aria-label=\"Column info\"]"},
+        {"id":"info","partId":"info","title":"Info button","explanation":"Extra-small transparent circle-info explains the Fastener Pattern column.","keyIdea":"The info action opens an explanation for the column heading.","selector":"[class~=\"aui-button\"][aria-label=\"Fastener Pattern\"], [class~=\"aui-button\"][aria-label=\"Column info\"]"},
         {"id":"info-icon","partId":"info-icon","title":"Info icon","explanation":"The circle-info glyph that signals a note about the column.","keyIdea":"The circle glyph signals supporting information about this result field.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-        {"id":"header-cell","partId":"header-cell","title":"Column header","explanation":"The raised Fastener Pattern heading cell that carries the text and the info button with a 4px gap.","keyIdea":"The raised header combines the column name with its help affordance.","selector":"[class~=\"aui-table-header-cell\"]"},
-        {"id":"popup","partId":"popup","title":"Info popover","explanation":"The 384px solid popover below the heading that states Fasteners are counted per row.","keyIdea":"The popover clarifies how fasteners are counted for a row.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
+        {"id":"header-cell","partId":"header-cell","title":"Column header","explanation":"Raised Fastener Pattern cell pairs heading and help icon with 4px gap.","keyIdea":"The raised header combines the column name with its help affordance.","selector":"[class~=\"aui-table-header-cell\"]"},
+        {"id":"popup","partId":"popup","title":"Info popover","explanation":"384px solid popover explains fastener counts per row.","keyIdea":"The popover clarifies how fasteners are counted for a row.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
       ],
 options: [
     { id: "fd-header-info", contextAnatomy: CONTEXT_ANATOMY, name: "Header info", apps: ["fd"], source: {"fd":"src/components/Results.jsx"} ,
       contextLayers: [
-        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The Table whose raised header row holds the Fastener Pattern heading and its info button.","keyIdea":"The results table places the assisted heading above its data rows.","selector":"[class~=\"aui-table\"]","scope":"context"},
+        {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"Raised Fastener Pattern header and help action sit in the results table.","keyIdea":"The results table places the assisted heading above its data rows.","selector":"[class~=\"aui-table\"]","scope":"context"},
       ],
     },
   ],

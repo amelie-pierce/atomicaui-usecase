@@ -46,8 +46,8 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Container** — The Add job Button under the Job tally table: solid secondary, small, stretching across the ACE column. Selector: `[class~="aui-button"]`.
-2. **Icon** — The plus glyph before the label, marked aria-hidden since the label already says what it does. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Container** — Small solid secondary Add job spans the ACE column. Selector: `[class~="aui-button"]`.
+2. **Icon** — Hidden plus glyph precedes the Add job label. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 ## Apps
 
@@ -73,11 +73,11 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Job tally section** — The section that stacks the title, table and Add job button in a column. Selector: `[data-ug-part="tally-section"]`.
-2. **Section title** — The "Job tally" heading. Selector: `[data-ug-part="tally-title"]`.
-3. **Job tally table** — The table with a Job header and one "Job 1" row above the button. Selector: `[data-ug-part="tally-table"]`.
-4. **Container** — The Add job Button under the Job tally table: solid secondary, small, stretching across the ACE column. Selector: `[class~="aui-button"]`.
-5. **Icon** — The plus glyph before the label, marked aria-hidden since the label already says what it does. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Job tally section** — Vertical section stacks heading, table, and Add job action. Selector: `[data-ug-part="tally-section"]`.
+2. **Section title** — Job tally heading names the section above the table. Selector: `[data-ug-part="tally-title"]`.
+3. **Job tally table** — Job table shows Job 1 above its Add job button. Selector: `[data-ug-part="tally-table"]`.
+4. **Container** — Small solid secondary Add job spans the ACE column. Selector: `[class~="aui-button"]`.
+5. **Icon** — Hidden plus glyph precedes the Add job label. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-014/example.tsx`
 

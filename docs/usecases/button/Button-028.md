@@ -48,11 +48,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Expand button** — The 24px minimum square-compact text Button with aria-expanded false that opens the Why Not explanation of one model row; HCS tints it with the error color on failed rows like Model C-300. Selector: `[class~="aui-button"][aria-label^="Why Not"]`.
+1. **Expand button** — 24px square text control opens Why Not for one model row. Selector: `[class~="aui-button"][aria-label^="Why Not"]`.
 2. **Chevron** — The solid angle-right glyph that points to the collapsed content. Selector: `[class~="aui-button"][aria-label^="Why Not"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Table expand trigger** — HCS and HS group rows (A-100 (2)) use the table own expand trigger instead of a Button, placed before the semi-bold group name. Selector: `[class~="aui-table-expand-trigger"]`.
-4. **Row** — The result row that the chevron opens: a model such as Model A-100, or the A-100 (2) group row with an Expand A-100 group label. Selector: `[class~="aui-table-row"]`.
-5. **Model cell** — The Model cell that holds the chevron and the model name side by side with a gap of 12 (4 in group rows). Selector: `[class~="aui-table-cell"]`.
+3. **Table expand trigger** — HCS and HS expand group rows before the semi-bold model name. Selector: `[class~="aui-table-expand-trigger"]`.
+4. **Row** — Model row or A-100 group row opens with its expander. Selector: `[class~="aui-table-row"]`.
+5. **Model cell** — Model cell pairs chevron and name with a 12px gap. Selector: `[class~="aui-table-cell"]`.
 
 ## Apps
 
@@ -80,13 +80,13 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Results table** — The Table of connector results, cut to the Model column; its header cell is raised. Selector: `[class~="aui-table"]`.
-2. **Failed-model expander** — The second row's expander in the error color for Model C-300, which failed its check. Selector: `[aria-label="Why Not for Model C-300"]`.
-3. **Expand button** — The 24px minimum square-compact text Button with aria-expanded false that opens the Why Not explanation of one model row; HCS tints it with the error color on failed rows like Model C-300. Selector: `[class~="aui-button"][aria-label^="Why Not"]`.
+1. **Results table** — Connector table is cropped to the raised Model heading. Selector: `[class~="aui-table"]`.
+2. **Failed-model expander** — Error-coloured expander marks the failed Model C-300 row. Selector: `[aria-label="Why Not for Model C-300"]`.
+3. **Expand button** — 24px square text control opens Why Not for one model row. Selector: `[class~="aui-button"][aria-label^="Why Not"]`.
 4. **Chevron** — The solid angle-right glyph that points to the collapsed content. Selector: `[class~="aui-button"][aria-label^="Why Not"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-5. **Table expand trigger** — HCS and HS group rows (A-100 (2)) use the table own expand trigger instead of a Button, placed before the semi-bold group name. Selector: `[class~="aui-table-expand-trigger"]`.
-6. **Row** — The result row that the chevron opens: a model such as Model A-100, or the A-100 (2) group row with an Expand A-100 group label. Selector: `[class~="aui-table-row"]`.
-7. **Model cell** — The Model cell that holds the chevron and the model name side by side with a gap of 12 (4 in group rows). Selector: `[class~="aui-table-cell"]`.
+5. **Table expand trigger** — HCS and HS expand group rows before the semi-bold model name. Selector: `[class~="aui-table-expand-trigger"]`.
+6. **Row** — Model row or A-100 group row opens with its expander. Selector: `[class~="aui-table-row"]`.
+7. **Model cell** — Model cell pairs chevron and name with a 12px gap. Selector: `[class~="aui-table-cell"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-028/example.tsx`
 
@@ -176,13 +176,13 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Results table** — The Table of connector results, cut to the Model column; its header cell is raised. Selector: `[class~="aui-table"]`.
-2. **Group label** — The semi-bold model name with its member count (A-100 (2)) next to the expander in the group row. Selector: `[data-ug-part="group-label"]`.
-3. **Expand button** — The 24px minimum square-compact text Button with aria-expanded false that opens the Why Not explanation of one model row; HCS tints it with the error color on failed rows like Model C-300. Selector: `[class~="aui-button"][aria-label^="Why Not"]`.
+1. **Results table** — Connector table is cropped to the raised Model heading. Selector: `[class~="aui-table"]`.
+2. **Group label** — Semi-bold A-100 label shows its two-member count beside the expander. Selector: `[data-ug-part="group-label"]`.
+3. **Expand button** — 24px square text control opens Why Not for one model row. Selector: `[class~="aui-button"][aria-label^="Why Not"]`.
 4. **Chevron** — The solid angle-right glyph that points to the collapsed content. Selector: `[class~="aui-button"][aria-label^="Why Not"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-5. **Table expand trigger** — HCS and HS group rows (A-100 (2)) use the table own expand trigger instead of a Button, placed before the semi-bold group name. Selector: `[class~="aui-table-expand-trigger"]`.
-6. **Row** — The result row that the chevron opens: a model such as Model A-100, or the A-100 (2) group row with an Expand A-100 group label. Selector: `[class~="aui-table-row"]`.
-7. **Model cell** — The Model cell that holds the chevron and the model name side by side with a gap of 12 (4 in group rows). Selector: `[class~="aui-table-cell"]`.
+5. **Table expand trigger** — HCS and HS expand group rows before the semi-bold model name. Selector: `[class~="aui-table-expand-trigger"]`.
+6. **Row** — Model row or A-100 group row opens with its expander. Selector: `[class~="aui-table-row"]`.
+7. **Model cell** — Model cell pairs chevron and name with a 12px gap. Selector: `[class~="aui-table-cell"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-028/options/hcs-group/example.tsx`
 
@@ -257,13 +257,13 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Results table** — The Table of connector results, cut to the Model column; its header cell is raised. Selector: `[class~="aui-table"]`.
-2. **Group label** — The semi-bold model name with its member count (A-100 (2)) next to the expander in the group row. Selector: `[data-ug-part="group-label"]`.
-3. **Expand button** — The 24px minimum square-compact text Button with aria-expanded false that opens the Why Not explanation of one model row; HCS tints it with the error color on failed rows like Model C-300. Selector: `[class~="aui-button"][aria-label^="Why Not"]`.
+1. **Results table** — Connector table is cropped to the raised Model heading. Selector: `[class~="aui-table"]`.
+2. **Group label** — Semi-bold A-100 label shows its two-member count beside the expander. Selector: `[data-ug-part="group-label"]`.
+3. **Expand button** — 24px square text control opens Why Not for one model row. Selector: `[class~="aui-button"][aria-label^="Why Not"]`.
 4. **Chevron** — The solid angle-right glyph that points to the collapsed content. Selector: `[class~="aui-button"][aria-label^="Why Not"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-5. **Table expand trigger** — HCS and HS group rows (A-100 (2)) use the table own expand trigger instead of a Button, placed before the semi-bold group name. Selector: `[class~="aui-table-expand-trigger"]`.
-6. **Row** — The result row that the chevron opens: a model such as Model A-100, or the A-100 (2) group row with an Expand A-100 group label. Selector: `[class~="aui-table-row"]`.
-7. **Model cell** — The Model cell that holds the chevron and the model name side by side with a gap of 12 (4 in group rows). Selector: `[class~="aui-table-cell"]`.
+5. **Table expand trigger** — HCS and HS expand group rows before the semi-bold model name. Selector: `[class~="aui-table-expand-trigger"]`.
+6. **Row** — Model row or A-100 group row opens with its expander. Selector: `[class~="aui-table-row"]`.
+7. **Model cell** — Model cell pairs chevron and name with a 12px gap. Selector: `[class~="aui-table-cell"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-028/options/hs-group/example.tsx`
 

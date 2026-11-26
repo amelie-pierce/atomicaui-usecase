@@ -45,7 +45,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Container** — The inline "All Products" Button inside a sentence: profile "no-padding" removes the box, inline-flex and an underline make it read as a warning-colored link; type="button" keeps it from submitting. Selector: `[class~="aui-button"]`.
+1. **Container** — Underlined All Products link appears inline and does not submit the form. Selector: `[class~="aui-button"]`.
 
 ## Apps
 
@@ -70,9 +70,9 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **No output results notice** — The tonal warning status with the triangle icon and the "No Output Results" heading. Selector: `[data-ug-part="notice"]`.
-2. **Suggestions list** — The "You can try:" bulleted list whose list item holds the inline All Products button. Selector: `[data-ug-part="try-list"]`.
-3. **Container** — The inline "All Products" Button inside a sentence: profile "no-padding" removes the box, inline-flex and an underline make it read as a warning-colored link; type="button" keeps it from submitting. Selector: `[class~="aui-button"]`.
+1. **No output results notice** — Tonal warning pairs triangle icon with No Output Results heading. Selector: `[data-ug-part="notice"]`.
+2. **Suggestions list** — Try list contains an inline All Products action. Selector: `[data-ug-part="try-list"]`.
+3. **Container** — Underlined All Products link appears inline and does not submit the form. Selector: `[class~="aui-button"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-004/example.tsx`
 

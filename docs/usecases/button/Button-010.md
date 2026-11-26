@@ -46,8 +46,8 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Container** — The Show Plate Option Button at the start of the lock popup: extra small, primary text paint, with no fill so it reads as an accent link under the explanatory line. Selector: `[class~="aui-button"]:not([aria-label="Thickness is locked"])`.
-2. **Popup** — The 288px popup that opens from the lock icon, holding the line "Controlled by Plate Option, currently ..." above this Button. Selector: `[data-aui-popup-motion][role="dialog"]`.
+1. **Container** — Extra-small primary text link opens the Plate Option control. Selector: `[class~="aui-button"]:not([aria-label="Thickness is locked"])`.
+2. **Popup** — 288px lock popup shows the current Plate Option above its button. Selector: `[data-aui-popup-motion][role="dialog"]`.
 
 ## Apps
 
@@ -72,10 +72,10 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Lock trigger** — The square lock button after the field label (aria-label "Thickness is locked") that opens the hint on hover or focus. Selector: `[data-ug-part="lock-trigger"]`.
-2. **Hint text** — The line "Controlled by Plate Option" and its current value "All Plates based on the stock model". Selector: `[data-ug-part="hint-text"]`.
-3. **Container** — The Show Plate Option Button at the start of the lock popup: extra small, primary text paint, with no fill so it reads as an accent link under the explanatory line. Selector: `[class~="aui-button"]:not([aria-label="Thickness is locked"])`.
-4. **Popup** — The 288px popup that opens from the lock icon, holding the line "Controlled by Plate Option, currently ..." above this Button. Selector: `[data-aui-popup-motion][role="dialog"]`.
+1. **Lock trigger** — Square lock button follows the label and reveals a hint. Selector: `[data-ug-part="lock-trigger"]`.
+2. **Hint text** — Hint shows Plate Option ownership and the current All Plates value. Selector: `[data-ug-part="hint-text"]`.
+3. **Container** — Extra-small primary text link opens the Plate Option control. Selector: `[class~="aui-button"]:not([aria-label="Thickness is locked"])`.
+4. **Popup** — 288px lock popup shows the current Plate Option above its button. Selector: `[data-aui-popup-motion][role="dialog"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-010/example.tsx`
 

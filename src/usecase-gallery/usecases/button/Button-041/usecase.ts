@@ -10,13 +10,13 @@ export default defineUsecase({
 
   apps: ['agpd'],
     layers: [
-        {"id":"call","partId":"call","title":"Call","explanation":"The round (pill) solid primary phone button; the AGPD scene renders it as a tel: link named Call dealer.","keyIdea":"The pill-shaped call action opens the dealer phone link.","selector":"[class~=\"aui-button\"]"},
+        {"id":"call","partId":"call","title":"Call","explanation":"Pill-shaped primary phone button links to Call dealer.","keyIdea":"The pill-shaped call action opens the dealer phone link.","selector":"[class~=\"aui-button\"]"},
         {"id":"call-icon","partId":"call-icon","title":"Phone icon","explanation":"The phone glyph centred in the round button.","keyIdea":"The phone glyph identifies the action as a call.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
       ],
 options: [
     { id: "agpd-dealer-contact", contextAnatomy: CONTEXT_ANATOMY, name: "Dealer contact", apps: ["agpd"], source: {"agpd":"src/agpd/QuoteDialog.tsx"} ,
       contextLayers: [
-        {"id":"context-dealer-row","partId":"dealer-row","title":"Dealer contact row","explanation":"The end-aligned row under the quote form that pairs the Need help? text with the phone button, with an 8px gap.","keyIdea":"The end-aligned row under the quote form that pairs the Need help?","selector":"[data-ug-part=\"dealer-row\"]","scope":"context"},
+        {"id":"context-dealer-row","partId":"dealer-row","title":"Dealer contact row","explanation":"End-aligned row pairs Need help? with Call and 8px gap.","keyIdea":"The end-aligned row under the quote form that pairs the Need help?","selector":"[data-ug-part=\"dealer-row\"]","scope":"context"},
       ],
     },
   ],

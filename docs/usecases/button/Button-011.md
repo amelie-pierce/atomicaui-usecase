@@ -45,8 +45,8 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Container** — One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent "between"), outlined by a 1px border on all four sides from sx. Selector: `[data-ug-part="container"]`.
-2. **Icon** — The right arrow at the end of the row that signals starting the tour, at scale "sm". Selector: `[data-ug-part="icon"]`.
+1. **Container** — Full-width tutorial row puts its topic left and arrow right. Selector: `[data-ug-part="container"]`.
+2. **Icon** — Trailing arrow signals that the tutorial tour starts. Selector: `[data-ug-part="icon"]`.
 
 ## Apps
 
@@ -84,8 +84,8 @@ In context view: Shown.
 2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Selector: `[data-ug-part="dialog-title"]`.
 3. **Close button** — The X in the title that closes the dialog. Selector: `[data-ug-part="dialog-close"]`.
 4. **Topic list** — The nav column that holds one outlined row per tutorial. Selector: `[data-ug-part="topic-list"]`.
-5. **Container** — One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent "between"), outlined by a 1px border on all four sides from sx. Selector: `[data-ug-part="container"]`.
-6. **Icon** — The right arrow at the end of the row that signals starting the tour, at scale "sm". Selector: `[data-ug-part="icon"]`.
+5. **Container** — Full-width tutorial row puts its topic left and arrow right. Selector: `[data-ug-part="container"]`.
+6. **Icon** — Trailing arrow signals that the tutorial tour starts. Selector: `[data-ug-part="icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-011/example.tsx`
 
@@ -175,9 +175,9 @@ In context view: Shown.
 3. **Close button** — The X in the title that closes the dialog. Selector: `[data-ug-part="dialog-close"]`.
 4. **Topic list** — The nav column that holds one outlined row per tutorial. Selector: `[data-ug-part="topic-list"]`.
 5. **Topic name** — The semi-bold topic name ("ACE: General Tutorial") stacked above the description. Selector: `[data-ug-part="topic-name"]`.
-6. **Topic description** — The muted description under the topic name. Selector: `[data-ug-part="topic-description"]`.
-7. **Container** — One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent "between"), outlined by a 1px border on all four sides from sx. Selector: `[data-ug-part="container"]`.
-8. **Icon** — The right arrow at the end of the row that signals starting the tour, at scale "sm". Selector: `[data-ug-part="icon"]`.
+6. **Topic description** — Muted line explains the selected tutorial topic below. Selector: `[data-ug-part="topic-description"]`.
+7. **Container** — Full-width tutorial row puts its topic left and arrow right. Selector: `[data-ug-part="container"]`.
+8. **Icon** — Trailing arrow signals that the tutorial tour starts. Selector: `[data-ug-part="icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-011/options/ace-topic-row/example.tsx`
 
@@ -270,8 +270,8 @@ In context view: Shown.
 2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Selector: `[data-ug-part="dialog-title"]`.
 3. **Close button** — The X in the title that closes the dialog. Selector: `[data-ug-part="dialog-close"]`.
 4. **Topic list** — The nav column that holds one outlined row per tutorial. Selector: `[data-ug-part="topic-list"]`.
-5. **Container** — One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent "between"), outlined by a 1px border on all four sides from sx. Selector: `[data-ug-part="container"]`.
-6. **Icon** — The right arrow at the end of the row that signals starting the tour, at scale "sm". Selector: `[data-ug-part="icon"]`.
+5. **Container** — Full-width tutorial row puts its topic left and arrow right. Selector: `[data-ug-part="container"]`.
+6. **Icon** — Trailing arrow signals that the tutorial tour starts. Selector: `[data-ug-part="icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-011/options/adm-topic-row/example.tsx`
 
@@ -340,8 +340,8 @@ In context view: Shown.
 2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Selector: `[data-ug-part="dialog-title"]`.
 3. **Close button** — The X in the title that closes the dialog. Selector: `[data-ug-part="dialog-close"]`.
 4. **Topic list** — The nav column that holds one outlined row per tutorial. Selector: `[data-ug-part="topic-list"]`.
-5. **Container** — One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent "between"), outlined by a 1px border on all four sides from sx. Selector: `[data-ug-part="container"]`.
-6. **Icon** — The right arrow at the end of the row that signals starting the tour, at scale "sm". Selector: `[data-ug-part="icon"]`.
+5. **Container** — Full-width tutorial row puts its topic left and arrow right. Selector: `[data-ug-part="container"]`.
+6. **Icon** — Trailing arrow signals that the tutorial tour starts. Selector: `[data-ug-part="icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-011/options/pbs-topic-row/example.tsx`
 

@@ -42,7 +42,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Container** — The View all Button in the FD carousel footer: primary text paint at the default scale, after the pager dots. Selector: `[class~="aui-button"]:not([aria-label*=" / "])`.
+1. **Container** — Default-scale View all link follows the FD carousel pager. Selector: `[class~="aui-button"]:not([aria-label*=" / "])`.
 
 ## Apps
 
@@ -67,9 +67,9 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Carousel footer** — The row after the carousel that holds the pager dots, then View all, with an 8px gap. Selector: `[data-ug-part="pager"]`.
-2. **Pager dots** — The two round buttons, one per page (1 / 2 and 2 / 2): the current page in primary, the other in surface-alt. Selector: `[data-ug-part="dot"]`.
-3. **Container** — The View all Button in the FD carousel footer: primary text paint at the default scale, after the pager dots. Selector: `[class~="aui-button"]:not([aria-label*=" / "])`.
+1. **Carousel footer** — Eight-pixel row places View all after carousel dots. Selector: `[data-ug-part="pager"]`.
+2. **Pager dots** — Two page buttons use primary for current and surface-alt otherwise. Selector: `[data-ug-part="dot"]`.
+3. **Container** — Default-scale View all link follows the FD carousel pager. Selector: `[class~="aui-button"]:not([aria-label*=" / "])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-016/example.tsx`
 

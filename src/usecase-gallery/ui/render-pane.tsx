@@ -11,6 +11,9 @@ const MODES: { value: PreviewMode; label: string }[] = [
   { value: 'component', label: 'Component' },
   { value: 'context', label: 'In context' },
 ];
+function PreviewPlaceholder() {
+  return <div className="ug-preview-placeholder" aria-hidden="true" />;
+}
 
 function LayerVisibilityStyles({ layers, layerIndex, enabled }: { layers: LayerStep[]; layerIndex: number; enabled: boolean }) {
   const css = useMemo(() => enabled ? layerVisibilityCss(layers, layerIndex) : '', [enabled, layers, layerIndex]);
@@ -38,12 +41,10 @@ function ContextStage({ option, hidden, anatomy, hoveredPartId, onAvailableParts
             <div ref={setComponentHost} className="ug-render__component-portal-host" />
           </span>
           {fit && (
-            <Suspense fallback={null}>
+            <Suspense fallback={<PreviewPlaceholder />}>
               {contextHost && componentHost && <Scene host={contextHost}>
                 <span data-ug-component-root style={{ display: 'contents' }}>
-                  <Suspense fallback={null}>
-                    <StageHostContext.Provider value={componentHost}><Example /></StageHostContext.Provider>
-                  </Suspense>
+                  <StageHostContext.Provider value={componentHost}><Example /></StageHostContext.Provider>
                 </span>
               </Scene>}
             </Suspense>
@@ -120,7 +121,7 @@ export function RenderPane({
             {fit && (
               <span data-ug-component-root style={{ display: 'contents' }}>
                 <div ref={setComponentHost} className="ug-render__component-portal-host" />
-                <Suspense fallback={null}>
+                <Suspense fallback={<PreviewPlaceholder />}>
                   {componentHost && <StageHostContext.Provider value={componentHost}><Example /></StageHostContext.Provider>}
                 </Suspense>
               </span>

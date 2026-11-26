@@ -1,7 +1,6 @@
-import { Suspense, use, useEffect, useId, useState } from 'react';
+import { Suspense, use } from 'react';
 import { APPS } from '../apps';
 import type { AppKey } from '../apps';
-import { useMediaQuery } from '../hooks/use-media-query';
 import { useCopy } from '../hooks/use-copy';
 import { Button, Chip, ToggleGroup, Type } from '../kit';
 import type { AnatomyPart, DocumentMode, LayerStep, PreviewMode, Usecase, UsecaseOption } from '../types';
@@ -67,18 +66,7 @@ function CodeApiSection({ option, mode, api }: { option: UsecaseOption; mode: Pr
 }
 
 function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: number; onChange: (index: number) => void }) {
-  const [playing, setPlaying] = useState(false);
-  const navId = useId();
-  const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const active = layers[index] ?? layers[0];
-  useEffect(() => {
-    if (!playing || reducedMotion) return;
-    const timer = window.setInterval(() => onChange(Math.min(index + 1, layers.length - 1)), 2200);
-    return () => window.clearInterval(timer);
-  }, [playing, reducedMotion, index, layers.length, onChange]);
-  useEffect(() => {
-    if (index >= layers.length - 1) setPlaying(false);
-  }, [index, layers.length]);
   if (!active) return <Type as="p" role="l3" color="muted">No layer steps are authored for this view.</Type>;
   const onNavigationKey = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'ArrowRight') { event.preventDefault(); onChange(Math.min(index + 1, layers.length - 1)); }
@@ -86,18 +74,13 @@ function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: 
     if (event.key === 'Home') { event.preventDefault(); onChange(0); }
     if (event.key === 'End') { event.preventDefault(); onChange(layers.length - 1); }
   };
-  return <div className="ug-layer-lesson" aria-label="Layer by layer lesson">
-    <div className="ug-layer-lesson__topline"><Type as="p" role="l3" color="muted">Step {index + 1} of {layers.length}</Type><div className="ug-layer-lesson__controls">
-      <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} onClick={() => { setPlaying(false); onChange(0); }}>Replay</Button>
-      <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }} aria-pressed={playing && !reducedMotion} disabled={reducedMotion || (!playing && index === layers.length - 1)} onClick={() => setPlaying((value) => !value)}>{playing && !reducedMotion ? 'Pause' : 'Autoplay'}</Button>
-    </div></div>
+  return <div className="ug-layer-lesson" aria-label="Layer lesson">
     <div className="ug-layer-lesson__copy" aria-live="polite" aria-atomic="true">
-      <Type as="p" role="l3" color="muted">Layer {String(index + 1).padStart(2, '0')}</Type>
       <Type as="h3" role="h5" weight="bold">{active.title}</Type>
       <Type as="p" role="l3">{active.explanation}</Type>
       <div className="ug-layer-lesson__idea"><Type as="p" role="l3" weight="semi-bold">Key idea</Type><Type as="p" role="l3">{active.keyIdea}</Type></div>
     </div>
-    <nav className="ug-layer-lesson__steps" aria-label="Layer steps" id={navId} onKeyDown={onNavigationKey}>
+    <nav className="ug-layer-lesson__steps" aria-label="Layer steps" onKeyDown={onNavigationKey}>
       {layers.map((step, stepIndex) => {
         const state = stepIndex === index ? 'active' : stepIndex < index ? 'completed' : 'upcoming';
         return <Button key={step.id} className={`ug-layer-lesson__step is-${state}`} aui={{ color: state === 'active' ? 'primary' : 'secondary', paint: state === 'active' ? 'solid' : 'text', scale: 'sm' }} aria-current={state === 'active' ? 'step' : undefined} aria-label={`Step ${stepIndex + 1}: ${step.title}, ${state}`} data-state={state} data-ug-layer-id={step.id} data-ug-layer-selector={step.selector ?? `[data-ug-part="${step.id}"]`} data-ug-layer-scope={step.scope ?? 'component'} onClick={() => onChange(stepIndex)}>
@@ -120,7 +103,7 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
   return <div className="ug-docs">
     <ToggleGroup className="ug-docs__mode-toggle" aria-label="Document view" value={[documentMode]} onValueChange={([next]) => next && onDocumentModeChange(next as DocumentMode)}>
       <ToggleGroup.Item value="document" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Document</Button>} />
-      <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Layer by layer</Button>} />
+      <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Layer</Button>} />
     </ToggleGroup>
     {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} /> : <>
       <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div>

@@ -6,7 +6,7 @@ export default function Example() {
       <Accordion.Item value="default">
         <Accordion.Header>
           <Accordion.Trigger>
-            Default Templates
+            <Type as="span" role="l4" weight="semi-bold">Default Templates</Type>
             <Accordion.Chevron />
           </Accordion.Trigger>
         </Accordion.Header>
@@ -17,7 +17,7 @@ export default function Example() {
       <Accordion.Item value="mine">
         <Accordion.Header>
           <Accordion.Trigger>
-            My Templates
+            <Type as="span" role="l4" weight="semi-bold">My Templates</Type>
             <Accordion.Chevron />
           </Accordion.Trigger>
         </Accordion.Header>

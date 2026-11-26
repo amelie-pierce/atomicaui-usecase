@@ -12,7 +12,7 @@ export default defineUsecase({
         {"id":"item","partId":"item","title":"Item","explanation":"One Input-pane section, Connection Type (open by default) or Load Properties; in the list layout (HCS, HS, PFD) items are flush with a 1px outlined line between them, in the cards layout (FD, PBS) each is a soft rounded card.","keyIdea":"A single expanded section keeps related inputs together without splitting the form into separate cards.","selector":"[class~=\"aui-accordion-item\"]"},
         {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Full-width surface title row, scale \"sm\" and shape \"none\", that opens or closes its section; openMultiple lets several stay open.","keyIdea":"A full-width trigger makes the section title row one predictable place to open or close its group.","selector":"[class~=\"aui-accordion-trigger\"]"},
         {"id":"label","partId":"label","title":"Title","explanation":"Semi-bold l4 section name, \"Connection Type\" or \"Load Properties\" (upper case in the card layouts).","keyIdea":"The section label tells users which input group will appear before they change its disclosure state.","selector":"[class~=\"aui-accordion-trigger-content\"]"},
-        {"id":"icon","partId":"icon","title":"Section icon","explanation":"Leading regular-weight topic icon, link for Connection Type and arrow-down for Load Properties; the FD and PBS card layouts omit it.","keyIdea":"The leading topic glyph helps distinguish sections whose names are close in meaning.","selector":"[class~=\"aui-accordion-trigger-content\"] [class~=\"aui-contained-icon\"]"},
+        {"id":"icon","partId":"icon","title":"Section icon","explanation":"Leading regular-weight topic icon, link for Connection Type and arrow-down for Load Properties; PBS omits it in both layouts, and FD omits it in both layouts while uppercasing titles.","keyIdea":"The leading topic glyph helps distinguish sections whose names are close in meaning.","selector":"[class~=\"aui-accordion-trigger-content\"] [class~=\"aui-contained-icon\"]"},
         {"id":"chevron","partId":"chevron","title":"Chevron","explanation":"Disclosure chevron at the end of the row that turns with the open state.","keyIdea":"The turning chevron shows whether the section fields are currently available below the title row.","selector":"[class~=\"aui-accordion-trigger\"] > [class~=\"aui-accordion-chevron\"]"},
         {"id":"panel","partId":"panel","title":"Panel","explanation":"Body of the open section with default padding; Connection Type shows the placeholder \"Section fields\" while Load Properties has no panel.","keyIdea":"The panel is where the selected section exposes its fields while closed groups stay out of the way.","selector":"[class~=\"aui-accordion-panel\"]"},
       ],
@@ -81,7 +81,7 @@ options: [
       id: 'icon',
       name: 'Section icon',
       selector: '[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]',
-      description: 'Leading regular-weight topic icon, link for Connection Type and arrow-down for Load Properties; the FD and PBS card layouts omit it.',
+      description: 'Leading regular-weight topic icon, link for Connection Type and arrow-down for Load Properties; PBS omits it in both layouts, and FD omits it in both layouts while uppercasing titles.',
     },
     {
       id: 'label',

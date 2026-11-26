@@ -37,14 +37,17 @@ function measure(stage: HTMLElement, target: Element | undefined, textOnly: bool
     targetRect = target.getBoundingClientRect();
   }
   const stageRect = stage.getBoundingClientRect();
-  if (!targetRect.width || !targetRect.height) return null;
+  // Keep zero-size structural wrappers visible in the lesson. The callout is
+  // outside the stage, so this minimum footprint cannot change its layout.
+  const width = Math.max(targetRect.width, 24);
+  const height = Math.max(targetRect.height, 24);
   const radius = textOnly ? '2px' : getComputedStyle(target).borderRadius || '0px';
   // The overlay lives outside the stage's scroll area and sits over the stage's box, so it is cut to that box:
   // a part larger than the stage (a dialog's scrim) is highlighted only where it is visible.
-  const left = Math.max(targetRect.left, stageRect.left);
-  const top = Math.max(targetRect.top, stageRect.top);
-  const right = Math.min(targetRect.right, stageRect.right);
-  const bottom = Math.min(targetRect.bottom, stageRect.bottom);
+  const left = Math.max(targetRect.left - (width - targetRect.width) / 2, stageRect.left);
+  const top = Math.max(targetRect.top - (height - targetRect.height) / 2, stageRect.top);
+  const right = Math.min(left + width, stageRect.right);
+  const bottom = Math.min(top + height, stageRect.bottom);
   if (right <= left || bottom <= top) return null;
   return { left: left - stageRect.left, top: top - stageRect.top, width: right - left, height: bottom - top, radius };
 }

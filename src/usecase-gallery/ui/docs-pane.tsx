@@ -1,4 +1,4 @@
-import { Suspense, use } from 'react';
+import { Suspense, use, useEffect, useState } from 'react';
 import { APPS } from '../apps';
 import type { AppKey } from '../apps';
 import { useCopy } from '../hooks/use-copy';
@@ -65,8 +65,61 @@ function CodeApiSection({ option, mode, api }: { option: UsecaseOption; mode: Pr
   </Section>;
 }
 
-function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: number; onChange: (index: number) => void }) {
+function layerCodeLines(code: string, step: LayerStep | undefined) {
+  if (!step) return new Set<number>();
+  const selector = step.selector ?? '';
+  const className = selector.match(/\[class~=["']aui-([^"']+)["']\]/)?.[1];
+  const tag = className
+    ? className.split('-').map((word) => word[0]?.toUpperCase() + word.slice(1)).join('.')
+    : undefined;
+  const marker = selector.match(/data-ug-part=["']([^"']+)["']/)?.[1] ?? step.partId ?? step.id;
+  const lines = code.split('\n');
+  const matches = new Set<number>();
+  lines.forEach((line, lineIndex) => {
+    if ((tag && line.includes(`<${tag}`)) || line.includes(`data-ug-part="${marker}"`) || line.includes(`data-ug-part='${marker}'`)) matches.add(lineIndex);
+  });
+  return matches;
+}
+
+function shortStepDescription(text: string) {
+  const words = text.trim().split(/\s+/);
+  if (words.length <= 12) return text;
+  const firstClause = text.split(/(?<=[.;])\s+/)[0];
+  const clauseWords = firstClause.trim().split(/\s+/);
+  if (clauseWords.length >= 8 && clauseWords.length <= 12) return firstClause;
+  let short = words.slice(0, 12);
+  while (short.length > 8 && /^(and|or|but|as|at|by|for|from|in|into|of|on|onto|the|to|with|while|that|which|who|whose|where|when|if|so|than|then|this|these|those|a|an)$/i.test(short.at(-1)!.replace(/[,.!?;:]$/, ''))) short = short.slice(0, -1);
+  return short.join(' ').replace(/[,;:]$/, '');
+}
+
+function LayerCode({ code, layers, index }: { code: Promise<string>; layers: LayerStep[]; index: number }) {
+  const text = use(code);
+  const { status, copy } = useCopy();
+  const lines = text.split('\n');
+  const current = layerCodeLines(text, layers[index]);
+  const previous = layerCodeLines(text, layers[index - 1]);
+  return <details className="ug-layer-lesson__code" open>
+    <summary>Code for this step</summary>
+    <div className="ug-docs__copy-block">
+      <div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{layers[index]?.title ?? 'Current step'}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => copy(text)}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
+      <Type as="pre" role="l3" family="mono" className="ug-docs__code" tabIndex={0}><code>{lines.map((line, lineIndex) => {
+        const added = current.has(lineIndex) && !previous.has(lineIndex);
+        return <span key={lineIndex} className={added ? 'is-added' : current.has(lineIndex) ? 'is-current' : undefined} aria-label={added ? 'Added for this step' : undefined}>{line}{lineIndex < lines.length - 1 ? '\n' : ''}</span>;
+      })}</code></Type>
+      <span role="status" className="ug-visually-hidden">{status === 'copied' ? 'Code copied' : status === 'failed' ? 'Code copy failed' : ''}</span>
+    </div>
+  </details>;
+}
+
+function LayerLesson({ layers, index, onChange, code }: { layers: LayerStep[]; index: number; onChange: (index: number) => void; code: Promise<string> }) {
+  const [autoplay, setAutoplay] = useState(false);
   const active = layers[index] ?? layers[0];
+  useEffect(() => {
+    if (!autoplay) return;
+    if (index >= layers.length - 1) { setAutoplay(false); return; }
+    const timer = window.setTimeout(() => onChange(index + 1), 900);
+    return () => window.clearTimeout(timer);
+  }, [autoplay, index, layers.length, onChange]);
   if (!active) return <Type as="p" role="l3" color="muted">No layer steps are authored for this view.</Type>;
   const onNavigationKey = (event: React.KeyboardEvent<HTMLElement>) => {
     if (event.key === 'ArrowRight') { event.preventDefault(); onChange(Math.min(index + 1, layers.length - 1)); }
@@ -76,9 +129,9 @@ function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: 
   };
   return <div className="ug-layer-lesson" aria-label="Layer lesson">
     <div className="ug-layer-lesson__copy" aria-live="polite" aria-atomic="true">
+      <Type as="p" role="l3" color="muted">Step {index + 1} of {layers.length}</Type>
       <Type as="h3" role="h5" weight="bold">{active.title}</Type>
-      <Type as="p" role="l3">{active.explanation}</Type>
-      <div className="ug-layer-lesson__idea"><Type as="p" role="l3" weight="semi-bold">Key idea</Type><Type as="p" role="l3">{active.keyIdea}</Type></div>
+      <Type as="p" role="l3">{shortStepDescription(active.explanation)}</Type>
     </div>
     <nav className="ug-layer-lesson__steps" aria-label="Layer steps" onKeyDown={onNavigationKey}>
       {layers.map((step, stepIndex) => {
@@ -89,9 +142,12 @@ function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: 
       })}
     </nav>
     <div className="ug-layer-lesson__back-next">
-      <Button aui={{ color: 'secondary', paint: 'outlined', scale: 'sm' }} disabled={index === 0} onClick={() => onChange(Math.max(index - 1, 0))}>Back</Button>
-      <Button aui={{ color: 'primary', paint: 'solid', scale: 'sm' }} disabled={index === layers.length - 1} onClick={() => onChange(Math.min(index + 1, layers.length - 1))}>Next</Button>
+      <Button aui={{ color: 'secondary', paint: 'outlined', scale: 'sm' }} disabled={index === 0} onClick={() => { setAutoplay(false); onChange(Math.max(index - 1, 0)); }}>Back</Button>
+      <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} onClick={() => { setAutoplay(false); onChange(0); }}>Replay</Button>
+      <Button aui={{ color: autoplay ? 'primary' : 'secondary', paint: autoplay ? 'tonal' : 'text', scale: 'sm' }} aria-pressed={autoplay} onClick={() => setAutoplay((playing) => !playing)}>{autoplay ? 'Pause' : 'Autoplay'}</Button>
+      <Button aui={{ color: 'primary', paint: 'solid', scale: 'sm' }} disabled={index === layers.length - 1} onClick={() => { setAutoplay(false); onChange(Math.min(index + 1, layers.length - 1)); }}>Next</Button>
     </div>
+    <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><LayerCode code={code} layers={layers} index={index} /></Suspense>
   </div>;
 }
 
@@ -108,7 +164,7 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
       <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>Layer</Button>} />
     </ToggleGroup>
     <div className="ug-docs">
-    {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} /> : <>
+    {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} code={mode === 'component' ? option.loadExampleCode() : option.loadCode()} /> : <>
       <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div>
       </header>
       <div className="ug-docs__sections">

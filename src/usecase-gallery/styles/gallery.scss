@@ -637,6 +637,30 @@ $narrow: 840px;
   margin-inline-end: auto;
 }
 
+.ug-layer-lesson__code {
+  min-inline-size: 0;
+}
+
+.ug-layer-lesson__code > summary {
+  cursor: pointer;
+  margin-block-end: var(--p-px-8);
+  color: var(--theme-on-surface-alt);
+  font: var(--p-font-l3);
+}
+
+.ug-layer-lesson__code .ug-docs__code code > span.is-added {
+  display: inline-block;
+  min-inline-size: 100%;
+  color: var(--theme-on-primary);
+  background: var(--theme-primary);
+}
+
+.ug-layer-lesson__code .ug-docs__code code > span.is-current {
+  display: inline-block;
+  min-inline-size: 100%;
+  background: var(--theme-surface-alt);
+}
+
 .ug-docs__copy-block {
   min-inline-size: 0;
   overflow: hidden;

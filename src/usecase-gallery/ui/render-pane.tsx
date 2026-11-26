@@ -30,7 +30,9 @@ function ContextStage({ option, hidden, anatomy, hoveredPartId, onAvailableParts
   const stageRef = useRef<HTMLDivElement | null>(null);
   const { Example, Scene } = option;
   const scale = useStageFit(fit);
-  const overlay = usePreviewAnatomy(stageRef, anatomy, hoveredPartId, hidden ? undefined : onAvailablePartsChange, scale, !hidden);
+  const activeLayer = layerMode ? layers[layerIndex] : undefined;
+  const layerPartId = activeLayer?.partId ?? activeLayer?.id.replace(/^context-/, '');
+  const overlay = usePreviewAnatomy(stageRef, anatomy, !hidden && layerMode ? layerPartId : hoveredPartId, hidden ? undefined : onAvailablePartsChange, scale, !hidden);
   return (
     <div className="ug-render__viewport" hidden={hidden}>
       <div className="ug-render__stage" ref={stageRef}>
@@ -89,7 +91,9 @@ export function RenderPane({
   const setComponentHost = useCallback((node: HTMLDivElement | null) => setComponentHostState((current) => current === node ? current : node), []);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const scale = useStageFit(fit);
-  const overlay = usePreviewAnatomy(stageRef, anatomy, mode === 'component' ? hoveredPartId : undefined, mode === 'component' ? onAvailablePartsChange : undefined, scale, mode === 'component');
+  const activeLayer = layerMode && mode === 'component' ? layers[layerIndex] : undefined;
+  const layerPartId = activeLayer?.partId ?? activeLayer?.id.replace(/^context-/, '');
+  const overlay = usePreviewAnatomy(stageRef, anatomy, mode === 'component' ? (layerMode ? layerPartId : hoveredPartId) : undefined, mode === 'component' ? onAvailablePartsChange : undefined, scale, mode === 'component');
   return (
     <section className="ug-render ug-render--split" role="region" aria-label="Preview">
       <div className="ug-render__header">

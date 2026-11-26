@@ -1,7 +1,7 @@
 // Layout and chrome for the use case gallery. Color, type, spacing and shape come from AtomicAUI tokens
 // (CSS variables) and kit components only; the tokens stylesheet must be loaded by the host app.
 
-$narrow: 960px;
+$narrow: 840px;
 
 .ug {
   position: fixed;
@@ -73,6 +73,15 @@ $narrow: 960px;
 
 .ug-tree {
   min-inline-size: 0;
+}
+
+.ug-tree--measure {
+  inline-size: max-content;
+  max-inline-size: none;
+
+  .ug-tree__title {
+    white-space: nowrap;
+  }
 }
 
 .ug-tree__id {

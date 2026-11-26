@@ -6,21 +6,27 @@ export interface LayoutPanes {
   tree: ReactNode;
   render: ReactNode;
   detail: ReactNode;
+  treeWidth?: number;
   treeCollapsed: boolean;
   onTreePanelResize: (size: { asPercentage: number; inPixels: number }) => void;
 }
 
+/** The tree pane fits its content, within these pixel bounds. */
+const TREE_MIN = 240;
+const TREE_MAX = 400;
+
 /** Three resizable panes; the preview toolbar is anchored across the page from the center panel. */
-export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onTreePanelResize }: LayoutPanes) {
+export function DetailLayout({ toolbar, tree, render, detail, treeWidth, treeCollapsed, onTreePanelResize }: LayoutPanes) {
+  const fitted = treeWidth === undefined ? undefined : Math.min(TREE_MAX, Math.max(TREE_MIN, treeWidth));
   return (
-    <Panels orientation="horizontal" className="ug-panels" animate={false}>
+    <Panels key={fitted} orientation="horizontal" className="ug-panels" animate={false}>
       <Panels.Panel
         id="component-tree"
         className="ug-layout__column ug-layout__column--tree"
-        defaultSize={treeCollapsed ? '0%' : '384px'}
+        defaultSize={treeCollapsed ? '0%' : fitted === undefined ? undefined : `${fitted}px`}
         groupResizeBehavior="preserve-pixel-size"
-        minSize="384px"
-        maxSize="400px"
+        minSize={fitted === undefined ? undefined : `${fitted}px`}
+        maxSize={`${TREE_MAX}px`}
         collapsedSize="0%"
         collapsible
         onResize={onTreePanelResize}

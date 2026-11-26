@@ -52,16 +52,16 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Overlay** — The scrim behind the delete confirm. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The default-width confirm window used by ACE, HS and PBS. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title** — The raised title "Warning: Delete Template?" with a solid warning icon and no close X (HS leaves the bar plain, PBS has no title at all). Selector: `[class~="aui-dialog-title"]`.
-4. **Warning icon** — The solid triangle-exclamation glyph in the warning colour. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
-5. **Close row** — The PBS-only end-aligned row that holds a lone close X above the message instead of a title bar. Selector: `[data-ug-part="close-row"]`.
-6. **Close** — The PBS close X above the message; the other apps have none. Selector: `[class~="aui-dialog-close"]`.
-7. **Description** — The message that the deletion cannot be undone and must be confirmed (PBS asks "Are you sure you want to delete Connection 1"). Selector: `[class~="aui-dialog-description"]`.
-8. **Footer** — The footer with the back-out and delete buttons; PBS puts a spacer between them. Selector: `[class~="aui-dialog-actions"]`.
-9. **Cancel** — The default Cancel (labelled Close in PBS) that keeps the template. Selector: `[data-ug-part="cancel"]`.
-10. **Delete** — The solid error Delete that removes the template. Selector: `[data-ug-part="delete"]`.
+1. **Overlay** — Scrim focuses attention on the delete confirmation. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — Default-width confirm keeps warning and choices together. Selector: `[class~="aui-dialog-popup"]`.
+3. **Title** — Raised warning title names the template to delete. Selector: `[class~="aui-dialog-title"]`.
+4. **Warning icon** — Solid warning triangle signals irreversible removal. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
+5. **Close row** — PBS places a close control above the message without title bar. Selector: `[data-ug-part="close-row"]`.
+6. **Close** — PBS close X dismisses the alert; other apps omit it. Selector: `[class~="aui-dialog-close"]`.
+7. **Description** — Message says deletion is irreversible and asks users to confirm. Selector: `[class~="aui-dialog-description"]`.
+8. **Footer** — Footer pairs safe exit with Delete; PBS separates them. Selector: `[class~="aui-dialog-actions"]`.
+9. **Cancel** — Cancel or Close keeps the template available for editing. Selector: `[data-ug-part="cancel"]`.
+10. **Delete** — Solid error Delete permanently removes the selected template. Selector: `[data-ug-part="delete"]`.
 
 ## Apps
 

@@ -54,17 +54,17 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Overlay** — The scrim that interrupts the user before the Reset Inputs confirm; the gallery draws the alert as a non-modal Dialog. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The confirm window at scale "sm" with a soft shape; 560px wide in HCS (480px in ACE and ADM, 640px default scale in ADC). Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar that carries the warning icon, "Warning: Reset Inputs?", the spacer and the close X. Selector: `[class~="aui-dialog-title"]`.
-4. **Warning icon** — The triangle-exclamation glyph in the warning colour that marks this prompt as a caution. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
-5. **Spacer** — The gap that pushes the close X to the end of the title bar. Selector: `[class~="aui-dialog-spacer"]`.
-6. **Close** — The close X labelled "Close Reset" that leaves the inputs untouched. Selector: `[class~="aui-dialog-close"]`.
-7. **Description** — The sentence that says what is lost: "You are about to reset all input fields. This cannot be undone." (ADC explains that project information and design names are preserved). Selector: `[class~="aui-dialog-description"]`.
-8. **Footer** — The footer that sits at the end in HCS, ACE and ADM; in ADC it is split and wraps three buttons. Selector: `[class~="aui-dialog-actions"]`.
-9. **Cancel** — The default Cancel that backs out of the reset. Selector: `[data-ug-part="cancel"]`.
-10. **Reset** — The solid destructive button: a secondary Reset in HCS, ACE and ADM, and the solid error "Reset All Designs to Standard" in ADC. Selector: `[data-ug-part="confirm"]`.
-11. **Reset current design** — The ADC-only text error button "Reset Current Design to Standard" that offers the narrower reset. Selector: `[data-ug-part="reset-current"]`.
+1. **Overlay** — Scrim interrupts the workspace before the Reset Inputs confirmation. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — Soft confirm window sizes vary by app, from 480px to 640px. Selector: `[class~="aui-dialog-popup"]`.
+3. **Title bar** — Raised title names Reset Inputs beside its warning and close controls. Selector: `[class~="aui-dialog-title"]`.
+4. **Warning icon** — Triangle-exclamation glyph signals caution before the warning is read. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
+5. **Spacer** — Flexible gap pushes the close control to the title bar end. Selector: `[class~="aui-dialog-spacer"]`.
+6. **Close** — Close Reset dismisses the dialog without changing any inputs. Selector: `[class~="aui-dialog-close"]`.
+7. **Description** — Warning explains reset fields cannot be restored after confirmation. Selector: `[class~="aui-dialog-description"]`.
+8. **Footer** — Footer groups the safe exit and reset choices after the warning. Selector: `[class~="aui-dialog-actions"]`.
+9. **Cancel** — Cancel backs out and keeps current inputs unchanged. Selector: `[data-ug-part="cancel"]`.
+10. **Reset** — Reset clears the selected inputs with a destructive button. Selector: `[data-ug-part="confirm"]`.
+11. **Reset current design** — ADC offers a text action to reset only this design. Selector: `[data-ug-part="reset-current"]`.
 
 ## Apps
 

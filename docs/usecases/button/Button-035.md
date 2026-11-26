@@ -171,10 +171,10 @@ import { IconButton } from '../../../../../kit';
 export default function Example() {
   return (
     <IconButton
-      name="ellipsis-vertical"
+      name="ellipsis"
       aria-label="Column options"
       aui={{
-        color: 'surface',
+        color: 'secondary',
         paint: 'text',
         profile: 'square-compact',
         shape: 'soft',

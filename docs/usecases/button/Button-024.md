@@ -89,7 +89,10 @@ export default function Example() {
         <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
         Previous
       </Button>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>End</Button>
+      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
+        End
+        <Button.Icon name="check" aui={{ scale: 'sm' }} />
+      </Button>
     </>
   );
 }
@@ -162,9 +165,9 @@ export default function Example() {
     <>
       <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
         <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
-        Previous
+        PREVIOUS
       </Button>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>End</Button>
+      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>END</Button>
     </>
   );
 }
@@ -229,17 +232,17 @@ In context view: Shown.
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-024/options/adm-last-step/example.tsx`
 
 ```tsx
-import { Button } from '../../../../../kit';
+import { Button, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
+    <View className="ug-tour__nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
+      <Button style={{ fontWeight: 700 }} aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
         <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
-        Previous
+        PREVIOUS
       </Button>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>End</Button>
-    </>
+      <Button style={{ fontWeight: 700 }} aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>END</Button>
+    </View>
   );
 }
 ```
@@ -301,17 +304,20 @@ In context view: Shown.
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-024/options/pbs-last-step/example.tsx`
 
 ```tsx
-import { Button } from '../../../../../kit';
+import { Button, View } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
+    <View className="ug-tour__nav" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8' } }}>
+      <Button style={{ fontWeight: 700 }} aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
         <Button.Icon name="arrow-left" aui={{ scale: 'sm' }} />
-        Previous
+        PREVIOUS
       </Button>
-      <Button aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>End</Button>
-    </>
+      <Button style={{ fontWeight: 700 }} aui={{ scale: 'sm', paint: 'text', color: 'secondary' }}>
+        END
+        <Button.Icon name="check" aui={{ scale: 'sm' }} />
+      </Button>
+    </View>
   );
 }
 ```

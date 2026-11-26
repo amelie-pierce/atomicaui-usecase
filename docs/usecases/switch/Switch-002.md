@@ -108,7 +108,7 @@ export default function HcsLabelledScene({ children, host }: ContextProps) {
 }
 ```
 
-### 2. Labelled switch — UI variant 2 (`adm-labelled`)
+### 2. Dialog copy switch (`adm-labelled`)
 
 Apps: ADM
 
@@ -165,7 +165,7 @@ export default function AdmLabelledScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Labelled switch — UI variant 3 (`pbs-labelled`)
+### 3. Grouped setting switch (`pbs-labelled`)
 
 Apps: PBS, RWS
 
@@ -204,7 +204,7 @@ export default function PbsLabelledScene() {
 }
 ```
 
-### 4. Labelled switch — UI variant 4 (`ace-labelled`)
+### 4. Feedback copy switch (`ace-labelled`)
 
 Apps: ACE
 

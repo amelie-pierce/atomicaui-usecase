@@ -18,12 +18,12 @@ export default defineUsecase({
         {"id":"foot","partId":"foot","title":"Foot","explanation":"Totals rows under the body: ACE shows Total 4, HS shows a Fastener Totals heading and \"16 nails, 8d\" spanning the Model and Qty columns.","keyIdea":"The footer summarizes records only after their body values have been presented.","selector":"[class~=\"aui-table-foot\"]"},
       ],
 options: [
-    { id: "ace-tally", name: "Job tally", showContext: false, apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} ,
+    { id: "ace-tally", name: "Per-product totals row", showContext: false, apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "hs-totals", name: "Job tally — UI variant 2", showContext: false, apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} ,
+    { id: "hs-totals", name: "Fastener totals footer", showContext: false, apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} ,
       contextLayers: [
 
       ],

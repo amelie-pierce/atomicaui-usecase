@@ -173,7 +173,7 @@ export default function FeedbackScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Send feedback — UI variant 2 (`adc-feedback`)
+### 2. Footer copy checkbox (`adc-feedback`)
 
 Apps: ADC
 
@@ -301,7 +301,7 @@ export default function AdcFeedbackScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Send feedback — UI variant 3 (`ace-feedback`)
+### 3. Form copy checkbox (`ace-feedback`)
 
 Apps: ACE, ADM, PFD, PBS, HS, FD, AGPD, RWS
 

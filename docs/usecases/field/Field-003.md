@@ -116,7 +116,7 @@ export default function HsErrorScene(_: ContextProps) {
 }
 ```
 
-### 2. Field error — UI variant 2 (`hcs-error`)
+### 2. Small error text (`hcs-error`)
 
 Apps: HCS
 
@@ -169,7 +169,7 @@ export default function HcsErrorScene(_: ContextProps) {
 }
 ```
 
-### 3. Field error — UI variant 3 (`rws-error`)
+### 3. Red outline error (`rws-error`)
 
 Apps: RWS
 
@@ -222,7 +222,7 @@ export default function RwsErrorScene(_: ContextProps) {
 }
 ```
 
-### 4. Field error — UI variant 4 (`adc-error`)
+### 4. Inline red error (`adc-error`)
 
 Apps: ADC
 

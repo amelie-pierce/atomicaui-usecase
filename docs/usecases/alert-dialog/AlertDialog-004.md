@@ -136,7 +136,7 @@ export default function AceDeleteScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Delete confirm — UI variant 2 (`pbs-delete`)
+### 2. Delete confirmation (`pbs-delete`)
 
 Apps: PBS
 
@@ -210,7 +210,7 @@ export default function PbsDeleteScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Delete confirm — UI variant 3 (`hs-delete`)
+### 3. Closeable delete alert (`hs-delete`)
 
 Apps: HS, FD
 

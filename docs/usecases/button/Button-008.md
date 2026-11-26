@@ -122,7 +122,7 @@ export default function HcsToolbarScene({ children }: ContextProps) {
 }
 ```
 
-### 2. Toolbar — UI variant 2 (`fd-toolbar`)
+### 2. Text reset button (`fd-toolbar`)
 
 Apps: FD
 

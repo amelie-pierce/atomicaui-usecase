@@ -151,7 +151,7 @@ export default function HcsHelpCloseScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Help popover close — UI variant 2 (`pfd-help-close`)
+### 2. Popover close icon (`pfd-help-close`)
 
 Apps: PFD
 
@@ -216,7 +216,7 @@ export default function PfdHelpCloseScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Help popover close — UI variant 3 (`pbs-help-close`)
+### 3. Help popover X (`pbs-help-close`)
 
 Apps: PBS
 
@@ -279,7 +279,7 @@ export default function PbsHelpCloseScene({ host }: ContextProps) {
 }
 ```
 
-### 4. Help popover close — UI variant 4 (`agpd-help-close`)
+### 4. Field help close icon (`agpd-help-close`)
 
 Apps: AGPD, RWS
 

@@ -14,12 +14,12 @@ export default defineUsecase({
         {"id":"status-dot","partId":"status-dot","title":"Status dot","explanation":"ADM only: the Ratio cell leads with a coloured success dot before the 41% value.","keyIdea":"The status dot gives the ADM ratio an at-a-glance success cue before its percentage.","selector":"[class~=\"aui-table-cell\"] [class~=\"aui-symbol\"]"},
       ],
 options: [
-    { id: "adm-summary", name: "Summary table", showContext: false, apps: ["adm"], source: {"adm":"src/features/calculation/components/shared/ResultTable.tsx"} ,
+    { id: "adm-summary", name: "Centered summary table", showContext: false, apps: ["adm"], source: {"adm":"src/features/calculation/components/shared/ResultTable.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "adc-summary", name: "Summary table — UI variant 2", showContext: false, apps: ["adc"], source: {"adc":"src/adc/components/ResultTable.tsx"} ,
+    { id: "adc-summary", name: "Right-aligned summary", showContext: false, apps: ["adc"], source: {"adc":"src/adc/components/ResultTable.tsx"} ,
       contextLayers: [
 
       ],

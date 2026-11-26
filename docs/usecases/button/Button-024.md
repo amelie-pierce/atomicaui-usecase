@@ -141,7 +141,7 @@ export default function HcsLastStepScene() {
 }
 ```
 
-### 2. Last step — UI variant 2 (`ace-last-step`)
+### 2. Arrow End buttons (`ace-last-step`)
 
 Apps: ACE, HS, RWS, AGPD
 
@@ -215,7 +215,7 @@ export default function AceLastStepScene() {
 }
 ```
 
-### 3. Last step — UI variant 3 (`adm-last-step`)
+### 3. Previous and End (`adm-last-step`)
 
 Apps: ADM, FD
 
@@ -287,7 +287,7 @@ export default function AdmLastStepScene() {
 }
 ```
 
-### 4. Last step — UI variant 4 (`pbs-last-step`)
+### 4. Compact End buttons (`pbs-last-step`)
 
 Apps: PBS, PFD
 

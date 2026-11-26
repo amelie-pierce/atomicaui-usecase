@@ -188,7 +188,7 @@ export default function RwsOptionImagesScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Options with images — UI variant 2 (`agpd-option-images`)
+### 2. Checked image rows (`agpd-option-images`)
 
 Apps: AGPD
 

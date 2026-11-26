@@ -17,13 +17,13 @@ export default defineUsecase({
         {"id":"save","partId":"save","title":"Save","explanation":"The solid secondary Save Button that applies the column changes (scale \"sm\" in HCS, default scale in HS).","keyIdea":"Save commits the edited column arrangement to the output table.","selector":"[data-ug-part=\"save\"]"},
       ],
 options: [
-    { id: "hcs-configure-columns", name: "Configure columns", apps: ["hcs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hcs":"src/components/ColumnVisibility.tsx"} ,
+    { id: "hcs-configure-columns", name: "Compact save button", apps: ["hcs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hcs":"src/components/ColumnVisibility.tsx"} ,
       contextLayers: [
         {"id":"context-popover","partId":"popover","title":"Configure columns popover","explanation":"The elevated popover opened under the table-columns IconButton that holds the column list and this footer.","keyIdea":"The elevated popover keeps column settings attached to their table trigger.","selector":"[data-ug-part=\"popover\"]","scope":"context"},
         {"id":"context-columns","partId":"columns","title":"Column list","explanation":"The reorderable List of Output columns, each with a visibility Switch and a drag handle.","keyIdea":"The list makes each output column independently visible and reorderable.","selector":"[data-ug-part=\"columns\"]","scope":"context"},
       ],
     },
-    { id: "hs-configure-columns", name: "Configure columns — UI variant 2", apps: ["hs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hs":"src/hs/ColumnVisibility.tsx"} ,
+    { id: "hs-configure-columns", name: "Default save button", apps: ["hs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hs":"src/hs/ColumnVisibility.tsx"} ,
       contextLayers: [
         {"id":"context-popover","partId":"popover","title":"Configure columns popover","explanation":"The elevated popover opened under the table-columns IconButton that holds the column list and this footer.","keyIdea":"The HCS popover presents the same table settings in its app context.","selector":"[data-ug-part=\"popover\"]","scope":"context"},
         {"id":"context-columns","partId":"columns","title":"Column list","explanation":"The reorderable List of Output columns, each with a visibility Switch and a drag handle.","keyIdea":"The HCS column list connects visibility switches with drag reordering.","selector":"[data-ug-part=\"columns\"]","scope":"context"},

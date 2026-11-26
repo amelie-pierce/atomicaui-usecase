@@ -60,7 +60,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Help Center menu (`hcs-help-center`)
+### 1. Tutorials submenu (`hcs-help-center`)
 
 Apps: HCS
 
@@ -143,7 +143,7 @@ export default function HcsHelpCenterScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Help Center menu — UI variant 2 (`pbs-help-center`)
+### 2. Plain help actions (`pbs-help-center`)
 
 Apps: ACE, ADM, HS, ADC, PBS, PFD, RWS, AGPD
 

@@ -146,7 +146,7 @@ export default function AdmFormScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Dialog option — UI variant 2 (`hs-form`)
+### 2. Form checkbox (`hs-form`)
 
 Apps: HS, PFD, PBS, AGPD, RWS
 
@@ -222,7 +222,7 @@ export default function HsFormScene({ children, host }: ContextProps) {
 }
 ```
 
-### 3. Dialog option — UI variant 3 (`adc-footer`)
+### 3. Footer checkbox (`adc-footer`)
 
 Apps: ADC
 

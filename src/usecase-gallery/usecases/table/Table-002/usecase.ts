@@ -28,22 +28,22 @@ options: [
 
       ],
     },
-    { id: "hs-selection", name: "Row selection — UI variant 2", showContext: false, apps: ["hs","fd","pbs"], source: {"hs":"src/hs/ResultsTable.tsx","fd":"src/components/Results.jsx","pbs":"src/ResultsSection.tsx"} ,
+    { id: "hs-selection", name: "Selected row table", showContext: false, apps: ["hs","fd","pbs"], source: {"hs":"src/hs/ResultsTable.tsx","fd":"src/components/Results.jsx","pbs":"src/ResultsSection.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "rws-selection", name: "Row selection — UI variant 3", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} ,
+    { id: "rws-selection", name: "Edge marked row", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "adm-selection", name: "Row selection — UI variant 4", showContext: false, apps: ["adm"], source: {"adm":"src/features/multi-design/components/MultiDesignTable.tsx"} ,
+    { id: "adm-selection", name: "Radio row table", showContext: false, apps: ["adm"], source: {"adm":"src/features/multi-design/components/MultiDesignTable.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "ace-selection", name: "Row selection — UI variant 5", showContext: false, apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} ,
+    { id: "ace-selection", name: "Compact selection row", showContext: false, apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} ,
       contextLayers: [
 
       ],

@@ -18,12 +18,12 @@ export default defineUsecase({
         {"id":"checkbox-item","partId":"checkbox-item","title":"Checkbox item","explanation":"The \"Auto-Rotate 3D Model\" check row that the ADM scene adds because ADM has a 3D model.","keyIdea":"The model rotation row changes 3D behavior independently from pane arrangement.","selector":"[class~=\"aui-dropdown-checkbox-item\"]"},
       ],
 options: [
-    { id: "adm-drawer-row", showContext: false, name: "Drawer row", apps: ["adm"], source: {"adm":"src/features/settings/components/SettingsMenu.tsx"} ,
+    { id: "adm-drawer-row", showContext: false, name: "3D rotation drawer", apps: ["adm"], source: {"adm":"src/features/settings/components/SettingsMenu.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "ace-drawer-row", showContext: false, name: "Drawer row — UI variant 2", apps: ["ace"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx"} ,
+    { id: "ace-drawer-row", showContext: false, name: "Pane layout drawer", apps: ["ace"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx"} ,
       contextLayers: [
 
       ],

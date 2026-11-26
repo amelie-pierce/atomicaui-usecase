@@ -15,12 +15,12 @@ options: [
 
       ],
     },
-    { id: "rws-image-link", name: "Image preview — UI variant 2", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} ,
+    { id: "rws-image-link", name: "Linked image preview", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "hs-hanger-mark", name: "Image preview — UI variant 3", showContext: false, apps: ["hs"], source: {"hs":"src/hs/SlopeCalculator.tsx"} ,
+    { id: "hs-hanger-mark", name: "Hanger mark preview", showContext: false, apps: ["hs"], source: {"hs":"src/hs/SlopeCalculator.tsx"} ,
       contextLayers: [
 
       ],

@@ -178,7 +178,7 @@ export default function HcsSelectionScene(_props: ContextProps) {
 }
 ```
 
-### 2. Row selection — UI variant 2 (`hs-selection`)
+### 2. Selected row table (`hs-selection`)
 
 Apps: HS, FD, PBS
 
@@ -294,7 +294,7 @@ export default function HsSelectionScene(_props: ContextProps) {
 }
 ```
 
-### 3. Row selection — UI variant 3 (`rws-selection`)
+### 3. Edge marked row (`rws-selection`)
 
 Apps: RWS
 
@@ -389,7 +389,7 @@ export default function RwsSelectionScene(_props: ContextProps) {
 }
 ```
 
-### 4. Row selection — UI variant 4 (`adm-selection`)
+### 4. Radio row table (`adm-selection`)
 
 Apps: ADM
 
@@ -488,7 +488,7 @@ export default function AdmSelectionScene(_props: ContextProps) {
 }
 ```
 
-### 5. Row selection — UI variant 5 (`ace-selection`)
+### 5. Compact selection row (`ace-selection`)
 
 Apps: ACE
 

@@ -22,12 +22,12 @@ options: [
         {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"The HCS-family Input aside gives the section list a clear editing region beside the results.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
       ],
     },
-    { id: "pbs-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list — UI variant 2", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} ,
+    { id: "pbs-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Icon section list", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} ,
       contextLayers: [
         {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"The PBS-family surface-alt pane keeps its outlined groups together as one input area.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
       ],
     },
-    { id: "fd-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Section list — UI variant 3", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} ,
+    { id: "fd-section-list", contextAnatomy: CONTEXT_ANATOMY, name: "Plain section list", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} ,
       contextLayers: [
         {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"FD separates its accordion rows from results by giving them a named Input region.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
       ],
@@ -37,12 +37,12 @@ options: [
         {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"HCS uses this pane to frame the softer section cards as one continuous editing area.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
       ],
     },
-    { id: "pbs-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards — UI variant 2", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} ,
+    { id: "pbs-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Icon section cards", apps: ["pbs","pfd","rws","agpd"], source: {"pbs":"src/App.tsx","pfd":"src/pfd/InputPane.tsx","rws":"src/rws/inputs.tsx","agpd":"src/agpd/InputPanel.tsx"} ,
       contextLayers: [
         {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"The PBS card scene keeps the rounded input groups inside a distinct workspace boundary.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
       ],
     },
-    { id: "fd-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Section cards — UI variant 3", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} ,
+    { id: "fd-section-cards", contextAnatomy: CONTEXT_ANATOMY, name: "Outlined section cards", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} ,
       contextLayers: [
         {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The Input aside (aria-label \"Input\") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out.","keyIdea":"FD groups its card-like sections in an aside so input controls read apart from output.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
       ],

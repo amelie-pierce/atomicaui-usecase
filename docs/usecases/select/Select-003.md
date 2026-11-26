@@ -173,7 +173,7 @@ export default function PbsMultiSelectScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Multiple select — UI variant 2 (`pfd-multi-select`)
+### 2. Checkbox row select (`pfd-multi-select`)
 
 Apps: PFD
 

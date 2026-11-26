@@ -29,12 +29,12 @@ options: [
         {"id":"context-label-row","partId":"label-row","title":"Label row","explanation":"The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control.","keyIdea":"The ADM label row pairs Material with the question trigger above the input.","selector":"[data-ug-part=\"label-row\"]","scope":"context"},
       ],
     },
-    { id: "pbs-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "Ghost, 20px — UI variant 2", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} ,
+    { id: "pbs-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "20px help icon", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} ,
       contextLayers: [
         {"id":"context-label-row","partId":"label-row","title":"Label row","explanation":"The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control.","keyIdea":"The HS label row keeps its material prompt and help affordance together.","selector":"[data-ug-part=\"label-row\"]","scope":"context"},
       ],
     },
-    { id: "rws-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "Ghost, 20px — UI variant 3", apps: ["rws"], source: {"rws":"src/rws/inputs.tsx"} ,
+    { id: "rws-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "20px outlined help", apps: ["rws"], source: {"rws":"src/rws/inputs.tsx"} ,
       contextLayers: [
         {"id":"context-label-row","partId":"label-row","title":"Label row","explanation":"The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control.","keyIdea":"The PBS label row anchors the field explanation beside the label.","selector":"[data-ug-part=\"label-row\"]","scope":"context"},
       ],
@@ -44,12 +44,12 @@ options: [
         {"id":"context-label-row","partId":"label-row","title":"Label row","explanation":"The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control.","keyIdea":"The PFD label row makes the help trigger available before the material control.","selector":"[data-ug-part=\"label-row\"]","scope":"context"},
       ],
     },
-    { id: "adm-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "Ghost, 28px — UI variant 2", apps: ["adm"], source: {"adm":"src/shared/lib/tooltip/AdmHelpTooltip.tsx"} ,
+    { id: "adm-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "28px tooltip icon", apps: ["adm"], source: {"adm":"src/shared/lib/tooltip/AdmHelpTooltip.tsx"} ,
       contextLayers: [
         {"id":"context-label-row","partId":"label-row","title":"Label row","explanation":"The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control.","keyIdea":"The RWS label row aligns its question button with Material.","selector":"[data-ug-part=\"label-row\"]","scope":"context"},
       ],
     },
-    { id: "pfd-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "Ghost, 28px — UI variant 3", apps: ["pfd","agpd"], source: {"pfd":"src/pfd/fields.tsx","agpd":"src/agpd/inputs.tsx"} ,
+    { id: "pfd-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "28px popover icon", apps: ["pfd","agpd"], source: {"pfd":"src/pfd/fields.tsx","agpd":"src/agpd/inputs.tsx"} ,
       contextLayers: [
         {"id":"context-label-row","partId":"label-row","title":"Label row","explanation":"The flex row that puts the Material label (Download Duration in HCS) and the help button side by side above the control.","keyIdea":"The HCS label row associates Download Duration guidance with the selector.","selector":"[data-ug-part=\"label-row\"]","scope":"context"},
       ],

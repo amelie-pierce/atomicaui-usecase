@@ -66,7 +66,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Accept licence (`hcs-accept`)
+### 1. Raised licence header (`hcs-accept`)
 
 Apps: HCS
 
@@ -154,7 +154,7 @@ export default function AcceptScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Accept licence — UI variant 2 (`ace-accept`)
+### 2. Plain licence header (`ace-accept`)
 
 Apps: ACE, ADM, PFD, HS, FD, AGPD, RWS, PBS
 

@@ -13,6 +13,7 @@ import '../styles/gallery.scss';
 
 /** Below this width the preview and detail columns stack into one scrolling column. */
 const NARROW = '(max-width: 840px)';
+const COMPACT = '(min-width: 841px) and (max-width: 1200px)';
 
 const TREE_COLLAPSED_KEY = 'atomicaui-usecase-tree-collapsed';
 
@@ -37,6 +38,7 @@ function filterGroups(groups: ComponentGroup[], query: string) {
 
 export function UsecaseGallery() {
   const narrow = useMediaQuery(NARROW);
+  const compact = useMediaQuery(COMPACT);
   const route = useRoute(catalog, componentAliases);
   const [searchQuery, setSearchQuery] = useState('');
   const [treeWidth, setTreeWidth] = useState<number>();
@@ -126,7 +128,7 @@ export function UsecaseGallery() {
   return (
     <div className="ug ug--usecase">
       <div className="ug__body">
-        {narrow ? <StackedLayout {...panes} /> : <DetailLayout {...panes} treeWidth={treeWidth} treeCollapsed={treeCollapsed} onTreePanelResize={onTreePanelResize} />}
+        {narrow ? <StackedLayout {...panes} /> : <DetailLayout {...panes} treeWidth={treeWidth} compact={compact} treeCollapsed={treeCollapsed} onTreePanelResize={onTreePanelResize} />}
       </div>
     </div>
   );

@@ -58,7 +58,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Field help (`pbs-help`)
+### 1. Inline close popover (`pbs-help`)
 
 Apps: PBS
 
@@ -143,7 +143,7 @@ export default function PbsHelpScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Field help — UI variant 2 (`pfd-help`)
+### 2. Square close popover (`pfd-help`)
 
 Apps: PFD
 
@@ -232,7 +232,7 @@ export default function PfdHelpScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Field help — UI variant 3 (`agpd-help`)
+### 3. Icon close popover (`agpd-help`)
 
 Apps: AGPD, RWS
 

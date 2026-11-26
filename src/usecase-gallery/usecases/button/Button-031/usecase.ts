@@ -22,12 +22,12 @@ export default defineUsecase({
         {"id":"body","partId":"body","title":"Body","explanation":"PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1.","keyIdea":"The PBS body places the confirmation sentence inside the dialog shell.","selector":"[class~=\"aui-dialog-body\"]"},
       ],
 options: [
-    { id: "hcs-close", contextAnatomy: TITLE_CONTEXT, name: "Dialog close", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/F01Experience.tsx","ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellDialog.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
+    { id: "hcs-close", contextAnatomy: TITLE_CONTEXT, name: "Title-bar close", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/F01Experience.tsx","ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellDialog.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
       contextLayers: [
         {"id":"context-title-spacer","partId":"title-spacer","title":"Title spacer","explanation":"The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar.","keyIdea":"The title spacer pushes the ADC close action to the far edge of its heading.","selector":"[class~=\"aui-dialog-spacer\"]","scope":"context"},
       ],
     },
-    { id: "adc-close", contextAnatomy: TITLE_CONTEXT, name: "Dialog close — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
+    { id: "adc-close", contextAnatomy: TITLE_CONTEXT, name: "Tooltip close button", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
       contextLayers: [
         {"id":"context-title-spacer","partId":"title-spacer","title":"Title spacer","explanation":"The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar.","keyIdea":"The HCS title spacer preserves room between feedback text and dismissal.","selector":"[class~=\"aui-dialog-spacer\"]","scope":"context"},
       ],

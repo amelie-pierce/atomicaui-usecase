@@ -116,7 +116,7 @@ export default function FdDescriptionScene(_: ContextProps) {
 }
 ```
 
-### 2. Field description — UI variant 2 (`ace-description`)
+### 2. Side-row description (`ace-description`)
 
 Apps: ACE
 

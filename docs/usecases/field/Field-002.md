@@ -114,7 +114,7 @@ export default function HsTextScene(_: ContextProps) {
 }
 ```
 
-### 2. Text field — UI variant 2 (`adc-text-beside`)
+### 2. Side label text field (`adc-text-beside`)
 
 Apps: ADC
 

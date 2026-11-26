@@ -17,12 +17,12 @@ options: [
 
       ],
     },
-    { id: "adm-phone-tabs", name: "Phone workspace tabs — UI variant 2", showContext: false, apps: ["adm","ace"], note: "The row fills the phone width and shrinks its tabs; a Reset button ends the row.", source: {"adm":"src/app/layout/MobileWorkbench/MobileWorkbench.tsx","ace":"src/pages/estimator/EstimatorPage.tsx"} ,
+    { id: "adm-phone-tabs", name: "Fitted phone tabs", showContext: false, apps: ["adm","ace"], note: "The row fills the phone width and shrinks its tabs; a Reset button ends the row.", source: {"adm":"src/app/layout/MobileWorkbench/MobileWorkbench.tsx","ace":"src/pages/estimator/EstimatorPage.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "pbs-phone-tabs", name: "Phone workspace tabs — UI variant 3", showContext: false, apps: ["pbs"], note: "Every tab keeps its natural width (fit) and the row scrolls sideways.", source: {"pbs":"src/App.tsx"} ,
+    { id: "pbs-phone-tabs", name: "Scrollable phone tabs", showContext: false, apps: ["pbs"], note: "Every tab keeps its natural width (fit) and the row scrolls sideways.", source: {"pbs":"src/App.tsx"} ,
       contextLayers: [
 
       ],

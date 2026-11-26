@@ -114,7 +114,7 @@ export default function HcsNumberScene(_: ContextProps) {
 }
 ```
 
-### 2. Number field — UI variant 2 (`hs-number`)
+### 2. Bold unit field (`hs-number`)
 
 Apps: HS, PFD, RWS
 
@@ -168,7 +168,7 @@ export default function HsNumberScene(_: ContextProps) {
 }
 ```
 
-### 3. Number field — UI variant 3 (`fd-number`)
+### 3. Plain unit field (`fd-number`)
 
 Apps: FD, AGPD
 
@@ -230,7 +230,7 @@ export default function FdNumberScene(_: ContextProps) {
 }
 ```
 
-### 4. Number field — UI variant 4 (`adm-number`)
+### 4. Side label field (`adm-number`)
 
 Apps: ADM, ADC, ACE
 

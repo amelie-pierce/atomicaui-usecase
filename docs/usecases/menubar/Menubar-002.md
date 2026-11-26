@@ -59,7 +59,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. File menu (`hs-file-menu`)
+### 1. Print submenu (`hs-file-menu`)
 
 Apps: HS, ADC
 
@@ -150,7 +150,7 @@ export default function HsFileMenuScene({ host }: ContextProps) {
 }
 ```
 
-### 2. File menu — UI variant 2 (`adm-file-menu`)
+### 2. Flat file actions (`adm-file-menu`)
 
 Apps: ADM, ACE, HCS, PBS, PFD, RWS, AGPD
 

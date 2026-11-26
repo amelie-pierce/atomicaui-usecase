@@ -63,7 +63,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Save template (`ace-save`)
+### 1. Secondary Save dialog (`ace-save`)
 
 Apps: ACE, ADM, HS
 
@@ -153,7 +153,7 @@ export default function AceSaveScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Save template — UI variant 2 (`fd-save`)
+### 2. Primary Save dialog (`fd-save`)
 
 Apps: FD
 

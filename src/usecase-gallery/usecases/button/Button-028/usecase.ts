@@ -29,13 +29,13 @@ options: [
         {"id":"context-failed-expander","partId":"failed-expander","title":"Failed-model expander","explanation":"The second row's expander in the error color for Model C-300, which failed its check.","keyIdea":"The failed-model trigger uses error color to identify the row needing attention.","selector":"[aria-label=\"Why Not for Model C-300\"]","scope":"context"},
       ],
     },
-    { id: "hcs-group", contextAnatomy: GROUP_CONTEXT, name: "Group row", apps: ["hcs","adc"], source: {"hcs":"src/components/F01Results.tsx","adc":"src/adc/components/ProductsPicker.tsx"} ,
+    { id: "hcs-group", contextAnatomy: GROUP_CONTEXT, name: "Group model row", apps: ["hcs","adc"], source: {"hcs":"src/components/F01Results.tsx","adc":"src/adc/components/ProductsPicker.tsx"} ,
       contextLayers: [
         {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The Table of connector results, cut to the Model column; its header cell is raised.","keyIdea":"The HCS table keeps the grouped result label beside its expander.","selector":"[class~=\"aui-table\"]","scope":"context"},
         {"id":"context-group-label","partId":"group-label","title":"Group label","explanation":"The semi-bold model name with its member count (A-100 (2)) next to the expander in the group row.","keyIdea":"The member count clarifies how many models the group contains.","selector":"[data-ug-part=\"group-label\"]","scope":"context"},
       ],
     },
-    { id: "hs-group", contextAnatomy: GROUP_CONTEXT, name: "Group row — UI variant 2", apps: ["hs"], source: {"hs":"src/hs/ResultsTable.tsx"} ,
+    { id: "hs-group", contextAnatomy: GROUP_CONTEXT, name: "Counted model row", apps: ["hs"], source: {"hs":"src/hs/ResultsTable.tsx"} ,
       contextLayers: [
         {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The Table of connector results, cut to the Model column; its header cell is raised.","keyIdea":"The grouped row sits in the results table above its expanded members.","selector":"[class~=\"aui-table\"]","scope":"context"},
         {"id":"context-group-label","partId":"group-label","title":"Group label","explanation":"The semi-bold model name with its member count (A-100 (2)) next to the expander in the group row.","keyIdea":"The A-100 label and count describe the rows available inside the group.","selector":"[data-ug-part=\"group-label\"]","scope":"context"},

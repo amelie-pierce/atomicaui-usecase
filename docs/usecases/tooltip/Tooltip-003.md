@@ -55,7 +55,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Card hint (`pfd-card-note`)
+### 1. Selection card tooltip (`pfd-card-note`)
 
 Apps: PFD
 
@@ -127,7 +127,7 @@ export default function PfdCardNoteScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Card hint — UI variant 2 (`rws-show-in-3d`)
+### 2. 3D image tooltip (`rws-show-in-3d`)
 
 Apps: RWS
 

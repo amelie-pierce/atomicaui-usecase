@@ -17,17 +17,17 @@ options: [
 
       ],
     },
-    { id: "hcs-error", name: "Field error — UI variant 2", apps: ["hcs"], note: "The error text is 14px.", source: {"hcs":"src/App.tsx"}, showContext: false ,
+    { id: "hcs-error", name: "Small error text", apps: ["hcs"], note: "The error text is 14px.", source: {"hcs":"src/App.tsx"}, showContext: false ,
       contextLayers: [
 
       ],
     },
-    { id: "rws-error", name: "Field error — UI variant 3", apps: ["rws"], note: "The control outline is red as well as the text.", source: {"rws":"src/rws/inputs.tsx"}, showContext: false ,
+    { id: "rws-error", name: "Red outline error", apps: ["rws"], note: "The control outline is red as well as the text.", source: {"rws":"src/rws/inputs.tsx"}, showContext: false ,
       contextLayers: [
 
       ],
     },
-    { id: "adc-error", name: "Field error — UI variant 4", apps: ["adc"], note: "Label beside, with a red control outline and the error on its own line.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
+    { id: "adc-error", name: "Inline red error", apps: ["adc"], note: "Label beside, with a red control outline and the error on its own line.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
       contextLayers: [
 
       ],

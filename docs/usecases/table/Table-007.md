@@ -61,7 +61,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Job tally (`ace-tally`)
+### 1. Per-product totals row (`ace-tally`)
 
 Apps: ACE
 
@@ -159,7 +159,7 @@ export default function AceTallyScene(_props: ContextProps) {
 }
 ```
 
-### 2. Job tally — UI variant 2 (`hs-totals`)
+### 2. Fastener totals footer (`hs-totals`)
 
 Apps: HS
 

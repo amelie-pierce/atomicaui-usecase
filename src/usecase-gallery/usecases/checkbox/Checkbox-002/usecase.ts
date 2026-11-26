@@ -19,12 +19,12 @@ options: [
 
       ],
     },
-    { id: "ace-titled", showContext: false, name: "Input panel option — UI variant 2", apps: ["ace","pbs","agpd"], note: "A title sits above the checkbox; PBS and AGPD use a smaller gap than ACE.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","pbs":"src/InputFields.tsx","agpd":"src/agpd/inputs.tsx"} ,
+    { id: "ace-titled", showContext: false, name: "Titled input checkbox", apps: ["ace","pbs","agpd"], note: "A title sits above the checkbox; PBS and AGPD use a smaller gap than ACE.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","pbs":"src/InputFields.tsx","agpd":"src/agpd/inputs.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "adm-label-first", showContext: false, name: "Input panel option — UI variant 3", apps: ["adm"], note: "The label precedes the right-aligned checkbox.", source: {"adm":"src/features/design-inputs/components/GeometrySection/JointDistanceFields.tsx"} ,
+    { id: "adm-label-first", showContext: false, name: "Leading label checkbox", apps: ["adm"], note: "The label precedes the right-aligned checkbox.", source: {"adm":"src/features/design-inputs/components/GeometrySection/JointDistanceFields.tsx"} ,
       contextLayers: [
 
       ],

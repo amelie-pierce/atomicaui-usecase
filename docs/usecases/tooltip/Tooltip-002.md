@@ -130,7 +130,7 @@ export default function PfdImagePreviewScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Image preview — UI variant 2 (`rws-image-link`)
+### 2. Linked image preview (`rws-image-link`)
 
 Apps: RWS
 
@@ -199,7 +199,7 @@ export default function RwsImageLinkScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Image preview — UI variant 3 (`hs-hanger-mark`)
+### 3. Hanger mark preview (`hs-hanger-mark`)
 
 Apps: HS
 

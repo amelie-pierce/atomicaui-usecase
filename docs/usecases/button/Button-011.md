@@ -137,7 +137,7 @@ export default function HsTopicRowScene({ children, host }: ContextProps) {
 }
 ```
 
-### 2. Topic row — UI variant 2 (`ace-topic-row`)
+### 2. Outlined topic row (`ace-topic-row`)
 
 Apps: ACE
 
@@ -224,7 +224,7 @@ export default function AceTopicRowScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Topic row — UI variant 3 (`adm-topic-row`)
+### 3. Icon topic row (`adm-topic-row`)
 
 Apps: ADM, PFD
 
@@ -285,7 +285,7 @@ export default function AdmTopicRowScene({ host }: ContextProps) {
 }
 ```
 
-### 4. Topic row — UI variant 4 (`pbs-topic-row`)
+### 4. Compact topic row (`pbs-topic-row`)
 
 Apps: PBS, FD
 

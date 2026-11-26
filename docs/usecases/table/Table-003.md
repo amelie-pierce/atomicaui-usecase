@@ -56,7 +56,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Summary table (`adm-summary`)
+### 1. Centered summary table (`adm-summary`)
 
 Apps: ADM
 
@@ -144,7 +144,7 @@ export default function AdmSummaryScene(_props: ContextProps) {
 }
 ```
 
-### 2. Summary table — UI variant 2 (`adc-summary`)
+### 2. Right-aligned summary (`adc-summary`)
 
 Apps: ADC
 

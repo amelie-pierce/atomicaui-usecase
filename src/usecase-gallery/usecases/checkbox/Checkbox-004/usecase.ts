@@ -17,22 +17,22 @@ options: [
 
       ],
     },
-    { id: "adc-visibility", showContext: false, name: "Object visibility — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} ,
+    { id: "adc-visibility", showContext: false, name: "Part visibility", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "adm-visibility", showContext: false, name: "Object visibility — UI variant 3", apps: ["adm"], source: {"adm":"src/features/viewer/components/ViewerChrome.tsx"} ,
+    { id: "adm-visibility", showContext: false, name: "Assembly visibility", apps: ["adm"], source: {"adm":"src/features/viewer/components/ViewerChrome.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "fd-visibility", showContext: false, name: "Object visibility — UI variant 4", apps: ["fd"], source: {"fd":"src/components/Viewer.jsx"} ,
+    { id: "fd-visibility", showContext: false, name: "Model visibility", apps: ["fd"], source: {"fd":"src/components/Viewer.jsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "hs-visibility", showContext: false, name: "Object visibility — UI variant 5", apps: ["hs","pbs","agpd","rws"], source: {"hs":"src/hs/ViewerPane.tsx","pbs":"src/Viewer.tsx","agpd":"src/agpd/Viewer.tsx","rws":"src/rws/Viewer.tsx"} ,
+    { id: "hs-visibility", showContext: false, name: "Viewer visibility", apps: ["hs","pbs","agpd","rws"], source: {"hs":"src/hs/ViewerPane.tsx","pbs":"src/Viewer.tsx","agpd":"src/agpd/Viewer.tsx","rws":"src/rws/Viewer.tsx"} ,
       contextLayers: [
 
       ],

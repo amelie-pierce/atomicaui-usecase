@@ -172,7 +172,7 @@ export default function HcsReleaseNotesScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Release notes — UI variant 2 (`adc-release-notes`)
+### 2. Dialog release notes (`adc-release-notes`)
 
 Apps: ADC
 

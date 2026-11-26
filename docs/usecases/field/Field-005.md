@@ -107,7 +107,7 @@ export default function HsScene(_: ContextProps) {
 }
 ```
 
-### 2. Textarea — UI variant 2 (`adc-textarea-beside`)
+### 2. Side label textarea (`adc-textarea-beside`)
 
 Apps: ADC
 
@@ -154,7 +154,7 @@ export default function AdcBesideScene(_: ContextProps) {
 }
 ```
 
-### 3. Textarea — UI variant 3 (`agpd-textarea-nolabel`)
+### 3. Unlabelled textarea (`agpd-textarea-nolabel`)
 
 Apps: AGPD
 

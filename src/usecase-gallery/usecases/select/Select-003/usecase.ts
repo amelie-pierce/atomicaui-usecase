@@ -22,7 +22,7 @@ options: [
 
       ],
     },
-    { id: "pfd-multi-select", showContext: false, name: "Multiple select — UI variant 2", apps: ["pfd"], note: "Checkbox rows: each row leads with a checked or empty square.", source: {"pfd":"src/pfd/fields.tsx"},
+    { id: "pfd-multi-select", showContext: false, name: "Checkbox row select", apps: ["pfd"], note: "Checkbox rows: each row leads with a checked or empty square.", source: {"pfd":"src/pfd/fields.tsx"},
       componentDocument: { summary: 'A multi-select field whose rows lead with a checkbox showing each choice state.', how: 'PFD keeps the selected labels in the trigger and puts a checked or empty square before each row. The list stays open while several values can be toggled.' },
       componentAnatomy: [
         { id: 'indicator', description: 'PFD omits the trailing indicator; each row leads with a checkbox glyph instead.' },

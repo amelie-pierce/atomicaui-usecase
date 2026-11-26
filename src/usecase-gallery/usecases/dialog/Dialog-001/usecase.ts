@@ -38,7 +38,7 @@ export default defineUsecase({
         {"id":"context-release-notes","partId":"release-notes","title":"Release notes accordion","explanation":"The accordion of release sections, open on \"Global changes (1 update)\", whose panel pairs an IMPROVEMENT chip with the change text.","keyIdea":"The accordion makes detailed release changes expandable within the notes area.","selector":"[class~=\"aui-accordion\"]","scope":"context"},
       ],
     },
-    { id: "pfd-about", name: "About dialog — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/AboutDialog.tsx"}, contextAnatomy: PFD_CONTEXT_ANATOMY ,
+    { id: "pfd-about", name: "About history pane", apps: ["pfd"], source: {"pfd":"src/pfd/AboutDialog.tsx"}, contextAnatomy: PFD_CONTEXT_ANATOMY ,
       contextLayers: [
         {"id":"context-history-header","partId":"history-header","title":"History header","explanation":"The bordered strip that puts the Release history heading and the muted \"1 version\" count on one line.","keyIdea":"The PFD history header names the rail while keeping its version total beside it.","selector":"[data-ug-part=\"history-header\"]","scope":"context"},
         {"id":"context-search","partId":"search","title":"Search field","explanation":"The \"Search releases\" Field with a magnifying-glass icon that filters the version list.","keyIdea":"The PFD search field narrows the available history rows before a version is selected.","selector":"[class~=\"aui-field\"]","scope":"context"},

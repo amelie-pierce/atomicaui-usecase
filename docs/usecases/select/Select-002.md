@@ -172,7 +172,7 @@ export default function HcsColumnFilterScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Column filter — UI variant 2 (`pfd-column-filter`)
+### 2. Above-trigger filter (`pfd-column-filter`)
 
 Apps: PFD
 

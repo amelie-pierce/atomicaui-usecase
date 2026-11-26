@@ -17,7 +17,7 @@ options: [
 
       ],
     },
-    { id: "fd-check-tabs", name: "Check result tabs — UI variant 2", showContext: false, apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} ,
+    { id: "fd-check-tabs", name: "Circle outcome icons", showContext: false, apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} ,
       contextLayers: [
 
       ],

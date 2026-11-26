@@ -15,12 +15,12 @@ options: [
 
       ],
     },
-    { id: "adc-textarea-beside", name: "Textarea — UI variant 2", apps: ["adc"], note: "Label beside: a 96px end-aligned label, the textarea fills the rest of the row.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
+    { id: "adc-textarea-beside", name: "Side label textarea", apps: ["adc"], note: "Label beside: a 96px end-aligned label, the textarea fills the rest of the row.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
       contextLayers: [
 
       ],
     },
-    { id: "agpd-textarea-nolabel", name: "Textarea — UI variant 3", apps: ["agpd"], note: "No label: the box is named by its aria-label and placeholder (the quote notes).", source: {"agpd":"src/agpd/QuoteDialog.tsx"}, showContext: false ,
+    { id: "agpd-textarea-nolabel", name: "Unlabelled textarea", apps: ["agpd"], note: "No label: the box is named by its aria-label and placeholder (the quote notes).", source: {"agpd":"src/agpd/QuoteDialog.tsx"}, showContext: false ,
       contextLayers: [
 
       ],

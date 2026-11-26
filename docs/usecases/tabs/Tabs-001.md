@@ -127,7 +127,7 @@ export default function HsPaneTabsScene(_props: ContextProps) {
 }
 ```
 
-### 2. Pane tabs — UI variant 2 (`adc-pane-tabs`)
+### 2. Tonal chip tabs (`adc-pane-tabs`)
 
 Apps: ADC
 

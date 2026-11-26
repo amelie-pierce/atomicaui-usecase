@@ -23,7 +23,7 @@ options: [
 
       ],
     },
-    { id: "agpd-option-images", showContext: false, name: "Options with images — UI variant 2", apps: ["agpd"], source: {"agpd":"src/agpd/controls.tsx"},
+    { id: "agpd-option-images", showContext: false, name: "Checked image rows", apps: ["agpd"], source: {"agpd":"src/agpd/controls.tsx"},
       componentDocument: { summary: 'A base-plate select with image tiles and a check on the chosen plate.', how: 'AGPD uses a soft primary tile with an image glyph before each plate name. A check icon at the row end marks the selected plate.' },
       componentAnatomy: [
         { id: 'indicator', description: 'The selected plate row uses this trailing slot for a check icon.' },

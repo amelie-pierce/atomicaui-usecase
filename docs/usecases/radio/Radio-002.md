@@ -125,7 +125,7 @@ export default function HcsProjectionScene(_: ContextProps) {
 }
 ```
 
-### 2. Projection — UI variant 2 (`adc-projection`)
+### 2. Plain projection radios (`adc-projection`)
 
 Apps: ADC
 
@@ -193,7 +193,7 @@ export default function AdcProjectionScene(_: ContextProps) {
 }
 ```
 
-### 3. Projection — UI variant 3 (`pbs-projection-tooltip`)
+### 3. Projection tooltip radios (`pbs-projection-tooltip`)
 
 Apps: PBS
 

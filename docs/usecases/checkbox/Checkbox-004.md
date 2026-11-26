@@ -125,7 +125,7 @@ export default function HcsVisibilityScene(_props: ContextProps) {
 }
 ```
 
-### 2. Object visibility — UI variant 2 (`adc-visibility`)
+### 2. Part visibility (`adc-visibility`)
 
 Apps: ADC
 
@@ -195,7 +195,7 @@ export default function AdcVisibilityScene(_props: ContextProps) {
 }
 ```
 
-### 3. Object visibility — UI variant 3 (`adm-visibility`)
+### 3. Assembly visibility (`adm-visibility`)
 
 Apps: ADM
 
@@ -269,7 +269,7 @@ export default function AdmVisibilityScene(_props: ContextProps) {
 }
 ```
 
-### 4. Object visibility — UI variant 4 (`fd-visibility`)
+### 4. Model visibility (`fd-visibility`)
 
 Apps: FD
 
@@ -345,7 +345,7 @@ export default function FdVisibilityScene(_props: ContextProps) {
 }
 ```
 
-### 5. Object visibility — UI variant 5 (`hs-visibility`)
+### 5. Viewer visibility (`hs-visibility`)
 
 Apps: HS, PBS, AGPD, RWS
 

@@ -118,7 +118,7 @@ export default function AgpdInlineScene(_: ContextProps) {
 }
 ```
 
-### 2. Labelled group — UI variant 2 (`fd-settings`)
+### 2. Settings popover radios (`fd-settings`)
 
 Apps: FD
 

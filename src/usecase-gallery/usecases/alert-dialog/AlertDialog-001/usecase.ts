@@ -23,7 +23,7 @@ options: [
 
       ],
     },
-    { id: "adc-reset", showContext: false, name: "Reset confirm — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
+    { id: "adc-reset", showContext: false, name: "Multiple reset actions", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
       contextLayers: [
 
       ],

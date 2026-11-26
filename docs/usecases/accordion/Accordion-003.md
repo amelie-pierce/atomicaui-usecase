@@ -55,7 +55,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Template groups (`ace-template-groups`)
+### 1. Styled template groups (`ace-template-groups`)
 
 Apps: ACE
 
@@ -178,7 +178,7 @@ export default function AceTemplateGroupsScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Template groups — UI variant 2 (`hs-template-groups`)
+### 2. Plain template groups (`hs-template-groups`)
 
 Apps: HS, FD
 

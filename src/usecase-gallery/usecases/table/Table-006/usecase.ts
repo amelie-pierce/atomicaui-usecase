@@ -27,22 +27,22 @@ options: [
 
       ],
     },
-    { id: "adm-print", name: "Print table — UI variant 2", showContext: false, apps: ["adm"], source: {"adm":"src/features/print/components/InputDataPrintPage.tsx"} ,
+    { id: "adm-print", name: "Dense print table", showContext: false, apps: ["adm"], source: {"adm":"src/features/print/components/InputDataPrintPage.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "hs-print", name: "Print table — UI variant 3", showContext: false, apps: ["hs"], source: {"hs":"src/hs/PrintView.tsx"} ,
+    { id: "hs-print", name: "Band header table", showContext: false, apps: ["hs"], source: {"hs":"src/hs/PrintView.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "rws-print", name: "Print table — UI variant 4", showContext: false, apps: ["rws"], source: {"rws":"src/legacy/src/apps/rws/containers/PrintView/components/PrintTable.jsx"} ,
+    { id: "rws-print", name: "Legacy print grid", showContext: false, apps: ["rws"], source: {"rws":"src/legacy/src/apps/rws/containers/PrintView/components/PrintTable.jsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "pbs-print", name: "Print table — UI variant 5", showContext: false, apps: ["pbs","pfd","agpd"], source: {"pbs":"src/PrintView.tsx","pfd":"src/pfd/PrintView.tsx","agpd":"src/App.tsx"} ,
+    { id: "pbs-print", name: "Grouped print table", showContext: false, apps: ["pbs","pfd","agpd"], source: {"pbs":"src/PrintView.tsx","pfd":"src/pfd/PrintView.tsx","agpd":"src/App.tsx"} ,
       contextLayers: [
 
       ],

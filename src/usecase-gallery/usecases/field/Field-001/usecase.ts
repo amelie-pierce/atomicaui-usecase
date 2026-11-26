@@ -18,17 +18,17 @@ options: [
 
       ],
     },
-    { id: "hs-number", name: "Number field — UI variant 2", apps: ["hs","pfd","rws"], note: "Label above; the value is end-aligned with a bold unit.", source: {"hs":"src/hs/InputFields.tsx","pfd":"src/pfd/fields.tsx","rws":"src/rws/inputs.tsx"}, showContext: false ,
+    { id: "hs-number", name: "Bold unit field", apps: ["hs","pfd","rws"], note: "Label above; the value is end-aligned with a bold unit.", source: {"hs":"src/hs/InputFields.tsx","pfd":"src/pfd/fields.tsx","rws":"src/rws/inputs.tsx"}, showContext: false ,
       contextLayers: [
 
       ],
     },
-    { id: "fd-number", name: "Number field — UI variant 3", apps: ["fd","agpd"], note: "Label above; the value is end-aligned with a regular unit.", source: {"fd":"src/components/ui.jsx","agpd":"src/agpd/controls.tsx"}, showContext: false ,
+    { id: "fd-number", name: "Plain unit field", apps: ["fd","agpd"], note: "Label above; the value is end-aligned with a regular unit.", source: {"fd":"src/components/ui.jsx","agpd":"src/agpd/controls.tsx"}, showContext: false ,
       contextLayers: [
 
       ],
     },
-    { id: "adm-number", name: "Number field — UI variant 4", apps: ["adm","adc","ace"], note: "Label beside: label and control share the row, half each.", source: {"adm":"src/features/design-inputs/components/shared/FieldNumberRow.tsx","adc":"src/adc/components/NumberRow.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"}, showContext: false ,
+    { id: "adm-number", name: "Side label field", apps: ["adm","adc","ace"], note: "Label beside: label and control share the row, half each.", source: {"adm":"src/features/design-inputs/components/shared/FieldNumberRow.tsx","adc":"src/adc/components/NumberRow.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"}, showContext: false ,
       contextLayers: [
 
       ],

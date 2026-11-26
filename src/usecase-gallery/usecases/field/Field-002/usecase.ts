@@ -16,7 +16,7 @@ options: [
 
       ],
     },
-    { id: "adc-text-beside", name: "Text field — UI variant 2", apps: ["adc"], note: "Label beside: a 96px end-aligned label, the control fills the rest of the row.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
+    { id: "adc-text-beside", name: "Side label text field", apps: ["adc"], note: "Label beside: a 96px end-aligned label, the control fills the rest of the row.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
       contextLayers: [
 
       ],

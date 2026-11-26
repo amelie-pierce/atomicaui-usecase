@@ -23,12 +23,12 @@ options: [
 
       ],
     },
-    { id: "pbs-delete", showContext: false, name: "Delete confirm — UI variant 2", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,
+    { id: "pbs-delete", showContext: false, name: "Delete confirmation", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "hs-delete", showContext: false, name: "Delete confirm — UI variant 3", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} ,
+    { id: "hs-delete", showContext: false, name: "Closeable delete alert", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} ,
       contextLayers: [
 
       ],

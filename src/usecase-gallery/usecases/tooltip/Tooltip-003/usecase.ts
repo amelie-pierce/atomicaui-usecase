@@ -11,12 +11,12 @@ export default defineUsecase({
         {"id":"popup","partId":"popup","title":"Popup","explanation":"The text tooltip surface; in PFD it is allowed to grow to 384px for the longer note.","keyIdea":"The popup holds the text explanation, expanding when PFD needs a longer description.","selector":"[class~=\"aui-tooltip-popup\"]"},
       ],
 options: [
-    { id: "pfd-card-note", name: "Card hint", showContext: false, apps: ["pfd"], source: {"pfd":"src/pfd/SelectionCards.tsx"} ,
+    { id: "pfd-card-note", name: "Selection card tooltip", showContext: false, apps: ["pfd"], source: {"pfd":"src/pfd/SelectionCards.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "rws-show-in-3d", name: "Card hint — UI variant 2", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} ,
+    { id: "rws-show-in-3d", name: "3D image tooltip", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} ,
       contextLayers: [
 
       ],

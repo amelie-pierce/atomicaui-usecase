@@ -29,7 +29,7 @@ options: [
         {"id":"context-input-title","partId":"input-title","title":"Pane title","explanation":"The semi-bold \"Input\" heading at the top of the pane.","keyIdea":"The pane title tells users which workspace section contains this connection setting.","selector":"[data-ug-part=\"input-title\"]","scope":"context"},
       ],
     },
-    { id: "fd-settings", contextAnatomy: SETTINGS_CONTEXT, name: "Labelled group — UI variant 2", apps: ["fd"], source: {"fd":"src/App.jsx"} ,
+    { id: "fd-settings", contextAnatomy: SETTINGS_CONTEXT, name: "Settings popover radios", apps: ["fd"], source: {"fd":"src/App.jsx"} ,
       contextLayers: [
         {"id":"context-settings-trigger","partId":"settings-trigger","title":"Settings button","explanation":"The Settings Button that opens the popover under it.","keyIdea":"The Settings button is the anchor for preferences that are separate from the input form.","selector":"[data-ug-part=\"settings-trigger\"]","scope":"context"},
         {"id":"context-settings-popup","partId":"settings-popup","title":"Settings popover","explanation":"The elevated popover that holds the settings, here the Auto-rotate 3D model group.","keyIdea":"The elevated settings surface keeps automatic rotation near its invoking control.","selector":"[data-ug-part=\"settings-popup\"]","scope":"context"},

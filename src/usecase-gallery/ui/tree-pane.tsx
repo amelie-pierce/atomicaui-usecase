@@ -135,7 +135,6 @@ export function TreePane({ groups, activeComponentId, activeUsecase, collapsed, 
                     <TreeView.ItemArrow />
                     <TreeView.ItemIcon />
                     <Type role="l3" as="span">{type.title}</Type>
-                    <Type role="l3" as="span" color="muted">{type.usecases.length}</Type>
                   </TreeView.ItemContent>
                   {type.usecases.map(renderUsecase)}
                 </TreeView.Item>

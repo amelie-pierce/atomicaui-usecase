@@ -46,6 +46,14 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Expand trigger** — HCS scene: angle-down icon button labelled "Expand Input" on the 40px rail, with a bottom tooltip, that reopens the Input pane. Selector: `[class~="aui-panels-trigger"]`.
 5. **Resize handle** — 6px primary horizontal bar between Input and the results pane. Selector: `[class~="aui-panels-resize-handle"]`.
 
+## Component layer steps
+
+1. **Panels** — Vertical split group, 560px wide and 200px tall at most, whose top pane can fold to a rail. Selector: `[class~="aui-panels"]`.
+2. **Collapsible panel** — The Input pane is collapsible with a 40px collapsedSize (starts at 40px in the HCS scene) and minSize 120px; the Output pane below stays open. Selector: `[class~="aui-panels-panel"]`.
+3. **Content** — HCS scene: the pane body that holds the Input heading beside the rail, hidden when the panel is collapsed. Selector: `[class~="aui-panels-content"]`.
+4. **Expand trigger** — HCS scene: angle-down icon button labelled "Expand Input" on the 40px rail, with a bottom tooltip, that reopens the Input pane. Selector: `[class~="aui-panels-trigger"]`.
+5. **Resize handle** — 6px primary horizontal bar between Input and the results pane. Selector: `[class~="aui-panels-resize-handle"]`.
+
 ## Apps
 
 - HCS (`hcs`)

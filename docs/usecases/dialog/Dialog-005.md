@@ -48,6 +48,17 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 8. **Body** — The scroll owner of the window; it scrolls when the licence text is longer than the popup. Selector: `[class~="aui-dialog-body"]`.
 9. **Licence text** — The licence sections as Type p2 text: one sample clause in the example, and the full mock agreement in a gap-12 column View in the HCS and ADM scenes. Part marker: `data-ug-part="licence-text"`.
 
+## Component layer steps
+
+1. **Overlay** — The scrim behind the licence gate that the user must answer before the app opens. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — The full-size licence window: scale "sm" with width and height set to "fill" so it fills the stage. Selector: `[class~="aui-dialog-popup"]`.
+3. **Title bar** — The title bar naming the "Website Application License Agreement"; HCS and the example raise it, the other apps leave it plain. Selector: `[class~="aui-dialog-title"]`.
+4. **Spacer** — The gap before the close X in the title bar. Selector: `[class~="aui-dialog-spacer"]`.
+5. **Close** — The close X, which also declines the licence (labelled "Do Not Accept" in the ADM scene); PBS hides it. Selector: `[class~="aui-dialog-close"]`.
+6. **Description** — The HCS-only line "Review and accept to start using the HCS prototype." that stays fixed under the title while the body scrolls. Selector: `[class~="aui-dialog-description"]`.
+7. **Body** — The scroll owner of the window; it scrolls when the licence text is longer than the popup. Selector: `[class~="aui-dialog-body"]`.
+8. **Licence text** — The licence sections as Type p2 text: one sample clause in the example, and the full mock agreement in a gap-12 column View in the HCS and ADM scenes. Selector: `[data-ug-part="licence-text"]`.
+
 ## Apps
 
 - HCS (`hcs`)

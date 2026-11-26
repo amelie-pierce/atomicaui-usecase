@@ -71,6 +71,11 @@ function renderAnatomy(anatomy = []) {
   }).join('\n');
 }
 
+function renderLayers(layers = []) {
+  if (!layers.length) return 'No layer steps are authored for this view.';
+  return layers.map((step, index) => `${index + 1}. **${step.title}** — ${step.explanation} Selector: \`${step.selector}\`.`).join('\n');
+}
+
 function renderProps(doc) {
   const props = doc.api?.props ?? [];
   if (!props.length) return 'No separate API prop table is authored. Use the exact props visible in the Component and In context source below.';
@@ -147,7 +152,10 @@ for (const componentDir of componentDirs) {
       const contextAnatomy = option.contextAnatomy?.length
         ? `#### In context structure additions\n\n${renderAnatomy(option.contextAnatomy)}\n\n`
         : '';
-      optionRows.push(`### ${index + 1}. ${option.name} (\`${option.id}\`)\n\nApps: ${optionApps || 'Not listed.'}\n\n${sceneSources.length ? `In context source: ${sceneSources.join('; ')}\n\n` : ''}${option.note ? `Note: ${option.note}\n\n` : ''}In context view: ${noContext ? 'Hidden by the authored option setting.' : 'Shown.'}\n\n${contextDoc ? `${contextDoc}\n\n` : ''}${contextAnatomy}#### Component UI source — \`${relative(exampleFile)}\`\n\n${codeFence(optionExample)}\n\n#### In context source — \`${relative(sceneFile)}\`\n\n${codeFence(scene)}`);
+      const contextLayers = option.contextLayers?.length
+        ? `#### In context layer steps\n\n${renderLayers([...option.contextLayers, ...doc.layers])}\n\n`
+        : '';
+      optionRows.push(`### ${index + 1}. ${option.name} (\`${option.id}\`)\n\nApps: ${optionApps || 'Not listed.'}\n\n${sceneSources.length ? `In context source: ${sceneSources.join('; ')}\n\n` : ''}${option.note ? `Note: ${option.note}\n\n` : ''}In context view: ${noContext ? 'Hidden by the authored option setting.' : 'Shown.'}\n\n${contextDoc ? `${contextDoc}\n\n` : ''}${contextAnatomy}${contextLayers}#### Component UI source — \`${relative(exampleFile)}\`\n\n${codeFence(optionExample)}\n\n#### In context source — \`${relative(sceneFile)}\`\n\n${codeFence(scene)}`);
     }
 
     const components = componentNames(sources);
@@ -197,6 +205,10 @@ for (const componentDir of componentDirs) {
       '## Structure (outer to inner)',
       '',
       renderAnatomy(doc.anatomy),
+      '',
+      '## Component layer steps',
+      '',
+      renderLayers(doc.layers),
       '',
       '## Apps',
       '',

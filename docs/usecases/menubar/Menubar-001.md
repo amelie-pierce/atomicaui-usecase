@@ -39,6 +39,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Button** — The plain About button that runs one action, here the about dialog, with no list of choices. Selector: `[data-ug-part="button"]`.
 2. **Label** — The visible word "About" (Reset in the HS scene) that names the action. Selector: `[data-ug-part="button"]`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Button** — The plain About button that runs one action, here the about dialog, with no list of choices. Selector: `[data-ug-part="button"]`.
+
 ## Apps
 
 - HS (`hs`)
@@ -69,6 +73,14 @@ In context view: Shown.
 2. **File menu trigger** — The File dropdown trigger at the start of the bar, which opens the file actions. Part marker: `data-ug-part="file-menu"`.
 3. **Reset button** — The plain Reset Menubar.Button next to About that restores the design to its defaults. Part marker: `data-ug-part="reset"`.
 4. **Help Center trigger** — The Help Center dropdown trigger at the end of the bar. Part marker: `data-ug-part="help-menu"`.
+
+#### In context layer steps
+
+1. **Top bar** — The top bar Menubar that holds both action buttons and menu triggers. Selector: `[class~="aui-menubar"][aria-label="Top bar"]`.
+2. **File menu trigger** — The File dropdown trigger at the start of the bar, which opens the file actions. Selector: `[data-ug-part="file-menu"]`.
+3. **Reset button** — The plain Reset Menubar.Button next to About that restores the design to its defaults. Selector: `[data-ug-part="reset"]`.
+4. **Help Center trigger** — The Help Center dropdown trigger at the end of the bar. Selector: `[data-ug-part="help-menu"]`.
+5. **Button** — The plain About button that runs one action, here the about dialog, with no list of choices. Selector: `[data-ug-part="button"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/menubar/Menubar-001/example.tsx`
 

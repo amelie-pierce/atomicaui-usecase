@@ -46,6 +46,14 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Indicator** — The circle that shows which option is chosen. Selector: `[class~="aui-radio-indicator"]`.
 5. **Label** — The option text, Welded or Bolted, beside its circle. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
+## Component layer steps
+
+1. **Radio group** — A row of radios (direction "row") with Welded selected by default; the FD Settings popover shows the same group as Yes or No. Selector: `[class~="aui-radio-group"]`.
+2. **Group label** — The "Plate connection" form label at the start of the row, laid out as a flex row that fills the width with a gap of 4. Selector: `[class~="aui-radio-group"] > [class~="aui-label"]`.
+3. **Radio** — One option, Welded or Bolted: a tonal surface circle with an outlined border when unselected and a solid primary circle when chosen. Selector: `[class~="aui-radio"]`.
+4. **Indicator** — The circle that shows which option is chosen. Selector: `[class~="aui-radio-indicator"]`.
+5. **Label** — The option text, Welded or Bolted, beside its circle. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+
 ## Apps
 
 - AGPD (`agpd`)
@@ -69,6 +77,16 @@ In context view: Shown.
 
 1. **Input pane** — The soft surface-alt section labelled "Input panel" that holds the plate connection field. Part marker: `data-ug-part="input-pane"`.
 2. **Pane title** — The semi-bold "Input" heading at the top of the pane. Part marker: `data-ug-part="input-title"`.
+
+#### In context layer steps
+
+1. **Input pane** — The soft surface-alt section labelled "Input panel" that holds the plate connection field. Selector: `[data-ug-part="input-pane"]`.
+2. **Pane title** — The semi-bold "Input" heading at the top of the pane. Selector: `[data-ug-part="input-title"]`.
+3. **Radio group** — A row of radios (direction "row") with Welded selected by default; the FD Settings popover shows the same group as Yes or No. Selector: `[class~="aui-radio-group"]`.
+4. **Group label** — The "Plate connection" form label at the start of the row, laid out as a flex row that fills the width with a gap of 4. Selector: `[class~="aui-radio-group"] > [class~="aui-label"]`.
+5. **Radio** — One option, Welded or Bolted: a tonal surface circle with an outlined border when unselected and a solid primary circle when chosen. Selector: `[class~="aui-radio"]`.
+6. **Indicator** — The circle that shows which option is chosen. Selector: `[class~="aui-radio-indicator"]`.
+7. **Label** — The option text, Welded or Bolted, beside its circle. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/radio/Radio-001/example.tsx`
 
@@ -131,6 +149,17 @@ In context view: Shown.
 1. **Settings button** — The Settings Button that opens the popover under it. Part marker: `data-ug-part="settings-trigger"`.
 2. **Settings popover** — The elevated popover that holds the settings, here the Auto-rotate 3D model group. Part marker: `data-ug-part="settings-popup"`.
 3. **Settings title** — The semi-bold "Settings" heading at the top of the popover. Part marker: `data-ug-part="settings-title"`.
+
+#### In context layer steps
+
+1. **Settings button** — The Settings Button that opens the popover under it. Selector: `[data-ug-part="settings-trigger"]`.
+2. **Settings popover** — The elevated popover that holds the settings, here the Auto-rotate 3D model group. Selector: `[data-ug-part="settings-popup"]`.
+3. **Settings title** — The semi-bold "Settings" heading at the top of the popover. Selector: `[data-ug-part="settings-title"]`.
+4. **Radio group** — A row of radios (direction "row") with Welded selected by default; the FD Settings popover shows the same group as Yes or No. Selector: `[class~="aui-radio-group"]`.
+5. **Group label** — The "Plate connection" form label at the start of the row, laid out as a flex row that fills the width with a gap of 4. Selector: `[class~="aui-radio-group"] > [class~="aui-label"]`.
+6. **Radio** — One option, Welded or Bolted: a tonal surface circle with an outlined border when unselected and a solid primary circle when chosen. Selector: `[class~="aui-radio"]`.
+7. **Indicator** — The circle that shows which option is chosen. Selector: `[class~="aui-radio-indicator"]`.
+8. **Label** — The option text, Welded or Bolted, beside its circle. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/radio/Radio-001/options/fd-settings/example.tsx`
 

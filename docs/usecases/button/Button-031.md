@@ -46,6 +46,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Close tooltip** — ADC only: the secondary tooltip reading Close shown above the close control. Selector: `[class~="aui-tooltip-popup"]`.
 6. **Body** — PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1. Selector: `[class~="aui-dialog-body"]`.
 
+## Component layer steps
+
+1. **Popup** — The dialog surface: ADC and PBS use the default width, HCS a 384px popup. Selector: `[class~="aui-dialog-popup"]`.
+2. **Title** — The raised title bar of the ADC Feedback Form and HCS Send feedback dialogs, with the heading and a spacer pushing Close to its end; PBS has no title. Selector: `[class~="aui-dialog-title"]`.
+3. **Dialog close** — The transparent xmark control at the end of the title (ADC wraps it in a Close tooltip, HCS names it Close Send feedback); in PBS it sits alone in a right-aligned row above the body. Selector: `[class~="aui-dialog-close"]`.
+4. **Close button** — The standalone 20px transparent xmark IconButton shown in the example before it is mounted as a Dialog.Close. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+5. **Close tooltip** — ADC only: the secondary tooltip reading Close shown above the close control. Selector: `[class~="aui-tooltip-popup"]`.
+6. **Body** — PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1. Selector: `[class~="aui-dialog-body"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -74,6 +83,16 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Title spacer** — The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar. Selector: `[class~="aui-dialog-spacer"]`.
+
+#### In context layer steps
+
+1. **Title spacer** — The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar. Selector: `[class~="aui-dialog-spacer"]`.
+2. **Popup** — The dialog surface: ADC and PBS use the default width, HCS a 384px popup. Selector: `[class~="aui-dialog-popup"]`.
+3. **Title** — The raised title bar of the ADC Feedback Form and HCS Send feedback dialogs, with the heading and a spacer pushing Close to its end; PBS has no title. Selector: `[class~="aui-dialog-title"]`.
+4. **Dialog close** — The transparent xmark control at the end of the title (ADC wraps it in a Close tooltip, HCS names it Close Send feedback); in PBS it sits alone in a right-aligned row above the body. Selector: `[class~="aui-dialog-close"]`.
+5. **Close button** — The standalone 20px transparent xmark IconButton shown in the example before it is mounted as a Dialog.Close. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+6. **Close tooltip** — ADC only: the secondary tooltip reading Close shown above the close control. Selector: `[class~="aui-tooltip-popup"]`.
+7. **Body** — PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1. Selector: `[class~="aui-dialog-body"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-031/example.tsx`
 
@@ -123,6 +142,16 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Title spacer** — The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar. Selector: `[class~="aui-dialog-spacer"]`.
+
+#### In context layer steps
+
+1. **Title spacer** — The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar. Selector: `[class~="aui-dialog-spacer"]`.
+2. **Popup** — The dialog surface: ADC and PBS use the default width, HCS a 384px popup. Selector: `[class~="aui-dialog-popup"]`.
+3. **Title** — The raised title bar of the ADC Feedback Form and HCS Send feedback dialogs, with the heading and a spacer pushing Close to its end; PBS has no title. Selector: `[class~="aui-dialog-title"]`.
+4. **Dialog close** — The transparent xmark control at the end of the title (ADC wraps it in a Close tooltip, HCS names it Close Send feedback); in PBS it sits alone in a right-aligned row above the body. Selector: `[class~="aui-dialog-close"]`.
+5. **Close button** — The standalone 20px transparent xmark IconButton shown in the example before it is mounted as a Dialog.Close. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+6. **Close tooltip** — ADC only: the secondary tooltip reading Close shown above the close control. Selector: `[class~="aui-tooltip-popup"]`.
+7. **Body** — PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1. Selector: `[class~="aui-dialog-body"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-031/options/adc-close/example.tsx`
 
@@ -181,6 +210,16 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Close row** — The end-aligned row that holds only the close X above the dialog body, since this dialog has no title. Selector: `[data-ug-part="close-row"]`.
+
+#### In context layer steps
+
+1. **Close row** — The end-aligned row that holds only the close X above the dialog body, since this dialog has no title. Selector: `[data-ug-part="close-row"]`.
+2. **Popup** — The dialog surface: ADC and PBS use the default width, HCS a 384px popup. Selector: `[class~="aui-dialog-popup"]`.
+3. **Title** — The raised title bar of the ADC Feedback Form and HCS Send feedback dialogs, with the heading and a spacer pushing Close to its end; PBS has no title. Selector: `[class~="aui-dialog-title"]`.
+4. **Dialog close** — The transparent xmark control at the end of the title (ADC wraps it in a Close tooltip, HCS names it Close Send feedback); in PBS it sits alone in a right-aligned row above the body. Selector: `[class~="aui-dialog-close"]`.
+5. **Close button** — The standalone 20px transparent xmark IconButton shown in the example before it is mounted as a Dialog.Close. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+6. **Close tooltip** — ADC only: the secondary tooltip reading Close shown above the close control. Selector: `[class~="aui-tooltip-popup"]`.
+7. **Body** — PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1. Selector: `[class~="aui-dialog-body"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-031/options/pbs-close/example.tsx`
 

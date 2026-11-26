@@ -45,6 +45,12 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Preview image** — The representative connection drawing (an svg with role="img") that the tooltip shows, such as "Connection detail" or "Model C-300 connection preview". Selector: `[class~="aui-tooltip-popup"] svg`.
 5. **Preview title** — The HS-only bold l4 title "Hanger A" above the image. Part marker: `data-ug-part="preview-title"`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Trigger** — The element the user already points at: a "Preview" Button in the example, a thumbnail-and-link View in PFD, the "Connection detail" link in RWS, and the solid secondary "A" mark Button in HS. Selector: `[data-ug-part="trigger"]`.
+2. **Popup** — The default tooltip surface, which here holds an image instead of text: 192px wide in the example and RWS, 96px in PFD, 160px in HS. Selector: `[class~="aui-tooltip-popup"]`.
+3. **Preview image** — The representative connection drawing (an svg with role="img") that the tooltip shows, such as "Connection detail" or "Model C-300 connection preview". Selector: `[class~="aui-tooltip-popup"] svg`.
+
 ## Apps
 
 - PFD (`pfd`)

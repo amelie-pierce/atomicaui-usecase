@@ -47,6 +47,16 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Legend** — The group title that sits above the checkbox in the ACE titled scene. Selector: `[class~="aui-fieldset-legend"]`.
 7. **Field label** — The label of a Field above a checkbox in a form row. Selector: `[class~="aui-field-label"]`.
 
+## Component layer steps
+
+1. **Checkbox** — The checkable control for one yes or no input of an input section, checked by default, with the primary solid selected style. Selector: `[class~="aui-checkbox"]`.
+2. **Indicator** — The box that shows the Galvanized state; HCS, HS, FD and ADC draw it with the same outlined, surface-tonal off style. Selector: `[class~="aui-checkbox-indicator"]`.
+3. **Icon** — The "check" mark rendered inside the box when Galvanized is on. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
+4. **Label** — The caption "Galvanized" beside the box; the other apps use their own option text, such as Same inputs as Left Hip, and ADM instead puts a Field.Label (Center to joint) before a label-less checkbox. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+5. **Fieldset** — ACE groups the checkbox under a titled group, with a Fieldset and a legend above the option. Selector: `[class~="aui-fieldset"]`.
+6. **Legend** — The group title that sits above the checkbox in the ACE titled scene. Selector: `[class~="aui-fieldset-legend"]`.
+7. **Field label** — The label of a Field above a checkbox in a form row. Selector: `[class~="aui-field-label"]`.
+
 ## Apps
 
 - HCS (`hcs`)

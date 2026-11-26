@@ -48,6 +48,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 7. **Body** — The body that holds the radio list of templates; the HS and FD version also scrolls (overflow auto). Selector: `[class~="aui-dialog-body"]`.
 8. **Template text** — The p3 placeholder line that stands in for the list of templates in the Dialog frame. Part marker: `data-ug-part="template-text"`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Overlay** — The scrim behind the New from Template picker. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — The narrow default-scale picker window, 480px wide (ADM widens it to 520px). Selector: `[class~="aui-dialog-popup"]`.
+3. **Title bar** — The raised title bar reading "New from Template"; the ACE and HS scenes title it "Templates" and ADM keeps "New from Template". Selector: `[class~="aui-dialog-title"]`.
+4. **Spacer** — The gap between the picker name and the close X. Selector: `[class~="aui-dialog-spacer"]`.
+5. **Close** — The close X that abandons the picker (labelled "Cancel" in the ACE scene and "Close Templates" in the HS scene). Selector: `[class~="aui-dialog-close"]`.
+6. **Body** — The body that holds the radio list of templates; the HS and FD version also scrolls (overflow auto). Selector: `[class~="aui-dialog-body"]`.
+
 ## Apps
 
 - ACE (`ace`)
@@ -75,6 +84,21 @@ In context view: Shown.
 4. **Template row** — A template row such as "Two-beam connection": an outlined tonal Radio when unselected and a solid primary one when selected, filling the row. Selector: `[class~="aui-radio"]`.
 5. **Template name** — The template name inside the radio, such as "Three-beam connection". Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 6. **Row actions** — The Download, Delete (error colour) and Edit text buttons after a user-owned template row. Part marker: `data-ug-part="row-action"`.
+
+#### In context layer steps
+
+1. **Template choice** — The one RadioGroup that makes the built-in and own templates a single choice, defaulting to Three-beam connection. Selector: `[class~="aui-radio-group"]`.
+2. **Template sections** — Default Templates and My Templates as two Accordion sections, both open. Selector: `[class~="aui-accordion"]`.
+3. **Section header** — A Type l4 section label ending in a chevron. Selector: `[class~="aui-accordion-trigger"]`.
+4. **Template row** — A template row such as "Two-beam connection": an outlined tonal Radio when unselected and a solid primary one when selected, filling the row. Selector: `[class~="aui-radio"]`.
+5. **Template name** — The template name inside the radio, such as "Three-beam connection". Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+6. **Row actions** — The Download, Delete (error colour) and Edit text buttons after a user-owned template row. Selector: `[data-ug-part="row-action"]`.
+7. **Overlay** — The scrim behind the New from Template picker. Selector: `[class~="aui-dialog-backdrop"]`.
+8. **Popup** — The narrow default-scale picker window, 480px wide (ADM widens it to 520px). Selector: `[class~="aui-dialog-popup"]`.
+9. **Title bar** — The raised title bar reading "New from Template"; the ACE and HS scenes title it "Templates" and ADM keeps "New from Template". Selector: `[class~="aui-dialog-title"]`.
+10. **Spacer** — The gap between the picker name and the close X. Selector: `[class~="aui-dialog-spacer"]`.
+11. **Close** — The close X that abandons the picker (labelled "Cancel" in the ACE scene and "Close Templates" in the HS scene). Selector: `[class~="aui-dialog-close"]`.
+12. **Body** — The body that holds the radio list of templates; the HS and FD version also scrolls (overflow auto). Selector: `[class~="aui-dialog-body"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-004/example.tsx`
 
@@ -205,6 +229,20 @@ In context view: Shown.
 5. **Template name** — The template name inside the radio, such as "Three-beam connection". Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 6. **Row actions** — The Download, Delete (error colour) and Edit text buttons after a user-owned template row. Part marker: `data-ug-part="row-action"`.
 
+#### In context layer steps
+
+1. **Template choice** — The one RadioGroup that makes the built-in and own templates a single choice, defaulting to Three-beam connection. Selector: `[class~="aui-radio-group"]`.
+2. **Template section** — A plain section that stacks a muted heading over its radio rows with a gap of 4 (no Accordion). Selector: `[data-ug-part="section"]`.
+3. **Template row** — A template row such as "Two-beam connection": an outlined tonal Radio when unselected and a solid primary one when selected, filling the row. Selector: `[class~="aui-radio"]`.
+4. **Template name** — The template name inside the radio, such as "Three-beam connection". Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+5. **Row actions** — The Download, Delete (error colour) and Edit text buttons after a user-owned template row. Selector: `[data-ug-part="row-action"]`.
+6. **Overlay** — The scrim behind the New from Template picker. Selector: `[class~="aui-dialog-backdrop"]`.
+7. **Popup** — The narrow default-scale picker window, 480px wide (ADM widens it to 520px). Selector: `[class~="aui-dialog-popup"]`.
+8. **Title bar** — The raised title bar reading "New from Template"; the ACE and HS scenes title it "Templates" and ADM keeps "New from Template". Selector: `[class~="aui-dialog-title"]`.
+9. **Spacer** — The gap between the picker name and the close X. Selector: `[class~="aui-dialog-spacer"]`.
+10. **Close** — The close X that abandons the picker (labelled "Cancel" in the ACE scene and "Close Templates" in the HS scene). Selector: `[class~="aui-dialog-close"]`.
+11. **Body** — The body that holds the radio list of templates; the HS and FD version also scrolls (overflow auto). Selector: `[class~="aui-dialog-body"]`.
+
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-004/options/adm-templates/example.tsx`
 
 ```tsx
@@ -314,6 +352,21 @@ In context view: Shown.
 4. **Template row** — A template row such as "Two-beam connection": an outlined tonal Radio when unselected and a solid primary one when selected, filling the row. Selector: `[class~="aui-radio"]`.
 5. **Template name** — The template name inside the radio, such as "Three-beam connection". Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 6. **Row actions** — The download, trash and pen icon buttons after a user-owned template row, each with its own aria-label. Part marker: `data-ug-part="row-action"`.
+
+#### In context layer steps
+
+1. **Template choice** — The one RadioGroup that makes the built-in and own templates a single choice, defaulting to Three-beam connection. Selector: `[class~="aui-radio-group"]`.
+2. **Template sections** — Default Templates and My Templates as two Accordion sections, both open. Selector: `[class~="aui-accordion"]`.
+3. **Section header** — A plain text section label ending in a chevron. Selector: `[class~="aui-accordion-trigger"]`.
+4. **Template row** — A template row such as "Two-beam connection": an outlined tonal Radio when unselected and a solid primary one when selected, filling the row. Selector: `[class~="aui-radio"]`.
+5. **Template name** — The template name inside the radio, such as "Three-beam connection". Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+6. **Row actions** — The download, trash and pen icon buttons after a user-owned template row, each with its own aria-label. Selector: `[data-ug-part="row-action"]`.
+7. **Overlay** — The scrim behind the New from Template picker. Selector: `[class~="aui-dialog-backdrop"]`.
+8. **Popup** — The narrow default-scale picker window, 480px wide (ADM widens it to 520px). Selector: `[class~="aui-dialog-popup"]`.
+9. **Title bar** — The raised title bar reading "New from Template"; the ACE and HS scenes title it "Templates" and ADM keeps "New from Template". Selector: `[class~="aui-dialog-title"]`.
+10. **Spacer** — The gap between the picker name and the close X. Selector: `[class~="aui-dialog-spacer"]`.
+11. **Close** — The close X that abandons the picker (labelled "Cancel" in the ACE scene and "Close Templates" in the HS scene). Selector: `[class~="aui-dialog-close"]`.
+12. **Body** — The body that holds the radio list of templates; the HS and FD version also scrolls (overflow auto). Selector: `[class~="aui-dialog-body"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-004/options/hs-templates/example.tsx`
 

@@ -44,6 +44,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Icon** — The filter glyph with a cross that signals removing the active filters, at scale "sm". Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 3. **Label** — The text "Reset filters" shown while a search or status filter is active. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Container** — The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD. Selector: `[class~="aui-button"]`.
+2. **Icon** — The filter glyph with a cross that signals removing the active filters, at scale "sm". Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -69,6 +74,15 @@ In context view: Shown.
 2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`.
 3. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it. Part marker: `data-ug-part="toolbar"`.
 4. **Search field** — The Field with a magnifying-glass icon, the entered text "Model" and a clear (x) button. Part marker: `data-ug-part="search"`.
+
+#### In context layer steps
+
+1. **Output pane** — The Output pane frame, a surface-alt section cut to its title and toolbar. Selector: `[data-ug-part="output-pane"]`.
+2. **Output title** — The "Output" heading at the start of the pane header. Selector: `[data-ug-part="output-title"]`.
+3. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it. Selector: `[data-ug-part="toolbar"]`.
+4. **Search field** — The Field with a magnifying-glass icon, the entered text "Model" and a clear (x) button. Selector: `[data-ug-part="search"]`.
+5. **Container** — The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD. Selector: `[class~="aui-button"]`.
+6. **Icon** — The filter glyph with a cross that signals removing the active filters, at scale "sm". Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-008/example.tsx`
 
@@ -136,6 +150,15 @@ In context view: Shown.
 2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`.
 3. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it. Part marker: `data-ug-part="toolbar"`.
 4. **Search field** — The Field with a magnifying-glass icon, the entered text "Model" and a clear (x) button. Part marker: `data-ug-part="search"`.
+
+#### In context layer steps
+
+1. **Output pane** — The Output pane frame, a surface-alt section cut to its title and toolbar. Selector: `[data-ug-part="output-pane"]`.
+2. **Output title** — The "Output" heading at the start of the pane header. Selector: `[data-ug-part="output-title"]`.
+3. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it. Selector: `[data-ug-part="toolbar"]`.
+4. **Search field** — The Field with a magnifying-glass icon, the entered text "Model" and a clear (x) button. Selector: `[data-ug-part="search"]`.
+5. **Container** — The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD. Selector: `[class~="aui-button"]`.
+6. **Icon** — The filter glyph with a cross that signals removing the active filters, at scale "sm". Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-008/options/fd-toolbar/example.tsx`
 

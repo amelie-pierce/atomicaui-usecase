@@ -47,6 +47,16 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **End** — The closing button that replaces Next on the final step and ends the tour; it is typed END in ACE, HS, RWS, AGPD, ADM and FD. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
 7. **Check icon** — The check glyph after End that HCS, PBS and PFD add to mark completion; ACE, HS, RWS, AGPD, ADM and FD show no icon. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
 
+## Component layer steps
+
+1. **Walkthrough card** — The 328px coach-mark card (solid, sm, soft, elevation 4) with the step title, one line of copy and the footer navigation row. Selector: `[role="region"][aria-label="Walkthrough"]`.
+2. **Close** — The corner xmark that dismisses the tour from the top end of the card; it is a separate action from the step buttons. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`.
+3. **Navigation row** — The footer row of the last-step card that holds Previous and End; the step counter (4 / 4, 12 / 12 or 6 / 6) sits at its far end. Selector: `[data-ug-part="step-nav"]`.
+4. **Previous** — Borderless secondary text button with arrow-left that steps back from the last step; the label is Previous or PREVIOUS depending on the app. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
+5. **Arrow-left icon** — The arrow-left glyph before the label, pointing the way the tour goes back. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`.
+6. **End** — The closing button that replaces Next on the final step and ends the tour; it is typed END in ACE, HS, RWS, AGPD, ADM and FD. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
+7. **Check icon** — The check glyph after End that HCS, PBS and PFD add to mark completion; ACE, HS, RWS, AGPD, ADM and FD show no icon. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -76,6 +86,19 @@ In context view: Shown.
 1. **Spotlight target** — The File menu in the main navigation that the last step points at; the card sits to its left (a stand-in for the app page). Selector: `[class~="ug-tour__target"]`.
 2. **Step title** — The medium-weight heading of the last step (File, Step #1, 3D Viewer or Product Notes) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
 3. **Step counter** — The muted step count at the end of the navigation row on the last step (for example 4 / 4). Selector: `[data-ug-part="step-counter"]`.
+
+#### In context layer steps
+
+1. **Spotlight target** — The File menu in the main navigation that the last step points at; the card sits to its left (a stand-in for the app page). Selector: `[class~="ug-tour__target"]`.
+2. **Step title** — The medium-weight heading of the last step (File, Step #1, 3D Viewer or Product Notes) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
+3. **Step counter** — The muted step count at the end of the navigation row on the last step (for example 4 / 4). Selector: `[data-ug-part="step-counter"]`.
+4. **Walkthrough card** — The 328px coach-mark card (solid, sm, soft, elevation 4) with the step title, one line of copy and the footer navigation row. Selector: `[role="region"][aria-label="Walkthrough"]`.
+5. **Close** — The corner xmark that dismisses the tour from the top end of the card; it is a separate action from the step buttons. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`.
+6. **Navigation row** — The footer row of the last-step card that holds Previous and End; the step counter (4 / 4, 12 / 12 or 6 / 6) sits at its far end. Selector: `[data-ug-part="step-nav"]`.
+7. **Previous** — Borderless secondary text button with arrow-left that steps back from the last step; the label is Previous or PREVIOUS depending on the app. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
+8. **Arrow-left icon** — The arrow-left glyph before the label, pointing the way the tour goes back. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`.
+9. **End** — The closing button that replaces Next on the final step and ends the tour; it is typed END in ACE, HS, RWS, AGPD, ADM and FD. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
+10. **Check icon** — The check glyph after End that HCS, PBS and PFD add to mark completion; ACE, HS, RWS, AGPD, ADM and FD show no icon. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-024/example.tsx`
 
@@ -155,6 +178,19 @@ In context view: Shown.
 2. **Step title** — The medium-weight heading of the last step (File, Step #1, 3D Viewer or Product Notes) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
 3. **Step counter** — The muted step count at the end of the navigation row on the last step (for example 4 / 4). Selector: `[data-ug-part="step-counter"]`.
 
+#### In context layer steps
+
+1. **Spotlight target** — The File menu in the main navigation that the last step points at; the card sits to its left (a stand-in for the app page). Selector: `[class~="ug-tour__target"]`.
+2. **Step title** — The medium-weight heading of the last step (File, Step #1, 3D Viewer or Product Notes) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
+3. **Step counter** — The muted step count at the end of the navigation row on the last step (for example 4 / 4). Selector: `[data-ug-part="step-counter"]`.
+4. **Walkthrough card** — The 328px coach-mark card (solid, sm, soft, elevation 4) with the step title, one line of copy and the footer navigation row. Selector: `[role="region"][aria-label="Walkthrough"]`.
+5. **Close** — The corner xmark that dismisses the tour from the top end of the card; it is a separate action from the step buttons. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`.
+6. **Navigation row** — The footer row of the last-step card that holds Previous and End; the step counter (4 / 4, 12 / 12 or 6 / 6) sits at its far end. Selector: `[data-ug-part="step-nav"]`.
+7. **Previous** — Borderless secondary text button with arrow-left that steps back from the last step; the label is Previous or PREVIOUS depending on the app. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
+8. **Arrow-left icon** — The arrow-left glyph before the label, pointing the way the tour goes back. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`.
+9. **End** — The closing button that replaces Next on the final step and ends the tour; it is typed END in ACE, HS, RWS, AGPD, ADM and FD. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
+10. **Check icon** — The check glyph after End that HCS, PBS and PFD add to mark completion; ACE, HS, RWS, AGPD, ADM and FD show no icon. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
+
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-024/options/ace-last-step/example.tsx`
 
 ```tsx
@@ -229,6 +265,19 @@ In context view: Shown.
 2. **Step title** — The medium-weight heading of the last step (File, Step #1, 3D Viewer or Product Notes) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
 3. **Step counter** — The muted step count at the end of the navigation row on the last step (for example 4 / 4). Selector: `[data-ug-part="step-counter"]`.
 
+#### In context layer steps
+
+1. **Spotlight target** — The File menu in the main navigation that the last step points at; the card sits to its left (a stand-in for the app page). Selector: `[class~="ug-tour__target"]`.
+2. **Step title** — The medium-weight heading of the last step (File, Step #1, 3D Viewer or Product Notes) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
+3. **Step counter** — The muted step count at the end of the navigation row on the last step (for example 4 / 4). Selector: `[data-ug-part="step-counter"]`.
+4. **Walkthrough card** — The 328px coach-mark card (solid, sm, soft, elevation 4) with the step title, one line of copy and the footer navigation row. Selector: `[role="region"][aria-label="Walkthrough"]`.
+5. **Close** — The corner xmark that dismisses the tour from the top end of the card; it is a separate action from the step buttons. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`.
+6. **Navigation row** — The footer row of the last-step card that holds Previous and End; the step counter (4 / 4, 12 / 12 or 6 / 6) sits at its far end. Selector: `[data-ug-part="step-nav"]`.
+7. **Previous** — Borderless secondary text button with arrow-left that steps back from the last step; the label is Previous or PREVIOUS depending on the app. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
+8. **Arrow-left icon** — The arrow-left glyph before the label, pointing the way the tour goes back. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`.
+9. **End** — The closing button that replaces Next on the final step and ends the tour; it is typed END in ACE, HS, RWS, AGPD, ADM and FD. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
+10. **Check icon** — The check glyph after End that HCS, PBS and PFD add to mark completion; ACE, HS, RWS, AGPD, ADM and FD show no icon. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
+
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-024/options/adm-last-step/example.tsx`
 
 ```tsx
@@ -300,6 +349,19 @@ In context view: Shown.
 1. **Spotlight target** — The File menu in the main navigation that the last step points at; the card sits to its left (a stand-in for the app page). Selector: `[class~="ug-tour__target"]`.
 2. **Step title** — The medium-weight heading of the last step (File, Step #1, 3D Viewer or Product Notes) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
 3. **Step counter** — The muted step count at the end of the navigation row on the last step (for example 4 / 4). Selector: `[data-ug-part="step-counter"]`.
+
+#### In context layer steps
+
+1. **Spotlight target** — The File menu in the main navigation that the last step points at; the card sits to its left (a stand-in for the app page). Selector: `[class~="ug-tour__target"]`.
+2. **Step title** — The medium-weight heading of the last step (File, Step #1, 3D Viewer or Product Notes) with room reserved at its end for the close X. Selector: `[data-ug-part="step-title"]`.
+3. **Step counter** — The muted step count at the end of the navigation row on the last step (for example 4 / 4). Selector: `[data-ug-part="step-counter"]`.
+4. **Walkthrough card** — The 328px coach-mark card (solid, sm, soft, elevation 4) with the step title, one line of copy and the footer navigation row. Selector: `[role="region"][aria-label="Walkthrough"]`.
+5. **Close** — The corner xmark that dismisses the tour from the top end of the card; it is a separate action from the step buttons. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`.
+6. **Navigation row** — The footer row of the last-step card that holds Previous and End; the step counter (4 / 4, 12 / 12 or 6 / 6) sits at its far end. Selector: `[data-ug-part="step-nav"]`.
+7. **Previous** — Borderless secondary text button with arrow-left that steps back from the last step; the label is Previous or PREVIOUS depending on the app. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
+8. **Arrow-left icon** — The arrow-left glyph before the label, pointing the way the tour goes back. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`.
+9. **End** — The closing button that replaces Next on the final step and ends the tour; it is typed END in ACE, HS, RWS, AGPD, ADM and FD. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
+10. **Check icon** — The check glyph after End that HCS, PBS and PFD add to mark completion; ACE, HS, RWS, AGPD, ADM and FD show no icon. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-024/options/pbs-last-step/example.tsx`
 

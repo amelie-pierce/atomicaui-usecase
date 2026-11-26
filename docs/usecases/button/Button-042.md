@@ -44,6 +44,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Rotate icon** — The arrows-rotate glyph that conveys running the calculation again. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 3. **Result readout** — ADC only: the N = - and V = - values beside the button that it refreshes. Selector: `[class~="aui-type"]`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Recalculate** — The xs square solid warning (amber) soft button that re-runs the calculation once inputs change. Selector: `[class~="aui-button"]`.
+2. **Rotate icon** — The arrows-rotate glyph that conveys running the calculation again. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+
 ## Apps
 
 - ADC (`adc`)
@@ -63,6 +68,12 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Results row** — The header row that places the Recalculate button before the N and V readouts with a 16px gap. Selector: `[data-ug-part="results-row"]`.
+
+#### In context layer steps
+
+1. **Results row** — The header row that places the Recalculate button before the N and V readouts with a 16px gap. Selector: `[data-ug-part="results-row"]`.
+2. **Recalculate** — The xs square solid warning (amber) soft button that re-runs the calculation once inputs change. Selector: `[class~="aui-button"]`.
+3. **Rotate icon** — The arrows-rotate glyph that conveys running the calculation again. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-042/example.tsx`
 

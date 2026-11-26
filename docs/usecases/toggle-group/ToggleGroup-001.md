@@ -47,6 +47,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Segment** — The inner span that paints the segment: solid secondary with soft corners when pressed, plain text on surface otherwise. Selector: `[class~="aui-toggle-group"] > button [class~="aui-view"]`.
 6. **Option text** — The Metric or Imperial name in a Type role "l5" at medium weight. Selector: `[class~="aui-toggle-group"] > button [data-aui-typeface]`.
 
+## Component layer steps
+
+1. **Field** — The wrapper at scale "sm", filling the popover width, that ties the "Units" label to the segment row. Selector: `[class~="aui-field"]`.
+2. **Label** — The "Units" label above the segments, referenced by aria-labelledby so the group is named. Selector: `[class~="aui-field-label"]`.
+3. **Group** — The single-select group (multiple={false}) with Metric chosen, whose segments share the full width. Selector: `[class~="aui-toggle-group"]`.
+4. **Item** — One option, Metric or Imperial, rendered through a text Button at scale "xs" with no padding that flexes to fill. Selector: `[class~="aui-toggle-group"] > button`.
+5. **Segment** — The inner span that paints the segment: solid secondary with soft corners when pressed, plain text on surface otherwise. Selector: `[class~="aui-toggle-group"] > button [class~="aui-view"]`.
+6. **Option text** — The Metric or Imperial name in a Type role "l5" at medium weight. Selector: `[class~="aui-toggle-group"] > button [data-aui-typeface]`.
+
 ## Apps
 
 - HS (`hs`)
@@ -68,6 +77,17 @@ In context view: Shown.
 
 1. **Settings button** — The text Button labelled Settings that opens the popover under it. Part marker: `data-ug-part="settings-trigger"`.
 2. **Settings popover** — The elevated popover, 288px wide, anchored under the trigger that holds one Field per setting. Part marker: `data-ug-part="settings-popover"`.
+
+#### In context layer steps
+
+1. **Settings button** — The text Button labelled Settings that opens the popover under it. Selector: `[data-ug-part="settings-trigger"]`.
+2. **Settings popover** — The elevated popover, 288px wide, anchored under the trigger that holds one Field per setting. Selector: `[data-ug-part="settings-popover"]`.
+3. **Field** — The wrapper at scale "sm", filling the popover width, that ties the "Units" label to the segment row. Selector: `[class~="aui-field"]`.
+4. **Label** — The "Units" label above the segments, referenced by aria-labelledby so the group is named. Selector: `[class~="aui-field-label"]`.
+5. **Group** — The single-select group (multiple={false}) with Metric chosen, whose segments share the full width. Selector: `[class~="aui-toggle-group"]`.
+6. **Item** — One option, Metric or Imperial, rendered through a text Button at scale "xs" with no padding that flexes to fill. Selector: `[class~="aui-toggle-group"] > button`.
+7. **Segment** — The inner span that paints the segment: solid secondary with soft corners when pressed, plain text on surface otherwise. Selector: `[class~="aui-toggle-group"] > button [class~="aui-view"]`.
+8. **Option text** — The Metric or Imperial name in a Type role "l5" at medium weight. Selector: `[class~="aui-toggle-group"] > button [data-aui-typeface]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/toggle-group/ToggleGroup-001/example.tsx`
 

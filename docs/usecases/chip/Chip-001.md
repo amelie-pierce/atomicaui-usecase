@@ -42,6 +42,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Chip** — The solid success chip at scale "sm" that tags a release-note entry as a feature (the warning colour is used for an improvement). Selector: `[class~="aui-chip"]`.
 2. **Label** — The uppercase kind name FEATURE. Selector: `[class~="aui-chip-label"]`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Chip** — The solid success chip at scale "sm" that tags a release-note entry as a feature (the warning colour is used for an improvement). Selector: `[class~="aui-chip"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -71,6 +75,13 @@ In context view: Shown.
 1. **Change row** — One release-note row: a flex row with 8px vertical padding and an outlined bottom border between rows. Part marker: `data-ug-part="change-row"`.
 2. **Chip column** — The fixed 160px start column that holds the change Chip (FEATURE, IMPROVEMENT). Part marker: `data-ug-part="chip-column"`.
 3. **Change text** — The p3 text that describes the change, such as "Added the Download Duration help." Part marker: `data-ug-part="change-text"`.
+
+#### In context layer steps
+
+1. **Change row** — One release-note row: a flex row with 8px vertical padding and an outlined bottom border between rows. Selector: `[data-ug-part="change-row"]`.
+2. **Chip column** — The fixed 160px start column that holds the change Chip (FEATURE, IMPROVEMENT). Selector: `[data-ug-part="chip-column"]`.
+3. **Change text** — The p3 text that describes the change, such as "Added the Download Duration help." Selector: `[data-ug-part="change-text"]`.
+4. **Chip** — The solid success chip at scale "sm" that tags a release-note entry as a feature (the warning colour is used for an improvement). Selector: `[class~="aui-chip"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/chip/Chip-001/example.tsx`
 

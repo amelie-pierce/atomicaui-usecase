@@ -46,6 +46,14 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Help trigger** — The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes. Selector: `[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])`.
 5. **Apps trigger** — FD only: the grip button in the top bar that opens Explore More Applications. Selector: `[class~="aui-button"][aria-label="Apps"]`.
 
+## Component layer steps
+
+1. **Close** — The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD). Selector: `[class~="aui-button"][aria-label^="Close"]`.
+2. **Close icon** — The xmark glyph centred in the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+3. **Popover popup** — The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner. Selector: `[data-aui-popup-motion][role="dialog"]`.
+4. **Help trigger** — The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes. Selector: `[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])`.
+5. **Apps trigger** — FD only: the grip button in the top bar that opens Explore More Applications. Selector: `[class~="aui-button"][aria-label="Apps"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -71,6 +79,16 @@ In context view: Shown.
 
 1. **Help intro** — The line "Duration of load adjustments as specified by the code are as follows:" that fills the popup row and leaves the close X at its end. Selector: `[data-ug-part="help-intro"]`.
 2. **Duration notes** — The plain list of five load-duration notes under the intro, each with a quoted bold label and its description. Selector: `[data-ug-part="duration-notes"]`.
+
+#### In context layer steps
+
+1. **Help intro** — The line "Duration of load adjustments as specified by the code are as follows:" that fills the popup row and leaves the close X at its end. Selector: `[data-ug-part="help-intro"]`.
+2. **Duration notes** — The plain list of five load-duration notes under the intro, each with a quoted bold label and its description. Selector: `[data-ug-part="duration-notes"]`.
+3. **Close** — The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD). Selector: `[class~="aui-button"][aria-label^="Close"]`.
+4. **Close icon** — The xmark glyph centred in the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+5. **Popover popup** — The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner. Selector: `[data-aui-popup-motion][role="dialog"]`.
+6. **Help trigger** — The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes. Selector: `[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])`.
+7. **Apps trigger** — FD only: the grip button in the top bar that opens Explore More Applications. Selector: `[class~="aui-button"][aria-label="Apps"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-029/example.tsx`
 
@@ -163,6 +181,15 @@ In context view: Shown.
 
 1. **Help text** — The "Select the base material of the member." text under the close button in the popup. Selector: `[data-ug-part="help-text"]`.
 
+#### In context layer steps
+
+1. **Help text** — The "Select the base material of the member." text under the close button in the popup. Selector: `[data-ug-part="help-text"]`.
+2. **Close** — The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD). Selector: `[class~="aui-button"][aria-label^="Close"]`.
+3. **Close icon** — The xmark glyph centred in the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+4. **Popover popup** — The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner. Selector: `[data-aui-popup-motion][role="dialog"]`.
+5. **Help trigger** — The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes. Selector: `[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])`.
+6. **Apps trigger** — FD only: the grip button in the top bar that opens Explore More Applications. Selector: `[class~="aui-button"][aria-label="Apps"]`.
+
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-029/options/pfd-help-close/example.tsx`
 
 ```tsx
@@ -228,6 +255,15 @@ In context view: Shown.
 
 1. **Help text** — The "Select the base material of the member." text that fills the popup row beside the close X. Selector: `[data-ug-part="help-text"]`.
 
+#### In context layer steps
+
+1. **Help text** — The "Select the base material of the member." text that fills the popup row beside the close X. Selector: `[data-ug-part="help-text"]`.
+2. **Close** — The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD). Selector: `[class~="aui-button"][aria-label^="Close"]`.
+3. **Close icon** — The xmark glyph centred in the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+4. **Popover popup** — The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner. Selector: `[data-aui-popup-motion][role="dialog"]`.
+5. **Help trigger** — The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes. Selector: `[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])`.
+6. **Apps trigger** — FD only: the grip button in the top bar that opens Explore More Applications. Selector: `[class~="aui-button"][aria-label="Apps"]`.
+
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-029/options/pbs-help-close/example.tsx`
 
 ```tsx
@@ -291,6 +327,16 @@ In context view: Shown.
 
 1. **Close row** — The end-aligned row that holds only the close X above the help text. Selector: `[data-ug-part="close-row"]`.
 2. **Help text** — The "Select the base material of the member." text under the close row. Selector: `[data-ug-part="help-text"]`.
+
+#### In context layer steps
+
+1. **Close row** — The end-aligned row that holds only the close X above the help text. Selector: `[data-ug-part="close-row"]`.
+2. **Help text** — The "Select the base material of the member." text under the close row. Selector: `[data-ug-part="help-text"]`.
+3. **Close** — The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD). Selector: `[class~="aui-button"][aria-label^="Close"]`.
+4. **Close icon** — The xmark glyph centred in the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+5. **Popover popup** — The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner. Selector: `[data-aui-popup-motion][role="dialog"]`.
+6. **Help trigger** — The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes. Selector: `[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])`.
+7. **Apps trigger** — FD only: the grip button in the top bar that opens Explore More Applications. Selector: `[class~="aui-button"][aria-label="Apps"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-029/options/agpd-help-close/example.tsx`
 
@@ -357,6 +403,16 @@ In context view: Shown.
 
 1. **Top bar** — The Menubar with the grip Apps button that opens this popover. Selector: `[class~="aui-menubar"]`.
 2. **Popover title** — The semi-bold "Explore More Applications" heading at the start of the title row, opposite the close button. Selector: `[data-ug-part="apps-title"]`.
+
+#### In context layer steps
+
+1. **Top bar** — The Menubar with the grip Apps button that opens this popover. Selector: `[class~="aui-menubar"]`.
+2. **Popover title** — The semi-bold "Explore More Applications" heading at the start of the title row, opposite the close button. Selector: `[data-ug-part="apps-title"]`.
+3. **Close** — The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD). Selector: `[class~="aui-button"][aria-label^="Close"]`.
+4. **Close icon** — The xmark glyph centred in the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+5. **Popover popup** — The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner. Selector: `[data-aui-popup-motion][role="dialog"]`.
+6. **Help trigger** — The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes. Selector: `[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])`.
+7. **Apps trigger** — FD only: the grip button in the top bar that opens Explore More Applications. Selector: `[class~="aui-button"][aria-label="Apps"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-029/options/fd-apps-close/example.tsx`
 

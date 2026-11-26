@@ -46,6 +46,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Number field** — FD, AGPD, ADM and ADC wrap the value in a Field.NumberField group instead of a plain input, with no steppers, so the number is parsed and aligned at the end. Selector: `[class~="aui-number-field"]`.
 6. **Unit** — The "psi" unit after the value, a mono role "l4" Type here; HS, PFD and RWS render it 14px semi-bold, FD and AGPD as a 16px regular mono unit. Selector: `[class~="aui-field-control"] > [data-aui-typeface], [class~="aui-number-field-unit"]`.
 
+## Component layer steps
+
+1. **Field** — Stacked number field at scale "sm" with a 3 gap; in the label-beside apps (ADM, ADC, ACE) it becomes a row that splits 137px for the label and 137px for the control. Selector: `[class~="aui-field"]`.
+2. **Label** — The "Fc perp" label above the control; the label-beside apps set it nowrap with an ellipsis and flex-basis half. Selector: `[class~="aui-field-label"]`.
+3. **Control** — The 28px outlined control row with 3/8 padding that holds the value and the unit side by side. Selector: `[class~="aui-field-control"]`.
+4. **Input** — The input showing 650, with inputMode "decimal" and the value aligned to the end so it sits next to the unit. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`.
+5. **Number field** — FD, AGPD, ADM and ADC wrap the value in a Field.NumberField group instead of a plain input, with no steppers, so the number is parsed and aligned at the end. Selector: `[class~="aui-number-field"]`.
+6. **Unit** — The "psi" unit after the value, a mono role "l4" Type here; HS, PFD and RWS render it 14px semi-bold, FD and AGPD as a 16px regular mono unit. Selector: `[class~="aui-field-control"] > [data-aui-typeface], [class~="aui-number-field-unit"]`.
+
 ## Apps
 
 - HCS (`hcs`)

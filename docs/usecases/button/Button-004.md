@@ -43,6 +43,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Container** — The inline "All Products" Button inside a sentence: profile "no-padding" removes the box, inline-flex and an underline make it read as a warning-colored link; type="button" keeps it from submitting. Selector: `[class~="aui-button"]`.
 2. **Label** — The underlined words "All Products" that sit in the middle of the sentence "Selecting … to review all solutions". Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Container** — The inline "All Products" Button inside a sentence: profile "no-padding" removes the box, inline-flex and an underline make it read as a warning-colored link; type="button" keeps it from submitting. Selector: `[class~="aui-button"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -63,6 +67,12 @@ In context view: Shown.
 
 1. **No output results notice** — The tonal warning status with the triangle icon and the "No Output Results" heading. Part marker: `data-ug-part="notice"`.
 2. **Suggestions list** — The "You can try:" bulleted list whose list item holds the inline All Products button. Part marker: `data-ug-part="try-list"`.
+
+#### In context layer steps
+
+1. **No output results notice** — The tonal warning status with the triangle icon and the "No Output Results" heading. Selector: `[data-ug-part="notice"]`.
+2. **Suggestions list** — The "You can try:" bulleted list whose list item holds the inline All Products button. Selector: `[data-ug-part="try-list"]`.
+3. **Container** — The inline "All Products" Button inside a sentence: profile "no-padding" removes the box, inline-flex and an underline make it read as a warning-colored link; type="button" keeps it from submitting. Selector: `[class~="aui-button"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-004/example.tsx`
 

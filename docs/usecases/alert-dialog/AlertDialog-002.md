@@ -44,6 +44,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Footer** — The footer with align="center" that centres its single button. Selector: `[class~="aui-dialog-actions"]`.
 6. **Re-Launch** — The only way forward: a solid secondary Re-Launch button with dismiss={false} so the notice stays until the app reloads. Part marker: `data-ug-part="relaunch"`.
 
+## Component layer steps
+
+1. **Overlay** — The scrim that blocks the app after the licence agreement was declined. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — The default-size blocking notice, with no close X so it cannot be dismissed. Selector: `[class~="aui-dialog-popup"]`.
+3. **Title** — The raised, text-only title "Website Application License Agreement" with no icon and no close X. Selector: `[class~="aui-dialog-title"]`.
+4. **Description** — The explanation that the app cannot continue without agreement and that the user must relaunch it and accept (ACE spells out the EULA). Selector: `[class~="aui-dialog-description"]`.
+5. **Footer** — The footer with align="center" that centres its single button. Selector: `[class~="aui-dialog-actions"]`.
+6. **Re-Launch** — The only way forward: a solid secondary Re-Launch button with dismiss={false} so the notice stays until the app reloads. Selector: `[data-ug-part="relaunch"]`.
+
 ## Apps
 
 - ACE (`ace`)

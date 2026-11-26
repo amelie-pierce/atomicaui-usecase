@@ -47,6 +47,16 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Cell** — Centred cell with 4px inline and 6px block padding shared through the CELL constant. Selector: `[class~="aui-table-cell"]`.
 7. **Foot** — Totals row at the bottom of the print table, its Total label and sum set in bold typographyStyle. Selector: `[class~="aui-table-foot"]`.
 
+## Component layer steps
+
+1. **Table** — Print report table at scale "xs": no profile padding, shape "none", a text-coloured border, all cells ruled, scroll="parent" and selectionMode "none". Selector: `[class~="aui-table"]`.
+2. **Header** — Muted header band printed with Model and Qty. Selector: `[class~="aui-table-head"]`.
+3. **Header cell** — Centred label on the muted fill with a surface-coloured foreground and wrapping allowed. Selector: `[class~="aui-table-header-cell"]`.
+4. **Body** — The line items being totalled, here Model B-200 with quantity 4. Selector: `[class~="aui-table-body"]`.
+5. **Row** — One printed line item. Selector: `[class~="aui-table-row"]`.
+6. **Cell** — Centred cell with 4px inline and 6px block padding shared through the CELL constant. Selector: `[class~="aui-table-cell"]`.
+7. **Foot** — Totals row at the bottom of the print table, its Total label and sum set in bold typographyStyle. Selector: `[class~="aui-table-foot"]`.
+
 ## Apps
 
 - ACE (`ace`)

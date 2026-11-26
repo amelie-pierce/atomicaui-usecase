@@ -41,6 +41,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Popup** — The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label "Expanded Output". Selector: `[class~="aui-dialog-popup"]`.
 3. **Content text** — The p3 line that stands for the content and its own toolbar (the scene reads "Output toolbar"). Part marker: `data-ug-part="content-text"`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Overlay** — The scrim behind the expanded HS Output view. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label "Expanded Output". Selector: `[class~="aui-dialog-popup"]`.
+
 ## Apps
 
 - HS (`hs`)
@@ -62,6 +67,14 @@ In context view: Shown.
 1. **Output table** — The table labelled "Output" that stands for the Output tabs; the popup places it straight at the edge. Selector: `[class~="aui-table"]`.
 2. **Column heading** — The single "Load" column heading. Selector: `[class~="aui-table-header-cell"]`.
 3. **Value cell** — The "Dead" value cell of the one row. Selector: `[class~="aui-table-cell"]`.
+
+#### In context layer steps
+
+1. **Output table** — The table labelled "Output" that stands for the Output tabs; the popup places it straight at the edge. Selector: `[class~="aui-table"]`.
+2. **Column heading** — The single "Load" column heading. Selector: `[class~="aui-table-header-cell"]`.
+3. **Value cell** — The "Dead" value cell of the one row. Selector: `[class~="aui-table-cell"]`.
+4. **Overlay** — The scrim behind the expanded HS Output view. Selector: `[class~="aui-dialog-backdrop"]`.
+5. **Popup** — The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label "Expanded Output". Selector: `[class~="aui-dialog-popup"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-012/example.tsx`
 

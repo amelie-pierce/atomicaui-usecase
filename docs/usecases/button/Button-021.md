@@ -45,6 +45,13 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 3. **Cancel** — The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS). Part marker: `data-ug-part="cancel"`.
 4. **Save** — The solid secondary Save Button that applies the column changes (scale "sm" in HCS, default scale in HS). Part marker: `data-ug-part="save"`.
 
+## Component layer steps
+
+1. **Reset button** — The icon-only rotate-left button at the start of the footer that resets the columns to their default order and visibility. Selector: `[data-ug-part="reset"]`.
+2. **Action group** — The row at the end of the footer that holds Cancel and Save with an 8px gap. Selector: `[data-ug-part="actions"]`.
+3. **Cancel** — The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS). Selector: `[data-ug-part="cancel"]`.
+4. **Save** — The solid secondary Save Button that applies the column changes (scale "sm" in HCS, default scale in HS). Selector: `[data-ug-part="save"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -66,6 +73,15 @@ In context view: Shown.
 
 1. **Configure columns popover** — The elevated popover opened under the table-columns IconButton that holds the column list and this footer. Part marker: `data-ug-part="popover"`.
 2. **Column list** — The reorderable List of Output columns, each with a visibility Switch and a drag handle. Part marker: `data-ug-part="columns"`.
+
+#### In context layer steps
+
+1. **Configure columns popover** — The elevated popover opened under the table-columns IconButton that holds the column list and this footer. Selector: `[data-ug-part="popover"]`.
+2. **Column list** — The reorderable List of Output columns, each with a visibility Switch and a drag handle. Selector: `[data-ug-part="columns"]`.
+3. **Reset button** — The icon-only rotate-left button at the start of the footer that resets the columns to their default order and visibility. Selector: `[data-ug-part="reset"]`.
+4. **Action group** — The row at the end of the footer that holds Cancel and Save with an 8px gap. Selector: `[data-ug-part="actions"]`.
+5. **Cancel** — The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS). Selector: `[data-ug-part="cancel"]`.
+6. **Save** — The solid secondary Save Button that applies the column changes (scale "sm" in HCS, default scale in HS). Selector: `[data-ug-part="save"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-021/example.tsx`
 
@@ -169,6 +185,15 @@ In context view: Shown.
 
 1. **Configure columns popover** — The elevated popover opened under the table-columns IconButton that holds the column list and this footer. Part marker: `data-ug-part="popover"`.
 2. **Column list** — The reorderable List of Output columns, each with a visibility Switch and a drag handle. Part marker: `data-ug-part="columns"`.
+
+#### In context layer steps
+
+1. **Configure columns popover** — The elevated popover opened under the table-columns IconButton that holds the column list and this footer. Selector: `[data-ug-part="popover"]`.
+2. **Column list** — The reorderable List of Output columns, each with a visibility Switch and a drag handle. Selector: `[data-ug-part="columns"]`.
+3. **Reset button** — The icon-only rotate-left button at the start of the footer that resets the columns to their default order and visibility. Selector: `[data-ug-part="reset"]`.
+4. **Action group** — The row at the end of the footer that holds Cancel and Save with an 8px gap. Selector: `[data-ug-part="actions"]`.
+5. **Cancel** — The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS). Selector: `[data-ug-part="cancel"]`.
+6. **Save** — The solid secondary Save Button that applies the column changes (scale "sm" in HCS, default scale in HS). Selector: `[data-ug-part="save"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-021/options/hs-configure-columns/example.tsx`
 

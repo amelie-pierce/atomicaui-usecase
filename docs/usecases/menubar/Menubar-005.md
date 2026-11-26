@@ -49,6 +49,20 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 10. **Separator** — The divider between the orientation group and the layout group in the scenes. Selector: `[class~="aui-dropdown-separator"]`.
 11. **Checkbox item** — The "Auto-Rotate 3D Model" check row that the ADM scene adds because ADM has a 3D model. Selector: `[class~="aui-dropdown-checkbox-item"]`.
 
+## Component layer steps
+
+1. **Menubar** — The strip named "Drawer" that holds the Settings row inside the phone drawer. Selector: `[class~="aui-menubar"]`.
+2. **Trigger** — The text row "Settings" that opens the menu; it replaces the gear of the desktop bar. Selector: `[class~="aui-menubar-trigger"]`.
+3. **Popup** — Menu labelled "Settings", opened below the row (side "bottom") and centred on it (align "center"). Selector: `[class~="aui-dropdown-popup"]`.
+4. **Group** — The Pane Orientation group with its heading and rows. Selector: `[class~="aui-dropdown-group"]`.
+5. **Group label** — The "Pane Orientation" caption above the radio rows (and "Pane Layout" in the scenes). Selector: `[class~="aui-dropdown-group-label"]`.
+6. **Radio group** — Single-choice set with Vertical chosen; the ADM and ACE scenes add Horizontal and Grid. Selector: `[class~="aui-dropdown-radio-group"]`.
+7. **Radio item** — The "Vertical" row with its table-columns icon and a hidden indicator. Selector: `[class~="aui-dropdown-radio-item"]`.
+8. **Row icon** — The leading glyph of a row, table-columns for Vertical. Selector: `[class~="aui-dropdown-radio-item"] > [class~="aui-contained-icon"]`.
+9. **Item** — The "Reset layout to default" row of the ACE and ADM scenes. Selector: `[class~="aui-dropdown-item"]`.
+10. **Separator** — The divider between the orientation group and the layout group in the scenes. Selector: `[class~="aui-dropdown-separator"]`.
+11. **Checkbox item** — The "Auto-Rotate 3D Model" check row that the ADM scene adds because ADM has a 3D model. Selector: `[class~="aui-dropdown-checkbox-item"]`.
+
 ## Apps
 
 - ADM (`adm`)

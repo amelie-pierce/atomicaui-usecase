@@ -47,6 +47,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Switch** — The on/off control, on by default, with no visible label; its aria-label "Show Model" names it and the selected track is solid primary. Selector: `[class~="aui-switch"]`.
 6. **Thumb** — The movable thumb that sits at the end of the track while the column is shown. Selector: `[class~="aui-switch-thumb"]`.
 
+## Component layer steps
+
+1. **List** — The "Columns" list of the Configure columns popover, one row per results-table column. Selector: `[class~="aui-list"]`.
+2. **Row** — The Model row: the column name at the start and its switch in the row actions at the end. Selector: `[class~="aui-list-item"]`.
+3. **Row text** — The column name "Model" that names what the switch shows or hides. Selector: `[class~="aui-list-item-text"]`.
+4. **Row actions** — The trailing slot at the end of the row that holds the switch. Selector: `[class~="aui-list-item-actions"]`.
+5. **Switch** — The on/off control, on by default, with no visible label; its aria-label "Show Model" names it and the selected track is solid primary. Selector: `[class~="aui-switch"]`.
+6. **Thumb** — The movable thumb that sits at the end of the track while the column is shown. Selector: `[class~="aui-switch-thumb"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -69,6 +78,17 @@ In context view: Shown.
 
 1. **Configure columns trigger** — The table-columns IconButton, labelled Configure columns, that opens the popover under it. Part marker: `data-ug-part="columns-trigger"`.
 2. **Configure columns popover** — The elevated popover, 320px wide, anchored under the trigger that holds the column list. Part marker: `data-ug-part="columns-popover"`.
+
+#### In context layer steps
+
+1. **Configure columns trigger** — The table-columns IconButton, labelled Configure columns, that opens the popover under it. Selector: `[data-ug-part="columns-trigger"]`.
+2. **Configure columns popover** — The elevated popover, 320px wide, anchored under the trigger that holds the column list. Selector: `[data-ug-part="columns-popover"]`.
+3. **List** — The "Columns" list of the Configure columns popover, one row per results-table column. Selector: `[class~="aui-list"]`.
+4. **Row** — The Model row: the column name at the start and its switch in the row actions at the end. Selector: `[class~="aui-list-item"]`.
+5. **Row text** — The column name "Model" that names what the switch shows or hides. Selector: `[class~="aui-list-item-text"]`.
+6. **Row actions** — The trailing slot at the end of the row that holds the switch. Selector: `[class~="aui-list-item-actions"]`.
+7. **Switch** — The on/off control, on by default, with no visible label; its aria-label "Show Model" names it and the selected track is solid primary. Selector: `[class~="aui-switch"]`.
+8. **Thumb** — The movable thumb that sits at the end of the track while the column is shown. Selector: `[class~="aui-switch-thumb"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/switch/Switch-001/example.tsx`
 

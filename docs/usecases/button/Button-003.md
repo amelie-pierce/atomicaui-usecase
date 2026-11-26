@@ -44,6 +44,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Icon** — The counter-clockwise arrow that signals returning the group to its defaults. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 3. **Label** — The text "Reset to default" naming what the Button restores. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Container** — The Reset to default Button: small, solid, raised color with a soft shape, placed beside a group of beam property inputs in a side panel. Selector: `[class~="aui-button"]`.
+2. **Icon** — The counter-clockwise arrow that signals returning the group to its defaults. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -64,6 +69,13 @@ In context view: Shown.
 
 1. **Input pane** — The narrow Input aside that holds the form sections. Part marker: `data-ug-part="input-pane"`.
 2. **Beam Properties section** — The open "Beam Properties" Accordion item with its layer-group icon and chevron, holding the Fc perp number field (650 psi) with Reset to default below it. Part marker: `data-ug-part="beam-section"`.
+
+#### In context layer steps
+
+1. **Input pane** — The narrow Input aside that holds the form sections. Selector: `[data-ug-part="input-pane"]`.
+2. **Beam Properties section** — The open "Beam Properties" Accordion item with its layer-group icon and chevron, holding the Fc perp number field (650 psi) with Reset to default below it. Selector: `[data-ug-part="beam-section"]`.
+3. **Container** — The Reset to default Button: small, solid, raised color with a soft shape, placed beside a group of beam property inputs in a side panel. Selector: `[class~="aui-button"]`.
+4. **Icon** — The counter-clockwise arrow that signals returning the group to its defaults. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-003/example.tsx`
 

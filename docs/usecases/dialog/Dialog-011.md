@@ -49,6 +49,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 7. **Form** — The View rendered as a form: a wrapping flex row with gap 24 and top alignment, so the plate preview and the form column can sit side by side. Part marker: `data-ug-part="form"`.
 8. **Form text** — The p3 placeholder line "The form fields go here." in the Dialog frame. Part marker: `data-ug-part="form-text"`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Overlay** — The scrim behind the AGPD quote request. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — The wide quote window, min(840px, 100%) through the --aui-width variable. Selector: `[class~="aui-dialog-popup"]`.
+3. **Title bar** — The title bar on the card surface (not raised) reading REQUEST A QUOTE, with only the close X after the spacer. Selector: `[class~="aui-dialog-title"]`.
+4. **Close** — The close X labelled "Close REQUEST A QUOTE". Selector: `[class~="aui-dialog-close"]`.
+5. **Body** — The scrolling body (overflow auto, minHeight 0) that holds the one wrapping form. Selector: `[class~="aui-dialog-body"]`.
+6. **Form** — The View rendered as a form: a wrapping flex row with gap 24 and top alignment, so the plate preview and the form column can sit side by side. Selector: `[data-ug-part="form"]`.
+
 ## Apps
 
 - AGPD (`agpd`)
@@ -73,6 +82,21 @@ In context view: Shown.
 4. **Name field** — The Name text input, identified by a placeholder and aria-label instead of a visible label. Selector: `[class~="aui-field"] input`.
 5. **Project notes field** — The four-row textarea for "Add project notes and other part requests". Selector: `[class~="aui-field"] textarea`.
 6. **Submit button** — The solid secondary soft SUBMIT button at scale sm, end-aligned in its own row. Part marker: `data-ug-part="submit"`.
+
+#### In context layer steps
+
+1. **Form column** — The column with gap 12 and a 256px minimum width that stacks the dealer question, the text fields and the SUBMIT row. Selector: `[data-ug-part="form-column"]`.
+2. **Dealer question** — The row RadioGroup asking "Are you a Simpson Strong-Tie Dealer ?", label on a full-width first line, defaulting to No. Selector: `[class~="aui-radio-group"]`.
+3. **Yes and No radios** — An outlined tonal Radio when unselected and a solid primary one when selected. Selector: `[class~="aui-radio"]`.
+4. **Name field** — The Name text input, identified by a placeholder and aria-label instead of a visible label. Selector: `[class~="aui-field"] input`.
+5. **Project notes field** — The four-row textarea for "Add project notes and other part requests". Selector: `[class~="aui-field"] textarea`.
+6. **Submit button** — The solid secondary soft SUBMIT button at scale sm, end-aligned in its own row. Selector: `[data-ug-part="submit"]`.
+7. **Overlay** — The scrim behind the AGPD quote request. Selector: `[class~="aui-dialog-backdrop"]`.
+8. **Popup** — The wide quote window, min(840px, 100%) through the --aui-width variable. Selector: `[class~="aui-dialog-popup"]`.
+9. **Title bar** — The title bar on the card surface (not raised) reading REQUEST A QUOTE, with only the close X after the spacer. Selector: `[class~="aui-dialog-title"]`.
+10. **Close** — The close X labelled "Close REQUEST A QUOTE". Selector: `[class~="aui-dialog-close"]`.
+11. **Body** — The scrolling body (overflow auto, minHeight 0) that holds the one wrapping form. Selector: `[class~="aui-dialog-body"]`.
+12. **Form** — The View rendered as a form: a wrapping flex row with gap 24 and top alignment, so the plate preview and the form column can sit side by side. Selector: `[data-ug-part="form"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-011/example.tsx`
 

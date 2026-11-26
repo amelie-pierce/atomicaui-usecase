@@ -42,6 +42,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Container** — The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
 2. **Label** — The text "Close" that dismisses the info dialog, the only choice it offers. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Container** — The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+
 ## Apps
 
 - PBS (`pbs`)
@@ -68,6 +72,15 @@ In context view: Shown.
 3. **Close button** — The X in the title that closes the dialog (aria-label "Close Add to Your Home Screen"). Part marker: `data-ug-part="dialog-close"`.
 4. **Dialog body** — The scrollable body with the Android "Add to Home Screen" instructions. Part marker: `data-ug-part="dialog-body"`.
 5. **Dialog footer** — The Actions row at the end that holds the single Close button. Part marker: `data-ug-part="dialog-footer"`.
+
+#### In context layer steps
+
+1. **Dialog** — The open dialog titled "Add to Your Home Screen". Selector: `[data-ug-part="dialog"]`.
+2. **Dialog title** — The raised title bar with "Add to Your Home Screen" and the close X at the end. Selector: `[data-ug-part="dialog-title"]`.
+3. **Close button** — The X in the title that closes the dialog (aria-label "Close Add to Your Home Screen"). Selector: `[data-ug-part="dialog-close"]`.
+4. **Dialog body** — The scrollable body with the Android "Add to Home Screen" instructions. Selector: `[data-ug-part="dialog-body"]`.
+5. **Dialog footer** — The Actions row at the end that holds the single Close button. Selector: `[data-ug-part="dialog-footer"]`.
+6. **Container** — The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-007/example.tsx`
 
@@ -133,6 +146,15 @@ In context view: Shown.
 3. **Close button** — The X in the title that closes the dialog (aria-label "Close Explore More Applications"). Part marker: `data-ug-part="dialog-close"`.
 4. **Dialog body** — The scrollable body with the line "Simpson Strong-Tie design applications." Part marker: `data-ug-part="dialog-body"`.
 5. **Dialog footer** — The Actions row at the end that holds the single Close button. Part marker: `data-ug-part="dialog-footer"`.
+
+#### In context layer steps
+
+1. **Dialog** — The open dialog titled "Explore More Applications". Selector: `[data-ug-part="dialog"]`.
+2. **Dialog title** — The raised title bar with "Explore More Applications" and the close X at the end. Selector: `[data-ug-part="dialog-title"]`.
+3. **Close button** — The X in the title that closes the dialog (aria-label "Close Explore More Applications"). Selector: `[data-ug-part="dialog-close"]`.
+4. **Dialog body** — The scrollable body with the line "Simpson Strong-Tie design applications." Selector: `[data-ug-part="dialog-body"]`.
+5. **Dialog footer** — The Actions row at the end that holds the single Close button. Selector: `[data-ug-part="dialog-footer"]`.
+6. **Container** — The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-007/options/fd-close/example.tsx`
 

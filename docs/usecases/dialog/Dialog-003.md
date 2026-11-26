@@ -48,6 +48,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 7. **Body** — The scrolling body that holds the calculator inputs and result; the example shows a one-line placeholder. Selector: `[class~="aui-dialog-body"]`.
 8. **Calculator text** — The p3 placeholder line that stands for the calculator inputs and result (the ADM scene reads "The calculator result goes here."). Part marker: `data-ug-part="calculator-text"`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Overlay** — The scrim behind the Thickness Calculator while it is open over the ADM base plate page. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — The default 480px calculator window (520px in the ADM scene) that keeps focus off the first control until the user acts. Selector: `[class~="aui-dialog-popup"]`.
+3. **Title bar** — The raised title bar reading "Thickness Calculator" with the close X at its end. Selector: `[class~="aui-dialog-title"]`.
+4. **Spacer** — The flexible gap between the calculator name and the close X. Selector: `[class~="aui-dialog-spacer"]`.
+5. **Close** — The close X that returns the user to the base plate inputs without applying the calculation. Selector: `[class~="aui-dialog-close"]`.
+6. **Body** — The scrolling body that holds the calculator inputs and result; the example shows a one-line placeholder. Selector: `[class~="aui-dialog-body"]`.
+
 ## Apps
 
 - ADM (`adm`)
@@ -67,6 +76,16 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Trigger** — The secondary solid soft "Thickness Calculator" button on the ADM base plate inputs that opens the dialog; it is written inside the same Dialog root. Selector: `[class~="aui-dialog-trigger"]`.
+
+#### In context layer steps
+
+1. **Trigger** — The secondary solid soft "Thickness Calculator" button on the ADM base plate inputs that opens the dialog; it is written inside the same Dialog root. Selector: `[class~="aui-dialog-trigger"]`.
+2. **Overlay** — The scrim behind the Thickness Calculator while it is open over the ADM base plate page. Selector: `[class~="aui-dialog-backdrop"]`.
+3. **Popup** — The default 480px calculator window (520px in the ADM scene) that keeps focus off the first control until the user acts. Selector: `[class~="aui-dialog-popup"]`.
+4. **Title bar** — The raised title bar reading "Thickness Calculator" with the close X at its end. Selector: `[class~="aui-dialog-title"]`.
+5. **Spacer** — The flexible gap between the calculator name and the close X. Selector: `[class~="aui-dialog-spacer"]`.
+6. **Close** — The close X that returns the user to the base plate inputs without applying the calculation. Selector: `[class~="aui-dialog-close"]`.
+7. **Body** — The scrolling body that holds the calculator inputs and result; the example shows a one-line placeholder. Selector: `[class~="aui-dialog-body"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/dialog/Dialog-003/example.tsx`
 

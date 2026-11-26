@@ -41,6 +41,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Spinner** — The extra-large info-coloured spinner, hidden from assistive technology (role "presentation", aria-hidden) because the message below carries the meaning. Selector: `[class~="aui-spinner"]`.
 2. **Ring** — The large animated ring above "Your design report is being generated" in the ADC report dialog. Selector: `[class~="aui-spinner-ring"]`.
 
+## Component layer steps
+
+1. **Spinner** — The extra-large info-coloured spinner, hidden from assistive technology (role "presentation", aria-hidden) because the message below carries the meaning. Selector: `[class~="aui-spinner"]`.
+2. **Ring** — The large animated ring above "Your design report is being generated" in the ADC report dialog. Selector: `[class~="aui-spinner-ring"]`.
+
 ## Apps
 
 - ADC (`adc`)
@@ -60,6 +65,12 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Status message** — The semi-bold p1 text under the spinner, "Your design report is being generated. Please keep this window open.", which carries the status since the spinner is hidden from assistive tech. Part marker: `data-ug-part="message"`.
+
+#### In context layer steps
+
+1. **Status message** — The semi-bold p1 text under the spinner, "Your design report is being generated. Please keep this window open.", which carries the status since the spinner is hidden from assistive tech. Selector: `[data-ug-part="message"]`.
+2. **Spinner** — The extra-large info-coloured spinner, hidden from assistive technology (role "presentation", aria-hidden) because the message below carries the meaning. Selector: `[class~="aui-spinner"]`.
+3. **Ring** — The large animated ring above "Your design report is being generated" in the ADC report dialog. Selector: `[class~="aui-spinner-ring"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/spinner/Spinner-002/example.tsx`
 

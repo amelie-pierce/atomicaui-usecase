@@ -42,6 +42,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Container** — The Launch General Tutorial Button on the last step of an HS tour: small secondary text paint with alignSelf "start" so it hugs the start of the coach-mark card. Selector: `[class~="aui-button"]:not([aria-label="Close walkthrough"])`.
 2. **Label** — The capitalised text "LAUNCH GENERAL TUTORIAL" that starts the HS General Tutorial. Selector: `[class~="aui-button"]:not([aria-label="Close walkthrough"])`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Container** — The Launch General Tutorial Button on the last step of an HS tour: small secondary text paint with alignSelf "start" so it hugs the start of the coach-mark card. Selector: `[class~="aui-button"]:not([aria-label="Close walkthrough"])`.
+
 ## Apps
 
 - HS (`hs`)
@@ -63,6 +67,13 @@ In context view: Shown.
 1. **Walkthrough card** — The elevated Walkthrough region over the tour target that holds the step text and the launch button. Part marker: `data-ug-part="walkthrough-card"`.
 2. **Close button** — The X IconButton in the card corner (aria-label "Close walkthrough"). Part marker: `data-ug-part="walkthrough-close"`.
 3. **Step text** — The body "Find a solution. See the General tutorial for more information on the Results Table." with 24px kept at its end for the close X. Part marker: `data-ug-part="step-text"`.
+
+#### In context layer steps
+
+1. **Walkthrough card** — The elevated Walkthrough region over the tour target that holds the step text and the launch button. Selector: `[data-ug-part="walkthrough-card"]`.
+2. **Close button** — The X IconButton in the card corner (aria-label "Close walkthrough"). Selector: `[data-ug-part="walkthrough-close"]`.
+3. **Step text** — The body "Find a solution. See the General tutorial for more information on the Results Table." with 24px kept at its end for the close X. Selector: `[data-ug-part="step-text"]`.
+4. **Container** — The Launch General Tutorial Button on the last step of an HS tour: small secondary text paint with alignSelf "start" so it hugs the start of the coach-mark card. Selector: `[class~="aui-button"]:not([aria-label="Close walkthrough"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-012/example.tsx`
 

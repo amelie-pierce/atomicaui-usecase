@@ -55,6 +55,23 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 14. **Reset all designs** — The ADC solid error button "Reset All Designs to Standard". Part marker: `data-ug-part="reset-all"`.
 15. **Close tooltip** — The ADC tooltip that labels the close X "Close" on hover. Selector: `[class~="aui-tooltip-popup"]`.
 
+## Component layer steps
+
+1. **Overlay** — The scrim behind the reset confirm shared by five apps. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — The 560px soft confirm window at scale "sm" (ADM uses 480px, HS 384px, ADC a 640px cap). Selector: `[class~="aui-dialog-popup"]`.
+3. **Title bar** — The raised title bar with the warning icon and "Warning: Reset Inputs?"; ACE leaves out the close X and HS leaves the bar plain. Selector: `[class~="aui-dialog-title"]`.
+4. **Warning icon** — The warning-coloured triangle-exclamation icon at the start of the title. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
+5. **Spacer** — The gap before the close X in the title bar; HS also places one between Cancel and Reset in its footer. Selector: `[class~="aui-dialog-spacer"]`.
+6. **Close** — The close X labelled "Close Reset"; in ADC it sits in a "Close" tooltip trigger. Selector: `[class~="aui-dialog-close"]`.
+7. **Body** — The HS-only body that wraps its description instead of placing it directly in the popup. Selector: `[class~="aui-dialog-body"]`.
+8. **Description** — The warning that all input fields will be reset and that the project configurations erased cannot be recovered. Selector: `[class~="aui-dialog-description"]`.
+9. **Footer** — The footer that holds Cancel and the destructive button; split and wrapping in ADC. Selector: `[class~="aui-dialog-actions"]`.
+10. **Cancel** — The default Cancel next to the destructive action. Selector: `[data-ug-part="cancel"]`.
+11. **Reset** — The solid secondary Reset that clears every input in HCS, ACE, ADM and HS. Selector: `[data-ug-part="confirm"]`.
+12. **Reset current design** — The ADC text error button "Reset Current Design to Standard". Selector: `[data-ug-part="reset-current"]`.
+13. **Reset all designs** — The ADC solid error button "Reset All Designs to Standard". Selector: `[data-ug-part="reset-all"]`.
+14. **Close tooltip** — The ADC tooltip that labels the close X "Close" on hover. Selector: `[class~="aui-tooltip-popup"]`.
+
 ## Apps
 
 - HCS (`hcs`)

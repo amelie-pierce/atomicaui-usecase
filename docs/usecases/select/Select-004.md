@@ -52,6 +52,20 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 11. **Item text** — The country name: Canada, United States or Mexico. Selector: `[class~="aui-select-item-text"]`.
 12. **Indicator** — An empty slot (`{null}`) at the end of each row; in this panel the chosen row has no check. Selector: `[class~="aui-select-item-indicator"]`.
 
+## Component layer steps
+
+1. **Field** — Field at scale "sm", full width with zero minimum width so it fits the configuration panel. Selector: `[class~="aui-field"]`.
+2. **Label** — The "Country" label above the trigger. Selector: `[class~="aui-field-label"]`.
+3. **Trigger** — The 28px outlined trigger (scale "sm", color "surface", paint "fixed") that opens the country list. Selector: `[class~="aui-select-trigger"]`.
+4. **Trigger icon** — The flag icon that leads the trigger and mirrors the chosen row. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`.
+5. **Chevron** — The chevron at the end of the trigger. Selector: `[class~="aui-select-chevron"]`.
+6. **Popup** — Popup of the trigger width, 4px below the trigger, holding three flagged rows. Selector: `[class~="aui-select-popup"]`.
+7. **List** — The list of Canada, United States and Mexico rows. Selector: `[class~="aui-select-list"]`.
+8. **Item** — A country row with its flag icon, name and an empty indicator slot; the chosen row is marked by a raised fill. Selector: `[class~="aui-select-item"]`.
+9. **Item icon** — The flag icon at the start of each row, before the country name. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
+10. **Item text** — The country name: Canada, United States or Mexico. Selector: `[class~="aui-select-item-text"]`.
+11. **Indicator** — An empty slot (`{null}`) at the end of each row; in this panel the chosen row has no check. Selector: `[class~="aui-select-item-indicator"]`.
+
 ## Apps
 
 - HS (`hs`)

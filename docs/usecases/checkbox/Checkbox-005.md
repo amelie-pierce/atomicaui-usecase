@@ -45,6 +45,14 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Indicator** — The box showing the repeated input as checked in the report. Selector: `[class~="aui-checkbox-indicator"]`.
 5. **Label** — The answer "Yes" next to the box, matching the value chosen in the input panel (ACE and PBS reports). Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
+## Component layer steps
+
+1. **Fieldset** — The print-report group, without padding, that ties the legend to the read-only option below it. Selector: `[class~="aui-fieldset"]`.
+2. **Legend** — The legend "Paste over both sides of crack" that repeats the input panel option the checkbox mirrors. Selector: `[class~="aui-fieldset-legend"]`.
+3. **Checkbox** — A read-only, selected checkbox that cannot be toggled in the printed report, drawn with the primary solid selected style. Selector: `[class~="aui-checkbox"]`.
+4. **Indicator** — The box showing the repeated input as checked in the report. Selector: `[class~="aui-checkbox-indicator"]`.
+5. **Label** — The answer "Yes" next to the box, matching the value chosen in the input panel (ACE and PBS reports). Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+
 ## Apps
 
 - ACE (`ace`)

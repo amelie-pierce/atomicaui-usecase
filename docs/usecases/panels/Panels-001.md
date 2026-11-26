@@ -44,6 +44,12 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Panel** — Two surface-alt soft panes, Input (id "input", 50% default width) and 3D Viewer, each at least 120px wide with a semi-bold l3 heading. Selector: `[class~="aui-panels-panel"]`.
 3. **Resize handle** — 6px primary vertical bar between Input and 3D Viewer that the user drags to change the widths. Selector: `[class~="aui-panels-resize-handle"]`.
 
+## Component layer steps
+
+1. **Panels** — Horizontal split group, 560px wide and 160px tall at most, that places the panes side by side. Selector: `[class~="aui-panels"]`.
+2. **Panel** — Two surface-alt soft panes, Input (id "input", 50% default width) and 3D Viewer, each at least 120px wide with a semi-bold l3 heading. Selector: `[class~="aui-panels-panel"]`.
+3. **Resize handle** — 6px primary vertical bar between Input and 3D Viewer that the user drags to change the widths. Selector: `[class~="aui-panels-resize-handle"]`.
+
 ## Apps
 
 - HCS (`hcs`)

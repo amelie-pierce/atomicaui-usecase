@@ -44,6 +44,13 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 3. **Icon** — The "check" mark inside the box while "Show passed validations" is on. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
 4. **Label** — The caption "Show passed validations" that names the filter in the Why not details column of FD. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
+## Component layer steps
+
+1. **Checkbox** — The filter toggle, checked by default so passed validations are listed in the checks table right below it; selected is solid primary. Selector: `[class~="aui-checkbox"]`.
+2. **Indicator** — The box that shows whether passed rows are filtered in, outlined and surface-tonal while off. Selector: `[class~="aui-checkbox-indicator"]`.
+3. **Icon** — The "check" mark inside the box while "Show passed validations" is on. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
+4. **Label** — The caption "Show passed validations" that names the filter in the Why not details column of FD. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+
 ## Apps
 
 - FD (`fd`)

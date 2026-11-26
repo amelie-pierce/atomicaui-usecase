@@ -48,6 +48,16 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 6. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`.
 7. **Sort option** — A sort choice such as "Sort A to Z" or "Sort Z to A"; the table scenes add "(Smallest to Largest)" hints and a None option, selected options are solid primary. Selector: `[class~="aui-radio"]`.
 
+## Component layer steps
+
+1. **Trigger** — The ellipsis-vertical "Column options" icon button, an xs kebab with a compact square profile; in the table scenes the popover anchors to the Load (lb) kebab instead. Selector: `[data-base-ui-click-trigger]`.
+2. **Results table** — The "Connector calculation results" table of the HCS and PFD scenes whose headers host the kebab. Selector: `[class~="aui-table"]`.
+3. **Sortable header cell** — The Load (lb) header, sorted ascending, whose actions slot carries the kebab (vertical dots in HCS, horizontal in PFD). Selector: `[data-ug-part="header-cell"]`.
+4. **Popup** — The 256px elevated column opened under the kebab, aligned to the cell end in HCS and the example and to its start in PFD. Selector: `[data-aui-popup-motion][role="dialog"]`.
+5. **Close** — The PFD square Close button that starts the popup, end-aligned above the Sort choices. Selector: `[data-ug-part="close"]`.
+6. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`.
+7. **Sort option** — A sort choice such as "Sort A to Z" or "Sort Z to A"; the table scenes add "(Smallest to Largest)" hints and a None option, selected options are solid primary. Selector: `[class~="aui-radio"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -70,6 +80,18 @@ In context view: Shown.
 
 1. **Result rows** — The table body rows under the header; with Load sorted A to Z they follow the chosen order. Part marker: `data-ug-part="rows"`.
 2. **Neighbouring header cell** — The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to. Part marker: `data-ug-part="other-header"`.
+
+#### In context layer steps
+
+1. **Result rows** — The table body rows under the header; with Load sorted A to Z they follow the chosen order. Selector: `[data-ug-part="rows"]`.
+2. **Neighbouring header cell** — The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to. Selector: `[data-ug-part="other-header"]`.
+3. **Trigger** — The ellipsis-vertical "Column options" icon button, an xs kebab with a compact square profile; in the table scenes the popover anchors to the Load (lb) kebab instead. Selector: `[data-base-ui-click-trigger]`.
+4. **Results table** — The "Connector calculation results" table of the HCS and PFD scenes whose headers host the kebab. Selector: `[class~="aui-table"]`.
+5. **Sortable header cell** — The Load (lb) header, sorted ascending, whose actions slot carries the kebab (vertical dots in HCS, horizontal in PFD). Selector: `[data-ug-part="header-cell"]`.
+6. **Popup** — The 256px elevated column opened under the kebab, aligned to the cell end in HCS and the example and to its start in PFD. Selector: `[data-aui-popup-motion][role="dialog"]`.
+7. **Close** — The PFD square Close button that starts the popup, end-aligned above the Sort choices. Selector: `[data-ug-part="close"]`.
+8. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`.
+9. **Sort option** — A sort choice such as "Sort A to Z" or "Sort Z to A"; the table scenes add "(Smallest to Largest)" hints and a None option, selected options are solid primary. Selector: `[class~="aui-radio"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/popover/Popover-003/example.tsx`
 
@@ -174,6 +196,18 @@ In context view: Shown.
 
 1. **Result rows** — The table body rows under the header; with Load sorted A to Z they follow the chosen order. Part marker: `data-ug-part="rows"`.
 2. **Neighbouring header cell** — The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to. Part marker: `data-ug-part="other-header"`.
+
+#### In context layer steps
+
+1. **Result rows** — The table body rows under the header; with Load sorted A to Z they follow the chosen order. Selector: `[data-ug-part="rows"]`.
+2. **Neighbouring header cell** — The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to. Selector: `[data-ug-part="other-header"]`.
+3. **Trigger** — The ellipsis-vertical "Column options" icon button, an xs kebab with a compact square profile; in the table scenes the popover anchors to the Load (lb) kebab instead. Selector: `[data-base-ui-click-trigger]`.
+4. **Results table** — The "Connector calculation results" table of the HCS and PFD scenes whose headers host the kebab. Selector: `[class~="aui-table"]`.
+5. **Sortable header cell** — The Load (lb) header, sorted ascending, whose actions slot carries the kebab (vertical dots in HCS, horizontal in PFD). Selector: `[data-ug-part="header-cell"]`.
+6. **Popup** — The 256px elevated column opened under the kebab, aligned to the cell end in HCS and the example and to its start in PFD. Selector: `[data-aui-popup-motion][role="dialog"]`.
+7. **Close** — The PFD square Close button that starts the popup, end-aligned above the Sort choices. Selector: `[data-ug-part="close"]`.
+8. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`.
+9. **Sort option** — A sort choice such as "Sort A to Z" or "Sort Z to A"; the table scenes add "(Smallest to Largest)" hints and a None option, selected options are solid primary. Selector: `[class~="aui-radio"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/popover/Popover-003/options/pfd-column-menu/example.tsx`
 

@@ -48,6 +48,17 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 8. **Item text** — The status wording, such as "Failed products". Selector: `[class~="aui-select-item-text"]`.
 9. **Indicator** — Empty indicator slot at the row end. Selector: `[class~="aui-select-item-indicator"]`.
 
+## Component layer steps
+
+1. **Field** — Label-less Field at scale "sm" with the "status-filter" class that places the select in the output toolbar. Selector: `[class~="aui-field"]`.
+2. **Trigger** — Full-width trigger labelled "Product status" for assistive tech only, in the kit default style (no surface or fixed colour). Selector: `[class~="aui-select-trigger"]`.
+3. **Chevron** — The chevron at the trigger end. Selector: `[class~="aui-select-chevron"]`.
+4. **Popup** — Popup of the trigger width placed 5px below it, offering Passed, Failed and All products. Selector: `[class~="aui-select-popup"]`.
+5. **List** — The list of the three status rows. Selector: `[class~="aui-select-list"]`.
+6. **Item** — A status row; the chosen one is marked by a raised fill. Selector: `[class~="aui-select-item"]`.
+7. **Item text** — The status wording, such as "Failed products". Selector: `[class~="aui-select-item-text"]`.
+8. **Indicator** — Empty indicator slot at the row end. Selector: `[class~="aui-select-item-indicator"]`.
+
 ## Apps
 
 - FD (`fd`)

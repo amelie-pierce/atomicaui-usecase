@@ -46,6 +46,14 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Panel** — The Input panel, collapsible to 40px (minSize 400px when open), next to the 3D Viewer panel. Selector: `[class~="aui-panels-panel"]`.
 5. **Resize handle** — The 8px primary handle between the Input and 3D Viewer panels. Selector: `[class~="aui-panels-resize-handle"]`.
 
+## Component layer steps
+
+1. **Expand Input** — The 28px square transparent secondary angle-right button that reopens the collapsed Input panel. Selector: `[class~="aui-button"][aria-label="Expand Input"]:not([class~="aui-panels-trigger"])`.
+2. **Panel trigger** — HCS rail: the same button rendered as a Panels.Trigger that targets the hcs-input panel from the 40px collapsed rail. Selector: `[class~="aui-panels-trigger"]`.
+3. **Tooltip** — The Expand Input label shown below the button. Selector: `[class~="aui-tooltip-popup"]`.
+4. **Panel** — The Input panel, collapsible to 40px (minSize 400px when open), next to the 3D Viewer panel. Selector: `[class~="aui-panels-panel"]`.
+5. **Resize handle** — The 8px primary handle between the Input and 3D Viewer panels. Selector: `[class~="aui-panels-resize-handle"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -66,6 +74,16 @@ In context view: Shown.
 
 1. **Collapsed rail** — The 40px column of the collapsed Input panel that keeps only the expand trigger at its top centre. Selector: `[data-ug-part="rail"]`.
 2. **3D Viewer pane** — The neighbouring 3D Viewer section that keeps the rest of the width, reduced to its header. Selector: `[data-ug-part="viewer-pane"]`.
+
+#### In context layer steps
+
+1. **Collapsed rail** — The 40px column of the collapsed Input panel that keeps only the expand trigger at its top centre. Selector: `[data-ug-part="rail"]`.
+2. **3D Viewer pane** — The neighbouring 3D Viewer section that keeps the rest of the width, reduced to its header. Selector: `[data-ug-part="viewer-pane"]`.
+3. **Expand Input** — The 28px square transparent secondary angle-right button that reopens the collapsed Input panel. Selector: `[class~="aui-button"][aria-label="Expand Input"]:not([class~="aui-panels-trigger"])`.
+4. **Panel trigger** — HCS rail: the same button rendered as a Panels.Trigger that targets the hcs-input panel from the 40px collapsed rail. Selector: `[class~="aui-panels-trigger"]`.
+5. **Tooltip** — The Expand Input label shown below the button. Selector: `[class~="aui-tooltip-popup"]`.
+6. **Panel** — The Input panel, collapsible to 40px (minSize 400px when open), next to the 3D Viewer panel. Selector: `[class~="aui-panels-panel"]`.
+7. **Resize handle** — The 8px primary handle between the Input and 3D Viewer panels. Selector: `[class~="aui-panels-resize-handle"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-036/example.tsx`
 

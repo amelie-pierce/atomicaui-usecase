@@ -44,6 +44,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Icon** — The CSV file glyph that sits before the label and tells the export format. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 3. **Label** — The label "Download CSV" (written in capitals in RWS) that exports the rows the table shows. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Container** — The Download CSV Button: secondary text paint, scale "sm", soft shape and flex "none" so it never shrinks in the wrapping toolbar row after the search field and count. Selector: `[class~="aui-button"]`.
+2. **Icon** — The CSV file glyph that sits before the label and tells the export format. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+
 ## Apps
 
 - PFD (`pfd`)
@@ -67,6 +72,14 @@ In context view: Shown.
 1. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field first, the count next and Download CSV last. Part marker: `data-ug-part="toolbar"`.
 2. **Search field** — The Search Table Field with a magnifying-glass icon that fills the line. Part marker: `data-ug-part="search"`.
 3. **Result count** — The muted "Showing 1 entry" status text before Download CSV. Part marker: `data-ug-part="count"`.
+
+#### In context layer steps
+
+1. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field first, the count next and Download CSV last. Selector: `[data-ug-part="toolbar"]`.
+2. **Search field** — The Search Table Field with a magnifying-glass icon that fills the line. Selector: `[data-ug-part="search"]`.
+3. **Result count** — The muted "Showing 1 entry" status text before Download CSV. Selector: `[data-ug-part="count"]`.
+4. **Container** — The Download CSV Button: secondary text paint, scale "sm", soft shape and flex "none" so it never shrinks in the wrapping toolbar row after the search field and count. Selector: `[class~="aui-button"]`.
+5. **Icon** — The CSV file glyph that sits before the label and tells the export format. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-002/example.tsx`
 

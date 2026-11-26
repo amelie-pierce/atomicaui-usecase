@@ -47,6 +47,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Row** — One imported field: Design Method, ACI 318, Supported. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
 6. **Cell** — Plain text cell for the field name, its parsed value or its support status. Selector: `[class~="aui-table-cell"]`.
 
+## Component layer steps
+
+1. **Table** — Import preview grid: surface-coloured solid soft table at scale "sm" with "all-cells" tonal borders and a 1px outlined frame. Selector: `[class~="aui-table"]`.
+2. **Header** — Raised heading row with the upper-case FIELD, VALUE and STATUS labels. Selector: `[class~="aui-table-head"]`.
+3. **Header cell** — One of the three column headings, FIELD, VALUE or STATUS, with the default alignment and no sorting. Selector: `[class~="aui-table-header-cell"]`.
+4. **Body** — Holds the previewed record that the user checks before confirming the import. Selector: `[class~="aui-table-body"]`.
+5. **Row** — One imported field: Design Method, ACI 318, Supported. Selector: `[class~="aui-table-row"]`.
+6. **Cell** — Plain text cell for the field name, its parsed value or its support status. Selector: `[class~="aui-table-cell"]`.
+
 ## Apps
 
 - ADC (`adc`)

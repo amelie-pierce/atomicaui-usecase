@@ -43,6 +43,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Container** — The View options Button in the corner of the 3D viewer: small, surface color with tonal paint, acting as the trigger of the camera and visibility popover. Selector: `[class~="aui-button"]`.
 2. **Label** — The text "View options" that names the popover of camera and visibility controls. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Container** — The View options Button in the corner of the 3D viewer: small, surface color with tonal paint, acting as the trigger of the camera and visibility popover. Selector: `[class~="aui-button"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -66,6 +70,14 @@ In context view: Shown.
 2. **Options corner** — The top-end corner of the scene, 8px in, that holds the View options trigger. Part marker: `data-ug-part="corner"`.
 3. **View options popover** — The open popover under the trigger (bottom, end, 4px offset) that holds the viewer controls. Part marker: `data-ug-part="options-popover"`.
 4. **Reset view button** — The outlined bullseye IconButton in the popover that resets the camera. Part marker: `data-ug-part="reset-view"`.
+
+#### In context layer steps
+
+1. **3D Viewer pane** — The 3D Viewer section with its heading and the viewer canvas that the controls float over. Selector: `[data-ug-part="viewer-pane"]`.
+2. **Options corner** — The top-end corner of the scene, 8px in, that holds the View options trigger. Selector: `[data-ug-part="corner"]`.
+3. **View options popover** — The open popover under the trigger (bottom, end, 4px offset) that holds the viewer controls. Selector: `[data-ug-part="options-popover"]`.
+4. **Reset view button** — The outlined bullseye IconButton in the popover that resets the camera. Selector: `[data-ug-part="reset-view"]`.
+5. **Container** — The View options Button in the corner of the 3D viewer: small, surface color with tonal paint, acting as the trigger of the camera and visibility popover. Selector: `[class~="aui-button"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-009/example.tsx`
 

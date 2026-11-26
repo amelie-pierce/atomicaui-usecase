@@ -45,6 +45,13 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 3. **Remove cell** — The last cell of the Job 1 row that holds the trash button next to the job name. Selector: `[class~="aui-table-cell"]:last-child`.
 4. **Remove header** — The unlabeled column heading (aria-label Remove) above the trash buttons. Selector: `[class~="aui-table-header-cell"]:last-child`.
 
+## Component layer steps
+
+1. **Remove** — The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click. Selector: `[class~="aui-button"][aria-label^="Remove"]`.
+2. **Trash icon** — The trash glyph centred in the button. Selector: `[class~="aui-button"][aria-label^="Remove"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+3. **Remove cell** — The last cell of the Job 1 row that holds the trash button next to the job name. Selector: `[class~="aui-table-cell"]:last-child`.
+4. **Remove header** — The unlabeled column heading (aria-label Remove) above the trash buttons. Selector: `[class~="aui-table-header-cell"]:last-child`.
+
 ## Apps
 
 - HS (`hs`)
@@ -66,6 +73,15 @@ In context view: Shown.
 
 1. **Jobs table** — The Table of jobs; the trash button sits in its last column after the Job column. Selector: `[class~="aui-table"]`.
 2. **Job cell** — The Job 1 label that the Remove Job 1 button belongs to. Selector: `[class~="aui-table-body"] [class~="aui-table-cell"]:first-child`.
+
+#### In context layer steps
+
+1. **Jobs table** — The Table of jobs; the trash button sits in its last column after the Job column. Selector: `[class~="aui-table"]`.
+2. **Job cell** — The Job 1 label that the Remove Job 1 button belongs to. Selector: `[class~="aui-table-body"] [class~="aui-table-cell"]:first-child`.
+3. **Remove** — The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click. Selector: `[class~="aui-button"][aria-label^="Remove"]`.
+4. **Trash icon** — The trash glyph centred in the button. Selector: `[class~="aui-button"][aria-label^="Remove"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+5. **Remove cell** — The last cell of the Job 1 row that holds the trash button next to the job name. Selector: `[class~="aui-table-cell"]:last-child`.
+6. **Remove header** — The unlabeled column heading (aria-label Remove) above the trash buttons. Selector: `[class~="aui-table-header-cell"]:last-child`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-038/example.tsx`
 

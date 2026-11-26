@@ -46,6 +46,14 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Icon** — The "check" mark used in the ADC, ADM, FD, HCS and HS scenes; the compact example draws the box without one. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
 5. **Label** — The part name beside the box, such as Wall or Roof, in the wrapped row of the 3D viewer controls. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
+## Component layer steps
+
+1. **Group title** — The "Object Visibility" title, a Type role "l4" at semi-bold weight, that names the group of visibility checkboxes; some apps write it as a Field.Label. Selector: `[data-aui-typeface]`.
+2. **Checkbox** — One of the visibility checkboxes (Wall, Roof, and Base plate or Anchors in the scenes) that shows or hides that part of the 3D model; checked by default. Selector: `[class~="aui-checkbox"]`.
+3. **Indicator** — The box that shows whether the model part is visible. Selector: `[class~="aui-checkbox-indicator"]`.
+4. **Icon** — The "check" mark used in the ADC, ADM, FD, HCS and HS scenes; the compact example draws the box without one. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
+5. **Label** — The part name beside the box, such as Wall or Roof, in the wrapped row of the 3D viewer controls. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+
 ## Apps
 
 - HCS (`hcs`)

@@ -40,6 +40,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Container** — The lone Cancel Button in the upload dialog footer, small and in the default gray solid look, that dismisses the dialog while it waits for a dropped file. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
 2. **Label** — The text "Cancel" that closes the Open from device dialog without uploading. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Container** — The lone Cancel Button in the upload dialog footer, small and in the default gray solid look, that dismisses the dialog while it waits for a dropped file. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+
 ## Apps
 
 - ACE (`ace`)
@@ -69,6 +73,15 @@ In context view: Shown.
 3. **Close button** — The X in the title that closes the dialog like Cancel (aria-label "Cancel"). Part marker: `data-ug-part="dialog-close"`.
 4. **Upload area** — The dialog body that holds the file upload drop zone ("Drop files here" with a Browse action). Part marker: `data-ug-part="upload-body"`.
 5. **Dialog footer** — The Actions row at the end that holds the single Cancel button. Part marker: `data-ug-part="dialog-footer"`.
+
+#### In context layer steps
+
+1. **Dialog** — The open dialog titled "Upload JSON File". Selector: `[data-ug-part="dialog"]`.
+2. **Dialog title** — The raised title bar with "Upload JSON File" and the close X at the end. Selector: `[data-ug-part="dialog-title"]`.
+3. **Close button** — The X in the title that closes the dialog like Cancel (aria-label "Cancel"). Selector: `[data-ug-part="dialog-close"]`.
+4. **Upload area** — The dialog body that holds the file upload drop zone ("Drop files here" with a Browse action). Selector: `[data-ug-part="upload-body"]`.
+5. **Dialog footer** — The Actions row at the end that holds the single Cancel button. Selector: `[data-ug-part="dialog-footer"]`.
+6. **Container** — The lone Cancel Button in the upload dialog footer, small and in the default gray solid look, that dismisses the dialog while it waits for a dropped file. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-006/example.tsx`
 

@@ -51,6 +51,19 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 10. **Indicator** — The indicator slot at the row end; the PFD scene leads each row with a checkbox icon instead. Selector: `[class~="aui-select-item-indicator"]`.
 11. **Checkbox icon** — In the PFD scene each row leads with a square-check icon when chosen and a square when not, with no indicator. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
 
+## Component layer steps
+
+1. **Field** — Field at scale "sm" with a 3 gap that stacks the Corrosion Resistance label above the multi-select. Selector: `[class~="aui-field"]`.
+2. **Label** — The "Corrosion Resistance" label at scale "sm". Selector: `[class~="aui-field-label"]`.
+3. **Trigger** — The 28px outlined trigger that stays one line high while it lists every chosen option. Selector: `[class~="aui-select-trigger"]`.
+4. **Chevron** — The chevron at the trigger end; the list stays open while rows are toggled. Selector: `[class~="aui-select-chevron"]`.
+5. **Popup** — Popup of the trigger width listing Standard, Hot dip galvanized and Stainless steel. Selector: `[class~="aui-select-popup"]`.
+6. **List** — The list holding the three corrosion options. Selector: `[class~="aui-select-list"]`.
+7. **Item** — A toggleable option row; both Standard and Hot dip galvanized start selected (the `multiple` defaultValue is an array). Selector: `[class~="aui-select-item"]`.
+8. **Item text** — The option name such as "Stainless steel". Selector: `[class~="aui-select-item-text"]`.
+9. **Indicator** — The indicator slot at the row end; the PFD scene leads each row with a checkbox icon instead. Selector: `[class~="aui-select-item-indicator"]`.
+10. **Checkbox icon** — In the PFD scene each row leads with a square-check icon when chosen and a square when not, with no indicator. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
+
 ## Apps
 
 - PBS (`pbs`)

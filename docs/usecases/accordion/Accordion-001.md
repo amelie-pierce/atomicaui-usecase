@@ -47,6 +47,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 5. **Chevron** — Disclosure chevron at the end of the row that turns with the open state. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
 6. **Panel** — Body of the open section with default padding; Connection Type shows the placeholder "Section fields" while Load Properties has no panel. Selector: `[class~="aui-accordion-panel"]`.
 
+## Component layer steps
+
+1. **Item** — One section row opens Connection Type or Load Properties. Selector: `[class~="aui-accordion-item"]`.
+2. **Trigger** — Full-width title row opens one section; several can stay open. Selector: `[class~="aui-accordion-trigger"]`.
+3. **Title** — Semi-bold label names Connection Type or Load Properties. Selector: `[class~="aui-accordion-trigger-content"]`.
+4. **Section icon** — Topic icon links Connection Type and arrow-down labels Load Properties. Selector: `[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]`.
+5. **Chevron** — Disclosure chevron turns to show the section's open state. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
+6. **Panel** — Open panel shows section fields; Load Properties has no panel. Selector: `[class~="aui-accordion-panel"]`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -75,6 +84,16 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Input pane** — The Input aside (aria-label "Input") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out. Part marker: `data-ug-part="input-pane"`.
+
+#### In context layer steps
+
+1. **Input pane** — Input pane frames the section list beside app results. Selector: `[data-ug-part="input-pane"]`.
+2. **Item** — One section row opens Connection Type or Load Properties. Selector: `[class~="aui-accordion-item"]`.
+3. **Trigger** — Full-width title row opens one section; several can stay open. Selector: `[class~="aui-accordion-trigger"]`.
+4. **Title** — Semi-bold label names Connection Type or Load Properties. Selector: `[class~="aui-accordion-trigger-content"]`.
+5. **Section icon** — Topic icon links Connection Type and arrow-down labels Load Properties. Selector: `[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]`.
+6. **Chevron** — Disclosure chevron turns to show the section's open state. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
+7. **Panel** — Open panel shows section fields; Load Properties has no panel. Selector: `[class~="aui-accordion-panel"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-001/example.tsx`
 
@@ -165,6 +184,16 @@ In context view: Shown.
 
 1. **Input pane** — The Input aside (aria-label "Input") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out. Part marker: `data-ug-part="input-pane"`.
 
+#### In context layer steps
+
+1. **Input pane** — Input pane frames the section list beside app results. Selector: `[data-ug-part="input-pane"]`.
+2. **Item** — One section row opens Connection Type or Load Properties. Selector: `[class~="aui-accordion-item"]`.
+3. **Trigger** — Full-width title row opens one section; several can stay open. Selector: `[class~="aui-accordion-trigger"]`.
+4. **Title** — Semi-bold label names Connection Type or Load Properties. Selector: `[class~="aui-accordion-trigger-content"]`.
+5. **Section icon** — Topic icon links Connection Type and arrow-down labels Load Properties. Selector: `[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]`.
+6. **Chevron** — Disclosure chevron turns to show the section's open state. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
+7. **Panel** — Open panel shows section fields; Load Properties has no panel. Selector: `[class~="aui-accordion-panel"]`.
+
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-001/options/pbs-section-list/example.tsx`
 
 ```tsx
@@ -250,6 +279,16 @@ In context view: Shown.
 
 1. **Input pane** — The Input aside (aria-label "Input") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out. Part marker: `data-ug-part="input-pane"`.
 
+#### In context layer steps
+
+1. **Input pane** — Input pane frames the section list beside app results. Selector: `[data-ug-part="input-pane"]`.
+2. **Item** — One section row opens Connection Type or Load Properties. Selector: `[class~="aui-accordion-item"]`.
+3. **Trigger** — Full-width title row opens one section; several can stay open. Selector: `[class~="aui-accordion-trigger"]`.
+4. **Title** — Semi-bold label names Connection Type or Load Properties. Selector: `[class~="aui-accordion-trigger-content"]`.
+5. **Section icon** — Topic icon links Connection Type and arrow-down labels Load Properties. Selector: `[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]`.
+6. **Chevron** — Disclosure chevron turns to show the section's open state. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
+7. **Panel** — Open panel shows section fields; Load Properties has no panel. Selector: `[class~="aui-accordion-panel"]`.
+
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-001/options/fd-section-list/example.tsx`
 
 ```tsx
@@ -334,6 +373,16 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Input pane** — The Input aside (aria-label "Input") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out. Part marker: `data-ug-part="input-pane"`.
+
+#### In context layer steps
+
+1. **Input pane** — Input pane frames the softer section cards beside app results. Selector: `[data-ug-part="input-pane"]`.
+2. **Item** — One section row opens Connection Type or Load Properties. Selector: `[class~="aui-accordion-item"]`.
+3. **Trigger** — Full-width title row opens one section; several can stay open. Selector: `[class~="aui-accordion-trigger"]`.
+4. **Title** — Semi-bold label names Connection Type or Load Properties. Selector: `[class~="aui-accordion-trigger-content"]`.
+5. **Section icon** — Topic icon links Connection Type and arrow-down labels Load Properties. Selector: `[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]`.
+6. **Chevron** — Disclosure chevron turns to show the section's open state. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
+7. **Panel** — Open panel shows section fields; Load Properties has no panel. Selector: `[class~="aui-accordion-panel"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-001/options/hcs-section-cards/example.tsx`
 
@@ -426,6 +475,16 @@ In context view: Shown.
 
 1. **Input pane** — The Input aside (aria-label "Input") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out. Part marker: `data-ug-part="input-pane"`.
 
+#### In context layer steps
+
+1. **Input pane** — Input pane frames the rounded section cards beside app results. Selector: `[data-ug-part="input-pane"]`.
+2. **Item** — One section row opens Connection Type or Load Properties. Selector: `[class~="aui-accordion-item"]`.
+3. **Trigger** — Full-width title row opens one section; several can stay open. Selector: `[class~="aui-accordion-trigger"]`.
+4. **Title** — Semi-bold label names Connection Type or Load Properties. Selector: `[class~="aui-accordion-trigger-content"]`.
+5. **Section icon** — Topic icon links Connection Type and arrow-down labels Load Properties. Selector: `[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]`.
+6. **Chevron** — Disclosure chevron turns to show the section's open state. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
+7. **Panel** — Open panel shows section fields; Load Properties has no panel. Selector: `[class~="aui-accordion-panel"]`.
+
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-001/options/pbs-section-cards/example.tsx`
 
 ```tsx
@@ -512,6 +571,16 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Input pane** — The Input aside (aria-label "Input") on a surface-alt background that holds the section list or section cards; the pane header, the fields and further sections are left out. Part marker: `data-ug-part="input-pane"`.
+
+#### In context layer steps
+
+1. **Input pane** — Input pane frames the rounded section cards beside app results. Selector: `[data-ug-part="input-pane"]`.
+2. **Item** — One section row opens Connection Type or Load Properties. Selector: `[class~="aui-accordion-item"]`.
+3. **Trigger** — Full-width title row opens one section; several can stay open. Selector: `[class~="aui-accordion-trigger"]`.
+4. **Title** — Semi-bold label names Connection Type or Load Properties. Selector: `[class~="aui-accordion-trigger-content"]`.
+5. **Section icon** — Topic icon links Connection Type and arrow-down labels Load Properties. Selector: `[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]`.
+6. **Chevron** — Disclosure chevron turns to show the section's open state. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
+7. **Panel** — Open panel shows section fields; Load Properties has no panel. Selector: `[class~="aui-accordion-panel"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/accordion/Accordion-001/options/fd-section-cards/example.tsx`
 

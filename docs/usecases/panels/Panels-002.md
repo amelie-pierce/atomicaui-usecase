@@ -44,6 +44,12 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Panel** — Input on top (50% default height) and Output below, both surface-alt soft panes that may shrink to 40px high. Selector: `[class~="aui-panels-panel"]`.
 3. **Resize handle** — 6px primary horizontal bar between Input and Output; its label is "Resize Input and Output panels" in the example and "Resize Input and results panels" in the HCS scene. Selector: `[class~="aui-panels-resize-handle"]`.
 
+## Component layer steps
+
+1. **Panels** — Vertical split group that stacks the panes, 560px wide and 160px tall at most. Selector: `[class~="aui-panels"]`.
+2. **Panel** — Input on top (50% default height) and Output below, both surface-alt soft panes that may shrink to 40px high. Selector: `[class~="aui-panels-panel"]`.
+3. **Resize handle** — 6px primary horizontal bar between Input and Output; its label is "Resize Input and Output panels" in the example and "Resize Input and results panels" in the HCS scene. Selector: `[class~="aui-panels-resize-handle"]`.
+
 ## Apps
 
 - HCS (`hcs`)

@@ -45,6 +45,14 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Status icon** — Leading result icon: a success check for Connection and an error xmark for Weld; FD uses circle-check and circle-exclamation through a plain Icon. Selector: `[class~="aui-tabs-tab"] > [class~="aui-contained-icon"]`.
 5. **Panel** — Body for the selected check, "Connection check" or "Weld check". Selector: `[class~="aui-tabs-panel"]`.
 
+## Component layer steps
+
+1. **Tabs** — Check tabs at scale "sm" with a 12px gap between the strip and the panel; Connection is selected first. Selector: `[class~="aui-tabs"]`.
+2. **List** — Strip of check tabs; reading the icons down the row summarises which checks passed. Selector: `[class~="aui-tabs-list"]`.
+3. **Tab** — One check, Connection or Weld, with its status icon before the label. Selector: `[class~="aui-tabs-tab"]`.
+4. **Status icon** — Leading result icon: a success check for Connection and an error xmark for Weld; FD uses circle-check and circle-exclamation through a plain Icon. Selector: `[class~="aui-tabs-tab"] > [class~="aui-contained-icon"]`.
+5. **Panel** — Body for the selected check, "Connection check" or "Weld check". Selector: `[class~="aui-tabs-panel"]`.
+
 ## Apps
 
 - HCS (`hcs`)

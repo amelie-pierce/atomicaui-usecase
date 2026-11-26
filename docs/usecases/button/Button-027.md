@@ -46,6 +46,14 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Arrow-down icon** — The arrow-down glyph that points toward the notes below the table. Selector: `[class~="aui-button"][aria-label="Jump to table notes"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
 5. **Print Output** — HCS Output header only: the tonal surface Print Output button with a print icon that sits right after the two jump buttons. Selector: `[class~="aui-button"]:not([aria-label])`.
 
+## Component layer steps
+
+1. **Back to top** — Secondary text button that scrolls to the top of the long table; its accessible name matches the visible label. Selector: `[class~="aui-button"][aria-label="Back to top"]`.
+2. **Arrow-up icon** — The arrow-up glyph that shows the direction of the jump. Selector: `[class~="aui-button"][aria-label="Back to top"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+3. **Table Notes** — Secondary text button that jumps down to the table notes; its accessible name "Jump to table notes" is longer than the visible Table Notes label. Selector: `[class~="aui-button"][aria-label="Jump to table notes"]`.
+4. **Arrow-down icon** — The arrow-down glyph that points toward the notes below the table. Selector: `[class~="aui-button"][aria-label="Jump to table notes"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+5. **Print Output** — HCS Output header only: the tonal surface Print Output button with a print icon that sits right after the two jump buttons. Selector: `[class~="aui-button"]:not([aria-label])`.
+
 ## Apps
 
 - HCS (`hcs`)
@@ -73,6 +81,17 @@ In context view: Shown.
 1. **Output pane** — The surface-alt Output section that frames the header row. Selector: `[data-ug-part="output-pane"]`.
 2. **Output title** — The semi-bold Output heading at the start of the header row. Selector: `[data-ug-part="output-title"]`.
 3. **Header actions** — The end-aligned group with the two scroll helpers followed by the tonal Print Output button, wrapping when space runs out. Selector: `[data-ug-part="header-actions"]`.
+
+#### In context layer steps
+
+1. **Output pane** — The surface-alt Output section that frames the header row. Selector: `[data-ug-part="output-pane"]`.
+2. **Output title** — The semi-bold Output heading at the start of the header row. Selector: `[data-ug-part="output-title"]`.
+3. **Header actions** — The end-aligned group with the two scroll helpers followed by the tonal Print Output button, wrapping when space runs out. Selector: `[data-ug-part="header-actions"]`.
+4. **Back to top** — Secondary text button that scrolls to the top of the long table; its accessible name matches the visible label. Selector: `[class~="aui-button"][aria-label="Back to top"]`.
+5. **Arrow-up icon** — The arrow-up glyph that shows the direction of the jump. Selector: `[class~="aui-button"][aria-label="Back to top"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+6. **Table Notes** — Secondary text button that jumps down to the table notes; its accessible name "Jump to table notes" is longer than the visible Table Notes label. Selector: `[class~="aui-button"][aria-label="Jump to table notes"]`.
+7. **Arrow-down icon** — The arrow-down glyph that points toward the notes below the table. Selector: `[class~="aui-button"][aria-label="Jump to table notes"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+8. **Print Output** — HCS Output header only: the tonal surface Print Output button with a print icon that sits right after the two jump buttons. Selector: `[class~="aui-button"]:not([aria-label])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-027/example.tsx`
 

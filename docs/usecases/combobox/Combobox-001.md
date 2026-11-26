@@ -49,6 +49,20 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 10. **Item** — A country row; its label is the item text and the chosen row is highlighted. Selector: `[class~="aui-combobox-item"]`.
 11. **Item indicator** — The tick that marks the chosen country row. Selector: `[class~="aui-combobox-item-indicator"]`.
 
+## Component layer steps
+
+1. **Field** — Field at scale "sm" with a 3 gap that stacks the Country label over the combobox. Selector: `[class~="aui-field"]`.
+2. **Label** — The "Country" label above the input group. Selector: `[class~="aui-field-label"]`.
+3. **Input group** — Row at scale "sm", full width, that joins the text field and the chevron button into one control. Selector: `[class~="aui-combobox-input-group"]`.
+4. **Input** — The search field with placeholder "Search"; typing filters Canada, Mexico and United States, and the chosen "Canada" fills it. Selector: `[class~="aui-combobox-input"]`.
+5. **Trigger** — The button at the end of the group that opens or closes the country list. Selector: `[class~="aui-combobox-trigger"]`.
+6. **Icon** — The chevron-down glyph inside the trigger button. Selector: `[class~="aui-combobox-icon"]`.
+7. **Popup** — Popup of the trigger width, 4px below the group; this example is built open and non-modal inside the stage. Selector: `[class~="aui-combobox-popup"]`.
+8. **Empty** — The "No result found" message shown when the typed text matches no country. Selector: `[class~="aui-combobox-empty"]`.
+9. **List** — The list that renders one row per matching country. Selector: `[class~="aui-combobox-list"]`.
+10. **Item** — A country row; its label is the item text and the chosen row is highlighted. Selector: `[class~="aui-combobox-item"]`.
+11. **Item indicator** — The tick that marks the chosen country row. Selector: `[class~="aui-combobox-item-indicator"]`.
+
 ## Apps
 
 - FD (`fd`)
@@ -69,6 +83,22 @@ In context view: Shown.
 
 1. **License Agreement dialog** — The non-modal Dialog that hosts the picker in the FD licence gate: a raised "License Agreement" title and a body about 14 rows tall that holds the Country field. Selector: `[class~="aui-dialog-popup"]`.
 2. **Dialog body** — The body of the licence dialog; the whole Country combobox sits inside it. Selector: `[class~="aui-dialog-body"]`.
+
+#### In context layer steps
+
+1. **License Agreement dialog** — The non-modal Dialog that hosts the picker in the FD licence gate: a raised "License Agreement" title and a body about 14 rows tall that holds the Country field. Selector: `[class~="aui-dialog-popup"]`.
+2. **Dialog body** — The body of the licence dialog; the whole Country combobox sits inside it. Selector: `[class~="aui-dialog-body"]`.
+3. **Field** — Field at scale "sm" with a 3 gap that stacks the Country label over the combobox. Selector: `[class~="aui-field"]`.
+4. **Label** — The "Country" label above the input group. Selector: `[class~="aui-field-label"]`.
+5. **Input group** — Row at scale "sm", full width, that joins the text field and the chevron button into one control. Selector: `[class~="aui-combobox-input-group"]`.
+6. **Input** — The search field with placeholder "Search"; typing filters Canada, Mexico and United States, and the chosen "Canada" fills it. Selector: `[class~="aui-combobox-input"]`.
+7. **Trigger** — The button at the end of the group that opens or closes the country list. Selector: `[class~="aui-combobox-trigger"]`.
+8. **Icon** — The chevron-down glyph inside the trigger button. Selector: `[class~="aui-combobox-icon"]`.
+9. **Popup** — Popup of the trigger width, 4px below the group; this example is built open and non-modal inside the stage. Selector: `[class~="aui-combobox-popup"]`.
+10. **Empty** — The "No result found" message shown when the typed text matches no country. Selector: `[class~="aui-combobox-empty"]`.
+11. **List** — The list that renders one row per matching country. Selector: `[class~="aui-combobox-list"]`.
+12. **Item** — A country row; its label is the item text and the chosen row is highlighted. Selector: `[class~="aui-combobox-item"]`.
+13. **Item indicator** — The tick that marks the chosen country row. Selector: `[class~="aui-combobox-item-indicator"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/combobox/Combobox-001/example.tsx`
 

@@ -45,6 +45,14 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 4. **Body** — Full-width centred column under the image that carries the title. Selector: `[class~="aui-card-body"]`.
 5. **Title** — Centred, wrapping semi-bold p2 label reading "Related product"; ACE places these cards under a Related products heading. Selector: `[class~="aui-card-title"]`.
 
+## Component layer steps
+
+1. **Card** — Fixed 128 by 160 soft card on scale "sm" with equal padding; its content is a centred column. Selector: `[class~="aui-card"]`.
+2. **Image container** — 96 by 96 box that holds the product picture above the title. Selector: `[class~="aui-card-image-container"]`.
+3. **Image** — The product image, decorative (alt empty) and shown whole with fit="contain". Selector: `[class~="aui-card-image"]`.
+4. **Body** — Full-width centred column under the image that carries the title. Selector: `[class~="aui-card-body"]`.
+5. **Title** — Centred, wrapping semi-bold p2 label reading "Related product"; ACE places these cards under a Related products heading. Selector: `[class~="aui-card-title"]`.
+
 ## Apps
 
 - ACE (`ace`)
@@ -65,6 +73,16 @@ In context view: Shown.
 
 1. **Related products heading** — The "Related products" h3 (Type l3 semi-bold) above the cards. Part marker: `data-ug-part="section-heading"`.
 2. **Card row** — The wrapping flex row (8px gap) that lays the related-product cards out side by side. Part marker: `data-ug-part="card-row"`.
+
+#### In context layer steps
+
+1. **Related products heading** — The "Related products" h3 (Type l3 semi-bold) above the cards. Selector: `[data-ug-part="section-heading"]`.
+2. **Card row** — The wrapping flex row (8px gap) that lays the related-product cards out side by side. Selector: `[data-ug-part="card-row"]`.
+3. **Card** — Fixed 128 by 160 soft card on scale "sm" with equal padding; its content is a centred column. Selector: `[class~="aui-card"]`.
+4. **Image container** — 96 by 96 box that holds the product picture above the title. Selector: `[class~="aui-card-image-container"]`.
+5. **Image** — The product image, decorative (alt empty) and shown whole with fit="contain". Selector: `[class~="aui-card-image"]`.
+6. **Body** — Full-width centred column under the image that carries the title. Selector: `[class~="aui-card-body"]`.
+7. **Title** — Centred, wrapping semi-bold p2 label reading "Related product"; ACE places these cards under a Related products heading. Selector: `[class~="aui-card-title"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/card/Card-001/example.tsx`
 

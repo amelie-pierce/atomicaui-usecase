@@ -49,6 +49,16 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 7. **Item text** — The numeric value text, for example "7.500". Selector: `[class~="aui-select-item-text"]`.
 8. **Indicator** — Empty slot (`{null}`) at the end of each row. Selector: `[class~="aui-select-item-indicator"]`.
 
+## Component layer steps
+
+1. **Trigger** — A bare Select with no Field: an "Hef" labelled (aria-label) outlined trigger at scale "xs" that fills its table cell. Selector: `[class~="aui-select-trigger"]`.
+2. **Chevron** — The chevron at the end of the compact trigger. Selector: `[class~="aui-select-chevron"]`.
+3. **Popup** — Popup that matches the cell trigger width, 4px below it, listing 4.500, 6.000 and 7.500. Selector: `[class~="aui-select-popup"]`.
+4. **List** — The list of the three Hef embedment values. Selector: `[class~="aui-select-list"]`.
+5. **Item** — One embedment value row; the chosen 6.000 shows a raised fill. Selector: `[class~="aui-select-item"]`.
+6. **Item text** — The numeric value text, for example "7.500". Selector: `[class~="aui-select-item-text"]`.
+7. **Indicator** — Empty slot (`{null}`) at the end of each row. Selector: `[class~="aui-select-item-indicator"]`.
+
 ## Apps
 
 - ADC (`adc`)
@@ -77,6 +87,20 @@ In context view: Shown.
 2. **Column headings** — Product, Hef and Weight label the active row values. Selector: `[data-ug-part="column-headings"]`.
 3. **Active product row** — Anchor A-240 is the row currently being edited. Selector: `[data-ug-part="active-product-row"]`.
 4. **Edited Hef cell** — The Hef column holds the open Select while the row is being edited. Selector: `[data-ug-part="edited-hef-cell"]`.
+
+#### In context layer steps
+
+1. **Products table** — The table frames the row and its product data. Selector: `[data-ug-part="products-table"]`.
+2. **Column headings** — Product, Hef and Weight identify each cell in the table. Selector: `[data-ug-part="column-headings"]`.
+3. **Active product row** — Anchor A-240 is selected for editing among neighboring products. Selector: `[data-ug-part="active-product-row"]`.
+4. **Edited Hef cell** — The Select occupies the Hef cell in the active row. Selector: `[data-ug-part="edited-hef-cell"]`.
+5. **Trigger** — A bare Select with no Field: an "Hef" labelled (aria-label) outlined trigger at scale "xs" that fills its table cell. Selector: `[class~="aui-select-trigger"]`.
+6. **Chevron** — The chevron at the end of the compact trigger. Selector: `[class~="aui-select-chevron"]`.
+7. **Popup** — Popup that matches the cell trigger width, 4px below it, listing 4.500, 6.000 and 7.500. Selector: `[class~="aui-select-popup"]`.
+8. **List** — The list of the three Hef embedment values. Selector: `[class~="aui-select-list"]`.
+9. **Item** — One embedment value row; the chosen 6.000 shows a raised fill. Selector: `[class~="aui-select-item"]`.
+10. **Item text** — The numeric value text, for example "7.500". Selector: `[class~="aui-select-item-text"]`.
+11. **Indicator** — Empty slot (`{null}`) at the end of each row. Selector: `[class~="aui-select-item-indicator"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/select/Select-008/example.tsx`
 

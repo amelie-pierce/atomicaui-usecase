@@ -44,6 +44,13 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 3. **Control** — The 28px surface-coloured outlined frame, 3/8 padding and a 4px radius, that wraps the text input. Selector: `[class~="aui-field-control"]`.
 4. **Input** — The editable line of text, prefilled with C-1042 and named by its aria-label. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`.
 
+## Component layer steps
+
+1. **Field** — Stacked text field with a 3 gap that ties the Connection ID label to its single-line control; ADC lays it out as a wrapping row with a 96px label. Selector: `[class~="aui-field"]`.
+2. **Label** — The "Connection ID" label above the control; in ADC it is a 96px end-aligned label with a required asterisk in the error colour. Selector: `[class~="aui-field-label"]`.
+3. **Control** — The 28px surface-coloured outlined frame, 3/8 padding and a 4px radius, that wraps the text input. Selector: `[class~="aui-field-control"]`.
+4. **Input** — The editable line of text, prefilled with C-1042 and named by its aria-label. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`.
+
 ## Apps
 
 - HCS (`hcs`)

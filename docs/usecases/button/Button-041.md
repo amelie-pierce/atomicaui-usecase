@@ -42,6 +42,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Phone icon** — The phone glyph centred in the round button. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 3. **Hint text** — AGPD only: the Need help? 1-800-000-0000 line beside the button. Selector: `[class~="aui-type"]`. Direct text is highlighted.
 
+## Component layer steps
+
+1. **Call** — The round (pill) solid primary phone button; the AGPD scene renders it as a tel: link named Call dealer. Selector: `[class~="aui-button"]`.
+2. **Phone icon** — The phone glyph centred in the round button. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+
 ## Apps
 
 - AGPD (`agpd`)
@@ -61,6 +66,12 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Dealer contact row** — The end-aligned row under the quote form that pairs the Need help? text with the phone button, with an 8px gap. Selector: `[data-ug-part="dealer-row"]`.
+
+#### In context layer steps
+
+1. **Dealer contact row** — The end-aligned row under the quote form that pairs the Need help? text with the phone button, with an 8px gap. Selector: `[data-ug-part="dealer-row"]`.
+2. **Call** — The round (pill) solid primary phone button; the AGPD scene renders it as a tel: link named Call dealer. Selector: `[class~="aui-button"]`.
+3. **Phone icon** — The phone glyph centred in the round button. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-041/example.tsx`
 

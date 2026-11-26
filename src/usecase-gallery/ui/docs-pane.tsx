@@ -102,11 +102,12 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
   const parts = mode === 'context' ? [...usecase.anatomy, ...option.contextAnatomy] : usecase.anatomy;
   const hasAccessibility = !!doc.accessibility?.keyboard || !!doc.accessibility?.focus;
   const hasVariants = !!doc.variants || usecase.options.length > 0;
-  return <div className="ug-docs">
+  return <>
     <ToggleGroup className="ug-docs__mode-toggle" aria-label="Document view" value={[documentMode]} onValueChange={([next]) => next && onDocumentModeChange(next as DocumentMode)}>
       <ToggleGroup.Item value="document" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Document</Button>} />
       <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Layer</Button>} />
     </ToggleGroup>
+    <div className="ug-docs">
     {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} /> : <>
       <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div>
       </header>
@@ -120,5 +121,6 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
       {!!doc.related?.length && <Section id="related" title="7. Related components"><ul className="ug-docs__related">{doc.related.map((item) => <li key={item.href}><a href={item.href}>{item.label}</a></li>)}</ul></Section>}
       </div>
     </>}
-  </div>;
+    </div>
+  </>;
 }

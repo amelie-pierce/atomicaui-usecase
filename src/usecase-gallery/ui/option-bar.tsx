@@ -1,7 +1,7 @@
 import { Select } from '../kit';
 import type { UsecaseOption } from '../types';
 
-/** The one selection control, a select in the header of the left pane: choosing an option updates the preview and the complete document. */
+/** The one selection control, a select on the right side of the preview header: choosing an option updates the preview and the complete document. */
 export function OptionBar({ options, active, onChange }: { options: UsecaseOption[]; active: UsecaseOption; onChange: (id: string) => void }) {
   return (
     <div className="ug-options">

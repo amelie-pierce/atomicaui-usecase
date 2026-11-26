@@ -6,19 +6,27 @@ export interface LayoutPanes {
   tree: ReactNode;
   render: ReactNode;
   detail: ReactNode;
+  treeWidth?: number;
   treeCollapsed: boolean;
   onTreePanelResize: (size: { asPercentage: number; inPixels: number }) => void;
 }
 
+/** The tree pane fits its content, within these pixel bounds. */
+const TREE_MIN = 240;
+const TREE_MAX = 400;
+
 /** Three resizable panes; the preview toolbar is anchored across the page from the center panel. */
-export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onTreePanelResize }: LayoutPanes) {
+export function DetailLayout({ toolbar, tree, render, detail, treeWidth, treeCollapsed, onTreePanelResize }: LayoutPanes) {
+  const fitted = treeWidth === undefined ? undefined : Math.min(TREE_MAX, Math.max(TREE_MIN, treeWidth));
   return (
-    <Panels orientation="horizontal" className="ug-panels" animate={false}>
+    <Panels key={fitted} orientation="horizontal" className="ug-panels" animate={false}>
       <Panels.Panel
         id="component-tree"
         className="ug-layout__column ug-layout__column--tree"
-        defaultSize={treeCollapsed ? '0%' : '25%'}
-        minSize="160px"
+        defaultSize={treeCollapsed ? '0%' : fitted === undefined ? undefined : `${fitted}px`}
+        groupResizeBehavior="preserve-pixel-size"
+        minSize={fitted === undefined ? undefined : `${fitted}px`}
+        maxSize={`${TREE_MAX}px`}
         collapsedSize="0%"
         collapsible
         onResize={onTreePanelResize}
@@ -26,12 +34,12 @@ export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onT
         {tree}
       </Panels.Panel>
       <Panels.ResizeHandle aria-label="Resize component tree and preview" />
-      <Panels.Panel id="component-preview" className="ug-layout__column ug-layout__column--render" defaultSize="50%" minSize="280px">
+      <Panels.Panel id="component-preview" className="ug-layout__column ug-layout__column--render" minSize="280px">
         {toolbar}
         {render}
       </Panels.Panel>
       <Panels.ResizeHandle aria-label="Resize preview and documentation" />
-      <Panels.Panel id="component-documentation" className="ug-layout__column ug-layout__column--detail" defaultSize="25%" minSize="220px">
+      <Panels.Panel id="component-documentation" className="ug-layout__column ug-layout__column--detail" defaultSize="280px" groupResizeBehavior="preserve-pixel-size" minSize="220px">
         {detail}
       </Panels.Panel>
     </Panels>

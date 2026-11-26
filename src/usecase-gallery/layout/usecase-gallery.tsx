@@ -35,21 +35,23 @@ export function UsecaseGallery({ title = 'Use cases' }: UsecaseGalleryProps) {
   const chosenForRoute = chosen?.usecaseId === selectedId ? chosen : undefined;
   const original = allUsecases.find((candidate) => candidate.id === selectedId);
   const group = catalog.find((candidate) => candidate.id === original?.componentId);
-  const resolved = original && group ? withOption(original, chosenForRoute?.optionId) : undefined;
+  const resolved = useMemo(() => original && group ? withOption(original, chosenForRoute?.optionId) : undefined, [original, group, chosenForRoute?.optionId]);
   const usecase = resolved?.usecase;
   const option = resolved?.option;
   const activeMode = option?.showContext ? viewMode : 'component';
+  const componentAnatomy = usecase?.anatomy ?? [];
+  const componentLayers = usecase?.layers ?? [];
   const anatomy = useMemo(() => activeMode === 'context'
     ? [
-      ...(usecase?.anatomy ?? []).map((part) => ({ ...part, scope: 'component' as const })),
+      ...componentAnatomy.map((part) => ({ ...part, scope: 'component' as const })),
       ...(option?.contextAnatomy ?? []).map((part) => ({ ...part, scope: 'context' as const })),
     ]
-    : usecase?.anatomy ?? [], [activeMode, usecase?.id, option?.id]);
+    : componentAnatomy, [activeMode, usecase?.id, option?.id, componentAnatomy]);
   const activePartId = interactedPart?.id ?? selectedPartId;
   const previewKey = `${selectedId}:${option?.id ?? ''}`;
   const activePreviewKey = `${previewKey}:${activeMode}`;
   const availablePartIds = availableParts?.key === activePreviewKey ? availableParts.ids : undefined;
-  const authoredLayers = activeMode === 'context' ? [...(option?.contextLayers ?? []), ...(usecase?.layers ?? [])] : usecase?.layers ?? [];
+  const authoredLayers = activeMode === 'context' ? [...(option?.contextLayers ?? []), ...componentLayers] : componentLayers;
   const anatomyIds = new Set(anatomy.map((part) => part.id));
   const layers = availablePartIds ? authoredLayers.filter((step) => {
     const partId = step.partId ?? step.id.replace(/^context-/, '');

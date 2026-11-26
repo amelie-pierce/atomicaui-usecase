@@ -22,15 +22,15 @@ export default function Example() {
               <Field.SelectList>
                 <Field.SelectItem value="dead">
                   <Field.SelectItemText>Dead (90)</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
+                  <Field.SelectItemIndicator><Field.SelectIcon name="check" aria-hidden aui={{ scale: 'xs' }} /></Field.SelectItemIndicator>
                 </Field.SelectItem>
                 <Field.SelectItem value="snow">
                   <Field.SelectItemText>Snow (115)</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
+                  <Field.SelectItemIndicator><Field.SelectIcon name="check" aria-hidden aui={{ scale: 'xs' }} /></Field.SelectItemIndicator>
                 </Field.SelectItem>
                 <Field.SelectItem value="roof">
                   <Field.SelectItemText>Roof (125)</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
+                  <Field.SelectItemIndicator><Field.SelectIcon name="check" aria-hidden aui={{ scale: 'xs' }} /></Field.SelectItemIndicator>
                 </Field.SelectItem>
               </Field.SelectList>
             </Field.SelectPopup>

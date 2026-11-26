@@ -186,7 +186,7 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/select/Select-003/options/pfd-multi-select/example.tsx`
 
 ```tsx
-import { Field } from '../../../../../kit';
+import { ContainedIcon, Field } from '../../../../../kit';
 
 export default function Example() {
   return (
@@ -210,16 +210,16 @@ export default function Example() {
             <Field.SelectPopup matchTriggerWidth>
               <Field.SelectList>
                 <Field.SelectItem value="standard">
+                  <ContainedIcon name="square-check" aria-hidden />
                   <Field.SelectItemText>Standard</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
                 </Field.SelectItem>
                 <Field.SelectItem value="galvanized">
+                  <ContainedIcon name="square-check" aria-hidden />
                   <Field.SelectItemText>Hot dip galvanized</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
                 </Field.SelectItem>
                 <Field.SelectItem value="stainless">
+                  <ContainedIcon name="square" aria-hidden />
                   <Field.SelectItemText>Stainless steel</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
                 </Field.SelectItem>
               </Field.SelectList>
             </Field.SelectPopup>

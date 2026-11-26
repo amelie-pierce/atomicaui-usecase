@@ -103,6 +103,14 @@ export function buildCatalog({ metas, docs, examples, sources, options = {}, opt
     if (!optionDocs?.length) fail(`${id} must define at least one option`);
     usecase.options = buildOptions(usecase, optionDocs, key, optionByKey, optionSourceByKey);
     for (const option of usecase.options) {
+      const partIds = new Set(usecase.anatomy.map((part) => part.id));
+      const overrideIds = new Set<string>();
+      for (const part of option.componentAnatomy ?? []) {
+        if (!partIds.has(part.id)) fail(`${id} option "${option.id}" overrides unknown Component Anatomy part "${part.id}"`);
+        if (overrideIds.has(part.id)) fail(`${id} option "${option.id}" overrides Component Anatomy part "${part.id}" twice`);
+        overrideIds.add(part.id);
+      }
+      if (option.componentLayers?.length) validateLayers(id, option.componentLayers, `Component (${option.id})`, usecaseKeyIdeas, catalogKeyIdeaCounts);
       if (option.contextLayers.length) validateLayers(id, option.contextLayers, `In context (${option.id})`, usecaseKeyIdeas, catalogKeyIdeaCounts);
       else if (option.contextAnatomy.length) fail(`${id} option "${option.id}" is missing authored In context layer steps`);
     }
@@ -153,7 +161,7 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
   const { id } = usecase;
   const ids = new Set<string>();
   const options = docs.map((raw, index): UsecaseOption => {
-    const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextLayers, contextDocument } = raw;
+    const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextLayers, contextDocument, componentAnatomy, componentLayers, componentDocument } = raw;
     if (contextLayers === undefined) fail(`${id} option "${optionId}" is missing authored In context layer steps`);
     for (const app of [...apps, ...Object.keys(source ?? {})] as AppKey[]) {
       if (!apps.includes(app) || !usecase.apps.includes(app)) fail(`${id} sets the option "${optionId}" to app "${app}", which is not in its apps`);
@@ -184,6 +192,9 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
       contextAnatomy,
       contextLayers,
       contextDocument,
+      componentAnatomy,
+      componentLayers,
+      componentDocument,
       Scene,
       Example,
       loadExampleCode,

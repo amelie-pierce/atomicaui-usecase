@@ -59,6 +59,10 @@ export interface UsecaseOptionDoc {
   contextLayers: LayerStep[];
   /** View-specific documentation for the scene. Omitted fields share the use case's general prose. */
   contextDocument?: Partial<UsecaseViewDoc>;
+  /** Component-view overrides for options whose control, anatomy or explanation differs. */
+  componentAnatomy?: Array<Pick<AnatomyPart, 'id'> & Partial<Omit<AnatomyPart, 'id'>>>;
+  componentLayers?: LayerStep[];
+  componentDocument?: Partial<UsecaseViewDoc>;
   /** The source file of the scene per app of the option; overrides the use case's `source` for these apps. */
   source?: Partial<Record<AppKey, string>>;
 }
@@ -176,6 +180,9 @@ export interface UsecaseOption {
   contextAnatomy: AnatomyPart[];
   contextLayers: LayerStep[];
   contextDocument?: Partial<UsecaseViewDoc>;
+  componentAnatomy?: Array<Pick<AnatomyPart, 'id'> & Partial<Omit<AnatomyPart, 'id'>>>;
+  componentLayers?: LayerStep[];
+  componentDocument?: Partial<UsecaseViewDoc>;
   Scene: ComponentType<ContextProps>;
   Example: ComponentType;
   loadExampleCode: () => Promise<string>;

@@ -14,17 +14,31 @@ export default defineUsecase({
         {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"Empty slot (`{null}`) at the end of each row.","keyIdea":"The reserved slot keeps selection marks aligned if a scene adds one.","selector":"[class~=\"aui-select-item-indicator\"]"},
       ],
 options: [
-    { id: "adc-table-cell", showContext: false, name: "Cell select", apps: ["adc"], source: {"adc":"src/adc/components/ProductsPicker.tsx"} ,
-      contextLayers: [
-
+    { id: "adc-table-cell", showContext: true, name: "Cell select", apps: ["adc"], source: {"adc":"src/adc/components/ProductsPicker.tsx"},
+      contextAnatomy: [
+        { id: 'products-table', name: 'Products table', scope: 'context', selector: '[data-ug-part="products-table"]', description: 'The product rows and columns that give the bare cell select its meaning.' },
+        { id: 'column-headings', name: 'Column headings', scope: 'context', selector: '[data-ug-part="column-headings"]', description: 'Product, Hef and Weight label the active row values.' },
+        { id: 'active-product-row', name: 'Active product row', scope: 'context', selector: '[data-ug-part="active-product-row"]', description: 'Anchor A-240 is the row currently being edited.' },
+        { id: 'edited-hef-cell', name: 'Edited Hef cell', scope: 'context', selector: '[data-ug-part="edited-hef-cell"]', description: 'The Hef column holds the open Select while the row is being edited.' },
       ],
+      contextLayers: [
+        { id: 'context-products-table', partId: 'products-table', scope: 'context', title: 'Products table', explanation: 'The table frames the row and its product data.', keyIdea: 'A row editor makes sense beside the product values it changes.', selector: '[data-ug-part="products-table"]' },
+        { id: 'context-column-headings', partId: 'column-headings', scope: 'context', title: 'Column headings', explanation: 'Product, Hef and Weight identify each cell in the table.', keyIdea: 'The headings make the compact value readable as the Hef column.', selector: '[data-ug-part="column-headings"]' },
+        { id: 'context-active-row', partId: 'active-product-row', scope: 'context', title: 'Active product row', explanation: 'Anchor A-240 is selected for editing among neighboring products.', keyIdea: 'The active row ties the open choice to one product record.', selector: '[data-ug-part="active-product-row"]' },
+        { id: 'context-edited-cell', partId: 'edited-hef-cell', scope: 'context', title: 'Edited Hef cell', explanation: 'The Select occupies the Hef cell in the active row.', keyIdea: 'The cell position replaces a visible Field label with its column heading.', selector: '[data-ug-part="edited-hef-cell"]' },
+      ],
+      contextDocument: {
+        summary: 'A compact label-less Select edits the Hef value in an active ADC Products row.',
+        where: 'The Hef cell of the product row being edited in ADC ProductsPicker.',
+        how: 'The selected product row remains visible beside neighboring values. The Hef column heading names the field; the bare Select fills that cell and opens its choices in place.',
+      },
     },
   ],
   source: { adc: 'src/adc/components/ProductsPicker.tsx' },
   summary: 'A compact label-less select that fills a table cell and picks one value for the row.',
   where: 'The Hef column of the ADC Products table: each selected anchor row edits its effective embedment from a short list.',
   when: 'Use it for a value picked inside a table row, where the column header is the label. The control is the bare Select, with no Field around it; give it an aria-label because it has no visible one.',
-  how: 'ADC: a Select with a Select.Trigger at scale "xs", color "surface", paint "fixed" and width "fill", so it takes the width of its cell; it holds Select.Value and Select.Chevron and carries aria-label "Hef". Select.Portal > Select.Positioner (side "bottom", sideOffset 4) > Select.Popup with matchTriggerWidth > Select.List holds Select.Items, each with Select.ItemText and a Select.ItemIndicator written with `{null}`. The app also shows a plain Button with a chevron in place of the select for rows that are not being edited, and opens the list on mount for the row just chosen (defaultOpen); the scene shows the open select in a fixed-width cell and leaves out the table, the other columns and the expand toggles.',
+  how: 'ADC: a Select with a Select.Trigger at scale "xs", color "surface", paint "fixed" and width "fill", so it takes the width of its cell; it holds Select.Value and Select.Chevron and carries aria-label "Hef". Select.Portal > Select.Positioner (side "bottom", sideOffset 4) > Select.Popup with matchTriggerWidth > Select.List holds Select.Items, each with Select.ItemText and a Select.ItemIndicator written with `{null}`. The app also shows a plain Button with a chevron in place of the select for rows that are not being edited, and opens the list on mount for the row just chosen (defaultOpen); In context shows the open editor in its row among neighboring product values, while leaving out the remaining columns and expand toggles.',
   anatomy: [
     {
       id: 'trigger',

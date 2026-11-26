@@ -226,21 +226,21 @@ export default function Example() {
                   <ContainedIcon name="image" aria-hidden />
                 </View>
                   <Field.SelectItemText>Plate A</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
+                    <Field.SelectItemIndicator><Field.SelectIcon name="check" aria-hidden /></Field.SelectItemIndicator>
                 </Field.SelectItem>
                 <Field.SelectItem value="plate-b">
                   <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
                   <ContainedIcon name="image" aria-hidden />
                 </View>
                   <Field.SelectItemText>Plate B</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
+                    <Field.SelectItemIndicator><Field.SelectIcon name="check" aria-hidden /></Field.SelectItemIndicator>
                 </Field.SelectItem>
                 <Field.SelectItem value="plate-c">
                   <View as="span" aui={{ color: 'primary', paint: 'tonal', shape: 'soft', sx: { paddingBlockStart: '4', paddingBlockEnd: '4', paddingInlineStart: '4', paddingInlineEnd: '4' } }}>
                   <ContainedIcon name="image" aria-hidden />
                 </View>
                   <Field.SelectItemText>Plate C</Field.SelectItemText>
-                  <Field.SelectItemIndicator />
+                    <Field.SelectItemIndicator><Field.SelectIcon name="check" aria-hidden /></Field.SelectItemIndicator>
                 </Field.SelectItem>
               </Field.SelectList>
             </Field.SelectPopup>

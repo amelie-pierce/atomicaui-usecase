@@ -1,45 +1,38 @@
 import type { ContextProps } from '../../../../../types';
-import { Select, View } from '../../../../../kit';
+import { Table, View } from '../../../../../kit';
 
-// The Hef cell of the Products table of ADC (src/adc/components/ProductsPicker.tsx, HefSelect): a bare Select with no Field and no label, a compact (scale "xs") outlined trigger that fills its table cell and a popup
-// the width of the trigger. Built open and non-modal (container={host}, positioner ug-anchored); the cell is a fixed-width wrapper. Left out: the table, its other columns, the expand toggles and the metric
-// display of the Hef values; the app opens the list on mount for the row being edited, the scene opens it the same way.
-export default function AdcTableCellScene({ host }: ContextProps) {
+// ADC ProductsPicker.tsx: the active Hef editor inside its product row. Neighboring values and column headings show why this bare Select has no visible Field label.
+export default function AdcTableCellScene({ children }: ContextProps) {
   return (
-    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 12)', inlineSize: 'min(100%, 120px)' }}>
-      <Select open
-        defaultValue="6"
-        items={[
-          { label: '4.500', value: '4.5' },
-          { label: '6.000', value: '6' },
-          { label: '7.500', value: '7.5' },
-        ]}
-      >
-        <Select.Trigger aria-label="Hef" aui={{ scale: 'xs', color: 'surface', paint: 'fixed', sx: { width: 'fill' } }}>
-          <Select.Value />
-          <Select.Chevron />
-        </Select.Trigger>
-        <Select.Portal container={host}>
-          <Select.Positioner side="bottom" sideOffset={4} className="ug-anchored">
-            <Select.Popup matchTriggerWidth>
-              <Select.List>
-                <Select.Item value="4.5">
-                  <Select.ItemText>4.500</Select.ItemText>
-                  <Select.ItemIndicator>{null}</Select.ItemIndicator>
-                </Select.Item>
-                <Select.Item value="6">
-                  <Select.ItemText>6.000</Select.ItemText>
-                  <Select.ItemIndicator>{null}</Select.ItemIndicator>
-                </Select.Item>
-                <Select.Item value="7.5">
-                  <Select.ItemText>7.500</Select.ItemText>
-                  <Select.ItemIndicator>{null}</Select.ItemIndicator>
-                </Select.Item>
-              </Select.List>
-            </Select.Popup>
-          </Select.Positioner>
-        </Select.Portal>
-      </Select>
+    <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ inlineSize: 'min(100%, 480px)' }}>
+      <div data-ug-part="products-table">
+        <Table aria-label="Products" aui={{ scale: 'sm', shape: 'soft', sx: { gap: '0', minHeight: '0' } }} border="all-cells" borderStyle="tonal" scroll="self" bodyFit="content" fit="fill" minInlineSize={384}>
+          <Table.Head>
+            <Table.Row data-ug-part="column-headings">
+              <Table.HeaderCell aui={{ scale: 'sm' }}>Product</Table.HeaderCell>
+              <Table.HeaderCell aui={{ scale: 'sm' }}>Hef</Table.HeaderCell>
+              <Table.HeaderCell aui={{ scale: 'sm' }}>Weight</Table.HeaderCell>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell aui={{ scale: 'sm' }}>Anchor A-120</Table.Cell>
+              <Table.Cell aui={{ scale: 'sm' }}>4.500</Table.Cell>
+              <Table.Cell aui={{ scale: 'sm' }}>2.4 kg</Table.Cell>
+            </Table.Row>
+            <Table.Row data-ug-part="active-product-row">
+              <Table.Cell aui={{ scale: 'sm' }}>Anchor A-240</Table.Cell>
+              <Table.Cell aui={{ scale: 'sm' }}><span data-ug-part="edited-hef-cell">{children}</span></Table.Cell>
+              <Table.Cell aui={{ scale: 'sm' }}>3.1 kg</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell aui={{ scale: 'sm' }}>Anchor A-360</Table.Cell>
+              <Table.Cell aui={{ scale: 'sm' }}>7.500</Table.Cell>
+              <Table.Cell aui={{ scale: 'sm' }}>4.0 kg</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+      </div>
     </View>
   );
 }

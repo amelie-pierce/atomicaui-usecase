@@ -9,5 +9,16 @@ export const appLabels = (apps: AppKey[]): string => apps.map((key) => APPS[key]
 export const withOption = (usecase: Usecase, optionId?: string): { usecase: Usecase; option?: UsecaseOption } => {
   const option = usecase.options.find((candidate) => candidate.id === optionId) ?? usecase.options[0];
   if (!option) throw new Error(`Use case ${usecase.id} has no options`);
-  return { usecase: { ...usecase, apps: option.apps, Example: option.Example, loadCode: option.loadExampleCode }, option };
+  const anatomy = new Map((option.componentAnatomy ?? []).map((part) => [part.id, part]));
+  return {
+    usecase: {
+      ...usecase,
+      apps: option.apps,
+      anatomy: usecase.anatomy.map((part) => ({ ...part, ...anatomy.get(part.id) })),
+      layers: option.componentLayers ?? usecase.layers,
+      Example: option.Example,
+      loadCode: option.loadExampleCode,
+    },
+    option,
+  };
 };

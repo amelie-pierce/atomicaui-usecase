@@ -177,7 +177,7 @@ export default function Example() {
         <Dialog.Backdrop />
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { width: 'fill', height: 'fill' } }}>
-            <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
+            <Dialog.Title aui={{ scale: 'sm' }}>
               Website Application License Agreement
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close Website Application License Agreement" aui={{ scale: 'sm' }} />

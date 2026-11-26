@@ -147,7 +147,7 @@ In context view: Hidden by the authored option setting.
 #### Component UI source — `src/usecase-gallery/usecases/alert-dialog/AlertDialog-004/options/pbs-delete/example.tsx`
 
 ```tsx
-import { Dialog } from '../../../../../kit';
+import { Dialog, View } from '../../../../../kit';
 import { useStageHost } from '../../../../../hooks/use-stage-host';
 
 export default function Example() {
@@ -158,15 +158,15 @@ export default function Example() {
         <Dialog.Backdrop />
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false}>
-            <Dialog.Title aui={{ color: 'raised' }}>
-              <Dialog.Icon name="triangle-exclamation" weight="solid" aui={{ color: 'warning' }} />
-              Warning: Delete Template?
-            </Dialog.Title>
-            <Dialog.Description>
-              You are about to delete a template and this action cannot be undone. Please confirm before proceeding.
-            </Dialog.Description>
+            <View data-ug-part="close-row" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', justifyContent: 'end' } }}>
+              <Dialog.Close aria-label="Close" />
+            </View>
+            <Dialog.Body>
+              <Dialog.Description>Are you sure you want to delete Connection 1</Dialog.Description>
+            </Dialog.Body>
             <Dialog.Actions>
-              <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
+              <Dialog.Button data-ug-part="cancel">Close</Dialog.Button>
+              <Dialog.Spacer />
               <Dialog.Button data-ug-part="delete" aui={{ color: 'error', paint: 'solid' }}>Delete</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
@@ -232,8 +232,8 @@ export default function Example() {
         <Dialog.Backdrop />
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false}>
-            <Dialog.Title aui={{ color: 'raised' }}>
-              <Dialog.Icon name="triangle-exclamation" weight="solid" aui={{ color: 'warning' }} />
+            <Dialog.Title>
+              <Dialog.Icon name="triangle-exclamation" aui={{ color: 'warning' }} />
               Warning: Delete Template?
             </Dialog.Title>
             <Dialog.Description>
@@ -241,7 +241,7 @@ export default function Example() {
             </Dialog.Description>
             <Dialog.Actions>
               <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
-              <Dialog.Button data-ug-part="delete" aui={{ color: 'error', paint: 'solid' }}>Delete</Dialog.Button>
+              <Dialog.Button data-ug-part="delete" dismiss={false} aui={{ color: 'error', paint: 'solid' }}>Delete</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

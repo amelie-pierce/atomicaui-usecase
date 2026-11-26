@@ -9,8 +9,8 @@ export default function Example() {
         <Dialog.Backdrop />
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false}>
-            <Dialog.Title aui={{ color: 'raised' }}>
-              <Dialog.Icon name="triangle-exclamation" weight="solid" aui={{ color: 'warning' }} />
+            <Dialog.Title>
+              <Dialog.Icon name="triangle-exclamation" aui={{ color: 'warning' }} />
               Warning: Delete Template?
             </Dialog.Title>
             <Dialog.Description>
@@ -18,7 +18,7 @@ export default function Example() {
             </Dialog.Description>
             <Dialog.Actions>
               <Dialog.Button data-ug-part="cancel">Cancel</Dialog.Button>
-              <Dialog.Button data-ug-part="delete" aui={{ color: 'error', paint: 'solid' }}>Delete</Dialog.Button>
+              <Dialog.Button data-ug-part="delete" dismiss={false} aui={{ color: 'error', paint: 'solid' }}>Delete</Dialog.Button>
             </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>

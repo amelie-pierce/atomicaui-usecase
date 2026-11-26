@@ -43,7 +43,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Header** — Raised band with the Limit state, Demand (lb) and Capacity (lb) headings; ADM adds a full-width Limit states title row above them. Selector: `[class~="aui-table-head"]`.
 3. **Header cell** — Column heading; the first, Limit state, is left-aligned while the numeric headings follow the right-aligned table. Selector: `[class~="aui-table-header-cell"]`.
 4. **Body** — Rows for Steel tension (2,210 / 5,400) and Concrete breakout (1,180 / 3,060), separated by hairlines. Selector: `[class~="aui-table-body"]`.
-5. **Row** — One limit state with its demand and capacity values. Selector: `[class~="aui-table-row"]`.
+5. **Row** — One limit state with its demand and capacity values. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
 6. **Cell** — Value cell; the limit state name is left-aligned through its own aui, the figures stay right-aligned. Selector: `[class~="aui-table-cell"]`.
 7. **Status dot** — ADM only: the Ratio cell leads with a coloured success dot before the 41% value. Selector: `[class~="aui-table-cell"] [class~="aui-symbol"]`.
 

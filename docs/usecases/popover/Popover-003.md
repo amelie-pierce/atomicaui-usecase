@@ -42,7 +42,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 1. **Trigger** — The ellipsis-vertical "Column options" icon button, an xs kebab with a compact square profile; in the table scenes the popover anchors to the Load (lb) kebab instead. Selector: `[data-base-ui-click-trigger]`.
 2. **Results table** — The "Connector calculation results" table of the HCS and PFD scenes whose headers host the kebab. Selector: `[class~="aui-table"]`.
-3. **Sortable header cell** — The Load (lb) header, sorted ascending, whose actions slot carries the kebab (vertical dots in HCS, horizontal in PFD). Selector: `[class~="aui-table-header-cell"]`.
+3. **Sortable header cell** — The Load (lb) header, sorted ascending, whose actions slot carries the kebab (vertical dots in HCS, horizontal in PFD). Selector: `[data-ug-part="header-cell"]`.
 4. **Popup** — The 256px elevated column opened under the kebab, aligned to the cell end in HCS and the example and to its start in PFD. Selector: `[data-aui-popup-motion][role="dialog"]`.
 5. **Close** — The PFD square Close button that starts the popup, end-aligned above the Sort choices. Part marker: `data-ug-part="close"`.
 6. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`.
@@ -123,7 +123,7 @@ export default function HcsColumnMenuScene({ host }: ContextProps) {
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell data-ug-part="other-header" aui={{ color: 'raised' }} actions={<IconButton name="ellipsis-vertical" aria-label="Model column options" aui={{ color: 'surface', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} />}>Model</Table.HeaderCell>
-            <Table.HeaderCell aui={{ color: 'raised' }} sortDirection="asc" actions={<span ref={setAnchor}><IconButton name="ellipsis-vertical" aria-label="Load (lb) column options" aui={{ color: 'surface', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} /></span>}>Load (lb)</Table.HeaderCell>
+            <Table.HeaderCell data-ug-part="header-cell" aui={{ color: 'raised' }} sortDirection="asc" actions={<span ref={setAnchor}><IconButton name="ellipsis-vertical" aria-label="Load (lb) column options" aui={{ color: 'surface', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} /></span>}>Load (lb)</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body data-ug-part="rows">
@@ -226,7 +226,7 @@ export default function PfdColumnMenuScene({ host }: ContextProps) {
         <Table.Head>
           <Table.Row>
             <Table.HeaderCell data-ug-part="other-header" aui={{ color: 'raised' }} actions={<IconButton name="ellipsis" aria-label="Model column options" aui={{ color: 'surface', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} />}>Model</Table.HeaderCell>
-            <Table.HeaderCell aui={{ color: 'raised' }} sortDirection="asc" actions={<span ref={setAnchor}><IconButton name="ellipsis" aria-label="Load (lb) column options" aui={{ color: 'secondary', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} /></span>}>Load (lb)</Table.HeaderCell>
+            <Table.HeaderCell data-ug-part="header-cell" aui={{ color: 'raised' }} sortDirection="asc" actions={<span ref={setAnchor}><IconButton name="ellipsis" aria-label="Load (lb) column options" aui={{ color: 'secondary', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'xs' }} /></span>}>Load (lb)</Table.HeaderCell>
           </Table.Row>
         </Table.Head>
         <Table.Body data-ug-part="rows">

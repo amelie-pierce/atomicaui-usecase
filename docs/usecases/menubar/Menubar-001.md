@@ -36,10 +36,8 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Structure (outer to inner)
 
-1. **Menubar** — The "Top bar" strip that holds the action button; the HS scene shows it with File and Help Center beside About and Reset. Selector: `[class~="aui-menubar"]`.
-2. **Button** — The plain About button that runs one action, here the about dialog, with no list of choices. Selector: `[class~="aui-button"]`.
-3. **Label** — The visible word "About" (Reset in the HS scene) that names the action. Selector: `[class~="aui-button"]`. Direct text is highlighted.
-4. **Menu trigger** — In the HS scene the File and Help Center triggers sit around the buttons so the bar shows both kinds. Selector: `[class~="aui-menubar-trigger"]`.
+1. **Button** — The plain About button that runs one action, here the about dialog, with no list of choices. Selector: `[data-ug-part="button"]`.
+2. **Label** — The visible word "About" (Reset in the HS scene) that names the action. Selector: `[data-ug-part="button"]`. Direct text is highlighted.
 
 ## Apps
 
@@ -67,9 +65,10 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **File menu trigger** — The File dropdown trigger at the start of the bar, which opens the file actions. Part marker: `data-ug-part="file-menu"`.
-2. **Reset button** — The plain Reset Menubar.Button next to About that restores the design to its defaults. Part marker: `data-ug-part="reset"`.
-3. **Help Center trigger** — The Help Center dropdown trigger at the end of the bar. Part marker: `data-ug-part="help-menu"`.
+1. **Top bar** — The top bar Menubar that holds both action buttons and menu triggers. Selector: `[class~="aui-menubar"][aria-label="Top bar"]`.
+2. **File menu trigger** — The File dropdown trigger at the start of the bar, which opens the file actions. Part marker: `data-ug-part="file-menu"`.
+3. **Reset button** — The plain Reset Menubar.Button next to About that restores the design to its defaults. Part marker: `data-ug-part="reset"`.
+4. **Help Center trigger** — The Help Center dropdown trigger at the end of the bar. Part marker: `data-ug-part="help-menu"`.
 
 #### Component UI source — `src/usecase-gallery/usecases/menubar/Menubar-001/example.tsx`
 
@@ -79,7 +78,7 @@ import { Menubar } from '../../../kit';
 export default function Example() {
   return (
     <Menubar aria-label="Top bar">
-      <Menubar.Button>About</Menubar.Button>
+      <Menubar.Button data-ug-part="button">About</Menubar.Button>
     </Menubar>
   );
 }
@@ -100,7 +99,7 @@ export default function HsTopBarScene(_: ContextProps) {
         <Menubar.Dropdown>
           <Menubar.DropdownTrigger data-ug-part="file-menu">File</Menubar.DropdownTrigger>
         </Menubar.Dropdown>
-        <Menubar.Button>About</Menubar.Button>
+        <Menubar.Button data-ug-part="button">About</Menubar.Button>
         <Menubar.Button data-ug-part="reset">Reset</Menubar.Button>
         <Menubar.Dropdown>
           <Menubar.DropdownTrigger data-ug-part="help-menu">Help Center</Menubar.DropdownTrigger>

@@ -44,7 +44,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Header** — Header row printed with Model and Load (lb); ACE and ADM paint it muted with a surface foreground, HS and RWS use a secondary solid fill. Selector: `[class~="aui-table-head"]`.
 3. **Header cell** — Printed column label without sort controls; its alignment is centre in ACE and RWS and left or start in ADM and HS. Selector: `[class~="aui-table-header-cell"]`.
 4. **Body** — The printed rows of the report table. Selector: `[class~="aui-table-body"]`.
-5. **Row** — One printed record, Model B-200 with 2,210 lb; HS and RWS switch selectable and expandable off on the row. Selector: `[class~="aui-table-row"]`.
+5. **Row** — One printed record, Model B-200 with 2,210 lb; HS and RWS switch selectable and expandable off on the row. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
 6. **Cell** — Plain printed value; ACE sets 4px by 6px padding with centred text, ADM left-aligns it in the compact profile. Selector: `[class~="aui-table-cell"]`.
 
 ## Apps

@@ -45,7 +45,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 3. **Header cell** — Centred raised heading with a 128px width that matches its body column; the label sits in one span so a wrapped label stays a single flex item. Selector: `[class~="aui-table-header-cell"]`.
 4. **Sort button** — The sort control built from sortDirection and onSortToggle; its title reads "Sort by Model" or "Sort by Load". Selector: `[class~="aui-table-sort-button"]`.
 5. **Body** — The two result rows, Model B-200 (2,210) and Model C-300 (1,180), scrolling under the pinned header. Selector: `[class~="aui-table-body"]`.
-6. **Row** — One candidate product, a plain read-only row with no selection or expander. Selector: `[class~="aui-table-row"]`.
+6. **Row** — One candidate product, a plain read-only row with no selection or expander. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
 7. **Cell** — Value cell using the same 128px width token as its header; the model name is left-aligned in the pinned first column and the load is centred. Selector: `[class~="aui-table-cell"]`.
 
 ## Apps

@@ -42,7 +42,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 1. **Table** — Header-less message grid with a11y="table", "all-cells" tonal borders, scale "sm" and a soft shape; it sits inside an expanded result row. Selector: `[class~="aui-table"]`.
 2. **Body** — Contains only body rows, one per failed or warning check; there is no Table.Head. Selector: `[class~="aui-table-body"]`.
-3. **Row** — One check message: the status chip followed by its text. Selector: `[class~="aui-table-row"]`.
+3. **Row** — One check message: the status chip followed by its text. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
 4. **Status cell** — Fixed 96px first column that holds the status chip. Selector: `[class~="aui-table-cell"]:first-child`.
 5. **Status chip** — Small danger-tonal xs chip that marks the check as a failure. Selector: `[class~="aui-chip"]`.
 6. **Chip label** — The word "Fail" inside the chip. Selector: `[class~="aui-chip-label"]`. Direct text is highlighted.

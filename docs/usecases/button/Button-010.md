@@ -63,8 +63,7 @@ In context view: Shown.
 #### In context structure additions
 
 1. **Lock trigger** — The square lock button after the field label (aria-label "Thickness is locked") that opens the hint on hover or focus. Part marker: `data-ug-part="lock-trigger"`.
-2. **Hint popup** — The 288px elevated surface popup above the trigger (top, 4px offset) that holds the explanation and the action. Part marker: `data-ug-part="hint-popup"`.
-3. **Hint text** — The line "Controlled by Plate Option" and its current value "All Plates based on the stock model". Part marker: `data-ug-part="hint-text"`.
+2. **Hint text** — The line "Controlled by Plate Option" and its current value "All Plates based on the stock model". Part marker: `data-ug-part="hint-text"`.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-010/example.tsx`
 

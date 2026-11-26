@@ -86,7 +86,7 @@ function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: 
     if (event.key === 'Home') { event.preventDefault(); onChange(0); }
     if (event.key === 'End') { event.preventDefault(); onChange(layers.length - 1); }
   };
-  return <div className="ug-layer-lesson" aria-label="Layer by layer lesson">
+  return <div className="ug-layer-lesson" aria-label="Layer lesson">
     <div className="ug-layer-lesson__topline"><Type as="p" role="l3" color="muted">Step {index + 1} of {layers.length}</Type><div className="ug-layer-lesson__controls">
       <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} onClick={() => { setPlaying(false); onChange(0); }}>Replay</Button>
       <Button aui={{ color: 'secondary', paint: 'tonal', scale: 'sm' }} aria-pressed={playing && !reducedMotion} disabled={reducedMotion || (!playing && index === layers.length - 1)} onClick={() => setPlaying((value) => !value)}>{playing && !reducedMotion ? 'Pause' : 'Autoplay'}</Button>
@@ -120,7 +120,7 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
   return <div className="ug-docs">
     <ToggleGroup className="ug-docs__mode-toggle" aria-label="Document view" value={[documentMode]} onValueChange={([next]) => next && onDocumentModeChange(next as DocumentMode)}>
       <ToggleGroup.Item value="document" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Document</Button>} />
-      <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Layer by layer</Button>} />
+      <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Layer</Button>} />
     </ToggleGroup>
     {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} /> : <>
       <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div>

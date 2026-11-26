@@ -48,12 +48,12 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Field** — Stacked wrapper holding the "Anchor type" label, the select and the help line; in ACE it becomes a column with a label-and-select row above the note. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Anchor type" label that names the select; ACE puts it beside the trigger, taking half the row. Selector: `[class~="aui-field-label"]`.
-3. **Select trigger** — The closed 28px select trigger, surface coloured, that shows the chosen Adhesive option; the open list is Select-001. Selector: `[class~="aui-select-trigger"]`.
+1. **Field** — Wrapper groups Anchor type, select, and help; ACE adds a label row. Selector: `[class~="aui-field"]`.
+2. **Label** — Anchor type names the select; ACE places it beside the trigger. Selector: `[class~="aui-field-label"]`.
+3. **Select trigger** — Closed 28px trigger shows Adhesive; open choices appear in Select-001. Selector: `[class~="aui-select-trigger"]`.
 4. **Value** — The text of the chosen option, "Adhesive". Selector: `[class~="aui-select-value"]`.
 5. **Chevron** — The disclosure chevron at the end of the trigger. Selector: `[class~="aui-select-chevron"]`.
-6. **Description** — The help line "Adhesive anchors need a cure time." under the control, 16/20 body-colour text, always visible. Selector: `[class~="aui-field-description"]`.
+6. **Description** — Help line says adhesive anchors need cure time below the select. Selector: `[class~="aui-field-description"]`.
 
 ## Apps
 

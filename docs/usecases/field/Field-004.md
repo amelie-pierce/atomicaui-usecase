@@ -46,11 +46,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Field** — The search wrapper at scale "sm"; the apps give it a minWidth of 112px and flex fill so it shares a toolbar row. Selector: `[class~="aui-field"]`.
-2. **Control** — The 28px outlined row that holds the magnifying glass, the input and, in HCS, HS, PFD and FD, the clear button. Selector: `[class~="aui-field-control"]`.
+1. **Field** — Small flexible search field shares the toolbar row; apps set 112px minimum. Selector: `[class~="aui-field"]`.
+2. **Control** — Outlined 28px row holds search icon, input, and optional clear button. Selector: `[class~="aui-field-control"]`.
 3. **Search icon** — The leading magnifying-glass icon that marks the box as a search. Selector: `[class~="aui-field-control"] > [class~="aui-contained-icon"]`.
-4. **Input** — The text input with the "Search Table" placeholder and aria-label, filling the rest of the row. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`.
-5. **Clear button** — The xmark button labelled "Clear search" at the end of the box; it only appears once the box has text, and PBS and RWS leave it out. Selector: `[class~="aui-field-button"]`.
+4. **Input** — Search Table input fills remaining width and keeps its accessible name. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`.
+5. **Clear button** — End xmark appears after typing; PBS and RWS omit this clear action. Selector: `[class~="aui-field-button"]`.
 
 ## Apps
 

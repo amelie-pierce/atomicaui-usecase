@@ -47,11 +47,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Field** — The field is marked invalid, which switches the label, control and message to the error state while the gap stays at 3. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Quantity" label that stays above the failed control; ADC puts it beside the control. Selector: `[class~="aui-field-label"]`.
-3. **Control** — The outlined 28px control of the failed field; RWS and ADC redraw its outline in the error colour. Selector: `[class~="aui-field-control"]`.
-4. **Input** — The input holding the rejected value 0, flagged with aria-invalid so assistive technology reads it as an error. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`.
-5. **Error** — The message "Enter a whole number from 1 to 999." in the error colour, 16/20 text 3px under the control (14px in HCS, on its own line in ADC). Selector: `[class~="aui-field-error"]`.
+1. **Field** — Invalid state turns label, control, and message red. Selector: `[class~="aui-field"]`.
+2. **Label** — Quantity label stays above the invalid control; ADC places it beside. Selector: `[class~="aui-field-label"]`.
+3. **Control** — Failed 28px field uses an error-coloured outline in RWS and ADC. Selector: `[class~="aui-field-control"]`.
+4. **Input** — Rejected zero value sets aria-invalid for assistive technology. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`.
+5. **Error** — Error message gives the permitted whole-number range below the control. Selector: `[class~="aui-field-error"]`.
 
 ## Apps
 

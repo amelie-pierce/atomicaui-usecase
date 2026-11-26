@@ -37,7 +37,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Structure (outer to inner)
 
-1. **Container** — One carousel pager dot: an empty solid Button with no children and an aria-label of "1 / 3"; primary (orange) for the current page, surface-alt for the others. Selector: `[class~="aui-button"][aria-label*=" / "]`.
+1. **Container** — One carousel pager dot: an empty solid Button with no children and an aria-label of "1 / 3"; primary (orange) for the current page, surface-alt for the others. Selector: `[class~="aui-button"][aria-current]`.
 
 ## Apps
 
@@ -66,7 +66,7 @@ In context view: Shown.
 import { Button } from '../../../kit';
 
 export default function Example() {
-  return <Button aria-label="1 / 3" aui={{ paint: 'solid', color: 'primary' }} />;
+  return <Button aria-label="1 / 3" aria-current aui={{ paint: 'solid', color: 'primary' }} />;
 }
 ```
 

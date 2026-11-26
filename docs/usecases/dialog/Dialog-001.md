@@ -29,7 +29,7 @@ AtomicAUI components imported by this use case: `Accordion`, `Button`, `Chip`, `
 The source snippets below are authoritative for the complete prop values and composition. These styling values are the ones explicitly present in the selected examples and scenes:
 
 - `scale`: `sm`, `xs`
-- `color`: `primary`, `raised`, `surface`, `warning`
+- `color`: `primary`, `raised`, `secondary`, `surface`, `warning`
 - `paint`: `solid`, `text`, `tonal`
 - `profile`: `default`, `no-padding`
 
@@ -42,7 +42,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Overlay** — The scrim that dims the app behind the About dialog; the dialog is non-modal here so the stage stays visible. Selector: `[class~="aui-dialog-backdrop"]`.
 2. **Popup** — The wide About window at scale "sm", min(860px, 100%) wide with a zero gap so the title bar and the two body columns sit flush. Selector: `[class~="aui-dialog-popup"]`.
 3. **Title bar** — The raised title bar that names the window "About" and carries the spacer and the close X at its end. Selector: `[class~="aui-dialog-title"]`.
-4. **Title text** — The word "About", the only text the title bar holds. Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
+4. **Title text** — The word "About", the only text the title bar holds. Selector: `[data-ug-part="title-text"]`. Direct text is highlighted.
 5. **Spacer** — The flexible gap that pushes the close X to the far end of the title bar. Selector: `[class~="aui-dialog-spacer"]`.
 6. **Close** — The close X that dismisses the About dialog, labelled "Close About" for assistive technology. Selector: `[class~="aui-dialog-close"]`.
 7. **Body row** — The one-row body under the title bar that splits the window into the Release history column and the release notes column; it hides overflow so each column manages its own height. Part marker: `data-ug-part="body"`.
@@ -100,7 +100,7 @@ export default function Example() {
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { gap: '0' } }} style={{ '--aui-width': 'min(860px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-              About
+              <span data-ug-part="title-text">About</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
@@ -116,6 +116,9 @@ export default function Example() {
                 </Type>
               </View>
             </View>
+            <Dialog.Actions data-ug-part="footer" aui={{ scale: 'sm' }}>
+              <Dialog.Button data-ug-part="footer-close" aui={{ scale: 'sm', color: 'secondary' }}>Close</Dialog.Button>
+            </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>
       </Dialog.Portal>
@@ -139,7 +142,7 @@ export default function HcsAboutScene({ host }: ContextProps) {
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { gap: '0' } }} style={{ '--aui-width': 'min(860px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-              About
+              <span data-ug-part="title-text">About</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
@@ -227,6 +230,11 @@ export default function HcsAboutScene({ host }: ContextProps) {
                 </View>
               </View>
             </View>
+            <span data-ug-component-root style={{ display: 'contents' }}>
+              <Dialog.Actions data-ug-part="footer" aui={{ scale: 'sm' }}>
+                <Dialog.Button data-ug-part="footer-close" aui={{ scale: 'sm', color: 'secondary' }}>Close</Dialog.Button>
+              </Dialog.Actions>
+            </span>
           </Dialog.Popup>
         </Dialog.Viewport>
       </Dialog.Portal>
@@ -270,7 +278,7 @@ export default function Example() {
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { gap: '0' } }} style={{ '--aui-width': 'min(860px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-              About
+              <span data-ug-part="title-text">About</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
@@ -286,6 +294,9 @@ export default function Example() {
                 </Type>
               </View>
             </View>
+            <Dialog.Actions data-ug-part="footer" aui={{ scale: 'sm' }}>
+              <Dialog.Button data-ug-part="footer-close" aui={{ scale: 'sm', color: 'secondary' }}>Close</Dialog.Button>
+            </Dialog.Actions>
           </Dialog.Popup>
         </Dialog.Viewport>
       </Dialog.Portal>
@@ -309,7 +320,7 @@ export default function PfdAboutScene({ host }: ContextProps) {
         <Dialog.Viewport>
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', sx: { gap: '0' } }} style={{ '--aui-width': 'min(860px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
-              About
+              <span data-ug-part="title-text">About</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
@@ -417,6 +428,11 @@ export default function PfdAboutScene({ host }: ContextProps) {
                 </View>
               </View>
             </View>
+            <span data-ug-component-root style={{ display: 'contents' }}>
+              <Dialog.Actions data-ug-part="footer" aui={{ scale: 'sm' }}>
+                <Dialog.Button data-ug-part="footer-close" aui={{ scale: 'sm', color: 'secondary' }}>Close</Dialog.Button>
+              </Dialog.Actions>
+            </span>
           </Dialog.Popup>
         </Dialog.Viewport>
       </Dialog.Portal>

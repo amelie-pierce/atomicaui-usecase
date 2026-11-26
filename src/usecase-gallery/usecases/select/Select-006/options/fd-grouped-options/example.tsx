@@ -2,7 +2,7 @@ import { Field } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ sx: { flexDirection: 'row', alignItems: 'center', width: 'fill' } }}>
+    <Field aui={{ scale: 'sm', sx: { gap: '3', width: 'fill', minWidth: '0' } }}>
       <Field.Label aui={{ sx: { flex: 'fill', flexBasis: 'half', minWidth: '0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }}>Product</Field.Label>
       <Field.Select
         defaultValue="a1"
@@ -12,7 +12,8 @@ export default function Example() {
           { label: 'Rod B1', value: 'b1' },
         ]}
       >
-        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { flex: 'fill', flexBasis: 'half', minWidth: '0' } }}>
+        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', scale: 'sm', sx: { width: 'fill', height: '28' } }}>
+          <Field.SelectIcon name="flag" aria-hidden />
           <Field.SelectValue />
           <Field.SelectChevron />
         </Field.SelectTrigger>
@@ -23,10 +24,12 @@ export default function Example() {
                 <Field.SelectGroup>
                   <Field.SelectGroupLabel>Anchors</Field.SelectGroupLabel>
                   <Field.SelectItem value="a1">
+                    <Field.SelectIcon name="flag" aria-hidden />
                     <Field.SelectItemText>Anchor A1</Field.SelectItemText>
                     <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
                   </Field.SelectItem>
                   <Field.SelectItem value="a2">
+                    <Field.SelectIcon name="flag" aria-hidden />
                     <Field.SelectItemText>Anchor A2</Field.SelectItemText>
                     <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
                   </Field.SelectItem>
@@ -34,6 +37,7 @@ export default function Example() {
                 <Field.SelectGroup>
                   <Field.SelectGroupLabel>Rods</Field.SelectGroupLabel>
                   <Field.SelectItem value="b1">
+                    <Field.SelectIcon name="flag" aria-hidden />
                     <Field.SelectItemText>Rod B1</Field.SelectItemText>
                     <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
                   </Field.SelectItem>

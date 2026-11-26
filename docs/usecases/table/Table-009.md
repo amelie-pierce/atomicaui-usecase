@@ -44,7 +44,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Header** — Column headings #, Column Spacing and Row Spacing. Selector: `[class~="aui-table-head"]`.
 3. **Header cell** — Heading for one editable spacing column; # is fixed at 32px. Selector: `[class~="aui-table-header-cell"]`.
 4. **Body** — Rows of anchor spacings the user edits in place. Selector: `[class~="aui-table-body"]`.
-5. **Row** — Anchor 1, with an X and a Y spacing input in the other two cells. Selector: `[class~="aui-table-row"]`.
+5. **Row** — Anchor 1, with an X and a Y spacing input in the other two cells. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
 6. **Cell** — Body cell: the 32px row number, or the wrapper around one number field. Selector: `[class~="aui-table-cell"]`.
 7. **Number field** — The input that edits a spacing value: "X Spacing 1" starts at 6 and "Y Spacing 1" at 8, with min 1. Selector: `[class~="aui-number-field"]`.
 8. **Input group** — Fixed surface frame holding the input and its unit. Selector: `[class~="aui-number-field-group"]`.

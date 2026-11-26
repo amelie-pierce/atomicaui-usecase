@@ -2,8 +2,8 @@ import { Field } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ scale: 'sm', sx: { gap: '3' } }}>
-      <Field.Label aui={{ scale: 'sm' }}>Download Duration</Field.Label>
+    <Field aui={{ sx: { flexDirection: 'row', alignItems: 'center', width: 'fill' } }}>
+      <Field.Label aui={{ sx: { flex: 'fill', flexBasis: 'half', minWidth: '0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }}>Download Duration</Field.Label>
       <Field.Select
         defaultValue="snow"
         items={[
@@ -12,7 +12,7 @@ export default function Example() {
           { label: 'Roof (125)', value: 'roof' },
         ]}
       >
-        <Field.SelectTrigger aui={{ scale: 'sm', color: 'surface', paint: 'fixed', sx: { width: 'fill', height: '28', minHeight: '28', paddingBlockStart: '3', paddingBlockEnd: '3', fontSize: '16', lineHeight: '20' } }}>
+        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { flex: 'fill', flexBasis: 'half', minWidth: '0' } }}>
           <Field.SelectValue />
           <Field.SelectChevron />
         </Field.SelectTrigger>

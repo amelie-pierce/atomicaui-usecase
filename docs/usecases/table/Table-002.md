@@ -44,9 +44,9 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Header** — Raised header with the Model and Load (lb) labels (Product and Tension (lb) in ADM); its row is marked selectable={false} so it gets no radio. Selector: `[class~="aui-table-head"]`.
 3. **Header cell** — Plain column heading on the raised band; no sort control in this use case. Selector: `[class~="aui-table-header-cell"]`.
 4. **Body** — The two selectable candidates, Model B-200 and Model C-300. Selector: `[class~="aui-table-body"]`.
-5. **Row** — A selectable row; the selected one (Model B-200) carries the row surface and a 4px start edge bar, and RWS paints that look with selection="row" and no radio. Selector: `[class~="aui-table-row"]`.
-6. **Selection radio** — 24px radio at the start of the first cell that selects the row, filled primary when selected; in ACE it sits above the model name. Selector: `[class~="aui-table-cell"] [class~="aui-radio"]`.
-7. **Cell** — Data cell; the first one holds the radio and the model name, the second the load in lb (2,210 and 1,180). Selector: `[class~="aui-table-cell"]`.
+5. **Row** — A selectable row; the selected one (Model B-200) carries the row surface and a 4px start edge bar, and RWS paints that look with selection="row" and no radio. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
+6. **Cell** — Data cell; the first one holds the radio and the model name, the second the load in lb (2,210 and 1,180). Selector: `[class~="aui-table-cell"]`.
+7. **Selection radio** — 24px radio at the start of the first cell that selects the row, filled primary when selected; in ACE it sits above the model name. Selector: `[class~="aui-table-cell"] [class~="aui-radio"]`.
 
 ## Apps
 

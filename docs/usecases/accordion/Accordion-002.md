@@ -137,7 +137,8 @@ export default function HcsReleaseNotesScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
             <View data-ug-part="about-body" aui={{ scale: 'sm', paint: 'text', profile: 'default' }}>
-              <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['global']}>
+              <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['global']}>
                 <Accordion.Item value="global">
                   <Accordion.Header>
                     <Accordion.Trigger>
@@ -161,7 +162,7 @@ export default function HcsReleaseNotesScene({ host }: ContextProps) {
                     </View>
                   </Accordion.Panel>
                 </Accordion.Item>
-              </Accordion>
+              </Accordion></span>
             </View>
           </Dialog.Popup>
         </Dialog.Viewport>
@@ -242,7 +243,8 @@ export default function AdcReleaseNotesScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
             <Dialog.Body>
-              <Accordion defaultValue={['initial']}>
+              <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion defaultValue={['initial']}>
                 <Accordion.Item value="initial" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
                   <Accordion.Header>
                     <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
@@ -260,7 +262,7 @@ export default function AdcReleaseNotesScene({ host }: ContextProps) {
                     </View>
                   </Accordion.Panel>
                 </Accordion.Item>
-              </Accordion>
+              </Accordion></span>
             </Dialog.Body>
           </Dialog.Popup>
         </Dialog.Viewport>
@@ -353,7 +355,8 @@ export default function AceOtherRegionsScene({ host }: ContextProps) {
               <Dialog.Close aria-label="Close About" />
             </Dialog.Title>
             <View data-ug-part="about-body" aui={{ scale: 'sm', paint: 'text', profile: 'default' }}>
-              <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['other']}>
+              <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['other']}>
                 <Accordion.Item value="other">
                   {trigger('Updates for other regions', '1 update')}
                   <Accordion.Panel>
@@ -376,7 +379,7 @@ export default function AceOtherRegionsScene({ host }: ContextProps) {
                     </Accordion>
                   </Accordion.Panel>
                 </Accordion.Item>
-              </Accordion>
+              </Accordion></span>
             </View>
           </Dialog.Popup>
         </Dialog.Viewport>

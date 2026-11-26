@@ -17,7 +17,7 @@ export default function Example() {
           <Field.SelectChevron />
         </Field.SelectTrigger>
         <Field.SelectPortal>
-          <Field.SelectPositioner side="bottom" align="start" sideOffset={4} alignItemWithTrigger={false}>
+          <Field.SelectPositioner side="top" align="start" sideOffset={4} alignItemWithTrigger={false}>
             <Field.SelectPopup matchTriggerWidth>
               <Field.SelectList>
                 <Field.SelectItem value="all">Select all</Field.SelectItem>

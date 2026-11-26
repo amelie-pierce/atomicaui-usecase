@@ -39,8 +39,8 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 1. **Viewport** — The stack container pinned to the top end of the pane with 8px insets, rendered inside Toast.Portal. Selector: `[class~="aui-toast-viewport"]`.
 2. **Toast** — The success notification surface the ToastStack adds on mount, one per manager entry. Selector: `[class~="aui-toast"]`.
-3. **Icon** — The success status icon that Toast draws itself from type: 'success'. Selector: `[class~="aui-toast-icon"]`.
-4. **Content** — The copy block that Toast renders beside the icon, holding the title and the description. Selector: `[class~="aui-toast-content"]`.
+3. **Content** — The copy block that Toast renders beside the icon, holding the title and the description. Selector: `[class~="aui-toast-content"]`.
+4. **Icon** — The success status icon that Toast draws itself from type: 'success'. Selector: `[class~="aui-toast-icon"]`.
 5. **Title** — The heading "Success" taken from the title passed to manager.add. Selector: `[class~="aui-toast-title"]`. Direct text is highlighted.
 6. **Description** — The detail line "Your project was saved to the device." taken from the description passed to manager.add. Selector: `[class~="aui-toast-description"]`.
 7. **Close** — The close X that Toast adds so the user can dismiss the message before it times out. Selector: `[class~="aui-toast-close"]`.

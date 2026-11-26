@@ -1,14 +1,24 @@
 import type { ContextProps } from '../../../../../types';
-import { Field, View } from '../../../../../kit';
+import { Button, Field, Input, Type, View } from '../../../../../kit';
 
 // The Search by option field of the column menu of PFD (src/pfd/ColumnMenu.tsx): the same field, but the popup opens upward (side "top"), as the Blueprint list does. Built open and non-modal
 // (container={host}, positioner ug-anchored). Left out: the Popover that holds the column menu, the sort buttons and the text search field above.
 export default function PfdColumnFilterScene({ host }: ContextProps) {
   return (
     <View aui={{ scale: 'sm', profile: 'no-padding', paint: 'text' }} style={{ minBlockSize: 'calc(var(--p-px-16) * 12)', inlineSize: 'min(100%, 280px)' }}>
-      <Field aui={{ scale: 'sm', sx: { gap: '4', minWidth: '0' } }}>
+      <View data-ug-part="column-menu" aui={{ scale: 'sm', color: 'surface', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', gap: '3', width: 'fill' } }}>
+        <Type role="l3" weight="semi-bold">Column options</Type>
+        <View data-ug-part="column-search" aui={{ sx: { display: 'flex', flexDirection: 'column', gap: '2', width: 'fill' } }}>
+          <Type role="l3">Search by text</Type>
+          <Input aria-label="Search column values" placeholder="Search values" aui={{ scale: 'sm', color: 'surface', paint: 'fixed' }} />
+        </View>
+        <View data-ug-part="sort-actions" aui={{ sx: { display: 'flex', flexDirection: 'row', gap: '2' } }}>
+          <Button aui={{ scale: 'sm', color: 'secondary', paint: 'text' }}>Sort ascending</Button>
+          <Button aui={{ scale: 'sm', color: 'secondary', paint: 'text' }}>Sort descending</Button>
+        </View>
+      <Field data-ug-component-root aui={{ scale: 'sm', sx: { gap: '4', minWidth: '0' } }}>
         <Field.Label>Search by option</Field.Label>
-        <Field.Select open
+        <Field.Select open modal={false}
           defaultValue="all"
           items={[
             { label: 'Select all', value: 'all' },
@@ -22,7 +32,7 @@ export default function PfdColumnFilterScene({ host }: ContextProps) {
           </Field.SelectTrigger>
           <Field.SelectPortal container={host}>
             <Field.SelectPositioner side="top" align="start" sideOffset={4} alignItemWithTrigger={false} className="ug-anchored">
-              <Field.SelectPopup matchTriggerWidth>
+          <Field.SelectPopup data-ug-component-root matchTriggerWidth>
                 <Field.SelectList>
                   <Field.SelectItem value="all">Select all</Field.SelectItem>
                   <Field.SelectItem value="passed">Passed</Field.SelectItem>
@@ -33,6 +43,7 @@ export default function PfdColumnFilterScene({ host }: ContextProps) {
           </Field.SelectPortal>
         </Field.Select>
       </Field>
+      </View>
     </View>
   );
 }

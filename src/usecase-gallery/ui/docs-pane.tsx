@@ -96,7 +96,9 @@ function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: 
 }
 
 export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, availablePartIds, onPartChange, onSelectPart, documentMode, onDocumentModeChange, layerIndex, onLayerChange, layers }: { usecase: Usecase; option: UsecaseOption; mode: PreviewMode; componentName: string; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void; documentMode: DocumentMode; onDocumentModeChange: (mode: DocumentMode) => void; layerIndex: number; onLayerChange: (index: number) => void; layers: LayerStep[] }) {
-  const doc = mode === 'context' ? { ...usecase, ...option.contextDocument } : usecase;
+  const doc = mode === 'context'
+    ? { ...usecase, ...option.contextDocument }
+    : { ...usecase, ...option.componentDocument };
   const parts = mode === 'context' ? [...usecase.anatomy, ...option.contextAnatomy] : usecase.anatomy;
   const hasAccessibility = !!doc.accessibility?.keyboard || !!doc.accessibility?.focus;
   const hasVariants = !!doc.variants || usecase.options.length > 0;

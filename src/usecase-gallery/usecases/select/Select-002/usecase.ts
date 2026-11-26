@@ -14,15 +14,35 @@ export default defineUsecase({
         {"id":"item","partId":"item","title":"Item","explanation":"A filter row whose label is written straight into the item; \"Select all\" clears the column filter.","keyIdea":"Each row applies one scope, while Select all clears the narrower filter.","selector":"[class~=\"aui-select-item\"]"},
       ],
 options: [
-    { id: "hcs-column-filter", showContext: false, name: "Column filter", apps: ["hcs","hs"], note: "The list opens below the trigger.", source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} ,
-      contextLayers: [
-
+    { id: "hcs-column-filter", showContext: true, name: "Column filter", apps: ["hcs","hs"], note: "The list opens below the trigger.", source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"},
+      contextAnatomy: [
+        { id: 'column-menu', name: 'Column menu', scope: 'context', selector: '[data-ug-part="column-menu"]', description: 'The menu groups a text search, sort actions and the option filter for one table column.' },
+        { id: 'column-search', name: 'Text search', scope: 'context', selector: '[data-ug-part="column-search"]', description: 'The text field narrows the column by free-form text.' },
+        { id: 'sort-actions', name: 'Sort actions', scope: 'context', selector: '[data-ug-part="sort-actions"]', description: 'Ascending and descending actions sit above the option filter.' },
       ],
+      contextLayers: [
+        { id: 'context-column-menu', partId: 'column-menu', scope: 'context', title: 'Column menu', explanation: 'The popover groups controls for one table column.', keyIdea: 'A column menu keeps search, sort and filter actions together.', selector: '[data-ug-part="column-menu"]' },
+        { id: 'context-column-search', partId: 'column-search', scope: 'context', title: 'Text search', explanation: 'Free-form search narrows the values in the selected column.', keyIdea: 'Text search handles values that do not fit the fixed option list.', selector: '[data-ug-part="column-search"]' },
+        { id: 'context-sort-actions', partId: 'sort-actions', scope: 'context', title: 'Sort actions', explanation: 'The two controls sort the table in either direction.', keyIdea: 'Sorting changes row order while the select filters membership.', selector: '[data-ug-part="sort-actions"]' },
+      ],
+      contextDocument: { summary: 'A column filter select inside the table column menu.', how: 'The surrounding menu keeps free-form text search and sort actions beside the Search by option field. This HCS and HS variant opens the option list below its trigger.' },
     },
-    { id: "pfd-column-filter", showContext: false, name: "Column filter — UI variant 2", apps: ["pfd"], note: "The list opens above the trigger.", source: {"pfd":"src/pfd/ColumnMenu.tsx"} ,
-      contextLayers: [
-
+    { id: "pfd-column-filter", showContext: true, name: "Column filter — UI variant 2", apps: ["pfd"], note: "The list opens above the trigger.", source: {"pfd":"src/pfd/ColumnMenu.tsx"},
+      componentDocument: { summary: 'A table column filter whose option list opens above the trigger.', how: 'PFD uses the same labeled filter field and choices as HCS and HS, but positions the popup above the trigger to fit the column menu.' },
+      componentAnatomy: [
+        { id: 'popup', description: 'The trigger-width popup opens 4px above the trigger, aligned to its start.' },
       ],
+      contextAnatomy: [
+        { id: 'column-menu', name: 'Column menu', scope: 'context', selector: '[data-ug-part="column-menu"]', description: 'The column popover contains the text search, sort actions and fixed-value filter.' },
+        { id: 'column-search', name: 'Text search', scope: 'context', selector: '[data-ug-part="column-search"]', description: 'The text field narrows the selected table column.' },
+        { id: 'sort-actions', name: 'Sort actions', scope: 'context', selector: '[data-ug-part="sort-actions"]', description: 'Ascending and descending actions sit above the option filter.' },
+      ],
+      contextLayers: [
+        { id: 'context-column-menu', partId: 'column-menu', scope: 'context', title: 'Column menu', explanation: 'The popover gathers tools for filtering and ordering one column.', keyIdea: 'The shared menu frame keeps column operations within reach.', selector: '[data-ug-part="column-menu"]' },
+        { id: 'context-column-search', partId: 'column-search', scope: 'context', title: 'Text search', explanation: 'The input searches for arbitrary text within the column.', keyIdea: 'A text query complements the select’s short known-value list.', selector: '[data-ug-part="column-search"]' },
+        { id: 'context-sort-actions', partId: 'sort-actions', scope: 'context', title: 'Sort actions', explanation: 'Ascending and descending controls order rows independently of filtering.', keyIdea: 'Sort buttons change order while the select limits matching rows.', selector: '[data-ug-part="sort-actions"]' },
+      ],
+      contextDocument: { summary: 'A PFD column filter select inside the table column menu.', how: 'Search by text and sort actions share the menu with the fixed-value filter. PFD opens its popup above the trigger to keep the choices inside that column menu.' },
     },
   ],
   source: {
@@ -33,7 +53,7 @@ options: [
   summary: 'The Search by option field of a table column menu: a select that filters the column to one of its known values.',
   where: 'The Search by option field of the column menu popover of the Output table in HCS, HS and PFD, under the Search by text field.',
   when: 'Use it in a table column menu to filter a column to one of its known values; use the text search field above it for free text. Use the field select (Select-001) for an input of a form.',
-  how: 'Column filter (HCS, HS): a Field at scale "sm" (gap 4, minWidth 0) with the label "Search by option" and a Field.Select whose trigger is color "surface", paint "fixed", shape "soft" and width fill, the same trigger as the field select; the Field.SelectPositioner is side "bottom", align "start", sideOffset 4 with alignItemWithTrigger off, so the list sits under the trigger, and the rows are bare Field.SelectItems (Select all first) with no indicator. Column filter (PFD): the same field with side "top", so the list opens above the trigger (measured 36px below the trigger against 92px above). Those scenes show the enabled state (HCS disables the field with fewer than two options, HS with none) and leave out the column menu Popover, the sort buttons and the text search field.',
+  how: 'Column filter (HCS, HS): a Field at scale "sm" (gap 4, minWidth 0) with the label "Search by option" and a Field.Select whose trigger is color "surface", paint "fixed", shape "soft" and width fill, the same trigger as the field select; the Field.SelectPositioner is side "bottom", align "start", sideOffset 4 with alignItemWithTrigger off, so the list sits under the trigger, and the rows are bare Field.SelectItems (Select all first) with no indicator. Column filter (PFD): the same field with side "top", so the list opens above the trigger (measured 36px below the trigger against 92px above). In context shows the filter alongside the menu text search and sort actions; the enabled field stands in for HCS (fewer than two values) and HS (no values) when their real control is disabled.',
   anatomy: [
     {
       id: 'field',

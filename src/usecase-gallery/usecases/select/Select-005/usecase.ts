@@ -19,10 +19,36 @@ export default defineUsecase({
         {"id":"check","partId":"check","title":"Check icon","explanation":"The check drawn at the end of the chosen country row in the ACE scene.","keyIdea":"A check at the row end confirms which country will be used for the gate.","selector":"[class~=\"aui-select-item-indicator\"] [class~=\"aui-contained-icon\"]"},
       ],
 options: [
-    { id: "ace-licence-country", showContext: false, name: "Licence gate country", apps: ["ace"], source: {"ace":"src/features/eula/ui/EulaGate.tsx"} ,
-      contextLayers: [
-
+    { id: "ace-licence-country", showContext: true, name: "Licence gate country", apps: ["ace"], source: {"ace":"src/features/eula/ui/EulaGate.tsx"},
+      contextAnatomy: [
+        { id: 'licence-backdrop', name: 'Backdrop', scope: 'context', selector: '[data-ug-part="licence-backdrop"]', description: 'The dimmed backdrop behind the ACE licence agreement.' },
+        { id: 'licence-dialog', name: 'Dialog', scope: 'context', selector: '[data-ug-part="licence-dialog"]', description: 'The modal licence gate that contains the country requirement and acceptance controls.' },
+        { id: 'licence-title', name: 'Title', scope: 'context', selector: '[data-ug-part="licence-title"]', description: 'The agreement title and the Do Not Accept close action.' },
+        { id: 'licence-description', name: 'Description', scope: 'context', selector: '[data-ug-part="licence-description"]', description: 'A short instruction to review and accept before starting ACE.' },
+        { id: 'licence-body', name: 'Agreement body', scope: 'context', selector: '[data-ug-part="licence-body"]', description: 'The scrollable agreement text and required country field.' },
+        { id: 'licence-copy', name: 'Agreement text', scope: 'context', selector: '[data-ug-part="licence-copy"]', description: 'The licence terms the user reviews before acceptance.' },
+        { id: 'licence-country', name: 'Country field position', scope: 'context', selector: '[data-ug-part="licence-country"]', description: 'The required country choice sits after the licence text.' },
+        { id: 'licence-actions', name: 'Dialog actions', scope: 'context', selector: '[data-ug-part="licence-actions"]', description: 'The footer groups the decline and acceptance actions.' },
+        { id: 'decline', name: 'Decline action', scope: 'context', selector: '[data-ug-part="decline"]', description: 'Do Not Accept closes the agreement without accepting it.' },
+        { id: 'accept', name: 'Accept action', scope: 'context', selector: '[data-ug-part="accept"]', description: 'Accept Application License Agreement completes the gate.' },
       ],
+      contextLayers: [
+        { id: 'context-licence-backdrop', partId: 'licence-backdrop', scope: 'context', title: 'Backdrop', explanation: 'The backdrop separates the licence gate from the app beneath it.', keyIdea: 'The dimmed page keeps attention on the required agreement.', selector: '[data-ug-part="licence-backdrop"]' },
+        { id: 'context-licence-dialog', partId: 'licence-dialog', scope: 'context', title: 'Dialog', explanation: 'The modal frame contains the agreement and its controls.', keyIdea: 'The dialog makes accepting the licence a blocking task.', selector: '[data-ug-part="licence-dialog"]' },
+        { id: 'context-licence-title', partId: 'licence-title', scope: 'context', title: 'Title', explanation: 'The title names the agreement and places Do Not Accept at the end.', keyIdea: 'A clear heading identifies the terms before the user proceeds.', selector: '[data-ug-part="licence-title"]' },
+        { id: 'context-licence-description', partId: 'licence-description', scope: 'context', title: 'Instruction', explanation: 'The sentence directs the user to review the agreement before starting ACE.', keyIdea: 'The instruction connects the licence text to the action required next.', selector: '[data-ug-part="licence-description"]' },
+        { id: 'context-licence-body', partId: 'licence-body', scope: 'context', title: 'Agreement body', explanation: 'The body contains the licence copy followed by the country field.', keyIdea: 'The body groups the terms with the country choice required by the gate.', selector: '[data-ug-part="licence-body"]' },
+        { id: 'context-licence-copy', partId: 'licence-copy', scope: 'context', title: 'Agreement text', explanation: 'The user reviews the displayed licence terms before accepting.', keyIdea: 'Readable terms give the acceptance action its context.', selector: '[data-ug-part="licence-copy"]' },
+        { id: 'context-licence-country', partId: 'licence-country', scope: 'context', title: 'Country field position', explanation: 'The country selection follows the licence terms inside the same body.', keyIdea: 'The field records the jurisdiction needed by the estimator.', selector: '[data-ug-part="licence-country"]' },
+        { id: 'context-licence-actions', partId: 'licence-actions', scope: 'context', title: 'Dialog actions', explanation: 'The footer holds the two ways to leave the gate.', keyIdea: 'The footer keeps rejection and acceptance available after review.', selector: '[data-ug-part="licence-actions"]' },
+        { id: 'context-decline', partId: 'decline', scope: 'context', title: 'Decline action', explanation: 'Do Not Accept exits without agreeing to the terms.', keyIdea: 'Declining remains available as a clear alternative to acceptance.', selector: '[data-ug-part="decline"]' },
+        { id: 'context-accept', partId: 'accept', scope: 'context', title: 'Accept action', explanation: 'The acceptance button completes the licence gate.', keyIdea: 'Acceptance follows the country selection and review of the terms.', selector: '[data-ug-part="accept"]' },
+      ],
+      contextDocument: {
+        summary: 'The ACE country select sits inside the licence agreement gate before acceptance.',
+        where: 'In the ACE EulaGate dialog, below the agreement text and above the decline and accept actions.',
+        how: 'The In context view shows the real modal shell, licence copy, country field and paired actions. The country field is required before the user accepts the agreement.',
+      },
     },
   ],
   source: {

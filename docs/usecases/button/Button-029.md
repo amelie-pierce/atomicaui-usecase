@@ -122,11 +122,13 @@ export default function HcsHelpCloseScene({ host }: ContextProps) {
               <Type data-ug-part="help-intro" aui={{ sx: { flex: 'fill' } }}>
                 Duration of load adjustments as specified by the code are as follows:
               </Type>
-              <IconButton
-                name="xmark"
-                aria-label="Close help"
-                aui={{ scale: 'sm', profile: 'square-compact', color: 'secondary', paint: 'text', shape: 'soft', sx: { flex: 'none' } }}
-              />
+              <span data-ug-component-root style={{ display: 'contents' }}>
+                <IconButton
+                  name="xmark"
+                  aria-label="Close help"
+                  aui={{ scale: 'sm', profile: 'square-compact', color: 'secondary', paint: 'text', shape: 'soft', sx: { flex: 'none' } }}
+                />
+              </span>
             </View>
             <View
               data-ug-part="duration-notes"
@@ -199,9 +201,11 @@ export default function PfdHelpCloseScene({ host }: ContextProps) {
                 />
               }
             >
-              <Button aria-label="Close" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft', sx: { alignSelf: 'end' } }}>
-                <ContainedIcon name="xmark" />
-              </Button>
+              <span data-ug-component-root style={{ display: 'contents' }}>
+                <Button aria-label="Close" aui={{ scale: 'sm', paint: 'text', color: 'secondary', profile: 'square', shape: 'soft', sx: { alignSelf: 'end' } }}>
+                  <ContainedIcon name="xmark" />
+                </Button>
+              </span>
               <Type data-ug-part="help-text" as="div" role="p3">Select the base material of the member.</Type>
             </Popover.Popup>
           </Popover.Positioner>
@@ -263,7 +267,9 @@ export default function PbsHelpCloseScene({ host }: ContextProps) {
               }
             >
               <Type data-ug-part="help-text" as="p" role="p3" aui={{ sx: { flex: 'fill' } }}>Select the base material of the member.</Type>
-              <IconButton name="xmark" aria-label="Close" aui={{ scale: 'xs', paint: 'text', profile: 'square-compact', shape: 'soft' }} />
+              <span data-ug-component-root style={{ display: 'contents' }}>
+                <IconButton name="xmark" aria-label="Close" aui={{ scale: 'xs', paint: 'text', profile: 'square-compact', shape: 'soft' }} />
+              </span>
             </Popover.Popup>
           </Popover.Positioner>
         </Popover.Portal>
@@ -325,7 +331,9 @@ export default function AgpdHelpCloseScene({ host }: ContextProps) {
               }
             >
               <View data-ug-part="close-row" aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', justifyContent: 'end' } }}>
-                <IconButton name="xmark" aria-label="Close" aui={{ scale: 'xs' }} />
+                <span data-ug-component-root style={{ display: 'contents' }}>
+                  <IconButton name="xmark" aria-label="Close" aui={{ scale: 'xs' }} />
+                </span>
               </View>
               <Type data-ug-part="help-text" as="div" role="p3">Select the base material of the member.</Type>
             </Popover.Popup>
@@ -373,7 +381,9 @@ export default function FdAppsCloseScene({ host }: ContextProps) {
     <View aui={{ paint: 'text', profile: 'no-padding', sx: { display: 'flex', justifyContent: 'end' } }} style={{ minBlockSize: 'calc(var(--p-px-16) * 10)', inlineSize: 'min(100%, calc(var(--p-px-16) * 24))' }}>
       <Menubar aria-label="Top bar">
         <Popover open modal={false}>
-          <Popover.Trigger render={<Menubar.IconButton name="grip" aria-label="Apps" />} />
+          <span data-ug-component-root style={{ display: 'contents' }}>
+            <Popover.Trigger render={<Menubar.IconButton name="grip" aria-label="Apps" />} />
+          </span>
           <Popover.Portal container={host}>
             <Popover.Positioner side="bottom" align="end" sideOffset={8} className="ug-anchored">
               <Popover.Popup
@@ -389,9 +399,11 @@ export default function FdAppsCloseScene({ host }: ContextProps) {
               >
                 <View aui={{ paint: 'text', sx: { display: 'flex', alignItems: 'center', justifyContent: 'between', gap: '8' } }}>
                   <Type data-ug-part="apps-title" as="h2" role="l3" weight="semi-bold">Explore More Applications</Type>
-                  <Button aria-label="Close applications" aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}>
-                    <Icon name="xmark" />
-                  </Button>
+                  <span data-ug-component-root style={{ display: 'contents' }}>
+                    <Button aria-label="Close applications" aui={{ color: 'secondary', paint: 'text', scale: 'sm' }}>
+                      <Icon name="xmark" />
+                    </Button>
+                  </span>
                 </View>
               </Popover.Popup>
             </Popover.Positioner>

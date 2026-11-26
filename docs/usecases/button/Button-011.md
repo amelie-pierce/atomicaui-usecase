@@ -39,9 +39,9 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Structure (outer to inner)
 
-1. **Container** — One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent "between"), outlined by a 1px border on all four sides from sx. Selector: `[class~="aui-button"]`.
-2. **Label** — The topic name, "HS: General Tutorial" in the example, wrapping onto several lines when long. Selector: `[class~="aui-button"]`. Direct text is highlighted.
-3. **Icon** — The right arrow at the end of the row that signals starting the tour, at scale "sm". Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Container** — One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent "between"), outlined by a 1px border on all four sides from sx. Selector: `[data-ug-part="container"]`.
+2. **Label** — The topic name, "HS: General Tutorial" in the example, wrapping onto several lines when long. Selector: `[data-ug-part="container"]`. Direct text is highlighted.
+3. **Icon** — The right arrow at the end of the row that signals starting the tour, at scale "sm". Selector: `[data-ug-part="icon"]`.
 
 ## Apps
 
@@ -80,7 +80,7 @@ import { Button } from '../../../kit';
 
 export default function Example() {
   return (
-    <Button
+    <Button data-ug-part="container"
       aui={{
         scale: 'sm',
         paint: 'text',
@@ -99,7 +99,7 @@ export default function Example() {
       }}
     >
       HS: General Tutorial
-      <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
+      <Button.Icon data-ug-part="icon" name="arrow-right" aui={{ scale: 'sm' }} />
     </Button>
   );
 }
@@ -126,7 +126,7 @@ export default function HsTopicRowScene({ children, host }: ContextProps) {
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
               <View data-ug-part="topic-list" as="nav" aria-label="Help & Tutorials" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }}>
-                {children}
+                <span data-ug-part="container" style={{ display: 'contents' }}>{children}</span>
               </View>
             </Dialog.Body>
           </Dialog.Popup>
@@ -161,7 +161,7 @@ import { Button } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Button
+    <Button data-ug-part="container"
       aui={{
         scale: 'sm',
         paint: 'text',
@@ -180,7 +180,7 @@ export default function Example() {
       }}
     >
       HS: General Tutorial
-      <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
+      <Button.Icon data-ug-part="icon" name="arrow-right" aui={{ scale: 'sm' }} />
     </Button>
   );
 }
@@ -207,7 +207,7 @@ export default function AceTopicRowScene({ host }: ContextProps) {
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
               <View data-ug-part="topic-list" as="nav" aria-label="Help & Tutorials" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8' } }}>
-                <Button
+                <Button data-ug-part="container"
                   aui={{
                     scale: 'sm',
                     paint: 'text',
@@ -263,7 +263,7 @@ import { Button } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Button
+    <Button data-ug-part="container"
       aui={{
         scale: 'sm',
         paint: 'text',
@@ -282,7 +282,7 @@ export default function Example() {
       }}
     >
       HS: General Tutorial
-      <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
+      <Button.Icon data-ug-part="icon" name="arrow-right" aui={{ scale: 'sm' }} />
     </Button>
   );
 }
@@ -307,7 +307,7 @@ export default function AdmTopicRowScene({ host }: ContextProps) {
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
               <View data-ug-part="topic-list" as="nav" aria-label="Help & Tutorials" aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8', paddingBlockStart: '16', paddingBlockEnd: '16', paddingInlineStart: '16', paddingInlineEnd: '16' } }}>
-                <Button aui={{ scale: 'sm', paint: 'text', sx: { width: 'fill', justifyContent: 'between', borderWidth: '1', borderColor: 'outlined' } }}>
+                <Button data-ug-part="container" aui={{ scale: 'sm', paint: 'text', sx: { width: 'fill', justifyContent: 'between', borderWidth: '1', borderColor: 'outlined' } }}>
                   ADM: General Walkthrough
                 </Button>
               </View>
@@ -342,7 +342,7 @@ import { Button } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Button
+    <Button data-ug-part="container"
       aui={{
         scale: 'sm',
         paint: 'text',
@@ -361,7 +361,7 @@ export default function Example() {
       }}
     >
       HS: General Tutorial
-      <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
+      <Button.Icon data-ug-part="icon" name="arrow-right" aui={{ scale: 'sm' }} />
     </Button>
   );
 }
@@ -386,9 +386,9 @@ export default function PbsTopicRowScene({ host }: ContextProps) {
             </Dialog.Title>
             <Dialog.Body aui={{ scale: 'sm' }}>
               <View data-ug-part="topic-list" as="nav" aria-label="Help & Tutorials" aui={{ paint: 'text', sx: { display: 'flex', flexDirection: 'column', gap: '8', paddingBlockStart: '16', paddingBlockEnd: '16', paddingInlineStart: '16', paddingInlineEnd: '16' } }}>
-                <Button aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', justifyContent: 'between', gap: '8', width: 'fill', textAlign: 'start', whiteSpace: 'normal', borderColor: 'outlined', borderWidth: '1' } }}>
+                <Button data-ug-part="container" aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', justifyContent: 'between', gap: '8', width: 'fill', textAlign: 'start', whiteSpace: 'normal', borderColor: 'outlined', borderWidth: '1' } }}>
                   PBS: General Tutorial
-                  <Button.Icon name="arrow-right" aui={{ scale: 'sm' }} />
+                  <Button.Icon data-ug-part="icon" name="arrow-right" aui={{ scale: 'sm' }} />
                 </Button>
               </View>
             </Dialog.Body>

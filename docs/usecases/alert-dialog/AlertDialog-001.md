@@ -43,7 +43,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 2. **Popup** — The confirm window at scale "sm" with a soft shape; 560px wide in HCS (480px in ACE and ADM, 640px default scale in ADC). Selector: `[class~="aui-dialog-popup"]`.
 3. **Title bar** — The raised title bar that carries the warning icon, "Warning: Reset Inputs?", the spacer and the close X. Selector: `[class~="aui-dialog-title"]`.
 4. **Warning icon** — The triangle-exclamation glyph in the warning colour that marks this prompt as a caution. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
-5. **Title text** — The question "Warning: Reset Inputs?" that names what the user is about to do. Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
+5. **Title text** — The question "Warning: Reset Inputs?" that names what the user is about to do. Selector: `[data-ug-part="title-text"]`. Direct text is highlighted.
 6. **Spacer** — The gap that pushes the close X to the end of the title bar. Selector: `[class~="aui-dialog-spacer"]`.
 7. **Close** — The close X labelled "Close Reset" that leaves the inputs untouched. Selector: `[class~="aui-dialog-close"]`.
 8. **Description** — The sentence that says what is lost: "You are about to reset all input fields. This cannot be undone." (ADC explains that project information and design names are preserved). Selector: `[class~="aui-dialog-description"]`.
@@ -87,7 +87,7 @@ export default function Example() {
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }} style={{ '--aui-width': 'min(560px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
               <Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />
-              Warning: Reset Inputs?
+              <span data-ug-part="title-text">Warning: Reset Inputs?</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close Reset" aui={{ scale: 'sm' }} />
             </Dialog.Title>
@@ -122,7 +122,7 @@ export default function HcsResetScene({ host }: ContextProps) {
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }} style={{ '--aui-width': 'min(560px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
               <Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />
-              Warning: Reset Inputs?
+              <span data-ug-part="title-text">Warning: Reset Inputs?</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close Reset" aui={{ scale: 'sm' }} />
             </Dialog.Title>
@@ -165,7 +165,7 @@ export default function Example() {
           <Dialog.Popup initialFocus={false} aui={{ scale: 'sm', shape: 'soft' }} style={{ '--aui-width': 'min(560px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ scale: 'sm', color: 'raised' }}>
               <Dialog.Icon name="triangle-exclamation" aui={{ scale: 'sm', color: 'warning' }} />
-              Warning: Reset Inputs?
+              <span data-ug-part="title-text">Warning: Reset Inputs?</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close Reset" aui={{ scale: 'sm' }} />
             </Dialog.Title>
@@ -200,7 +200,7 @@ export default function AdcResetScene({ host }: ContextProps) {
           <Dialog.Popup initialFocus={false} style={{ '--aui-width': 'min(640px, 100%)' } as React.CSSProperties}>
             <Dialog.Title aui={{ color: 'raised' }}>
               <Dialog.Icon name="triangle-exclamation" aui={{ color: 'warning', paint: 'text' }} />
-              Warning: Reset Inputs?
+              <span data-ug-part="title-text">Warning: Reset Inputs?</span>
               <Dialog.Spacer />
               <Dialog.Close aria-label="Close" />
             </Dialog.Title>

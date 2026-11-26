@@ -135,7 +135,8 @@ export default function AceTemplateGroupsScene({ host }: ContextProps) {
             </Dialog.Title>
             <Dialog.Body aui={{ sx: { overflow: 'auto', minHeight: '0' } }}>
               <RadioGroup defaultValue="2">
-                <Accordion openMultiple defaultValue={['default', 'mine']}>
+                <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion openMultiple defaultValue={['default', 'mine']}>
                   <Accordion.Item value="default">
                     <Accordion.Header>
                       <Accordion.Trigger>
@@ -166,7 +167,7 @@ export default function AceTemplateGroupsScene({ host }: ContextProps) {
                       </View>
                     </Accordion.Panel>
                   </Accordion.Item>
-                </Accordion>
+                </Accordion></span>
               </RadioGroup>
             </Dialog.Body>
           </Dialog.Popup>
@@ -257,7 +258,8 @@ export default function HsTemplateGroupsScene({ host }: ContextProps) {
             </Dialog.Title>
             <Dialog.Body aui={{ sx: { overflow: 'auto', minHeight: '0' } }}>
               <RadioGroup defaultValue="2">
-                <Accordion openMultiple defaultValue={['default', 'mine']}>
+                <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion openMultiple defaultValue={['default', 'mine']}>
                   <Accordion.Item value="default">
                     <Accordion.Header>
                       <Accordion.Trigger>
@@ -288,7 +290,7 @@ export default function HsTemplateGroupsScene({ host }: ContextProps) {
                       </View>
                     </Accordion.Panel>
                   </Accordion.Item>
-                </Accordion>
+                </Accordion></span>
               </RadioGroup>
             </Dialog.Body>
           </Dialog.Popup>

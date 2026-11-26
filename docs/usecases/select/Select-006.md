@@ -42,15 +42,17 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Field row** — Field written as a row (flexDirection "row", centred, full width) so the Product label and trigger share one line. Selector: `[class~="aui-field"]`.
 2. **Label** — The "Product" label that takes half the row (flexBasis "half") and truncates with an ellipsis. Selector: `[class~="aui-field-label"]`.
 3. **Trigger** — Outlined trigger that fills the other half of the row (flex fill, flexBasis "half"); the FD scene leads it with the chosen row's icon. Selector: `[class~="aui-select-trigger"]`.
-4. **Value** — Shows the chosen product, "Anchor A1" by default. Selector: `[class~="aui-select-value"]`. Direct text is highlighted.
-5. **Chevron** — The chevron at the trigger end. Selector: `[class~="aui-select-chevron"]`.
-6. **Popup** — Popup of the trigger width holding two groups, Anchors and Rods. Selector: `[class~="aui-select-popup"]`.
-7. **List** — The list that stacks the Anchors and Rods groups. Selector: `[class~="aui-select-list"]`.
-8. **Group** — One family of related rows: Anchors (Anchor A1, Anchor A2) or Rods (Rod B1). Selector: `[class~="aui-select-group"]`.
-9. **Group label** — The heading above each family, "Anchors" and "Rods". Selector: `[class~="aui-select-group-label"]`.
-10. **Item** — A product row inside its group; the chosen row is marked by a raised fill. Selector: `[class~="aui-select-item"]`.
-11. **Item text** — The product name, such as "Anchor A2" or "Rod B1". Selector: `[class~="aui-select-item-text"]`.
-12. **Indicator** — Empty slot (`{null}`) at the row end; no check is drawn. Selector: `[class~="aui-select-item-indicator"]`.
+4. **Trigger icon** — The FD variant leads the trigger with a flag for the selected product. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`.
+5. **Value** — Shows the chosen product, "Anchor A1" by default. Selector: `[class~="aui-select-value"]`. Direct text is highlighted.
+6. **Chevron** — The chevron at the trigger end. Selector: `[class~="aui-select-chevron"]`.
+7. **Popup** — Popup of the trigger width holding two groups, Anchors and Rods. Selector: `[class~="aui-select-popup"]`.
+8. **List** — The list that stacks the Anchors and Rods groups. Selector: `[class~="aui-select-list"]`.
+9. **Group** — One family of related rows: Anchors (Anchor A1, Anchor A2) or Rods (Rod B1). Selector: `[class~="aui-select-group"]`.
+10. **Group label** — The heading above each family, "Anchors" and "Rods". Selector: `[class~="aui-select-group-label"]`.
+11. **Item** — A product row inside its group; the chosen row is marked by a raised fill. Selector: `[class~="aui-select-item"]`.
+12. **Item icon** — The FD variant places a flag before each grouped product name. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
+13. **Item text** — The product name, such as "Anchor A2" or "Rod B1". Selector: `[class~="aui-select-item-text"]`.
+14. **Indicator** — Empty slot (`{null}`) at the row end; no check is drawn. Selector: `[class~="aui-select-item-indicator"]`.
 
 ## Apps
 
@@ -195,7 +197,7 @@ import { Field } from '../../../../../kit';
 
 export default function Example() {
   return (
-    <Field aui={{ sx: { flexDirection: 'row', alignItems: 'center', width: 'fill' } }}>
+    <Field aui={{ scale: 'sm', sx: { gap: '3', width: 'fill', minWidth: '0' } }}>
       <Field.Label aui={{ sx: { flex: 'fill', flexBasis: 'half', minWidth: '0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }}>Product</Field.Label>
       <Field.Select
         defaultValue="a1"
@@ -205,7 +207,8 @@ export default function Example() {
           { label: 'Rod B1', value: 'b1' },
         ]}
       >
-        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', sx: { flex: 'fill', flexBasis: 'half', minWidth: '0' } }}>
+        <Field.SelectTrigger aui={{ color: 'surface', paint: 'fixed', scale: 'sm', sx: { width: 'fill', height: '28' } }}>
+          <Field.SelectIcon name="flag" aria-hidden />
           <Field.SelectValue />
           <Field.SelectChevron />
         </Field.SelectTrigger>
@@ -216,10 +219,12 @@ export default function Example() {
                 <Field.SelectGroup>
                   <Field.SelectGroupLabel>Anchors</Field.SelectGroupLabel>
                   <Field.SelectItem value="a1">
+                    <Field.SelectIcon name="flag" aria-hidden />
                     <Field.SelectItemText>Anchor A1</Field.SelectItemText>
                     <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
                   </Field.SelectItem>
                   <Field.SelectItem value="a2">
+                    <Field.SelectIcon name="flag" aria-hidden />
                     <Field.SelectItemText>Anchor A2</Field.SelectItemText>
                     <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
                   </Field.SelectItem>
@@ -227,6 +232,7 @@ export default function Example() {
                 <Field.SelectGroup>
                   <Field.SelectGroupLabel>Rods</Field.SelectGroupLabel>
                   <Field.SelectItem value="b1">
+                    <Field.SelectIcon name="flag" aria-hidden />
                     <Field.SelectItemText>Rod B1</Field.SelectItemText>
                     <Field.SelectItemIndicator>{null}</Field.SelectItemIndicator>
                   </Field.SelectItem>

@@ -42,7 +42,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 1. **Overlay** — The scrim behind the drawer; in the ACE scene it starts 36px down so the top bar stays uncovered. Selector: `[class~="aui-drawer-backdrop"]`.
 2. **Popup** — The 288px-wide, full-height, square no-padding panel labelled "Navigation" that slides in from the right edge on a phone. Selector: `[class~="aui-drawer-popup"]`.
 3. **Content** — The region that holds the vertical menubar of top bar actions. Selector: `[class~="aui-drawer-content"]`.
-4. **Vertical menubar** — The vertical Menubar at scale "sm" that stacks the actions full width. Selector: `[class~="aui-menubar"]`.
+4. **Vertical menubar** — The vertical Menubar at scale "sm" that stacks the actions full width. Selector: `[class~="aui-drawer-content"] [class~="aui-menubar"]`.
 5. **Menu rows** — The Save to device, Open from device and About rows of the example; the ACE scene adds Print. Selector: `[class~="aui-drawer-content"] [class~="aui-button"]`.
 
 ## Apps

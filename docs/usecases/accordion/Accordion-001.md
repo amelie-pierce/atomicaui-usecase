@@ -123,7 +123,8 @@ export default function HcsListScene(_props: ContextProps) {
   return (
     <View data-ug-part="input-pane" as="aside" aria-label="Input" aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }} style={{ inlineSize: 'min(100%, 360px)' }}>
       <View aui={{ color: 'surface', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', width: 'fill', overflow: 'hidden', gap: '0' } }}>
-        <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
+        <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
@@ -145,7 +146,7 @@ export default function HcsListScene(_props: ContextProps) {
               </Accordion.Trigger>
             </Accordion.Header>
           </Accordion.Item>
-        </Accordion>
+        </Accordion></span>
       </View>
     </View>
   );
@@ -211,7 +212,8 @@ export default function PbsListScene(_props: ContextProps) {
   return (
     <View data-ug-part="input-pane" as="aside" aria-label="Input" aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }} style={{ inlineSize: 'min(100%, 360px)' }}>
       <View aui={{ color: 'surface', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', width: 'fill', overflow: 'hidden', gap: '0' } }}>
-        <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
+        <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
@@ -231,7 +233,7 @@ export default function PbsListScene(_props: ContextProps) {
               </Accordion.Trigger>
             </Accordion.Header>
           </Accordion.Item>
-        </Accordion>
+        </Accordion></span>
       </View>
     </View>
   );
@@ -297,7 +299,8 @@ export default function FdListScene(_props: ContextProps) {
   return (
     <View data-ug-part="input-pane" as="aside" aria-label="Input" aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }} style={{ inlineSize: 'min(100%, 360px)' }}>
       <View aui={{ color: 'surface', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', width: 'fill', overflow: 'hidden', gap: '0' } }}>
-        <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
+        <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
@@ -317,7 +320,7 @@ export default function FdListScene(_props: ContextProps) {
               </Accordion.Trigger>
             </Accordion.Header>
           </Accordion.Item>
-        </Accordion>
+        </Accordion></span>
       </View>
     </View>
   );
@@ -382,7 +385,8 @@ import { Accordion, Type, View } from '../../../../../kit';
 export default function HcsCardsScene(_props: ContextProps) {
   return (
     <View data-ug-part="input-pane" as="aside" aria-label="Input" aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }} style={{ inlineSize: 'min(100%, 360px)' }}>
-      <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
+      <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
         <View aui={{ paint: 'text', profile: 'no-padding', sx: { width: 'fill' } }} style={{ display: 'flex', flexDirection: 'column', rowGap: 6 }}>
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
             <Accordion.Header>
@@ -406,7 +410,7 @@ export default function HcsCardsScene(_props: ContextProps) {
             </Accordion.Header>
           </Accordion.Item>
         </View>
-      </Accordion>
+      </Accordion></span>
     </View>
   );
 }
@@ -470,7 +474,8 @@ import { Accordion, Type, View } from '../../../../../kit';
 export default function PbsCardsScene(_props: ContextProps) {
   return (
     <View data-ug-part="input-pane" as="aside" aria-label="Input" aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }} style={{ inlineSize: 'min(100%, 360px)' }}>
-      <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
+      <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
         <View aui={{ paint: 'text', profile: 'no-padding', sx: { width: 'fill' } }} style={{ display: 'flex', flexDirection: 'column', rowGap: 6 }}>
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
             <Accordion.Header>
@@ -492,7 +497,7 @@ export default function PbsCardsScene(_props: ContextProps) {
             </Accordion.Header>
           </Accordion.Item>
         </View>
-      </Accordion>
+      </Accordion></span>
     </View>
   );
 }
@@ -556,7 +561,8 @@ import { Accordion, Type, View } from '../../../../../kit';
 export default function FdCardsScene(_props: ContextProps) {
   return (
     <View data-ug-part="input-pane" as="aside" aria-label="Input" aui={{ scale: 'sm', profile: 'block-padding', color: 'surface-alt', paint: 'fixed', shape: 'soft', sx: { display: 'flex', flexDirection: 'column', minHeight: '0', gap: '0' } }} style={{ inlineSize: 'min(100%, 360px)' }}>
-      <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
+      <span data-ug-component-root style={{ display: 'contents' }}>
+          <Accordion openMultiple defaultValue={['Connection Type']} aui={{ scale: 'sm' }}>
         <View aui={{ paint: 'text', profile: 'no-padding', sx: { width: 'fill' } }} style={{ display: 'flex', flexDirection: 'column', rowGap: 6 }}>
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
             <Accordion.Header>
@@ -578,7 +584,7 @@ export default function FdCardsScene(_props: ContextProps) {
             </Accordion.Header>
           </Accordion.Item>
         </View>
-      </Accordion>
+      </Accordion></span>
     </View>
   );
 }

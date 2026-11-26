@@ -121,7 +121,16 @@ export function buildCatalog({ metas, docs, examples, sources, options = {}, opt
     .filter((group) => group.usecases.length > 0)
     .sort((a, b) => byNaturalOrder(a.title, b.title))
     .map(({ usecases, ...group }) => ({ ...group, uiTypeGroups: groupByUiType(group, usecases) }));
-  return foldIntoParents(built);
+  return foldIntoParents(built).map((group) => ({
+    ...group,
+    flattenUiTypeGroup: group.uiTypeGroups.length === 1
+      && normalizeTreeLabel(group.title) === normalizeTreeLabel(group.uiTypeGroups[0].title),
+  }));
+}
+
+/** Ignore case and whitespace so labels such as `CardGroup` and `Card Group` are equivalent. */
+function normalizeTreeLabel(value: string) {
+  return value.toLocaleLowerCase().replace(/\s+/g, '');
 }
 
 /** A component with a `parent` is shown inside it: its UI types follow the parent's and its use cases report the parent as their component. */

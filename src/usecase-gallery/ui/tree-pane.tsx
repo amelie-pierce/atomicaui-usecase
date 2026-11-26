@@ -7,8 +7,8 @@ interface TreePaneProps {
   groups: ComponentGroup[];
   activeComponentId: string;
   activeUsecase: Usecase;
-  title: string;
-  familyCount: number;
+  collapsed: boolean;
+  searchActive: boolean;
 }
 
 const typeValue = (componentId: string, index: number) => `type:${componentId}:${index}`;
@@ -18,7 +18,7 @@ function firstUsecase(group?: ComponentGroup, typeIndex = 0) {
 }
 
 /** A single-select, keyboard accessible tree of components, UI types and use cases. */
-export function TreePane({ groups, activeComponentId, activeUsecase, title, familyCount }: TreePaneProps) {
+export function TreePane({ groups, activeComponentId, activeUsecase, collapsed, searchActive }: TreePaneProps) {
   const activeGroup = groups.find((group) => group.id === activeComponentId) ?? groups[0];
   const activeTypeIndex = activeGroup?.uiTypeGroups.findIndex((type) => type.usecases.some((usecase) => usecase.id === activeUsecase.id)) ?? 0;
   const selected = activeUsecase.id;
@@ -36,6 +36,14 @@ export function TreePane({ groups, activeComponentId, activeUsecase, title, fami
       ? [activeGroup.id, activeType]
       : [...new Set([...current, activeGroup.id, activeType])]);
   }, [activeGroup?.id, activeTypeIndex]);
+
+  useEffect(() => {
+    if (!searchActive) return;
+    setExpandedValue(groups.flatMap((group) => [
+      group.id,
+      ...group.uiTypeGroups.map((_, index) => typeValue(group.id, index)),
+    ]));
+  }, [groups, searchActive]);
 
   useLayoutEffect(() => {
     const selectedItem = Array.from(treeRef.current?.querySelectorAll<HTMLElement>('[role="treeitem"]') ?? [])
@@ -65,14 +73,21 @@ export function TreePane({ groups, activeComponentId, activeUsecase, title, fami
     if (first) window.location.hash = usecaseHash(first.id, first.componentId);
   };
 
+  const renderUsecase = (usecase: Usecase) => (
+    <TreeView.Item key={usecase.id} value={usecase.id}>
+      <TreeView.ItemContent className="ug-tree__usecase">
+        <TreeView.ItemArrow />
+        <TreeView.ItemIcon />
+        <Type role="l3" as="span" className="ug-tree__id" weight="semi-bold">{usecase.id}</Type>
+        <Type role="l3" as="span" className="ug-tree__title">{usecase.title}</Type>
+      </TreeView.ItemContent>
+    </TreeView.Item>
+  );
+
   return (
-    <aside className="ug-tree-pane" aria-label="Component and use case navigation">
-      <header className="ug-tree-pane__header">
-        <Type role="l2" as="h1" weight="semi-bold">{title}</Type>
-        <Type role="l3" as="p" color="muted">Components · {familyCount} component families</Type>
-      </header>
+    <aside id="component-tree-pane" className="ug-tree-pane" aria-label="Component and use case navigation" hidden={collapsed}>
       <div className="ug-tree-pane__scroll">
-        <TreeView
+        {groups.length ? <TreeView
           ref={treeRef}
           className="ug-tree"
           aui={{ color: 'surface', paint: 'text', scale: 'sm' }}
@@ -90,7 +105,9 @@ export function TreePane({ groups, activeComponentId, activeUsecase, title, fami
                 <TreeView.ItemIcon />
                 <Type role="l3" as="span" weight="semi-bold">{group.title}</Type>
               </TreeView.ItemContent>
-              {group.uiTypeGroups.map((type, index) => (
+              {group.flattenUiTypeGroup
+                ? group.uiTypeGroups[0].usecases.map(renderUsecase)
+                : group.uiTypeGroups.map((type, index) => (
                 <TreeView.Item key={typeValue(group.id, index)} value={typeValue(group.id, index)}>
                   <TreeView.ItemContent>
                     <TreeView.ItemArrow />
@@ -98,21 +115,12 @@ export function TreePane({ groups, activeComponentId, activeUsecase, title, fami
                     <Type role="l3" as="span">{type.title}</Type>
                     <Type role="l3" as="span" color="muted">{type.usecases.length}</Type>
                   </TreeView.ItemContent>
-                  {type.usecases.map((usecase) => (
-                    <TreeView.Item key={usecase.id} value={usecase.id}>
-                      <TreeView.ItemContent className="ug-tree__usecase">
-                        <TreeView.ItemArrow />
-                        <TreeView.ItemIcon />
-                        <Type role="l3" as="span" className="ug-tree__id" weight="semi-bold">{usecase.id}</Type>
-                        <Type role="l3" as="span" className="ug-tree__title">{usecase.title}</Type>
-                      </TreeView.ItemContent>
-                    </TreeView.Item>
-                  ))}
+                  {type.usecases.map(renderUsecase)}
                 </TreeView.Item>
               ))}
             </TreeView.Item>
           ))}
-        </TreeView>
+        </TreeView> : <Type className="ug-tree-pane__empty" role="l3" as="p" color="muted">No matching components or use cases.</Type>}
       </div>
     </aside>
   );

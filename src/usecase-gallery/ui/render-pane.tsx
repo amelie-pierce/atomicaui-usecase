@@ -93,6 +93,7 @@ export function RenderPane({
   return (
     <section className="ug-render ug-render--split" role="region" aria-label="Preview">
       <div className="ug-render__header">
+        <OptionBar options={usecase.options} active={option} onChange={onOptionChange} />
         <ToggleGroup
           className="ug-render__toggle"
           aria-label="Preview mode"
@@ -112,7 +113,6 @@ export function RenderPane({
             />
           ))}
         </ToggleGroup>
-        <OptionBar options={usecase.options} active={option} onChange={onOptionChange} />
       </div>
       <div className="ug-render__viewport" hidden={mode !== 'component'}>
         <div className="ug-render__stage" ref={stageRef}>

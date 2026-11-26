@@ -209,4 +209,6 @@ export interface UiTypeGroup {
 
 export interface ComponentGroup extends ComponentMeta {
   uiTypeGroups: UiTypeGroup[];
+  /** The tree may show this component's only same-named UI type as direct use-case children. */
+  flattenUiTypeGroup?: boolean;
 }

@@ -1,42 +1,43 @@
-import { useEffect, useRef, useState } from 'react';
-import { useCopy } from '../hooks/use-copy';
-import { Button } from '../kit';
-import type { Usecase, UsecaseOption } from '../types';
+import { Button, Field, Panels, Type } from '../kit';
 
-type SaveStatus = 'idle' | 'saved' | 'failed';
-
-export function DetailToolbar({ usecase, option }: { usecase: Usecase; option: UsecaseOption }) {
-  const [saveStatus, setSaveStatus] = useState<SaveStatus>('idle');
-  const saveTimer = useRef<ReturnType<typeof setTimeout>>();
-  const share = useCopy();
-  const copy = useCopy();
-  const code = option.loadCode();
-
-  useEffect(() => () => clearTimeout(saveTimer.current), []);
-
-  const save = async () => {
-    try {
-      const text = await code;
-      const url = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `${usecase.id.toLowerCase()}-in-context.tsx`;
-      link.click();
-      URL.revokeObjectURL(url);
-      setSaveStatus('saved');
-    } catch {
-      setSaveStatus('failed');
-    }
-    clearTimeout(saveTimer.current);
-    saveTimer.current = setTimeout(() => setSaveStatus('idle'), 2000);
-  };
-
-  return <header className="ug-toolbar" aria-label="Use case actions">
-    <div className="ug-toolbar__actions" aria-label="Document actions">
-      <Button aui={{ color: saveStatus === 'failed' ? 'error' : 'secondary', paint: 'text', scale: 'sm' }} onClick={save}>{saveStatus === 'saved' ? 'Saved' : saveStatus === 'failed' ? 'Save failed' : 'Save'}</Button>
-      <Button aui={{ color: share.status === 'failed' ? 'error' : 'secondary', paint: 'text', scale: 'sm' }} onClick={() => share.copy(window.location.href)}>{share.status === 'copied' ? 'Link copied' : share.status === 'failed' ? 'Share failed' : 'Share'}</Button>
-      <Button aui={{ color: copy.status === 'failed' ? 'error' : 'secondary', paint: 'solid', scale: 'sm' }} onClick={() => code.then(copy.copy)}>{copy.status === 'copied' ? 'Copied' : copy.status === 'failed' ? 'Copy failed' : 'Copy'}</Button>
+export function DetailToolbar({
+  treeCollapsed,
+  onTreeToggle,
+  searchQuery,
+  onSearchChange,
+  onSearchSubmit,
+  panelMode = false,
+}: {
+  treeCollapsed: boolean;
+  onTreeToggle: () => void;
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
+  onSearchSubmit: () => void;
+  panelMode?: boolean;
+}) {
+  return <header className={`ug-toolbar${panelMode ? ' ug-toolbar--panels' : ''}`} aria-label="Gallery controls">
+    <div className="ug-toolbar__brand">
+      {panelMode
+        ? <Panels.Trigger targetId="component-tree" name="bars" aria-label={treeCollapsed ? 'Show components' : 'Hide components'} aria-controls="component-tree-pane" aui={{ color: 'secondary', paint: 'text', profile: 'square-compact', shape: 'soft', scale: 'sm' }} />
+        : <Button aui={{ color: 'secondary', paint: 'text', scale: 'sm' }} aria-expanded={!treeCollapsed} aria-controls="component-tree-pane" onClick={onTreeToggle}>{treeCollapsed ? 'Show components' : 'Hide components'}</Button>}
+      <Type role="l2" as="h1" weight="semi-bold">AtomicAUI</Type>
     </div>
-    <span role="status" className="ug-visually-hidden" aria-live="polite">{saveStatus === 'saved' ? 'Code saved' : saveStatus === 'failed' ? 'Save failed' : share.status === 'copied' ? 'Link copied' : copy.status === 'copied' ? 'Code copied' : ''}</span>
+    <Field className="ug-toolbar__search" aui={{ scale: 'sm' }}>
+      <Field.Control>
+        <Field.Icon name="magnifying-glass" />
+        <Field.Input
+          type="search"
+          aria-label="Search components and use cases"
+          placeholder="Search components and use cases"
+          value={searchQuery}
+          onChange={(event) => onSearchChange(event.currentTarget.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape') onSearchChange('');
+            if (event.key === 'Enter') onSearchSubmit();
+          }}
+        />
+        {searchQuery && <Field.Button aria-label="Clear search"><Field.ButtonIcon name="xmark" /></Field.Button>}
+      </Field.Control>
+    </Field>
   </header>;
 }

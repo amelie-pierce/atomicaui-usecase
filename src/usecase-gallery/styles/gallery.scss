@@ -31,17 +31,17 @@ $narrow: 840px;
   white-space: nowrap;
 }
 
-// ── Single-page gallery shell ───────────────────────────────────────────────
-.ug-gallery-shell {
-  display: grid;
-  grid-template-columns: minmax(calc(var(--p-px-16) * 14), calc(var(--p-px-16) * 17)) minmax(0, 1fr);
-  align-items: stretch;
-  gap: var(--p-px-24);
-  flex: 1 1 auto;
+.ug-panels {
+  display: block;
+  block-size: 100%;
   min-inline-size: 0;
   min-block-size: 0;
-  block-size: 100%;
   overflow: hidden;
+}
+
+.ug-panels > [data-group] {
+  block-size: 100%;
+  min-block-size: 0;
 }
 
 .ug-tree-pane {
@@ -55,17 +55,8 @@ $narrow: 840px;
   border-radius: var(--p-px-8);
 }
 
-.ug-tree-pane__header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--p-px-4);
-  flex: none;
-  padding: var(--p-px-12) var(--p-px-12) var(--p-px-8);
-  border-block-end: var(--p-px-1) solid var(--theme-raised);
-
-  :is(h1, p) {
-    margin: 0;
-  }
+.ug-tree-pane[hidden] {
+  display: none;
 }
 
 .ug-tree-pane__scroll {
@@ -73,6 +64,11 @@ $narrow: 840px;
   min-block-size: 0;
   overflow: auto;
   padding: var(--p-px-8);
+}
+
+.ug-tree-pane__empty {
+  margin: 0;
+  padding: var(--p-px-12);
 }
 
 .ug-tree {
@@ -100,18 +96,6 @@ $narrow: 840px;
   }
 }
 
-.ug-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: stretch;
-  gap: var(--p-px-24);
-  flex: none;
-  min-inline-size: 0;
-  min-block-size: 0;
-  block-size: 100%;
-  overflow: hidden;
-}
-
 .ug-layout__column {
   display: flex;
   flex-direction: column;
@@ -122,9 +106,7 @@ $narrow: 840px;
 }
 
 .ug-layout__column--render {
-  position: sticky;
-  inset-block-start: 0;
-  align-self: start;
+  position: relative;
 }
 
 .ug-layout__column--detail {
@@ -148,7 +130,8 @@ $narrow: 840px;
   min-inline-size: 0;
   min-block-size: 0;
   block-size: 100%;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding-inline: var(--p-px-24);
   padding-block-start: var(--p-px-0);
   border-inline-start: var(--p-px-1) solid var(--theme-raised);
@@ -164,11 +147,11 @@ $narrow: 840px;
 
 .ug-toolbar {
   position: sticky;
-  inset-block-start: calc(var(--p-px-16) * -1);
+  inset-block-start: 0;
   z-index: 4;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: var(--p-px-16);
   flex: none;
   min-inline-size: 0;
@@ -177,11 +160,24 @@ $narrow: 840px;
   border-block-end: var(--p-px-1) solid var(--theme-raised);
 }
 
-.ug-toolbar__actions {
+.ug-toolbar--panels {
+  position: fixed;
+  inset-block-start: var(--p-px-16);
+  inset-inline: var(--p-px-16);
+  z-index: 8;
+}
+
+.ug-toolbar__brand {
   display: flex;
   flex: none;
   align-items: center;
-  gap: var(--p-px-4);
+  gap: var(--p-px-12);
+}
+
+.ug-toolbar__search {
+  flex: 1 1 calc(var(--p-px-16) * 18);
+  min-inline-size: 0;
+  max-inline-size: calc(var(--p-px-16) * 36);
 }
 
 // The header of the left pane: the option select on the left, the Component / In context toggle on the right.
@@ -456,6 +452,7 @@ $narrow: 840px;
   flex-direction: column;
   gap: var(--p-px-4);
   margin: 0;
+  min-inline-size: 0;
 }
 
 .ug-docs__definition-list {
@@ -465,6 +462,11 @@ $narrow: 840px;
 .ug-docs__definition-list :is(dt, dd),
 .ug-docs__section :is(h3, h4, p) {
   margin: 0;
+}
+
+.ug-docs__section dd,
+.ug-docs__related a {
+  overflow-wrap: anywhere;
 }
 
 .ug-docs__anatomy {
@@ -690,7 +692,7 @@ $narrow: 840px;
 .ug--usecase {
   display: flex;
   flex-direction: column;
-  gap: var(--p-px-12);
+  gap: var(--p-px-0);
 }
 
 .ug__body {
@@ -701,18 +703,7 @@ $narrow: 840px;
   min-block-size: 0;
   min-height: 0;
   overflow: hidden;
-}
-
-@media (max-width: 1100px) {
-  .ug-gallery-shell {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(var(--p-px-224), 32dvh) minmax(0, 1fr);
-    gap: var(--p-px-16);
-  }
-
-  .ug-tree-pane__header {
-    padding-block: var(--p-px-8);
-  }
+  padding-block-start: calc(var(--p-px-16) * 5);
 }
 
 // ── Narrow: one scrolling column ────────────────────────────────────────────
@@ -735,32 +726,15 @@ $narrow: 840px;
     flex-wrap: wrap;
   }
 
-  .ug-toolbar__actions {
-    margin-inline-start: auto;
-  }
-
   .ug__body {
     overflow: visible;
-  }
-
-  .ug-gallery-shell {
-    display: flex;
-    flex-direction: column;
-    block-size: auto;
-    overflow: visible;
+    padding-block-start: var(--p-px-0);
   }
 
   .ug-tree-pane {
     flex: none;
     block-size: min(36dvh, calc(var(--p-px-16) * 24));
     min-block-size: var(--p-px-224);
-  }
-
-  .ug-layout {
-    grid-template-columns: minmax(0, 1fr);
-    block-size: auto;
-    overflow: visible;
-    gap: var(--p-px-16);
   }
 
   .ug-layout__column {

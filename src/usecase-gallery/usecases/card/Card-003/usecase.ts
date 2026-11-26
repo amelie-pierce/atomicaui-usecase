@@ -10,16 +10,16 @@ export default defineUsecase({
   title: 'Preview card',
   apps: ['hcs'],
     layers: [
-        {"id":"card","partId":"card","title":"Card","explanation":"224px wide raised surface card with elevation 4 that floats beside the option list in a popover.","keyIdea":"The raised card separates a chosen option preview from the list that opened it.","selector":"[class~=\"aui-card\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"Stacks the option name above its illustration.","keyIdea":"Stacking name and illustration keeps the identity attached to its visual preview.","selector":"[class~=\"aui-card-body\"]"},
-        {"id":"title","partId":"title","title":"Title","explanation":"Name of the highlighted option, \"Glulam\".","keyIdea":"The option name tells users which result the illustration represents.","selector":"[class~=\"aui-card-title\"]"},
-        {"id":"illustration","partId":"illustration","title":"Illustration","explanation":"4:3 generic illustration of Glulam, fitted whole with fit=\"contain\".","keyIdea":"A consistent 4:3 frame lets the illustration support comparison without changing card geometry.","selector":"[class~=\"aui-contained-image\"]"},
+        {"id":"card","partId":"card","title":"Card","explanation":"Raised 224px card floats beside the popover option list.","keyIdea":"The raised card separates a chosen option preview from the list that opened it.","selector":"[class~=\"aui-card\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"Stacks the highlighted option name above its illustration.","keyIdea":"Stacking name and illustration keeps the identity attached to its visual preview.","selector":"[class~=\"aui-card-body\"]"},
+        {"id":"title","partId":"title","title":"Title","explanation":"Glulam names the highlighted option represented by the illustration.","keyIdea":"The option name tells users which result the illustration represents.","selector":"[class~=\"aui-card-title\"]"},
+        {"id":"illustration","partId":"illustration","title":"Illustration","explanation":"Contain-fitted 4:3 illustration shows the selected Glulam option.","keyIdea":"A consistent 4:3 frame lets the illustration support comparison without changing card geometry.","selector":"[class~=\"aui-contained-image\"]"},
       ],
 options: [
     { id: "hcs-preview", contextAnatomy: CONTEXT_ANATOMY, name: "Option preview", source: {"hcs":"src/components/HcsBeamTypeSelect.tsx"} ,
       contextLayers: [
-        {"id":"context-option-trigger","partId":"option-trigger","title":"Select field stand-in","explanation":"The surface field showing the highlighted option \"Glulam\" that the popover is anchored to; the real option list is Combobox-002.","keyIdea":"The field stand-in anchors the preview to the highlighted option that requested it.","selector":"[data-ug-part=\"option-trigger\"]","scope":"context"},
-        {"id":"context-preview-popover","partId":"preview-popover","title":"Preview popover","explanation":"The open Popover, placed to the right of the field with an 8px offset, that holds the preview card.","keyIdea":"The open popover positions the preview beside its trigger while preserving the selection context.","selector":"[data-ug-part=\"preview-popover\"]","scope":"context"},
+        {"id":"context-option-trigger","partId":"option-trigger","title":"Select field stand-in","explanation":"Surface field shows Glulam and anchors the preview popover.","keyIdea":"The field stand-in anchors the preview to the highlighted option that requested it.","selector":"[data-ug-part=\"option-trigger\"]","scope":"context"},
+        {"id":"context-preview-popover","partId":"preview-popover","title":"Preview popover","explanation":"Popover sits beside the field and holds the preview card.","keyIdea":"The open popover positions the preview beside its trigger while preserving the selection context.","selector":"[data-ug-part=\"preview-popover\"]","scope":"context"},
       ],
     },
   ],

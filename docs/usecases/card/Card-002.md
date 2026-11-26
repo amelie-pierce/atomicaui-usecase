@@ -45,9 +45,9 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Card** — Square 96 by 96 soft tile with no padding; ADM lays three of them across under Explore More Applications. Selector: `[class~="aui-card"]`.
-2. **Image container** — Fills the whole card (width and height "fill"), so the picture is the entire tile. Selector: `[class~="aui-card-image-container"]`.
-3. **Image** — The application picture with alt "Application", a 1:1 ratio and fit="contain". Selector: `[class~="aui-card-image"]`.
+1. **Card** — Square 96-pixel soft tile gives each application an image-led target. Selector: `[class~="aui-card"]`.
+2. **Image container** — Full-card image frame lets artwork fill the square tile. Selector: `[class~="aui-card-image-container"]`.
+3. **Image** — One-to-one application image fits whole with its Application alt text. Selector: `[class~="aui-card-image"]`.
 
 ## Apps
 
@@ -72,11 +72,11 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Explore More Applications heading** — The "Explore More Applications" h3 (Type l3 semi-bold) above the tiles. Selector: `[data-ug-part="section-heading"]`.
-2. **Application grid** — The three-column grid (8px gap) that holds the image-only application cards. Selector: `[data-ug-part="app-grid"]`.
-3. **Card** — Square 96 by 96 soft tile with no padding; ADM lays three of them across under Explore More Applications. Selector: `[class~="aui-card"]`.
-4. **Image container** — Fills the whole card (width and height "fill"), so the picture is the entire tile. Selector: `[class~="aui-card-image-container"]`.
-5. **Image** — The application picture with alt "Application", a 1:1 ratio and fit="contain". Selector: `[class~="aui-card-image"]`.
+1. **Explore More Applications heading** — Explore More Applications introduces the image-only discovery tiles. Selector: `[data-ug-part="section-heading"]`.
+2. **Application grid** — Three-column grid arranges image-only application cards with even gaps. Selector: `[data-ug-part="app-grid"]`.
+3. **Card** — Square 96-pixel soft tile gives each application an image-led target. Selector: `[class~="aui-card"]`.
+4. **Image container** — Full-card image frame lets artwork fill the square tile. Selector: `[class~="aui-card-image-container"]`.
+5. **Image** — One-to-one application image fits whole with its Application alt text. Selector: `[class~="aui-card-image"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/card/Card-002/example.tsx`
 

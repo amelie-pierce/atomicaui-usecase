@@ -47,11 +47,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Overlay** — The scrim behind the drawer; in the ACE scene it starts 36px down so the top bar stays uncovered. Selector: `[class~="aui-drawer-backdrop"]`.
-2. **Popup** — The 288px-wide, full-height, square no-padding panel labelled "Navigation" that slides in from the right edge on a phone. Selector: `[class~="aui-drawer-popup"]`.
-3. **Content** — The region that holds the vertical menubar of top bar actions. Selector: `[class~="aui-drawer-content"]`.
-4. **Vertical menubar** — The vertical Menubar at scale "sm" that stacks the actions full width. Selector: `[class~="aui-drawer-content"] [class~="aui-menubar"]`.
-5. **Menu rows** — The Save to device, Open from device and About rows of the example; the ACE scene adds Print. Selector: `[class~="aui-drawer-content"] [class~="aui-button"]`.
+1. **Overlay** — Drawer scrim covers the workspace while ACE leaves its top bar exposed. Selector: `[class~="aui-drawer-backdrop"]`.
+2. **Popup** — 288px panel slides from phone right edge to show Navigation. Selector: `[class~="aui-drawer-popup"]`.
+3. **Content** — Drawer content holds the vertical menu of top-bar actions. Selector: `[class~="aui-drawer-content"]`.
+4. **Vertical menubar** — Small-scale vertical menubar stacks drawer actions at full width. Selector: `[class~="aui-drawer-content"] [class~="aui-menubar"]`.
+5. **Menu rows** — Save, Open, About and ACE Print appear as drawer menu rows. Selector: `[class~="aui-drawer-content"] [class~="aui-button"]`.
 
 ## Apps
 
@@ -83,13 +83,13 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Top bar** — The phone top bar Menubar labelled "Top bar" that stays visible above the drawer; the drawer opens flush under it. Selector: `[class~="aui-menubar"][aria-label="Top bar"]`.
-2. **Navigation toggle** — The xmark icon button labelled "Close navigation" at the top bar; it toggles the drawer closed. Selector: `[class~="aui-menubar"][aria-label="Top bar"] [class~="aui-button"]`.
-3. **Overlay** — The scrim behind the drawer; in the ACE scene it starts 36px down so the top bar stays uncovered. Selector: `[class~="aui-drawer-backdrop"]`.
-4. **Popup** — The 288px-wide, full-height, square no-padding panel labelled "Navigation" that slides in from the right edge on a phone. Selector: `[class~="aui-drawer-popup"]`.
-5. **Content** — The region that holds the vertical menubar of top bar actions. Selector: `[class~="aui-drawer-content"]`.
-6. **Vertical menubar** — The vertical Menubar at scale "sm" that stacks the actions full width. Selector: `[class~="aui-drawer-content"] [class~="aui-menubar"]`.
-7. **Menu rows** — The Save to device, Open from device and About rows of the example; the ACE scene adds Print. Selector: `[class~="aui-drawer-content"] [class~="aui-button"]`.
+1. **Top bar** — Phone top bar stays visible just above the open drawer. Selector: `[class~="aui-menubar"][aria-label="Top bar"]`.
+2. **Navigation toggle** — Close navigation button on the top bar toggles drawer visibility. Selector: `[class~="aui-menubar"][aria-label="Top bar"] [class~="aui-button"]`.
+3. **Overlay** — Drawer scrim covers the workspace while ACE leaves its top bar exposed. Selector: `[class~="aui-drawer-backdrop"]`.
+4. **Popup** — 288px panel slides from phone right edge to show Navigation. Selector: `[class~="aui-drawer-popup"]`.
+5. **Content** — Drawer content holds the vertical menu of top-bar actions. Selector: `[class~="aui-drawer-content"]`.
+6. **Vertical menubar** — Small-scale vertical menubar stacks drawer actions at full width. Selector: `[class~="aui-drawer-content"] [class~="aui-menubar"]`.
+7. **Menu rows** — Save, Open, About and ACE Print appear as drawer menu rows. Selector: `[class~="aui-drawer-content"] [class~="aui-button"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/drawer/Drawer-001/example.tsx`
 

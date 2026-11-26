@@ -47,10 +47,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Card** — 224px wide raised surface card with elevation 4 that floats beside the option list in a popover. Selector: `[class~="aui-card"]`.
-2. **Body** — Stacks the option name above its illustration. Selector: `[class~="aui-card-body"]`.
-3. **Title** — Name of the highlighted option, "Glulam". Selector: `[class~="aui-card-title"]`.
-4. **Illustration** — 4:3 generic illustration of Glulam, fitted whole with fit="contain". Selector: `[class~="aui-contained-image"]`.
+1. **Card** — Raised 224px card floats beside the popover option list. Selector: `[class~="aui-card"]`.
+2. **Body** — Stacks the highlighted option name above its illustration. Selector: `[class~="aui-card-body"]`.
+3. **Title** — Glulam names the highlighted option represented by the illustration. Selector: `[class~="aui-card-title"]`.
+4. **Illustration** — Contain-fitted 4:3 illustration shows the selected Glulam option. Selector: `[class~="aui-contained-image"]`.
 
 ## Apps
 
@@ -75,12 +75,12 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Select field stand-in** — The surface field showing the highlighted option "Glulam" that the popover is anchored to; the real option list is Combobox-002. Selector: `[data-ug-part="option-trigger"]`.
-2. **Preview popover** — The open Popover, placed to the right of the field with an 8px offset, that holds the preview card. Selector: `[data-ug-part="preview-popover"]`.
-3. **Card** — 224px wide raised surface card with elevation 4 that floats beside the option list in a popover. Selector: `[class~="aui-card"]`.
-4. **Body** — Stacks the option name above its illustration. Selector: `[class~="aui-card-body"]`.
-5. **Title** — Name of the highlighted option, "Glulam". Selector: `[class~="aui-card-title"]`.
-6. **Illustration** — 4:3 generic illustration of Glulam, fitted whole with fit="contain". Selector: `[class~="aui-contained-image"]`.
+1. **Select field stand-in** — Surface field shows Glulam and anchors the preview popover. Selector: `[data-ug-part="option-trigger"]`.
+2. **Preview popover** — Popover sits beside the field and holds the preview card. Selector: `[data-ug-part="preview-popover"]`.
+3. **Card** — Raised 224px card floats beside the popover option list. Selector: `[class~="aui-card"]`.
+4. **Body** — Stacks the highlighted option name above its illustration. Selector: `[class~="aui-card-body"]`.
+5. **Title** — Glulam names the highlighted option represented by the illustration. Selector: `[class~="aui-card-title"]`.
+6. **Illustration** — Contain-fitted 4:3 illustration shows the selected Glulam option. Selector: `[class~="aui-contained-image"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/card/Card-003/example.tsx`
 

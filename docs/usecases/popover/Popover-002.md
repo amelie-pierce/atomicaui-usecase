@@ -53,15 +53,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Trigger** — The "Configure columns" table-columns icon button beside the Output heading: contained in HCS, a plain secondary text button in HS and the example. Selector: `[data-base-ui-click-trigger]`.
-2. **Popup** — The 320px elevated column that opens below the trigger aligned to its end, holding the title, the column list and the footer row. Selector: `[data-aui-popup-motion][role="dialog"]`.
-3. **Column list** — The reorderable list labelled "Columns" with one row per output column; locked columns cannot be hidden. Selector: `[class~="aui-list"]`.
-4. **Visibility switch** — The switch that shows or hides a column (labelled "Show <column>"), disabled for columns that cannot be hidden. Selector: `[class~="aui-switch"]`.
-5. **Drag handle** — The handle that reorders a column row. Selector: `[class~="aui-list-drag-handle"]`.
-6. **Footer row** — The row with justifyContent "between" that puts the reset icon at the start and Cancel and Save at the end. Selector: `[data-ug-part="footer"]`.
+1. **Trigger** — Configure columns button sits beside the Output heading. Selector: `[data-base-ui-click-trigger]`.
+2. **Popup** — 320px elevated column holds its title, list, and footer. Selector: `[data-aui-popup-motion][role="dialog"]`.
+3. **Column list** — Columns list reorders output fields; locked entries stay visible. Selector: `[class~="aui-list"]`.
+4. **Visibility switch** — Show column switch hides configurable columns and disables locked ones. Selector: `[class~="aui-switch"]`.
+5. **Drag handle** — Row handle lets users reorder the output columns. Selector: `[class~="aui-list-drag-handle"]`.
+6. **Footer row** — Footer places Reset left and Cancel and Save right. Selector: `[data-ug-part="footer"]`.
 7. **Reset** — The rotate-left icon button that restores the default columns. Selector: `[data-ug-part="reset"]`.
 8. **Cancel** — The text Cancel that discards the column changes. Selector: `[data-ug-part="cancel"]`.
-9. **Save** — The solid secondary Save that applies the column layout (scale "sm" in HCS, default scale in HS). Selector: `[data-ug-part="save"]`.
+9. **Save** — Solid secondary Save applies the layout at app-specific scales. Selector: `[data-ug-part="save"]`.
 
 ## Apps
 
@@ -91,15 +91,15 @@ In context view: Shown.
 1. **Output header** — The pane heading row with the Configure columns button beside Output. Selector: `[data-ug-part="output-header"]`.
 2. **Output title** — The Output heading at the start of the pane header. Selector: `[data-ug-part="output-title"]`.
 3. **Configure columns trigger** — The contained table-columns button that opens this popover. Selector: `[data-ug-part="column-trigger"]`.
-4. **Trigger** — The "Configure columns" table-columns icon button beside the Output heading: contained in HCS, a plain secondary text button in HS and the example. Selector: `[data-base-ui-click-trigger]`.
-5. **Popup** — The 320px elevated column that opens below the trigger aligned to its end, holding the title, the column list and the footer row. Selector: `[data-aui-popup-motion][role="dialog"]`.
-6. **Column list** — The reorderable list labelled "Columns" with one row per output column; locked columns cannot be hidden. Selector: `[class~="aui-list"]`.
-7. **Visibility switch** — The switch that shows or hides a column (labelled "Show <column>"), disabled for columns that cannot be hidden. Selector: `[class~="aui-switch"]`.
-8. **Drag handle** — The handle that reorders a column row. Selector: `[class~="aui-list-drag-handle"]`.
-9. **Footer row** — The row with justifyContent "between" that puts the reset icon at the start and Cancel and Save at the end. Selector: `[data-ug-part="footer"]`.
+4. **Trigger** — Configure columns button sits beside the Output heading. Selector: `[data-base-ui-click-trigger]`.
+5. **Popup** — 320px elevated column holds its title, list, and footer. Selector: `[data-aui-popup-motion][role="dialog"]`.
+6. **Column list** — Columns list reorders output fields; locked entries stay visible. Selector: `[class~="aui-list"]`.
+7. **Visibility switch** — Show column switch hides configurable columns and disables locked ones. Selector: `[class~="aui-switch"]`.
+8. **Drag handle** — Row handle lets users reorder the output columns. Selector: `[class~="aui-list-drag-handle"]`.
+9. **Footer row** — Footer places Reset left and Cancel and Save right. Selector: `[data-ug-part="footer"]`.
 10. **Reset** — The rotate-left icon button that restores the default columns. Selector: `[data-ug-part="reset"]`.
 11. **Cancel** — The text Cancel that discards the column changes. Selector: `[data-ug-part="cancel"]`.
-12. **Save** — The solid secondary Save that applies the column layout (scale "sm" in HCS, default scale in HS). Selector: `[data-ug-part="save"]`.
+12. **Save** — Solid secondary Save applies the layout at app-specific scales. Selector: `[data-ug-part="save"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/popover/Popover-002/example.tsx`
 
@@ -235,15 +235,15 @@ In context view: Shown.
 1. **Output header** — The pane heading row with the Configure columns button beside Output. Selector: `[data-ug-part="output-header"]`.
 2. **Output title** — The Output heading at the start of the pane header. Selector: `[data-ug-part="output-title"]`.
 3. **Configure columns trigger** — The secondary text table-columns button that opens this popover. Selector: `[data-ug-part="column-trigger"]`.
-4. **Trigger** — The "Configure columns" table-columns icon button beside the Output heading: contained in HCS, a plain secondary text button in HS and the example. Selector: `[data-base-ui-click-trigger]`.
-5. **Popup** — The 320px elevated column that opens below the trigger aligned to its end, holding the title, the column list and the footer row. Selector: `[data-aui-popup-motion][role="dialog"]`.
-6. **Column list** — The reorderable list labelled "Columns" with one row per output column; locked columns cannot be hidden. Selector: `[class~="aui-list"]`.
-7. **Visibility switch** — The switch that shows or hides a column (labelled "Show <column>"), disabled for columns that cannot be hidden. Selector: `[class~="aui-switch"]`.
-8. **Drag handle** — The handle that reorders a column row. Selector: `[class~="aui-list-drag-handle"]`.
-9. **Footer row** — The row with justifyContent "between" that puts the reset icon at the start and Cancel and Save at the end. Selector: `[data-ug-part="footer"]`.
+4. **Trigger** — Configure columns button sits beside the Output heading. Selector: `[data-base-ui-click-trigger]`.
+5. **Popup** — 320px elevated column holds its title, list, and footer. Selector: `[data-aui-popup-motion][role="dialog"]`.
+6. **Column list** — Columns list reorders output fields; locked entries stay visible. Selector: `[class~="aui-list"]`.
+7. **Visibility switch** — Show column switch hides configurable columns and disables locked ones. Selector: `[class~="aui-switch"]`.
+8. **Drag handle** — Row handle lets users reorder the output columns. Selector: `[class~="aui-list-drag-handle"]`.
+9. **Footer row** — Footer places Reset left and Cancel and Save right. Selector: `[data-ug-part="footer"]`.
 10. **Reset** — The rotate-left icon button that restores the default columns. Selector: `[data-ug-part="reset"]`.
 11. **Cancel** — The text Cancel that discards the column changes. Selector: `[data-ug-part="cancel"]`.
-12. **Save** — The solid secondary Save that applies the column layout (scale "sm" in HCS, default scale in HS). Selector: `[data-ug-part="save"]`.
+12. **Save** — Solid secondary Save applies the layout at app-specific scales. Selector: `[data-ug-part="save"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/popover/Popover-002/options/hs-configure-columns/example.tsx`
 

@@ -46,11 +46,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Menubar** — The top bar whose last menu is Help Center; the HCS scene sets it at scale "sm" and names it "Main navigation". Selector: `[class~="aui-menubar"]`.
-2. **Trigger** — The text trigger "Help Center". Selector: `[class~="aui-menubar-trigger"]`.
-3. **Popup** — The 192px wide popup under the trigger (288px in the HCS scene), aligned to the trigger start. Selector: `[class~="aui-dropdown-popup"]`.
+1. **Menubar** — Top bar ends with Help Center; HCS uses small Main navigation. Selector: `[class~="aui-menubar"]`.
+2. **Trigger** — Help Center text trigger opens the help menu. Selector: `[class~="aui-menubar-trigger"]`.
+3. **Popup** — Popup aligns below trigger at 192px; HCS expands it to 288px. Selector: `[class~="aui-dropdown-popup"]`.
 4. **Item** — A help action row: "Feedback", "Tutorials" or "Add to Home Screen". Selector: `[class~="aui-dropdown-item"]`.
-5. **Submenu trigger** — In the HCS scene "Tutorials" is a submenu trigger that opens one tutorial to its right. Selector: `[class~="aui-dropdown-submenu-trigger"]`.
+5. **Submenu trigger** — HCS Tutorials row opens one nested tutorial choice. Selector: `[class~="aui-dropdown-submenu-trigger"]`.
 
 ## Apps
 

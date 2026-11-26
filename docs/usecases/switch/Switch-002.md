@@ -46,9 +46,9 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Switch** — The on/off control, on by default, with a solid primary track when selected; each app places it in a popover, a table toolbar or a dialog. Selector: `[class~="aui-switch"]`.
-2. **Thumb** — The thumb that slides to the end of the track when Group by model is on. Selector: `[class~="aui-switch-thumb"]`.
-3. **Label** — The option text "Group by model" beside the switch; the scenes swap it for Show Optimized Models, Send me a copy or the ADM draft switches. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+1. **Switch** — On-by-default switch appears in popovers, toolbars, or dialogs. Selector: `[class~="aui-switch"]`.
+2. **Thumb** — Thumb slides to track end when Group by model is enabled. Selector: `[class~="aui-switch-thumb"]`.
+3. **Label** — App labels include Group by model and Send me a copy. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
 ## Apps
 
@@ -79,10 +79,10 @@ In context view: Shown.
 #### In context layer steps
 
 1. **Configure columns trigger** — The table-columns IconButton, labelled Configure columns, that opens the popover under it. Selector: `[data-ug-part="columns-trigger"]`.
-2. **Configure columns popover** — The elevated popover, 320px wide, anchored under the trigger that holds the column list. Selector: `[data-ug-part="columns-popover"]`.
-3. **Switch** — The on/off control, on by default, with a solid primary track when selected; each app places it in a popover, a table toolbar or a dialog. Selector: `[class~="aui-switch"]`.
-4. **Thumb** — The thumb that slides to the end of the track when Group by model is on. Selector: `[class~="aui-switch-thumb"]`.
-5. **Label** — The option text "Group by model" beside the switch; the scenes swap it for Show Optimized Models, Send me a copy or the ADM draft switches. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+2. **Configure columns popover** — 320px column popover anchors beneath the settings trigger. Selector: `[data-ug-part="columns-popover"]`.
+3. **Switch** — On-by-default switch appears in popovers, toolbars, or dialogs. Selector: `[class~="aui-switch"]`.
+4. **Thumb** — Thumb slides to track end when Group by model is enabled. Selector: `[class~="aui-switch-thumb"]`.
+5. **Label** — App labels include Group by model and Send me a copy. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/switch/Switch-002/example.tsx`
 
@@ -139,11 +139,11 @@ In context view: Shown.
 #### In context layer steps
 
 1. **Base plate dialog** — The Dialog popup, titled Base plate, that hosts the switch. Selector: `[data-ug-part="dialog"]`.
-2. **Dialog title** — The raised title bar with the Base plate heading and a Close button at the end. Selector: `[data-ug-part="dialog-title"]`.
-3. **Dialog body** — The body area that holds the Include base plate switch in a column. Selector: `[data-ug-part="dialog-body"]`.
-4. **Switch** — The on/off control, on by default, with a solid primary track when selected; each app places it in a popover, a table toolbar or a dialog. Selector: `[class~="aui-switch"]`.
-5. **Thumb** — The thumb that slides to the end of the track when Group by model is on. Selector: `[class~="aui-switch-thumb"]`.
-6. **Label** — The option text "Group by model" beside the switch; the scenes swap it for Show Optimized Models, Send me a copy or the ADM draft switches. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+2. **Dialog title** — Raised title bar names the task and places Close at the end. Selector: `[data-ug-part="dialog-title"]`.
+3. **Dialog body** — Column body holds Include base plate switch vertically. Selector: `[data-ug-part="dialog-body"]`.
+4. **Switch** — On-by-default switch appears in popovers, toolbars, or dialogs. Selector: `[class~="aui-switch"]`.
+5. **Thumb** — Thumb slides to track end when Group by model is enabled. Selector: `[class~="aui-switch-thumb"]`.
+6. **Label** — App labels include Group by model and Send me a copy. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/switch/Switch-002/options/adm-labelled/example.tsx`
 
@@ -245,12 +245,12 @@ In context view: Shown.
 #### In context layer steps
 
 1. **Feedback dialog** — The Dialog popup, titled Feedback Form, that hosts the switch. Selector: `[data-ug-part="dialog"]`.
-2. **Dialog title** — The raised title bar with the Feedback Form heading and a Cancel close button at the end. Selector: `[data-ug-part="dialog-title"]`.
-3. **Dialog body** — The body area that holds the Send me a copy switch. Selector: `[data-ug-part="dialog-body"]`.
+2. **Dialog title** — Raised title bar names the task and places Close at the end. Selector: `[data-ug-part="dialog-title"]`.
+3. **Dialog body** — Column body holds Include base plate switch vertically. Selector: `[data-ug-part="dialog-body"]`.
 4. **Dialog actions** — The footer with a Cancel button and a solid secondary Send button. Selector: `[data-ug-part="dialog-actions"]`.
-5. **Switch** — The on/off control, on by default, with a solid primary track when selected; each app places it in a popover, a table toolbar or a dialog. Selector: `[class~="aui-switch"]`.
-6. **Thumb** — The thumb that slides to the end of the track when Group by model is on. Selector: `[class~="aui-switch-thumb"]`.
-7. **Label** — The option text "Group by model" beside the switch; the scenes swap it for Show Optimized Models, Send me a copy or the ADM draft switches. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+5. **Switch** — On-by-default switch appears in popovers, toolbars, or dialogs. Selector: `[class~="aui-switch"]`.
+6. **Thumb** — Thumb slides to track end when Group by model is enabled. Selector: `[class~="aui-switch-thumb"]`.
+7. **Label** — App labels include Group by model and Send me a copy. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/switch/Switch-002/options/ace-labelled/example.tsx`
 

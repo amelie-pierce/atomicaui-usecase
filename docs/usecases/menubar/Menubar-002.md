@@ -45,12 +45,12 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Menubar** — The "Top bar" strip with the File menu first; the other apps place About, Reset and Help Center after it. Selector: `[class~="aui-menubar"]`.
+1. **Menubar** — Top bar starts with File; apps may add About, Reset, or Help. Selector: `[class~="aui-menubar"]`.
 2. **Trigger** — The text trigger "File" that opens the device, template and print actions. Selector: `[class~="aui-menubar-trigger"]`.
-3. **Popup** — The 192px wide menu surface, 4px below the trigger and aligned to its start. Selector: `[class~="aui-dropdown-popup"]`.
+3. **Popup** — 192px menu opens 4px below its start-aligned trigger. Selector: `[class~="aui-dropdown-popup"]`.
 4. **Item** — A plain action row: "Save to device" or "Open from device". Selector: `[class~="aui-dropdown-item"]`.
 5. **Separator** — The divider between the device actions and the Print submenu. Selector: `[class~="aui-dropdown-separator"]`.
-6. **Submenu trigger** — The "Print" row with a trailing arrow; it opens a second popup to its right holding "Print output". Selector: `[class~="aui-dropdown-submenu-trigger"]`.
+6. **Submenu trigger** — Print row’s arrow opens a second menu with Print output. Selector: `[class~="aui-dropdown-submenu-trigger"]`.
 
 ## Apps
 

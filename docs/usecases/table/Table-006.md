@@ -49,12 +49,12 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Table** — Flat print grid at scale "xs" with "all-cells" borders and no selection. ACE, ADM, HS and RWS override it with shape "none", a text-coloured border, compact profile or smaller 10/12 type. Selector: `[class~="aui-table"]`.
-2. **Header** — Header row printed with Model and Load (lb); ACE and ADM paint it muted with a surface foreground, HS and RWS use a secondary solid fill. Selector: `[class~="aui-table-head"]`.
-3. **Header cell** — Printed column label without sort controls; its alignment is centre in ACE and RWS and left or start in ADM and HS. Selector: `[class~="aui-table-header-cell"]`.
-4. **Body** — The printed rows of the report table. Selector: `[class~="aui-table-body"]`.
-5. **Row** — One printed record, Model B-200 with 2,210 lb; HS and RWS switch selectable and expandable off on the row. Selector: `[class~="aui-table-row"]`.
-6. **Cell** — Plain printed value; ACE sets 4px by 6px padding with centred text, ADM left-aligns it in the compact profile. Selector: `[class~="aui-table-cell"]`.
+1. **Table** — Extra-small print grid has ruled cells and no selection. Selector: `[class~="aui-table"]`.
+2. **Header** — Printed header lists Model and Load with app-specific fills. Selector: `[class~="aui-table-head"]`.
+3. **Header cell** — Printed labels use centered or start alignment across apps. Selector: `[class~="aui-table-header-cell"]`.
+4. **Body** — Printed report rows contain the saved model values. Selector: `[class~="aui-table-body"]`.
+5. **Row** — Printed row shows Model B-200 and 2,210 lb. Selector: `[class~="aui-table-row"]`.
+6. **Cell** — Printed values use compact padding and app-specific alignment. Selector: `[class~="aui-table-cell"]`.
 
 ## Apps
 

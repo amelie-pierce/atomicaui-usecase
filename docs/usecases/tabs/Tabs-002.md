@@ -45,10 +45,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Tabs** — Top-level phone switch with no padding, spanning the viewport width (390px in the scenes). ADM, PBS and PFD start on Input. Selector: `[class~="aui-tabs"]`.
-2. **List** — One-line row of pane chips; in the ADM and PFD scenes it uses overflow="shrink" with gap 0 and scrolls horizontally when the labels do not fit. Selector: `[class~="aui-tabs-list"]`.
-3. **Tab** — One chip per pane with a short label (Summary and Result, or Input and Output in the scenes), kept on one line with whiteSpace nowrap. Selector: `[class~="aui-tabs-tab"]`.
-4. **Reset button** — ADM only: a trailing rotate-right icon button labelled "Reset" at the end of the list. Selector: `[class~="aui-tabs-add-button"]`.
+1. **Tabs** — Unpadded phone switch spans 390px; apps start on Input. Selector: `[class~="aui-tabs"]`.
+2. **List** — One-line pane row shrinks or scrolls when labels exceed available width. Selector: `[class~="aui-tabs-list"]`.
+3. **Tab** — Pane chips stay on one line with short labels. Selector: `[class~="aui-tabs-tab"]`.
+4. **Reset button** — ADM Reset button sits at row end to restore defaults. Selector: `[class~="aui-tabs-add-button"]`.
 5. **Panel** — The pane shown for the selected tab, "Summary content" or "Result content". Selector: `[class~="aui-tabs-panel"]`.
 
 ## Apps

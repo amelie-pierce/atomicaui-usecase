@@ -53,18 +53,18 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Menubar** — The "Top bar" strip whose right end holds the gear; the HCS and ACE scenes set it at scale "sm" and right-aligned. Selector: `[class~="aui-menubar"]`.
-2. **Trigger** — Square gear button with aria-label "Settings" (profile "square") that opens the layout menu. Selector: `[class~="aui-menubar-trigger"]`.
+1. **Menubar** — Top bar ends with a right-aligned gear in HCS and ACE. Selector: `[class~="aui-menubar"]`.
+2. **Trigger** — Square Settings gear button opens the layout menu. Selector: `[class~="aui-menubar-trigger"]`.
 3. **Trigger icon** — The gear glyph that is the whole visible content of the trigger. Selector: `[class~="aui-menubar-trigger"] > [class~="aui-contained-icon"]`.
-4. **Popup** — Menu labelled "Settings", aligned to the end of the trigger so it stays on screen at the right edge. Selector: `[class~="aui-dropdown-popup"]`.
+4. **Popup** — Settings menu aligns to the trigger end to stay onscreen. Selector: `[class~="aui-dropdown-popup"]`.
 5. **Group** — The Pane Orientation group that holds its heading and the orientation rows. Selector: `[class~="aui-dropdown-group"]`.
 6. **Group label** — The caption "Pane Orientation" (and "Pane Layout" in the scenes). Selector: `[class~="aui-dropdown-group-label"]`.
 7. **Radio group** — Single-choice set with "vertical" chosen; the scenes add Horizontal and Grid. Selector: `[class~="aui-dropdown-radio-group"]`.
-8. **Radio item** — The "Vertical" orientation row with its leading table-columns icon and a hidden indicator. Selector: `[class~="aui-dropdown-radio-item"]`.
+8. **Radio item** — Vertical row leads with a table icon and hides its indicator. Selector: `[class~="aui-dropdown-radio-item"]`.
 9. **Row icon** — The leading glyph of a row, such as table-columns for Vertical. Selector: `[class~="aui-dropdown-radio-item"] > [class~="aui-contained-icon"]`.
-10. **Item** — The "Reset layout to default" action row of the scenes, under its own Pane Layout group. Selector: `[class~="aui-dropdown-item"]`.
-11. **Separator** — The divider between the orientation group, the layout group and the check row in the scenes. Selector: `[class~="aui-dropdown-separator"]`.
-12. **Checkbox item** — The "Auto-Rotate 3D Model" check row of the HCS scene, shown only where the app has a 3D model. Selector: `[class~="aui-dropdown-checkbox-item"]`.
+10. **Item** — Reset layout action sits under the Pane Layout group. Selector: `[class~="aui-dropdown-item"]`.
+11. **Separator** — Thin dividers separate orientation, layout, and checkbox groups. Selector: `[class~="aui-dropdown-separator"]`.
+12. **Checkbox item** — HCS shows Auto-Rotate only when a 3D model exists. Selector: `[class~="aui-dropdown-checkbox-item"]`.
 
 ## Apps
 

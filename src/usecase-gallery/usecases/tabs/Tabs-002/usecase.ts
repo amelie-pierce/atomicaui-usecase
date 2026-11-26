@@ -5,10 +5,10 @@ export default defineUsecase({
   title: 'Phone workspace tabs',
   apps: ['pfd', 'hs', 'agpd', 'fd', 'adm', 'ace', 'pbs'],
     layers: [
-        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"Top-level phone switch with no padding, spanning the viewport width (390px in the scenes). ADM, PBS and PFD start on Input.","keyIdea":"A full-width root turns phone navigation into one compact pane switch.","selector":"[class~=\"aui-tabs\"]"},
-        {"id":"list","partId":"list","title":"List","explanation":"One-line row of pane chips; in the ADM and PFD scenes it uses overflow=\"shrink\" with gap 0 and scrolls horizontally when the labels do not fit.","keyIdea":"The one-line list preserves a predictable horizontal path across narrow tab labels.","selector":"[class~=\"aui-tabs-list\"]"},
-        {"id":"tab","partId":"tab","title":"Tab","explanation":"One chip per pane with a short label (Summary and Result, or Input and Output in the scenes), kept on one line with whiteSpace nowrap.","keyIdea":"Each chip switches to one pane without wrapping its name onto another line.","selector":"[class~=\"aui-tabs-tab\"]"},
-        {"id":"add","partId":"add","title":"Reset button","explanation":"ADM only: a trailing rotate-right icon button labelled \"Reset\" at the end of the list.","keyIdea":"The reset action restores the default tab arrangement independently from choosing a pane.","selector":"[class~=\"aui-tabs-add-button\"]"},
+        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"Unpadded phone switch spans 390px; apps start on Input.","keyIdea":"A full-width root turns phone navigation into one compact pane switch.","selector":"[class~=\"aui-tabs\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"One-line pane row shrinks or scrolls when labels exceed available width.","keyIdea":"The one-line list preserves a predictable horizontal path across narrow tab labels.","selector":"[class~=\"aui-tabs-list\"]"},
+        {"id":"tab","partId":"tab","title":"Tab","explanation":"Pane chips stay on one line with short labels.","keyIdea":"Each chip switches to one pane without wrapping its name onto another line.","selector":"[class~=\"aui-tabs-tab\"]"},
+        {"id":"add","partId":"add","title":"Reset button","explanation":"ADM Reset button sits at row end to restore defaults.","keyIdea":"The reset action restores the default tab arrangement independently from choosing a pane.","selector":"[class~=\"aui-tabs-add-button\"]"},
         {"id":"panel","partId":"panel","title":"Panel","explanation":"The pane shown for the selected tab, \"Summary content\" or \"Result content\".","keyIdea":"The selected panel shows the content for the active phone tab only.","selector":"[class~=\"aui-tabs-panel\"]"},
       ],
 options: [

@@ -47,10 +47,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Tabs** — Root that switches the pane between its views; Summary is selected first through defaultValue="summary". ADC lists Model and Information, HS lists Summary and Result. Selector: `[class~="aui-tabs"]`.
-2. **List** — The chip row in the pane header; ADC lets it wrap with flexWrap. Selector: `[class~="aui-tabs-list"]`.
-3. **Tab** — A 28px soft chip: surface-alt solid when idle and overlay solid when selected. Selector: `[class~="aui-tabs-tab"]`.
-4. **Panel** — Content of the selected view, "Summary content" or "Result content" in the example. Selector: `[class~="aui-tabs-panel"]`.
+1. **Tabs** — Root shows tabs with Summary selected; app labels can vary across views. Selector: `[class~="aui-tabs"]`.
+2. **List** — Chip row takes the pane header and wraps when ADC runs short. Selector: `[class~="aui-tabs-list"]`.
+3. **Tab** — Soft 28px chips use surface-alt idle and overlay selected fills. Selector: `[class~="aui-tabs-tab"]`.
+4. **Panel** — Selected tab reveals its matching pane content in the main view. Selector: `[class~="aui-tabs-panel"]`.
 
 ## Apps
 
@@ -81,11 +81,11 @@ In context view: Shown.
 #### In context layer steps
 
 1. **Output pane** — The Output section (soft, surface-alt) whose tabbed header holds the tab list. Selector: `[data-ug-part="output-pane"]`.
-2. **Pane header** — The 28px header row where the tab list takes the title spot, followed in the app by Print and Back to top actions. Selector: `[data-ug-part="pane-header"]`.
-3. **Tabs** — Root that switches the pane between its views; Summary is selected first through defaultValue="summary". ADC lists Model and Information, HS lists Summary and Result. Selector: `[class~="aui-tabs"]`.
-4. **List** — The chip row in the pane header; ADC lets it wrap with flexWrap. Selector: `[class~="aui-tabs-list"]`.
-5. **Tab** — A 28px soft chip: surface-alt solid when idle and overlay solid when selected. Selector: `[class~="aui-tabs-tab"]`.
-6. **Panel** — Content of the selected view, "Summary content" or "Result content" in the example. Selector: `[class~="aui-tabs-panel"]`.
+2. **Pane header** — 28px header hosts tabs instead of the title; apps may add actions. Selector: `[data-ug-part="pane-header"]`.
+3. **Tabs** — Root shows tabs with Summary selected; app labels can vary across views. Selector: `[class~="aui-tabs"]`.
+4. **List** — Chip row takes the pane header and wraps when ADC runs short. Selector: `[class~="aui-tabs-list"]`.
+5. **Tab** — Soft 28px chips use surface-alt idle and overlay selected fills. Selector: `[class~="aui-tabs-tab"]`.
+6. **Panel** — Selected tab reveals its matching pane content in the main view. Selector: `[class~="aui-tabs-panel"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/tabs/Tabs-001/example.tsx`
 

@@ -48,12 +48,12 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Tabs** — The design rail root with no padding; Design 1 (d1) is selected by default. Selector: `[class~="aui-tabs"]`.
-2. **List** — Row holding the design chips and the add button; ADC lets it shrink with overflow="shrink". Selector: `[class~="aui-tabs-list"]`.
-3. **Tab** — One open design (Design 1, Design 2) rendered as a div chip with nativeButton={false} so it can hold buttons; the selected chip is raised and tonal. Selector: `[class~="aui-tabs-tab"]`.
+1. **Tabs** — Unpadded design rail starts with Design 1 selected. Selector: `[class~="aui-tabs"]`.
+2. **List** — Rail row contains design chips and a trailing add action. Selector: `[class~="aui-tabs-list"]`.
+3. **Tab** — Design chips can contain controls; selected tab uses raised tonal styling. Selector: `[class~="aui-tabs-tab"]`.
 4. **Error dot** — Error-coloured circle-exclamation on Design 1, labelled "The design has an error". Selector: `[class~="aui-tabs-pin-button"]`.
 5. **Close** — Per-design close action, for example "Close Design 1". Selector: `[class~="aui-tabs-close-button"]`.
-6. **Add** — File-circle-plus button at the end of the rail that opens a new design. Selector: `[class~="aui-tabs-add-button"]`.
+6. **Add** — Trailing file-plus button opens a new design tab. Selector: `[class~="aui-tabs-add-button"]`.
 
 ## Apps
 

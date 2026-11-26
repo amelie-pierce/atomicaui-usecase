@@ -5,12 +5,12 @@ export default defineUsecase({
   title: 'Check details table',
   apps: ['fd'],
     layers: [
-        {"id":"table","partId":"table","title":"Table","explanation":"Header-less message grid with a11y=\"table\", \"all-cells\" tonal borders, scale \"sm\" and a soft shape; it sits inside an expanded result row.","keyIdea":"The headerless message grid lets an expanded result explain individual failed checks.","selector":"[class~=\"aui-table\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"Contains only body rows, one per failed or warning check; there is no Table.Head.","keyIdea":"A body-only table avoids adding a separate heading when each check already carries its status.","selector":"[class~=\"aui-table-body\"]"},
+        {"id":"table","partId":"table","title":"Table","explanation":"Headerless message grid uses table semantics inside an expanded result row.","keyIdea":"The headerless message grid lets an expanded result explain individual failed checks.","selector":"[class~=\"aui-table\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"Body holds one failed or warning check per row.","keyIdea":"A body-only table avoids adding a separate heading when each check already carries its status.","selector":"[class~=\"aui-table-body\"]"},
         {"id":"row","partId":"row","title":"Row","explanation":"One check message: the status chip followed by its text.","keyIdea":"Each message row associates one result category with one diagnostic sentence.","selector":"[class~=\"aui-table-row\"]"},
         {"id":"status-cell","partId":"status-cell","title":"Status cell","explanation":"Fixed 96px first column that holds the status chip.","keyIdea":"A fixed status column keeps short labels aligned across varying message lengths.","selector":"[class~=\"aui-table-cell\"]:first-child"},
         {"id":"chip","partId":"chip","title":"Status chip","explanation":"Small danger-tonal xs chip that marks the check as a failure.","keyIdea":"The danger chip marks the check as a failure before users read the detail.","selector":"[class~=\"aui-chip\"]"},
-        {"id":"message-cell","partId":"message-cell","title":"Message cell","explanation":"Message text that explains the check, for example \"Edge distance is below the minimum.\"","keyIdea":"The message cell explains the condition that caused the check to fail.","selector":"[class~=\"aui-table-cell\"]:last-child"},
+        {"id":"message-cell","partId":"message-cell","title":"Message cell","explanation":"Message cell explains a check, such as insufficient edge distance.","keyIdea":"The message cell explains the condition that caused the check to fail.","selector":"[class~=\"aui-table-cell\"]:last-child"},
       ],
 options: [
     { id: "fd-details", name: "Check details table", showContext: false, apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} ,

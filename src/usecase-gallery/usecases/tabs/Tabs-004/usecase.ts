@@ -5,12 +5,12 @@ export default defineUsecase({
   title: 'Design tab rail',
   apps: ['adc'],
     layers: [
-        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"The design rail root with no padding; Design 1 (d1) is selected by default.","keyIdea":"The root owns the open design rail and its current design selection.","selector":"[class~=\"aui-tabs\"]"},
-        {"id":"list","partId":"list","title":"List","explanation":"Row holding the design chips and the add button; ADC lets it shrink with overflow=\"shrink\".","keyIdea":"The row keeps design chips and the add action within one navigable strip.","selector":"[class~=\"aui-tabs-list\"]"},
-        {"id":"tab","partId":"tab","title":"Tab","explanation":"One open design (Design 1, Design 2) rendered as a div chip with nativeButton={false} so it can hold buttons; the selected chip is raised and tonal.","keyIdea":"Each chip marks an open design while preserving room for its nested controls.","selector":"[class~=\"aui-tabs-tab\"]"},
+        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"Unpadded design rail starts with Design 1 selected.","keyIdea":"The root owns the open design rail and its current design selection.","selector":"[class~=\"aui-tabs\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"Rail row contains design chips and a trailing add action.","keyIdea":"The row keeps design chips and the add action within one navigable strip.","selector":"[class~=\"aui-tabs-list\"]"},
+        {"id":"tab","partId":"tab","title":"Tab","explanation":"Design chips can contain controls; selected tab uses raised tonal styling.","keyIdea":"Each chip marks an open design while preserving room for its nested controls.","selector":"[class~=\"aui-tabs-tab\"]"},
         {"id":"pin","partId":"pin","title":"Error dot","explanation":"Error-coloured circle-exclamation on Design 1, labelled \"The design has an error\".","keyIdea":"The error dot marks the affected design without replacing its tab label.","selector":"[class~=\"aui-tabs-pin-button\"]"},
         {"id":"close","partId":"close","title":"Close","explanation":"Per-design close action, for example \"Close Design 1\".","keyIdea":"A per-design close target removes only the tab it belongs to.","selector":"[class~=\"aui-tabs-close-button\"]"},
-        {"id":"add","partId":"add","title":"Add","explanation":"File-circle-plus button at the end of the rail that opens a new design.","keyIdea":"The trailing add control starts a new design from the rail.","selector":"[class~=\"aui-tabs-add-button\"]"},
+        {"id":"add","partId":"add","title":"Add","explanation":"Trailing file-plus button opens a new design tab.","keyIdea":"The trailing add control starts a new design from the rail.","selector":"[class~=\"aui-tabs-add-button\"]"},
       ],
 options: [
     { id: "adc-design-rail", name: "Design tab rail", showContext: false, apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,

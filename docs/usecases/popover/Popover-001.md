@@ -49,11 +49,11 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Trigger** — The text circle-question button labelled "Material help" beside the field label; it is a compact square in PBS and the example and a square in PFD and AGPD. Selector: `[data-base-ui-click-trigger]`.
-2. **Trigger icon** — The circle-question glyph inside the help trigger. Selector: `[data-base-ui-click-trigger] [class~="aui-contained-icon"]`.
-3. **Popup** — The elevated soft surface (surface colour, solid, elevation 4) that opens above the trigger with a 4px offset: 320px wide, and up to 384px in PFD. Selector: `[data-aui-popup-motion][role="dialog"]`.
-4. **Close row** — The end-aligned row above the text in AGPD that holds only the close X. Selector: `[data-ug-part="close-row"]`.
-5. **Close** — The X that closes the popover: an xs icon button at the end of the row in PBS, in its own row in AGPD, and a square Button in PFD. Selector: `[data-ug-part="close"]`.
+1. **Trigger** — Material help question button sits beside the field label; app shapes vary. Selector: `[data-base-ui-click-trigger]`.
+2. **Trigger icon** — Circle-question glyph sits inside the Material help trigger. Selector: `[data-base-ui-click-trigger] [class~="aui-contained-icon"]`.
+3. **Popup** — Elevated soft help surface opens 4px above; width varies by app. Selector: `[data-aui-popup-motion][role="dialog"]`.
+4. **Close row** — AGPD places its end-aligned close row above the help text. Selector: `[data-ug-part="close-row"]`.
+5. **Close** — X closes help; PBS, AGPD, and PFD place it differently. Selector: `[data-ug-part="close"]`.
 
 ## Apps
 

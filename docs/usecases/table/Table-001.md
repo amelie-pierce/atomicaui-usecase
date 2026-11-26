@@ -50,13 +50,13 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Table** — Framed results grid: scale "sm", soft shape, a 1px outlined border and "all-cells" tonal borders. It scrolls on its own (scroll "self"), pins the first column with frozenColumns={1} and is sortable. Selector: `[class~="aui-table"]`.
-2. **Header** — Raised header band holding the single row of sortable column headings, Model and Load (lb). Selector: `[class~="aui-table-head"]`.
-3. **Header cell** — Centred raised heading with a 128px width that matches its body column; the label sits in one span so a wrapped label stays a single flex item. Selector: `[class~="aui-table-header-cell"]`.
-4. **Sort button** — The sort control built from sortDirection and onSortToggle; its title reads "Sort by Model" or "Sort by Load". Selector: `[class~="aui-table-sort-button"]`.
-5. **Body** — The two result rows, Model B-200 (2,210) and Model C-300 (1,180), scrolling under the pinned header. Selector: `[class~="aui-table-body"]`.
+1. **Table** — Soft framed grid scrolls independently, pins its first column, and sorts. Selector: `[class~="aui-table"]`.
+2. **Header** — Raised header holds sortable Model and Load labels. Selector: `[class~="aui-table-head"]`.
+3. **Header cell** — Raised centered heading matches its 128px column width. Selector: `[class~="aui-table-header-cell"]`.
+4. **Sort button** — Sort control toggles direction and names the chosen column. Selector: `[class~="aui-table-sort-button"]`.
+5. **Body** — Two result rows scroll beneath the pinned header. Selector: `[class~="aui-table-body"]`.
 6. **Row** — One candidate product, a plain read-only row with no selection or expander. Selector: `[class~="aui-table-row"]`.
-7. **Cell** — Value cell using the same 128px width token as its header; the model name is left-aligned in the pinned first column and the load is centred. Selector: `[class~="aui-table-cell"]`.
+7. **Cell** — 128px value cells left-align models and center the load. Selector: `[class~="aui-table-cell"]`.
 
 ## Apps
 

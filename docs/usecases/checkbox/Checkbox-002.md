@@ -122,7 +122,7 @@ export default function HcsOptionScene(_props: ContextProps) {
 }
 ```
 
-### 2. Input panel option — UI variant 2 (`ace-titled`)
+### 2. Titled input checkbox (`ace-titled`)
 
 Apps: ACE, PBS, AGPD
 
@@ -184,7 +184,7 @@ export default function AceTitledScene(_props: ContextProps) {
 }
 ```
 
-### 3. Input panel option — UI variant 3 (`adm-label-first`)
+### 3. Leading label checkbox (`adm-label-first`)
 
 Apps: ADM
 

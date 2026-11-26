@@ -17,12 +17,12 @@ export default defineUsecase({
         {"id":"accept","partId":"accept","title":"Accept","explanation":"The secondary solid soft button labelled \"Accept Application License Agreement\"; the scenes enable it once the text is read to the end.","keyIdea":"Acceptance becomes available only after the agreement has been read.","selector":"[data-ug-part=\"accept\"]"},
       ],
 options: [
-    { id: "hcs-accept", name: "Accept licence", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false ,
+    { id: "hcs-accept", name: "Raised licence header", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false ,
       contextLayers: [
 
       ],
     },
-    { id: "ace-accept", name: "Accept licence — UI variant 2", apps: ["ace","adm","pfd","hs","fd","agpd","rws","pbs"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx","pbs":"src/LicenseGate.tsx"}, showContext: false ,
+    { id: "ace-accept", name: "Plain licence header", apps: ["ace","adm","pfd","hs","fd","agpd","rws","pbs"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx","pbs":"src/LicenseGate.tsx"}, showContext: false ,
       contextLayers: [
 
       ],

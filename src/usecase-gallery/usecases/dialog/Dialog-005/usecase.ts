@@ -15,12 +15,12 @@ export default defineUsecase({
         {"id":"licence-text","partId":"licence-text","title":"Licence text","explanation":"The licence sections as Type p2 text: one sample clause in the example, and the full mock agreement in a gap-12 column View in the HCS and ADM scenes.","keyIdea":"The licence clauses provide the terms users must read before starting the app.","selector":"[data-ug-part=\"licence-text\"]"},
       ],
 options: [
-    { id: "hcs-licence", name: "Licence dialog", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false ,
+    { id: "hcs-licence", name: "Raised licence title", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false ,
       contextLayers: [
 
       ],
     },
-    { id: "adm-licence", name: "Licence dialog — UI variant 2", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","pbs":"src/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx"}, showContext: false ,
+    { id: "adm-licence", name: "Plain licence title", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","pbs":"src/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx"}, showContext: false ,
       contextLayers: [
 
       ],

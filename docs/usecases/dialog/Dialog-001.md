@@ -243,7 +243,7 @@ export default function HcsAboutScene({ host }: ContextProps) {
 }
 ```
 
-### 2. About dialog — UI variant 2 (`pfd-about`)
+### 2. About history pane (`pfd-about`)
 
 Apps: PFD
 

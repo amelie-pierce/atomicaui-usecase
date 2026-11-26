@@ -63,7 +63,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Dialog close (`hcs-close`)
+### 1. Title-bar close (`hcs-close`)
 
 Apps: HCS, ACE, ADM, PFD, PBS, HS, FD, AGPD, RWS
 
@@ -112,7 +112,7 @@ export default function HcsCloseScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Dialog close — UI variant 2 (`adc-close`)
+### 2. Tooltip close button (`adc-close`)
 
 Apps: ADC
 

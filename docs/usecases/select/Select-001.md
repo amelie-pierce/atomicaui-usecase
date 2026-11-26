@@ -179,7 +179,7 @@ export default function HcsFieldSelectScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Field select — UI variant 2 (`agpd-field-select`)
+### 2. Stacked check select (`agpd-field-select`)
 
 Apps: AGPD
 
@@ -295,7 +295,7 @@ export default function AgpdFieldSelectScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Field select — UI variant 3 (`adm-field-select`)
+### 3. Side label select (`adm-field-select`)
 
 Apps: ADM, ADC
 
@@ -408,7 +408,7 @@ export default function AdmFieldSelectScene({ host }: ContextProps) {
 }
 ```
 
-### 4. Field select — UI variant 4 (`ace-field-select`)
+### 4. Side label check select (`ace-field-select`)
 
 Apps: ACE
 

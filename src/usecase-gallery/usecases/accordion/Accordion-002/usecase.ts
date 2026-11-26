@@ -36,7 +36,7 @@ options: [
         {"id":"context-about-body","partId":"about-body","title":"Release notes body","explanation":"The padded View under the title bar that holds the release notes Accordion (the Release history column and app header are left out).","keyIdea":"This notes region keeps the update accordion separate from the history rail and app summary.","selector":"[data-ug-part=\"about-body\"]","scope":"context"},
       ],
     },
-    { id: "adc-release-notes", contextAnatomy: ADC_ABOUT_CONTEXT, name: "Release notes — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
+    { id: "adc-release-notes", contextAnatomy: ADC_ABOUT_CONTEXT, name: "Dialog release notes", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
       contextLayers: [
         {"id":"context-about-dialog","partId":"about-dialog","title":"About dialog","explanation":"The Dialog popup titled About that hosts the release notes.","keyIdea":"ADC uses its About popup to frame the single release entry as part of the application shell.","selector":"[class~=\"aui-dialog-popup\"]","scope":"context"},
         {"id":"context-about-title","partId":"about-title","title":"About title bar","explanation":"The raised Dialog.Title reading \"About\", with the Close About button at its end.","keyIdea":"The ADC title bar names the release dialog before users inspect the version details.","selector":"[class~=\"aui-dialog-title\"]","scope":"context"},

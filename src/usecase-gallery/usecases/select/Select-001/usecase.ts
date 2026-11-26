@@ -22,7 +22,7 @@ options: [
 
       ],
     },
-    { id: "agpd-field-select", showContext: false, name: "Field select — UI variant 2", apps: ["agpd"], note: "Label above; the chosen row ends with a check icon.", source: {"agpd":"src/agpd/controls.tsx"},
+    { id: "agpd-field-select", showContext: false, name: "Stacked check select", apps: ["agpd"], note: "Label above; the chosen row ends with a check icon.", source: {"agpd":"src/agpd/controls.tsx"},
       componentDocument: { summary: 'A single-value select whose selected duration is confirmed with a check icon.', how: 'AGPD keeps the label above the field. Its open list adds a check to the selected row; the other field dimensions and choices match the plain row style.' },
       componentAnatomy: [
         { id: 'field', description: 'The scale "sm" field stacks the Download Duration label above the select.' },
@@ -33,7 +33,7 @@ options: [
 
       ],
     },
-    { id: "adm-field-select", showContext: false, name: "Field select — UI variant 3", apps: ["adm","adc"], note: "Label beside: label and trigger share the row, half each.", source: {"adm":"src/features/design-inputs/components/MasonryWallDetailsSection/FieldSelectRow.tsx","adc":"src/adc/components/DesignField.tsx"},
+    { id: "adm-field-select", showContext: false, name: "Side label select", apps: ["adm","adc"], note: "Label beside: label and trigger share the row, half each.", source: {"adm":"src/features/design-inputs/components/MasonryWallDetailsSection/FieldSelectRow.tsx","adc":"src/adc/components/DesignField.tsx"},
       componentDocument: { summary: 'A single-value select with its label and trigger sharing one row.', how: 'ADM and ADC place the Download Duration label beside the trigger. Both occupy half of the row; the open list keeps the same plain selection rows.' },
       componentAnatomy: [
         { id: 'field', description: 'The field lays out the Download Duration label and select trigger in one horizontal row.' },
@@ -44,7 +44,7 @@ options: [
 
       ],
     },
-    { id: "ace-field-select", showContext: false, name: "Field select — UI variant 4", apps: ["ace"], note: "Label beside; the chosen row ends with a check icon.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"},
+    { id: "ace-field-select", showContext: false, name: "Side label check select", apps: ["ace"], note: "Label beside; the chosen row ends with a check icon.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"},
       componentDocument: { summary: 'A single-value select with a side-by-side label and a check-marked selected duration.', how: 'ACE lays the label and trigger in one row. The open choices end with a check icon on the selected duration.' },
       componentAnatomy: [
         { id: 'field', description: 'The field places its label and trigger in a single horizontal row.' },

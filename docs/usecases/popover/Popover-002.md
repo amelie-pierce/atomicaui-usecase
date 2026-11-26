@@ -60,7 +60,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Configure columns (`hcs-configure-columns`)
+### 1. Contained trigger popover (`hcs-configure-columns`)
 
 Apps: HCS
 
@@ -189,7 +189,7 @@ export default function HcsConfigureColumnsScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Configure columns — UI variant 2 (`hs-configure-columns`)
+### 2. Text trigger popover (`hs-configure-columns`)
 
 Apps: HS
 

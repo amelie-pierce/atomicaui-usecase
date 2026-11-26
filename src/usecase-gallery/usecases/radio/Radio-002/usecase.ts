@@ -26,7 +26,7 @@ options: [
         {"id":"context-viewer-controls","partId":"viewer-controls","title":"Viewer controls","explanation":"The control cluster over the canvas that holds the camera projection group.","keyIdea":"The floating control cluster keeps camera choices beside the model they affect.","selector":"[data-ug-part=\"viewer-controls\"]","scope":"context"},
       ],
     },
-    { id: "adc-projection", contextAnatomy: VIEWER_CONTEXT, name: "Projection — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} ,
+    { id: "adc-projection", contextAnatomy: VIEWER_CONTEXT, name: "Plain projection radios", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} ,
       contextLayers: [
         {"id":"context-viewer-pane","partId":"viewer-pane","title":"3D Viewer pane","explanation":"The soft surface-alt section labelled \"3D Viewer\" that holds the model view and its controls.","keyIdea":"ADC uses the same viewer boundary to contain its model and camera choices.","selector":"[data-ug-part=\"viewer-pane\"]","scope":"context"},
         {"id":"context-viewer-title","partId":"viewer-title","title":"Pane title","explanation":"The semi-bold \"3D Viewer\" heading at the top of the pane.","keyIdea":"This heading names the ADC viewer before its canvas and controls appear.","selector":"[data-ug-part=\"viewer-title\"]","scope":"context"},
@@ -34,7 +34,7 @@ options: [
         {"id":"context-viewer-controls","partId":"viewer-controls","title":"Viewer controls","explanation":"The control cluster over the canvas that holds the camera projection group.","keyIdea":"The camera control cluster sits over the work surface rather than in another pane.","selector":"[data-ug-part=\"viewer-controls\"]","scope":"context"},
       ],
     },
-    { id: "pbs-projection-tooltip", contextAnatomy: [...VIEWER_CONTEXT, { id: 'radio-tooltip', name: 'Radio tooltip', description: 'The tooltip above the Perspective radio that explains the view mode: "Realistic 3D view with depth and perspective."' }], name: "Projection — UI variant 3", apps: ["pbs"], source: {"pbs":"src/Viewer.tsx"} ,
+    { id: "pbs-projection-tooltip", contextAnatomy: [...VIEWER_CONTEXT, { id: 'radio-tooltip', name: 'Radio tooltip', description: 'The tooltip above the Perspective radio that explains the view mode: "Realistic 3D view with depth and perspective."' }], name: "Projection tooltip radios", apps: ["pbs"], source: {"pbs":"src/Viewer.tsx"} ,
       contextLayers: [
         {"id":"context-viewer-pane","partId":"viewer-pane","title":"3D Viewer pane","explanation":"The soft surface-alt section labelled \"3D Viewer\" that holds the model view and its controls.","keyIdea":"This tooltip variant keeps projection controls grounded in its own 3D viewer surface.","selector":"[data-ug-part=\"viewer-pane\"]","scope":"context"},
         {"id":"context-viewer-title","partId":"viewer-title","title":"Pane title","explanation":"The semi-bold \"3D Viewer\" heading at the top of the pane.","keyIdea":"Its pane heading identifies the model workspace before the projected view is explained.","selector":"[data-ug-part=\"viewer-title\"]","scope":"context"},

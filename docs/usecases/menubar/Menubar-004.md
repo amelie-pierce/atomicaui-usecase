@@ -66,7 +66,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Gear menu (`hcs-gear-menu`)
+### 1. 3D rotation menu (`hcs-gear-menu`)
 
 Apps: HCS, ADM
 
@@ -246,7 +246,7 @@ export default function HcsGearMenuScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Gear menu — UI variant 2 (`ace-gear-menu`)
+### 2. Pane layout menu (`ace-gear-menu`)
 
 Apps: ACE, HS, PFD, AGPD, RWS, PBS
 

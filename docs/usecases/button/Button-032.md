@@ -122,7 +122,7 @@ export default function HcsFieldHelpScene({ children }: ContextProps) {
 }
 ```
 
-### 2. Ghost, 20px — UI variant 2 (`pbs-field-help`)
+### 2. 20px help icon (`pbs-field-help`)
 
 Apps: PBS
 
@@ -177,7 +177,7 @@ export default function PbsFieldHelpScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Ghost, 20px — UI variant 3 (`rws-field-help`)
+### 3. 20px outlined help (`rws-field-help`)
 
 Apps: RWS
 
@@ -288,7 +288,7 @@ export default function HsFieldHelpScene({ host }: ContextProps) {
 }
 ```
 
-### 5. Ghost, 28px — UI variant 2 (`adm-field-help`)
+### 5. 28px tooltip icon (`adm-field-help`)
 
 Apps: ADM
 
@@ -344,7 +344,7 @@ export default function AdmFieldHelpScene({ host }: ContextProps) {
 }
 ```
 
-### 6. Ghost, 28px — UI variant 3 (`pfd-field-help`)
+### 6. 28px popover icon (`pfd-field-help`)
 
 Apps: PFD, AGPD
 

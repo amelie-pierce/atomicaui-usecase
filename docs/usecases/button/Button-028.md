@@ -143,7 +143,7 @@ export default function ResultsScene({ children }: ContextProps) {
 }
 ```
 
-### 2. Group row (`hcs-group`)
+### 2. Group model row (`hcs-group`)
 
 Apps: HCS, ADC
 
@@ -214,7 +214,7 @@ export default function HcsGroupScene(_props: ContextProps) {
 }
 ```
 
-### 3. Group row — UI variant 2 (`hs-group`)
+### 3. Counted model row (`hs-group`)
 
 Apps: HS
 

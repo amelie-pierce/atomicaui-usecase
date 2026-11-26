@@ -188,7 +188,7 @@ export default function AceTemplatesScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Template picker — UI variant 2 (`adm-templates`)
+### 2. Radio template list (`adm-templates`)
 
 Apps: ADM
 
@@ -298,7 +298,7 @@ export default function AdmTemplatesScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Template picker — UI variant 3 (`hs-templates`)
+### 3. Grouped template list (`hs-templates`)
 
 Apps: HS, FD
 

@@ -153,7 +153,7 @@ export default function HcsListScene(_props: ContextProps) {
 }
 ```
 
-### 2. Section list — UI variant 2 (`pbs-section-list`)
+### 2. Icon section list (`pbs-section-list`)
 
 Apps: PBS, PFD, RWS, AGPD
 
@@ -238,7 +238,7 @@ export default function PbsListScene(_props: ContextProps) {
 }
 ```
 
-### 3. Section list — UI variant 3 (`fd-section-list`)
+### 3. Plain section list (`fd-section-list`)
 
 Apps: FD
 
@@ -414,7 +414,7 @@ export default function HcsCardsScene(_props: ContextProps) {
 }
 ```
 
-### 5. Section cards — UI variant 2 (`pbs-section-cards`)
+### 5. Icon section cards (`pbs-section-cards`)
 
 Apps: PBS, PFD, RWS, AGPD
 
@@ -501,7 +501,7 @@ export default function PbsCardsScene(_props: ContextProps) {
 }
 ```
 
-### 6. Section cards — UI variant 3 (`fd-section-cards`)
+### 6. Outlined section cards (`fd-section-cards`)
 
 Apps: FD
 

@@ -19,12 +19,12 @@ export default defineUsecase({
         {"id":"checkbox-item","partId":"checkbox-item","title":"Checkbox item","explanation":"The \"Auto-Rotate 3D Model\" check row of the HCS scene, shown only where the app has a 3D model.","keyIdea":"The checkbox toggles automatic model rotation without changing pane layout.","selector":"[class~=\"aui-dropdown-checkbox-item\"]"},
       ],
 options: [
-    { id: "hcs-gear-menu", showContext: false, name: "Gear menu", apps: ["hcs","adm"], source: {"hcs":"src/App.tsx","adm":"src/features/settings/components/SettingsMenu.tsx"} ,
+    { id: "hcs-gear-menu", showContext: false, name: "3D rotation menu", apps: ["hcs","adm"], source: {"hcs":"src/App.tsx","adm":"src/features/settings/components/SettingsMenu.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "ace-gear-menu", showContext: false, name: "Gear menu — UI variant 2", apps: ["ace","hs","pfd","agpd","rws","pbs"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx","hs":"src/hs/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx","pbs":"src/TopBar.tsx"} ,
+    { id: "ace-gear-menu", showContext: false, name: "Pane layout menu", apps: ["ace","hs","pfd","agpd","rws","pbs"], source: {"ace":"src/features/settings/ui/SettingsMenu.tsx","hs":"src/hs/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx","pbs":"src/TopBar.tsx"} ,
       contextLayers: [
 
       ],

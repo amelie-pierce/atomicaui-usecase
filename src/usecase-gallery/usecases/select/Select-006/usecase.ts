@@ -25,7 +25,7 @@ options: [
 
       ],
     },
-    { id: "fd-grouped-options", showContext: false, name: "Grouped options — UI variant 2", apps: ["fd"], source: {"fd":"src/components/SettingsPopover.jsx"} ,
+    { id: "fd-grouped-options", showContext: false, name: "Flagged grouped select", apps: ["fd"], source: {"fd":"src/components/SettingsPopover.jsx"} ,
       componentDocument: { summary: 'A grouped product select with a leading flag in the trigger and each option row.', how: 'FD places the Product label above a full-width, 28px trigger. The trigger and each grouped option lead with a flag; Anchors and Rods headings keep the product families distinct.' },
       componentAnatomy: [
         { id: 'field', description: 'The field stacks the Product label above the full-width select.' },

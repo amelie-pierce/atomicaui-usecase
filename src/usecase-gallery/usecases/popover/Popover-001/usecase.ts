@@ -12,17 +12,17 @@ export default defineUsecase({
         {"id":"close","partId":"close","title":"Close","explanation":"The X that closes the popover: an xs icon button at the end of the row in PBS, in its own row in AGPD, and a square Button in PFD.","keyIdea":"The close action hides the supplemental explanation and returns attention to the field.","selector":"[data-ug-part=\"close\"]"},
       ],
 options: [
-    { id: "pbs-help", showContext: false, name: "Field help", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} ,
+    { id: "pbs-help", showContext: false, name: "Inline close popover", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "pfd-help", showContext: false, name: "Field help — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} ,
+    { id: "pfd-help", showContext: false, name: "Square close popover", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "agpd-help", showContext: false, name: "Field help — UI variant 3", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} ,
+    { id: "agpd-help", showContext: false, name: "Icon close popover", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} ,
       contextLayers: [
 
       ],

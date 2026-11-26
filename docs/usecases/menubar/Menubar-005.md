@@ -58,7 +58,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Drawer row (`adm-drawer-row`)
+### 1. 3D rotation drawer (`adm-drawer-row`)
 
 Apps: ADM
 
@@ -230,7 +230,7 @@ export default function AdmDrawerRowScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Drawer row — UI variant 2 (`ace-drawer-row`)
+### 2. Pane layout drawer (`ace-drawer-row`)
 
 Apps: ACE
 

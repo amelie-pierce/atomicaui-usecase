@@ -135,7 +135,7 @@ export default function HcsStepNavScene({ children }: ContextProps) {
 }
 ```
 
-### 2. Step navigation — UI variant 2 (`ace-step-nav`)
+### 2. Arrow step buttons (`ace-step-nav`)
 
 Apps: ACE, HS, RWS, AGPD
 
@@ -215,7 +215,7 @@ export default function AceStepNavScene() {
 }
 ```
 
-### 3. Step navigation — UI variant 3 (`adm-step-nav`)
+### 3. Text step buttons (`adm-step-nav`)
 
 Apps: ADM, PBS, PFD, FD
 

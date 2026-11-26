@@ -146,7 +146,7 @@ export default function ResetScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Reset confirm — UI variant 2 (`ace-reset`)
+### 2. Reset without close (`ace-reset`)
 
 Apps: ACE
 
@@ -220,7 +220,7 @@ export default function ResetScene({ host }: ContextProps) {
 }
 ```
 
-### 3. Reset confirm — UI variant 3 (`adm-reset`)
+### 3. 480px reset dialog (`adm-reset`)
 
 Apps: ADM
 
@@ -298,7 +298,7 @@ export default function ResetScene({ host }: ContextProps) {
 }
 ```
 
-### 4. Reset confirm — UI variant 4 (`hs-reset`)
+### 4. Spaced reset footer (`hs-reset`)
 
 Apps: HS, FD
 
@@ -382,7 +382,7 @@ export default function HsResetScene({ host }: ContextProps) {
 }
 ```
 
-### 5. Reset confirm — UI variant 5 (`adc-reset`)
+### 5. Wide reset dialog (`adc-reset`)
 
 Apps: ADC
 

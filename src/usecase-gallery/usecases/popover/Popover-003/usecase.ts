@@ -19,13 +19,13 @@ export default defineUsecase({
         {"id":"sort-radio","partId":"sort-radio","title":"Sort option","explanation":"A sort choice such as \"Sort A to Z\" or \"Sort Z to A\"; the table scenes add \"(Smallest to Largest)\" hints and a None option, selected options are solid primary.","keyIdea":"Each radio option states the resulting ordering so users can choose intentionally.","selector":"[class~=\"aui-radio\"]"},
       ],
 options: [
-    { id: "hcs-column-menu", contextAnatomy: CONTEXT_ANATOMY, name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} ,
+    { id: "hcs-column-menu", contextAnatomy: CONTEXT_ANATOMY, name: "End-aligned sort menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} ,
       contextLayers: [
         {"id":"context-rows","partId":"rows","title":"Result rows","explanation":"The table body rows under the header; with Load sorted A to Z they follow the chosen order.","keyIdea":"The result rows make the selected ascending order visible beneath the menu.","selector":"[data-ug-part=\"rows\"]","scope":"context"},
         {"id":"context-other-header","partId":"other-header","title":"Neighbouring header cell","explanation":"The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to.","keyIdea":"The neighboring Model header shows that Load sorting applies within the same table.","selector":"[data-ug-part=\"other-header\"]","scope":"context"},
       ],
     },
-    { id: "pfd-column-menu", contextAnatomy: CONTEXT_ANATOMY, name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} ,
+    { id: "pfd-column-menu", contextAnatomy: CONTEXT_ANATOMY, name: "Closeable sort menu", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} ,
       contextLayers: [
         {"id":"context-rows","partId":"rows","title":"Result rows","explanation":"The table body rows under the header; with Load sorted A to Z they follow the chosen order.","keyIdea":"The PFD result rows reveal the chosen Load ordering in its table layout.","selector":"[data-ug-part=\"rows\"]","scope":"context"},
         {"id":"context-other-header","partId":"other-header","title":"Neighbouring header cell","explanation":"The Model header cell with its own kebab, shown beside the Load (lb) header that the open menu belongs to.","keyIdea":"The adjacent Model header provides a stable point of comparison for the sorted Load column.","selector":"[data-ug-part=\"other-header\"]","scope":"context"},

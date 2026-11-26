@@ -31,12 +31,12 @@ options: [
 
       ],
     },
-    { id: "adc-feedback", name: "Send feedback — UI variant 2", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, contextAnatomy: ADC_CONTEXT_ANATOMY ,
+    { id: "adc-feedback", name: "Footer copy checkbox", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, contextAnatomy: ADC_CONTEXT_ANATOMY ,
       contextLayers: [
         {"id":"context-copy-checkbox","partId":"copy-checkbox","title":"Send me a copy checkbox","explanation":"The checkbox \"Send me a copy of my responses\" at the start of the split footer.","keyIdea":"The checkbox lets ADC users receive a copy of their submitted answers.","selector":"[class~=\"aui-checkbox\"]","scope":"context"},
       ],
     },
-    { id: "ace-feedback", name: "Send feedback — UI variant 3", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/top-navigation/ui/FeedbackDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/components/Feedback.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"}, showContext: false ,
+    { id: "ace-feedback", name: "Form copy checkbox", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/top-navigation/ui/FeedbackDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/components/Feedback.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"}, showContext: false ,
       contextLayers: [
 
       ],

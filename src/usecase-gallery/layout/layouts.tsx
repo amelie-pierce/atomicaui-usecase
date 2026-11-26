@@ -7,6 +7,7 @@ export interface LayoutPanes {
   render: ReactNode;
   detail: ReactNode;
   treeWidth?: number;
+  compact?: boolean;
   treeCollapsed: boolean;
   onTreePanelResize: (size: { asPercentage: number; inPixels: number }) => void;
 }
@@ -16,8 +17,8 @@ const TREE_MIN = 240;
 const TREE_MAX = 400;
 
 /** Three resizable panes; the preview toolbar is anchored across the page from the center panel. */
-export function DetailLayout({ toolbar, tree, render, detail, treeWidth, treeCollapsed, onTreePanelResize }: LayoutPanes) {
-  const fitted = treeWidth === undefined ? undefined : Math.min(TREE_MAX, Math.max(TREE_MIN, treeWidth));
+export function DetailLayout({ toolbar, tree, render, detail, treeWidth, compact = false, treeCollapsed, onTreePanelResize }: LayoutPanes) {
+  const fitted = compact ? TREE_MIN : treeWidth === undefined ? undefined : Math.min(TREE_MAX, Math.max(TREE_MIN, treeWidth));
   return (
     <Panels key={fitted} orientation="horizontal" className="ug-panels" animate={false}>
       <Panels.Panel
@@ -39,7 +40,7 @@ export function DetailLayout({ toolbar, tree, render, detail, treeWidth, treeCol
         {render}
       </Panels.Panel>
       <Panels.ResizeHandle aria-label="Resize preview and documentation" />
-      <Panels.Panel id="component-documentation" className="ug-layout__column ug-layout__column--detail" defaultSize="280px" groupResizeBehavior="preserve-pixel-size" minSize="220px">
+      <Panels.Panel id="component-documentation" className="ug-layout__column ug-layout__column--detail" defaultSize={compact ? '300px' : '340px'} groupResizeBehavior="preserve-pixel-size" minSize="220px">
         {detail}
       </Panels.Panel>
     </Panels>

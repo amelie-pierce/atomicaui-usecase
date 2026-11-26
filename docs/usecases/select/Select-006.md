@@ -182,7 +182,7 @@ export default function AdcGroupedOptionsScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Grouped options — UI variant 2 (`fd-grouped-options`)
+### 2. Flagged grouped select (`fd-grouped-options`)
 
 Apps: FD
 

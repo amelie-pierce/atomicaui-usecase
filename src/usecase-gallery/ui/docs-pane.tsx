@@ -104,8 +104,8 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
   const hasVariants = !!doc.variants || usecase.options.length > 0;
   return <>
     <ToggleGroup className="ug-docs__mode-toggle" aria-label="Document view" value={[documentMode]} onValueChange={([next]) => next && onDocumentModeChange(next as DocumentMode)}>
-      <ToggleGroup.Item value="document" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Document</Button>} />
-      <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text', scale: 'sm' }}>Layer</Button>} />
+      <ToggleGroup.Item value="document" render={(props, { pressed }) => <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>Document</Button>} />
+      <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>Layer</Button>} />
     </ToggleGroup>
     <div className="ug-docs">
     {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} /> : <>

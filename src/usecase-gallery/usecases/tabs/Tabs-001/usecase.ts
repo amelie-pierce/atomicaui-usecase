@@ -17,7 +17,7 @@ options: [
         {"id":"context-pane-header","partId":"pane-header","title":"Pane header","explanation":"The 28px header row where the tab list takes the title spot, followed in the app by Print and Back to top actions.","keyIdea":"The header lets tabs occupy the title position while neighboring actions stay in the row.","selector":"[data-ug-part=\"pane-header\"]","scope":"context"},
       ],
     },
-    { id: "adc-pane-tabs", name: "Pane tabs — UI variant 2", showContext: false, apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
+    { id: "adc-pane-tabs", name: "Tonal chip tabs", showContext: false, apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
       contextLayers: [
 
       ],

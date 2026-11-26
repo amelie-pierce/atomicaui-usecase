@@ -23,7 +23,7 @@ options: [
         {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The navigation column keeps the available walkthrough choices together.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
       ],
     },
-    { id: "ace-topic-row", name: "Topic row — UI variant 2", apps: ["ace"], contextAnatomy: [
+    { id: "ace-topic-row", name: "Outlined topic row", apps: ["ace"], contextAnatomy: [
       { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
       { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
       { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog." },
@@ -40,7 +40,7 @@ options: [
         {"id":"context-topic-description","partId":"topic-description","title":"Topic description","explanation":"The muted description under the topic name.","keyIdea":"The muted copy previews what the ACE tutorial will cover.","selector":"[data-ug-part=\"topic-description\"]","scope":"context"},
       ],
     },
-    { id: "adm-topic-row", name: "Topic row — UI variant 3", apps: ["adm","pfd"], contextAnatomy: [
+    { id: "adm-topic-row", name: "Icon topic row", apps: ["adm","pfd"], contextAnatomy: [
       { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
       { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
       { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog." },
@@ -53,7 +53,7 @@ options: [
         {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The topic navigation column lets users scan available guidance.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
       ],
     },
-    { id: "pbs-topic-row", name: "Topic row — UI variant 4", apps: ["pbs","fd"], contextAnatomy: [
+    { id: "pbs-topic-row", name: "Compact topic row", apps: ["pbs","fd"], contextAnatomy: [
       { id: "dialog", name: "Help & Tutorials dialog", description: "The open dialog that lists the tutorial topics." },
       { id: "dialog-title", name: "Dialog title", description: "The title bar \"Help & Tutorials\" with the close X." },
       { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog." },

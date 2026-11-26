@@ -115,7 +115,7 @@ export default function PfdPhoneTabsScene(_props: ContextProps) {
 }
 ```
 
-### 2. Phone workspace tabs — UI variant 2 (`adm-phone-tabs`)
+### 2. Fitted phone tabs (`adm-phone-tabs`)
 
 Apps: ADM, ACE
 
@@ -171,7 +171,7 @@ export default function AdmPhoneTabsScene(_props: ContextProps) {
 }
 ```
 
-### 3. Phone workspace tabs — UI variant 3 (`pbs-phone-tabs`)
+### 3. Scrollable phone tabs (`pbs-phone-tabs`)
 
 Apps: PBS
 

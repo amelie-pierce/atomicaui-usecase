@@ -50,7 +50,7 @@ options: [
         {"id":"context-row-action","partId":"row-action","title":"Row actions","explanation":"The Download, Delete (error colour) and Edit text buttons after a user-owned template row.","keyIdea":"Row actions stay adjacent to user-owned templates so editing does not look like selection.","selector":"[data-ug-part=\"row-action\"]","scope":"context"},
       ],
     },
-    { id: "adm-templates", name: "Template picker — UI variant 2", apps: ["adm"], source: {"adm":"src/features/templates/components/NewFromTemplateDialog.tsx"}, contextAnatomy: ADM_CONTEXT_ANATOMY ,
+    { id: "adm-templates", name: "Radio template list", apps: ["adm"], source: {"adm":"src/features/templates/components/NewFromTemplateDialog.tsx"}, contextAnatomy: ADM_CONTEXT_ANATOMY ,
       contextLayers: [
         {"id":"context-radio-group","partId":"radio-group","title":"Template choice","explanation":"The one RadioGroup that makes the built-in and own templates a single choice, defaulting to Three-beam connection.","keyIdea":"ADM keeps both template categories in one choice group while avoiding collapsible sections.","selector":"[class~=\"aui-radio-group\"]","scope":"context"},
         {"id":"context-section","partId":"section","title":"Template section","explanation":"A plain section that stacks a muted heading over its radio rows with a gap of 4 (no Accordion).","keyIdea":"A plain section introduces each ADM template set without adding a disclosure control.","selector":"[data-ug-part=\"section\"]","scope":"context"},
@@ -59,7 +59,7 @@ options: [
         {"id":"context-row-action","partId":"row-action","title":"Row actions","explanation":"The Download, Delete (error colour) and Edit text buttons after a user-owned template row.","keyIdea":"Download, Delete, and Edit remain grouped with the owned template they act upon.","selector":"[data-ug-part=\"row-action\"]","scope":"context"},
       ],
     },
-    { id: "hs-templates", name: "Template picker — UI variant 3", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"}, contextAnatomy: HS_CONTEXT_ANATOMY ,
+    { id: "hs-templates", name: "Grouped template list", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"}, contextAnatomy: HS_CONTEXT_ANATOMY ,
       contextLayers: [
         {"id":"context-radio-group","partId":"radio-group","title":"Template choice","explanation":"The one RadioGroup that makes the built-in and own templates a single choice, defaulting to Three-beam connection.","keyIdea":"The HS radio group keeps the built-in and owned templates mutually exclusive.","selector":"[class~=\"aui-radio-group\"]","scope":"context"},
         {"id":"context-accordion","partId":"accordion","title":"Template sections","explanation":"Default Templates and My Templates as two Accordion sections, both open.","keyIdea":"The two open categories make the available HS template families visible together.","selector":"[class~=\"aui-accordion\"]","scope":"context"},

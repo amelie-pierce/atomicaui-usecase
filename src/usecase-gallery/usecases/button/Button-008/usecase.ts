@@ -23,7 +23,7 @@ options: [
         {"id":"context-search","partId":"search","title":"Search field","explanation":"The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button.","keyIdea":"The populated search field shows the active Model filter and its clear affordance.","selector":"[data-ug-part=\"search\"]","scope":"context"},
       ],
     },
-    { id: "fd-toolbar", name: "Toolbar — UI variant 2", apps: ["fd"], contextAnatomy: [
+    { id: "fd-toolbar", name: "Text reset button", apps: ["fd"], contextAnatomy: [
       { id: "output-pane", name: "Output pane", description: "The Output pane frame, a surface-alt section cut to its title and toolbar." },
       { id: "output-title", name: "Output title", description: "The \"Output\" heading at the start of the pane header." },
       { id: "toolbar", name: "Output toolbar", description: "The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it." },

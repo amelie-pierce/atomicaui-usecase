@@ -18,7 +18,7 @@ options: [
 
       ],
     },
-    { id: "ace-description", name: "Field description — UI variant 2", apps: ["ace"], note: "Label beside; the description sits under the whole row.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"}, showContext: false ,
+    { id: "ace-description", name: "Side-row description", apps: ["ace"], note: "Label beside; the description sits under the whole row.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"}, showContext: false ,
       contextLayers: [
 
       ],

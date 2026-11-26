@@ -20,7 +20,7 @@ export default defineUsecase({
         {"id":"radio","partId":"radio","title":"Template radio","explanation":"Dialog scenes only: each template row is a radio with its name as Radio.Label, with one selected through RadioGroup defaultValue=\"2\".","keyIdea":"The radio control marks one template as the current choice in the dialog scene.","selector":"[class~=\"aui-accordion-panel\"] [class~=\"aui-radio\"]"},
       ],
 options: [
-    { id: "ace-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Template groups", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} ,
+    { id: "ace-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Styled template groups", apps: ["ace"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx"} ,
       contextLayers: [
         {"id":"context-templates-dialog","partId":"templates-dialog","title":"Templates dialog","explanation":"The Dialog popup titled Templates that lists the template groups.","keyIdea":"The ACE Templates popup frames the grouped choices as one selection task.","selector":"[class~=\"aui-dialog-popup\"]","scope":"context"},
         {"id":"context-templates-title","partId":"templates-title","title":"Templates title bar","explanation":"The raised Dialog.Title reading \"Templates\", with the Close Templates button at its end.","keyIdea":"The raised Templates heading names the task before users compare available groups.","selector":"[class~=\"aui-dialog-title\"]","scope":"context"},
@@ -28,7 +28,7 @@ options: [
         {"id":"context-templates-body","partId":"templates-body","title":"Templates body","explanation":"The scrollable Dialog.Body holding the RadioGroup that wraps the Default Templates and My Templates groups (the Cancel and Create footer is left out).","keyIdea":"The scrollable body keeps the radio choices reachable while the dialog shell stays fixed.","selector":"[class~=\"aui-dialog-body\"]","scope":"context"},
       ],
     },
-    { id: "hs-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Template groups — UI variant 2", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} ,
+    { id: "hs-template-groups", contextAnatomy: TEMPLATES_CONTEXT, name: "Plain template groups", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} ,
       contextLayers: [
         {"id":"context-templates-dialog","partId":"templates-dialog","title":"Templates dialog","explanation":"The Dialog popup titled Templates that lists the template groups.","keyIdea":"The HS family popup places template selection inside its app-specific dialog frame.","selector":"[class~=\"aui-dialog-popup\"]","scope":"context"},
         {"id":"context-templates-title","partId":"templates-title","title":"Templates title bar","explanation":"The raised Dialog.Title reading \"Templates\", with the Close Templates button at its end.","keyIdea":"Its title bar labels the dialog while reserving a consistent close target at the end.","selector":"[class~=\"aui-dialog-title\"]","scope":"context"},

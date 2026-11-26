@@ -23,13 +23,13 @@ export default defineUsecase({
         {"id":"stack","partId":"stack","title":"Button stack","explanation":"PBS only: the column (gap 8, centred) that stacks Edit above Duplicate inside the cell.","keyIdea":"PBS stacks row actions to fit its centered table cell.","selector":"[data-ug-part=\"row-actions\"]"},
       ],
 options: [
-    { id: "hs-edit", contextAnatomy: HS_CONTEXT, name: "Edit and Duplicate", apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} ,
+    { id: "hs-edit", contextAnatomy: HS_CONTEXT, name: "Side by side actions", apps: ["hs"], source: {"hs":"src/hs/OutputPane.tsx"} ,
       contextLayers: [
         {"id":"context-list-table","partId":"list-table","title":"Job List table","explanation":"The Table that lists the saved rows; only the first action column and the Job column are kept.","keyIdea":"The HS table pairs saved-job controls with the job label.","selector":"[class~=\"aui-table\"]","scope":"context"},
         {"id":"context-name-cell","partId":"name-cell","title":"Job cell","explanation":"The row label (Job 1) beside the action cell.","keyIdea":"The row label identifies which saved job its actions will affect.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-cell\"]:last-child","scope":"context"},
       ],
     },
-    { id: "pbs-edit", contextAnatomy: PBS_CONTEXT, name: "Edit and Duplicate — UI variant 2", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,
+    { id: "pbs-edit", contextAnatomy: PBS_CONTEXT, name: "Stacked row actions", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,
       contextLayers: [
         {"id":"context-list-table","partId":"list-table","title":"Connection List table","explanation":"The Table that lists the saved rows; only the first action column and the Connection column are kept.","keyIdea":"The PBS table uses the same action column for a saved connection.","selector":"[class~=\"aui-table\"]","scope":"context"},
         {"id":"context-name-cell","partId":"name-cell","title":"Connection cell","explanation":"The row label (Connection 1) beside the action cell.","keyIdea":"The connection label gives Edit and Duplicate a clear row target.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-cell\"]:last-child","scope":"context"},

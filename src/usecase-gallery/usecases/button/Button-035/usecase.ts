@@ -24,13 +24,13 @@ export default defineUsecase({
         {"id":"radio","partId":"radio","title":"Sort option","explanation":"The three sort choices (A to Z, Z to A, None), with the ascending one selected in primary.","keyIdea":"The radio group makes the active ordering choice visible.","selector":"[class~=\"aui-radio\"]"},
       ],
 options: [
-    { id: "hcs-column-menu", contextAnatomy: HCS_CONTEXT, name: "Column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} ,
+    { id: "hcs-column-menu", contextAnatomy: HCS_CONTEXT, name: "Vertical column menu", apps: ["hcs","hs"], source: {"hcs":"src/components/ColumnMenu.tsx","hs":"src/hs/ColumnMenu.tsx"} ,
       contextLayers: [
         {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The sortable Connector calculation results Table with the Model and Load (lb) columns.","keyIdea":"The table applies the column menu to connector calculation results.","selector":"[class~=\"aui-table\"]","scope":"context"},
         {"id":"context-result-rows","partId":"result-rows","title":"Result rows","explanation":"The two body rows, ordered by the ascending Load (lb) sort chosen in the menu.","keyIdea":"The rows reflect the ascending load order selected in the menu.","selector":"[class~=\"aui-table-body\"]","scope":"context"},
       ],
     },
-    { id: "pfd-column-menu", contextAnatomy: PFD_CONTEXT, name: "Column menu — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} ,
+    { id: "pfd-column-menu", contextAnatomy: PFD_CONTEXT, name: "Horizontal column menu", apps: ["pfd"], source: {"pfd":"src/pfd/ColumnMenu.tsx"} ,
       contextLayers: [
         {"id":"context-results-table","partId":"results-table","title":"Results table","explanation":"The sortable Connector calculation results Table with the Model and Load (lb) columns.","keyIdea":"The PFD table provides a close action after its sort choices.","selector":"[class~=\"aui-table\"]","scope":"context"},
         {"id":"context-result-rows","partId":"result-rows","title":"Result rows","explanation":"The two body rows, ordered by the ascending Load (lb) sort chosen in the menu.","keyIdea":"The PFD result rows show values ordered by ascending load.","selector":"[class~=\"aui-table-body\"]","scope":"context"},

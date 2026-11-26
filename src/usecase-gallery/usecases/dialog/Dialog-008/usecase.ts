@@ -20,12 +20,12 @@ export default defineUsecase({
         {"id":"save","partId":"save","title":"Save","explanation":"The secondary solid Save, disabled until the name is valid; FD swaps it for a primary-coloured Button.","keyIdea":"Save stays unavailable until the entered name passes validation.","selector":"[data-ug-part=\"save\"]"},
       ],
 options: [
-    { id: "ace-save", name: "Save template", apps: ["ace","adm","hs"], source: {"ace":"src/features/templates/ui/SaveAsTemplateDialog.tsx","adm":"src/features/templates/components/SaveAsTemplateDialog.tsx","hs":"src/hs/TemplateDialogs.tsx"}, showContext: false ,
+    { id: "ace-save", name: "Secondary Save dialog", apps: ["ace","adm","hs"], source: {"ace":"src/features/templates/ui/SaveAsTemplateDialog.tsx","adm":"src/features/templates/components/SaveAsTemplateDialog.tsx","hs":"src/hs/TemplateDialogs.tsx"}, showContext: false ,
       contextLayers: [
 
       ],
     },
-    { id: "fd-save", name: "Save template — UI variant 2", apps: ["fd"], source: {"fd":"src/App.jsx"}, showContext: false ,
+    { id: "fd-save", name: "Primary Save dialog", apps: ["fd"], source: {"fd":"src/App.jsx"}, showContext: false ,
       contextLayers: [
 
       ],

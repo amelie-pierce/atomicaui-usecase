@@ -27,22 +27,22 @@ options: [
 
       ],
     },
-    { id: "ace-reset", showContext: false, name: "Reset confirm — UI variant 2", apps: ["ace"], source: {"ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx"} ,
+    { id: "ace-reset", showContext: false, name: "Reset without close", apps: ["ace"], source: {"ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "adm-reset", showContext: false, name: "Reset confirm — UI variant 3", apps: ["adm"], source: {"adm":"src/features/top-navigation/components/ResetDialog.tsx"} ,
+    { id: "adm-reset", showContext: false, name: "480px reset dialog", apps: ["adm"], source: {"adm":"src/features/top-navigation/components/ResetDialog.tsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "hs-reset", showContext: false, name: "Reset confirm — UI variant 4", apps: ["hs","fd"], source: {"hs":"src/App.tsx","fd":"src/App.jsx"} ,
+    { id: "hs-reset", showContext: false, name: "Spaced reset footer", apps: ["hs","fd"], source: {"hs":"src/App.tsx","fd":"src/App.jsx"} ,
       contextLayers: [
 
       ],
     },
-    { id: "adc-reset", showContext: false, name: "Reset confirm — UI variant 5", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
+    { id: "adc-reset", showContext: false, name: "Wide reset dialog", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
       contextLayers: [
 
       ],

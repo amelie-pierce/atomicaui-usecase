@@ -36,7 +36,7 @@ options: [
         {"id":"context-feedback-body","partId":"feedback-body","title":"Feedback form body","explanation":"The Dialog.Body whose column holds the Email field and, as its last row, the \"Send me a copy of my responses\" checkbox (the description, dropzone and footer are left out).","keyIdea":"The body keeps the email field and final optional preference inside the same form region.","selector":"[class~=\"aui-dialog-body\"]","scope":"context"},
       ],
     },
-    { id: "hs-form", contextAnatomy: FORM_CONTEXT, name: "Dialog option — UI variant 2", apps: ["hs","pfd","pbs","agpd","rws"], note: "The checkbox sits in the dialog form.", source: {"hs":"src/hs/ShellExtras.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
+    { id: "hs-form", contextAnatomy: FORM_CONTEXT, name: "Form checkbox", apps: ["hs","pfd","pbs","agpd","rws"], note: "The checkbox sits in the dialog form.", source: {"hs":"src/hs/ShellExtras.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
       contextLayers: [
         {"id":"context-feedback-dialog","partId":"feedback-dialog","title":"Feedback dialog","explanation":"The Dialog popup titled \"Send feedback\" (or \"Feedback Form\") that hosts the checkbox.","keyIdea":"HS places the feedback form in a focused surface that separates it from the current workspace.","selector":"[class~=\"aui-dialog-popup\"]","scope":"context"},
         {"id":"context-feedback-title","partId":"feedback-title","title":"Feedback title bar","explanation":"The raised Dialog.Title with the Close button at its end.","keyIdea":"Its raised heading identifies feedback as a separate task before users enter details.","selector":"[class~=\"aui-dialog-title\"]","scope":"context"},
@@ -44,7 +44,7 @@ options: [
         {"id":"context-feedback-body","partId":"feedback-body","title":"Feedback form body","explanation":"The Dialog.Body whose column holds the Email field and, as its last row, the \"Send me a copy of my responses\" checkbox (the description, dropzone and footer are left out).","keyIdea":"Keeping the copy checkbox last makes it an optional decision after the contact detail.","selector":"[class~=\"aui-dialog-body\"]","scope":"context"},
       ],
     },
-    { id: "adc-footer", contextAnatomy: FOOTER_CONTEXT, name: "Dialog option — UI variant 3", apps: ["adc"], note: "The checkbox sits in the dialog footer before the actions.", source: {"adc":"src/adc/Workspace.tsx"} ,
+    { id: "adc-footer", contextAnatomy: FOOTER_CONTEXT, name: "Footer checkbox", apps: ["adc"], note: "The checkbox sits in the dialog footer before the actions.", source: {"adc":"src/adc/Workspace.tsx"} ,
       contextLayers: [
         {"id":"context-feedback-dialog","partId":"feedback-dialog","title":"Feedback dialog","explanation":"The Dialog popup titled \"Send feedback\" (or \"Feedback Form\") that hosts the checkbox.","keyIdea":"ADC adds the preference to the action row so it remains visible beside both outcomes.","selector":"[class~=\"aui-dialog-popup\"]","scope":"context"},
         {"id":"context-feedback-title","partId":"feedback-title","title":"Feedback title bar","explanation":"The raised Dialog.Title with the Close button at its end.","keyIdea":"Cancel preserves the workspace and discards the unsubmitted feedback request.","selector":"[class~=\"aui-dialog-title\"]","scope":"context"},

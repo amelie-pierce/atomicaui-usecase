@@ -42,17 +42,17 @@ options: [
         {"id":"context-duration-notes","partId":"duration-notes","title":"Duration notes","explanation":"The plain list of five load-duration notes under the intro, each with a quoted bold label and its description.","keyIdea":"The notes list pairs each load-duration category with its explanation.","selector":"[data-ug-part=\"duration-notes\"]","scope":"context"},
       ],
     },
-    { id: "pfd-help-close", contextAnatomy: PFD_CONTEXT, name: "Help popover close — UI variant 2", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} ,
+    { id: "pfd-help-close", contextAnatomy: PFD_CONTEXT, name: "Popover close icon", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} ,
       contextLayers: [
         {"id":"context-help-text","partId":"help-text","title":"Help text","explanation":"The \"Select the base material of the member.\" text under the close button in the popup.","keyIdea":"The help sentence explains the material choice beside the close affordance.","selector":"[data-ug-part=\"help-text\"]","scope":"context"},
       ],
     },
-    { id: "pbs-help-close", contextAnatomy: PBS_CONTEXT, name: "Help popover close — UI variant 3", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} ,
+    { id: "pbs-help-close", contextAnatomy: PBS_CONTEXT, name: "Help popover X", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} ,
       contextLayers: [
         {"id":"context-help-text","partId":"help-text","title":"Help text","explanation":"The \"Select the base material of the member.\" text that fills the popup row beside the close X.","keyIdea":"The FD help text shares its row with Close applications.","selector":"[data-ug-part=\"help-text\"]","scope":"context"},
       ],
     },
-    { id: "agpd-help-close", contextAnatomy: AGPD_CONTEXT, name: "Help popover close — UI variant 4", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} ,
+    { id: "agpd-help-close", contextAnatomy: AGPD_CONTEXT, name: "Field help close icon", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} ,
       contextLayers: [
         {"id":"context-close-row","partId":"close-row","title":"Close row","explanation":"The end-aligned row that holds only the close X above the help text.","keyIdea":"The close row separates dismissal from the help copy below.","selector":"[data-ug-part=\"close-row\"]","scope":"context"},
         {"id":"context-help-text","partId":"help-text","title":"Help text","explanation":"The \"Select the base material of the member.\" text under the close row.","keyIdea":"The help copy sits under the close control for a clear reading order.","selector":"[data-ug-part=\"help-text\"]","scope":"context"},

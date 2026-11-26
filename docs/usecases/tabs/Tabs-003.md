@@ -115,7 +115,7 @@ export default function HcsCheckTabsScene(_props: ContextProps) {
 }
 ```
 
-### 2. Check result tabs — UI variant 2 (`fd-check-tabs`)
+### 2. Circle outcome icons (`fd-check-tabs`)
 
 Apps: FD
 

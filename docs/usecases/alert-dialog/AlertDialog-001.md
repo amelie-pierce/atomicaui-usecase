@@ -141,7 +141,7 @@ export default function HcsResetScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Reset confirm — UI variant 2 (`adc-reset`)
+### 2. Multiple reset actions (`adc-reset`)
 
 Apps: ADC
 

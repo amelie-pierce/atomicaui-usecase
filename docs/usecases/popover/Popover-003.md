@@ -58,7 +58,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 Choose the option that matches the rendered UI and state. Each snippet is copied from the gallery source named above it; use the Component source for the isolated control and the In context source when you need its surrounding composition.
 
-### 1. Column menu (`hcs-column-menu`)
+### 1. End-aligned sort menu (`hcs-column-menu`)
 
 Apps: HCS, HS
 
@@ -162,7 +162,7 @@ export default function HcsColumnMenuScene({ host }: ContextProps) {
 }
 ```
 
-### 2. Column menu — UI variant 2 (`pfd-column-menu`)
+### 2. Closeable sort menu (`pfd-column-menu`)
 
 Apps: PFD
 

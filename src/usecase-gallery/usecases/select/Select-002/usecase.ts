@@ -27,7 +27,7 @@ options: [
       ],
       contextDocument: { summary: 'A column filter select inside the table column menu.', how: 'The surrounding menu keeps free-form text search and sort actions beside the Search by option field. This HCS and HS variant opens the option list below its trigger.' },
     },
-    { id: "pfd-column-filter", showContext: true, name: "Column filter — UI variant 2", apps: ["pfd"], note: "The list opens above the trigger.", source: {"pfd":"src/pfd/ColumnMenu.tsx"},
+    { id: "pfd-column-filter", showContext: true, name: "Above-trigger filter", apps: ["pfd"], note: "The list opens above the trigger.", source: {"pfd":"src/pfd/ColumnMenu.tsx"},
       componentDocument: { summary: 'A table column filter whose option list opens above the trigger.', how: 'PFD uses the same labeled filter field and choices as HCS and HS, but positions the popup above the trigger to fit the column menu.' },
       componentAnatomy: [
         { id: 'popup', description: 'The trigger-width popup opens 4px above the trigger, aligned to its start.' },

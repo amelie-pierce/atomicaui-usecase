@@ -169,6 +169,13 @@ function groupByUiType({ id, title, uiTypes }: ComponentMeta, usecases: Usecase[
 function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, files: Map<string, Loader<ComponentType<ContextProps> | ComponentType>>, sources: Map<string, Loader<string>>): UsecaseOption[] {
   const { id } = usecase;
   const ids = new Set<string>();
+  const names = new Set<string>();
+  for (const { name } of docs) {
+    if (/\b(?:ui\s+)?(?:variant|option)\s+\d+\b/i.test(name)) fail(`${id} uses generic option name "${name}"`);
+    const normalized = name.trim().replace(/\s+/g, ' ').toLocaleLowerCase();
+    if (names.has(normalized)) fail(`${id} repeats option name "${name}"`);
+    names.add(normalized);
+  }
   const options = docs.map((raw, index): UsecaseOption => {
     const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextLayers, contextDocument, componentAnatomy, componentLayers, componentDocument } = raw;
     if (contextLayers === undefined) fail(`${id} option "${optionId}" is missing authored In context layer steps`);

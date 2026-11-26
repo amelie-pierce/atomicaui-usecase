@@ -138,7 +138,7 @@ export default function AcePrintScene(_props: ContextProps) {
 }
 ```
 
-### 2. Print table — UI variant 2 (`adm-print`)
+### 2. Dense print table (`adm-print`)
 
 Apps: ADM
 
@@ -212,7 +212,7 @@ export default function AdmPrintScene(_props: ContextProps) {
 }
 ```
 
-### 3. Print table — UI variant 3 (`hs-print`)
+### 3. Band header table (`hs-print`)
 
 Apps: HS
 
@@ -291,7 +291,7 @@ export default function HsPrintScene(_props: ContextProps) {
 }
 ```
 
-### 4. Print table — UI variant 4 (`rws-print`)
+### 4. Legacy print grid (`rws-print`)
 
 Apps: RWS
 
@@ -370,7 +370,7 @@ export default function RwsPrintScene(_props: ContextProps) {
 }
 ```
 
-### 5. Print table — UI variant 5 (`pbs-print`)
+### 5. Grouped print table (`pbs-print`)
 
 Apps: PBS, PFD, AGPD
 

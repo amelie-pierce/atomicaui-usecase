@@ -17,7 +17,7 @@ options: [
 
       ],
     },
-    { id: "pbs-search", name: "Search field — UI variant 2", apps: ["pbs","rws"], note: "Icon only: the box has no clear button.", source: {"pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx"}, showContext: false ,
+    { id: "pbs-search", name: "Icon-only search", apps: ["pbs","rws"], note: "Icon only: the box has no clear button.", source: {"pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx"}, showContext: false ,
       contextLayers: [
 
       ],

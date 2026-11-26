@@ -115,7 +115,7 @@ export default function HsSearchScene(_: ContextProps) {
 }
 ```
 
-### 2. Search field — UI variant 2 (`pbs-search`)
+### 2. Icon-only search (`pbs-search`)
 
 Apps: PBS, RWS
 

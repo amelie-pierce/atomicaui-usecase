@@ -38,7 +38,7 @@ import { ContainedIcon, Icon } from '../icon';
 import type { ContainedIconAui, IconFamily, IconLayer, IconWeight } from '../icon';
 import { identityToDataAttrs, useAuiIdentity } from '../identity';
 import { TOAST_ROOT_VOCAB, toastTypeToColor, useToastRootRecipe } from './use-recipe';
-import type { ToastRootAui, ToastSeverityColor, ToastScale } from './use-recipe';
+import type { ToastRootAui, ToastSeverityColor, ToastPaint, ToastScale } from './use-recipe';
 
 export type {
   ToastRootAui,
@@ -235,6 +235,7 @@ export type ToastDescriptionProps = React.ComponentProps<typeof ToastDescription
 // the content is auto-rendered or hand-composed.
 interface ToastButtonDefaults {
   color: ButtonColor;
+  paint: ToastPaint;
   scale: ToastScale;
 }
 const ToastButtonContext = React.createContext<ToastButtonDefaults | null>(null);
@@ -305,8 +306,8 @@ export type ToastArrowProps = React.ComponentProps<typeof ToastArrow>;
 // genuinely our Button — same recipe, state layer, and look as a standalone <Button>, so they can
 // never drift from it. NOTE: Base UI's `Toast.Action` does NOT auto-close the toast — only
 // `Toast.Close` calls the manager's close; an action that should also dismiss must close it itself.
-// Each button's defaults are: `paint: 'solid'` (the action/close are solid CTAs on the card), and
-// COLOR + SCALE INHERITED from the Root via `ToastButtonContext` (so a HAND-COMPOSED
+// Each button's defaults are: PAINT + COLOR + SCALE INHERITED from the Root (a solid card → solid
+// buttons, tonal → tonal, … straight from the shared paint tokens; no Toast-specific recolor) via `ToastButtonContext` (so a HAND-COMPOSED
 // `<Toast.Action>`/`<Toast.Close>` reads as part of the same toast — same chroma/size as the card —
 // not a stray `primary`/`md` button). Action pins `profile: 'compact'`, Close pins `square-compact`.
 // A consumer `aui` overrides any of these. Outside a Toast (no provider) they fall back to
@@ -332,7 +333,7 @@ const ToastAction = React.forwardRef<HTMLButtonElement, ToastActionProps>(functi
   const ctx = React.useContext(ToastButtonContext);
   const actionAui: ButtonAui = {
     color: ctx?.color ?? 'primary',
-    paint: 'solid',
+    paint: ctx?.paint ?? 'solid',
     scale: ctx?.scale ?? (TOAST_ROOT_VOCAB.defaults.scale as ToastScale),
     shape: 'soft',
     profile: 'compact',
@@ -390,7 +391,7 @@ const ToastClose = React.forwardRef<HTMLButtonElement, ToastCloseProps>(function
   const closeScale: ToastScale = (aui?.scale as ToastScale | undefined) ?? ctx?.scale ?? 'sm';
   const closeAui: ButtonAui = {
     color: ctx?.color ?? 'primary',
-    paint: 'solid',
+    paint: ctx?.paint ?? 'solid',
     shape: 'soft',
     profile: 'square-compact',
     ...aui,
@@ -556,10 +557,11 @@ const ToastRoot = React.forwardRef<HTMLDivElement, ToastRootProps>(function Toas
   //     (a `lg` toast gets `lg` buttons). A consumer `actionProps.aui.scale` still overrides.
   // The Close pins its own `square-compact` profile on top of this.
   const rootColor: ButtonColor = (rootAui?.color as ButtonColor | undefined) ?? toastTypeToColor(toast.type) ?? 'info';
-  // Action/Close are SOLID CTAs (a consistent filled affordance on any card paint) that inherit the
-  // Root's resolved chroma + scale. The auto path passes this explicit `buttonAui`; hand-composed
-  // parts read the same color/scale from `ToastButtonContext` (provided below).
-  const buttonAui: ButtonAui = { color: rootColor, paint: 'solid', scale };
+  // Action/Close inherit the Root's resolved chroma + paint + scale, so a tonal/fixed card gets
+  // tonal/fixed buttons exactly as Button renders them. The auto path passes this explicit
+  // `buttonAui`; hand-composed parts read the same values from `ToastButtonContext` (below).
+  const rootPaint: ToastPaint = rootAui?.paint ?? (TOAST_ROOT_VOCAB.defaults.paint as ToastPaint);
+  const buttonAui: ButtonAui = { color: rootColor, paint: rootPaint, scale };
 
   const content =
     children !== undefined
@@ -571,7 +573,7 @@ const ToastRoot = React.forwardRef<HTMLDivElement, ToastRootProps>(function Toas
     { ref, toast, ...rest },
     React.createElement(
       ToastButtonContext.Provider,
-      { value: { color: rootColor, scale } },
+      { value: { color: rootColor, paint: rootPaint, scale } },
       content,
     ),
   );

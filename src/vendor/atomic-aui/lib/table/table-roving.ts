@@ -54,6 +54,12 @@ export function isInteractiveTarget(target: EventTarget | null): boolean {
   return !!(element && typeof element.closest === 'function' && element.closest(INTERACTIVE_SELECTOR));
 }
 
+/** True when the event landed on Table's own header sort button (which owns click/Enter/Space, NOT arrows). */
+export function isTableSortButton(target: EventTarget | null): boolean {
+  const element = target as QueryElement | null;
+  return !!(element && typeof element.closest === 'function' && element.closest('.aui-table-sort-button'));
+}
+
 export function tableCellFromEventTarget(target: EventTarget | null): HTMLElement | null {
   const element = target as QueryElement | null;
   return element && typeof element.closest === 'function'
@@ -89,7 +95,9 @@ function cellsInRow(row: HTMLTableRowElement): HTMLElement[] {
 
 function rowsInTable(root: HTMLTableElement): HTMLTableRowElement[] {
   return Array.from(
-    (root as HTMLTableElement & QueryHost).querySelectorAll<HTMLTableRowElement>('[data-aui-table-row]'),
+    (root as HTMLTableElement & QueryHost).querySelectorAll<HTMLTableRowElement>(
+      '[data-aui-table-row]:not([data-expanded-row])',
+    ),
   );
 }
 

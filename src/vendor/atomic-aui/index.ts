@@ -1,6 +1,11 @@
 export * from './lib/atomic-aui';
 export * from './lib/button';
 export { Card, CARD_SX_AXES } from './lib/card';
+export { Banner, BANNER_SX_AXES } from './lib/banner';
+export type {
+  BannerAui, BannerProps, BannerIconProps, BannerTitleProps,
+  BannerDescriptionProps, BannerActionsProps, BannerCloseProps, BannerCountdownProps,
+} from './lib/banner';
 export type {
   CardProps,
   CardImageProps,
@@ -23,6 +28,78 @@ export type {
   CardScale,
   CardSx,
 } from './lib/card';
+export { ChartContainer, ChartRenderer, CHART_CONTAINER_SX_AXES } from './lib/chart/frame';
+export type {
+  ChartContainerProps,
+  ChartContainerTextProps,
+  ChartContainerAui,
+  ChartRendererProps,
+} from './lib/chart/frame';
+export { chartSeriesColor, chartSeriesColors, CHART_SERIES_COUNT, CHART_PALETTES, CHART_DEFAULT_PALETTE } from './lib/chart/base';
+export type { ChartPalette } from './lib/chart/base';
+// Reference example of using the framework-neutral chart layer without React (plain DOM mount).
+export { mountNeutralBarChart } from './lib/chart/base/examples/neutral-bar-chart';
+export type { NeutralBarChartOptions } from './lib/chart/base/examples/neutral-bar-chart';
+export { mountNeutralRadarChart } from './lib/chart/base/examples/neutral-radar-chart';
+export type { NeutralRadarChartOptions } from './lib/chart/base/examples/neutral-radar-chart';export { BarChart, BAR_CHART_SX_AXES } from './lib/chart/bar';
+export { LineChart, LINE_CHART_SX_AXES } from './lib/chart/line';
+export type {
+  LineChartProps,
+  LineChartSeriesProps,
+  LineChartAxisProps,
+  LineChartLegendProps,
+  LineChartCursorProps,
+  LineChartTooltipProps,
+  LineChartDotsProps,
+  LineChartLabelProps,
+  LineChartAui,
+  LineChartRootAui,
+} from './lib/chart/line';
+export { AreaChart, AREA_CHART_SX_AXES } from './lib/chart/area';
+export type {
+  AreaChartProps,
+  AreaChartSeriesProps,
+  AreaChartAxisProps,
+  AreaChartLegendProps,
+  AreaChartCursorProps,
+  AreaChartTooltipProps,
+  AreaChartAui,
+  AreaChartRootAui,
+} from './lib/chart/area';
+export { PieChart, PIE_CHART_SX_AXES } from './lib/chart/pie';
+export type {
+  PieChartProps,
+  PieChartSeriesProps,
+  PieChartLegendProps,
+  PieChartTooltipProps,
+  PieChartAui,
+  PieChartCenterProps,
+  PieChartLabelProps,
+  PieChartRootAui,
+} from './lib/chart/pie';
+export { RadarChart, RADAR_CHART_SX_AXES } from './lib/chart/radar';
+export type {
+  RadarChartProps,
+  RadarChartSeriesProps,
+  RadarChartAxisProps,
+  RadarChartLegendProps,
+  RadarChartTooltipProps,
+  RadarChartAui,
+  RadarChartGridProps,
+  RadarChartLabelProps,
+  RadarChartRootAui,
+} from './lib/chart/radar';
+export type {
+  BarChartProps,
+  BarChartSeriesProps,
+  BarChartAxisProps,
+  BarChartLegendProps,
+  BarChartLabelProps,
+  BarChartCursorProps,
+  BarChartTooltipProps,
+  BarChartAui,
+  BarChartRootAui,
+} from './lib/chart/bar';
 export {
   Carousel,
   CAROUSEL_DEFAULT_BREAKPOINTS,
@@ -532,15 +609,17 @@ export type {
   ContextMenuIconProps,
   ContextMenuScale,
 } from './lib/context-menu';
-export { Table } from './lib/table';
+export { Table, TABLE_SX_AXES } from './lib/table';
 export type {
   TableRootProps,
   TableSectionProps,
+  TableFooterProps,
   TableRowProps,
   TableSelectionToggleProps,
   TableExpandTriggerProps,
   TableCellProps,
   TableHeaderCellProps,
+  TableSortDirection,
   TableRootAui,
   TableRowAui,
   TableCellAui,
@@ -657,6 +736,32 @@ export type {
   ProgressElevation,
 } from './lib/progress';
 export {
+  Slider,
+  SLIDER_VOCAB,
+  SLIDER_SX_AXES,
+  SLIDER_DEFAULT_SCALE,
+  SLIDER_DEFAULT_COLOR,
+  useSliderRecipe,
+} from './lib/slider';
+export type {
+  SliderProps,
+  SliderLabelProps,
+  SliderValueProps,
+  SliderControlProps,
+  SliderTrackProps,
+  SliderIndicatorProps,
+  SliderThumbProps,
+  SliderTicksProps,
+  SliderRootContextValue,
+  SliderAui,
+  SliderColor,
+  SliderPaint,
+  SliderScale,
+  SliderProfile,
+  SliderShape,
+  SliderElevation,
+} from './lib/slider';
+export {
   Avatar,
   AVATAR_DEFAULT_COLOR,
   AVATAR_DEFAULT_ELEVATION,
@@ -680,6 +785,8 @@ export type {
   AvatarScale,
   AvatarShape,
 } from './lib/avatar';
+export { AvatarGroup, AVATAR_GROUP_SX_AXES, AVATAR_GROUP_VOCAB, useAvatarGroupRecipe } from './lib/avatar-group';
+export type { AvatarGroupAui, AvatarGroupCountProps, AvatarGroupProps } from './lib/avatar-group';
 export { Spinner, useSpinnerRecipe, SPINNER_DEFAULT_PROFILE } from './lib/spinner';
 export type { SpinnerProps, SpinnerAui } from './lib/spinner';
 export {
@@ -793,6 +900,80 @@ export type {
   ListScale,
   ListShape,
 } from './lib/list';
+export {
+  TreeView,
+  TREE_VIEW_ITEM_DEFAULT_SCALE,
+  TREE_VIEW_ITEM_STATE_KEYS,
+  TREE_VIEW_ITEM_SX_AXES,
+  TREE_VIEW_ITEM_VOCAB,
+  TREE_VIEW_ROOT_DEFAULT_SCALE,
+  TREE_VIEW_ROOT_SX_AXES,
+  TREE_VIEW_ROOT_VOCAB,
+  TREE_VIEW_SPACINGS,
+  useTreeViewRecipe,
+} from './lib/tree-view';
+export type {
+  TreeViewProps,
+  TreeViewItemProps,
+  TreeViewItemContentProps,
+  TreeViewItemArrowProps,
+  TreeViewItemIconProps,
+  TreeViewScrollAreaProps,
+  TreeViewAui,
+  TreeViewColor,
+  TreeViewElevation,
+  TreeViewItemContentAui,
+  TreeViewItemStateAppearance,
+  TreeViewItemStateKey,
+  TreeViewPaint,
+  TreeViewProfile,
+  TreeViewScale,
+  TreeViewShape,
+  TreeViewSpacing,
+} from './lib/tree-view';
+export {
+  Pagination,
+  PAGINATION_DEFAULT_LABELS,
+  clampPaginationPage,
+  normalizePaginationTotal,
+  paginationRange,
+  PAGINATION_END_ELLIPSIS,
+  PAGINATION_START_ELLIPSIS,
+  PAGINATION_LINK_DEFAULT_SCALE,
+  PAGINATION_LINK_SX_AXES,
+  PAGINATION_LINK_STATE_KEYS,
+  PAGINATION_LINK_STATES,
+  PAGINATION_ROOT_DEFAULT_SCALE,
+  PAGINATION_ROOT_SX_AXES,
+  PAGINATION_ROOT_VOCAB,
+  resolvePaginationLinkAui,
+  resolvePaginationStepAui,
+  usePaginationRecipe,
+} from './lib/pagination';
+export type {
+  PaginationEllipsisKey,
+  PaginationEllipsisProps,
+  PaginationItemProps,
+  PaginationLabels,
+  PaginationLinkProps,
+  PaginationListAui,
+  PaginationItemAui,
+  PaginationListProps,
+  PaginationProps,
+  PaginationRangeItem,
+  PaginationRangeOptions,
+  PaginationStepProps,
+  PaginationAui,
+  PaginationColor,
+  PaginationElevation,
+  PaginationLinkAui,
+  PaginationLinkStateAppearance,
+  PaginationLinkStateKey,
+  PaginationPaint,
+  PaginationProfile,
+  PaginationScale,
+  PaginationShape,
+} from './lib/pagination';
 export {
   View,
   VIEW_SX_AXES,

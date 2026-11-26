@@ -11,7 +11,13 @@ import { IconButton } from '../icon-button';
 import type { CheckboxAui } from '../checkbox';
 import { mergeAuiClasses } from '../../core/recipe/merge-classes';
 import { resolveAuiScale } from '../scale-cascade/use-aui-scale';
-import { buildTableRowClasses, TABLE_DEFAULT_SCALE, type TableRowAui, type TableRowStateKey } from './use-recipe';
+import {
+  buildTableRowClasses,
+  resolveCellSurface,
+  TABLE_DEFAULT_SCALE,
+  type TableRowAui,
+  type TableRowStateKey,
+} from './use-recipe';
 import {
   useTableContext,
   useTableRowContext,
@@ -57,6 +63,7 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(function T
     expandedContent,
     selectionLabel,
     expansionLabel,
+    role: roleProp,
     className,
     children,
     onKeyDown,
@@ -66,6 +73,7 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(function T
   ref,
 ) {
   const ctx = useTableContext();
+  const composedRowId = React.useId();
   const typedRow = row as DataRow | undefined;
   const isHeaderRow = (rest as Record<string, unknown>)['data-aui-header-row'] !== undefined;
   const a11yMode = ctx?.a11y;
@@ -77,6 +85,8 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(function T
 
   const [localSelected, setLocalSelected] = React.useState(!!defaultSelected);
   const [localExpanded, setLocalExpanded] = React.useState(!!defaultExpanded);
+  const onSelectedChangeRef = React.useRef(onSelectedChange);
+  onSelectedChangeRef.current = onSelectedChange;
 
   const subRowCount = typedRow?.subRows?.length ?? 0;
   const rowExpandable =
@@ -105,7 +115,23 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(function T
   const selectLevels = ctx?.selectAllLevels ?? { header: false, group: true, child: true };
   const showSelectToggle = canSelect && (groupSelectAll ? selectLevels.group : selectLevels.child);
 
-  const isSelected = groupSel ? groupSel.allSelected : selected ?? typedRow?.getIsSelected() ?? localSelected;
+  const isSingleComposedUncontrolled =
+    !typedRow && selected === undefined && ctx?.selectionMode === 'single' && !!ctx.setSingleComposedSelectedId;
+  const registerDefaultSingleComposed = ctx?.registerDefaultSingleComposed;
+  React.useEffect(() => {
+    if (isSingleComposedUncontrolled && defaultSelected) {
+      registerDefaultSingleComposed?.(composedRowId, () => onSelectedChangeRef.current?.(false));
+    }
+  }, [composedRowId, defaultSelected, isSingleComposedUncontrolled, registerDefaultSingleComposed]);
+
+  const resolvedUncontrolledSelected = isSingleComposedUncontrolled
+    ? ctx.singleComposedSelectedId === undefined
+      ? localSelected
+      : ctx.singleComposedSelectedId === composedRowId
+    : localSelected;
+  const isSelected = groupSel
+    ? groupSel.allSelected
+    : selected ?? typedRow?.getIsSelected() ?? resolvedUncontrolledSelected;
   const isIndeterminate = groupSel ? groupSel.someSelected : false;
 
   const rowAui = aui ?? ctx?.rowAui;
@@ -130,10 +156,16 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(function T
     (next: boolean) => {
       if (groupSel && typedRow && ctx) setLeafSelection(ctx.table, groupSel.leaves, next);
       else if (typedRow) typedRow.toggleSelected(next);
-      if (selected === undefined) setLocalSelected(next);
+      if (selected === undefined) {
+        if (!typedRow && ctx?.selectionMode === 'single' && ctx.setSingleComposedSelectedId) {
+          ctx.setSingleComposedSelectedId(next ? composedRowId : null, () => onSelectedChangeRef.current?.(false));
+        } else {
+          setLocalSelected(next);
+        }
+      }
       onSelectedChange?.(next);
     },
-    [ctx, groupSel, onSelectedChange, selected, typedRow],
+    [composedRowId, ctx, groupSel, onSelectedChange, selected, typedRow],
   );
 
   const setExpanded = React.useCallback(
@@ -186,7 +218,7 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(function T
       if (event.defaultPrevented || isInteractiveTarget(event.target)) return;
       if (event.key === ' ' && canSelect) {
         event.preventDefault();
-        setSelected(!isSelected);
+        setSelected(indicatorType === 'radio' ? true : !isSelected);
       } else if (event.key === 'Enter' && rowExpandable) {
         event.preventDefault();
         setExpanded(!isExpanded);
@@ -210,7 +242,7 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(function T
         setExpanded(event.key === 'ArrowRight');
       }
     },
-    [a11yMode, canSelect, isExpanded, isSelected, isTree, onKeyDown, rowExpandable, setExpanded, setSelected],
+    [a11yMode, canSelect, indicatorType, isExpanded, isSelected, isTree, onKeyDown, rowExpandable, setExpanded, setSelected],
   );
 
   // Row-click selection (single-select / indicator-less selectable tables) — ignores clicks on an
@@ -294,7 +326,7 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(function T
         ref={ref}
         {...rest}
         className={mergeAuiClasses([buildTableRowClasses(rowAui, rowState, ctx?.density), className])}
-        role={rowRole}
+        role={roleProp ?? rowRole}
         data-aui-table-row=""
         data-selected={rowState === 'selected' ? '' : undefined}
         data-indeterminate={rowState === 'indeterminate' ? '' : undefined}
@@ -335,15 +367,28 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(function T
       {rowExpandable && isExpanded && expandedNode ? (
         <tr
           className="aui-table-row aui-table-expanded-row"
-          data-aui-table-row=""
           data-expanded-row=""
-          role={isTree ? 'presentation' : undefined}
+          role={
+            isTree
+              ? 'presentation'
+              : a11yMode === 'grid' || a11yMode === 'treegrid' || a11yMode === 'table'
+                ? 'row'
+                : undefined
+          }
         >
-          <TableCell colSpan={visibleCellCount + (hasControlCell ? 1 : 0)}>
-            <div className="aui-table-expanded-region" role="rowgroup">
-              {expandedNode}
-            </div>
-          </TableCell>
+          {(() => {
+            const expandedCell = resolveCellSurface('body', ctx?.cellAui, undefined, ctx?.density);
+            return (
+              <td
+                colSpan={visibleCellCount + (hasControlCell ? 1 : 0)}
+                role={isTree ? 'presentation' : a11yMode === 'table' ? 'cell' : ctx ? 'gridcell' : undefined}
+                data-aui-table-cell-painted={expandedCell.painted ? '' : undefined}
+                className={expandedCell.className}
+              >
+                <div className="aui-table-expanded-region">{expandedNode}</div>
+              </td>
+            );
+          })()}
         </tr>
       ) : null}
     </>

@@ -1,0 +1,26 @@
+export {
+  Slider,
+  SLIDER_VOCAB,
+  SLIDER_SX_AXES,
+  SLIDER_DEFAULT_SCALE,
+  SLIDER_DEFAULT_COLOR,
+  useSliderRecipe,
+} from './slider';
+export type {
+  SliderProps,
+  SliderLabelProps,
+  SliderValueProps,
+  SliderControlProps,
+  SliderTrackProps,
+  SliderIndicatorProps,
+  SliderThumbProps,
+  SliderTicksProps,
+  SliderRootContextValue,
+  SliderAui,
+  SliderColor,
+  SliderPaint,
+  SliderScale,
+  SliderProfile,
+  SliderShape,
+  SliderElevation,
+} from './slider';

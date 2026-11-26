@@ -1,0 +1,101 @@
+// AtomicAUI chart tokens (hand-authored; NOT emitted by atomic-cli).
+//
+// The Visualization archetype's series tone-cycle (`--aui-viz-series-<n>`) plus the axis/grid/text
+// hooks the framework-neutral chart base reads (`chart-base/theme.ts`). Every value resolves through
+// the existing `--theme-*` roles, so charts follow light/dark/high-contrast and the brand switch with
+// no extra code. `:where()` keeps specificity at zero: a consumer re-brands a chart with plain CSS,
+// e.g. `.my-chart { --aui-viz-series-0: rebeccapurple; }`, on any ancestor or the chart itself.
+//
+// Series cycle: NAMED PALETTES composed ONLY from the generated `--theme-*` ROLE tokens (primary, info,
+// success, warning, error, muted, secondary, text), never from `--p-palette-*` primitives. The roles are
+// light/dark/high-contrast aware and `--theme-primary` follows the brand switch, so every series follows
+// a brand or theme change with no extra code. The recipe, ONE rule for all palettes:
+//   series colour = color-mix(in srgb, <role> (100 - ink)%, var(--theme-text) ink%)
+// `--theme-text` is black in light themes and white in dark ones, so the mix always moves the colour AWAY
+// from the surface, which is what keeps it legible on any container (see the contrast table in
+// `_vaults/atomicaui/wiki/component-classes/chart-tokens.md`). `--aui-viz-ink` (15%) is the base ink: with
+// it every categorical step is >= 3:1 non-text contrast on `--theme-surface`, `--theme-surface-alt` and
+// `--theme-raised`, light and dark (measured, not assumed). A palette is picked with `palette="..."`
+// (stamped as `data-aui-palette` on the `.aui-chart` frame); the default is `brand`.
+//   categorical: brand (the accessible default), cool, warm, vivid
+//   single-hue ramps (emphasis first, darkest/strongest step first): orange (primary), blue (info),
+//   emerald (success), rose (error), slate (muted). A ramp has 5 steps; series 5 wraps to the brand cycle.
+// cool / warm / vivid are hue FAMILIES: role colours plus two-role mixes (teal, purple, lime...). Honest
+// limit: their steps separate less for colour-blind readers than `brand`; use `brand` when that matters.
+// :where() keeps specificity at zero, so a consumer re-brands with plain CSS on any ancestor.
+:where(.aui-chart) {
+  --aui-viz-ink: 15%;
+  // The left-to-right reveal clips the marks layer; this is how far the clip extends past the plot box
+  // so strokes, dots and the focus ring are not shaved at the edges.
+  --aui-chart-reveal-bleed: var(--p-px-16);
+  --aui-viz-role-0: var(--theme-primary);
+  --aui-viz-role-1: var(--theme-info);
+  --aui-viz-role-2: var(--theme-success);
+  --aui-viz-role-3: var(--theme-error);
+  --aui-viz-role-4: var(--theme-warning);
+  --aui-viz-role-5: var(--theme-muted);
+}
+@mixin aui-viz-series($n, $color) {
+  --aui-viz-series-#{$n}: color-mix(in srgb, #{$color} calc(100% - var(--aui-viz-ink)), var(--theme-text) var(--aui-viz-ink));
+}
+:where(.aui-chart, .aui-chart[data-aui-palette='brand']) {
+  @include aui-viz-series(0, var(--aui-viz-role-0));
+  @include aui-viz-series(1, var(--aui-viz-role-1));
+  @include aui-viz-series(2, var(--aui-viz-role-2));
+  @include aui-viz-series(3, var(--aui-viz-role-3));
+  @include aui-viz-series(4, var(--aui-viz-role-4));
+  @include aui-viz-series(5, var(--aui-viz-role-5));
+}
+:where(.aui-chart[data-aui-palette='cool']) {
+  @include aui-viz-series(0, var(--theme-info));
+  @include aui-viz-series(1, var(--theme-success));
+  @include aui-viz-series(2, color-mix(in srgb, var(--theme-info) 55%, var(--theme-success)));
+  @include aui-viz-series(3, var(--theme-muted));
+  @include aui-viz-series(4, color-mix(in srgb, var(--theme-info) 45%, var(--theme-secondary)));
+  @include aui-viz-series(5, color-mix(in srgb, var(--theme-success) 45%, var(--theme-secondary)));
+}
+:where(.aui-chart[data-aui-palette='warm']) {
+  @include aui-viz-series(0, var(--theme-primary));
+  @include aui-viz-series(1, var(--theme-error));
+  @include aui-viz-series(2, var(--theme-warning));
+  @include aui-viz-series(3, color-mix(in srgb, var(--theme-primary) 50%, var(--theme-error)));
+  @include aui-viz-series(4, color-mix(in srgb, var(--theme-warning) 55%, var(--theme-secondary)));
+  @include aui-viz-series(5, color-mix(in srgb, var(--theme-error) 55%, var(--theme-secondary)));
+}
+:where(.aui-chart[data-aui-palette='vivid']) {
+  @include aui-viz-series(0, var(--theme-error));
+  @include aui-viz-series(1, var(--theme-info));
+  @include aui-viz-series(2, var(--theme-success));
+  @include aui-viz-series(3, var(--theme-warning));
+  @include aui-viz-series(4, color-mix(in srgb, var(--theme-info) 50%, var(--theme-error)));
+  @include aui-viz-series(5, color-mix(in srgb, var(--theme-warning) 50%, var(--theme-success)));
+}
+// Single-hue ramps: one role, five ink steps (strongest first). Ink percentages are the tonal steps.
+@mixin aui-viz-ramp($palette, $role) {
+  :where(.aui-chart[data-aui-palette='#{$palette}']) {
+    --aui-viz-series-0: color-mix(in srgb, #{$role} 50%, var(--theme-text));
+    --aui-viz-series-1: color-mix(in srgb, #{$role} 62%, var(--theme-text));
+    --aui-viz-series-2: color-mix(in srgb, #{$role} 72%, var(--theme-text));
+    --aui-viz-series-3: color-mix(in srgb, #{$role} 81%, var(--theme-text));
+    --aui-viz-series-4: color-mix(in srgb, #{$role} 88%, var(--theme-text));
+  }
+}
+@include aui-viz-ramp('orange', var(--theme-primary));
+@include aui-viz-ramp('blue', var(--theme-info));
+@include aui-viz-ramp('emerald', var(--theme-success));
+@include aui-viz-ramp('rose', var(--theme-error));
+@include aui-viz-ramp('slate', var(--theme-muted));
+// Non-series hooks shared by every palette.
+:where(.aui-chart) {
+  --aui-viz-fg: var(--theme-text, currentColor);
+  // Axis / legend secondary text: the muted ROLE itself (>= 4.5:1 on surface, surface-alt and raised, light and dark; a surface mix dropped it to 3.9:1 on raised).
+  --aui-viz-muted: var(--theme-muted, currentColor);
+  --aui-viz-grid: color-mix(in srgb, var(--theme-outlined, currentColor) 26%, transparent);
+  // One hover tint for every kind: a faint wash (band) and a firmer line (rule).
+  --aui-viz-cursor: color-mix(in srgb, var(--theme-text, currentColor) 6%, transparent);
+  --aui-viz-cursor-line: color-mix(in srgb, var(--theme-text, currentColor) 30%, transparent);
+  --aui-viz-label-inside: var(--theme-surface);
+  --aui-viz-separator: var(--theme-surface);
+}
+// The structural `.aui-chart` frame and the tooltip card map live in `_state-cascade.scss` (the one
+// hand-authored component stylesheet, F5.27); this partial holds only the token declarations.

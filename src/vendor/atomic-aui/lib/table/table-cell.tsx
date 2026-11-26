@@ -80,7 +80,7 @@ export interface TableCellProps<TData extends RowData = RowData> extends React.T
 }
 
 const TableCell = React.forwardRef<HTMLElement, TableCellProps>(function TableCell(
-  { aui, cell, invalid, error, className, children, tabIndex, style, ...rest },
+  { aui, cell, invalid, error, role: roleProp, className, children, tabIndex, style, ...rest },
   ref,
 ) {
   const ctx = useTableContext();
@@ -124,7 +124,7 @@ const TableCell = React.forwardRef<HTMLElement, TableCellProps>(function TableCe
       {...frozen.attrs}
       style={frozen.style}
       tabIndex={isTree ? undefined : isPlainTable ? tabIndex : tabIndex ?? -1}
-      role={isTree ? 'presentation' : isPlainTable ? 'cell' : ctx ? 'gridcell' : undefined}
+      role={roleProp ?? (isTree ? 'presentation' : isPlainTable ? 'cell' : ctx ? 'gridcell' : undefined)}
       data-aui-table-cell={isTree || isPlainTable ? undefined : ''}
       data-aui-table-cell-painted={painted ? '' : undefined}
       aria-invalid={invalid ? true : undefined}
@@ -175,6 +175,7 @@ const TableHeaderCell = React.forwardRef<HTMLElement, TableHeaderCellProps>(func
     onSortToggle,
     actions,
     onKeyDown,
+    role: roleProp,
     className,
     children,
     tabIndex,
@@ -247,18 +248,32 @@ const TableHeaderCell = React.forwardRef<HTMLElement, TableHeaderCellProps>(func
       />
     </button>
   ) : null;
-  // With actions the header cell holds TWO tab stops (sort button + action trigger), so the roving
-  // cell itself takes Enter for sort (the APG grid "cell with several widgets" pattern). Only when the
-  // event lands on the <th> — a keypress on the action trigger stays the trigger's own.
-  const handleHeaderKeyDown =
-    hasActions && isSortable
-      ? (event: React.KeyboardEvent<HTMLElement>) => {
-          onKeyDown?.(event);
-          if (event.defaultPrevented || event.key !== 'Enter' || event.target !== event.currentTarget) return;
-          event.preventDefault();
-          (toggleSort as ((e: unknown) => void) | undefined)?.(event);
+  // In roving grid/treegrid mode the <th> itself is a roving focus target, so Enter or Space directly
+  // on the focused <th> activates sorting (whether or not extra header actions are also mounted). Events
+  // originating from the inner sort button or an action trigger (`target !== currentTarget`) keep their
+  // own native behavior without double-firing.
+  const handleHeaderKeyDown = isSortable
+    ? (event: React.KeyboardEvent<HTMLElement>) => {
+        onKeyDown?.(event);
+        if (
+          event.defaultPrevented ||
+          (event.key !== 'Enter' && event.key !== ' ') ||
+          event.target !== event.currentTarget
+        ) {
+          return;
         }
-      : onKeyDown;
+        event.preventDefault();
+        (toggleSort as ((e: unknown) => void) | undefined)?.(event);
+      }
+    : onKeyDown;
+
+  const defaultHeaderRole = isTree
+    ? 'presentation'
+    : ctx
+      ? scope === 'row' || scope === 'rowgroup'
+        ? 'rowheader'
+        : 'columnheader'
+      : undefined;
 
   return (
     <th
@@ -268,8 +283,8 @@ const TableHeaderCell = React.forwardRef<HTMLElement, TableHeaderCellProps>(func
       style={frozen.style}
       scope={scope}
       colSpan={colSpan ?? header?.colSpan}
-      tabIndex={isPlainTable ? tabIndex : tabIndex ?? -1}
-      role={isTree ? 'presentation' : ctx ? 'columnheader' : undefined}
+      tabIndex={isTree ? undefined : isPlainTable ? tabIndex : tabIndex ?? -1}
+      role={roleProp ?? defaultHeaderRole}
       // WAI-ARIA: `aria-sort` belongs on the COLUMN HEADER, not on the button inside it. A sortable
       // but unsorted column announces `none`; a non-sortable column carries no attribute at all.
       aria-sort={
@@ -303,18 +318,4 @@ const TableHeaderCell = React.forwardRef<HTMLElement, TableHeaderCellProps>(func
 });
 TableHeaderCell.displayName = 'Table.HeaderCell';
 
-/**
- * R8 — `Table.CellError`: the inline validation message for ONE cell, composed INSIDE that cell under
- * its control.
- *
- * Why a part and not "just render a `<Type>`": the message needs the error foreground, the compact
- * caption typescale, and a marker the cell's own cascade can key on — and it has to survive
- * `scroll="self"`, where `table-layout: fixed` takes column widths from the fixed `<thead>`. Because
- * widths come from the head, a long message WRAPS inside its column instead of widening it, so an
- * error can never break head/body column alignment. That is the constraint that kept this a DS part
- * rather than app-side markup.
- *
- * The message is cell CONTENT, so a screen reader reaching the (aria-invalid) cell reads it in place —
- * no per-cell live region, which in a grid of editable cells would be unusable noise.
- */
 export { TableCell, TableHeaderCell };

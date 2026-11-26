@@ -67,7 +67,7 @@ export type TableCellAui = Omit<Appearance, 'sx'> & {
   states?: Partial<Record<TableRowStateKey, TableCellStateAppearance>>;
 };
 
-// FULL 32-axis sx surface on every Table box (G13 — the <table> root and every <tr>/<td>/<th> is a box).
+// FULL sx surface derived from `STYLE_PROP_MAP` on every Table box (G12/G13 — never hand-count).
 export const TABLE_SX_AXES = Object.keys(STYLE_PROP_MAP) as (keyof AuiStyleProps)[];
 
 // ─── Vocabularies (one shared base, four markers) ────────────────────────────

@@ -52,10 +52,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Overlay** — Scrim focuses attention on the delete confirmation. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — Default-width confirm keeps warning and choices together. Selector: `[class~="aui-dialog-popup"]`.
+1. **Overlay** — Scrim focuses attention on the delete confirmation above the workspace. Selector: `[class~="aui-dialog-backdrop"]`.
+2. **Popup** — Default-width confirm keeps the delete warning and choices together. Selector: `[class~="aui-dialog-popup"]`.
 3. **Title** — Raised warning title names the template to delete. Selector: `[class~="aui-dialog-title"]`.
-4. **Warning icon** — Solid warning triangle signals irreversible removal. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
+4. **Warning icon** — Solid warning triangle signals that this template removal is irreversible. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
 5. **Close row** — PBS places a close control above the message without title bar. Selector: `[data-ug-part="close-row"]`.
 6. **Close** — PBS close X dismisses the alert; other apps omit it. Selector: `[class~="aui-dialog-close"]`.
 7. **Description** — Message says deletion is irreversible and asks users to confirm. Selector: `[class~="aui-dialog-description"]`.

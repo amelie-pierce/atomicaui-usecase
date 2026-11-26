@@ -51,7 +51,7 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 3. **Title** — Raised text heading names the Website Application License Agreement. Selector: `[class~="aui-dialog-title"]`.
 4. **Description** — User must relaunch and accept the agreement before continuing. Selector: `[class~="aui-dialog-description"]`.
 5. **Footer** — Centered footer gives the notice one available action. Selector: `[class~="aui-dialog-actions"]`.
-6. **Re-Launch** — Re-Launch stays visible until the app reloads. Selector: `[data-ug-part="relaunch"]`.
+6. **Re-Launch** — Re-Launch stays visible until the app reloads to accept terms. Selector: `[data-ug-part="relaunch"]`.
 
 ## Apps
 

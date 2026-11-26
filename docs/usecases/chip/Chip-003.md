@@ -45,8 +45,8 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Chip** — The tonal success chip at scale "sm" shown in the Status column of the HCS results table; a Failed row swaps it for the error colour. Selector: `[class~="aui-chip"]`.
-2. **Icon** — The leading "circle-check" icon at scale "sm" that backs the result with a glyph (a cross for Failed). Selector: `[class~="aui-chip-icon"]`.
+1. **Chip** — Tonal success chip marks Passed; failed rows use error colour. Selector: `[class~="aui-chip"]`.
+2. **Icon** — Circle-check icon supports Passed; failed results show a cross. Selector: `[class~="aui-chip-icon"]`.
 
 ## Apps
 
@@ -70,9 +70,9 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Results table** — The "Connector calculation results" Table with Model and Status columns; the Status cell of each row holds the Passed or Failed Chip. Selector: `[data-ug-part="results-table"]`.
-2. **Chip** — The tonal success chip at scale "sm" shown in the Status column of the HCS results table; a Failed row swaps it for the error colour. Selector: `[class~="aui-chip"]`.
-3. **Icon** — The leading "circle-check" icon at scale "sm" that backs the result with a glyph (a cross for Failed). Selector: `[class~="aui-chip-icon"]`.
+1. **Results table** — Connector results table pairs each model with its Passed or Failed status. Selector: `[data-ug-part="results-table"]`.
+2. **Chip** — Tonal success chip marks Passed; failed rows use error colour. Selector: `[class~="aui-chip"]`.
+3. **Icon** — Circle-check icon supports Passed; failed results show a cross. Selector: `[class~="aui-chip-icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/chip/Chip-003/example.tsx`
 

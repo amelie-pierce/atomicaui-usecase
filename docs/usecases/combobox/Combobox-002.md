@@ -52,15 +52,15 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Field** — Field at scale "sm" with a 3 gap that stacks the Type label above the combobox. Selector: `[class~="aui-field"]`.
+1. **Field** — Small field stacks Type above the picker with a 3px gap. Selector: `[class~="aui-field"]`.
 2. **Label** — The "Type" label above the input group. Selector: `[class~="aui-field-label"]`.
-3. **Input group** — Input group at scale "sm" (color "surface", paint "fixed"), 28px high, matching the other Input pane fields. Selector: `[class~="aui-combobox-input-group"]`.
-4. **Input** — The type field showing "Glulam"; it filters Glulam, Solid Sawn and Parallel Strand Lumber as the user types. Selector: `[class~="aui-combobox-input"]`.
-5. **Trigger** — The "Open Type" button at the end of the group that opens the list. Selector: `[class~="aui-combobox-trigger"]`.
+3. **Input group** — Small fixed-surface row matches the Input pane’s 28px fields. Selector: `[class~="aui-combobox-input-group"]`.
+4. **Input** — Glulam field filters three timber types as the user types. Selector: `[class~="aui-combobox-input"]`.
+5. **Trigger** — End button labelled Open Type reveals the list. Selector: `[class~="aui-combobox-trigger"]`.
 6. **Icon** — The chevron-down glyph in the monotone layer at scale "sm". Selector: `[class~="aui-combobox-icon"]`.
-7. **Popup** — Popup of the trigger width capped at 20rem high, aligned to the start of the group. Selector: `[class~="aui-combobox-popup"]`.
+7. **Popup** — Popup aligns with the group start and caps height at 20rem. Selector: `[class~="aui-combobox-popup"]`.
 8. **List** — The list that renders one row per timber type. Selector: `[class~="aui-combobox-list"]`.
-9. **Item** — A timber type row at scale "sm"; highlighting one previews it in the card beside the list. Selector: `[class~="aui-combobox-item"]`.
+9. **Item** — Highlighted timber row previews its type in the adjacent card. Selector: `[class~="aui-combobox-item"]`.
 
 ## Apps
 
@@ -85,17 +85,17 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Preview card** — The 224px elevated Card beside the open list that previews the highlighted timber type (the app shows it in a side Popover). Selector: `[class~="aui-card"]`.
+1. **Preview card** — Elevated 224px card previews the highlighted timber type beside the list. Selector: `[class~="aui-card"]`.
 2. **Preview title** — The type name, Glulam, shown above the preview picture. Selector: `[class~="aui-card-title"]`.
-3. **Field** — Field at scale "sm" with a 3 gap that stacks the Type label above the combobox. Selector: `[class~="aui-field"]`.
+3. **Field** — Small field stacks Type above the picker with a 3px gap. Selector: `[class~="aui-field"]`.
 4. **Label** — The "Type" label above the input group. Selector: `[class~="aui-field-label"]`.
-5. **Input group** — Input group at scale "sm" (color "surface", paint "fixed"), 28px high, matching the other Input pane fields. Selector: `[class~="aui-combobox-input-group"]`.
-6. **Input** — The type field showing "Glulam"; it filters Glulam, Solid Sawn and Parallel Strand Lumber as the user types. Selector: `[class~="aui-combobox-input"]`.
-7. **Trigger** — The "Open Type" button at the end of the group that opens the list. Selector: `[class~="aui-combobox-trigger"]`.
+5. **Input group** — Small fixed-surface row matches the Input pane’s 28px fields. Selector: `[class~="aui-combobox-input-group"]`.
+6. **Input** — Glulam field filters three timber types as the user types. Selector: `[class~="aui-combobox-input"]`.
+7. **Trigger** — End button labelled Open Type reveals the list. Selector: `[class~="aui-combobox-trigger"]`.
 8. **Icon** — The chevron-down glyph in the monotone layer at scale "sm". Selector: `[class~="aui-combobox-icon"]`.
-9. **Popup** — Popup of the trigger width capped at 20rem high, aligned to the start of the group. Selector: `[class~="aui-combobox-popup"]`.
+9. **Popup** — Popup aligns with the group start and caps height at 20rem. Selector: `[class~="aui-combobox-popup"]`.
 10. **List** — The list that renders one row per timber type. Selector: `[class~="aui-combobox-list"]`.
-11. **Item** — A timber type row at scale "sm"; highlighting one previews it in the card beside the list. Selector: `[class~="aui-combobox-item"]`.
+11. **Item** — Highlighted timber row previews its type in the adjacent card. Selector: `[class~="aui-combobox-item"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/combobox/Combobox-002/example.tsx`
 

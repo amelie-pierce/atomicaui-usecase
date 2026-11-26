@@ -47,10 +47,10 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Radio group** — The projection group named by aria-label "Camera projection", Perspective selected by default; it sits among the 3D viewer controls. Selector: `[class~="aui-radio-group"]`.
-2. **Radio** — Perspective or Orthographic: a solid surface circle with a 1px outlined border when off and solid primary when chosen. Selector: `[class~="aui-radio"]`.
+1. **Radio group** — Camera projection group defaults to Perspective in viewer controls. Selector: `[class~="aui-radio-group"]`.
+2. **Radio** — Perspective and Orthographic circles switch from outlined to solid primary. Selector: `[class~="aui-radio"]`.
 3. **Indicator** — The circle that marks the active camera projection. Selector: `[class~="aui-radio-indicator"]`.
-4. **Label** — The projection name, Perspective or Orthographic; PBS wraps each radio in a tooltip. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+4. **Label** — Projection name appears beside each radio; PBS adds a tooltip. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
 ## Apps
 
@@ -80,14 +80,14 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **3D Viewer pane** — The soft surface-alt section labelled "3D Viewer" that holds the model view and its controls. Selector: `[data-ug-part="viewer-pane"]`.
+1. **3D Viewer pane** — Soft 3D Viewer pane holds the model and controls. Selector: `[data-ug-part="viewer-pane"]`.
 2. **Pane title** — The semi-bold "3D Viewer" heading at the top of the pane. Selector: `[data-ug-part="viewer-title"]`.
 3. **Viewer canvas** — The soft model canvas that the camera controls float over. Selector: `[data-ug-part="viewer-stage"]`.
 4. **Viewer controls** — The control cluster over the canvas that holds the camera projection group. Selector: `[data-ug-part="viewer-controls"]`.
-5. **Radio group** — The projection group named by aria-label "Camera projection", Perspective selected by default; it sits among the 3D viewer controls. Selector: `[class~="aui-radio-group"]`.
-6. **Radio** — Perspective or Orthographic: a solid surface circle with a 1px outlined border when off and solid primary when chosen. Selector: `[class~="aui-radio"]`.
+5. **Radio group** — Camera projection group defaults to Perspective in viewer controls. Selector: `[class~="aui-radio-group"]`.
+6. **Radio** — Perspective and Orthographic circles switch from outlined to solid primary. Selector: `[class~="aui-radio"]`.
 7. **Indicator** — The circle that marks the active camera projection. Selector: `[class~="aui-radio-indicator"]`.
-8. **Label** — The projection name, Perspective or Orthographic; PBS wraps each radio in a tooltip. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+8. **Label** — Projection name appears beside each radio; PBS adds a tooltip. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/radio/Radio-002/example.tsx`
 
@@ -160,14 +160,14 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **3D Viewer pane** — The soft surface-alt section labelled "3D Viewer" that holds the model view and its controls. Selector: `[data-ug-part="viewer-pane"]`.
+1. **3D Viewer pane** — Soft 3D Viewer pane holds the model and controls. Selector: `[data-ug-part="viewer-pane"]`.
 2. **Pane title** — The semi-bold "3D Viewer" heading at the top of the pane. Selector: `[data-ug-part="viewer-title"]`.
 3. **Viewer canvas** — The soft model canvas that the camera controls float over. Selector: `[data-ug-part="viewer-stage"]`.
 4. **Viewer controls** — The control cluster over the canvas that holds the camera projection group. Selector: `[data-ug-part="viewer-controls"]`.
-5. **Radio group** — The projection group named by aria-label "Camera projection", Perspective selected by default; it sits among the 3D viewer controls. Selector: `[class~="aui-radio-group"]`.
-6. **Radio** — Perspective or Orthographic: a solid surface circle with a 1px outlined border when off and solid primary when chosen. Selector: `[class~="aui-radio"]`.
+5. **Radio group** — Camera projection group defaults to Perspective in viewer controls. Selector: `[class~="aui-radio-group"]`.
+6. **Radio** — Perspective and Orthographic circles switch from outlined to solid primary. Selector: `[class~="aui-radio"]`.
 7. **Indicator** — The circle that marks the active camera projection. Selector: `[class~="aui-radio-indicator"]`.
-8. **Label** — The projection name, Perspective or Orthographic; PBS wraps each radio in a tooltip. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+8. **Label** — Projection name appears beside each radio; PBS adds a tooltip. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/radio/Radio-002/options/adc-projection/example.tsx`
 
@@ -240,15 +240,15 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **3D Viewer pane** — The soft surface-alt section labelled "3D Viewer" that holds the model view and its controls. Selector: `[data-ug-part="viewer-pane"]`.
+1. **3D Viewer pane** — Soft 3D Viewer pane holds the model and controls. Selector: `[data-ug-part="viewer-pane"]`.
 2. **Pane title** — The semi-bold "3D Viewer" heading at the top of the pane. Selector: `[data-ug-part="viewer-title"]`.
 3. **Viewer canvas** — The soft model canvas that the camera controls float over. Selector: `[data-ug-part="viewer-stage"]`.
 4. **Viewer controls** — The control cluster over the canvas that holds the camera projection group. Selector: `[data-ug-part="viewer-controls"]`.
-5. **Radio tooltip** — The tooltip above the Perspective radio that explains the view mode: "Realistic 3D view with depth and perspective." Selector: `[data-ug-part="radio-tooltip"]`.
-6. **Radio group** — The projection group named by aria-label "Camera projection", Perspective selected by default; it sits among the 3D viewer controls. Selector: `[class~="aui-radio-group"]`.
-7. **Radio** — Perspective or Orthographic: a solid surface circle with a 1px outlined border when off and solid primary when chosen. Selector: `[class~="aui-radio"]`.
+5. **Radio tooltip** — Tooltip explains the Perspective view’s realistic depth and projection mode. Selector: `[data-ug-part="radio-tooltip"]`.
+6. **Radio group** — Camera projection group defaults to Perspective in viewer controls. Selector: `[class~="aui-radio-group"]`.
+7. **Radio** — Perspective and Orthographic circles switch from outlined to solid primary. Selector: `[class~="aui-radio"]`.
 8. **Indicator** — The circle that marks the active camera projection. Selector: `[class~="aui-radio-indicator"]`.
-9. **Label** — The projection name, Perspective or Orthographic; PBS wraps each radio in a tooltip. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+9. **Label** — Projection name appears beside each radio; PBS adds a tooltip. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/radio/Radio-002/options/pbs-projection-tooltip/example.tsx`
 

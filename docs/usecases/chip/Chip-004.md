@@ -45,8 +45,8 @@ No separate API prop table is authored. Use the exact props visible in the Compo
 
 ## Component layer steps
 
-1. **Chip** — The compact solid success chip at scale "xs" that reports one check category on an FD result card; a failed category turns red. Selector: `[class~="aui-chip"]`.
-2. **Icon** — The "circle-check" icon at the start of the chip (an exclamation when the check fails). Selector: `[class~="aui-chip-icon"]`.
+1. **Chip** — Compact success chip reports a check category; failures turn red. Selector: `[class~="aui-chip"]`.
+2. **Icon** — Circle-check leads the chip; failed checks show an exclamation. Selector: `[class~="aui-chip-icon"]`.
 
 ## Apps
 
@@ -70,9 +70,9 @@ In context view: Shown.
 
 #### In context layer steps
 
-1. **Check category row** — The flex row (8px gap) that lists one Chip per check category: Anchorage passed and Bearing failed. Selector: `[data-ug-part="check-row"]`.
-2. **Chip** — The compact solid success chip at scale "xs" that reports one check category on an FD result card; a failed category turns red. Selector: `[class~="aui-chip"]`.
-3. **Icon** — The "circle-check" icon at the start of the chip (an exclamation when the check fails). Selector: `[class~="aui-chip-icon"]`.
+1. **Check category row** — Eight-pixel gap separates each passed or failed category chip. Selector: `[data-ug-part="check-row"]`.
+2. **Chip** — Compact success chip reports a check category; failures turn red. Selector: `[class~="aui-chip"]`.
+3. **Icon** — Circle-check leads the chip; failed checks show an exclamation. Selector: `[class~="aui-chip-icon"]`.
 
 #### Component UI source — `src/usecase-gallery/usecases/chip/Chip-004/example.tsx`
 

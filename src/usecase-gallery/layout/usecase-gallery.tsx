@@ -14,6 +14,12 @@ import '../styles/gallery.scss';
 /** Below this width the preview and detail columns stack into one scrolling column. */
 const NARROW = '(max-width: 840px)';
 
+const TREE_COLLAPSED_KEY = 'atomicaui-usecase-tree-collapsed';
+
+function readTreeCollapsed() {
+  try { return window.sessionStorage.getItem(TREE_COLLAPSED_KEY) === 'true'; } catch { return false; }
+}
+
 function filterGroups(groups: ComponentGroup[], query: string) {
   const term = query.trim().toLocaleLowerCase();
   if (!term) return groups;
@@ -33,7 +39,7 @@ export function UsecaseGallery() {
   const narrow = useMediaQuery(NARROW);
   const route = useRoute(catalog, componentAliases);
   const [searchQuery, setSearchQuery] = useState('');
-  const [treeCollapsed, setTreeCollapsed] = useState(false);
+  const [treeCollapsed, setTreeCollapsed] = useState(readTreeCollapsed);
   const [interactedPart, setInteractedPart] = useState<{ id: string; source: 'hover' | 'focus' }>();
   const [availableParts, setAvailableParts] = useState<{ key: string; ids: string[] }>();
   const [selectedPart, setSelectedPart] = useState<{ usecaseId: string; partId: string }>();
@@ -51,10 +57,15 @@ export function UsecaseGallery() {
   const option = resolved?.option;
   const visibleGroups = useMemo(() => filterGroups(catalog, searchQuery), [searchQuery]);
   const firstSearchMatch = visibleGroups[0]?.uiTypeGroups[0]?.usecases[0];
+  const setTreeCollapsedForSession = useCallback((next: boolean) => {
+    setTreeCollapsed(next);
+    try { window.sessionStorage.setItem(TREE_COLLAPSED_KEY, String(next)); } catch { /* Storage can be disabled by the browser. */ }
+  }, []);
   const onTreePanelResize = useCallback((size: { asPercentage: number; inPixels: number }) => {
     const next = size.asPercentage <= 0.01;
     if (next === treeCollapsed) return;
     setTreeCollapsed(next);
+    try { window.sessionStorage.setItem(TREE_COLLAPSED_KEY, String(next)); } catch { /* Storage can be disabled by the browser. */ }
   }, [treeCollapsed]);
   const activeMode = option?.showContext ? viewMode : 'component';
   const componentAnatomy = usecase?.anatomy ?? [];
@@ -106,7 +117,7 @@ export function UsecaseGallery() {
   if (!original || !group || !usecase) return null;
   // The option change is a transition: the shown UI stays until the next option's lazy example has loaded, so the stage never blanks.
   const panes = {
-    toolbar: <DetailToolbar treeCollapsed={treeCollapsed} onTreeToggle={() => setTreeCollapsed(!treeCollapsed)} searchQuery={searchQuery} onSearchChange={setSearchQuery} onSearchSubmit={() => { if (searchQuery.trim() && firstSearchMatch) window.location.hash = `#/${encodeURIComponent(firstSearchMatch.componentId)}/${encodeURIComponent(firstSearchMatch.id)}`; }} panelMode={!narrow} />,
+    toolbar: <DetailToolbar treeCollapsed={treeCollapsed} onTreeToggle={() => setTreeCollapsedForSession(!treeCollapsed)} searchQuery={searchQuery} onSearchChange={setSearchQuery} onSearchSubmit={() => { if (searchQuery.trim() && firstSearchMatch) window.location.hash = `#/${encodeURIComponent(firstSearchMatch.componentId)}/${encodeURIComponent(firstSearchMatch.id)}`; }} panelMode={!narrow} />,
     tree: <TreePane groups={visibleGroups} activeComponentId={group.id} activeUsecase={original} collapsed={treeCollapsed} searchActive={Boolean(searchQuery.trim())} />,
     render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={(next) => { setViewMode(next); setLayerIndex(0); }} anatomy={anatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => { setLayerIndex(0); startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })); }} layers={authoredLayers} layerIndex={visibleLayerIndex} layerMode={documentMode === 'layers'} />,
     detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} documentMode={documentMode} onDocumentModeChange={(next) => { setDocumentMode(next); setLayerIndex(0); }} layers={layers} layerIndex={activeLayerIndex} onLayerChange={onLayerChange} />,
@@ -114,7 +125,7 @@ export function UsecaseGallery() {
   return (
     <div className="ug ug--usecase">
       <div className="ug__body">
-        {narrow ? <StackedLayout {...panes} /> : <DetailLayout {...panes} onTreePanelResize={onTreePanelResize} />}
+        {narrow ? <StackedLayout {...panes} /> : <DetailLayout {...panes} treeCollapsed={treeCollapsed} onTreePanelResize={onTreePanelResize} />}
       </div>
     </div>
   );

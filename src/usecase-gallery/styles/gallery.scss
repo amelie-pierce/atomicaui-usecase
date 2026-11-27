@@ -256,8 +256,6 @@ $narrow: 840px;
   display: flex;
   flex: 1 1 auto;
   min-block-size: var(--p-px-160);
-  // The anatomy pulse extends past its box; keep that paint from creating scrollbars on the preview pane.
-  overflow: clip;
 }
 
 .ug-render__viewport > .ug-render__stage {
@@ -326,7 +324,7 @@ $narrow: 840px;
   pointer-events: none;
   border: var(--p-px-2) solid var(--p-palette-orange-600);
   background: color-mix(in srgb, var(--p-palette-orange-600) 16%, transparent);
-  box-shadow: 0 0 0 var(--p-px-2) color-mix(in srgb, var(--p-palette-orange-600) 24%, transparent);
+  box-shadow: inset 0 0 0 var(--p-px-2) color-mix(in srgb, var(--p-palette-orange-600) 24%, transparent);
   transition: inset var(--p-ms-240) cubic-bezier(0.2, 0.8, 0.2, 1), inline-size var(--p-ms-240) cubic-bezier(0.2, 0.8, 0.2, 1), block-size var(--p-ms-240) cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -340,9 +338,9 @@ $narrow: 840px;
 }
 
 @keyframes ug-anatomy-arrive {
-  0% { opacity: 0; transform: scale(0.94); box-shadow: 0 0 0 0 color-mix(in srgb, var(--p-palette-orange-600) 28%, transparent); }
-  45% { opacity: 1; transform: scale(1.015); box-shadow: 0 0 0 var(--p-px-8) color-mix(in srgb, var(--p-palette-orange-600) 18%, transparent); }
-  100% { opacity: 0; transform: scale(1.04); box-shadow: 0 0 0 var(--p-px-12) transparent; }
+  0% { opacity: 0; transform: scale(0.94); box-shadow: inset 0 0 0 0 color-mix(in srgb, var(--p-palette-orange-600) 28%, transparent); }
+  45% { opacity: 1; transform: scale(0.985); box-shadow: inset 0 0 0 var(--p-px-8) color-mix(in srgb, var(--p-palette-orange-600) 18%, transparent); }
+  100% { opacity: 0; transform: scale(1); box-shadow: inset 0 0 0 var(--p-px-12) transparent; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -591,6 +589,7 @@ $narrow: 840px;
   display: flex;
   flex-direction: column;
   gap: var(--p-px-16);
+  block-size: 100%;
 }
 
 .ug-layer-lesson__copy > :is(h3, p) {
@@ -682,8 +681,15 @@ $narrow: 840px;
   .ug-stepper__step { transition: none; }
 }
 
+.ug-layer-lesson__code,
+.ug-layer-lesson__code .ug-docs__copy-block {
+  display: flex;
+  flex-direction: column;
+}
+
+// The code takes the height the step text leaves and scrolls itself, so a longer text never toggles the pane's scrollbar.
 .ug-layer-lesson__code {
-  min-inline-size: 0;
+  min-block-size: var(--p-px-160);
 }
 
 .ug-layer-lesson__code .ug-docs__code code > span.is-added {

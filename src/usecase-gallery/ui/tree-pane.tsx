@@ -9,7 +9,6 @@ interface TreePaneProps {
   activeUsecase: Usecase;
   collapsed: boolean;
   searchActive: boolean;
-  onContentWidth?: (width: number) => void;
 }
 
 const typeValue = (componentId: string, index: number) => `type:${componentId}:${index}`;
@@ -19,7 +18,7 @@ function firstUsecase(group?: ComponentGroup, typeIndex = 0) {
 }
 
 /** A single-select, keyboard accessible tree of components, UI types and use cases. */
-export function TreePane({ groups, activeComponentId, activeUsecase, collapsed, searchActive, onContentWidth }: TreePaneProps) {
+export function TreePane({ groups, activeComponentId, activeUsecase, collapsed, searchActive }: TreePaneProps) {
   const activeGroup = groups.find((group) => group.id === activeComponentId) ?? groups[0];
   const activeTypeIndex = activeGroup?.uiTypeGroups.findIndex((type) => type.usecases.some((usecase) => usecase.id === activeUsecase.id)) ?? 0;
   const selected = activeUsecase.id;
@@ -57,21 +56,6 @@ export function TreePane({ groups, activeComponentId, activeUsecase, collapsed, 
     if (rowRect.top < paneRect.top) scrollPane.scrollTop -= paneRect.top - rowRect.top;
     else if (rowRect.bottom > paneRect.bottom) scrollPane.scrollTop += rowRect.bottom - paneRect.bottom;
   }, [selected, expandedValue]);
-
-  useLayoutEffect(() => {
-    const tree = treeRef.current;
-    const scrollPane = tree?.parentElement;
-    const aside = scrollPane?.parentElement;
-    if (collapsed || !tree || !scrollPane || !aside || !onContentWidth) return;
-    tree.classList.add('ug-tree--measure');
-    const scrollStyle = getComputedStyle(scrollPane);
-    const asideStyle = getComputedStyle(aside);
-    const chrome = parseFloat(scrollStyle.paddingInlineStart) + parseFloat(scrollStyle.paddingInlineEnd)
-      + parseFloat(asideStyle.borderInlineStartWidth) + parseFloat(asideStyle.borderInlineEndWidth);
-    const width = Math.ceil(tree.getBoundingClientRect().width + chrome);
-    tree.classList.remove('ug-tree--measure');
-    if (width > 0) onContentWidth(width);
-  }, [collapsed, onContentWidth]);
 
   const selectValue = (value: string) => {
     if (value === activeGroup?.id || value === typeValue(activeGroup?.id ?? '', activeTypeIndex)) {

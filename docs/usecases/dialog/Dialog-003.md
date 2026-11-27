@@ -37,15 +37,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the Thickness Calculator while it is open over the ADM base plate page. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The default 480px calculator window (520px in the ADM scene) that keeps focus off the first control until the user acts. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar reading "Thickness Calculator" with the close X at its end. Selector: `[class~="aui-dialog-title"]`.
+1. **Overlay** — The scrim behind the Thickness Calculator while it is open over the ADM base plate page. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim covers the ADM base plate while its calculator is open.
+2. **Popup** — The default 480px calculator window (520px in the ADM scene) that keeps focus off the first control until the user acts. Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — Calculator window measures 480px, or 520px in ADM.
+3. **Title bar** — The raised title bar reading "Thickness Calculator" with the close X at its end. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Raised title names Thickness Calculator beside the close action.
 4. **Title text** — The words "Thickness Calculator" at the start of the title bar. Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
-5. **Spacer** — The flexible gap between the calculator name and the close X. Selector: `[class~="aui-dialog-spacer"]`.
-6. **Close** — The close X that returns the user to the base plate inputs without applying the calculation. Selector: `[class~="aui-dialog-close"]`.
-7. **Body** — The scrolling body that holds the calculator inputs and result; the example shows a one-line placeholder. Selector: `[class~="aui-dialog-body"]`.
+5. **Spacer** — The flexible gap between the calculator name and the close X. Selector: `[class~="aui-dialog-spacer"]`. Layer step: **Spacer** — The flexible gap between the calculator name and the close X.
+6. **Close** — The close X that returns the user to the base plate inputs without applying the calculation. Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — Close exits the calculator without applying its result.
+7. **Body** — The scrolling body that holds the calculator inputs and result; the example shows a one-line placeholder. Selector: `[class~="aui-dialog-body"]`. Layer step: **Body** — Scrolling body holds calculator inputs and the result.
 8. **Calculator text** — The p3 placeholder line that stands for the calculator inputs and result (the ADM scene reads "The calculator result goes here."). Part marker: `data-ug-part="calculator-text"`. Direct text is highlighted.
 
 ## Apps

@@ -38,15 +38,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the Help Center window. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The small 360px Help Center window at scale "sm" with a soft shape (FD caps its own copy at 420px and pins it to the screen corner). Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar whose "Help Center" text is centred between 40px start and end padding, with no Spacer. Selector: `[class~="aui-dialog-title"]`.
-4. **Title text** — The centred words "Help Center" inside the title bar. Part marker: `data-ug-part="title-text"`.
-5. **Close** — The close X taken out of the flow and pinned to the inline end with position absolute and an 8px offset. Selector: `[class~="aui-dialog-close"]`.
-6. **Body** — The body that holds the navigation column of help rows. Selector: `[class~="aui-dialog-body"]`.
-7. **Help rows** — The nav View labelled "Help Center": a no-padding column with gap 8 whose rows are Feedback and Tutorials in the FD scene. Part marker: `data-ug-part="help-rows"`.
+1. **Overlay** — The scrim behind the Help Center window. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim dims content behind the Help Center window.
+2. **Popup** — The small 360px Help Center window at scale "sm" with a soft shape (FD caps its own copy at 420px and pins it to the screen corner). Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — Small soft Help Center window is 360px; FD uses 420px.
+3. **Title bar** — The raised title bar whose "Help Center" text is centred between 40px start and end padding, with no Spacer. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Raised centered title leaves 40px padding at each end.
+4. **Title text** — The centred words "Help Center" inside the title bar. Part marker: `data-ug-part="title-text"`. Layer step: **Title text** — The centred words "Help Center" inside the title bar.
+5. **Close** — The close X taken out of the flow and pinned to the inline end with position absolute and an 8px offset. Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — Absolutely positioned Close X sits 8px from the inline end.
+6. **Body** — The body that holds the navigation column of help rows. Selector: `[class~="aui-dialog-body"]`. Layer step: **Body** — The body that holds the navigation column of help rows.
+7. **Help rows** — The nav View labelled "Help Center": a no-padding column with gap 8 whose rows are Feedback and Tutorials in the FD scene. Part marker: `data-ug-part="help-rows"`. Layer step: **Help rows** — Help Center navigation lists Feedback and Tutorials in FD.
 
 ## Apps
 

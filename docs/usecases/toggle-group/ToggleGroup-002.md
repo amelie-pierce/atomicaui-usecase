@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Group** — The fastener switch named "Fastener", with STN22 chosen, that sizes to its labels and draws no outline of its own. Selector: `[class~="aui-toggle-group"]`.
-2. **Item** — One option, STN22 or SDWB, rendered through a text Button at scale "xs" with zero padding so only the segment shows. Selector: `[class~="aui-toggle-group"] > button`.
-3. **Segment** — The span that paints the pressed option solid secondary with soft corners and 6px inline padding, so each segment hugs its label. Selector: `[class~="aui-toggle-group"] > button [class~="aui-view"]`.
-4. **Option text** — The fastener name, STN22 or SDWB, in a Type role "l5" at medium weight. Selector: `[class~="aui-toggle-group"] > button [data-aui-typeface]`.
-5. **Field below** — The Diameter / Style field that the switch sits above and drives in the AGPD scene. Selector: `[class~="aui-field-control"]`.
+1. **Group** — The fastener switch named "Fastener", with STN22 chosen, that sizes to its labels and draws no outline of its own. Selector: `[class~="aui-toggle-group"]`. Layer step: **Group** — STN22-selected fastener group sizes itself to the option labels.
+2. **Item** — One option, STN22 or SDWB, rendered through a text Button at scale "xs" with zero padding so only the segment shows. Selector: `[class~="aui-toggle-group"] > button`. Layer step: **Item** — STN22 and SDWB appear as text buttons without added padding. Code target: `ToggleGroup.Item`.
+3. **Segment** — The span that paints the pressed option solid secondary with soft corners and 6px inline padding, so each segment hugs its label. Selector: `[class~="aui-toggle-group"] > button [class~="aui-view"]`. Layer step: **Segment** — Pressed segment uses soft secondary fill with 6px side padding.
+4. **Option text** — The fastener name, STN22 or SDWB, in a Type role "l5" at medium weight. Selector: `[class~="aui-toggle-group"] > button [data-aui-typeface]`. Layer step: **Option text** — Fastener code uses medium-weight l5 type at compact scale. Code target: `Type`.
+5. **Field below** — The Diameter / Style field that the switch sits above and drives in the AGPD scene. Selector: `[class~="aui-field-control"]`. Layer step: **Field below** — Diameter and Style field sits below the fastener choice.
 
 ## Apps
 
@@ -64,7 +64,7 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Diameter and style field** — The Diameter and Style field control, showing 1/4 in, hex head, that the segments sit above and switch. Part marker: `data-ug-part="diameter-field"`.
+1. **Diameter and style field** — The Diameter and Style field control, showing 1/4 in, hex head, that the segments sit above and switch. Part marker: `data-ug-part="diameter-field"`. Layer step: **Diameter and style field** — Field shows 1/4 inch and hex head beneath the segments.
 
 #### Component UI source — `src/usecase-gallery/usecases/toggle-group/ToggleGroup-002/example.tsx`
 

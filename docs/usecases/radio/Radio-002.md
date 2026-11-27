@@ -38,12 +38,12 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Radio group** — The projection group named by aria-label "Camera projection", Perspective selected by default; it sits among the 3D viewer controls. Selector: `[class~="aui-radio-group"]`.
-2. **Radio** — Perspective or Orthographic: a solid surface circle with a 1px outlined border when off and solid primary when chosen. Selector: `[class~="aui-radio"]`.
-3. **Indicator** — The circle that marks the active camera projection. Selector: `[class~="aui-radio-indicator"]`.
-4. **Label** — The projection name, Perspective or Orthographic; PBS wraps each radio in a tooltip. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+1. **Radio group** — The projection group named by aria-label "Camera projection", Perspective selected by default; it sits among the 3D viewer controls. Selector: `[class~="aui-radio-group"]`. Layer step: **Radio group** — Camera projection group defaults to Perspective in viewer controls.
+2. **Radio** — Perspective or Orthographic: a solid surface circle with a 1px outlined border when off and solid primary when chosen. Selector: `[class~="aui-radio"]`. Layer step: **Radio** — Perspective and Orthographic circles switch from outlined to solid primary.
+3. **Indicator** — The circle that marks the active camera projection. Selector: `[class~="aui-radio-indicator"]`. Layer step: **Indicator** — The circle that marks the active camera projection. Code target: `Radio`.
+4. **Label** — The projection name, Perspective or Orthographic; PBS wraps each radio in a tooltip. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`. Layer step: **Label** — Projection name appears beside each radio; PBS adds a tooltip.
 
 ## Apps
 

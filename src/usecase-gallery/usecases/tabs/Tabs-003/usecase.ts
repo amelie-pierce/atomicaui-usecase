@@ -4,23 +4,10 @@ export default defineUsecase({
   uiType: 'Segmented tabs',
   title: 'Tabs with status icon',
   apps: ['hcs', 'fd'],
-    layers: [
-        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"Small check tabs leave a 12px gap above the panel.","keyIdea":"The root coordinates check-result tabs with the detail panel beneath them.","selector":"[class~=\"aui-tabs\"]"},
-        {"id":"list","partId":"list","title":"List","explanation":"Icon strip quickly summarizes which checks passed or failed.","keyIdea":"The strip lets status marks be scanned across the available checks.","selector":"[class~=\"aui-tabs-list\"]"},
-        {"id":"tab","partId":"tab","title":"Tab","explanation":"One check, Connection or Weld, with its status icon before the label.","keyIdea":"Each tab ties one named check to its corresponding detail panel.","selector":"[class~=\"aui-tabs-tab\"]"},
-        {"id":"icon","partId":"icon","title":"Status icon","explanation":"Leading icon marks Connection success or Weld failure across app variants.","keyIdea":"A leading glyph communicates pass or failure before the check label is read.","selector":"[class~=\"aui-tabs-tab\"] > [class~=\"aui-contained-icon\"]","code":["Tabs.Icon","Icon"]},
-        {"id":"panel","partId":"panel","title":"Panel","explanation":"Body for the selected check, \"Connection check\" or \"Weld check\".","keyIdea":"The panel explains the selected connection or weld check without mixing result details.","selector":"[class~=\"aui-tabs-panel\"]"},
-      ],
 options: [
     { id: "hcs-check-tabs", name: "Check result tabs", showContext: false, apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "fd-check-tabs", name: "Circle outcome icons", showContext: false, apps: ["fd"], source: {"fd":"src/components/RowExpansion.jsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { hcs: 'src/components/F01Results.tsx', fd: 'src/components/RowExpansion.jsx' },
@@ -35,30 +22,30 @@ options: [
       name: 'Tabs',
       selector: '[class~="aui-tabs"]',
       description: 'Check tabs at scale "sm" with a 12px gap between the strip and the panel; Connection is selected first.',
-    },
+     lesson: {"explanation":"Small check tabs leave a 12px gap above the panel."}},
     {
       id: 'list',
       name: 'List',
       selector: '[class~="aui-tabs-list"]',
       description: 'Strip of check tabs; reading the icons down the row summarises which checks passed.',
-    },
+     lesson: {"explanation":"Icon strip quickly summarizes which checks passed or failed."}},
     {
       id: 'tab',
       name: 'Tab',
       selector: '[class~="aui-tabs-tab"]',
       description: 'One check, Connection or Weld, with its status icon before the label.',
-    },
+     lesson: {"explanation":"One check, Connection or Weld, with its status icon before the label."}},
     {
       id: 'icon',
       name: 'Status icon',
       selector: '[class~="aui-tabs-tab"] > [class~="aui-contained-icon"]',
       description: 'Leading result icon: a success check for Connection and an error xmark for Weld; FD uses circle-check and circle-exclamation through a plain Icon.',
-    },
+     lesson: {"explanation":"Leading icon marks Connection success or Weld failure across app variants.","code":["Tabs.Icon","Icon"]}},
     {
       id: 'panel',
       name: 'Panel',
       selector: '[class~="aui-tabs-panel"]',
       description: 'Body for the selected check, "Connection check" or "Weld check".',
-    },
+     lesson: {"explanation":"Body for the selected check, \"Connection check\" or \"Weld check\"."}},
   ],
 });

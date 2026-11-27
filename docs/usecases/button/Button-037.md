@@ -35,12 +35,12 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Previous** — The 28px square transparent button with arrow-left that steps the input pane carousel back; the FD scene shows it disabled on the first pane. Selector: `[class~="aui-button"][aria-label="Previous"]`.
-2. **Arrow-left icon** — The arrow-left glyph that is the button only visible content. Selector: `[class~="aui-button"][aria-label="Previous"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Next** — The matching 28px square button with arrow-right that moves forward to the next input pane. Selector: `[class~="aui-button"][aria-label="Next"]`.
-4. **Arrow-right icon** — The arrow-right glyph mirroring the previous arrow. Selector: `[class~="aui-button"][aria-label="Next"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
+1. **Previous** — The 28px square transparent button with arrow-left that steps the input pane carousel back; the FD scene shows it disabled on the first pane. Selector: `[class~="aui-button"][aria-label="Previous"]`. Layer step: **Previous** — 28px transparent arrow-left steps the input carousel back.
+2. **Arrow-left icon** — The arrow-left glyph that is the button only visible content. Selector: `[class~="aui-button"][aria-label="Previous"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Arrow-left icon** — The arrow-left glyph that is the button only visible content.
+3. **Next** — The matching 28px square button with arrow-right that moves forward to the next input pane. Selector: `[class~="aui-button"][aria-label="Next"]`. Layer step: **Next** — Matching arrow-right advances to the next input pane.
+4. **Arrow-right icon** — The arrow-right glyph mirroring the previous arrow. Selector: `[class~="aui-button"][aria-label="Next"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Arrow-right icon** — Arrow-right glyph mirrors the previous arrow beside it.
 
 ## Apps
 

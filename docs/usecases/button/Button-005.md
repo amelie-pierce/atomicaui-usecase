@@ -38,9 +38,9 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The Try again Button under the Results error message: small scale only, taking the default surface-alt color and solid paint. Selector: `[class~="aui-button"]`.
+1. **Container** — The Try again Button under the Results error message: small scale only, taking the default surface-alt color and solid paint. Selector: `[class~="aui-button"]`. Layer step: **Container** — Small Try again follows the results error message.
 2. **Label** — The text "Try again" that retries the failed results request. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
 ## Apps
@@ -61,8 +61,8 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Error strip** — The solid error alert of the Output pane that holds the message and the Try again button on the next line. Part marker: `data-ug-part="error-strip"`.
-2. **Error message** — The text "We couldn't check products right now. Please try again." Part marker: `data-ug-part="error-message"`.
+1. **Error strip** — The solid error alert of the Output pane that holds the message and the Try again button on the next line. Part marker: `data-ug-part="error-strip"`. Layer step: **Error strip** — Solid error strip holds its message and the next-line retry.
+2. **Error message** — The text "We couldn't check products right now. Please try again." Part marker: `data-ug-part="error-message"`. Layer step: **Error message** — The text "We couldn't check products right now. Please try again."
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-005/example.tsx`
 

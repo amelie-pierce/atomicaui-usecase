@@ -35,13 +35,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Menubar** — The "Top bar" strip that holds the one summary button at its right side. Selector: `[class~="aui-menubar"]`.
-2. **Button** — Tonal button (color "surface", paint "tonal", aria-label "Settings") that sums up region, language and design code and opens the settings popover. Selector: `[class~="aui-button"]`.
-3. **Icon** — The globe glyph that leads the summary. Selector: `[class~="aui-button"] > [class~="aui-contained-icon"]`.
+1. **Menubar** — The "Top bar" strip that holds the one summary button at its right side. Selector: `[class~="aui-menubar"]`. Layer step: **Menubar** — Top bar holds a single settings summary button.
+2. **Button** — Tonal button (color "surface", paint "tonal", aria-label "Settings") that sums up region, language and design code and opens the settings popover. Selector: `[class~="aui-button"]`. Layer step: **Button** — Tonal Settings button summarizes region, language, and design code.
+3. **Icon** — The globe glyph that leads the summary. Selector: `[class~="aui-button"] > [class~="aui-contained-icon"]`. Layer step: **Icon** — Globe glyph leads the region and language settings summary button. Code target: `Menubar.Icon`.
 4. **Label** — The summary text "US", "EN" and "IBC 2018" shown in one line. Selector: `[class~="aui-button"]`. Direct text is highlighted.
-5. **Divider** — The thin separators between country, language and design code (two in this example). Selector: `[class~="aui-menubar-divider"]`.
+5. **Divider** — The thin separators between country, language and design code (two in this example). Selector: `[class~="aui-menubar-divider"]`. Layer step: **Divider** — Two thin dividers separate country, language, and design code.
 
 ## Apps
 

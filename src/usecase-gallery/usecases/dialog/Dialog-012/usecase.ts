@@ -10,18 +10,9 @@ export default defineUsecase({
   uiType: 'Dialog without title',
   title: 'Content-only expanded dialog',
   apps: ['hs'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"The scrim behind the expanded HS Output view.","keyIdea":"The scrim frames the expanded output as a focused view.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"No-padding square popup fills the screen and is named Expanded Output.","keyIdea":"A screen-filling popup lets the output table use the full available area.","selector":"[class~=\"aui-dialog-popup\"]"},
-      ],
 options: [
     { id: "hs-expanded-output", name: "Expanded output", source: {"hs":"src/hs/OutputTabs.tsx"}, contextAnatomy: CONTEXT_ANATOMY ,
-      contextLayers: [
-        {"id":"context-table","partId":"table","title":"Output table","explanation":"Output table fills the square popup where output tabs would appear.","keyIdea":"The table presents the selected output content in the expanded window.","selector":"[class~=\"aui-table\"]","scope":"context"},
-        {"id":"context-header-cell","partId":"header-cell","title":"Column heading","explanation":"Single Load column heading anchors the result values.","keyIdea":"The Load heading labels the table column before its value.","selector":"[class~=\"aui-table-header-cell\"]","scope":"context"},
-        {"id":"context-cell","partId":"cell","title":"Value cell","explanation":"The \"Dead\" value cell of the one row.","keyIdea":"The Dead cell communicates the row result beneath its heading.","selector":"[class~=\"aui-table-cell\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"table","lesson":{"explanation":"Output table fills the square popup where output tabs would appear.","scope":"context"}},{"id":"header-cell","lesson":{"explanation":"Single Load column heading anchors the result values.","scope":"context"}},{"id":"cell","lesson":{"explanation":"The \"Dead\" value cell of the one row.","scope":"context"}}]},
   ],
   source: { hs: 'src/hs/OutputTabs.tsx' },
   summary: 'A dialog with no title and no close X: the popup is square, has no padding and fills the screen, and holds content that brings its own controls.',
@@ -34,13 +25,13 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the expanded HS Output view.',
-    },
+     lesson: {"explanation":"The scrim behind the expanded HS Output view."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label "Expanded Output".',
-    },
+     lesson: {"explanation":"No-padding square popup fills the screen and is named Expanded Output."}},
     {
       id: 'content-text',
       name: 'Content text',

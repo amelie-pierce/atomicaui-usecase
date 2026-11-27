@@ -6,16 +6,8 @@ export default defineUsecase({
   uiType: 'Resizable split',
   title: 'Stacked',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-    layers: [
-        {"id":"panels","partId":"panels","title":"Panels","explanation":"Vertical split stacks both panes within a bounded workspace.","keyIdea":"The vertical root places input above output when the workspace needs a stacked reading order.","selector":"[class~=\"aui-panels\"]"},
-        {"id":"panel","partId":"panel","title":"Panel","explanation":"Input sits above Output; both soft panes can shrink independently.","keyIdea":"The top and bottom panes retain separate identities while sharing the same width.","selector":"[class~=\"aui-panels-panel\"]"},
-        {"id":"resize-handle","partId":"resize-handle","title":"Resize handle","explanation":"Six-pixel bar separates Input and Output; dragging reallocates height.","keyIdea":"Dragging this horizontal grip reallocates height between the input and output areas.","selector":"[class~=\"aui-panels-resize-handle\"]"},
-      ],
 options: [
     { id: "hcs-stacked", showContext: false, name: "Stacked", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"] ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: SOURCE,
@@ -29,18 +21,18 @@ options: [
       name: 'Panels',
       selector: '[class~="aui-panels"]',
       description: 'Vertical split group that stacks the panes, 560px wide and 160px tall at most.',
-    },
+     lesson: {"explanation":"Vertical split stacks both panes within a bounded workspace."}},
     {
       id: 'panel',
       name: 'Panel',
       selector: '[class~="aui-panels-panel"]',
       description: 'Input on top (50% default height) and Output below, both surface-alt soft panes that may shrink to 40px high.',
-    },
+     lesson: {"explanation":"Input sits above Output; both soft panes can shrink independently."}},
     {
       id: 'resize-handle',
       name: 'Resize handle',
       selector: '[class~="aui-panels-resize-handle"]',
       description: '6px primary horizontal bar between Input and Output; its label is "Resize Input and Output panels" in the example and "Resize Input and results panels" in the HCS scene.',
-    },
+     lesson: {"explanation":"Six-pixel bar separates Input and Output; dragging reallocates height."}},
   ],
 });

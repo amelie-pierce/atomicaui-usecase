@@ -37,13 +37,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Card** — Fixed 128 by 160 soft card on scale "sm" with equal padding; its content is a centred column. Selector: `[class~="aui-card"]`.
-2. **Image container** — 96 by 96 box that holds the product picture above the title. Selector: `[class~="aui-card-image-container"]`.
-3. **Image** — The product image, decorative (alt empty) and shown whole with fit="contain". Selector: `[class~="aui-card-image"]`.
-4. **Body** — Full-width centred column under the image that carries the title. Selector: `[class~="aui-card-body"]`.
-5. **Title** — Centred, wrapping semi-bold p2 label reading "Related product"; ACE places these cards under a Related products heading. Selector: `[class~="aui-card-title"]`.
+1. **Card** — Fixed 128 by 160 soft card on scale "sm" with equal padding; its content is a centred column. Selector: `[class~="aui-card"]`. Layer step: **Card** — Fixed 128-by-160 soft card centres product content with even padding.
+2. **Image container** — 96 by 96 box that holds the product picture above the title. Selector: `[class~="aui-card-image-container"]`. Layer step: **Image container** — 96-by-96 frame holds the product picture above its name.
+3. **Image** — The product image, decorative (alt empty) and shown whole with fit="contain". Selector: `[class~="aui-card-image"]`. Layer step: **Image** — Decorative product image fits whole inside its reserved frame.
+4. **Body** — Full-width centred column under the image that carries the title. Selector: `[class~="aui-card-body"]`. Layer step: **Body** — Full-width centred column places the product title below image.
+5. **Title** — Centred, wrapping semi-bold p2 label reading "Related product"; ACE places these cards under a Related products heading. Selector: `[class~="aui-card-title"]`. Layer step: **Title** — Wrapping semi-bold label names each related product inside its card.
 
 ## Apps
 

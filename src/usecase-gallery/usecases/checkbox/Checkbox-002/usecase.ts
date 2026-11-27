@@ -4,30 +4,12 @@ export default defineUsecase({
   uiType: 'Single checkbox',
   title: 'Input panel option checkbox',
   apps: ['hcs', 'hs', 'fd', 'adc', 'ace', 'pbs', 'agpd', 'adm'],
-    layers: [
-        {"id":"group","partId":"group","title":"Fieldset","explanation":"ACE uses a titled fieldset to name this checkbox group.","keyIdea":"ACE groups the related option under a named fieldset so its scope is clear.","selector":"[class~=\"aui-fieldset\"]"},
-        {"id":"checkbox","partId":"checkbox","title":"Checkbox","explanation":"One yes-or-no input starts checked with a solid primary selected style.","keyIdea":"The checkable field stores a single binary input for the current option group.","selector":"[class~=\"aui-checkbox\"]"},
-        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"Box shows whether Galvanized is included; off uses an outlined tonal style.","keyIdea":"The indicator shows whether Galvanized is included without repeating the text label.","selector":"[class~=\"aui-checkbox-indicator\"]","code":["Checkbox"]},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"The \"check\" mark rendered inside the box when Galvanized is on.","keyIdea":"A check glyph makes the affirmative state recognizable in the selected box.","selector":"[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]","code":["Checkbox.Icon"]},
-        {"id":"label","partId":"label","title":"Label","explanation":"Galvanized caption identifies the property; ADM places its field label above.","keyIdea":"The adjacent caption identifies exactly which property the checked value controls.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
-        {"id":"legend","partId":"legend","title":"Legend","explanation":"ACE legend names the checkbox option before the control.","keyIdea":"The legend names the group before users encounter its individual setting.","selector":"[class~=\"aui-fieldset-legend\"]"},
-        {"id":"field-label","partId":"field-label","title":"Field label","explanation":"Form label introduces the checkbox when it has no caption.","keyIdea":"A field label can introduce the row when the checkbox itself has no caption.","selector":"[class~=\"aui-field-label\"]"},
-      ],
 options: [
     { id: "hcs-option", showContext: false, name: "Input panel option", apps: ["hcs","hs","fd","adc"], note: "A bare checkbox without a title.", source: {"hcs":"src/App.tsx","hs":"src/hs/InputFields.tsx","fd":"src/components/InputPane.jsx","adc":"src/adc/components/InputSections.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "ace-titled", showContext: false, name: "Titled input checkbox", apps: ["ace","pbs","agpd"], note: "A title sits above the checkbox; PBS and AGPD use a smaller gap than ACE.", source: {"ace":"src/features/estimator/ui/EstimatorInputPanel.tsx","pbs":"src/InputFields.tsx","agpd":"src/agpd/inputs.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "adm-label-first", showContext: false, name: "Leading label checkbox", apps: ["adm"], note: "The label precedes the right-aligned checkbox.", source: {"adm":"src/features/design-inputs/components/GeometrySection/JointDistanceFields.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: {
@@ -50,42 +32,42 @@ options: [
       name: "Checkbox",
       selector: "[class~=\"aui-checkbox\"]",
       description: "The checkable control for one yes or no input of an input section, checked by default, with the primary solid selected style.",
-    },
+     lesson: {"explanation":"One yes-or-no input starts checked with a solid primary selected style."}},
     {
       id: "indicator",
       name: "Indicator",
       selector: "[class~=\"aui-checkbox-indicator\"]",
       description: "The box that shows the Galvanized state; HCS, HS, FD and ADC draw it with the same outlined, surface-tonal off style.",
-    },
+     lesson: {"explanation":"Box shows whether Galvanized is included; off uses an outlined tonal style.","code":["Checkbox"]}},
     {
       id: "icon",
       name: "Icon",
       selector: "[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]",
       description: "The \"check\" mark rendered inside the box when Galvanized is on.",
-    },
+     lesson: {"explanation":"The \"check\" mark rendered inside the box when Galvanized is on.","code":["Checkbox.Icon"]}},
     {
       id: "label",
       name: "Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The caption \"Galvanized\" beside the box; the other apps use their own option text, such as Same inputs as Left Hip, and ADM instead puts a Field.Label (Center to joint) before a label-less checkbox.",
-    },
+     lesson: {"explanation":"Galvanized caption identifies the property; ADM places its field label above."}},
     {
       id: "group",
       name: "Fieldset",
       selector: "[class~=\"aui-fieldset\"]",
       description: "ACE groups the checkbox under a titled group, with a Fieldset and a legend above the option.",
-    },
+     lesson: {"explanation":"ACE uses a titled fieldset to name this checkbox group."}},
     {
       id: "legend",
       name: "Legend",
       selector: "[class~=\"aui-fieldset-legend\"]",
       description: "The group title that sits above the checkbox in the ACE titled scene.",
-    },
+     lesson: {"explanation":"ACE legend names the checkbox option before the control."}},
     {
       id: "field-label",
       name: "Field label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The label of a Field above a checkbox in a form row.",
-    },
+     lesson: {"explanation":"Form label introduces the checkbox when it has no caption."}},
   ],
 });

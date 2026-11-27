@@ -35,9 +35,9 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The View all Button in the FD carousel footer: primary text paint at the default scale, after the pager dots. Selector: `[class~="aui-button"]:not([aria-label*=" / "])`.
+1. **Container** — The View all Button in the FD carousel footer: primary text paint at the default scale, after the pager dots. Selector: `[class~="aui-button"]:not([aria-label*=" / "])`. Layer step: **Container** — Default-scale View all link follows the FD carousel pager.
 2. **Label** — The text "View all" that opens every connection type instead of the few cards shown. Selector: `[class~="aui-button"]:not([aria-label*=" / "])`. Direct text is highlighted.
 
 ## Apps
@@ -58,8 +58,8 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Carousel footer** — The row after the carousel that holds the pager dots, then View all, with an 8px gap. Part marker: `data-ug-part="pager"`.
-2. **Pager dots** — The two round buttons, one per page (1 / 2 and 2 / 2): the current page in primary, the other in surface-alt. Part marker: `data-ug-part="dot"`.
+1. **Carousel footer** — The row after the carousel that holds the pager dots, then View all, with an 8px gap. Part marker: `data-ug-part="pager"`. Layer step: **Carousel footer** — Pager row places View all after dots with 8px gaps.
+2. **Pager dots** — The two round buttons, one per page (1 / 2 and 2 / 2): the current page in primary, the other in surface-alt. Part marker: `data-ug-part="dot"`. Layer step: **Pager dots** — Two page buttons use primary for current and surface-alt otherwise.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-016/example.tsx`
 

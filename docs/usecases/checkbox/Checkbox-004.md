@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Group title** — The "Object Visibility" title, a Type role "l4" at semi-bold weight, that names the group of visibility checkboxes; some apps write it as a Field.Label. Selector: `[data-aui-typeface]`.
-2. **Checkbox** — One of the visibility checkboxes (Wall, Roof, and Base plate or Anchors in the scenes) that shows or hides that part of the 3D model; checked by default. Selector: `[class~="aui-checkbox"]`.
-3. **Indicator** — The box that shows whether the model part is visible. Selector: `[class~="aui-checkbox-indicator"]`.
-4. **Icon** — The "check" mark used in the ADC, ADM, FD, HCS and HS scenes; the compact example draws the box without one. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
-5. **Label** — The part name beside the box, such as Wall or Roof, in the wrapped row of the 3D viewer controls. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+1. **Group title** — The "Object Visibility" title, a Type role "l4" at semi-bold weight, that names the group of visibility checkboxes; some apps write it as a Field.Label. Selector: `[data-aui-typeface]`. Layer step: **Group title** — Object Visibility heading groups the model display checkboxes. Code target: `Type`.
+2. **Checkbox** — One of the visibility checkboxes (Wall, Roof, and Base plate or Anchors in the scenes) that shows or hides that part of the 3D model; checked by default. Selector: `[class~="aui-checkbox"]`. Layer step: **Checkbox** — Each checked box shows its named 3D model part.
+3. **Indicator** — The box that shows whether the model part is visible. Selector: `[class~="aui-checkbox-indicator"]`. Layer step: **Indicator** — The box that shows whether the model part is visible. Code target: `Checkbox`.
+4. **Icon** — The "check" mark used in the ADC, ADM, FD, HCS and HS scenes; the compact example draws the box without one. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`. Layer step: **Icon** — Five scenes show a check mark; the compact example omits it. Code target: `Checkbox.Icon`.
+5. **Label** — The part name beside the box, such as Wall or Roof, in the wrapped row of the 3D viewer controls. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`. Layer step: **Label** — Part name beside each box identifies the model object it controls.
 
 ## Apps
 

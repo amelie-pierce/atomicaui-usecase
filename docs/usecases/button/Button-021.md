@@ -38,12 +38,12 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Reset button** — The icon-only rotate-left button at the start of the footer that resets the columns to their default order and visibility. Part marker: `data-ug-part="reset"`.
-2. **Action group** — The row at the end of the footer that holds Cancel and Save with an 8px gap. Part marker: `data-ug-part="actions"`.
-3. **Cancel** — The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS). Part marker: `data-ug-part="cancel"`.
-4. **Save** — The solid secondary Save Button that applies the column changes (scale "sm" in HCS, default scale in HS). Part marker: `data-ug-part="save"`.
+1. **Reset button** — The icon-only rotate-left button at the start of the footer that resets the columns to their default order and visibility. Part marker: `data-ug-part="reset"`. Layer step: **Reset button** — Start reset icon restores columns to default order and visibility.
+2. **Action group** — The row at the end of the footer that holds Cancel and Save with an 8px gap. Part marker: `data-ug-part="actions"`. Layer step: **Action group** — Footer pairs Cancel and Save with an 8px gap.
+3. **Cancel** — The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS). Part marker: `data-ug-part="cancel"`. Layer step: **Cancel** — Text Cancel closes the popover and discards pending changes.
+4. **Save** — The solid secondary Save Button that applies the column changes (scale "sm" in HCS, default scale in HS). Part marker: `data-ug-part="save"`. Layer step: **Save** — Solid secondary Save applies the output column changes.
 
 ## Apps
 

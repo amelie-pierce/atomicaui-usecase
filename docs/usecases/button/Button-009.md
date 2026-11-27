@@ -38,9 +38,9 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The View options Button in the corner of the 3D viewer: small, surface color with tonal paint, acting as the trigger of the camera and visibility popover. Selector: `[class~="aui-button"]`.
+1. **Container** — The View options Button in the corner of the 3D viewer: small, surface color with tonal paint, acting as the trigger of the camera and visibility popover. Selector: `[class~="aui-button"]`. Layer step: **Container** — Small tonal View options opens camera and visibility controls.
 2. **Label** — The text "View options" that names the popover of camera and visibility controls. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
 ## Apps
@@ -62,10 +62,10 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **3D Viewer pane** — The 3D Viewer section with its heading and the viewer canvas that the controls float over. Part marker: `data-ug-part="viewer-pane"`.
-2. **Options corner** — The top-end corner of the scene, 8px in, that holds the View options trigger. Part marker: `data-ug-part="corner"`.
-3. **View options popover** — The open popover under the trigger (bottom, end, 4px offset) that holds the viewer controls. Part marker: `data-ug-part="options-popover"`.
-4. **Reset view button** — The outlined bullseye IconButton in the popover that resets the camera. Part marker: `data-ug-part="reset-view"`.
+1. **3D Viewer pane** — The 3D Viewer section with its heading and the viewer canvas that the controls float over. Part marker: `data-ug-part="viewer-pane"`. Layer step: **3D Viewer pane** — 3D Viewer pane combines its heading with the canvas.
+2. **Options corner** — The top-end corner of the scene, 8px in, that holds the View options trigger. Part marker: `data-ug-part="corner"`. Layer step: **Options corner** — Top-end corner holds View options with an 8px inset.
+3. **View options popover** — The open popover under the trigger (bottom, end, 4px offset) that holds the viewer controls. Part marker: `data-ug-part="options-popover"`. Layer step: **View options popover** — Open viewer popover sits below the trigger with a 4px gap.
+4. **Reset view button** — The outlined bullseye IconButton in the popover that resets the camera. Part marker: `data-ug-part="reset-view"`. Layer step: **Reset view button** — The outlined bullseye IconButton in the popover that resets the camera.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-009/example.tsx`
 

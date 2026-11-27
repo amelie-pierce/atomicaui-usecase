@@ -38,10 +38,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The Reset to default Button: small, solid, raised color with a soft shape, placed beside a group of beam property inputs in a side panel. Selector: `[class~="aui-button"]`.
-2. **Icon** — The counter-clockwise arrow that signals returning the group to its defaults. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Container** — The Reset to default Button: small, solid, raised color with a soft shape, placed beside a group of beam property inputs in a side panel. Selector: `[class~="aui-button"]`. Layer step: **Container** — Small raised Reset to default sits below the beam input.
+2. **Icon** — The counter-clockwise arrow that signals returning the group to its defaults. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`. Layer step: **Icon** — The counter-clockwise arrow that signals returning the group to its defaults.
 3. **Label** — The text "Reset to default" naming what the Button restores. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
 ## Apps
@@ -62,8 +62,8 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Input pane** — The narrow Input aside that holds the form sections. Part marker: `data-ug-part="input-pane"`.
-2. **Beam Properties section** — The open "Beam Properties" Accordion item with its layer-group icon and chevron, holding the Fc perp number field (650 psi) with Reset to default below it. Part marker: `data-ug-part="beam-section"`.
+1. **Input pane** — The narrow Input aside that holds the form sections. Part marker: `data-ug-part="input-pane"`. Layer step: **Input pane** — The narrow Input aside that holds the form sections.
+2. **Beam Properties section** — The open "Beam Properties" Accordion item with its layer-group icon and chevron, holding the Fc perp number field (650 psi) with Reset to default below it. Part marker: `data-ug-part="beam-section"`. Layer step: **Beam Properties section** — Open Beam Properties item contains the 650 psi field and reset action.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-003/example.tsx`
 

@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Add** — The tonal secondary soft plus button that adds the result row to the Connection List. Selector: `[class~="aui-button"][aria-label="Add to Connection List"]`.
-2. **Plus icon** — The plus glyph centred in the button. Selector: `[class~="aui-button"][aria-label="Add to Connection List"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Tooltip** — PBS tooltip above the button that repeats the action as Add to Connection List. Selector: `[class~="aui-tooltip-popup"]`.
-4. **Add cell** — The centred first cell of the Model A-100 row that holds the button. Selector: `[class~="aui-table-cell"]:first-child`.
-5. **Add header** — The unlabeled column heading (aria-label Add) over the add buttons. Selector: `[class~="aui-table-header-cell"]:first-child`.
+1. **Add** — The tonal secondary soft plus button that adds the result row to the Connection List. Selector: `[class~="aui-button"][aria-label="Add to Connection List"]`. Layer step: **Add** — Tonal secondary plus action adds the row to Connection List.
+2. **Plus icon** — The plus glyph centred in the button. Selector: `[class~="aui-button"][aria-label="Add to Connection List"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Plus icon** — Centered plus glyph identifies the Add to Connection List action. Code target: `IconButton`.
+3. **Tooltip** — PBS tooltip above the button that repeats the action as Add to Connection List. Selector: `[class~="aui-tooltip-popup"]`. Layer step: **Tooltip** — PBS tooltip repeats Add to Connection List above the action.
+4. **Add cell** — The centred first cell of the Model A-100 row that holds the button. Selector: `[class~="aui-table-cell"]:first-child`. Layer step: **Add cell** — Centered first cell holds the add action beside Model A-100.
+5. **Add header** — The unlabeled column heading (aria-label Add) over the add buttons. Selector: `[class~="aui-table-header-cell"]:first-child`. Layer step: **Add header** — The unlabeled column heading (aria-label Add) over the add buttons.
 
 ## Apps
 

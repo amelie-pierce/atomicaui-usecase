@@ -61,7 +61,7 @@ function ContextStage({ option, hidden, anatomy, hoveredPartId, onAvailableParts
   const scale = useStageFit(fit);
   const activeLayer = layerMode ? layers[layerIndex] : undefined;
   const overlayAnatomy = useMemo(() => withActiveLayerPart(anatomy, activeLayer), [anatomy, activeLayer]);
-  const overlay = usePreviewAnatomy(stageRef, overlayAnatomy, !hidden && layerMode ? LAYER_PART_ID : hoveredPartId, hidden ? undefined : onAvailablePartsChange, scale, !hidden);
+  const overlay = usePreviewAnatomy(stageRef, overlayAnatomy, !hidden && layerMode ? LAYER_PART_ID : hoveredPartId, hidden || layerMode ? undefined : onAvailablePartsChange, scale, !hidden);
   return (
     <div className="ug-render__viewport" hidden={hidden}>
       <div className="ug-render__stage" ref={stageRef}>
@@ -83,7 +83,7 @@ function ContextStage({ option, hidden, anatomy, hoveredPartId, onAvailableParts
         </div>
       </div>
       {/* Keep the context highlight outside the scrolling stage, as in Component mode. */}
-      <AnatomyOverlay rect={overlay} />
+      <AnatomyOverlay rect={overlay} stepKey={layerMode ? activeLayer?.id : undefined} />
     </div>
   );
 }
@@ -122,7 +122,7 @@ export function RenderPane({
   const scale = useStageFit(fit);
   const activeLayer = layerMode && mode === 'component' ? layers[layerIndex] : undefined;
   const overlayAnatomy = useMemo(() => withActiveLayerPart(anatomy, activeLayer), [anatomy, activeLayer]);
-  const overlay = usePreviewAnatomy(stageRef, overlayAnatomy, mode === 'component' ? (layerMode ? LAYER_PART_ID : hoveredPartId) : undefined, mode === 'component' ? onAvailablePartsChange : undefined, scale, mode === 'component');
+  const overlay = usePreviewAnatomy(stageRef, overlayAnatomy, mode === 'component' ? (layerMode ? LAYER_PART_ID : hoveredPartId) : undefined, mode === 'component' && !layerMode ? onAvailablePartsChange : undefined, scale, mode === 'component');
   return (
     <section className="ug-render ug-render--split" role="region" aria-label="Preview">
       <div className="ug-render__header">
@@ -162,7 +162,7 @@ export function RenderPane({
           </div>
         </div>
         {/* A sibling of the scrolling stage, not a child: inside it the highlight would count as scrollable overflow. */}
-        <AnatomyOverlay rect={overlay} />
+        <AnatomyOverlay rect={overlay} stepKey={layerMode && mode === 'component' ? activeLayer?.id : undefined} />
       </div>
       <ContextStage option={option} hidden={mode !== 'context'} anatomy={anatomy} hoveredPartId={mode === 'context' ? hoveredPartId : undefined} onAvailablePartsChange={onAvailablePartsChange} layers={layers} layerIndex={layerIndex} layerMode={layerMode} />
       {option.note && (

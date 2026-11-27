@@ -5,18 +5,11 @@ export default defineUsecase({
   title: 'Show all connection types button',
 
   apps: ['fd'],
-    layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Default-scale View all link follows the FD carousel pager.","keyIdea":"The text action opens the complete carousel collection from its footer.","selector":"[class~=\"aui-button\"]:not([aria-label*=\" / \"])"},
-      ],
 options: [
     { id: "fd-carousel-footer", name: "Carousel footer", apps: ["fd"], contextAnatomy: [
-      { id: "pager", name: "Carousel footer", description: "The row after the carousel that holds the pager dots, then View all, with an 8px gap." },
-      { id: "dot", name: "Pager dots", description: "The two round buttons, one per page (1 / 2 and 2 / 2): the current page in primary, the other in surface-alt." },
+      { id: "pager", name: "Carousel footer", description: "The row after the carousel that holds the pager dots, then View all, with an 8px gap." , lesson: {"explanation":"Pager row places View all after dots with 8px gaps.","selector":"[data-ug-part=\"pager\"]","scope":"context"}},
+      { id: "dot", name: "Pager dots", description: "The two round buttons, one per page (1 / 2 and 2 / 2): the current page in primary, the other in surface-alt." , lesson: {"explanation":"Two page buttons use primary for current and surface-alt otherwise.","selector":"[data-ug-part=\"dot\"]","scope":"context"}},
     ], source: {"fd":"src/components/InputPane.jsx"} ,
-      contextLayers: [
-        {"id":"context-pager","partId":"pager","title":"Carousel footer","explanation":"Pager row places View all after dots with 8px gaps.","keyIdea":"The footer aligns page position with the route to all items.","selector":"[data-ug-part=\"pager\"]","scope":"context"},
-        {"id":"context-dot","partId":"dot","title":"Pager dots","explanation":"Two page buttons use primary for current and surface-alt otherwise.","keyIdea":"The dots show the current page and the remaining carousel page.","selector":"[data-ug-part=\"dot\"]","scope":"context"},
-      ],
     },
   ],
   source: { fd: 'src/components/InputPane.jsx' },
@@ -32,7 +25,7 @@ options: [
       name: "Container",
       description: "The View all Button in the FD carousel footer: primary text paint at the default scale, after the pager dots.",
       selector: "[class~=\"aui-button\"]:not([aria-label*=\" / \"])",
-    },
+     lesson: {"explanation":"Default-scale View all link follows the FD carousel pager."}},
     {
       id: "label",
       name: "Label",

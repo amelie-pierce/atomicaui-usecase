@@ -5,18 +5,11 @@ export default defineUsecase({
   title: 'Go to carousel page button',
 
   apps: ['fd'],
-    layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Empty pager dot labels 1 of 3 and highlights the current page.","keyIdea":"The labelled dot selects a carousel page while its fill marks the active page.","selector":"[class~=\"aui-button\"][aria-current]"},
-      ],
 options: [
     { id: "fd-carousel-dots", name: "Carousel footer", apps: ["fd"], contextAnatomy: [
-      { id: "pager", name: "Pager", description: "The row that holds one dot per page with an 8px gap." },
-      { id: "other-dot", name: "Other pages", description: "The surface-alt dots for the pages that are not current (2 / 3 and 3 / 3)." },
+      { id: "pager", name: "Pager", description: "The row that holds one dot per page with an 8px gap." , lesson: {"explanation":"The row that holds one dot per page with an 8px gap.","selector":"[data-ug-part=\"pager\"]","scope":"context"}},
+      { id: "other-dot", name: "Other pages", description: "The surface-alt dots for the pages that are not current (2 / 3 and 3 / 3)." , lesson: {"explanation":"Surface-alt dots mark the two pages that are not current.","selector":"[data-ug-part=\"other-dot\"]","scope":"context"}},
     ], source: {"fd":"src/components/InputPane.jsx"} ,
-      contextLayers: [
-        {"id":"context-pager","partId":"pager","title":"Pager","explanation":"The row that holds one dot per page with an 8px gap.","keyIdea":"The pager groups the available page choices into one navigation row.","selector":"[data-ug-part=\"pager\"]","scope":"context"},
-        {"id":"context-other-dot","partId":"other-dot","title":"Other pages","explanation":"Surface-alt dots mark the two pages that are not current.","keyIdea":"The muted dots represent carousel pages that are currently inactive.","selector":"[data-ug-part=\"other-dot\"]","scope":"context"},
-      ],
     },
   ],
   source: { fd: 'src/components/InputPane.jsx' },
@@ -32,6 +25,6 @@ options: [
       name: "Container",
       description: "One carousel pager dot: an empty solid Button with no children and an aria-label of \"1 / 3\"; primary (orange) for the current page, surface-alt for the others.",
       selector: "[class~=\"aui-button\"][aria-current]",
-    },
+     lesson: {"explanation":"Empty pager dot labels 1 of 3 and highlights the current page."}},
   ],
 });

@@ -35,19 +35,19 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Menubar** — The strip named "Drawer" that holds the Settings row inside the phone drawer. Selector: `[class~="aui-menubar"]`.
-2. **Trigger** — The text row "Settings" that opens the menu; it replaces the gear of the desktop bar. Selector: `[class~="aui-menubar-trigger"]`.
-3. **Popup** — Menu labelled "Settings", opened below the row (side "bottom") and centred on it (align "center"). Selector: `[class~="aui-dropdown-popup"]`.
-4. **Group** — The Pane Orientation group with its heading and rows. Selector: `[class~="aui-dropdown-group"]`.
-5. **Group label** — The "Pane Orientation" caption above the radio rows (and "Pane Layout" in the scenes). Selector: `[class~="aui-dropdown-group-label"]`.
-6. **Radio group** — Single-choice set with Vertical chosen; the ADM and ACE scenes add Horizontal and Grid. Selector: `[class~="aui-dropdown-radio-group"]`.
-7. **Radio item** — The "Vertical" row with its table-columns icon and a hidden indicator. Selector: `[class~="aui-dropdown-radio-item"]`.
-8. **Row icon** — The leading glyph of a row, table-columns for Vertical. Selector: `[class~="aui-dropdown-radio-item"] > [class~="aui-contained-icon"]`.
-9. **Item** — The "Reset layout to default" row of the ACE and ADM scenes. Selector: `[class~="aui-dropdown-item"]`.
-10. **Separator** — The divider between the orientation group and the layout group in the scenes. Selector: `[class~="aui-dropdown-separator"]`.
-11. **Checkbox item** — The "Auto-Rotate 3D Model" check row that the ADM scene adds because ADM has a 3D model. Selector: `[class~="aui-dropdown-checkbox-item"]`.
+1. **Menubar** — The strip named "Drawer" that holds the Settings row inside the phone drawer. Selector: `[class~="aui-menubar"]`. Layer step: **Menubar** — Drawer strip holds Settings as a phone menu row.
+2. **Trigger** — The text row "Settings" that opens the menu; it replaces the gear of the desktop bar. Selector: `[class~="aui-menubar-trigger"]`. Layer step: **Trigger** — Settings text row opens the menu in place of the desktop gear. Code target: `Menubar.DropdownTrigger`.
+3. **Popup** — Menu labelled "Settings", opened below the row (side "bottom") and centred on it (align "center"). Selector: `[class~="aui-dropdown-popup"]`. Layer step: **Popup** — Settings menu opens beside or below its trigger row.
+4. **Group** — The Pane Orientation group with its heading and rows. Selector: `[class~="aui-dropdown-group"]`. Layer step: **Group** — The Pane Orientation group with its heading and rows.
+5. **Group label** — The "Pane Orientation" caption above the radio rows (and "Pane Layout" in the scenes). Selector: `[class~="aui-dropdown-group-label"]`. Layer step: **Group label** — Pane Orientation label names the radio choices; apps may say Pane Layout.
+6. **Radio group** — Single-choice set with Vertical chosen; the ADM and ACE scenes add Horizontal and Grid. Selector: `[class~="aui-dropdown-radio-group"]`. Layer step: **Radio group** — Single-choice group starts at Vertical beside Horizontal and Grid.
+7. **Radio item** — The "Vertical" row with its table-columns icon and a hidden indicator. Selector: `[class~="aui-dropdown-radio-item"]`. Layer step: **Radio item** — The "Vertical" row with its table-columns icon and a hidden indicator.
+8. **Row icon** — The leading glyph of a row, table-columns for Vertical. Selector: `[class~="aui-dropdown-radio-item"] > [class~="aui-contained-icon"]`. Layer step: **Row icon** — The leading glyph of a row, table-columns for Vertical. Code target: `Menubar.Icon`.
+9. **Item** — The "Reset layout to default" row of the ACE and ADM scenes. Selector: `[class~="aui-dropdown-item"]`. Layer step: **Item** — The "Reset layout to default" row of the ACE and ADM scenes.
+10. **Separator** — The divider between the orientation group and the layout group in the scenes. Selector: `[class~="aui-dropdown-separator"]`. Layer step: **Separator** — Thin divider separates orientation choices from layout choices.
+11. **Checkbox item** — The "Auto-Rotate 3D Model" check row that the ADM scene adds because ADM has a 3D model. Selector: `[class~="aui-dropdown-checkbox-item"]`. Layer step: **Checkbox item** — ADM adds Auto-Rotate because its scene has a 3D model.
 
 ## Apps
 

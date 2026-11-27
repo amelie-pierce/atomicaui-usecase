@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Radio group** — A row of radios (direction "row") with Welded selected by default; the FD Settings popover shows the same group as Yes or No. Selector: `[class~="aui-radio-group"]`.
-2. **Group label** — The "Plate connection" form label at the start of the row, laid out as a flex row that fills the width with a gap of 4. Selector: `[class~="aui-radio-group"] > [class~="aui-label"]`.
-3. **Radio** — One option, Welded or Bolted: a tonal surface circle with an outlined border when unselected and a solid primary circle when chosen. Selector: `[class~="aui-radio"]`.
-4. **Indicator** — The circle that shows which option is chosen. Selector: `[class~="aui-radio-indicator"]`.
-5. **Label** — The option text, Welded or Bolted, beside its circle. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+1. **Radio group** — A row of radios (direction "row") with Welded selected by default; the FD Settings popover shows the same group as Yes or No. Selector: `[class~="aui-radio-group"]`. Layer step: **Radio group** — Row group defaults to Welded; FD shows its Yes or No variant.
+2. **Group label** — The "Plate connection" form label at the start of the row, laid out as a flex row that fills the width with a gap of 4. Selector: `[class~="aui-radio-group"] > [class~="aui-label"]`. Layer step: **Group label** — Plate connection label starts the full-width row with 4px gap.
+3. **Radio** — One option, Welded or Bolted: a tonal surface circle with an outlined border when unselected and a solid primary circle when chosen. Selector: `[class~="aui-radio"]`. Layer step: **Radio** — Welded and Bolted circles use tonal unselected and solid primary selected states.
+4. **Indicator** — The circle that shows which option is chosen. Selector: `[class~="aui-radio-indicator"]`. Layer step: **Indicator** — The circle that shows which option is chosen. Code target: `Radio`.
+5. **Label** — The option text, Welded or Bolted, beside its circle. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`. Layer step: **Label** — The option text, Welded or Bolted, beside its circle.
 
 ## Apps
 

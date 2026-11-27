@@ -35,19 +35,19 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field** — Field at scale "sm" with a 3 gap that stacks the Country label over the combobox. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Country" label above the input group. Selector: `[class~="aui-field-label"]`.
-3. **Input group** — Row at scale "sm", full width, that joins the text field and the chevron button into one control. Selector: `[class~="aui-combobox-input-group"]`.
-4. **Input** — The search field with placeholder "Search"; typing filters Canada, Mexico and United States, and the chosen "Canada" fills it. Selector: `[class~="aui-combobox-input"]`.
-5. **Trigger** — The button at the end of the group that opens or closes the country list. Selector: `[class~="aui-combobox-trigger"]`.
-6. **Icon** — The chevron-down glyph inside the trigger button. Selector: `[class~="aui-combobox-icon"]`.
-7. **Popup** — Popup of the trigger width, 4px below the group; this example is built open and non-modal inside the stage. Selector: `[class~="aui-combobox-popup"]`.
-8. **Empty** — The "No result found" message shown when the typed text matches no country. Selector: `[class~="aui-combobox-empty"]`.
-9. **List** — The list that renders one row per matching country. Selector: `[class~="aui-combobox-list"]`.
-10. **Item** — A country row; its label is the item text and the chosen row is highlighted. Selector: `[class~="aui-combobox-item"]`.
-11. **Item indicator** — The tick that marks the chosen country row. Selector: `[class~="aui-combobox-item-indicator"]`.
+1. **Field** — Field at scale "sm" with a 3 gap that stacks the Country label over the combobox. Selector: `[class~="aui-field"]`. Layer step: **Field** — Small field stacks Country above the picker with a 3px gap.
+2. **Label** — The "Country" label above the input group. Selector: `[class~="aui-field-label"]`. Layer step: **Label** — Country label sits above the picker in the small field.
+3. **Input group** — Row at scale "sm", full width, that joins the text field and the chevron button into one control. Selector: `[class~="aui-combobox-input-group"]`. Layer step: **Input group** — Small full-width row joins the text input and chevron button.
+4. **Input** — The search field with placeholder "Search"; typing filters Canada, Mexico and United States, and the chosen "Canada" fills it. Selector: `[class~="aui-combobox-input"]`. Layer step: **Input** — Search filters three countries; choosing Canada fills the field.
+5. **Trigger** — The button at the end of the group that opens or closes the country list. Selector: `[class~="aui-combobox-trigger"]`. Layer step: **Trigger** — End button opens and closes the country list.
+6. **Icon** — The chevron-down glyph inside the trigger button. Selector: `[class~="aui-combobox-icon"]`. Layer step: **Icon** — Down chevron on the end button signals the country list opens.
+7. **Popup** — Popup of the trigger width, 4px below the group; this example is built open and non-modal inside the stage. Selector: `[class~="aui-combobox-popup"]`. Layer step: **Popup** — Open non-modal popup matches the group width and sits 4px below.
+8. **Empty** — The "No result found" message shown when the typed text matches no country. Selector: `[class~="aui-combobox-empty"]`. Layer step: **Empty** — No result found appears when no country matches the search.
+9. **List** — The list that renders one row per matching country. Selector: `[class~="aui-combobox-list"]`. Layer step: **List** — The list that renders one row per matching country.
+10. **Item** — A country row; its label is the item text and the chosen row is highlighted. Selector: `[class~="aui-combobox-item"]`. Layer step: **Item** — Country row labels each choice and highlights the selected one.
+11. **Item indicator** — The tick that marks the chosen country row. Selector: `[class~="aui-combobox-item-indicator"]`. Layer step: **Item indicator** — The tick that marks the chosen country row.
 
 ## Apps
 

@@ -8,20 +8,9 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Calculator dialog',
   apps: ['adm'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"Scrim covers the ADM base plate while its calculator is open.","keyIdea":"The scrim distinguishes the calculator task from the base plate inputs behind it.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Calculator window measures 480px, or 520px in ADM.","keyIdea":"A bounded popup keeps the calculator focused without moving initial focus to a control.","selector":"[class~=\"aui-dialog-popup\"]"},
-        {"id":"title","partId":"title","title":"Title bar","explanation":"Raised title names Thickness Calculator beside the close action.","keyIdea":"The title tells users which calculation the dialog contains.","selector":"[class~=\"aui-dialog-title\"]"},
-        {"id":"spacer","partId":"spacer","title":"Spacer","explanation":"The flexible gap between the calculator name and the close X.","keyIdea":"The flexible gap keeps the close target clear of the calculator name.","selector":"[class~=\"aui-dialog-spacer\"]"},
-        {"id":"close","partId":"close","title":"Close","explanation":"Close exits the calculator without applying its result.","keyIdea":"Closing the calculator returns users to their inputs without applying a result.","selector":"[class~=\"aui-dialog-close\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"Scrolling body holds calculator inputs and the result.","keyIdea":"The body owns the scrolling calculation content and its resulting value.","selector":"[class~=\"aui-dialog-body\"]"},
-      ],
 options: [
     { id: "adm-calculator", name: "Calculator dialog", apps: ["adm"], source: {"adm":"src/features/base-plate/components/ThicknessCalculatorDialog.tsx"}, contextAnatomy: CONTEXT_ANATOMY ,
-      contextLayers: [
-        {"id":"context-trigger","partId":"trigger","title":"Trigger","explanation":"ADM’s secondary soft button opens the Thickness Calculator dialog.","keyIdea":"The ADM trigger identifies the calculation action that opens the dialog from the base plate form.","selector":"[class~=\"aui-dialog-trigger\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"trigger","lesson":{"explanation":"ADM’s secondary soft button opens the Thickness Calculator dialog.","scope":"context"}}]},
   ],
   source: {
     adm: 'src/features/base-plate/components/ThicknessCalculatorDialog.tsx',
@@ -36,19 +25,19 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the Thickness Calculator while it is open over the ADM base plate page.',
-    },
+     lesson: {"explanation":"Scrim covers the ADM base plate while its calculator is open."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The default 480px calculator window (520px in the ADM scene) that keeps focus off the first control until the user acts.',
-    },
+     lesson: {"explanation":"Calculator window measures 480px, or 520px in ADM."}},
     {
       id: 'title',
       name: 'Title bar',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title bar reading "Thickness Calculator" with the close X at its end.',
-    },
+     lesson: {"explanation":"Raised title names Thickness Calculator beside the close action."}},
     {
       id: 'title-text',
       name: 'Title text',
@@ -61,19 +50,19 @@ options: [
       name: 'Spacer',
       selector: '[class~="aui-dialog-spacer"]',
       description: 'The flexible gap between the calculator name and the close X.',
-    },
+     lesson: {"explanation":"The flexible gap between the calculator name and the close X."}},
     {
       id: 'close',
       name: 'Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X that returns the user to the base plate inputs without applying the calculation.',
-    },
+     lesson: {"explanation":"Close exits the calculator without applying its result."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The scrolling body that holds the calculator inputs and result; the example shows a one-line placeholder.',
-    },
+     lesson: {"explanation":"Scrolling body holds calculator inputs and the result."}},
     {
       id: 'calculator-text',
       name: 'Calculator text',

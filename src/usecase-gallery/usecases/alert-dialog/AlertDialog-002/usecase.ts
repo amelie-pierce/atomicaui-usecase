@@ -4,19 +4,8 @@ export default defineUsecase({
   uiType: 'Alert / Confirm',
   title: 'Single centered action',
   apps: ['ace', 'hs'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"Scrim blocks the app after the licence agreement is declined.","keyIdea":"The overlay stops attention from returning to the declined agreement beneath the notice.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Blocking notice stays open until the user relaunches.","keyIdea":"A non-dismissible surface makes the required next action unmistakable.","selector":"[class~=\"aui-dialog-popup\"]"},
-        {"id":"title","partId":"title","title":"Title","explanation":"Raised text heading names the Website Application License Agreement.","keyIdea":"The text-only heading gives the agreement notice a clear subject without a decorative warning.","selector":"[class~=\"aui-dialog-title\"]"},
-        {"id":"description","partId":"description","title":"Description","explanation":"User must relaunch and accept the agreement before continuing.","keyIdea":"Explain both why work cannot continue and how the user can proceed again.","selector":"[class~=\"aui-dialog-description\"]"},
-        {"id":"actions","partId":"actions","title":"Footer","explanation":"Centered footer gives the notice one available action.","keyIdea":"Center the lone next step so the blocking notice does not imply alternate choices.","selector":"[class~=\"aui-dialog-actions\"]"},
-        {"id":"relaunch","partId":"relaunch","title":"Re-Launch","explanation":"Re-Launch stays visible until the app reloads to accept terms.","keyIdea":"A persistent relaunch action is the only route forward after declining the agreement.","selector":"[data-ug-part=\"relaunch\"]"},
-      ],
 options: [
     { id: "ace-relaunch", showContext: false, name: "Relaunch notice", apps: ["ace","hs"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","hs":"src/hs/LicenseGate.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { ace: 'src/features/eula/ui/EulaGate.tsx', hs: 'src/hs/LicenseGate.tsx' },
@@ -30,35 +19,35 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim that blocks the app after the licence agreement was declined.',
-    },
+     lesson: {"explanation":"Scrim blocks the app after the licence agreement is declined."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The default-size blocking notice, with no close X so it cannot be dismissed.',
-    },
+     lesson: {"explanation":"Blocking notice stays open until the user relaunches."}},
     {
       id: 'title',
       name: 'Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised, text-only title "Website Application License Agreement" with no icon and no close X.',
-    },
+     lesson: {"explanation":"Raised text heading names the Website Application License Agreement."}},
     {
       id: 'description',
       name: 'Description',
       selector: '[class~="aui-dialog-description"]',
       description: 'The explanation that the app cannot continue without agreement and that the user must relaunch it and accept (ACE spells out the EULA).',
-    },
+     lesson: {"explanation":"User must relaunch and accept the agreement before continuing."}},
     {
       id: 'actions',
       name: 'Footer',
       selector: '[class~="aui-dialog-actions"]',
       description: 'The footer with align="center" that centres its single button.',
-    },
+     lesson: {"explanation":"Centered footer gives the notice one available action."}},
     {
       id: 'relaunch',
       name: 'Re-Launch',
       description: 'The only way forward: a solid secondary Re-Launch button with dismiss={false} so the notice stays until the app reloads.',
-    },
+     lesson: {"explanation":"Re-Launch stays visible until the app reloads to accept terms.","selector":"[data-ug-part=\"relaunch\"]"}},
   ],
 });

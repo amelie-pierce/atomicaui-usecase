@@ -37,13 +37,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Trigger** — The selection target: a 96 by 80 surface image Button labelled "Show in 3D" in the example and RWS, or the PFD "Embedded Strap" card (a View as button, at least 96px square). Part marker: `data-ug-part="trigger"`.
-2. **Thumbnail** — The connection image drawn inside the trigger as an aria-hidden svg (72px wide in the example, 64px in the PFD card). Selector: `[data-ug-part="trigger"] > svg`.
+1. **Trigger** — The selection target: a 96 by 80 surface image Button labelled "Show in 3D" in the example and RWS, or the PFD "Embedded Strap" card (a View as button, at least 96px square). Part marker: `data-ug-part="trigger"`. Layer step: **Trigger** — Surface image action opens a 3D preview; PFD uses its card.
+2. **Thumbnail** — The connection image drawn inside the trigger as an aria-hidden svg (72px wide in the example, 64px in the PFD card). Selector: `[data-ug-part="trigger"] > svg`. Layer step: **Thumbnail** — Aria-hidden connection drawing decorates the trigger without extra reading. Code target: `svg`.
 3. **Card label** — The PFD card caption "Embedded Strap" under the image. Part marker: `data-ug-part="card-label"`. Direct text is highlighted.
-4. **Positioner** — Opens the note to the right of the image button with a 4px offset (side="right"); PFD uses the default side. Selector: `[class~="aui-tooltip-positioner"]`.
-5. **Popup** — The text tooltip surface; in PFD it is allowed to grow to 384px for the longer note. Selector: `[class~="aui-tooltip-popup"]`.
+4. **Positioner** — Opens the note to the right of the image button with a 4px offset (side="right"); PFD uses the default side. Selector: `[class~="aui-tooltip-positioner"]`. Layer step: **Positioner** — Tooltip opens beside the image with a four-pixel gap.
+5. **Popup** — The text tooltip surface; in PFD it is allowed to grow to 384px for the longer note. Selector: `[class~="aui-tooltip-popup"]`. Layer step: **Popup** — Text surface expands to 384px for the longer PFD note.
 6. **Note** — The explanation text: "Show in 3D" in the example and RWS, "Use with a continuous strap along the plate." in PFD. Selector: `[class~="aui-tooltip-popup"]`. Direct text is highlighted.
 
 ## Apps

@@ -10,25 +10,11 @@ export default defineUsecase({
   title: 'Save column configuration buttons',
 
   apps: ['hcs', 'hs'],
-    layers: [
-        {"id":"reset","partId":"reset","title":"Reset button","explanation":"Start reset icon restores columns to default order and visibility.","keyIdea":"The reset icon restores the original column order and visibility.","selector":"[data-ug-part=\"reset\"]"},
-        {"id":"actions","partId":"actions","title":"Action group","explanation":"Footer pairs Cancel and Save with an 8px gap.","keyIdea":"The footer keeps reset separate from the cancel and save decisions.","selector":"[data-ug-part=\"actions\"]"},
-        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"Text Cancel closes the popover and discards pending changes.","keyIdea":"Cancel closes the popover without applying visibility or order edits.","selector":"[data-ug-part=\"cancel\"]"},
-        {"id":"save","partId":"save","title":"Save","explanation":"Solid secondary Save applies the output column changes.","keyIdea":"Save commits the edited column arrangement to the output table.","selector":"[data-ug-part=\"save\"]"},
-      ],
 options: [
     { id: "hcs-configure-columns", name: "Compact save button", apps: ["hcs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hcs":"src/components/ColumnVisibility.tsx"} ,
-      contextLayers: [
-        {"id":"context-popover","partId":"popover","title":"Configure columns popover","explanation":"Elevated popover contains the output columns and footer actions.","keyIdea":"The elevated popover keeps column settings attached to their table trigger.","selector":"[data-ug-part=\"popover\"]","scope":"context"},
-        {"id":"context-columns","partId":"columns","title":"Column list","explanation":"Reorderable Output list pairs each column with visibility and drag controls.","keyIdea":"The list makes each output column independently visible and reorderable.","selector":"[data-ug-part=\"columns\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"popover","lesson":{"explanation":"Elevated popover contains the output columns and footer actions.","selector":"[data-ug-part=\"popover\"]","scope":"context"}},{"id":"columns","lesson":{"explanation":"Reorderable Output list pairs each column with visibility and drag controls.","selector":"[data-ug-part=\"columns\"]","scope":"context"}}]},
     { id: "hs-configure-columns", name: "Default save button", apps: ["hs"], contextAnatomy: CONTEXT_ANATOMY, source: {"hs":"src/hs/ColumnVisibility.tsx"} ,
-      contextLayers: [
-        {"id":"context-popover","partId":"popover","title":"Configure columns popover","explanation":"Elevated popover contains the output columns and footer actions.","keyIdea":"The HCS popover presents the same table settings in its app context.","selector":"[data-ug-part=\"popover\"]","scope":"context"},
-        {"id":"context-columns","partId":"columns","title":"Column list","explanation":"Reorderable Output list pairs each column with visibility and drag controls.","keyIdea":"The HCS column list connects visibility switches with drag reordering.","selector":"[data-ug-part=\"columns\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"popover","lesson":{"explanation":"Elevated popover contains the output columns and footer actions.","selector":"[data-ug-part=\"popover\"]","scope":"context"}},{"id":"columns","lesson":{"explanation":"Reorderable Output list pairs each column with visibility and drag controls.","selector":"[data-ug-part=\"columns\"]","scope":"context"}}]},
   ],
   source: { hcs: 'src/components/ColumnVisibility.tsx', hs: 'src/hs/ColumnVisibility.tsx' },
   summary: 'A reset icon, a Cancel and a solid secondary Save close the Configure columns popover.',
@@ -45,21 +31,21 @@ options: [
       id: "reset",
       name: "Reset button",
       description: "The icon-only rotate-left button at the start of the footer that resets the columns to their default order and visibility.",
-    },
+     lesson: {"explanation":"Start reset icon restores columns to default order and visibility.","selector":"[data-ug-part=\"reset\"]"}},
     {
       id: "actions",
       name: "Action group",
       description: "The row at the end of the footer that holds Cancel and Save with an 8px gap.",
-    },
+     lesson: {"explanation":"Footer pairs Cancel and Save with an 8px gap.","selector":"[data-ug-part=\"actions\"]"}},
     {
       id: "cancel",
       name: "Cancel",
       description: "The text-paint Cancel Button that closes the popover and discards changes (default color, no fill; default scale in HS).",
-    },
+     lesson: {"explanation":"Text Cancel closes the popover and discards pending changes.","selector":"[data-ug-part=\"cancel\"]"}},
     {
       id: "save",
       name: "Save",
       description: "The solid secondary Save Button that applies the column changes (scale \"sm\" in HCS, default scale in HS).",
-    },
+     lesson: {"explanation":"Solid secondary Save applies the output column changes.","selector":"[data-ug-part=\"save\"]"}},
   ],
 });

@@ -4,14 +4,13 @@ import type { AppKey } from './apps';
 export type PreviewMode = 'component' | 'context';
 export type DocumentMode = 'document' | 'layers';
 
-/** One layer in the interactive build lesson, authored beside the use case anatomy. */
+/** One derived step in the interactive Anatomy lesson. */
 export interface LayerStep {
   id: string;
   /** Anatomy part id this layer reveals. Context layer ids can be namespaced independently. */
   partId?: string;
   title: string;
   explanation: string;
-  keyIdea: string;
   selector?: string;
   /** JSX tags (e.g. `Dialog.Popup`) that write the target in the option views of this step, used only where its selector matches no tag in the code. */
   code?: string[];
@@ -20,6 +19,18 @@ export interface LayerStep {
   /** Component layers target the selected example; context layers target the whole scene. */
   scope?: 'component' | 'context';
 }
+
+/** Lesson-specific copy and code references stored on the Anatomy part they describe. */
+export interface AnatomyLesson {
+  title?: string;
+  explanation?: string;
+  selector?: string;
+  code?: string[];
+  text?: boolean;
+  scope?: 'component' | 'context';
+}
+
+export type AnatomyOverride = Pick<AnatomyPart, 'id'> & Partial<Omit<AnatomyPart, 'id'>>;
 
 /** Written once per component in `usecases/<component>/<component>.meta.ts`. */
 export interface ComponentMeta {
@@ -57,13 +68,12 @@ export interface UsecaseOptionDoc {
   showContext?: boolean;
   /** Parts added by this option's scene; component anatomy is included automatically in the In context view. */
   contextAnatomy?: AnatomyPart[];
-  /** Extra lesson layers that this option's In context scene adds. */
-  contextLayers: LayerStep[];
+  /** Lesson metadata overrides for shared In context Anatomy parts. */
+  contextAnatomyOverrides?: AnatomyOverride[];
   /** View-specific documentation for the scene. Omitted fields share the use case's general prose. */
   contextDocument?: Partial<UsecaseViewDoc>;
   /** Component-view overrides for options whose control, anatomy or explanation differs. */
   componentAnatomy?: Array<Pick<AnatomyPart, 'id'> & Partial<Omit<AnatomyPart, 'id'>>>;
-  componentLayers?: LayerStep[];
   componentDocument?: Partial<UsecaseViewDoc>;
   /** The source file of the scene per app of the option; overrides the use case's `source` for these apps. */
   source?: Partial<Record<AppKey, string>>;
@@ -75,11 +85,12 @@ export interface AnatomyPart {
   name: string;
   description: string;
   /** In context, component anatomy is measured inside the selected example and context anatomy around it. */
-  scope?: 'component' | 'context';
+  scope?: 'component' | 'context' | 'scene';
   /** A selector scoped to the preview stage. Omit when the example uses data-ug-part. */
   selector?: string;
   /** Highlight only the direct text of the selected element, measured without touching the DOM. */
   text?: boolean;
+  lesson?: AnatomyLesson;
 }
 
 export interface AccessibilityDoc {
@@ -136,8 +147,6 @@ export interface UsecaseDoc {
   /** Optional component-facing detail content; absent sections stay out of the document. */
   aliases?: string[];
   anatomy: AnatomyPart[];
-  /** Component build order, from its outer wrapper to its detailed contents. */
-  layers: LayerStep[];
   usage?: string;
   behavior?: string;
   variants?: string;
@@ -180,10 +189,8 @@ export interface UsecaseOption {
   note?: string;
   showContext: boolean;
   contextAnatomy: AnatomyPart[];
-  contextLayers: LayerStep[];
   contextDocument?: Partial<UsecaseViewDoc>;
   componentAnatomy?: Array<Pick<AnatomyPart, 'id'> & Partial<Omit<AnatomyPart, 'id'>>>;
-  componentLayers?: LayerStep[];
   componentDocument?: Partial<UsecaseViewDoc>;
   Scene: ComponentType<ContextProps>;
   Example: ComponentType;
@@ -196,7 +203,6 @@ export interface Usecase extends UsecaseDoc {
   /** `<ComponentId>-<NNN>`; also the URL hash. */
   id: string;
   componentId: string;
-  layers: LayerStep[];
   /** The rendered example. Loaded on demand, so wrap it in `<Suspense>`. */
   Example: ComponentType;
   /** Resolves to the copyable snippet, derived from the same `example.tsx` that renders. */

@@ -38,21 +38,21 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field** — Field at scale "sm", full width, laid out for the ACE licence gate dialog above the accept checkbox. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Country" label above the licence gate trigger. Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — The flag-led outlined trigger in the licence gate; unlike the configuration panel the ACE scene states no scale or height. Selector: `[class~="aui-select-trigger"]`.
-4. **Trigger icon** — The flag icon that leads the trigger and mirrors the chosen row. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`.
+1. **Field** — Field at scale "sm", full width, laid out for the ACE licence gate dialog above the accept checkbox. Selector: `[class~="aui-field"]`. Layer step: **Field** — Small full-width field sits above the licence accept checkbox.
+2. **Label** — The "Country" label above the licence gate trigger. Selector: `[class~="aui-field-label"]`. Layer step: **Label** — The "Country" label above the licence gate trigger.
+3. **Trigger** — The flag-led outlined trigger in the licence gate; unlike the configuration panel the ACE scene states no scale or height. Selector: `[class~="aui-select-trigger"]`. Layer step: **Trigger** — Flag-led licence trigger uses app-default scale and height.
+4. **Trigger icon** — The flag icon that leads the trigger and mirrors the chosen row. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`. Layer step: **Trigger icon** — The flag icon that leads the trigger and mirrors the chosen row. Code target: `Field.SelectIcon`.
 5. **Value** — Shows "United States" as the pre-filled country before the licence is accepted. Selector: `[class~="aui-select-value"]`. Direct text is highlighted.
-6. **Chevron** — The chevron at the end of the trigger. Selector: `[class~="aui-select-chevron"]`.
-7. **Popup** — Popup of the trigger width, 4px below the trigger, listing the three countries. Selector: `[class~="aui-select-popup"]`.
-8. **List** — The list of Canada, United States and Mexico rows. Selector: `[class~="aui-select-list"]`.
-9. **Item** — A country row with flag, name and a trailing check slot for the chosen country. Selector: `[class~="aui-select-item"]`.
-10. **Item icon** — The flag icon at the start of each row, before the country name. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
-11. **Item text** — The country name: Canada, United States or Mexico. Selector: `[class~="aui-select-item-text"]`.
-12. **Indicator** — In the ACE licence gate scene this slot holds a check icon on the chosen row; the base example keeps it empty. Selector: `[class~="aui-select-item-indicator"]`.
-13. **Check icon** — The check drawn at the end of the chosen country row in the ACE scene. Selector: `[class~="aui-select-item-indicator"] [class~="aui-contained-icon"]`.
+6. **Chevron** — The chevron at the end of the trigger. Selector: `[class~="aui-select-chevron"]`. Layer step: **Chevron** — The chevron at the end of the trigger.
+7. **Popup** — Popup of the trigger width, 4px below the trigger, listing the three countries. Selector: `[class~="aui-select-popup"]`. Layer step: **Popup** — Popup sits 4px below and lists three countries.
+8. **List** — The list of Canada, United States and Mexico rows. Selector: `[class~="aui-select-list"]`. Layer step: **List** — The list of Canada, United States and Mexico rows.
+9. **Item** — A country row with flag, name and a trailing check slot for the chosen country. Selector: `[class~="aui-select-item"]`. Layer step: **Item** — Country row pairs its flag and name with a trailing check slot.
+10. **Item icon** — The flag icon at the start of each row, before the country name. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`. Layer step: **Item icon** — Flag icon appears before each country name in the list. Code target: `Field.SelectIcon`.
+11. **Item text** — The country name: Canada, United States or Mexico. Selector: `[class~="aui-select-item-text"]`. Layer step: **Item text** — The country name: Canada, United States or Mexico.
+12. **Indicator** — In the ACE licence gate scene this slot holds a check icon on the chosen row; the base example keeps it empty. Selector: `[class~="aui-select-item-indicator"]`. Layer step: **Indicator** — ACE shows a check here; the base example leaves it empty.
+13. **Check icon** — The check drawn at the end of the chosen country row in the ACE scene. Selector: `[class~="aui-select-item-indicator"] [class~="aui-contained-icon"]`. Layer step: **Check icon** — ACE draws a check at the chosen country’s row end.
 
 ## Apps
 
@@ -78,16 +78,16 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Backdrop** — The dimmed backdrop behind the ACE licence agreement. Selector: `[data-ug-part="licence-backdrop"]`.
-2. **Dialog** — The modal licence gate that contains the country requirement and acceptance controls. Selector: `[data-ug-part="licence-dialog"]`.
-3. **Title** — The agreement title and the Do Not Accept close action. Selector: `[data-ug-part="licence-title"]`.
-4. **Description** — A short instruction to review and accept before starting ACE. Selector: `[data-ug-part="licence-description"]`.
-5. **Agreement body** — The scrollable agreement text and required country field. Selector: `[data-ug-part="licence-body"]`.
-6. **Agreement text** — The licence terms the user reviews before acceptance. Selector: `[data-ug-part="licence-copy"]`.
-7. **Country field position** — The required country choice sits after the licence text. Selector: `[data-ug-part="licence-country"]`.
-8. **Dialog actions** — The footer groups the decline and acceptance actions. Selector: `[data-ug-part="licence-actions"]`.
-9. **Decline action** — Do Not Accept closes the agreement without accepting it. Selector: `[data-ug-part="decline"]`.
-10. **Accept action** — Accept Application License Agreement completes the gate. Selector: `[data-ug-part="accept"]`.
+1. **Backdrop** — The dimmed backdrop behind the ACE licence agreement. Selector: `[data-ug-part="licence-backdrop"]`. Layer step: **Backdrop** — The backdrop separates the licence gate from the app beneath it.
+2. **Dialog** — The modal licence gate that contains the country requirement and acceptance controls. Selector: `[data-ug-part="licence-dialog"]`. Layer step: **Dialog** — The modal frame contains the agreement and its controls.
+3. **Title** — The agreement title and the Do Not Accept close action. Selector: `[data-ug-part="licence-title"]`. Layer step: **Title** — Title names the agreement; the Do Not Accept X follows.
+4. **Description** — A short instruction to review and accept before starting ACE. Selector: `[data-ug-part="licence-description"]`. Layer step: **Instruction** — The sentence directs the user to review the agreement before starting ACE.
+5. **Agreement body** — The scrollable agreement text and required country field. Selector: `[data-ug-part="licence-body"]`. Layer step: **Agreement body** — The body contains the licence copy followed by the country field.
+6. **Agreement text** — The licence terms the user reviews before acceptance. Selector: `[data-ug-part="licence-copy"]`. Layer step: **Agreement text** — The user reviews the displayed licence terms before accepting.
+7. **Country field position** — The required country choice sits after the licence text. Selector: `[data-ug-part="licence-country"]`. Layer step: **Country field position** — The country selection follows the licence terms inside the same body.
+8. **Dialog actions** — The footer groups the decline and acceptance actions. Selector: `[data-ug-part="licence-actions"]`. Layer step: **Dialog actions** — The footer holds the two ways to leave the gate.
+9. **Decline action** — Do Not Accept closes the agreement without accepting it. Selector: `[data-ug-part="decline"]`. Layer step: **Decline action** — Do Not Accept exits without agreeing to the terms.
+10. **Accept action** — Accept Application License Agreement completes the gate. Selector: `[data-ug-part="accept"]`. Layer step: **Accept action** — The acceptance button completes the licence gate for ACE users.
 
 #### Component UI source — `src/usecase-gallery/usecases/select/Select-005/example.tsx`
 

@@ -36,21 +36,21 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the Save as Template form. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The default-width form window (ADM uses 480px, HS the same default). Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar reading "Save as Template" with the close X at its end. Selector: `[class~="aui-dialog-title"]`.
+1. **Overlay** — The scrim behind the Save as Template form. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — The scrim behind the Save as Template form.
+2. **Popup** — The default-width form window (ADM uses 480px, HS the same default). Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — The default-width form window (ADM uses 480px, HS the same default).
+3. **Title bar** — The raised title bar reading "Save as Template" with the close X at its end. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Raised Save as Template title ends with Close.
 4. **Title text** — The words "Save as Template" in the title bar. Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
-5. **Close** — The close X that cancels the form (labelled "Cancel" in ACE and "Close Save as Template" in FD). Selector: `[class~="aui-dialog-close"]`.
-6. **Body** — The body that holds the template name form; the FD body scrolls with overflow auto. Selector: `[class~="aui-dialog-body"]`.
-7. **Form column** — The no-padding column with gap 16 that stacks the form's single field. Part marker: `data-ug-part="form-column"`.
-8. **Name field** — The Template name field; FD drops the visible label and relies on the placeholder and aria-label. Selector: `[class~="aui-field"]`.
-9. **Name label** — The visible label "Template name" above the input. Selector: `[class~="aui-field-label"]`.
-10. **Name input** — The text input with the placeholder "Please enter a name". Selector: `[class~="aui-field"] input`.
-11. **Footer** — The footer that holds Cancel and Save at the end. Selector: `[class~="aui-dialog-actions"]`.
-12. **Cancel** — The default Dialog.Button that closes the form without saving (FD renders a plain Button that looks the same). Part marker: `data-ug-part="cancel"`.
-13. **Save** — The secondary solid Save, disabled until the name is valid; FD swaps it for a primary-coloured Button. Part marker: `data-ug-part="save"`.
+5. **Close** — The close X that cancels the form (labelled "Cancel" in ACE and "Close Save as Template" in FD). Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — Close cancels the form; ACE says Cancel and FD names the dialog.
+6. **Body** — The body that holds the template name form; the FD body scrolls with overflow auto. Selector: `[class~="aui-dialog-body"]`. Layer step: **Body** — Form body scrolls in FD when template fields exceed its height.
+7. **Form column** — The no-padding column with gap 16 that stacks the form's single field. Part marker: `data-ug-part="form-column"`. Layer step: **Form column** — The no-padding column with gap 16 that stacks the form's single field.
+8. **Name field** — The Template name field; FD drops the visible label and relies on the placeholder and aria-label. Selector: `[class~="aui-field"]`. Layer step: **Name field** — Template name uses a label, except FD relies on its placeholder.
+9. **Name label** — The visible label "Template name" above the input. Selector: `[class~="aui-field-label"]`. Layer step: **Name label** — The visible label "Template name" above the input.
+10. **Name input** — The text input with the placeholder "Please enter a name". Selector: `[class~="aui-field"] input`. Layer step: **Name input** — The text input with the placeholder "Please enter a name". Code target: `Field.Input`.
+11. **Footer** — The footer that holds Cancel and Save at the end. Selector: `[class~="aui-dialog-actions"]`. Layer step: **Footer** — The footer that holds Cancel and Save at the end.
+12. **Cancel** — The default Dialog.Button that closes the form without saving (FD renders a plain Button that looks the same). Part marker: `data-ug-part="cancel"`. Layer step: **Cancel** — Default Cancel closes the form without saving a template.
+13. **Save** — The secondary solid Save, disabled until the name is valid; FD swaps it for a primary-coloured Button. Part marker: `data-ug-part="save"`. Layer step: **Save** — Secondary Save stays disabled until the name is valid.
 
 ## Apps
 

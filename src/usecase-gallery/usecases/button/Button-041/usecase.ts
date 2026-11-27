@@ -9,16 +9,9 @@ export default defineUsecase({
   title: 'Call dealer button',
 
   apps: ['agpd'],
-    layers: [
-        {"id":"call","partId":"call","title":"Call","explanation":"Pill-shaped primary phone button calls the dealer directly.","keyIdea":"The pill-shaped call action opens the dealer phone link.","selector":"[class~=\"aui-button\"]"},
-        {"id":"call-icon","partId":"call-icon","title":"Phone icon","explanation":"The phone glyph centred in the round button.","keyIdea":"The phone glyph identifies the action as a call.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])","code":["IconButton"]},
-      ],
 options: [
     { id: "agpd-dealer-contact", contextAnatomy: CONTEXT_ANATOMY, name: "Dealer contact", apps: ["agpd"], source: {"agpd":"src/agpd/QuoteDialog.tsx"} ,
-      contextLayers: [
-        {"id":"context-dealer-row","partId":"dealer-row","title":"Dealer contact row","explanation":"End-aligned row pairs Need help? with Call and 8px gap.","keyIdea":"The end-aligned row under the quote form that pairs the Need help?","selector":"[data-ug-part=\"dealer-row\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"dealer-row","lesson":{"explanation":"End-aligned row pairs Need help? with Call and 8px gap.","scope":"context"}}]},
   ],
   source: { agpd: 'src/agpd/QuoteDialog.tsx' },
   summary: 'A round filled accent IconButton calls the dealer.',
@@ -27,8 +20,8 @@ options: [
   how: 'Set aui color "primary", paint "solid" and shape "pill" on an IconButton with render set to an anchor (href "tel:"), so the link is the control. '
     + 'Measured: 28px square, 999px radius, white glyph on orange rgb(255, 83, 8). The other icon buttons are transparent, outlined or tonal (Button-028 to Button-040), so a solid fill is its own variant.',
   anatomy: [
-    { id: 'call', name: 'Call', selector: '[class~="aui-button"]', description: 'The round (pill) solid primary phone button; the AGPD scene renders it as a tel: link named Call dealer.' },
-    { id: 'call-icon', name: 'Phone icon', selector: '[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])', description: 'The phone glyph centred in the round button.' },
+    { id: 'call', name: 'Call', selector: '[class~="aui-button"]', description: 'The round (pill) solid primary phone button; the AGPD scene renders it as a tel: link named Call dealer.' , lesson: {"explanation":"Pill-shaped primary phone button calls the dealer directly."}},
+    { id: 'call-icon', name: 'Phone icon', selector: '[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])', description: 'The phone glyph centred in the round button.' , lesson: {"explanation":"The phone glyph centred in the round button.","code":["IconButton"]}},
     { id: 'hint', name: 'Hint text', selector: '[class~="aui-type"]', text: true, description: 'AGPD only: the Need help? 1-800-000-0000 line beside the button.' },
   ],
 });

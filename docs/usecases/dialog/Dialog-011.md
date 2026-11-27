@@ -38,15 +38,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the AGPD quote request. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The wide quote window, min(840px, 100%) through the --aui-width variable. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The title bar on the card surface (not raised) reading REQUEST A QUOTE, with only the close X after the spacer. Selector: `[class~="aui-dialog-title"]`.
+1. **Overlay** — The scrim behind the AGPD quote request. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim dims the AGPD workspace behind the quote request.
+2. **Popup** — The wide quote window, min(840px, 100%) through the --aui-width variable. Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — The wide quote window, min(840px, 100%) through the --aui-width variable.
+3. **Title bar** — The title bar on the card surface (not raised) reading REQUEST A QUOTE, with only the close X after the spacer. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Flat card-surface title says REQUEST A QUOTE before Close.
 4. **Title text** — The uppercase words REQUEST A QUOTE in the title bar. Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
-5. **Close** — The close X labelled "Close REQUEST A QUOTE". Selector: `[class~="aui-dialog-close"]`.
-6. **Body** — The scrolling body (overflow auto, minHeight 0) that holds the one wrapping form. Selector: `[class~="aui-dialog-body"]`.
-7. **Form** — The View rendered as a form: a wrapping flex row with gap 24 and top alignment, so the plate preview and the form column can sit side by side. Part marker: `data-ug-part="form"`.
+5. **Close** — The close X labelled "Close REQUEST A QUOTE". Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — The close X labelled "Close REQUEST A QUOTE".
+6. **Body** — The scrolling body (overflow auto, minHeight 0) that holds the one wrapping form. Selector: `[class~="aui-dialog-body"]`. Layer step: **Body** — Scrollable body contains the wrapping form fields and preview.
+7. **Form** — The View rendered as a form: a wrapping flex row with gap 24 and top alignment, so the plate preview and the form column can sit side by side. Part marker: `data-ug-part="form"`. Layer step: **Form** — Wrapping form pairs plate preview and fields with 24px gap.
 8. **Form text** — The p3 placeholder line "The form fields go here." in the Dialog frame. Part marker: `data-ug-part="form-text"`. Direct text is highlighted.
 
 ## Apps

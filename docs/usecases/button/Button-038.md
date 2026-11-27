@@ -38,12 +38,12 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Remove** — The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click. Selector: `[class~="aui-button"][aria-label^="Remove"]`.
-2. **Trash icon** — The trash glyph centred in the button. Selector: `[class~="aui-button"][aria-label^="Remove"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Remove cell** — The last cell of the Job 1 row that holds the trash button next to the job name. Selector: `[class~="aui-table-cell"]:last-child`.
-4. **Remove header** — The unlabeled column heading (aria-label Remove) above the trash buttons. Selector: `[class~="aui-table-header-cell"]:last-child`.
+1. **Remove** — The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click. Selector: `[class~="aui-button"][aria-label^="Remove"]`. Layer step: **Remove** — 28px trash button removes Job 1 and opens confirmation.
+2. **Trash icon** — The trash glyph centred in the button. Selector: `[class~="aui-button"][aria-label^="Remove"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Trash icon** — Trash glyph appears at the end of the job row. Code target: `IconButton`.
+3. **Remove cell** — The last cell of the Job 1 row that holds the trash button next to the job name. Selector: `[class~="aui-table-cell"]:last-child`. Layer step: **Remove cell** — Last cell holds the trash action for the Job 1 row.
+4. **Remove header** — The unlabeled column heading (aria-label Remove) above the trash buttons. Selector: `[class~="aui-table-header-cell"]:last-child`. Layer step: **Remove header** — The unlabeled column heading (aria-label Remove) above the trash buttons.
 
 ## Apps
 

@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import type { ComponentType } from 'react';
 import { appLabels } from './app-views';
 import { toContextSlotLines, toContextSnippet, toSnippet } from './snippet';
+import { anatomyLayers } from './anatomy-layers';
 import type { AppKey } from '../apps';
 import type { ComponentGroup, ComponentMeta, ContextProps, UiTypeGroup, Usecase, UsecaseDoc, UsecaseOption, UsecaseOptionDoc } from '../types';
 
@@ -36,36 +37,16 @@ const fail = (message: string): never => {
   throw new Error(`[usecase-gallery] ${message}`);
 };
 
-function validateLayers(
-  id: string,
-  layers: Usecase['layers'],
-  label: string,
-  usecaseKeyIdeas: Set<string>,
-  catalogKeyIdeaCounts: Map<string, number>,
-) {
-  if (!layers.length) fail(`${id} has no ${label} layer steps`);
+function validateAnatomy(id: string, parts: Usecase['anatomy'], label = 'Component') {
   const ids = new Set<string>();
-  const explanations = new Set<string>();
-  for (const layer of layers) {
-    const keyIdea = layer.keyIdea.trim();
-    const explanation = layer.explanation.trim().replace(/\s+/g, ' ');
-    if (!layer.id || !layer.title || !explanation || !keyIdea || !layer.selector) fail(`${id} has an incomplete ${label} layer step`);
-    const wordCount = explanation.split(' ').length;
-    if (wordCount < 8 || wordCount > 12) fail(`${id} ${label} layer "${layer.id}" explanation must be 8 to 12 words (got ${wordCount})`);
-    const normalizedExplanation = explanation.toLocaleLowerCase();
-    if (explanations.has(normalizedExplanation)) fail(`${id} repeats ${label} layer explanation "${explanation}"`);
-    if (/^(?:this|it) (?:is|shows|adds) (?:the|a) (?:component|element|part|control)\b/i.test(explanation)) fail(`${id} ${label} layer "${layer.id}" uses a generic explanation`);
-    explanations.add(normalizedExplanation);
-    if (keyIdea === layer.explanation.trim()) fail(`${id} ${label} layer "${layer.id}" keyIdea must differ from its explanation`);
-    if (/\bbuilds on\b/i.test(keyIdea)) fail(`${id} ${label} layer "${layer.id}" uses the forbidden "builds on" keyIdea pattern`);
-    if (ids.has(layer.id)) fail(`${id} repeats ${label} layer id "${layer.id}"`);
-    ids.add(layer.id);
-    if (usecaseKeyIdeas.has(keyIdea)) fail(`${id} repeats keyIdea "${keyIdea}" across its layer steps`);
-    usecaseKeyIdeas.add(keyIdea);
-    const count = (catalogKeyIdeaCounts.get(keyIdea) ?? 0) + 1;
-    if (count > 3) fail(`keyIdea "${keyIdea}" is used on more than three layer steps in the catalog`);
-    catalogKeyIdeaCounts.set(keyIdea, count);
+  for (const part of parts) {
+    if (!part.id || !part.name || !part.description) fail(`${id} has an incomplete ${label} Anatomy part`);
+    if (ids.has(part.id)) fail(`${id} repeats ${label} Anatomy id "${part.id}"`);
+    ids.add(part.id);
   }
+  // Parent and reading order depend on option-specific mounted DOM and cannot be inferred
+  // from arbitrary CSS selectors in the static catalog. The preview orders resolved targets.
+  anatomyLayers(parts, label === 'Component' ? 'component' : 'context');
 }
 
 /** Pure assembly of the catalog from glob results, so the discovery rules live in one testable place. */
@@ -80,7 +61,6 @@ export function buildCatalog({ metas, docs, examples, sources, options = {}, opt
   const optionByKey = new Map(Object.entries(options).map(([p, load]) => [optionKey(p), load]));
   const optionSourceByKey = new Map(Object.entries(optionSources).map(([p, load]) => [optionKey(p), load]));
   const ids = new Set<string>();
-  const catalogKeyIdeaCounts = new Map<string, number>();
 
   for (const [path, doc] of Object.entries(docs)) {
     const [component, id] = usecaseKey(path);
@@ -95,18 +75,14 @@ export function buildCatalog({ metas, docs, examples, sources, options = {}, opt
     const loadSource = sourceByPath.get(key) ?? fail(`${id} is missing example.tsx`);
     let code: Promise<string> | undefined;
     const { options: optionDocs, ...docFields } = doc;
-    const authoredLayers = doc.layers;
-    if (!authoredLayers?.length) fail(`${id} is missing authored Component layer steps`);
-    const usecaseKeyIdeas = new Set<string>();
     const usecase: Usecase = {
       ...docFields,
-      layers: authoredLayers,
       id,
       componentId: group.id,
       Example: lazy(() => loadExample().then((component) => ({ default: component }))),
       loadCode: () => (code ??= loadSource().then(toSnippet)),
     };
-    validateLayers(id, usecase.layers, 'Component', usecaseKeyIdeas, catalogKeyIdeaCounts);
+    validateAnatomy(id, usecase.anatomy);
     if (!group.uiTypes.includes(doc.uiType)) fail(`${id} sets uiType "${doc.uiType}", which is not in uiTypes of ${component}.meta.ts (${group.uiTypes.join(', ')})`);
     if (!optionDocs?.length) fail(`${id} must define at least one option`);
     usecase.options = buildOptions(usecase, optionDocs, key, optionByKey, optionSourceByKey);
@@ -118,9 +94,7 @@ export function buildCatalog({ metas, docs, examples, sources, options = {}, opt
         if (overrideIds.has(part.id)) fail(`${id} option "${option.id}" overrides Component Anatomy part "${part.id}" twice`);
         overrideIds.add(part.id);
       }
-      if (option.componentLayers?.length) validateLayers(id, option.componentLayers, `Component (${option.id})`, usecaseKeyIdeas, catalogKeyIdeaCounts);
-      if (option.contextLayers.length) validateLayers(id, option.contextLayers, `In context (${option.id})`, usecaseKeyIdeas, catalogKeyIdeaCounts);
-      else if (option.contextAnatomy.length) fail(`${id} option "${option.id}" is missing authored In context layer steps`);
+      validateAnatomy(id, option.contextAnatomy, `In context (${option.id})`);
     }
     group.usecases.push(usecase);
   }
@@ -185,8 +159,15 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
     names.add(normalized);
   }
   const options = docs.map((raw, index): UsecaseOption => {
-    const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextLayers, contextDocument, componentAnatomy, componentLayers, componentDocument } = raw;
-    if (contextLayers === undefined) fail(`${id} option "${optionId}" is missing authored In context layer steps`);
+    const { id: optionId, name, apps = usecase.apps, note, source, showContext = true, contextAnatomy = [], contextAnatomyOverrides = [], contextDocument, componentAnatomy, componentDocument } = raw;
+    const contextIds = new Set(contextAnatomy.map((part) => part.id));
+    const anatomyOverrideIds = new Set<string>();
+    for (const part of contextAnatomyOverrides) {
+      if (!contextIds.has(part.id)) fail(`${id} option "${optionId}" overrides unknown In context Anatomy part "${part.id}"`);
+      if (anatomyOverrideIds.has(part.id)) fail(`${id} option "${optionId}" overrides In context Anatomy part "${part.id}" twice`);
+      anatomyOverrideIds.add(part.id);
+    }
+    const resolvedContextAnatomy = contextAnatomy.map((part) => ({ ...part, ...contextAnatomyOverrides.find((override) => override.id === part.id) }));
     for (const app of [...apps, ...Object.keys(source ?? {})] as AppKey[]) {
       if (!apps.includes(app) || !usecase.apps.includes(app)) fail(`${id} sets the option "${optionId}" to app "${app}", which is not in its apps`);
     }
@@ -214,11 +195,9 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
       label: appLabels(apps),
       note,
       showContext,
-      contextAnatomy,
-      contextLayers,
+      contextAnatomy: resolvedContextAnatomy,
       contextDocument,
       componentAnatomy,
-      componentLayers,
       componentDocument,
       Scene,
       Example,

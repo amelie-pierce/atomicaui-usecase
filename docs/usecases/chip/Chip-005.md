@@ -35,11 +35,11 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Chip** — The default-styled chip that stands for one attached file in the Feedback form of ADM, PFD, PBS, HS, AGPD and RWS. Selector: `[class~="aui-chip"]`.
+1. **Chip** — The default-styled chip that stands for one attached file in the Feedback form of ADM, PFD, PBS, HS, AGPD and RWS. Selector: `[class~="aui-chip"]`. Layer step: **Chip** — Default chip represents one attached file in feedback forms.
 2. **Label** — The attached file name, screenshot.png. Selector: `[class~="aui-chip-label"]`. Direct text is highlighted.
-3. **Dismiss** — The X button at the end, labelled "Remove screenshot.png", that detaches the file. Selector: `[class~="aui-chip-dismiss"]`.
+3. **Dismiss** — The X button at the end, labelled "Remove screenshot.png", that detaches the file. Selector: `[class~="aui-chip-dismiss"]`. Layer step: **Dismiss** — End X removes the attached screenshot from the feedback form.
 
 ## Apps
 

@@ -37,14 +37,14 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field** — Stacked number field at scale "sm" with a 3 gap; in the label-beside apps (ADM, ADC, ACE) it becomes a row that splits 137px for the label and 137px for the control. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Fc perp" label above the control; the label-beside apps set it nowrap with an ellipsis and flex-basis half. Selector: `[class~="aui-field-label"]`.
-3. **Control** — The 28px outlined control row with 3/8 padding that holds the value and the unit side by side. Selector: `[class~="aui-field-control"]`.
-4. **Input** — The input showing 650, with inputMode "decimal" and the value aligned to the end so it sits next to the unit. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`.
-5. **Number field** — FD, AGPD, ADM and ADC wrap the value in a Field.NumberField group instead of a plain input, with no steppers, so the number is parsed and aligned at the end. Selector: `[class~="aui-number-field"]`.
-6. **Unit** — The "psi" unit after the value, a mono role "l4" Type here; HS, PFD and RWS render it 14px semi-bold, FD and AGPD as a 16px regular mono unit. Selector: `[class~="aui-field-control"] > [data-aui-typeface], [class~="aui-number-field-unit"]`.
+1. **Field** — Stacked number field at scale "sm" with a 3 gap; in the label-beside apps (ADM, ADC, ACE) it becomes a row that splits 137px for the label and 137px for the control. Selector: `[class~="aui-field"]`. Layer step: **Field** — Small stacked number field; some apps put its 137px label beside it.
+2. **Label** — The "Fc perp" label above the control; the label-beside apps set it nowrap with an ellipsis and flex-basis half. Selector: `[class~="aui-field-label"]`. Layer step: **Label** — Fc perp label sits above; inline variants truncate within half the row.
+3. **Control** — The 28px outlined control row with 3/8 padding that holds the value and the unit side by side. Selector: `[class~="aui-field-control"]`. Layer step: **Control** — Outlined 28px row keeps the value beside its unit.
+4. **Input** — The input showing 650, with inputMode "decimal" and the value aligned to the end so it sits next to the unit. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`. Layer step: **Input** — End-aligned 650 accepts decimal entry beside the unit.
+5. **Number field** — FD, AGPD, ADM and ADC wrap the value in a Field.NumberField group instead of a plain input, with no steppers, so the number is parsed and aligned at the end. Selector: `[class~="aui-number-field"]`. Layer step: **Number field** — FD, AGPD, ADM, ADC use a stepper-free parsed number group.
+6. **Unit** — The "psi" unit after the value, a mono role "l4" Type here; HS, PFD and RWS render it 14px semi-bold, FD and AGPD as a 16px regular mono unit. Selector: `[class~="aui-field-control"] > [data-aui-typeface], [class~="aui-number-field-unit"]`. Layer step: **Unit** — Mono psi label follows the number; weight and size vary by app. Code target: `Type`, `Symbol`.
 
 ## Apps
 

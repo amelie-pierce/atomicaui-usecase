@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Expand Input** — The 28px square transparent secondary angle-right button that reopens the collapsed Input panel. Selector: `[class~="aui-button"][aria-label="Expand Input"]:not([class~="aui-panels-trigger"])`.
-2. **Panel trigger** — HCS rail: the same button rendered as a Panels.Trigger that targets the hcs-input panel from the 40px collapsed rail. Selector: `[class~="aui-panels-trigger"]`.
-3. **Tooltip** — The Expand Input label shown below the button. Selector: `[class~="aui-tooltip-popup"]`.
-4. **Panel** — The Input panel, collapsible to 40px (minSize 400px when open), next to the 3D Viewer panel. Selector: `[class~="aui-panels-panel"]`.
-5. **Resize handle** — The 8px primary handle between the Input and 3D Viewer panels. Selector: `[class~="aui-panels-resize-handle"]`.
+1. **Expand Input** — The 28px square transparent secondary angle-right button that reopens the collapsed Input panel. Selector: `[class~="aui-button"][aria-label="Expand Input"]:not([class~="aui-panels-trigger"])`. Layer step: **Expand Input** — 28px transparent angle-right reopens the collapsed Input pane.
+2. **Panel trigger** — HCS rail: the same button rendered as a Panels.Trigger that targets the hcs-input panel from the 40px collapsed rail. Selector: `[class~="aui-panels-trigger"]`. Layer step: **Panel trigger** — HCS rail uses Panels.Trigger to reopen Input from 40px.
+3. **Tooltip** — The Expand Input label shown below the button. Selector: `[class~="aui-tooltip-popup"]`. Layer step: **Tooltip** — The Expand Input label shown below the button.
+4. **Panel** — The Input panel, collapsible to 40px (minSize 400px when open), next to the 3D Viewer panel. Selector: `[class~="aui-panels-panel"]`. Layer step: **Panel** — Input panel collapses to 40px beside the 3D Viewer.
+5. **Resize handle** — The 8px primary handle between the Input and 3D Viewer panels. Selector: `[class~="aui-panels-resize-handle"]`. Layer step: **Resize handle** — The 8px primary handle between the Input and 3D Viewer panels.
 
 ## Apps
 

@@ -38,10 +38,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Recalculate** — The xs square solid warning (amber) soft button that re-runs the calculation once inputs change. Selector: `[class~="aui-button"]`.
-2. **Rotate icon** — The arrows-rotate glyph that conveys running the calculation again. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Recalculate** — The xs square solid warning (amber) soft button that re-runs the calculation once inputs change. Selector: `[class~="aui-button"]`. Layer step: **Recalculate** — Extra-small amber warning button reruns the calculation after input changes.
+2. **Rotate icon** — The arrows-rotate glyph that conveys running the calculation again. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`. Layer step: **Rotate icon** — The arrows-rotate glyph that conveys running the calculation again. Code target: `IconButton`.
 3. **Result readout** — ADC only: the N = - and V = - values beside the button that it refreshes. Selector: `[class~="aui-type"]`. Direct text is highlighted.
 
 ## Apps

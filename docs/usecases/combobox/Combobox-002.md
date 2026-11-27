@@ -38,17 +38,17 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field** — Field at scale "sm" with a 3 gap that stacks the Type label above the combobox. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Type" label above the input group. Selector: `[class~="aui-field-label"]`.
-3. **Input group** — Input group at scale "sm" (color "surface", paint "fixed"), 28px high, matching the other Input pane fields. Selector: `[class~="aui-combobox-input-group"]`.
-4. **Input** — The type field showing "Glulam"; it filters Glulam, Solid Sawn and Parallel Strand Lumber as the user types. Selector: `[class~="aui-combobox-input"]`.
-5. **Trigger** — The "Open Type" button at the end of the group that opens the list. Selector: `[class~="aui-combobox-trigger"]`.
-6. **Icon** — The chevron-down glyph in the monotone layer at scale "sm". Selector: `[class~="aui-combobox-icon"]`.
-7. **Popup** — Popup of the trigger width capped at 20rem high, aligned to the start of the group. Selector: `[class~="aui-combobox-popup"]`.
-8. **List** — The list that renders one row per timber type. Selector: `[class~="aui-combobox-list"]`.
-9. **Item** — A timber type row at scale "sm"; highlighting one previews it in the card beside the list. Selector: `[class~="aui-combobox-item"]`.
+1. **Field** — Field at scale "sm" with a 3 gap that stacks the Type label above the combobox. Selector: `[class~="aui-field"]`. Layer step: **Field** — Small field stacks Type above the picker with a 3px gap.
+2. **Label** — The "Type" label above the input group. Selector: `[class~="aui-field-label"]`. Layer step: **Label** — Type label sits above the Glulam picker in the small field.
+3. **Input group** — Input group at scale "sm" (color "surface", paint "fixed"), 28px high, matching the other Input pane fields. Selector: `[class~="aui-combobox-input-group"]`. Layer step: **Input group** — Small fixed-surface row matches the Input pane’s 28px fields.
+4. **Input** — The type field showing "Glulam"; it filters Glulam, Solid Sawn and Parallel Strand Lumber as the user types. Selector: `[class~="aui-combobox-input"]`. Layer step: **Input** — Glulam field filters three timber types as the user types.
+5. **Trigger** — The "Open Type" button at the end of the group that opens the list. Selector: `[class~="aui-combobox-trigger"]`. Layer step: **Trigger** — End button labelled Open Type reveals the list.
+6. **Icon** — The chevron-down glyph in the monotone layer at scale "sm". Selector: `[class~="aui-combobox-icon"]`. Layer step: **Icon** — The chevron-down glyph in the monotone layer at scale "sm".
+7. **Popup** — Popup of the trigger width capped at 20rem high, aligned to the start of the group. Selector: `[class~="aui-combobox-popup"]`. Layer step: **Popup** — Popup aligns with the group start and caps height at 20rem.
+8. **List** — The list that renders one row per timber type. Selector: `[class~="aui-combobox-list"]`. Layer step: **List** — The list that renders one row per timber type.
+9. **Item** — A timber type row at scale "sm"; highlighting one previews it in the card beside the list. Selector: `[class~="aui-combobox-item"]`. Layer step: **Item** — Highlighted timber row previews its type in the adjacent card.
 
 ## Apps
 

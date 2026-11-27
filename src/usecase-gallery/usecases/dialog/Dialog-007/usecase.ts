@@ -5,27 +5,10 @@ export default defineUsecase({
   title: 'Accept licence dialog',
 
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"Scrim blocks the licence gate until the user responds.","keyIdea":"The license scrim keeps the required decision inside the foreground gate.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"The full-size gate window: scale \"sm\" with width and height \"fill\".","keyIdea":"A fill-sized popup gives this license the whole available reading area.","selector":"[class~=\"aui-dialog-popup\"]"},
-        {"id":"title","partId":"title","title":"Title bar","explanation":"HCS raises the licence title; ACE adds its app name.","keyIdea":"The agreement title identifies the legal gate before its terms appear.","selector":"[class~=\"aui-dialog-title\"]"},
-        {"id":"close","partId":"close","title":"Close","explanation":"Close X declines the licence; ACE labels it Do Not Accept.","keyIdea":"Closing this gate is treated as declining the agreement.","selector":"[class~=\"aui-dialog-close\"]"},
-        {"id":"description","partId":"description","title":"Description","explanation":"Fixed prompt stays between title and scrolling licence text.","keyIdea":"A fixed instruction tells users why they must read the agreement.","selector":"[class~=\"aui-dialog-description\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"Scrollable body holds licence text until the user reads to the end.","keyIdea":"The scroll region makes reading the full terms a prerequisite to acceptance.","selector":"[class~=\"aui-dialog-body\"]"},
-        {"id":"actions","partId":"actions","title":"Footer","explanation":"Small footer groups Do Not Accept and Accept at the end.","keyIdea":"The footer keeps decline and acceptance choices together after the terms.","selector":"[class~=\"aui-dialog-actions\"]"},
-        {"id":"decline","partId":"decline","title":"Do Not Accept","explanation":"Soft surface-alt decline stays open until the app responds.","keyIdea":"Decline leaves the gate open until the app handles the refusal.","selector":"[data-ug-part=\"decline\"]"},
-        {"id":"accept","partId":"accept","title":"Accept","explanation":"Secondary Accept unlocks after users read the full agreement.","keyIdea":"Acceptance becomes available only after the agreement has been read.","selector":"[data-ug-part=\"accept\"]"},
-      ],
 options: [
     { id: "hcs-accept", name: "Raised licence header", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
     { id: "ace-accept", name: "Plain licence header", apps: ["ace","adm","pfd","hs","fd","agpd","rws","pbs"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx","pbs":"src/LicenseGate.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', ace: 'src/features/eula/ui/EulaGate.tsx', adm: 'src/features/eula/components/EulaGate.tsx', pfd: 'src/pfd/LicenseGate.tsx', hs: 'src/hs/LicenseGate.tsx', fd: 'src/components/LicenseGate.jsx', agpd: 'src/agpd/LicenseGate.tsx', rws: 'src/rws/LicenseGate.tsx', pbs: 'src/LicenseGate.tsx' },
@@ -42,52 +25,52 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the licence gate, which the user cannot pass without answering.',
-    },
+     lesson: {"explanation":"Scrim blocks the licence gate until the user responds."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The full-size gate window: scale "sm" with width and height "fill".',
-    },
+     lesson: {"explanation":"The full-size gate window: scale \"sm\" with width and height \"fill\"."}},
     {
       id: 'title',
       name: 'Title bar',
       selector: '[class~="aui-dialog-title"]',
       description: 'The title bar naming the "Website Application License Agreement" (ACE prefixes the app name and leaves the bar plain instead of raised).',
-    },
+     lesson: {"explanation":"HCS raises the licence title; ACE adds its app name."}},
     {
       id: 'close',
       name: 'Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X, which counts as declining the licence (labelled "Do Not Accept" in the ACE scene).',
-    },
+     lesson: {"explanation":"Close X declines the licence; ACE labels it Do Not Accept."}},
     {
       id: 'description',
       name: 'Description',
       selector: '[class~="aui-dialog-description"]',
       description: 'The fixed line "Review and accept to start using the HCS prototype." between the title and the scrolling text (ACE says "to start using ACE.").',
-    },
+     lesson: {"explanation":"Fixed prompt stays between title and scrolling licence text."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The scrolling body that holds the licence text the user reads to the end before Accept becomes available.',
-    },
+     lesson: {"explanation":"Scrollable body holds licence text until the user reads to the end."}},
     {
       id: 'actions',
       name: 'Footer',
       selector: '[class~="aui-dialog-actions"]',
       description: 'The footer at scale "sm" that holds the Do Not Accept and Accept pair at the end.',
-    },
+     lesson: {"explanation":"Small footer groups Do Not Accept and Accept at the end."}},
     {
       id: 'decline',
       name: 'Do Not Accept',
       description: 'The surface-alt solid soft button that declines the licence; dismiss={false} keeps the gate open until the app reacts.',
-    },
+     lesson: {"explanation":"Soft surface-alt decline stays open until the app responds.","selector":"[data-ug-part=\"decline\"]"}},
     {
       id: 'accept',
       name: 'Accept',
       description: 'The secondary solid soft button labelled "Accept Application License Agreement"; the scenes enable it once the text is read to the end.',
-    },
+     lesson: {"explanation":"Secondary Accept unlocks after users read the full agreement.","selector":"[data-ug-part=\"accept\"]"}},
   ],
 });

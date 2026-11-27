@@ -38,20 +38,20 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field** — Field at scale "sm" with a 3 gap and a fixed 224px width, so the picture rows have room. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Base plate" label above the trigger. Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — Full-width outlined trigger showing the chosen plate name only; the picture appears in the rows, not in the trigger. Selector: `[class~="aui-select-trigger"]`.
+1. **Field** — Field at scale "sm" with a 3 gap and a fixed 224px width, so the picture rows have room. Selector: `[class~="aui-field"]`. Layer step: **Field** — Small field stays 224px wide for picture choices.
+2. **Label** — The "Base plate" label above the trigger. Selector: `[class~="aui-field-label"]`. Layer step: **Label** — Base plate label sits above the picture-select trigger.
+3. **Trigger** — Full-width outlined trigger showing the chosen plate name only; the picture appears in the rows, not in the trigger. Selector: `[class~="aui-select-trigger"]`. Layer step: **Trigger** — Full-width outlined trigger shows the chosen plate name.
 4. **Value** — Shows "Plate A", the default base plate. Selector: `[class~="aui-select-value"]`. Direct text is highlighted.
-5. **Chevron** — The chevron at the trigger end. Selector: `[class~="aui-select-chevron"]`.
-6. **Popup** — Popup of the trigger width listing Plate A, Plate B and Plate C. Selector: `[class~="aui-select-popup"]`.
-7. **List** — The list of the three plate rows. Selector: `[class~="aui-select-list"]`.
-8. **Item** — A plate row that leads with a picture tile, then the name and an indicator slot. Selector: `[class~="aui-select-item"]`.
-9. **Image tile** — The tonal primary tile with soft corners and 4 padding that frames the option picture. Selector: `[class~="aui-select-item"] > [class~="aui-view"]`.
-10. **Image** — The image glyph standing in for the plate drawing; the apps show a real picture. Selector: `[class~="aui-select-item"] > [class~="aui-view"] > [class~="aui-contained-icon"]`.
-11. **Item text** — The plate name next to the picture. Selector: `[class~="aui-select-item-text"]`.
-12. **Indicator** — End-of-row slot; the AGPD scene draws a check icon here on the chosen plate. Selector: `[class~="aui-select-item-indicator"]`.
+5. **Chevron** — The chevron at the trigger end. Selector: `[class~="aui-select-chevron"]`. Layer step: **Chevron** — End chevron marks the plate trigger as a dropdown.
+6. **Popup** — Popup of the trigger width listing Plate A, Plate B and Plate C. Selector: `[class~="aui-select-popup"]`. Layer step: **Popup** — Popup lists Plate A, Plate B, and Plate C.
+7. **List** — The list of the three plate rows. Selector: `[class~="aui-select-list"]`. Layer step: **List** — Popup list holds exactly three available plate rows.
+8. **Item** — A plate row that leads with a picture tile, then the name and an indicator slot. Selector: `[class~="aui-select-item"]`. Layer step: **Item** — Plate row starts with a picture tile, name, and indicator.
+9. **Image tile** — The tonal primary tile with soft corners and 4 padding that frames the option picture. Selector: `[class~="aui-select-item"] > [class~="aui-view"]`. Layer step: **Image tile** — Soft primary tile frames each plate picture with 4px padding.
+10. **Image** — The image glyph standing in for the plate drawing; the apps show a real picture. Selector: `[class~="aui-select-item"] > [class~="aui-view"] > [class~="aui-contained-icon"]`. Layer step: **Image** — Image glyph stands in for the real plate pictures.
+11. **Item text** — The plate name next to the picture. Selector: `[class~="aui-select-item-text"]`. Layer step: **Item text** — Plate name appears beside the option picture in each row.
+12. **Indicator** — End-of-row slot; the AGPD scene draws a check icon here on the chosen plate. Selector: `[class~="aui-select-item-indicator"]`. Layer step: **Indicator** — AGPD places a check in the chosen plate’s end slot.
 
 ## Apps
 

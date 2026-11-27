@@ -38,18 +38,18 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Table** — Editable grid: a self-scrolling soft table at scale "sm", filling the width, whose body cells contain number fields. Selector: `[class~="aui-table"]`.
-2. **Header** — Column headings #, Column Spacing and Row Spacing. Selector: `[class~="aui-table-head"]`.
-3. **Header cell** — Heading for one editable spacing column; # is fixed at 32px. Selector: `[class~="aui-table-header-cell"]`.
-4. **Body** — Rows of anchor spacings the user edits in place. Selector: `[class~="aui-table-body"]`.
-5. **Row** — Anchor 1, with an X and a Y spacing input in the other two cells. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
-6. **Cell** — Body cell: the 32px row number, or the wrapper around one number field. Selector: `[class~="aui-table-cell"]`.
-7. **Number field** — The input that edits a spacing value: "X Spacing 1" starts at 6 and "Y Spacing 1" at 8, with min 1. Selector: `[class~="aui-number-field"]`.
-8. **Input group** — Fixed surface frame holding the input and its unit. Selector: `[class~="aui-number-field-group"]`.
-9. **Input** — The editable numeric text, right-aligned. Selector: `[class~="aui-number-field-group"] [class~="aui-input"]`.
-10. **Unit** — The "in" unit that follows each value. Selector: `[class~="aui-number-field-unit"]`.
+1. **Table** — Editable grid: a self-scrolling soft table at scale "sm", filling the width, whose body cells contain number fields. Selector: `[class~="aui-table"]`. Layer step: **Table** — Soft self-scrolling editable grid fills the available width.
+2. **Header** — Column headings #, Column Spacing and Row Spacing. Selector: `[class~="aui-table-head"]`. Layer step: **Header** — Column headings #, Column Spacing and Row Spacing.
+3. **Header cell** — Heading for one editable spacing column; # is fixed at 32px. Selector: `[class~="aui-table-header-cell"]`. Layer step: **Header cell** — Heading for one editable spacing column; # is fixed at 32px.
+4. **Body** — Rows of anchor spacings the user edits in place. Selector: `[class~="aui-table-body"]`. Layer step: **Body** — Rows of anchor spacings the user edits in place.
+5. **Row** — Anchor 1, with an X and a Y spacing input in the other two cells. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`. Layer step: **Row** — Anchor 1 row holds X and Y spacing inputs.
+6. **Cell** — Body cell: the 32px row number, or the wrapper around one number field. Selector: `[class~="aui-table-cell"]`. Layer step: **Cell** — Body cell shows the 32px row number or input wrapper.
+7. **Number field** — The input that edits a spacing value: "X Spacing 1" starts at 6 and "Y Spacing 1" at 8, with min 1. Selector: `[class~="aui-number-field"]`. Layer step: **Number field** — X spacing starts at 6 and Y at 8; minimum is 1.
+8. **Input group** — Fixed surface frame holding the input and its unit. Selector: `[class~="aui-number-field-group"]`. Layer step: **Input group** — Fixed surface frame holding the input and its unit.
+9. **Input** — The editable numeric text, right-aligned. Selector: `[class~="aui-number-field-group"] [class~="aui-input"]`. Layer step: **Input** — Right-aligned input displays the editable spacing number value.
+10. **Unit** — The "in" unit that follows each value. Selector: `[class~="aui-number-field-unit"]`. Layer step: **Unit** — The inch unit follows each entered spacing value.
 
 ## Apps
 

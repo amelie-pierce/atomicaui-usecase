@@ -4,21 +4,8 @@ export default defineUsecase({
   uiType: 'Context menu',
   title: 'Tab context menu',
   apps: ['adc'],
-    layers: [
-    {"id":"trigger","partId":"trigger","title":"Design tab trigger","explanation":"Design 1 tab opens its secondary menu on right-click.","keyIdea":"The selected design tab anchors the menu to the design whose actions are being changed.","selector":"[class~=\"aui-tabs-tab\"]"},
-    {"id":"popup","partId":"popup","title":"Menu surface","explanation":"Tab options popup sits beside the tab and groups actions.","keyIdea":"The popup keeps design-specific commands close to their invoking tab.","selector":"[class~=\"aui-dropdown-popup\"]","code":["ContextMenu.Popup"]},
-    {"id":"close-action","partId":"close-action","title":"Close action","explanation":"First row closes the current Design 1 tab.","keyIdea":"Close current removes the active tab while leaving other designs available.","selector":"[data-ug-part=\"close-action\"]"},
-    {"id":"close-others-action","partId":"close-others-action","title":"Close other designs","explanation":"This row closes every other design while keeping the current tab.","keyIdea":"Close other designs preserves the current tab and removes the surrounding alternatives.","selector":"[data-ug-part=\"close-others-action\"]"},
-    {"id":"separator","partId":"separator","title":"Action group divider","explanation":"Divider separates close commands from editing and duplication actions.","keyIdea":"The divider separates tab-closing commands from operations that edit or duplicate a design.","selector":"[class~=\"aui-dropdown-separator\"]","code":["ContextMenu.Separator"]},
-    {"id":"rename-action","partId":"rename-action","title":"Rename action","explanation":"Rename action opens the current design’s name editor.","keyIdea":"Rename edits the current design identity without changing its place in the rail.","selector":"[data-ug-part=\"rename-action\"]"},
-    {"id":"duplicate-action","partId":"duplicate-action","title":"Duplicate action","explanation":"Duplicate action creates a copy of this design.","keyIdea":"Duplicate creates a new copy while leaving the source design intact.","selector":"[data-ug-part=\"duplicate-action\"]"},
-    {"id":"move-to-top-action","partId":"move-to-top-action","title":"Move to top action","explanation":"Final row moves this design to the tab rail’s start.","keyIdea":"Move to top changes the current design’s position without closing it.","selector":"[data-ug-part=\"move-to-top-action\"]"},
-  ],
 options: [
     { id: "adc-tab-options", name: "Tab options", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
@@ -32,13 +19,13 @@ options: [
       name: 'Trigger',
       selector: '[class~="aui-tabs-tab"]',
       description: 'The "Design 1" tab is the right-click area: a Tabs.Tab with nativeButton off rendered through ContextMenu.Trigger as a div, which takes no aui.',
-    },
+     lesson: {"title":"Design tab trigger","explanation":"Design 1 tab opens its secondary menu on right-click."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dropdown-popup"]',
       description: 'The menu labelled "Tab options", opened at the pointer in the app and anchored under the tab in the scene.',
-    },
+     lesson: {"title":"Menu surface","explanation":"Tab options popup sits beside the tab and groups actions.","code":["ContextMenu.Popup"]}},
     {
       id: 'item',
       name: 'Item',
@@ -56,6 +43,11 @@ options: [
       name: 'Separator',
       selector: '[class~="aui-dropdown-separator"]',
       description: 'The divider between the close actions (Close, Close all other designs) and the edit actions (Rename, Duplicate, Move to top).',
-    },
+     lesson: {"title":"Action group divider","explanation":"Divider separates close commands from editing and duplication actions.","code":["ContextMenu.Separator"]}},
+    {"id":"close-action","name":"Close action","description":"First row closes the current Design 1 tab.","selector":"[data-ug-part=\"close-action\"]","lesson":{"explanation":"First row closes the current Design 1 tab."}},
+    {"id":"close-others-action","name":"Close other designs","description":"This row closes every other design while keeping the current tab.","selector":"[data-ug-part=\"close-others-action\"]","lesson":{"explanation":"This row closes every other design while keeping the current tab."}},
+    {"id":"rename-action","name":"Rename action","description":"Rename action opens the current design’s name editor.","selector":"[data-ug-part=\"rename-action\"]","lesson":{"explanation":"Rename action opens the current design’s name editor."}},
+    {"id":"duplicate-action","name":"Duplicate action","description":"Duplicate action creates a copy of this design.","selector":"[data-ug-part=\"duplicate-action\"]","lesson":{"explanation":"Duplicate action creates a copy of this design."}},
+    {"id":"move-to-top-action","name":"Move to top action","description":"Final row moves this design to the tab rail’s start.","selector":"[data-ug-part=\"move-to-top-action\"]","lesson":{"explanation":"Final row moves this design to the tab rail’s start."}},
   ],
 });

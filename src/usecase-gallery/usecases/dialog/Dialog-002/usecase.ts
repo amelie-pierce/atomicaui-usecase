@@ -8,20 +8,9 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Report preview dialog',
   apps: ['adc'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"Scrim behind Calculation Report leaves the preview stage visible.","keyIdea":"The scrim holds attention on the calculation report while leaving the stage visible.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Plain 520px report window; ADC adds drag and resize behavior.","keyIdea":"The plain window gives the report a bounded reading area that can grow in the app.","selector":"[class~=\"aui-dialog-popup\"]"},
-        {"id":"title","partId":"title","title":"Title bar","explanation":"Raised title names Calculation Report and ends with Close.","keyIdea":"The title names the generated document before users inspect its preview.","selector":"[class~=\"aui-dialog-title\"]"},
-        {"id":"spacer","partId":"spacer","title":"Spacer","explanation":"Spacer pushes the Close action to the title bar end.","keyIdea":"Flexible space separates the report name from its dismissal target.","selector":"[class~=\"aui-dialog-spacer\"]"},
-        {"id":"close","partId":"close","title":"Close","explanation":"Report X closes the window; ADC wraps it in a tooltip.","keyIdea":"The close X exits the preview without changing the report content.","selector":"[class~=\"aui-dialog-close\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"No-padding body lets the document view reach both popup edges.","keyIdea":"The body gives the report document its own region inside the popup.","selector":"[class~=\"aui-dialog-body\"]"},
-      ],
 options: [
     { id: "adc-report", name: "Report preview", apps: ["adc"], source: {"adc":"src/adc/components/ReportFlow.tsx"}, contextAnatomy: CONTEXT_ANATOMY ,
-      contextLayers: [
-        {"id":"context-document","partId":"document","title":"Report document","explanation":"Centered document preview names Design 1 and its generated PDF.","keyIdea":"The centered document identifies which design the preview represents and how it will be produced.","selector":"[data-ug-part=\"document\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"document","lesson":{"explanation":"Centered document preview names Design 1 and its generated PDF.","selector":"[data-ug-part=\"document\"]","scope":"context"}}]},
   ],
   source: {
     adc: 'src/adc/components/ReportFlow.tsx',
@@ -36,19 +25,19 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the Calculation Report window in ADC; the preview stage stays visible because the dialog is non-modal here.',
-    },
+     lesson: {"explanation":"Scrim behind Calculation Report leaves the preview stage visible."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The plain 520px report window at the default scale; the ADC app makes it draggable and resizable, which the example leaves out.',
-    },
+     lesson: {"explanation":"Plain 520px report window; ADC adds drag and resize behavior."}},
     {
       id: 'title',
       name: 'Title bar',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title bar that names the report "Calculation Report" and ends in the close X.',
-    },
+     lesson: {"explanation":"Raised title names Calculation Report and ends with Close."}},
     {
       id: 'title-text',
       name: 'Title text',
@@ -61,19 +50,19 @@ options: [
       name: 'Spacer',
       selector: '[class~="aui-dialog-spacer"]',
       description: 'The gap that pushes the close X to the end of the title bar, ahead of the "Close" tooltip in the ADC scene.',
-    },
+     lesson: {"explanation":"Spacer pushes the Close action to the title bar end."}},
     {
       id: 'close',
       name: 'Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X of the report window; the ADC scene wraps it in a "Close" tooltip trigger.',
-    },
+     lesson: {"explanation":"Report X closes the window; ADC wraps it in a tooltip."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The body of the report window; in the ADC scene it uses the no-padding profile so the document View reaches the popup edges.',
-    },
+     lesson: {"explanation":"No-padding body lets the document view reach both popup edges."}},
     {
       id: 'preview-text',
       name: 'Preview text',

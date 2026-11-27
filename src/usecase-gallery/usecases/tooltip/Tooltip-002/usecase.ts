@@ -4,26 +4,12 @@ export default defineUsecase({
   uiType: 'Tooltip on a button',
   title: 'Text button tooltip',
   apps: ['pfd', 'rws', 'hs'],
-    layers: [
-        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Hovering or focusing the existing action reveals its image preview.","keyIdea":"The existing action or link remains the source of the preview explanation.","selector":"[data-ug-part=\"trigger\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Image tooltip widths vary by app: 96px, 160px, or 192px.","keyIdea":"The tooltip surface can contain a visual preview without turning it into another selectable control.","selector":"[class~=\"aui-tooltip-popup\"]"},
-        {"id":"image","partId":"image","title":"Preview image","explanation":"Connection drawing previews the named detail without adding another control.","keyIdea":"The image gives the connection tooltip concrete visual detail instead of repeating the trigger label.","selector":"[class~=\"aui-tooltip-popup\"] svg","code":["svg"]},
-      ],
 options: [
     { id: "pfd-image-preview", name: "Image preview", showContext: false, apps: ["pfd"], source: {"pfd":"src/pfd/ResultsTable.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "rws-image-link", name: "Linked image preview", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "hs-hanger-mark", name: "Hanger mark preview", showContext: false, apps: ["hs"], source: {"hs":"src/hs/SlopeCalculator.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { pfd: 'src/pfd/ResultsTable.tsx', rws: 'src/rws/output.tsx', hs: 'src/hs/SlopeCalculator.tsx' },
@@ -36,7 +22,7 @@ options: [
       id: 'trigger',
       name: 'Trigger',
       description: 'The element the user already points at: a "Preview" Button in the example, a thumbnail-and-link View in PFD, the "Connection detail" link in RWS, and the solid secondary "A" mark Button in HS.',
-    },
+     lesson: {"explanation":"Hovering or focusing the existing action reveals its image preview.","selector":"[data-ug-part=\"trigger\"]"}},
     {
       id: 'product-link',
       name: 'Product link',
@@ -48,13 +34,13 @@ options: [
       name: 'Popup',
       selector: '[class~="aui-tooltip-popup"]',
       description: 'The default tooltip surface, which here holds an image instead of text: 192px wide in the example and RWS, 96px in PFD, 160px in HS.',
-    },
+     lesson: {"explanation":"Image tooltip widths vary by app: 96px, 160px, or 192px."}},
     {
       id: 'image',
       name: 'Preview image',
       selector: '[class~="aui-tooltip-popup"] svg',
       description: 'The representative connection drawing (an svg with role="img") that the tooltip shows, such as "Connection detail" or "Model C-300 connection preview".',
-    },
+     lesson: {"explanation":"Connection drawing previews the named detail without adding another control.","code":["svg"]}},
     {
       id: 'preview-title',
       name: 'Preview title',

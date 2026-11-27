@@ -38,16 +38,16 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Trigger** — A bare Select with no Field: an "Hef" labelled (aria-label) outlined trigger at scale "xs" that fills its table cell. Selector: `[class~="aui-select-trigger"]`.
+1. **Trigger** — A bare Select with no Field: an "Hef" labelled (aria-label) outlined trigger at scale "xs" that fills its table cell. Selector: `[class~="aui-select-trigger"]`. Layer step: **Trigger** — Bare extra-small Select fills its cell with the Hef accessible label.
 2. **Value** — Shows the effective embedment "6.000" for the row. Selector: `[class~="aui-select-value"]`. Direct text is highlighted.
-3. **Chevron** — The chevron at the end of the compact trigger. Selector: `[class~="aui-select-chevron"]`.
-4. **Popup** — Popup that matches the cell trigger width, 4px below it, listing 4.500, 6.000 and 7.500. Selector: `[class~="aui-select-popup"]`.
-5. **List** — The list of the three Hef embedment values. Selector: `[class~="aui-select-list"]`.
-6. **Item** — One embedment value row; the chosen 6.000 shows a raised fill. Selector: `[class~="aui-select-item"]`.
-7. **Item text** — The numeric value text, for example "7.500". Selector: `[class~="aui-select-item-text"]`.
-8. **Indicator** — Empty slot (`{null}`) at the end of each row. Selector: `[class~="aui-select-item-indicator"]`.
+3. **Chevron** — The chevron at the end of the compact trigger. Selector: `[class~="aui-select-chevron"]`. Layer step: **Chevron** — The chevron at the end of the compact trigger.
+4. **Popup** — Popup that matches the cell trigger width, 4px below it, listing 4.500, 6.000 and 7.500. Selector: `[class~="aui-select-popup"]`. Layer step: **Popup** — Popup matches the cell trigger and lists three sizes.
+5. **List** — The list of the three Hef embedment values. Selector: `[class~="aui-select-list"]`. Layer step: **List** — The list of the three Hef embedment values.
+6. **Item** — One embedment value row; the chosen 6.000 shows a raised fill. Selector: `[class~="aui-select-item"]`. Layer step: **Item** — One embedment value row; the chosen 6.000 shows a raised fill.
+7. **Item text** — The numeric value text, for example "7.500". Selector: `[class~="aui-select-item-text"]`. Layer step: **Item text** — Numeric option text shows values such as 7.500.
+8. **Indicator** — Empty slot (`{null}`) at the end of each row. Selector: `[class~="aui-select-item-indicator"]`. Layer step: **Indicator** — Empty slot (`{null}`) at the end of each row.
 
 ## Apps
 
@@ -73,10 +73,10 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Products table** — The product rows and columns that give the bare cell select its meaning. Selector: `[data-ug-part="products-table"]`.
-2. **Column headings** — Product, Hef and Weight label the active row values. Selector: `[data-ug-part="column-headings"]`.
-3. **Active product row** — Anchor A-240 is the row currently being edited. Selector: `[data-ug-part="active-product-row"]`.
-4. **Edited Hef cell** — The Hef column holds the open Select while the row is being edited. Selector: `[data-ug-part="edited-hef-cell"]`.
+1. **Products table** — The product rows and columns that give the bare cell select its meaning. Selector: `[data-ug-part="products-table"]`. Layer step: **Products table** — The table frames the row and its product data.
+2. **Column headings** — Product, Hef and Weight label the active row values. Selector: `[data-ug-part="column-headings"]`. Layer step: **Column headings** — Product, Hef and Weight identify each cell in the table.
+3. **Active product row** — Anchor A-240 is the row currently being edited. Selector: `[data-ug-part="active-product-row"]`. Layer step: **Active product row** — Anchor A-240 is selected for editing among neighboring products.
+4. **Edited Hef cell** — The Hef column holds the open Select while the row is being edited. Selector: `[data-ug-part="edited-hef-cell"]`. Layer step: **Edited Hef cell** — The Select occupies the Hef cell in the active row.
 
 #### Component UI source — `src/usecase-gallery/usecases/select/Select-008/example.tsx`
 

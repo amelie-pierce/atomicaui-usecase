@@ -35,13 +35,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Attached file chip** — The scene lists each attached file above the area as a default Chip with its name. Selector: `[class~="aui-chip"]`.
-2. **Upload area** — The dashed multi-file drop surface (multiple) in the Feedback form attachment block, with the idle message. Selector: `[class~="aui-file-upload"]`.
-3. **Icon** — The upload icon at the top of the drop area. Selector: `[class~="aui-file-upload-icon"]`.
+1. **Attached file chip** — The scene lists each attached file above the area as a default Chip with its name. Selector: `[class~="aui-chip"]`. Layer step: **Attached file chip** — Attached filename chips appear above the upload area.
+2. **Upload area** — The dashed multi-file drop surface (multiple) in the Feedback form attachment block, with the idle message. Selector: `[class~="aui-file-upload"]`. Layer step: **Upload area** — Dashed multi-file drop surface adds attachments to the feedback form.
+3. **Icon** — The upload icon at the top of the drop area. Selector: `[class~="aui-file-upload-icon"]`. Layer step: **Icon** — The upload icon at the top of the drop area. Code target: `FileUpload`.
 4. **Prompt** — The idle text "Drop your file here or" next to the browse action. Selector: `[class~="aui-file-upload-label"]`. Direct text is highlighted.
-5. **Browse action** — The "Browse" action that opens the file picker so several files can be added one after another. Selector: `[class~="aui-file-upload-action"]`.
+5. **Browse action** — The "Browse" action that opens the file picker so several files can be added one after another. Selector: `[class~="aui-file-upload-action"]`. Layer step: **Browse action** — Browse opens the picker for adding files one at a time. Code target: `FileUpload`.
 
 ## Apps
 
@@ -66,8 +66,8 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Attachment block** — The column that stacks the attached-file chips, the dropzone and the limits line inside the feedback form. Part marker: `data-ug-part="form"`.
-2. **Limits line** — The muted "Up to 5 files, 10 MB each." caption under the dropzone. Part marker: `data-ug-part="limits"`.
+1. **Attachment block** — The column that stacks the attached-file chips, the dropzone and the limits line inside the feedback form. Part marker: `data-ug-part="form"`. Layer step: **Attachment block** — Form column groups attached files, dropzone, and upload limits.
+2. **Limits line** — The muted "Up to 5 files, 10 MB each." caption under the dropzone. Part marker: `data-ug-part="limits"`. Layer step: **Limits line** — Muted caption sets five-file and 10 MB per-file limits.
 
 #### Component UI source — `src/usecase-gallery/usecases/file-upload/FileUpload-002/example.tsx`
 

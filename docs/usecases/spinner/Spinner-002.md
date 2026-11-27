@@ -36,10 +36,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Spinner** — The extra-large info-coloured spinner, hidden from assistive technology (role "presentation", aria-hidden) because the message below carries the meaning. Selector: `[class~="aui-spinner"]`.
-2. **Ring** — The large animated ring above "Your design report is being generated" in the ADC report dialog. Selector: `[class~="aui-spinner-ring"]`.
+1. **Spinner** — The extra-large info-coloured spinner, hidden from assistive technology (role "presentation", aria-hidden) because the message below carries the meaning. Selector: `[class~="aui-spinner"]`. Layer step: **Spinner** — Extra-large info spinner stays hidden; the message supplies accessible status.
+2. **Ring** — The large animated ring above "Your design report is being generated" in the ADC report dialog. Selector: `[class~="aui-spinner-ring"]`. Layer step: **Ring** — Large animated ring appears above the report-generation message. Code target: `Spinner`.
 
 ## Apps
 
@@ -59,7 +59,7 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Status message** — The semi-bold p1 text under the spinner, "Your design report is being generated. Please keep this window open.", which carries the status since the spinner is hidden from assistive tech. Part marker: `data-ug-part="message"`.
+1. **Status message** — The semi-bold p1 text under the spinner, "Your design report is being generated. Please keep this window open.", which carries the status since the spinner is hidden from assistive tech. Part marker: `data-ug-part="message"`. Layer step: **Status message** — Status asks users to keep the dialog open during report generation.
 
 #### Component UI source — `src/usecase-gallery/usecases/spinner/Spinner-002/example.tsx`
 

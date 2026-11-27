@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Back to top** — Secondary text button that scrolls to the top of the long table; its accessible name matches the visible label. Selector: `[class~="aui-button"][aria-label="Back to top"]`.
-2. **Arrow-up icon** — The arrow-up glyph that shows the direction of the jump. Selector: `[class~="aui-button"][aria-label="Back to top"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Table Notes** — Secondary text button that jumps down to the table notes; its accessible name "Jump to table notes" is longer than the visible Table Notes label. Selector: `[class~="aui-button"][aria-label="Jump to table notes"]`.
-4. **Arrow-down icon** — The arrow-down glyph that points toward the notes below the table. Selector: `[class~="aui-button"][aria-label="Jump to table notes"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-5. **Print Output** — HCS Output header only: the tonal surface Print Output button with a print icon that sits right after the two jump buttons. Selector: `[class~="aui-button"]:not([aria-label])`.
+1. **Back to top** — Secondary text button that scrolls to the top of the long table; its accessible name matches the visible label. Selector: `[class~="aui-button"][aria-label="Back to top"]`. Layer step: **Back to top** — Secondary text action returns to the top of the long table.
+2. **Arrow-up icon** — The arrow-up glyph that shows the direction of the jump. Selector: `[class~="aui-button"][aria-label="Back to top"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Arrow-up icon** — The arrow-up glyph that shows the direction of the jump.
+3. **Table Notes** — Secondary text button that jumps down to the table notes; its accessible name "Jump to table notes" is longer than the visible Table Notes label. Selector: `[class~="aui-button"][aria-label="Jump to table notes"]`. Layer step: **Table Notes** — Secondary text action jumps to Table Notes with an accessible label.
+4. **Arrow-down icon** — The arrow-down glyph that points toward the notes below the table. Selector: `[class~="aui-button"][aria-label="Jump to table notes"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Arrow-down icon** — The arrow-down glyph that points toward the notes below the table.
+5. **Print Output** — HCS Output header only: the tonal surface Print Output button with a print icon that sits right after the two jump buttons. Selector: `[class~="aui-button"]:not([aria-label])`. Layer step: **Print Output** — HCS adds tonal Print Output after the two navigation links.
 
 ## Apps
 

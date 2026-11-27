@@ -38,11 +38,11 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Switch** — The on/off control, on by default, with a solid primary track when selected; each app places it in a popover, a table toolbar or a dialog. Selector: `[class~="aui-switch"]`.
-2. **Thumb** — The thumb that slides to the end of the track when Group by model is on. Selector: `[class~="aui-switch-thumb"]`.
-3. **Label** — The option text "Group by model" beside the switch; the scenes swap it for Show Optimized Models, Send me a copy or the ADM draft switches. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
+1. **Switch** — The on/off control, on by default, with a solid primary track when selected; each app places it in a popover, a table toolbar or a dialog. Selector: `[class~="aui-switch"]`. Layer step: **Switch** — On-by-default switch appears in popovers, toolbars, or dialogs.
+2. **Thumb** — The thumb that slides to the end of the track when Group by model is on. Selector: `[class~="aui-switch-thumb"]`. Layer step: **Thumb** — Thumb slides to track end when Group by model is enabled. Code target: `Switch`.
+3. **Label** — The option text "Group by model" beside the switch; the scenes swap it for Show Optimized Models, Send me a copy or the ADM draft switches. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`. Layer step: **Label** — App labels include Group by model and Send me a copy.
 
 ## Apps
 
@@ -67,8 +67,8 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Configure columns trigger** — The table-columns IconButton, labelled Configure columns, that opens the popover under it. Part marker: `data-ug-part="columns-trigger"`.
-2. **Configure columns popover** — The elevated popover, 320px wide, anchored under the trigger that holds the column list. Part marker: `data-ug-part="columns-popover"`.
+1. **Configure columns trigger** — The table-columns IconButton, labelled Configure columns, that opens the popover under it. Part marker: `data-ug-part="columns-trigger"`. Layer step: **Configure columns trigger** — The table-columns IconButton, labelled Configure columns, that opens the popover under it.
+2. **Configure columns popover** — The elevated popover, 320px wide, anchored under the trigger that holds the column list. Part marker: `data-ug-part="columns-popover"`. Layer step: **Configure columns popover** — 320px column popover anchors beneath the settings trigger.
 
 #### Component UI source — `src/usecase-gallery/usecases/switch/Switch-002/example.tsx`
 
@@ -118,9 +118,9 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Base plate dialog** — The Dialog popup, titled Base plate, that hosts the switch. Part marker: `data-ug-part="dialog"`.
-2. **Dialog title** — The raised title bar with the Base plate heading and a Close button at the end. Part marker: `data-ug-part="dialog-title"`.
-3. **Dialog body** — The body area that holds the Include base plate switch in a column. Part marker: `data-ug-part="dialog-body"`.
+1. **Base plate dialog** — The Dialog popup, titled Base plate, that hosts the switch. Part marker: `data-ug-part="dialog"`. Layer step: **Base plate dialog** — The Dialog popup, titled Base plate, that hosts the switch.
+2. **Dialog title** — The raised title bar with the Base plate heading and a Close button at the end. Part marker: `data-ug-part="dialog-title"`. Layer step: **Dialog title** — Raised title bar names the task and places Close at the end.
+3. **Dialog body** — The body area that holds the Include base plate switch in a column. Part marker: `data-ug-part="dialog-body"`. Layer step: **Dialog body** — Column body holds Include base plate switch vertically.
 
 #### Component UI source — `src/usecase-gallery/usecases/switch/Switch-002/options/adm-labelled/example.tsx`
 
@@ -214,10 +214,10 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Feedback dialog** — The Dialog popup, titled Feedback Form, that hosts the switch. Part marker: `data-ug-part="dialog"`.
-2. **Dialog title** — The raised title bar with the Feedback Form heading and a Cancel close button at the end. Part marker: `data-ug-part="dialog-title"`.
-3. **Dialog body** — The body area that holds the Send me a copy switch. Part marker: `data-ug-part="dialog-body"`.
-4. **Dialog actions** — The footer with a Cancel button and a solid secondary Send button. Part marker: `data-ug-part="dialog-actions"`.
+1. **Feedback dialog** — The Dialog popup, titled Feedback Form, that hosts the switch. Part marker: `data-ug-part="dialog"`. Layer step: **Feedback dialog** — The Dialog popup, titled Feedback Form, that hosts the switch.
+2. **Dialog title** — The raised title bar with the Feedback Form heading and a Cancel close button at the end. Part marker: `data-ug-part="dialog-title"`. Layer step: **Dialog title** — Raised title bar names the task and places Close at the end.
+3. **Dialog body** — The body area that holds the Send me a copy switch. Part marker: `data-ug-part="dialog-body"`. Layer step: **Dialog body** — Column body holds the Send me a copy switch vertically.
+4. **Dialog actions** — The footer with a Cancel button and a solid secondary Send button. Part marker: `data-ug-part="dialog-actions"`. Layer step: **Dialog actions** — The footer with a Cancel button and a solid secondary Send button.
 
 #### Component UI source — `src/usecase-gallery/usecases/switch/Switch-002/options/ace-labelled/example.tsx`
 

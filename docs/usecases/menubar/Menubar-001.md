@@ -34,9 +34,9 @@ No color, paint, scale, shape, profile, role, or weight string props were found 
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Button** — The plain About button that runs one action, here the about dialog, with no list of choices. Selector: `[data-ug-part="button"]`.
+1. **Button** — The plain About button that runs one action, here the about dialog, with no list of choices. Selector: `[data-ug-part="button"]`. Layer step: **Button** — About button runs one action and opens the about dialog.
 2. **Label** — The visible word "About" (Reset in the HS scene) that names the action. Selector: `[data-ug-part="button"]`. Direct text is highlighted.
 
 ## Apps
@@ -65,10 +65,10 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Top bar** — The top bar Menubar that holds both action buttons and menu triggers. Selector: `[class~="aui-menubar"][aria-label="Top bar"]`.
-2. **File menu trigger** — The File dropdown trigger at the start of the bar, which opens the file actions. Part marker: `data-ug-part="file-menu"`.
-3. **Reset button** — The plain Reset Menubar.Button next to About that restores the design to its defaults. Part marker: `data-ug-part="reset"`.
-4. **Help Center trigger** — The Help Center dropdown trigger at the end of the bar. Part marker: `data-ug-part="help-menu"`.
+1. **Top bar** — The top bar Menubar that holds both action buttons and menu triggers. Selector: `[class~="aui-menubar"][aria-label="Top bar"]`. Layer step: **Top bar** — The top bar Menubar that holds both action buttons and menu triggers.
+2. **File menu trigger** — The File dropdown trigger at the start of the bar, which opens the file actions. Part marker: `data-ug-part="file-menu"`. Layer step: **File menu trigger** — File trigger opens the dropdown of file actions.
+3. **Reset button** — The plain Reset Menubar.Button next to About that restores the design to its defaults. Part marker: `data-ug-part="reset"`. Layer step: **Reset button** — Reset button beside About restores the design to its defaults.
+4. **Help Center trigger** — The Help Center dropdown trigger at the end of the bar. Part marker: `data-ug-part="help-menu"`. Layer step: **Help Center trigger** — The Help Center dropdown trigger at the end of the bar.
 
 #### Component UI source — `src/usecase-gallery/usecases/menubar/Menubar-001/example.tsx`
 

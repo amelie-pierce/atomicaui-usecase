@@ -5,21 +5,8 @@ export default defineUsecase({
   title: 'Welcome dialog',
 
   apps: ['adm', 'fd'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"Scrim dims the ADM workspace behind its welcome prompt.","keyIdea":"The scrim focuses the first-run welcome prompt.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Small 384px Welcome window uses the app-set dialog width.","keyIdea":"A compact popup keeps the welcome message brief and easy to dismiss.","selector":"[class~=\"aui-dialog-popup\"]"},
-        {"id":"title","partId":"title","title":"Title bar","explanation":"Plain title says Welcome to ADM with Close at its end.","keyIdea":"The plain title bar identifies the ADM welcome step.","selector":"[class~=\"aui-dialog-title\"]"},
-        {"id":"close","partId":"close","title":"Close","explanation":"The close X that dismisses the welcome prompt without starting the tour.","keyIdea":"The close icon dismisses the welcome without beginning the tour.","selector":"[class~=\"aui-dialog-close\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"Body holds only the Welcome to ADM sentence.","keyIdea":"A short body sentence introduces the walkthrough choice.","selector":"[class~=\"aui-dialog-body\"]"},
-        {"id":"actions","partId":"actions","title":"Footer","explanation":"The footer that offers Close and Start Walkthrough.","keyIdea":"The footer puts dismissal and tour entry side by side.","selector":"[class~=\"aui-dialog-actions\"]"},
-        {"id":"dismiss-button","partId":"dismiss-button","title":"Close button","explanation":"The default gray Dialog.Button labelled Close; dismiss={false} leaves closing to the app.","keyIdea":"Close dismisses this prompt while leaving app state handling to ADM.","selector":"[data-ug-part=\"dismiss-button\"]"},
-        {"id":"start","partId":"start","title":"Start Walkthrough","explanation":"The solid secondary button that starts the guided tour.","keyIdea":"Start Walkthrough begins the guided tour from the welcome prompt.","selector":"[data-ug-part=\"start\"]"},
-      ],
 options: [
     { id: "adm-welcome", name: "Welcome dialog", apps: ["adm","fd"], source: {"adm":"src/features/top-navigation/components/Tutorials.tsx","fd":"src/components/HelpCenter.jsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { adm: 'src/features/top-navigation/components/Tutorials.tsx', fd: 'src/components/HelpCenter.jsx' },
@@ -35,19 +22,19 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the ADM welcome prompt.',
-    },
+     lesson: {"explanation":"Scrim dims the ADM workspace behind its welcome prompt."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The small 384px welcome window at scale "sm", sized through the --aui-dialog-width variable the app sets.',
-    },
+     lesson: {"explanation":"Small 384px Welcome window uses the app-set dialog width."}},
     {
       id: 'title',
       name: 'Title bar',
       selector: '[class~="aui-dialog-title"]',
       description: 'The plain (not raised) title bar reading "Welcome to ADM" with the close X at its end.',
-    },
+     lesson: {"explanation":"Plain title says Welcome to ADM with Close at its end."}},
     {
       id: 'title-text',
       name: 'Title text',
@@ -60,13 +47,13 @@ options: [
       name: 'Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X that dismisses the welcome prompt without starting the tour.',
-    },
+     lesson: {"explanation":"The close X that dismisses the welcome prompt without starting the tour."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The body that holds one welcome sentence.',
-    },
+     lesson: {"explanation":"Body holds only the Welcome to ADM sentence."}},
     {
       id: 'welcome-text',
       name: 'Welcome text',
@@ -78,16 +65,16 @@ options: [
       name: 'Footer',
       selector: '[class~="aui-dialog-actions"]',
       description: 'The footer that offers Close and Start Walkthrough.',
-    },
+     lesson: {"explanation":"The footer that offers Close and Start Walkthrough."}},
     {
       id: 'dismiss-button',
       name: 'Close button',
       description: 'The default gray Dialog.Button labelled Close; dismiss={false} leaves closing to the app.',
-    },
+     lesson: {"explanation":"The default gray Dialog.Button labelled Close; dismiss={false} leaves closing to the app.","selector":"[data-ug-part=\"dismiss-button\"]"}},
     {
       id: 'start',
       name: 'Start Walkthrough',
       description: 'The solid secondary button that starts the guided tour.',
-    },
+     lesson: {"explanation":"The solid secondary button that starts the guided tour.","selector":"[data-ug-part=\"start\"]"}},
   ],
 });

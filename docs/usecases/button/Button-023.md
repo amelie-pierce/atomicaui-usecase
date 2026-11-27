@@ -37,15 +37,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Walkthrough card** — The 328px coach-mark card (solid, sm, soft, elevation 4) with the step title, one line of copy and the footer navigation row. Selector: `[role="region"][aria-label="Walkthrough"]`.
-2. **Close** — The corner xmark that dismisses the tour from the top end of the card; it is a separate action from the step buttons. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`.
-3. **Navigation row** — The footer row of the card that holds Previous and Next; ACE, HS, RWS and AGPD nest the two buttons in their own group and put the 2 / 4 counter at the far end, while ADM, PBS, PFD, FD and HCS push the counter right with an auto margin. Selector: `[data-ug-part="step-nav"]`.
-4. **Previous** — Borderless secondary text button with arrow-left before the label; ACE, HS, RWS and AGPD type it as PREVIOUS, HCS keeps mixed case. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-5. **Arrow-left icon** — The arrow-left glyph before the label, pointing the way the tour goes back. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`.
-6. **Next** — Borderless secondary text button that advances to the next step; its arrow-right trails the label so the pair reads as back and forward. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-7. **Trailing icon** — The arrow-right glyph after Next, the mirror of the arrow-left before Previous. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`.
+1. **Walkthrough card** — The 328px coach-mark card (solid, sm, soft, elevation 4) with the step title, one line of copy and the footer navigation row. Selector: `[role="region"][aria-label="Walkthrough"]`. Layer step: **Walkthrough card** — 328px elevated coach mark pairs step copy with footer navigation.
+2. **Close** — The corner xmark that dismisses the tour from the top end of the card; it is a separate action from the step buttons. Selector: `[class~="aui-button"][aria-label="Close walkthrough"]`. Layer step: **Close** — Corner X dismisses the tour independently of step navigation.
+3. **Navigation row** — The footer row of the card that holds Previous and Next; ACE, HS, RWS and AGPD nest the two buttons in their own group and put the 2 / 4 counter at the far end, while ADM, PBS, PFD, FD and HCS push the counter right with an auto margin. Selector: `[data-ug-part="step-nav"]`. Layer step: **Navigation row** — Footer places Previous and Next with the counter at the far end.
+4. **Previous** — Borderless secondary text button with arrow-left before the label; ACE, HS, RWS and AGPD type it as PREVIOUS, HCS keeps mixed case. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`. Layer step: **Previous** — Arrow-left text action moves back; some apps capitalize the label.
+5. **Arrow-left icon** — The arrow-left glyph before the label, pointing the way the tour goes back. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):first-of-type > [class~="aui-contained-icon"]`. Layer step: **Arrow-left icon** — Arrow-left glyph marks the Previous action in the footer.
+6. **Next** — Borderless secondary text button that advances to the next step; its arrow-right trails the label so the pair reads as back and forward. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`. Layer step: **Next** — Arrow-right after Next marks the forward navigation action.
+7. **Trailing icon** — The arrow-right glyph after Next, the mirror of the arrow-left before Previous. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-icon"], [class~="aui-button"]:not([aria-label]):last-of-type > [class~="aui-contained-icon"]`. Layer step: **Trailing icon** — The arrow-right glyph after Next, the mirror of the arrow-left before Previous.
 
 ## Apps
 

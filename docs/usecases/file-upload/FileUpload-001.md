@@ -34,13 +34,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Upload area** — The dashed single-file drop surface (multiple={false}) with the idle message, shown in the body of the upload dialog. Selector: `[class~="aui-file-upload"]`.
-2. **Icon** — The upload icon at the top of the drop area. Selector: `[class~="aui-file-upload-icon"]`.
-3. **Body** — The row below the icon that holds the prompt and the browse action. Selector: `[class~="aui-file-upload-body"]`.
+1. **Upload area** — The dashed single-file drop surface (multiple={false}) with the idle message, shown in the body of the upload dialog. Selector: `[class~="aui-file-upload"]`. Layer step: **Upload area** — Dashed single-file drop surface appears inside the upload dialog.
+2. **Icon** — The upload icon at the top of the drop area. Selector: `[class~="aui-file-upload-icon"]`. Layer step: **Icon** — The upload icon at the top of the drop area. Code target: `FileUpload`.
+3. **Body** — The row below the icon that holds the prompt and the browse action. Selector: `[class~="aui-file-upload-body"]`. Layer step: **Body** — Row below icon pairs the upload prompt with Browse. Code target: `FileUpload`.
 4. **Prompt** — The idle text "Drop your file here or" that invites a drag and drop. Selector: `[class~="aui-file-upload-label"]`. Direct text is highlighted.
-5. **Browse action** — The "Browse" action that opens the device file picker as the alternative to dropping. Selector: `[class~="aui-file-upload-action"]`.
+5. **Browse action** — The "Browse" action that opens the device file picker as the alternative to dropping. Selector: `[class~="aui-file-upload-action"]`. Layer step: **Browse action** — Browse opens the device picker as an alternative to dropping. Code target: `FileUpload`.
 
 ## Apps
 

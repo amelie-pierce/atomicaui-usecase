@@ -5,20 +5,12 @@ export default defineUsecase({
   title: 'Launch general tutorial button',
 
   apps: ['hs'],
-    layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Small secondary Launch General Tutorial link sits at the final step’s start.","keyIdea":"The small launch action starts the general tour from its final coach mark.","selector":"[class~=\"aui-button\"]:not([aria-label=\"Close walkthrough\"])"},
-      ],
 options: [
     { id: "hs-launch", name: "Launch general tutorial", apps: ["hs"], contextAnatomy: [
-      { id: "walkthrough-card", name: "Walkthrough card", description: "The elevated Walkthrough region over the tour target that holds the step text and the launch button." },
-      { id: "walkthrough-close", name: "Close button", description: "The X IconButton in the card corner (aria-label \"Close walkthrough\")." },
-      { id: "step-text", name: "Step text", description: "The body \"Find a solution. See the General tutorial for more information on the Results Table.\" with 24px kept at its end for the close X." },
+      { id: "walkthrough-card", name: "Walkthrough card", description: "The elevated Walkthrough region over the tour target that holds the step text and the launch button." , lesson: {"explanation":"Elevated walkthrough card pairs step text with its launch action.","selector":"[data-ug-part=\"walkthrough-card\"]","scope":"context"}},
+      { id: "walkthrough-close", name: "Close button", description: "The X IconButton in the card corner (aria-label \"Close walkthrough\")." , lesson: {"explanation":"The X IconButton in the card corner (aria-label \"Close walkthrough\").","selector":"[data-ug-part=\"walkthrough-close\"]","scope":"context"}},
+      { id: "step-text", name: "Step text", description: "The body \"Find a solution. See the General tutorial for more information on the Results Table.\" with 24px kept at its end for the close X." , lesson: {"explanation":"Find a solution note leaves 24px at its end for Close.","selector":"[data-ug-part=\"step-text\"]","scope":"context"}},
     ], source: {"hs":"src/hs/Tutorials.tsx"} ,
-      contextLayers: [
-        {"id":"context-walkthrough-card","partId":"walkthrough-card","title":"Walkthrough card","explanation":"Elevated walkthrough card pairs step text with its launch action.","keyIdea":"The card groups the final tour instruction with its launch action.","selector":"[data-ug-part=\"walkthrough-card\"]","scope":"context"},
-        {"id":"context-walkthrough-close","partId":"walkthrough-close","title":"Close button","explanation":"The X IconButton in the card corner (aria-label \"Close walkthrough\").","keyIdea":"The close control dismisses the coach mark without launching another tour.","selector":"[data-ug-part=\"walkthrough-close\"]","scope":"context"},
-        {"id":"context-step-text","partId":"step-text","title":"Step text","explanation":"Find a solution note leaves 24px at its end for Close.","keyIdea":"The body \"Find a solution.","selector":"[data-ug-part=\"step-text\"]","scope":"context"},
-      ],
     },
   ],
   source: { hs: 'src/hs/Tutorials.tsx' },
@@ -33,7 +25,7 @@ options: [
       name: "Container",
       description: "The Launch General Tutorial Button on the last step of an HS tour: small secondary text paint with alignSelf \"start\" so it hugs the start of the coach-mark card.",
       selector: "[class~=\"aui-button\"]:not([aria-label=\"Close walkthrough\"])",
-    },
+     lesson: {"explanation":"Small secondary Launch General Tutorial link sits at the final step’s start."}},
     {
       id: "label",
       name: "Label",

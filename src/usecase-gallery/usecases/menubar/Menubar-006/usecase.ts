@@ -4,17 +4,8 @@ export default defineUsecase({
   uiType: 'Menubar with summary trigger',
   title: 'Settings summary',
   apps: ['hs', 'fd', 'ace'],
-    layers: [
-        {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"Top bar holds a single settings summary button.","keyIdea":"The top bar keeps a single settings summary reachable from the right side of the page.","selector":"[class~=\"aui-menubar\"]"},
-        {"id":"button","partId":"button","title":"Button","explanation":"Tonal Settings button summarizes region, language, and design code.","keyIdea":"The tonal summary button combines current region and design details into its accessible name.","selector":"[class~=\"aui-button\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"Globe glyph leads the region and language settings summary button.","keyIdea":"The globe glyph cues users that the summary includes locale information.","selector":"[class~=\"aui-button\"] > [class~=\"aui-contained-icon\"]","code":["Menubar.Icon"]},
-        {"id":"divider","partId":"divider","title":"Divider","explanation":"Two thin dividers separate country, language, and design code.","keyIdea":"Thin dividers separate country, language, and design code so each value can be scanned.","selector":"[class~=\"aui-menubar-divider\"]"},
-      ],
 options: [
     { id: "hs-settings", showContext: false, name: "Top bar", source: {"hs":"src/hs/TopBar.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { hs: 'src/hs/TopBar.tsx', fd: 'src/components/SettingsPopover.jsx', ace: 'src/features/top-navigation/ui/AceNavBar.tsx' },
@@ -28,19 +19,19 @@ options: [
       name: 'Menubar',
       selector: '[class~="aui-menubar"]',
       description: 'The "Top bar" strip that holds the one summary button at its right side.',
-    },
+     lesson: {"explanation":"Top bar holds a single settings summary button."}},
     {
       id: 'button',
       name: 'Button',
       selector: '[class~="aui-button"]',
       description: 'Tonal button (color "surface", paint "tonal", aria-label "Settings") that sums up region, language and design code and opens the settings popover.',
-    },
+     lesson: {"explanation":"Tonal Settings button summarizes region, language, and design code."}},
     {
       id: 'icon',
       name: 'Icon',
       selector: '[class~="aui-button"] > [class~="aui-contained-icon"]',
       description: 'The globe glyph that leads the summary.',
-    },
+     lesson: {"explanation":"Globe glyph leads the region and language settings summary button.","code":["Menubar.Icon"]}},
     {
       id: 'label',
       name: 'Label',
@@ -53,6 +44,6 @@ options: [
       name: 'Divider',
       selector: '[class~="aui-menubar-divider"]',
       description: 'The thin separators between country, language and design code (two in this example).',
-    },
+     lesson: {"explanation":"Two thin dividers separate country, language, and design code."}},
   ],
 });

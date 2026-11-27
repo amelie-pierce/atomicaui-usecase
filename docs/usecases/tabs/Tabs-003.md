@@ -37,13 +37,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Tabs** — Check tabs at scale "sm" with a 12px gap between the strip and the panel; Connection is selected first. Selector: `[class~="aui-tabs"]`.
-2. **List** — Strip of check tabs; reading the icons down the row summarises which checks passed. Selector: `[class~="aui-tabs-list"]`.
-3. **Tab** — One check, Connection or Weld, with its status icon before the label. Selector: `[class~="aui-tabs-tab"]`.
-4. **Status icon** — Leading result icon: a success check for Connection and an error xmark for Weld; FD uses circle-check and circle-exclamation through a plain Icon. Selector: `[class~="aui-tabs-tab"] > [class~="aui-contained-icon"]`.
-5. **Panel** — Body for the selected check, "Connection check" or "Weld check". Selector: `[class~="aui-tabs-panel"]`.
+1. **Tabs** — Check tabs at scale "sm" with a 12px gap between the strip and the panel; Connection is selected first. Selector: `[class~="aui-tabs"]`. Layer step: **Tabs** — Small check tabs leave a 12px gap above the panel.
+2. **List** — Strip of check tabs; reading the icons down the row summarises which checks passed. Selector: `[class~="aui-tabs-list"]`. Layer step: **List** — Icon strip quickly summarizes which checks passed or failed.
+3. **Tab** — One check, Connection or Weld, with its status icon before the label. Selector: `[class~="aui-tabs-tab"]`. Layer step: **Tab** — One check, Connection or Weld, with its status icon before the label.
+4. **Status icon** — Leading result icon: a success check for Connection and an error xmark for Weld; FD uses circle-check and circle-exclamation through a plain Icon. Selector: `[class~="aui-tabs-tab"] > [class~="aui-contained-icon"]`. Layer step: **Status icon** — Leading icon marks Connection success or Weld failure across app variants. Code target: `Tabs.Icon`, `Icon`.
+5. **Panel** — Body for the selected check, "Connection check" or "Weld check". Selector: `[class~="aui-tabs-panel"]`. Layer step: **Panel** — Body for the selected check, "Connection check" or "Weld check".
 
 ## Apps
 

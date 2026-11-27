@@ -37,23 +37,23 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the reset confirm shared by five apps. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The 560px soft confirm window at scale "sm" (ADM uses 480px, HS 384px, ADC a 640px cap). Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar with the warning icon and "Warning: Reset Inputs?"; ACE leaves out the close X and HS leaves the bar plain. Selector: `[class~="aui-dialog-title"]`.
-4. **Warning icon** — The warning-coloured triangle-exclamation icon at the start of the title. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
+1. **Overlay** — The scrim behind the reset confirm shared by five apps. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim keeps the reset confirm separate from the active workspace.
+2. **Popup** — The 560px soft confirm window at scale "sm" (ADM uses 480px, HS 384px, ADC a 640px cap). Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — Reset confirm window width differs across the app versions.
+3. **Title bar** — The raised title bar with the warning icon and "Warning: Reset Inputs?"; ACE leaves out the close X and HS leaves the bar plain. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Warning title names Reset Inputs before users decide.
+4. **Warning icon** — The warning-coloured triangle-exclamation icon at the start of the title. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`. Layer step: **Warning icon** — Warning triangle leads the title and signals destructive work. Code target: `Dialog.Icon`.
 5. **Title text** — The question "Warning: Reset Inputs?". Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
-6. **Spacer** — The gap before the close X in the title bar; HS also places one between Cancel and Reset in its footer. Selector: `[class~="aui-dialog-spacer"]`.
-7. **Close** — The close X labelled "Close Reset"; in ADC it sits in a "Close" tooltip trigger. Selector: `[class~="aui-dialog-close"]`.
-8. **Body** — The HS-only body that wraps its description instead of placing it directly in the popup. Selector: `[class~="aui-dialog-body"]`.
-9. **Description** — The warning that all input fields will be reset and that the project configurations erased cannot be recovered. Selector: `[class~="aui-dialog-description"]`.
-10. **Footer** — The footer that holds Cancel and the destructive button; split and wrapping in ADC. Selector: `[class~="aui-dialog-actions"]`.
-11. **Cancel** — The default Cancel next to the destructive action. Part marker: `data-ug-part="cancel"`.
-12. **Reset** — The solid secondary Reset that clears every input in HCS, ACE, ADM and HS. Part marker: `data-ug-part="confirm"`.
-13. **Reset current design** — The ADC text error button "Reset Current Design to Standard". Part marker: `data-ug-part="reset-current"`.
-14. **Reset all designs** — The ADC solid error button "Reset All Designs to Standard". Part marker: `data-ug-part="reset-all"`.
-15. **Close tooltip** — The ADC tooltip that labels the close X "Close" on hover. Selector: `[class~="aui-tooltip-popup"]`.
+6. **Spacer** — The gap before the close X in the title bar; HS also places one between Cancel and Reset in its footer. Selector: `[class~="aui-dialog-spacer"]`. Layer step: **Spacer** — Flexible gap separates the title from its close control.
+7. **Close** — The close X labelled "Close Reset"; in ADC it sits in a "Close" tooltip trigger. Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — Close X leaves the alert without resetting any inputs.
+8. **Body** — The HS-only body that wraps its description instead of placing it directly in the popup. Selector: `[class~="aui-dialog-body"]`. Layer step: **Body** — HS wraps its reset warning in a separate dialog body.
+9. **Description** — The warning that all input fields will be reset and that the project configurations erased cannot be recovered. Selector: `[class~="aui-dialog-description"]`. Layer step: **Description** — Warning says inputs and project settings cannot be recovered.
+10. **Footer** — The footer that holds Cancel and the destructive button; split and wrapping in ADC. Selector: `[class~="aui-dialog-actions"]`. Layer step: **Footer** — Footer groups Cancel and Reset below the warning text.
+11. **Cancel** — The default Cancel next to the destructive action. Part marker: `data-ug-part="cancel"`. Layer step: **Cancel** — Cancel leaves every input unchanged and closes the alert.
+12. **Reset** — The solid secondary Reset that clears every input in HCS, ACE, ADM and HS. Part marker: `data-ug-part="confirm"`. Layer step: **Reset** — Secondary Reset clears every input in these apps.
+13. **Reset current design** — The ADC text error button "Reset Current Design to Standard". Part marker: `data-ug-part="reset-current"`. Layer step: **Reset current design** — ADC offers a text action to reset only this design.
+14. **Reset all designs** — The ADC solid error button "Reset All Designs to Standard". Part marker: `data-ug-part="reset-all"`. Layer step: **Reset all designs** — Solid error button resets all designs to standard.
+15. **Close tooltip** — The ADC tooltip that labels the close X "Close" on hover. Selector: `[class~="aui-tooltip-popup"]`. Layer step: **Close tooltip** — ADC tooltip labels the close icon while hovered.
 
 ## Apps
 

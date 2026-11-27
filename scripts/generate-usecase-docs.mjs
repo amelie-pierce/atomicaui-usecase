@@ -67,7 +67,10 @@ function renderAnatomy(anatomy = []) {
   if (!anatomy.length) return 'No Anatomy parts are authored for this use case.';
   return anatomy.map((part, index) => {
     const link = part.selector ? `Selector: \`${part.selector}\`.` : `Part marker: \`data-ug-part="${part.id}"\`.`;
-    return `${index + 1}. **${part.name}** — ${part.description} ${link}${part.text ? ' Direct text is highlighted.' : ''}`;
+    const lesson = part.lesson
+      ? ` Layer step: **${part.lesson.title ?? part.name}** — ${part.lesson.explanation ?? part.description}${part.lesson.code?.length ? ` Code target: ${part.lesson.code.map((name) => `\`${name}\``).join(', ')}.` : ''}`
+      : '';
+    return `${index + 1}. **${part.name}** — ${part.description} ${link}${part.text ? ' Direct text is highlighted.' : ''}${lesson}`;
   }).join('\n');
 }
 
@@ -194,7 +197,7 @@ for (const componentDir of componentDirs) {
       '',
       renderProps(doc),
       '',
-      '## Structure (outer to inner)',
+      '## Anatomy parts (gallery ordered by mounted parent and visual reading order)',
       '',
       renderAnatomy(doc.anatomy),
       '',
@@ -220,7 +223,7 @@ for (const componentDir of componentDirs) {
   indexRows.push(`## ${meta.title}\n\n${familyRows.join('\n')}`);
 }
 
-const index = `# AtomicAUI use case reference\n\nGenerated per-use-case docs grounded in \`src/usecase-gallery/usecases/\`. Each page includes the authored choice guidance, Anatomy, options, apps, AtomicAUI component imports, style values, and source snippets. Regenerate with \`npm run docs:usecases\`.\n\n## Build an app from these references\n\n1. Choose a use case by its business action and read its **When to choose it** guidance; the title describes the action, while the UI type describes structure.\n2. Choose the option whose rendered UI and state match the app. Its apps and source references show where the composition came from.\n3. Copy the Component source for an isolated control, or use the In context source to place it in a representative composition. Combine multiple use cases when the app needs multiple actions or component responsibilities; keep each component's props and relationships consistent with its source.\n4. Use AtomicAUI components, tokens, fonts, and icons only. Never edit \`src/vendor/atomic-aui\`, create new design-system components, or substitute hand-authored colors, fonts, or icons.\n5. Treat the source snippets as the authority. The snippets include preview scaffolding such as \`data-ug-part\` and host placement where applicable; adapt only the gallery-specific preview wiring when integrating into an app.\n\n## Use cases by component family\n\n${indexRows.join('\n\n')}\n`;
+const index = `# AtomicAUI use case reference\n\nGenerated per-use-case docs grounded in \`src/usecase-gallery/usecases/\`. Each page includes the authored choice guidance, Anatomy parts, lesson metadata used to derive Layer steps, options, apps, AtomicAUI component imports, style values, and source snippets. The gallery orders mounted Anatomy targets parent-first and by visual reading order; Layer reuses that Anatomy sequence. Regenerate with \`npm run docs:usecases\`.\n\n## Build an app from these references\n\n1. Choose a use case by its business action and read its **When to choose it** guidance; the title describes the action, while the UI type describes structure.\n2. Choose the option whose rendered UI and state match the app. Its apps and source references show where the composition came from.\n3. Copy the Component source for an isolated control, or use the In context source to place it in a representative composition. Combine multiple use cases when the app needs multiple actions or component responsibilities; keep each component's props and relationships consistent with its source.\n4. Use AtomicAUI components, tokens, fonts, and icons only. Never edit \`src/vendor/atomic-aui\`, create new design-system components, or substitute hand-authored colors, fonts, or icons.\n5. Treat the source snippets as the authority. The snippets include preview scaffolding such as \`data-ug-part\` and host placement where applicable; adapt only the gallery-specific preview wiring when integrating into an app.\n\n## Use cases by component family\n\n${indexRows.join('\n\n')}\n`;
 await mkdir(docsRoot, { recursive: true });
 await writeFile(path.join(docsRoot, 'README.md'), index);
 console.log(`Generated ${generated} use case documents across ${componentDirs.length} component families.`);

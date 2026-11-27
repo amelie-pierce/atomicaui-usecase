@@ -38,11 +38,11 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Panels** — Horizontal split group, 560px wide and 160px tall at most, that places the panes side by side. Selector: `[class~="aui-panels"]`.
-2. **Panel** — Two surface-alt soft panes, Input (id "input", 50% default width) and 3D Viewer, each at least 120px wide with a semi-bold l3 heading. Selector: `[class~="aui-panels-panel"]`.
-3. **Resize handle** — 6px primary vertical bar between Input and 3D Viewer that the user drags to change the widths. Selector: `[class~="aui-panels-resize-handle"]`.
+1. **Panels** — Horizontal split group, 560px wide and 160px tall at most, that places the panes side by side. Selector: `[class~="aui-panels"]`. Layer step: **Panels** — Horizontal split places two panes side by side in a bounded workspace.
+2. **Panel** — Two surface-alt soft panes, Input (id "input", 50% default width) and 3D Viewer, each at least 120px wide with a semi-bold l3 heading. Selector: `[class~="aui-panels-panel"]`. Layer step: **Panel** — Soft Input and 3D Viewer panes share width, headings, and content.
+3. **Resize handle** — 6px primary vertical bar between Input and 3D Viewer that the user drags to change the widths. Selector: `[class~="aui-panels-resize-handle"]`. Layer step: **Resize handle** — Six-pixel primary grip drags between Input and 3D Viewer panes.
 
 ## Apps
 

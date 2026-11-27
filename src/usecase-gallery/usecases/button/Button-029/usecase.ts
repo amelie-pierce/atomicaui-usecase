@@ -28,42 +28,17 @@ export default defineUsecase({
   title: 'Close popover button',
 
   apps: ['hcs', 'pfd', 'pbs', 'fd', 'agpd', 'rws'],
-    layers: [
-        {"id":"close","partId":"close","title":"Close","explanation":"Transparent X dismisses the popover; apps place it in different corners.","keyIdea":"The transparent close action dismisses the floating help surface.","selector":"[class~=\"aui-button\"][aria-label^=\"Close\"]"},
-        {"id":"close-icon","partId":"close-icon","title":"Close icon","explanation":"The xmark glyph centred in the close button.","keyIdea":"The xmark identifies the control that closes the popover.","selector":"[class~=\"aui-button\"][aria-label^=\"Close\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])","code":["IconButton","ContainedIcon"]},
-        {"id":"popup","partId":"popup","title":"Popover popup","explanation":"Floating soft surface holds help text or the app list and Close.","keyIdea":"The popup contains contextual help or a short application list.","selector":"[data-aui-popup-motion][role=\"dialog\"]","code":["Popover.Popup"]},
-        {"id":"help-trigger","partId":"help-trigger","title":"Help trigger","explanation":"Circle-question button anchors help to its related control.","keyIdea":"The question control opens help beside the field that needs explanation.","selector":"[class~=\"aui-button\"][aria-label*=\"elp\"]:not([aria-label^=\"Close\"])"},
-        {"id":"apps-trigger","partId":"apps-trigger","title":"Apps trigger","explanation":"FD grip in the top bar opens the application list.","keyIdea":"The FD grip trigger opens the list of additional applications.","selector":"[class~=\"aui-button\"][aria-label=\"Apps\"]"},
-      ],
 options: [
     { id: "hcs-help-close", contextAnatomy: HCS_CONTEXT, name: "Help popover close", apps: ["hcs"], source: {"hcs":"src/components/HcsDownloadDurationHelp.tsx"} ,
-      contextLayers: [
-        {"id":"context-help-intro","partId":"help-intro","title":"Help intro","explanation":"Intro line explains the code’s load-duration adjustment rules.","keyIdea":"The intro line frames the detailed duration notes below it.","selector":"[data-ug-part=\"help-intro\"]","scope":"context"},
-        {"id":"context-duration-notes","partId":"duration-notes","title":"Duration notes","explanation":"List gives quoted load-duration labels with their explanations.","keyIdea":"The notes list pairs each load-duration category with its explanation.","selector":"[data-ug-part=\"duration-notes\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"help-intro","lesson":{"explanation":"Intro line explains the code’s load-duration adjustment rules.","scope":"context"}},{"id":"duration-notes","lesson":{"explanation":"List gives quoted load-duration labels with their explanations.","scope":"context"}}]},
     { id: "pfd-help-close", contextAnatomy: PFD_CONTEXT, name: "Popover close icon", apps: ["pfd"], source: {"pfd":"src/pfd/fields.tsx"} ,
-      contextLayers: [
-        {"id":"context-help-text","partId":"help-text","title":"Help text","explanation":"Text explains how to select the member’s base material.","keyIdea":"The help sentence explains the material choice beside the close affordance.","selector":"[data-ug-part=\"help-text\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"help-text","lesson":{"explanation":"Text explains how to select the member’s base material.","scope":"context"}}]},
     { id: "pbs-help-close", contextAnatomy: PBS_CONTEXT, name: "Help popover X", apps: ["pbs"], source: {"pbs":"src/InputFields.tsx"} ,
-      contextLayers: [
-        {"id":"context-help-text","partId":"help-text","title":"Help text","explanation":"Text explains how to select the member’s base material.","keyIdea":"The FD help text shares its row with Close applications.","selector":"[data-ug-part=\"help-text\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"help-text","lesson":{"explanation":"Text explains how to select the member’s base material.","scope":"context"}}]},
     { id: "agpd-help-close", contextAnatomy: AGPD_CONTEXT, name: "Field help close icon", apps: ["agpd","rws"], source: {"agpd":"src/agpd/inputs.tsx","rws":"src/rws/inputs.tsx"} ,
-      contextLayers: [
-        {"id":"context-close-row","partId":"close-row","title":"Close row","explanation":"End-aligned row contains only the popover close X.","keyIdea":"The close row separates dismissal from the help copy below.","selector":"[data-ug-part=\"close-row\"]","scope":"context"},
-        {"id":"context-help-text","partId":"help-text","title":"Help text","explanation":"Text explains how to select the member’s base material.","keyIdea":"The help copy sits under the close control for a clear reading order.","selector":"[data-ug-part=\"help-text\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"close-row","lesson":{"explanation":"End-aligned row contains only the popover close X.","scope":"context"}},{"id":"help-text","lesson":{"explanation":"Text explains how to select the member’s base material.","scope":"context"}}]},
     { id: "fd-apps-close", contextAnatomy: FD_CONTEXT, name: "Apps popover close", apps: ["fd"], source: {"fd":"src/App.jsx"} ,
-      contextLayers: [
-        {"id":"context-top-bar","partId":"top-bar","title":"Top bar","explanation":"The Menubar with the grip Apps button that opens this popover.","keyIdea":"The top bar places the additional-applications trigger with navigation.","selector":"[class~=\"aui-menubar\"]","scope":"context"},
-        {"id":"context-apps-title","partId":"apps-title","title":"Popover title","explanation":"Semi-bold heading names Explore More Applications beside Close.","keyIdea":"The heading names the list of applications opened from the top bar.","selector":"[data-ug-part=\"apps-title\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"top-bar","lesson":{"explanation":"The Menubar with the grip Apps button that opens this popover.","scope":"context"}},{"id":"apps-title","lesson":{"explanation":"Semi-bold heading names Explore More Applications beside Close.","scope":"context"}}]},
   ],
   source: { hcs: 'src/components/F01Experience.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A transparent icon-only IconButton, 20px square, closes a popover from its corner.',
@@ -78,10 +53,10 @@ options: [
     + 'AGPD and RWS: an IconButton with only scale "xs", right-aligned in its own row above the text, in a 320px column. The optional image or diagram of the PFD, AGPD and RWS popups is left out. '
     + 'Apps popover close: FD only (a Button with an xmark Icon child, color "secondary", paint "text", scale "sm", at the end of the title row "Explore More Applications" in the 288px apps popover opened from the top bar grip; the grid of app links is left out).',
   anatomy: [
-    { id: 'close', name: 'Close', selector: '[class~="aui-button"][aria-label^="Close"]', description: 'The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD).' },
-    { id: 'close-icon', name: 'Close icon', selector: '[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The xmark glyph centred in the close button.' },
-    { id: 'popup', name: 'Popover popup', selector: '[data-aui-popup-motion][role="dialog"]', description: 'The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner.' },
-    { id: 'help-trigger', name: 'Help trigger', selector: '[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])', description: 'The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes.' },
-    { id: 'apps-trigger', name: 'Apps trigger', selector: '[class~="aui-button"][aria-label="Apps"]', description: 'FD only: the grip button in the top bar that opens Explore More Applications.' },
+    { id: 'close', name: 'Close', selector: '[class~="aui-button"][aria-label^="Close"]', description: 'The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD).' , lesson: {"explanation":"Transparent X dismisses the popover; apps place it in different corners."}},
+    { id: 'close-icon', name: 'Close icon', selector: '[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The xmark glyph centred in the close button.' , lesson: {"explanation":"The xmark glyph centred in the close button.","code":["IconButton","ContainedIcon"]}},
+    { id: 'popup', name: 'Popover popup', selector: '[data-aui-popup-motion][role="dialog"]', description: 'The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner.' , lesson: {"explanation":"Floating soft surface holds help text or the app list and Close.","code":["Popover.Popup"]}},
+    { id: 'help-trigger', name: 'Help trigger', selector: '[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])', description: 'The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes.' , lesson: {"explanation":"Circle-question button anchors help to its related control."}},
+    { id: 'apps-trigger', name: 'Apps trigger', selector: '[class~="aui-button"][aria-label="Apps"]', description: 'FD only: the grip button in the top bar that opens Explore More Applications.' , lesson: {"explanation":"FD grip in the top bar opens the application list."}},
   ],
 });

@@ -4,26 +4,10 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Full-size dialog',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"Scrim blocks the app until the licence question is answered.","keyIdea":"The overlay blocks the workspace until the licence decision is made.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Small full-size licence window fills the stage width and height.","keyIdea":"A fill-stage window gives the long agreement room to be read before acceptance.","selector":"[class~=\"aui-dialog-popup\"]"},
-        {"id":"title","partId":"title","title":"Title bar","explanation":"Title names the Website Application License Agreement for all apps.","keyIdea":"The heading identifies the agreement that gates access to the application.","selector":"[class~=\"aui-dialog-title\"]"},
-        {"id":"spacer","partId":"spacer","title":"Spacer","explanation":"The gap before the close X in the title bar.","keyIdea":"A flexible gap preserves an uncluttered route to the decline control.","selector":"[class~=\"aui-dialog-spacer\"]"},
-        {"id":"close","partId":"close","title":"Close","explanation":"Close X declines the licence; PBS hides it, ADM labels rejection.","keyIdea":"The close action declines the agreement instead of silently accepting it.","selector":"[class~=\"aui-dialog-close\"]"},
-        {"id":"description","partId":"description","title":"Description","explanation":"HCS keeps its review prompt fixed while the body scrolls.","keyIdea":"The fixed description tells HCS users why review and acceptance are required.","selector":"[class~=\"aui-dialog-description\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"Window body scrolls when licence text exceeds popup height.","keyIdea":"The body scrolls long agreement text while the surrounding gate remains in place.","selector":"[class~=\"aui-dialog-body\"]"},
-        {"id":"licence-text","partId":"licence-text","title":"Licence text","explanation":"Licence text appears as a sample clause or full mock agreement.","keyIdea":"The licence clauses provide the terms users must read before starting the app.","selector":"[data-ug-part=\"licence-text\"]"},
-      ],
 options: [
     { id: "hcs-licence", name: "Raised licence title", apps: ["hcs"], source: {"hcs":"src/components/F01Experience.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
     { id: "adm-licence", name: "Plain licence title", apps: ["ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"ace":"src/features/eula/ui/EulaGate.tsx","adm":"src/features/eula/components/EulaGate.tsx","pfd":"src/pfd/LicenseGate.tsx","pbs":"src/LicenseGate.tsx","hs":"src/hs/LicenseGate.tsx","fd":"src/components/LicenseGate.jsx","agpd":"src/agpd/LicenseGate.tsx","rws":"src/rws/LicenseGate.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: {
@@ -47,19 +31,19 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the licence gate that the user must answer before the app opens.',
-    },
+     lesson: {"explanation":"Scrim blocks the app until the licence question is answered."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The full-size licence window: scale "sm" with width and height set to "fill" so it fills the stage.',
-    },
+     lesson: {"explanation":"Small full-size licence window fills the stage width and height."}},
     {
       id: 'title',
       name: 'Title bar',
       selector: '[class~="aui-dialog-title"]',
       description: 'The title bar naming the "Website Application License Agreement"; HCS and the example raise it, the other apps leave it plain.',
-    },
+     lesson: {"explanation":"Title names the Website Application License Agreement for all apps."}},
     {
       id: 'title-text',
       name: 'Title text',
@@ -72,29 +56,29 @@ options: [
       name: 'Spacer',
       selector: '[class~="aui-dialog-spacer"]',
       description: 'The gap before the close X in the title bar.',
-    },
+     lesson: {"explanation":"The gap before the close X in the title bar."}},
     {
       id: 'close',
       name: 'Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X, which also declines the licence (labelled "Do Not Accept" in the ADM scene); PBS hides it.',
-    },
+     lesson: {"explanation":"Close X declines the licence; PBS hides it, ADM labels rejection."}},
     {
       id: 'description',
       name: 'Description',
       selector: '[class~="aui-dialog-description"]',
       description: 'The HCS-only line "Review and accept to start using the HCS prototype." that stays fixed under the title while the body scrolls.',
-    },
+     lesson: {"explanation":"HCS keeps its review prompt fixed while the body scrolls."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The scroll owner of the window; it scrolls when the licence text is longer than the popup.',
-    },
+     lesson: {"explanation":"Window body scrolls when licence text exceeds popup height."}},
     {
       id: 'licence-text',
       name: 'Licence text',
       description: 'The licence sections as Type p2 text: one sample clause in the example, and the full mock agreement in a gap-12 column View in the HCS and ADM scenes.',
-    },
+     lesson: {"explanation":"Licence text appears as a sample clause or full mock agreement.","selector":"[data-ug-part=\"licence-text\"]"}},
   ],
 });

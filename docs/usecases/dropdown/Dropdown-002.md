@@ -38,12 +38,12 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Trigger** — Square icon trigger labelled "Show hidden designs": color "surface-alt", paint "solid", soft shape, flex "none" with a default border. Selector: `[class~="aui-dropdown-trigger"]`.
-2. **Icon** — The ellipsis-vertical glyph that is the only content of the trigger. Selector: `[class~="aui-dropdown-trigger"] > [class~="aui-contained-icon"]`.
-3. **Popup** — Popup at scale "sm", capped at 256px high and scrolling vertically when many designs are hidden, aligned to the trigger start. Selector: `[class~="aui-dropdown-popup"]`.
-4. **Item** — A plain row for one hidden design: Design 3, Design 4 or Design 5. None is selected; choosing one activates that tab. Selector: `[class~="aui-dropdown-item"]`.
+1. **Trigger** — Square icon trigger labelled "Show hidden designs": color "surface-alt", paint "solid", soft shape, flex "none" with a default border. Selector: `[class~="aui-dropdown-trigger"]`. Layer step: **Trigger** — Square soft trigger opens hidden designs beyond the visible tab rail.
+2. **Icon** — The ellipsis-vertical glyph that is the only content of the trigger. Selector: `[class~="aui-dropdown-trigger"] > [class~="aui-contained-icon"]`. Layer step: **Icon** — The ellipsis-vertical glyph that is the only content of the trigger. Code target: `Dropdown.Icon`.
+3. **Popup** — Popup at scale "sm", capped at 256px high and scrolling vertically when many designs are hidden, aligned to the trigger start. Selector: `[class~="aui-dropdown-popup"]`. Layer step: **Popup** — Small popup aligns to trigger start and scrolls after 256px height.
+4. **Item** — A plain row for one hidden design: Design 3, Design 4 or Design 5. None is selected; choosing one activates that tab. Selector: `[class~="aui-dropdown-item"]`. Layer step: **Item** — Plain unselected row activates Design 3, 4, or 5.
 
 ## Apps
 

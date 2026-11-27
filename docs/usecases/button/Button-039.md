@@ -38,10 +38,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Reset view** — The small soft-shaped IconButton with primary orange color and a 1px outlined border that floats over the 3D viewer to reset the camera. Selector: `[class~="aui-button"]`.
-2. **Bullseye icon** — The bullseye glyph, drawn in the primary color on a transparent surface. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Reset view** — The small soft-shaped IconButton with primary orange color and a 1px outlined border that floats over the 3D viewer to reset the camera. Selector: `[class~="aui-button"]`. Layer step: **Reset view** — Small orange outlined soft IconButton resets the 3D camera.
+2. **Bullseye icon** — The bullseye glyph, drawn in the primary color on a transparent surface. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`. Layer step: **Bullseye icon** — The bullseye glyph, drawn in the primary color on a transparent surface. Code target: `IconButton`.
 
 ## Apps
 

@@ -5,47 +5,16 @@ export default defineUsecase({
   title: 'Reset confirm dialog',
 
   apps: ['hcs', 'ace', 'adm', 'hs', 'fd', 'adc'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"Scrim keeps the reset confirm separate from the active workspace.","keyIdea":"The scrim separates the warning from the workspace before users choose what to reset.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Reset confirm window width differs across the app versions.","keyIdea":"A fixed dialog boundary gives the destructive choice a readable decision area across app widths.","selector":"[class~=\"aui-dialog-popup\"]"},
-        {"id":"title","partId":"title","title":"Title bar","explanation":"Warning title names Reset Inputs before users decide.","keyIdea":"Name the reset operation in the header so users can confirm the target before reading details.","selector":"[class~=\"aui-dialog-title\"]"},
-        {"id":"icon","partId":"icon","title":"Warning icon","explanation":"Warning triangle leads the title and signals destructive work.","keyIdea":"This caution symbol identifies the operation as destructive even when the title is scanned quickly.","selector":"[class~=\"aui-dialog-title\"] [class~=\"aui-contained-icon\"]","code":["Dialog.Icon"]},
-        {"id":"spacer","partId":"spacer","title":"Spacer","explanation":"Flexible gap separates the title from its close control.","keyIdea":"Use the remaining header space to position its close target without crowding the warning.","selector":"[class~=\"aui-dialog-spacer\"]"},
-        {"id":"close","partId":"close","title":"Close","explanation":"Close X leaves the alert without resetting any inputs.","keyIdea":"Closing the alert is a safe alternative to either reset action.","selector":"[class~=\"aui-dialog-close\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"HS wraps its reset warning in a separate dialog body.","keyIdea":"The HS body wrapper keeps the explanation grouped as dialog content instead of loose popup text.","selector":"[class~=\"aui-dialog-body\"]"},
-        {"id":"description","partId":"description","title":"Description","explanation":"Warning says inputs and project settings cannot be recovered.","keyIdea":"Spell out which configuration will be erased so the choice has a concrete consequence.","selector":"[class~=\"aui-dialog-description\"]"},
-        {"id":"actions","partId":"actions","title":"Footer","explanation":"Footer groups Cancel and Reset below the warning text.","keyIdea":"Place both outcomes together after the warning, where the decision belongs.","selector":"[class~=\"aui-dialog-actions\"]"},
-        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"Cancel leaves every input unchanged and closes the alert.","keyIdea":"Cancel exits the reset flow while preserving every current input.","selector":"[data-ug-part=\"cancel\"]"},
-        {"id":"confirm","partId":"confirm","title":"Reset","explanation":"Secondary Reset clears every input in these apps.","keyIdea":"The primary destructive button clears all inputs covered by this confirmation.","selector":"[data-ug-part=\"confirm\"]"},
-        {"id":"reset-current","partId":"reset-current","title":"Reset current design","explanation":"ADC offers a text action to reset only this design.","keyIdea":"Offer a current-design-only action when a full reset would remove too much work.","selector":"[data-ug-part=\"reset-current\"]"},
-        {"id":"reset-all","partId":"reset-all","title":"Reset all designs","explanation":"Solid error button resets all designs to standard.","keyIdea":"Reserve a separate all-design action for users who intend to restore every design.","selector":"[data-ug-part=\"reset-all\"]"},
-        {"id":"close-tooltip","partId":"close-tooltip","title":"Close tooltip","explanation":"ADC tooltip labels the close icon while hovered.","keyIdea":"The tooltip names the icon-only exit when pointer users pause over it.","selector":"[class~=\"aui-tooltip-popup\"]"},
-      ],
 options: [
     { id: "hcs-reset", showContext: false, name: "Reset confirm", apps: ["hcs"], source: {"hcs":"src/components/HcsResetDialog.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "ace-reset", showContext: false, name: "Reset without close", apps: ["ace"], source: {"ace":"src/features/reset-inputs/ui/ResetInputsAction.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "adm-reset", showContext: false, name: "480px reset dialog", apps: ["adm"], source: {"adm":"src/features/top-navigation/components/ResetDialog.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "hs-reset", showContext: false, name: "Spaced reset footer", apps: ["hs","fd"], source: {"hs":"src/App.tsx","fd":"src/App.jsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "adc-reset", showContext: false, name: "Wide reset dialog", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { hcs: 'src/components/HcsResetDialog.tsx', ace: 'src/features/reset-inputs/ui/ResetInputsAction.tsx', adm: 'src/features/top-navigation/components/ResetDialog.tsx', hs: 'src/App.tsx', fd: 'src/App.jsx', adc: 'src/adc/Workspace.tsx' },
@@ -66,25 +35,25 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the reset confirm shared by five apps.',
-    },
+     lesson: {"explanation":"Scrim keeps the reset confirm separate from the active workspace."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The 560px soft confirm window at scale "sm" (ADM uses 480px, HS 384px, ADC a 640px cap).',
-    },
+     lesson: {"explanation":"Reset confirm window width differs across the app versions."}},
     {
       id: 'title',
       name: 'Title bar',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title bar with the warning icon and "Warning: Reset Inputs?"; ACE leaves out the close X and HS leaves the bar plain.',
-    },
+     lesson: {"explanation":"Warning title names Reset Inputs before users decide."}},
     {
       id: 'icon',
       name: 'Warning icon',
       selector: '[class~="aui-dialog-title"] [class~="aui-contained-icon"]',
       description: 'The warning-coloured triangle-exclamation icon at the start of the title.',
-    },
+     lesson: {"explanation":"Warning triangle leads the title and signals destructive work.","code":["Dialog.Icon"]}},
     {
       id: 'title-text',
       name: 'Title text',
@@ -97,56 +66,56 @@ options: [
       name: 'Spacer',
       selector: '[class~="aui-dialog-spacer"]',
       description: 'The gap before the close X in the title bar; HS also places one between Cancel and Reset in its footer.',
-    },
+     lesson: {"explanation":"Flexible gap separates the title from its close control."}},
     {
       id: 'close',
       name: 'Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X labelled "Close Reset"; in ADC it sits in a "Close" tooltip trigger.',
-    },
+     lesson: {"explanation":"Close X leaves the alert without resetting any inputs."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The HS-only body that wraps its description instead of placing it directly in the popup.',
-    },
+     lesson: {"explanation":"HS wraps its reset warning in a separate dialog body."}},
     {
       id: 'description',
       name: 'Description',
       selector: '[class~="aui-dialog-description"]',
       description: 'The warning that all input fields will be reset and that the project configurations erased cannot be recovered.',
-    },
+     lesson: {"explanation":"Warning says inputs and project settings cannot be recovered."}},
     {
       id: 'actions',
       name: 'Footer',
       selector: '[class~="aui-dialog-actions"]',
       description: 'The footer that holds Cancel and the destructive button; split and wrapping in ADC.',
-    },
+     lesson: {"explanation":"Footer groups Cancel and Reset below the warning text."}},
     {
       id: 'cancel',
       name: 'Cancel',
       description: 'The default Cancel next to the destructive action.',
-    },
+     lesson: {"explanation":"Cancel leaves every input unchanged and closes the alert.","selector":"[data-ug-part=\"cancel\"]"}},
     {
       id: 'confirm',
       name: 'Reset',
       description: 'The solid secondary Reset that clears every input in HCS, ACE, ADM and HS.',
-    },
+     lesson: {"explanation":"Secondary Reset clears every input in these apps.","selector":"[data-ug-part=\"confirm\"]"}},
     {
       id: 'reset-current',
       name: 'Reset current design',
       description: 'The ADC text error button "Reset Current Design to Standard".',
-    },
+     lesson: {"explanation":"ADC offers a text action to reset only this design.","selector":"[data-ug-part=\"reset-current\"]"}},
     {
       id: 'reset-all',
       name: 'Reset all designs',
       description: 'The ADC solid error button "Reset All Designs to Standard".',
-    },
+     lesson: {"explanation":"Solid error button resets all designs to standard.","selector":"[data-ug-part=\"reset-all\"]"}},
     {
       id: 'close-tooltip',
       name: 'Close tooltip',
       selector: '[class~="aui-tooltip-popup"]',
       description: 'The ADC tooltip that labels the close X "Close" on hover.',
-    },
+     lesson: {"explanation":"ADC tooltip labels the close icon while hovered."}},
   ],
 });

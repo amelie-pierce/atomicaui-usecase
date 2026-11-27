@@ -11,20 +11,9 @@ export default defineUsecase({
   title: 'Close walkthrough button',
 
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-    layers: [
-        {"id":"card","partId":"card","title":"Walkthrough card","explanation":"328px coach mark pairs Connection Type guidance with navigation.","keyIdea":"The coach mark combines its first instruction with tour controls.","selector":"[role=\"region\"][aria-label=\"Walkthrough\"]"},
-        {"id":"close","partId":"close","title":"Close","explanation":"20px transparent corner X dismisses the HCS walkthrough.","keyIdea":"The corner xmark dismisses this walkthrough without advancing it.","selector":"[class~=\"aui-button\"][aria-label^=\"Close\"]"},
-        {"id":"close-icon","partId":"close-icon","title":"Close icon","explanation":"Xmark glyph appears inside the close button itself.","keyIdea":"The close icon remains visually separate from the card navigation.","selector":"[class~=\"aui-button\"][aria-label^=\"Close\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])","code":["IconButton"]},
-        {"id":"next","partId":"next","title":"Next","explanation":"Step 1 shows Next with arrow-right as its only navigation.","keyIdea":"Next advances from the first Connection Type instruction.","selector":"[class~=\"aui-button\"]:not([aria-label])"},
-      ],
 options: [
     { id: "hcs-walkthrough-close", contextAnatomy: TOUR_CONTEXT, name: "Walkthrough close", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/F01Walkthrough.tsx","ace":"src/features/top-navigation/ui/TutorialWalkthrough.tsx","adm":"src/features/top-navigation/components/TutorialWalkthrough.tsx","pfd":"src/pfd/Walkthrough.tsx","pbs":"src/PbsWalkthrough.tsx","hs":"src/hs/Tutorials.tsx","fd":"src/components/Walkthrough.jsx","agpd":"src/agpd/Tutorials.tsx","rws":"src/rws/Tutorials.tsx"} ,
-      contextLayers: [
-        {"id":"context-tour-target","partId":"tour-target","title":"Spotlight target","explanation":"Connection Type heading is the target beside the coach mark.","keyIdea":"The spotlight ties the card to the Connection Type section it describes.","selector":"[class~=\"ug-tour__target\"]","scope":"context","code":["MockTourTarget"]},
-        {"id":"context-step-title","partId":"step-title","title":"Step title","explanation":"Connection Type heading leaves room for the close X.","keyIdea":"The heading names the current Connection Type step beside the close control.","selector":"[data-ug-part=\"step-title\"]","scope":"context"},
-        {"id":"context-step-counter","partId":"step-counter","title":"Step counter","explanation":"Muted footer shows the first position, 1 / 6, beside Next.","keyIdea":"The counter marks the first of six walkthrough instructions.","selector":"[data-ug-part=\"step-counter\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"tour-target","lesson":{"explanation":"Connection Type heading is the target beside the coach mark.","code":["MockTourTarget"],"scope":"context"}},{"id":"step-title","lesson":{"explanation":"Connection Type heading leaves room for the close X.","scope":"context"}},{"id":"step-counter","lesson":{"explanation":"Muted footer shows the first position, 1 / 6, beside Next.","scope":"context"}}]},
   ],
   source: { hcs: 'src/components/F01Experience.tsx', ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/ResultsSection.tsx', hs: 'src/hs/ShellDialog.tsx', fd: 'src/components/ui.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
   summary: 'A transparent icon-only IconButton, 20px square, dismisses the coach-mark card of a walkthrough from its corner.',
@@ -34,9 +23,9 @@ options: [
     + 'In context the X sits in the corner of the step 1 card (HCS Connection Type, so only Next in the footer), 4px in, through an inline style (the apps use a local class such as .hcs-tour-close because the kit sx has no inset axis); the title reserves 24px at its end so its text stops short of it. '
     + 'RWS hides the X on one step of its tour (a step with close set to false); that is a rule of its steps, not another UI. The footer of the scene is HCS\'s; the other apps\' footers are in Button-023.',
   anatomy: [
-    { id: 'card', name: 'Walkthrough card', selector: '[role="region"][aria-label="Walkthrough"]', description: 'The 328px coach-mark card for the Connection Type step with its text and footer navigation.' },
-    { id: 'close', name: 'Close', selector: '[class~="aui-button"][aria-label^="Close"]', description: 'The 20px transparent xmark button pinned to the card corner (4px inset) that dismisses the HCS walkthrough; HCS wraps it in an absolute span.' },
-    { id: 'close-icon', name: 'Close icon', selector: '[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The xmark glyph inside the close button.' },
-    { id: 'next', name: 'Next', selector: '[class~="aui-button"]:not([aria-label])', description: 'The step button that is the only navigation on step 1 / 6 (Next with arrow-right); Close is the way out without finishing.' },
+    { id: 'card', name: 'Walkthrough card', selector: '[role="region"][aria-label="Walkthrough"]', description: 'The 328px coach-mark card for the Connection Type step with its text and footer navigation.' , lesson: {"explanation":"328px coach mark pairs Connection Type guidance with navigation."}},
+    { id: 'close', name: 'Close', selector: '[class~="aui-button"][aria-label^="Close"]', description: 'The 20px transparent xmark button pinned to the card corner (4px inset) that dismisses the HCS walkthrough; HCS wraps it in an absolute span.' , lesson: {"explanation":"20px transparent corner X dismisses the HCS walkthrough."}},
+    { id: 'close-icon', name: 'Close icon', selector: '[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The xmark glyph inside the close button.' , lesson: {"explanation":"Xmark glyph appears inside the close button itself.","code":["IconButton"]}},
+    { id: 'next', name: 'Next', selector: '[class~="aui-button"]:not([aria-label])', description: 'The step button that is the only navigation on step 1 / 6 (Next with arrow-right); Close is the way out without finishing.' , lesson: {"explanation":"Step 1 shows Next with arrow-right as its only navigation."}},
   ],
 });

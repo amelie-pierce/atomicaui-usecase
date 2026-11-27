@@ -35,9 +35,9 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The lone Cancel Button in the upload dialog footer, small and in the default gray solid look, that dismisses the dialog while it waits for a dropped file. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+1. **Container** — The lone Cancel Button in the upload dialog footer, small and in the default gray solid look, that dismisses the dialog while it waits for a dropped file. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`. Layer step: **Container** — Small gray Cancel waits for a file or dismisses the upload dialog.
 2. **Label** — The text "Cancel" that closes the Open from device dialog without uploading. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`. Direct text is highlighted.
 
 ## Apps
@@ -64,11 +64,11 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Dialog** — The open dialog titled "Upload JSON File". Part marker: `data-ug-part="dialog"`.
-2. **Dialog title** — The raised title bar with "Upload JSON File" and the close X at the end. Part marker: `data-ug-part="dialog-title"`.
-3. **Close button** — The X in the title that closes the dialog like Cancel (aria-label "Cancel"). Part marker: `data-ug-part="dialog-close"`.
-4. **Upload area** — The dialog body that holds the file upload drop zone ("Drop files here" with a Browse action). Part marker: `data-ug-part="upload-body"`.
-5. **Dialog footer** — The Actions row at the end that holds the single Cancel button. Part marker: `data-ug-part="dialog-footer"`.
+1. **Dialog** — The open dialog titled "Upload JSON File". Part marker: `data-ug-part="dialog"`. Layer step: **Dialog** — Upload JSON File dialog hosts the file dropzone and actions.
+2. **Dialog title** — The raised title bar with "Upload JSON File" and the close X at the end. Part marker: `data-ug-part="dialog-title"`. Layer step: **Dialog title** — Raised title says Upload JSON File beside its Close X.
+3. **Close button** — The X in the title that closes the dialog like Cancel (aria-label "Cancel"). Part marker: `data-ug-part="dialog-close"`. Layer step: **Close button** — Title X closes the dialog and is labelled Cancel.
+4. **Upload area** — The dialog body that holds the file upload drop zone ("Drop files here" with a Browse action). Part marker: `data-ug-part="upload-body"`. Layer step: **Upload area** — Dialog body contains the Drop files here zone and Browse.
+5. **Dialog footer** — The Actions row at the end that holds the single Cancel button. Part marker: `data-ug-part="dialog-footer"`. Layer step: **Dialog footer** — The Actions row at the end that holds the single Cancel button.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-006/example.tsx`
 

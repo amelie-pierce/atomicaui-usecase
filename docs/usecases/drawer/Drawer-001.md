@@ -37,13 +37,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the drawer; in the ACE scene it starts 36px down so the top bar stays uncovered. Selector: `[class~="aui-drawer-backdrop"]`.
-2. **Popup** — The 288px-wide, full-height, square no-padding panel labelled "Navigation" that slides in from the right edge on a phone. Selector: `[class~="aui-drawer-popup"]`.
-3. **Content** — The region that holds the vertical menubar of top bar actions. Selector: `[class~="aui-drawer-content"]`.
-4. **Vertical menubar** — The vertical Menubar at scale "sm" that stacks the actions full width. Selector: `[class~="aui-drawer-content"] [class~="aui-menubar"]`.
-5. **Menu rows** — The Save to device, Open from device and About rows of the example; the ACE scene adds Print. Selector: `[class~="aui-drawer-content"] [class~="aui-button"]`.
+1. **Overlay** — The scrim behind the drawer; in the ACE scene it starts 36px down so the top bar stays uncovered. Selector: `[class~="aui-drawer-backdrop"]`. Layer step: **Overlay** — Drawer scrim covers the workspace while ACE leaves its top bar exposed.
+2. **Popup** — The 288px-wide, full-height, square no-padding panel labelled "Navigation" that slides in from the right edge on a phone. Selector: `[class~="aui-drawer-popup"]`. Layer step: **Popup** — 288px panel slides from phone right edge to show Navigation.
+3. **Content** — The region that holds the vertical menubar of top bar actions. Selector: `[class~="aui-drawer-content"]`. Layer step: **Content** — Drawer content holds the vertical menu of top-bar actions.
+4. **Vertical menubar** — The vertical Menubar at scale "sm" that stacks the actions full width. Selector: `[class~="aui-drawer-content"] [class~="aui-menubar"]`. Layer step: **Vertical menubar** — Small-scale vertical menubar stacks drawer actions at full width.
+5. **Menu rows** — The Save to device, Open from device and About rows of the example; the ACE scene adds Print. Selector: `[class~="aui-drawer-content"] [class~="aui-button"]`. Layer step: **Menu rows** — Save, Open, About and ACE Print appear as drawer menu rows.
 
 ## Apps
 

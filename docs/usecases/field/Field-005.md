@@ -36,11 +36,11 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field** — Stacked wrapper that pairs the "Description" label with the multi-line box; ADC makes it a row with a 96px label and AGPD drops the label entirely. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Description" label above the box; in the AGPD quote notes there is no label and an aria-label names the box. Selector: `[class~="aui-field-label"]`.
-3. **Textarea** — The five-row box that draws its own 1px slate outline, 4px radius and 3/8 padding, so no Field.Control surrounds it; it resizes vertically only. Selector: `[class~="aui-textarea"]`.
+1. **Field** — Stacked wrapper that pairs the "Description" label with the multi-line box; ADC makes it a row with a 96px label and AGPD drops the label entirely. Selector: `[class~="aui-field"]`. Layer step: **Field** — Wrapper pairs Description with a multiline box; app labels vary.
+2. **Label** — The "Description" label above the box; in the AGPD quote notes there is no label and an aria-label names the box. Selector: `[class~="aui-field-label"]`. Layer step: **Label** — Description label sits above; AGPD names its unlabeled box accessibly.
+3. **Textarea** — The five-row box that draws its own 1px slate outline, 4px radius and 3/8 padding, so no Field.Control surrounds it; it resizes vertically only. Selector: `[class~="aui-textarea"]`. Layer step: **Textarea** — Five-row textarea has its own outline and vertical resizing.
 
 ## Apps
 

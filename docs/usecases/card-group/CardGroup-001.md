@@ -38,19 +38,19 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Card group** — Selection group of template cards with template-1 selected through defaultValue; the ADC scene hosts it in the New Project dialog body. Selector: `[class~="aui-card-group"]`.
-2. **Label** — Semi-bold heading "User Templates" above the toolbar. Selector: `[class~="aui-card-group"] [class~="aui-label"]`.
-3. **Toolbar** — Row above the cards that holds the search and the view toggle. Selector: `[class~="aui-card-group-toolbar"]`.
-4. **Search** — Search field with the placeholder "Search template". Selector: `[class~="aui-card-group-search"]`.
-5. **View toggle** — Switch between card and list view of the templates. Selector: `[class~="aui-card-group-view-toggle"]`.
-6. **Items** — Two-column grid with no gap that lays out Template 1 and Template 2. Selector: `[class~="aui-card-group-items"]`.
-7. **Item** — A selectable template card with shape "none"; the selected one is primary tonal on a surface background, the others a tonal surface with an outlined border. Selector: `[class~="aui-card-group-item"]`.
-8. **Item image** — 4:3 thumbnail at the top of each template card. Selector: `[class~="aui-card-group-item-image"]`.
-9. **Item body** — Area under the thumbnail that carries the template name. Selector: `[class~="aui-card-group-item-body"]`.
-10. **Item title** — Centred template name, Template 1 or Template 2. Selector: `[class~="aui-card-group-item-title"]`.
-11. **Empty** — Message "No templates match your search" shown over the grid when the search filters everything out. Selector: `[class~="aui-card-group-empty"]`.
+1. **Card group** — Selection group of template cards with template-1 selected through defaultValue; the ADC scene hosts it in the New Project dialog body. Selector: `[class~="aui-card-group"]`. Layer step: **Card group** — Selection group keeps one template active with template-1 selected.
+2. **Label** — Semi-bold heading "User Templates" above the toolbar. Selector: `[class~="aui-card-group"] [class~="aui-label"]`. Layer step: **Label** — Semi-bold User Templates heading names the current collection.
+3. **Toolbar** — Row above the cards that holds the search and the view toggle. Selector: `[class~="aui-card-group-toolbar"]`. Layer step: **Toolbar** — Toolbar groups search and view controls above the cards.
+4. **Search** — Search field with the placeholder "Search template". Selector: `[class~="aui-card-group-search"]`. Layer step: **Search** — Search field narrows templates from its Search template placeholder.
+5. **View toggle** — Switch between card and list view of the templates. Selector: `[class~="aui-card-group-view-toggle"]`. Layer step: **View toggle** — View toggle switches template choices between cards and list.
+6. **Items** — Two-column grid with no gap that lays out Template 1 and Template 2. Selector: `[class~="aui-card-group-items"]`. Layer step: **Items** — Two-column grid aligns Template 1 and Template 2 without gaps.
+7. **Item** — A selectable template card with shape "none"; the selected one is primary tonal on a surface background, the others a tonal surface with an outlined border. Selector: `[class~="aui-card-group-item"]`. Layer step: **Item** — Selected card uses primary tonal color; other cards stay surface-tonal and outlined.
+8. **Item image** — 4:3 thumbnail at the top of each template card. Selector: `[class~="aui-card-group-item-image"]`. Layer step: **Item image** — Each card starts with a 4:3 template thumbnail.
+9. **Item body** — Area under the thumbnail that carries the template name. Selector: `[class~="aui-card-group-item-body"]`. Layer step: **Item body** — Card body places the template name beneath its thumbnail.
+10. **Item title** — Centred template name, Template 1 or Template 2. Selector: `[class~="aui-card-group-item-title"]`. Layer step: **Item title** — Template 1 or Template 2 appears centred inside each card.
+11. **Empty** — Message "No templates match your search" shown over the grid when the search filters everything out. Selector: `[class~="aui-card-group-empty"]`. Layer step: **Empty** — No templates match your search appears when filtering removes every card.
 
 ## Apps
 

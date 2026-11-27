@@ -13,39 +13,16 @@ export default defineUsecase({
     pfd: 'src/pfd/PrintView.tsx',
     agpd: 'src/App.tsx',
   },
-    layers: [
-        {"id":"table","partId":"table","title":"Table","explanation":"Extra-small print grid has ruled cells and no selection.","keyIdea":"A flat print grid preserves the table’s values without interactive selection controls.","selector":"[class~=\"aui-table\"]"},
-        {"id":"head","partId":"head","title":"Header","explanation":"Printed header lists Model and Load with app-specific fills.","keyIdea":"The printed heading row labels columns in the report rather than acting as controls.","selector":"[class~=\"aui-table-head\"]"},
-        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Printed labels use centered or start alignment across apps.","keyIdea":"Each plain heading stays readable in the compact report layout.","selector":"[class~=\"aui-table-header-cell\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"Printed report rows contain the saved model values.","keyIdea":"The body holds records in the sequence the report will present them.","selector":"[class~=\"aui-table-body\"]"},
-        {"id":"row","partId":"row","title":"Row","explanation":"Printed row shows Model B-200 and 2,210 lb.","keyIdea":"A row binds one printed model and its load into a single record.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"},
-        {"id":"cell","partId":"cell","title":"Cell","explanation":"Printed values use compact padding and app-specific alignment.","keyIdea":"Plain cells keep printed values legible without implying editability.","selector":"[class~=\"aui-table-cell\"]"},
-      ],
 options: [
     { id: "ace-print", name: "Print table", showContext: false, apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "adm-print", name: "Dense print table", showContext: false, apps: ["adm"], source: {"adm":"src/features/print/components/InputDataPrintPage.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "hs-print", name: "Band header table", showContext: false, apps: ["hs"], source: {"hs":"src/hs/PrintView.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "rws-print", name: "Legacy print grid", showContext: false, apps: ["rws"], source: {"rws":"src/legacy/src/apps/rws/containers/PrintView/components/PrintTable.jsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "pbs-print", name: "Grouped print table", showContext: false, apps: ["pbs","pfd","agpd"], source: {"pbs":"src/PrintView.tsx","pfd":"src/pfd/PrintView.tsx","agpd":"src/App.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   summary: 'The paper copy of a table: a flat all-cells grid with no sorting or selection, printed in the report.',
@@ -58,36 +35,36 @@ options: [
       name: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Flat print grid at scale "xs" with "all-cells" borders and no selection. ACE, ADM, HS and RWS override it with shape "none", a text-coloured border, compact profile or smaller 10/12 type.',
-    },
+     lesson: {"explanation":"Extra-small print grid has ruled cells and no selection."}},
     {
       id: 'head',
       name: 'Header',
       selector: '[class~="aui-table-head"]',
       description: 'Header row printed with Model and Load (lb); ACE and ADM paint it muted with a surface foreground, HS and RWS use a secondary solid fill.',
-    },
+     lesson: {"explanation":"Printed header lists Model and Load with app-specific fills."}},
     {
       id: 'header-cell',
       name: 'Header cell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'Printed column label without sort controls; its alignment is centre in ACE and RWS and left or start in ADM and HS.',
-    },
+     lesson: {"explanation":"Printed labels use centered or start alignment across apps."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-table-body"]',
       description: 'The printed rows of the report table.',
-    },
+     lesson: {"explanation":"Printed report rows contain the saved model values."}},
     {
       id: 'row',
       name: 'Row',
       selector: '[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]',
       description: 'One printed record, Model B-200 with 2,210 lb; HS and RWS switch selectable and expandable off on the row.',
-    },
+     lesson: {"explanation":"Printed row shows Model B-200 and 2,210 lb.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"}},
     {
       id: 'cell',
       name: 'Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Plain printed value; ACE sets 4px by 6px padding with centred text, ADM left-aligns it in the compact profile.',
-    },
+     lesson: {"explanation":"Printed values use compact padding and app-specific alignment."}},
   ],
 });

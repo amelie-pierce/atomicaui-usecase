@@ -4,22 +4,10 @@ export default defineUsecase({
   uiType: 'Single-line field',
   title: 'Text field',
   apps: ['hcs', 'hs', 'pbs', 'pfd', 'fd', 'rws', 'agpd', 'adm', 'ace', 'adc'],
-    layers: [
-        {"id":"field","partId":"field","title":"Field","explanation":"Small stacked field joins Connection ID to one text line.","keyIdea":"The wrapper connects the Connection ID prompt to the editable identifier.","selector":"[class~=\"aui-field\"]"},
-        {"id":"label","partId":"label","title":"Label","explanation":"Connection ID sits above; ADC adds inline layout and required mark.","keyIdea":"A persistent label tells users what the single-line value represents.","selector":"[class~=\"aui-field-label\"]"},
-        {"id":"control","partId":"control","title":"Control","explanation":"Outlined 28px frame wraps the text input with compact padding.","keyIdea":"The outlined frame separates the text-entry area from surrounding form content.","selector":"[class~=\"aui-field-control\"]"},
-        {"id":"input","partId":"input","title":"Input","explanation":"Editable line starts with C-1042 and has an accessible name.","keyIdea":"The editable value supplies the identifier that the labeled field is collecting.","selector":"[class~=\"aui-field-control\"] > [class~=\"aui-input\"]"},
-      ],
 options: [
     { id: "hs-text", name: "Text field", apps: ["hcs","hs","pbs","pfd","fd","rws","agpd","adm","ace"], note: "Label above.", source: {"hcs":"src/components/F01Experience.tsx","hs":"src/hs/InputFields.tsx","pbs":"src/InputFields.tsx","pfd":"src/pfd/ShellDialogs.tsx","fd":"src/components/Feedback.jsx","rws":"src/rws/ShellDialogs.tsx","agpd":"src/agpd/ShellDialogs.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","ace":"src/features/top-navigation/ui/FeedbackDialog.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
     { id: "adc-text-beside", name: "Side label text field", apps: ["adc"], note: "Label beside: a 96px end-aligned label, the control fills the rest of the row.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { hcs: 'src/components/F01Experience.tsx', hs: 'src/hs/InputFields.tsx', pbs: 'src/InputFields.tsx', pfd: 'src/pfd/ShellDialogs.tsx', fd: 'src/components/Feedback.jsx', rws: 'src/rws/ShellDialogs.tsx', agpd: 'src/agpd/ShellDialogs.tsx', adm: 'src/features/top-navigation/components/FeedbackDialog.tsx', ace: 'src/features/top-navigation/ui/FeedbackDialog.tsx', adc: 'src/adc/components/ProjectInfoField.tsx' },
@@ -33,24 +21,24 @@ options: [
       name: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "Stacked text field with a 3 gap that ties the Connection ID label to its single-line control; ADC lays it out as a wrapping row with a 96px label.",
-    },
+     lesson: {"explanation":"Small stacked field joins Connection ID to one text line."}},
     {
       id: "label",
       name: "Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The \"Connection ID\" label above the control; in ADC it is a 96px end-aligned label with a required asterisk in the error colour.",
-    },
+     lesson: {"explanation":"Connection ID sits above; ADC adds inline layout and required mark."}},
     {
       id: "control",
       name: "Control",
       selector: "[class~=\"aui-field-control\"]",
       description: "The 28px surface-coloured outlined frame, 3/8 padding and a 4px radius, that wraps the text input.",
-    },
+     lesson: {"explanation":"Outlined 28px frame wraps the text input with compact padding."}},
     {
       id: "input",
       name: "Input",
       selector: "[class~=\"aui-field-control\"] > [class~=\"aui-input\"]",
       description: "The editable line of text, prefilled with C-1042 and named by its aria-label.",
-    },
+     lesson: {"explanation":"Editable line starts with C-1042 and has an accessible name."}},
   ],
 });

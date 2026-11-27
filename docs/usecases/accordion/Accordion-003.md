@@ -36,14 +36,14 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Accordion** — Template picker that opens both groups by default (openMultiple, defaultValue default and mine); the ACE and HS scenes wrap it in a RadioGroup in a Templates dialog. Selector: `[class~="aui-accordion"]`.
-2. **Item** — One template group, Default Templates or My Templates. Selector: `[class~="aui-accordion-item"]`.
-3. **Trigger** — Plain title row with no icon; ACE sets the name as an l4 Type, HS as bare text. Selector: `[class~="aui-accordion-trigger"]`.
-4. **Chevron** — Chevron on the right of each group title. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
-5. **Panel** — Rows of the group: Two-beam connection under Default Templates, and "Create your own template." (Header hanger in the dialogs) under My Templates. Selector: `[class~="aui-accordion-panel"]`.
-6. **Template radio** — Dialog scenes only: each template row is a radio with its name as Radio.Label, with one selected through RadioGroup defaultValue="2". Selector: `[class~="aui-accordion-panel"] [class~="aui-radio"]`.
+1. **Accordion** — Template picker that opens both groups by default (openMultiple, defaultValue default and mine); the ACE and HS scenes wrap it in a RadioGroup in a Templates dialog. Selector: `[class~="aui-accordion"]`. Layer step: **Accordion** — Template picker opens both Default Templates and My Templates groups.
+2. **Item** — One template group, Default Templates or My Templates. Selector: `[class~="aui-accordion-item"]`. Layer step: **Item** — One collapsible category holds its own template choices.
+3. **Trigger** — Plain title row with no icon; ACE sets the name as an l4 Type, HS as bare text. Selector: `[class~="aui-accordion-trigger"]`. Layer step: **Trigger** — Plain title row opens the group without a leading icon.
+4. **Chevron** — Chevron on the right of each group title. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`. Layer step: **Chevron** — Chevron on the right of each group title.
+5. **Panel** — Rows of the group: Two-beam connection under Default Templates, and "Create your own template." (Header hanger in the dialogs) under My Templates. Selector: `[class~="aui-accordion-panel"]`. Layer step: **Panel** — Panel lists each group's templates, including Create your own.
+6. **Template radio** — Dialog scenes only: each template row is a radio with its name as Radio.Label, with one selected through RadioGroup defaultValue="2". Selector: `[class~="aui-accordion-panel"] [class~="aui-radio"]`. Layer step: **Template radio** — Each dialog row uses Radio.Label; template two starts selected.
 
 ## Apps
 

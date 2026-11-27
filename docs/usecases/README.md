@@ -1,6 +1,6 @@
 # AtomicAUI use case reference
 
-Generated per-use-case docs grounded in `src/usecase-gallery/usecases/`. Each page includes the authored choice guidance, Anatomy, options, apps, AtomicAUI component imports, style values, and source snippets. Regenerate with `npm run docs:usecases`.
+Generated per-use-case docs grounded in `src/usecase-gallery/usecases/`. Each page includes the authored choice guidance, Anatomy parts, lesson metadata used to derive Layer steps, options, apps, AtomicAUI component imports, style values, and source snippets. The gallery orders mounted Anatomy targets parent-first and by visual reading order; Layer reuses that Anatomy sequence. Regenerate with `npm run docs:usecases`.
 
 ## Build an app from these references
 

@@ -4,33 +4,14 @@ export default defineUsecase({
   uiType: 'Single-line field',
   title: 'Field with error',
   apps: ['hcs', 'hs', 'pbs', 'pfd', 'fd', 'rws', 'agpd', 'adm', 'ace', 'adc'],
-    layers: [
-        {"id":"field","partId":"field","title":"Field","explanation":"Invalid state turns label, control, and message red.","keyIdea":"The invalid wrapper groups the label, rejected value and explanation into one error state.","selector":"[class~=\"aui-field\"]"},
-        {"id":"label","partId":"label","title":"Label","explanation":"Quantity label stays above the invalid control; ADC places it beside.","keyIdea":"Keeping the Quantity label in place preserves the field identity while it is invalid.","selector":"[class~=\"aui-field-label\"]"},
-        {"id":"control","partId":"control","title":"Control","explanation":"Failed 28px field uses an error-coloured outline in RWS and ADC.","keyIdea":"The error outline makes the failed control visible before users read its message.","selector":"[class~=\"aui-field-control\"]"},
-        {"id":"input","partId":"input","title":"Input","explanation":"Rejected zero value sets aria-invalid for assistive technology.","keyIdea":"The aria-invalid value announces rejection to assistive technology as well as to sighted users.","selector":"[class~=\"aui-field-control\"] > [class~=\"aui-input\"]"},
-        {"id":"error","partId":"error","title":"Error","explanation":"Error message gives the permitted whole-number range below the control.","keyIdea":"A specific range message tells users how to correct the rejected quantity.","selector":"[class~=\"aui-field-error\"]"},
-      ],
 options: [
     { id: "hs-error", name: "Field error", apps: ["hs","pbs","pfd","fd","agpd","adm","ace"], note: "The error text sits under the control in the error colour (16px).", source: {"hs":"src/hs/InputFields.tsx","pbs":"src/InputFields.tsx","pfd":"src/pfd/fields.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/controls.tsx","adm":"src/features/design-inputs/components/shared/FieldNumberRow.tsx","ace":"src/features/estimator/ui/EstimatorInputPanel.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
     { id: "hcs-error", name: "Small error text", apps: ["hcs"], note: "The error text is 14px.", source: {"hcs":"src/App.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
     { id: "rws-error", name: "Red outline error", apps: ["rws"], note: "The control outline is red as well as the text.", source: {"rws":"src/rws/inputs.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
     { id: "adc-error", name: "Inline red error", apps: ["adc"], note: "Label beside, with a red control outline and the error on its own line.", source: {"adc":"src/adc/Workspace.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { hcs: 'src/App.tsx', hs: 'src/hs/InputFields.tsx', pbs: 'src/InputFields.tsx', pfd: 'src/pfd/fields.tsx', fd: 'src/components/ui.jsx', rws: 'src/rws/inputs.tsx', agpd: 'src/agpd/controls.tsx', adm: 'src/features/design-inputs/components/shared/FieldNumberRow.tsx', ace: 'src/features/estimator/ui/EstimatorInputPanel.tsx', adc: 'src/adc/Workspace.tsx' },
@@ -44,30 +25,30 @@ options: [
       name: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "The field is marked invalid, which switches the label, control and message to the error state while the gap stays at 3.",
-    },
+     lesson: {"explanation":"Invalid state turns label, control, and message red."}},
     {
       id: "label",
       name: "Label",
       selector: "[class~=\"aui-field-label\"]",
       description: "The \"Quantity\" label that stays above the failed control; ADC puts it beside the control.",
-    },
+     lesson: {"explanation":"Quantity label stays above the invalid control; ADC places it beside."}},
     {
       id: "control",
       name: "Control",
       selector: "[class~=\"aui-field-control\"]",
       description: "The outlined 28px control of the failed field; RWS and ADC redraw its outline in the error colour.",
-    },
+     lesson: {"explanation":"Failed 28px field uses an error-coloured outline in RWS and ADC."}},
     {
       id: "input",
       name: "Input",
       selector: "[class~=\"aui-field-control\"] > [class~=\"aui-input\"]",
       description: "The input holding the rejected value 0, flagged with aria-invalid so assistive technology reads it as an error.",
-    },
+     lesson: {"explanation":"Rejected zero value sets aria-invalid for assistive technology."}},
     {
       id: "error",
       name: "Error",
       selector: "[class~=\"aui-field-error\"]",
       description: "The message \"Enter a whole number from 1 to 999.\" in the error colour, 16/20 text 3px under the control (14px in HCS, on its own line in ADC).",
-    },
+     lesson: {"explanation":"Error message gives the permitted whole-number range below the control."}},
   ],
 });

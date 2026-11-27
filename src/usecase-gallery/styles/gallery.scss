@@ -687,7 +687,7 @@ $narrow: 840px;
   flex-direction: column;
 }
 
-// The code takes the height the step text leaves and scrolls itself, so a longer text never toggles the pane's scrollbar.
+// The code area takes the height left by the step text; its block keeps the vertical gutter so longer lessons do not resize the pane.
 .ug-layer-lesson__code {
   min-block-size: var(--p-px-160);
 }
@@ -748,7 +748,8 @@ $narrow: 840px;
 }
 
 .ug-layer-lesson__code .ug-docs__code {
-  overflow: scroll;
+  overflow-x: auto;
+  overflow-y: scroll;
 }
 
 .ug-stepper__step {

@@ -12,7 +12,7 @@ export interface LayoutPanes {
 }
 
 const PANE_MIN = 220;
-const TREE_DEFAULT_PERCENT = 30;
+const TREE_DEFAULT_PERCENT = 25;
 
 /** Three resizable panes; the preview toolbar is anchored across the page from the center panel. */
 export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onTreePanelResize }: LayoutPanes) {
@@ -39,7 +39,7 @@ export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onT
       <Panels.Panel
         id="component-tree"
         className="ug-layout__column ug-layout__column--tree"
-        defaultSize={treeCollapsed ? '0%' : '30%'}
+        defaultSize={treeCollapsed ? '0%' : `${TREE_DEFAULT_PERCENT}%`}
         groupResizeBehavior="preserve-relative-size"
         minSize={`${PANE_MIN}px`}
         collapsedSize="0%"

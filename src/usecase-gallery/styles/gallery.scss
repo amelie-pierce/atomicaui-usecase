@@ -76,8 +76,8 @@ $narrow: 840px;
 }
 
 .ug-tree__id {
-  flex: none;
-  white-space: nowrap;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
 }
 
 .ug-tree__title {
@@ -158,8 +158,10 @@ $narrow: 840px;
 .ug-docs {
   --theme-primary: var(--p-palette-orange-600);
   flex: 1 1 auto;
+  min-inline-size: 0;
   min-block-size: 0;
   padding: var(--p-px-24);
+  overflow: auto;
   background: var(--theme-surface);
   border: var(--p-px-1) solid var(--theme-raised);
   border-radius: var(--p-px-8);
@@ -657,6 +659,10 @@ $narrow: 840px;
   min-inline-size: 0;
 }
 
+.ug-layer-lesson__code .ug-docs__code {
+  max-block-size: min(50dvh, calc(var(--p-px-16) * 24));
+}
+
 .ug-layer-lesson__code > summary {
   cursor: pointer;
   margin-block-end: var(--p-px-8);
@@ -818,6 +824,10 @@ $narrow: 840px;
     block-size: auto;
     overflow: visible;
     padding-inline-start: 0;
+  }
+
+  .ug-docs {
+    overflow: visible;
   }
 
   .ug-detail__header {

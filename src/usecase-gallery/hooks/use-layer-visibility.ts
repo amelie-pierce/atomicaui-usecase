@@ -3,9 +3,11 @@ import type { LayerStep } from '../types';
 export const footprintAttribute = 'data-ug-footprint';
 const fitScope = '.ug-render__fit[data-ug-layer-mode="true"]';
 
+export const layerSelector = (layer: LayerStep) => layer.selector ?? `[data-ug-part="${layer.id}"]`;
+
 /** Selector of the elements a layer reveals, relative to the preview's fit element. */
 export const layerTarget = (layer: LayerStep) => {
-  const selector = layer.selector ?? `[data-ug-part="${layer.id}"]`;
+  const selector = layerSelector(layer);
   return layer.scope === 'context' ? `:is(${selector})` : `[data-ug-component-root] :is(${selector})`;
 };
 

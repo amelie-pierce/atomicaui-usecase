@@ -97,6 +97,8 @@ function tagMatchesClass(tag: string, className: string) {
   if (className === 'control-row') return CONTROL_ROW_TAGS.includes(tag);
   const words = tagWords(tag);
   const classWords = className.split('-').filter(Boolean);
+  const [namespace, member] = tag.split('.');
+  if (member?.endsWith(namespace) && classWords.length < tagWords(member).length) return false;
   return classWords.length > 0 && classWords.length <= words.length && classWords.every((word, index) => word === words[words.length - classWords.length + index]);
 }
 

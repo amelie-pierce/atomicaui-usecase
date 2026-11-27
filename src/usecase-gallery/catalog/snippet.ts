@@ -25,20 +25,36 @@ export const toSnippet = (source: string): string => {
 
 const CHILDREN_SLOT = /^([ \t]*)(.*?)[ \t]*\{children\}[ \t]*(.*)$/m;
 
+// A fragment only groups siblings; inside the context's parent element it is noise.
+const slotBody = (exampleSnippet: string): string => {
+  const unwrapped = /^<>\s*([\s\S]*?)\s*<\/>$/.exec(exampleSnippet.trim())?.[1];
+  return unwrapped ? dedent(unwrapped) : exampleSnippet;
+};
+
+const contextSlot = (contextSource: string) => {
+  const context = toSnippet(contextSource).replace(PREVIEW_ONLY_PROPS, '');
+  return { context, slot: CHILDREN_SLOT.exec(context) };
+};
+
 /** Turns an option scene source and the example snippet into the complete In context code, replacing its `{children}` slot. */
 export const toContextSnippet = (contextSource: string, exampleSnippet: string): string => {
-  const context = toSnippet(contextSource).replace(PREVIEW_ONLY_PROPS, '');
-  const slot = CHILDREN_SLOT.exec(context);
+  const { context, slot } = contextSlot(contextSource);
   // A scene with no slot writes its own controls (a static state), so it is the snippet.
   if (!slot) return context;
-  // A fragment only groups siblings; inside the context's parent element it is noise.
-  const unwrapped = /^<>\s*([\s\S]*?)\s*<\/>$/.exec(exampleSnippet.trim())?.[1];
   const [, indent, before, after] = slot;
   const inner = before ? `${indent}  ` : indent;
-  const indented = (unwrapped ? dedent(unwrapped) : exampleSnippet)
+  const indented = slotBody(exampleSnippet)
     .split('\n')
     .map((line) => (line.trim() ? inner + line : line))
     .join('\n');
   const filled = [before && indent + before, indented, after && indent + after].filter(Boolean).join('\n');
   return context.replace(CHILDREN_SLOT, () => filled);
+};
+
+/** The first and last 0-based line the example takes in the In context code; nothing for a scene with no slot. */
+export const toContextSlotLines = (contextSource: string, exampleSnippet: string): [number, number] | undefined => {
+  const { context, slot } = contextSlot(contextSource);
+  if (!slot) return undefined;
+  const first = context.slice(0, slot.index).split('\n').length - 1 + (slot[2] ? 1 : 0);
+  return [first, first + slotBody(exampleSnippet).split('\n').length - 1];
 };

@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import type { ComponentType } from 'react';
 import { appLabels } from './app-views';
-import { toContextSnippet, toSnippet } from './snippet';
+import { toContextSlotLines, toContextSnippet, toSnippet } from './snippet';
 import type { AppKey } from '../apps';
 import type { ComponentGroup, ComponentMeta, ContextProps, UiTypeGroup, Usecase, UsecaseDoc, UsecaseOption, UsecaseOptionDoc } from '../types';
 
@@ -198,6 +198,7 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
     const Scene = lazy(() => (loadScene() as Promise<ComponentType<ContextProps>>).then((component) => ({ default: component })));
     let exampleCode: Promise<string> | undefined;
     let sceneCode: Promise<string> | undefined;
+    let slotLines: Promise<LineRange | undefined> | undefined;
     let Example = usecase.Example;
     let loadExampleCode = usecase.loadCode;
     if (index > 0) {
@@ -223,6 +224,7 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
       Example,
       loadExampleCode,
       loadCode: () => (sceneCode ??= Promise.all([loadExampleCode(), loadSceneSource()]).then(([snippet, sceneSource]) => toContextSnippet(sceneSource, snippet))),
+      loadSlotLines: () => (slotLines ??= Promise.all([loadExampleCode(), loadSceneSource()]).then(([snippet, sceneSource]) => toContextSlotLines(sceneSource, snippet))),
     };
   });
   const shown = new Set(options.flatMap((option) => option.apps));

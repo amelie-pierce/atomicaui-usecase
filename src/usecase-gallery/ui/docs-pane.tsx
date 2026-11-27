@@ -4,7 +4,7 @@ import type { AppKey } from '../apps';
 import { layerCodeLines, stripPartMarkers } from '../catalog/layer-code';
 import { useCopy } from '../hooks/use-copy';
 import { Button, Chip, ToggleGroup, Type } from '../kit';
-import type { AnatomyPart, DocumentMode, LayerStep, PreviewMode, Usecase, UsecaseOption } from '../types';
+import type { AnatomyPart, DocumentMode, LayerStep, LineRange, PreviewMode, Usecase, UsecaseOption } from '../types';
 
 function AppBadges({ apps, label }: { apps: AppKey[]; label: string }) {
   return (
@@ -66,12 +66,13 @@ function CodeApiSection({ option, mode, api }: { option: UsecaseOption; mode: Pr
   </Section>;
 }
 
-function LayerCode({ code, layers, index }: { code: Promise<string>; layers: LayerStep[]; index: number }) {
+function LayerCode({ code, slotLines, layers, index }: { code: Promise<string>; slotLines?: Promise<LineRange | undefined>; layers: LayerStep[]; index: number }) {
   const text = use(code);
+  const slot = slotLines && use(slotLines);
   const { status, copy } = useCopy();
   const lines = text.split('\n');
-  const current = layerCodeLines(text, layers[index]);
-  const previous = layerCodeLines(text, layers[index - 1]);
+  const current = layerCodeLines(text, layers[index], slot);
+  const previous = layerCodeLines(text, layers[index - 1], slot);
   return <details className="ug-layer-lesson__code" open>
     <summary>Code for this step</summary>
     <div className="ug-docs__copy-block">
@@ -87,7 +88,7 @@ function LayerCode({ code, layers, index }: { code: Promise<string>; layers: Lay
   </details>;
 }
 
-function LayerLesson({ layers, index, onChange, code }: { layers: LayerStep[]; index: number; onChange: (index: number) => void; code: Promise<string> }) {
+function LayerLesson({ layers, index, onChange, code, slotLines }: { layers: LayerStep[]; index: number; onChange: (index: number) => void; code: Promise<string>; slotLines?: Promise<LineRange | undefined> }) {
   const active = layers[index] ?? layers[0];
   if (!active) return <Type as="p" role="l3" color="muted">No layer steps are authored for this view.</Type>;
   const onNavigationKey = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -113,7 +114,7 @@ function LayerLesson({ layers, index, onChange, code }: { layers: LayerStep[]; i
       <Button aui={{ color: 'secondary', paint: 'outlined', scale: 'sm' }} disabled={index === 0} onClick={() => onChange(Math.max(index - 1, 0))}>Back</Button>
       <Button aui={{ color: 'primary', paint: 'solid', scale: 'sm' }} disabled={index === layers.length - 1} onClick={() => onChange(Math.min(index + 1, layers.length - 1))}>Next</Button>
     </div>
-    <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><LayerCode code={code} layers={layers} index={index} /></Suspense>
+    <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><LayerCode code={code} slotLines={slotLines} layers={layers} index={index} /></Suspense>
   </div>;
 }
 
@@ -130,7 +131,7 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
       <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>Layer</Button>} />
     </ToggleGroup>
     <div className="ug-docs">
-    {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} code={mode === 'component' ? option.loadExampleCode() : option.loadCode()} /> : <>
+    {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} code={mode === 'component' ? option.loadExampleCode() : option.loadCode()} slotLines={mode === 'component' ? undefined : option.loadSlotLines()} /> : <>
       <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div>
       </header>
       <div className="ug-docs__sections">

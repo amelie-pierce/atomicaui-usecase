@@ -189,6 +189,7 @@ export interface UsecaseOption {
   Example: ComponentType;
   loadExampleCode: () => Promise<string>;
   loadCode: () => Promise<string>;
+  loadSlotLines: () => Promise<LineRange | undefined>;
 }
 
 export interface Usecase extends UsecaseDoc {

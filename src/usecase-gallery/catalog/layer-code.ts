@@ -1,4 +1,4 @@
-import type { LayerStep, Usecase } from '../types';
+import type { LayerStep, LineRange, Usecase } from '../types';
 
 const PART_MARKER = /\sdata-ug-part=(["'])[^"']*\1/g;
 
@@ -103,6 +103,7 @@ function tagMatchesClass(tag: string, className: string) {
 const classNamesOf = (selector: string) => [...selector.matchAll(/\[class~=["']aui-([^"']+)["']\]/g)].map(([, className]) => className);
 
 const NEGATION = /:not\(((?:[^()]|\([^()]*\))*)\)/g;
+const HAS = /:has\(((?:[^()]|\([^()]*\))*)\)/g;
 const ATTRIBUTE = /\[(aria-label|role)(?:([*^$]?=)["']([^"']*)["']( i)?)?\]/g;
 
 /** Whether the element passes the attribute test; `undefined` when the code writes the attribute without a literal value. */
@@ -117,9 +118,18 @@ function attributeTest(element: CodeElement, [, name, operator, value, insensiti
   return operator === '*=' ? actual.includes(value) : actual === value;
 }
 
+const descendants = (element: CodeElement): CodeElement[] => element.children.flatMap((child) => [child, ...descendants(child)]);
+
+/** Whether the element writes the tag a `:has(...)` argument asks for (`Field.Input type="email"` <- `input[type="email"]`). */
+function writesHas(element: CodeElement, argument: string) {
+  const [, name, type] = /^([a-z]+)(?:\[type=["']([^"']+)["']\])?$/.exec(argument) ?? [];
+  return descendants(element).some(({ tag, attributes }) => tag.split('.').pop()?.toLowerCase() === name
+    && (!type || new RegExp(`(?<![\\w-])type=["']${type}["']`).test(attributes)));
+}
+
 /** Whether the element writes the compound's component: its class, its `data-ug-part` marker, the popover trigger or else its literal attributes. */
 function writes(element: CodeElement, compound: string) {
-  const plain = compound.replace(NEGATION, '');
+  const plain = compound.replace(NEGATION, '').replace(HAS, '');
   const classNames = classNamesOf(plain);
   const markers = [...plain.matchAll(/data-ug-part=["']([^"']+)["']/g)].map(([, marker]) => marker);
   if (classNames.length || markers.length) {
@@ -131,17 +141,18 @@ function writes(element: CodeElement, compound: string) {
   return tests.length > 0 && tests.every((test) => attributeTest(element, test) === true);
 }
 
-/** Drops the candidates that break the compound's `:not(...)` guards, literal attributes or position among written siblings. */
+/** Drops the candidates that break the compound's `:not(...)` or `:has(...)` guards, literal attributes or position among written siblings. */
 function narrow(elements: CodeElement[], candidates: CodeElement[], compound: string) {
   const negations = [...compound.matchAll(NEGATION)].map(([, inner]) => inner);
   let kept = candidates.filter((element) => !negations.some((inner) =>
     classNamesOf(inner).some((className) => tagMatchesClass(element.tag, className))
     || [...inner.matchAll(ATTRIBUTE)].some((test) => attributeTest(element, test) === true)));
+  for (const [, argument] of compound.matchAll(HAS)) kept = kept.filter((element) => writesHas(element, argument));
   const prefer = (test: (element: CodeElement) => boolean) => {
     const passing = kept.filter(test);
     if (passing.length) kept = passing;
   };
-  const plain = compound.replace(NEGATION, '');
+  const plain = compound.replace(NEGATION, '').replace(HAS, '');
   for (const test of plain.matchAll(ATTRIBUTE)) {
     kept = kept.filter((element) => attributeTest(element, test) !== false);
     prefer((element) => attributeTest(element, test) === true);
@@ -172,17 +183,17 @@ function writtenChain(elements: CodeElement[], [own, ...enclosing]: Compound[]) 
   return chain;
 }
 
-/** The elements that write the first compound, inside every enclosing compound of the chain. */
-function matching(elements: CodeElement[], [own, ...enclosing]: Compound[]): CodeElement[] {
-  const candidates = narrow(elements, elements.filter((element) => writes(element, own.text)), own.text);
+/** The elements of `revealable` that write the first compound, inside every enclosing compound of the chain. */
+function matching(elements: CodeElement[], [own, ...enclosing]: Compound[], revealable = elements): CodeElement[] {
+  const candidates = narrow(elements, revealable.filter((element) => writes(element, own.text)), own.text);
   if (!enclosing.length) return candidates;
   const outer = new Set(matching(elements, enclosing));
   return candidates.filter((element) => isWithin(element, outer, own.direct));
 }
 
 /** The authored tags, kept to the enclosing elements (themselves or their content) wherever the code writes those. */
-function authoredMatches(elements: CodeElement[], [, ...enclosing]: Compound[], tags: string[]) {
-  const candidates = elements.filter((element) => tags.includes(element.tag));
+function authoredMatches(elements: CodeElement[], [, ...enclosing]: Compound[], tags: string[], revealable: CodeElement[]) {
+  const candidates = revealable.filter((element) => tags.includes(element.tag));
   if (!enclosing.length) return candidates;
   const outer = new Set(matching(elements, enclosing));
   return candidates.filter((element) => outer.has(element) || isWithin(element, outer, false));
@@ -190,24 +201,31 @@ function authoredMatches(elements: CodeElement[], [, ...enclosing]: Compound[], 
 
 const selectorList = (selector: string) => splitOutside(selector, /,/).filter((part) => part !== ',');
 
-function resolve(code: string, step: LayerStep) {
+/** Like the preview, a component step reveals only elements of the example where a scene slot holds it. */
+function resolve(code: string, step: LayerStep, slot?: LineRange) {
   const elements = elementsOf(code);
+  const range = step.scope === 'context' ? undefined : slot;
+  const revealable = range ? elements.filter(({ start }) => {
+    const line = openingTag(code, start).first;
+    return line >= range[0] && line <= range[1];
+  }) : elements;
   const selectors = selectorList(step.selector ?? `[data-ug-part="${step.id}"]`).map((selector) => writtenChain(elements, compoundsOutward(selector)));
-  const written = selectors.flatMap((compounds) => matching(elements, compounds));
+  const written = selectors.flatMap((compounds) => matching(elements, compounds, revealable));
   const authored = !written.length;
-  const matches = authored ? selectors.flatMap((compounds) => authoredMatches(elements, compounds, step.code ?? [])) : written;
-  return { elements, authored, matches };
+  const matches = authored ? selectors.flatMap((compounds) => authoredMatches(elements, compounds, step.code ?? [], revealable)) : written;
+  return { revealable, authored, matches };
 }
 
 /**
  * The 0-based lines of `code` that write the element a layer step reveals: whole opening tags, matched by the step's
  * selector (`data-ug-part` marker, class component, literal attributes, position and enclosing compounds). An element a
  * component renders itself has no tag of its own, so the step names the writing tags in `code`; otherwise nothing is highlighted.
+ * `slot` is the line range of the example in In context code, which bounds component steps.
  */
-export function layerCodeLines(code: string, step: LayerStep | undefined) {
+export function layerCodeLines(code: string, step: LayerStep | undefined, slot?: LineRange) {
   const lines = new Set<number>();
   if (!step) return lines;
-  for (const { start } of resolve(code, step).matches) {
+  for (const { start } of resolve(code, step, slot).matches) {
     const { first, last } = openingTag(code, start);
     for (let line = first; line <= last; line += 1) lines.add(line);
   }
@@ -223,14 +241,14 @@ function ownedWords(tag: string, selector: string) {
   }));
 }
 
-const descendants = (element: CodeElement): CodeElement[] => element.children.flatMap((child) => [child, ...descendants(child)]);
+interface LayerSource { code: string; slot?: LineRange }
 
 /** The authored `code` references of one step that name a tag no view writes, or highlight a wrapper around a more specific tag. */
-export function layerCodeProblems(codes: string[], step: LayerStep) {
+export function layerCodeProblems(sources: LayerSource[], step: LayerStep) {
   if (!step.code) return [];
-  const views = codes.map((code) => resolve(code, step));
+  const views = sources.map(({ code, slot }) => resolve(code, step, slot));
   const problems = step.code
-    .filter((tag) => !views.some(({ elements }) => elements.some((element) => element.tag === tag)))
+    .filter((tag) => !views.some(({ revealable }) => revealable.some((element) => element.tag === tag)))
     .map((tag) => `"${step.id}" names <${tag}>, which its code does not write`);
   for (const { authored, matches } of views) {
     if (!authored) continue;
@@ -247,15 +265,15 @@ export function layerCodeProblems(codes: string[], step: LayerStep) {
 export async function assertLayerCode(usecases: Usecase[]) {
   const problems: string[] = [];
   for (const usecase of usecases) {
-    const views = new Map<LayerStep, string[]>();
+    const views = new Map<LayerStep, LayerSource[]>();
     for (const option of usecase.options) {
-      const component = await option.loadExampleCode();
-      const context = await option.loadCode();
+      const component = { code: await option.loadExampleCode() };
+      const context = { code: await option.loadCode(), slot: await option.loadSlotLines() };
       for (const step of option.componentLayers ?? usecase.layers) views.set(step, [...(views.get(step) ?? []), component]);
       for (const step of [...option.contextLayers, ...usecase.layers]) views.set(step, [...(views.get(step) ?? []), context]);
     }
-    for (const [step, codes] of views) {
-      for (const problem of layerCodeProblems(codes, step)) problems.push(`${usecase.id} ${problem}`);
+    for (const [step, sources] of views) {
+      for (const problem of layerCodeProblems(sources, step)) problems.push(`${usecase.id} ${problem}`);
     }
   }
   if (problems.length) throw new Error(`[usecase-gallery] layer code: ${problems.join('; ')}`);

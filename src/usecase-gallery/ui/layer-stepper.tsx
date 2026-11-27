@@ -5,6 +5,7 @@ import type { LayerStep } from '../types';
 export function LayerStepper({ layers, index, onChange }: { layers: LayerStep[]; index: number; onChange: (index: number) => void }) {
   const stepsRef = useRef<HTMLElement>(null);
   const focusAfterChange = useRef(false);
+  const stepIds = layers.map((step) => step.id).join();
 
   useEffect(() => {
     const nav = stepsRef.current;
@@ -22,7 +23,7 @@ export function LayerStepper({ layers, index, onChange }: { layers: LayerStep[];
       focusAfterChange.current = false;
       active.focus();
     }
-  }, [index]);
+  }, [index, stepIds]);
 
   const onStepKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;

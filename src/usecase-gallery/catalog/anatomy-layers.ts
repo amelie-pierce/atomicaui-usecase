@@ -10,6 +10,6 @@ export function anatomyLayers(parts: AnatomyPart[] = [], scope: 'component' | 'c
     selector: part.lesson?.selector ?? part.selector ?? `[data-ug-part="${part.id}"]`,
     code: part.lesson?.code,
     text: part.lesson?.text ?? part.text,
-    scope: part.lesson?.scope ?? (part.scope === 'scene' ? scope : part.scope ?? scope),
+    scope: part.lesson?.scope ?? (part.scope === 'scene' ? 'component' : part.scope ?? scope),
   }));
 }

@@ -11,7 +11,7 @@ export default defineUsecase({
   title: 'Form popover with footer',
   apps: ['hcs', 'hs'],
     layers: [
-        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Configure columns button sits beside the Output heading.","keyIdea":"The Configure columns action opens controls where users can tailor the results table.","selector":"[data-base-ui-click-trigger]","code":["Popover.Trigger"]},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Configure columns button sits beside the Output heading.","keyIdea":"The Configure columns action opens controls where users can tailor the results table.","selector":"[data-base-ui-click-trigger]"},
         {"id":"popup","partId":"popup","title":"Popup","explanation":"320px elevated column holds its title, list, and footer.","keyIdea":"A bounded popover keeps column choices near the table they will change.","selector":"[data-aui-popup-motion][role=\"dialog\"]","code":["Popover.Popup"]},
         {"id":"column-list","partId":"column-list","title":"Column list","explanation":"Columns list reorders output fields; locked entries stay visible.","keyIdea":"The list gives each output column an independent place in the layout controls.","selector":"[class~=\"aui-list\"]"},
         {"id":"column-switch","partId":"column-switch","title":"Visibility switch","explanation":"Show column switch hides configurable columns and disables locked ones.","keyIdea":"A visibility switch changes whether its named table column appears.","selector":"[class~=\"aui-switch\"]"},

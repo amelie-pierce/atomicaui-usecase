@@ -10,7 +10,7 @@ export default defineUsecase({
 
   apps: ['adc'],
     layers: [
-        {"id":"chip","partId":"chip","title":"Value chip","explanation":"12 in value chip opens its width editor.","keyIdea":"The width chip exposes the current value as the entry point to editing.","selector":"[data-base-ui-click-trigger]","code":["Popover.Trigger"]},
+        {"id":"chip","partId":"chip","title":"Value chip","explanation":"12 in value chip opens its width editor.","keyIdea":"The width chip exposes the current value as the entry point to editing.","selector":"[data-base-ui-click-trigger]"},
         {"id":"popup","partId":"popup","title":"Editor popup","explanation":"Soft popup sits 8px beside the chip with field and actions.","keyIdea":"The compact popup keeps the field and its two decisions beside the value.","selector":"[data-aui-popup-motion][role=\"dialog\"]","code":["Popover.Popup"]},
         {"id":"actions","partId":"actions","title":"Button row","explanation":"End row keeps Cancel and Save together without taking field width.","keyIdea":"The action row lets the width input take the remaining horizontal space.","selector":"[data-ug-part=\"edit-actions\"]"},
         {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"Filled gray Cancel discards the pending Width change.","keyIdea":"Cancel discards the pending width change.","selector":"[class~=\"aui-button\"]:not([aria-label]):first-of-type"},

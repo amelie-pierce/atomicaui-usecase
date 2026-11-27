@@ -10,7 +10,7 @@ export default defineUsecase({
   title: 'Column menu',
   apps: ['hcs', 'hs', 'pfd'],
     layers: [
-        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Kebab opens Column options beside the Load header.","keyIdea":"The kebab opens actions for the specific column whose heading contains it.","selector":"[data-base-ui-click-trigger]","code":["Popover.Trigger"]},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Kebab opens Column options beside the Load header.","keyIdea":"The kebab opens actions for the specific column whose heading contains it.","selector":"[data-base-ui-click-trigger]"},
         {"id":"table","partId":"table","title":"Results table","explanation":"Connector results table places kebab actions in its headers.","keyIdea":"The results table supplies column context for the sort menu shown above it.","selector":"[class~=\"aui-table\"]"},
         {"id":"header-cell","partId":"header-cell","title":"Sortable header cell","explanation":"Sorted Load header holds kebab; dots turn horizontal in PFD.","keyIdea":"The Load heading identifies which column the sort choices will reorder.","selector":"[data-ug-part=\"header-cell\"]"},
         {"id":"popup","partId":"popup","title":"Popup","explanation":"256px sort menu opens at the cell end, except PFD.","keyIdea":"The anchored popup groups ordering actions beside the column that they affect.","selector":"[data-aui-popup-motion][role=\"dialog\"]","code":["Popover.Popup"]},

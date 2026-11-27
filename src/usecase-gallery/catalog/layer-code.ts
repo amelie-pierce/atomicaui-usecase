@@ -105,11 +105,11 @@ const classNamesOf = (selector: string) => [...selector.matchAll(/\[class~=["']a
 const NEGATION = /:not\(((?:[^()]|\([^()]*\))*)\)/g;
 const ATTRIBUTE = /\[(aria-label|role)(?:([*^$]?=)["']([^"']*)["']( i)?)?\]/g;
 
-/** Whether the element writes the attribute test as a literal; `undefined` when the code does not spell the value out. */
+/** Whether the element passes the attribute test; `undefined` when the code writes the attribute without a literal value. */
 function attributeTest(element: CodeElement, [, name, operator, value, insensitive]: RegExpMatchArray) {
   const written = new RegExp(`(?<![\\w-])${name}=(?:"([^"]*)"|'([^']*)'|\\{)`).exec(element.attributes);
-  if (!operator) return written ? true : undefined;
-  let actual = written?.[1] ?? written?.[2];
+  if (!written || !operator) return !!written;
+  let actual = written[1] ?? written[2];
   if (actual === undefined) return undefined;
   if (insensitive) { actual = actual.toLowerCase(); value = value.toLowerCase(); }
   if (operator === '^=') return actual.startsWith(value);
@@ -117,7 +117,7 @@ function attributeTest(element: CodeElement, [, name, operator, value, insensiti
   return operator === '*=' ? actual.includes(value) : actual === value;
 }
 
-/** Whether the element writes the compound's component: its class, its `data-ug-part` marker, or else its literal attributes. */
+/** Whether the element writes the compound's component: its class, its `data-ug-part` marker, the popover trigger or else its literal attributes. */
 function writes(element: CodeElement, compound: string) {
   const plain = compound.replace(NEGATION, '');
   const classNames = classNamesOf(plain);
@@ -126,12 +126,13 @@ function writes(element: CodeElement, compound: string) {
     return classNames.some((className) => tagMatchesClass(element.tag, className))
       || markers.some((marker) => element.attributes.includes(`data-ug-part="${marker}"`) || element.attributes.includes(`data-ug-part='${marker}'`));
   }
+  if (plain.includes('[data-base-ui-click-trigger]')) return element.tag === 'Popover.Trigger';
   const tests = [...plain.matchAll(ATTRIBUTE)].filter((test) => test[2]);
   return tests.length > 0 && tests.every((test) => attributeTest(element, test) === true);
 }
 
 /** Drops the candidates that break the compound's `:not(...)` guards, literal attributes or position among written siblings. */
-function narrow(candidates: CodeElement[], compound: string) {
+function narrow(elements: CodeElement[], candidates: CodeElement[], compound: string) {
   const negations = [...compound.matchAll(NEGATION)].map(([, inner]) => inner);
   let kept = candidates.filter((element) => !negations.some((inner) =>
     classNamesOf(inner).some((className) => tagMatchesClass(element.tag, className))
@@ -147,7 +148,7 @@ function narrow(candidates: CodeElement[], compound: string) {
   }
   for (const [, position, unit] of plain.matchAll(/:(first|last)-(child|of-type)/g)) {
     prefer((element) => {
-      const siblings = element.parent?.children.filter((sibling) => unit === 'child' || sibling.tag === element.tag) ?? [element];
+      const siblings = (element.parent?.children ?? elements.filter((root) => !root.parent)).filter((sibling) => unit === 'child' || sibling.tag === element.tag);
       return siblings[position === 'first' ? 0 : siblings.length - 1] === element;
     });
   }
@@ -161,19 +162,28 @@ const isWithin = (element: CodeElement, outer: Set<CodeElement>, direct: boolean
   return false;
 };
 
-/** The elements that write the first compound, inside the enclosing compounds wherever the code writes those too. */
+/** The compounds the code can be held to: the revealed one and each enclosing one it writes. A `>` across a skipped compound loosens to any depth. */
+function writtenChain(elements: CodeElement[], [own, ...enclosing]: Compound[]) {
+  const chain = [own];
+  for (const compound of enclosing) {
+    if (elements.some((element) => writes(element, compound.text))) chain.push(compound);
+    else chain[chain.length - 1] = { ...chain[chain.length - 1], direct: false };
+  }
+  return chain;
+}
+
+/** The elements that write the first compound, inside every enclosing compound of the chain. */
 function matching(elements: CodeElement[], [own, ...enclosing]: Compound[]): CodeElement[] {
-  const candidates = narrow(elements.filter((element) => writes(element, own.text)), own.text);
+  const candidates = narrow(elements, elements.filter((element) => writes(element, own.text)), own.text);
   if (!enclosing.length) return candidates;
   const outer = new Set(matching(elements, enclosing));
-  if (!outer.size) return candidates;
   return candidates.filter((element) => isWithin(element, outer, own.direct));
 }
 
-/** The authored tags, kept to the enclosing element (itself or its content) wherever the code writes that component. */
+/** The authored tags, kept to the enclosing elements (themselves or their content) wherever the code writes those. */
 function authoredMatches(elements: CodeElement[], [, ...enclosing]: Compound[], tags: string[]) {
   const candidates = elements.filter((element) => tags.includes(element.tag));
-  if (!enclosing.length || !elements.some((element) => writes(element, enclosing[0].text))) return candidates;
+  if (!enclosing.length) return candidates;
   const outer = new Set(matching(elements, enclosing));
   return candidates.filter((element) => outer.has(element) || isWithin(element, outer, false));
 }
@@ -182,7 +192,7 @@ const selectorList = (selector: string) => splitOutside(selector, /,/).filter((p
 
 function resolve(code: string, step: LayerStep) {
   const elements = elementsOf(code);
-  const selectors = selectorList(step.selector ?? `[data-ug-part="${step.id}"]`).map(compoundsOutward);
+  const selectors = selectorList(step.selector ?? `[data-ug-part="${step.id}"]`).map((selector) => writtenChain(elements, compoundsOutward(selector)));
   const written = selectors.flatMap((compounds) => matching(elements, compounds));
   const authored = !written.length;
   const matches = authored ? selectors.flatMap((compounds) => authoredMatches(elements, compounds, step.code ?? [])) : written;

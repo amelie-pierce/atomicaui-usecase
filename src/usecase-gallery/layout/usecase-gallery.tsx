@@ -98,7 +98,7 @@ export function UsecaseGallery() {
     const observer = new ResizeObserver(updateToolbarHeight);
     observer.observe(toolbar);
     return () => observer.disconnect();
-  }, []);
+  }, [narrow]);
   useEffect(() => {
     if (selectedPart && selectedPart.usecaseId !== selectedId) setSelectedPart(undefined);
     if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);

@@ -801,7 +801,8 @@ $narrow: 840px;
   }
 
   .ug-detail__header {
-    position: static;
+    position: sticky;
+    inset-block-start: var(--ug-toolbar-height, 0px);
   }
 }
 

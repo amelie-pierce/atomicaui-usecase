@@ -1,4 +1,4 @@
-import { startTransition, useCallback, useEffect, useMemo, useState } from 'react';
+import { startTransition, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { catalog, allUsecases, componentAliases } from '../catalog/catalog';
 import { withOption } from '../catalog/app-views';
 import { useRoute } from '../hooks/use-route';
@@ -36,6 +36,7 @@ function filterGroups(groups: ComponentGroup[], query: string) {
 }
 
 export function UsecaseGallery() {
+  const galleryRef = useRef<HTMLDivElement>(null);
   const narrow = useMediaQuery(NARROW);
   const route = useRoute(catalog, componentAliases);
   const [searchQuery, setSearchQuery] = useState('');
@@ -88,6 +89,16 @@ export function UsecaseGallery() {
   }) : authoredLayers;
   const activeLayerIndex = Math.min(layerIndex, Math.max(0, layers.length - 1));
   const visibleLayerIndex = Math.max(0, authoredLayers.indexOf(layers[activeLayerIndex]));
+  useLayoutEffect(() => {
+    const root = galleryRef.current;
+    const toolbar = root?.querySelector<HTMLElement>('.ug-toolbar');
+    if (!root || !toolbar) return;
+    const updateToolbarHeight = () => root.style.setProperty('--ug-toolbar-height', `${toolbar.getBoundingClientRect().height}px`);
+    updateToolbarHeight();
+    const observer = new ResizeObserver(updateToolbarHeight);
+    observer.observe(toolbar);
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     if (selectedPart && selectedPart.usecaseId !== selectedId) setSelectedPart(undefined);
     if (chosen && chosen.usecaseId !== selectedId) setChosen(undefined);
@@ -123,7 +134,7 @@ export function UsecaseGallery() {
     detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} documentMode={documentMode} onDocumentModeChange={(next) => { setDocumentMode(next); setLayerIndex(0); }} layers={layers} layerIndex={activeLayerIndex} onLayerChange={onLayerChange} />,
   };
   return (
-    <div className="ug ug--usecase">
+    <div ref={galleryRef} className="ug ug--usecase">
       <div className="ug__body">
         {narrow ? <StackedLayout {...panes} /> : <DetailLayout {...panes} treeCollapsed={treeCollapsed} onTreePanelResize={onTreePanelResize} />}
       </div>

@@ -589,7 +589,6 @@ $narrow: 840px;
   display: flex;
   flex-direction: column;
   gap: var(--p-px-16);
-  block-size: 100%;
 }
 
 .ug-layer-lesson__copy > :is(h3, p) {
@@ -681,17 +680,6 @@ $narrow: 840px;
   .ug-stepper__step { transition: none; }
 }
 
-.ug-layer-lesson__code,
-.ug-layer-lesson__code .ug-docs__copy-block {
-  display: flex;
-  flex-direction: column;
-}
-
-// The code area takes the height left by the step text; its block keeps the vertical gutter so longer lessons do not resize the pane.
-.ug-layer-lesson__code {
-  min-block-size: var(--p-px-160);
-}
-
 .ug-layer-lesson__code .ug-docs__code code > span.is-added {
   display: block;
   color: var(--theme-on-primary);
@@ -747,6 +735,7 @@ $narrow: 840px;
   max-inline-size: 100%;
 }
 
+// The code block always shows its vertical gutter; horizontal scrolling appears only when code exceeds the pane.
 .ug-layer-lesson__code .ug-docs__code {
   overflow-x: auto;
   overflow-y: scroll;

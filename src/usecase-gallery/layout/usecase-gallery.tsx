@@ -129,10 +129,10 @@ export function UsecaseGallery() {
   const onLayerChange = useCallback((index: number) => setLayerIndex(index), []);
   const layersReady = documentMode === 'layers' && Boolean(availablePartIds);
   const onAvailablePartsChange = useCallback((ids: string[]) => setAvailableParts((current) =>
-    current?.key === activePreviewKey && (layersReady || (current.ids.length === ids.length && current.ids.every((id, index) => id === ids[index])))
+    current?.key === activePreviewKey && current.ids.length === ids.length && current.ids.every((id, index) => id === ids[index])
       ? current
       : { key: activePreviewKey, ids },
-  ), [activePreviewKey, layersReady]);
+  ), [activePreviewKey]);
   if (!original || !group || !usecase) return null;
   // The option change is a transition: the shown UI stays until the next option's lazy example has loaded, so the stage never blanks.
   const panes = {

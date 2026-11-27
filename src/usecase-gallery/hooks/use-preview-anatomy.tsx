@@ -127,7 +127,7 @@ export function usePreviewAnatomy(
       };
       for (const root of (children.get(undefined) ?? []).sort(readingOrder)) visit(root);
       const availableKey = ordered.map(({ part }) => part.id).join('|');
-      if (stage.childElementCount > 0 && availableKey !== availablePartIds.current) {
+      if (ordered.length > 0 && !stage.querySelector('[data-ug-layer-mode="true"]') && availableKey !== availablePartIds.current) {
         availablePartIds.current = availableKey;
         onAvailablePartsChange?.(ordered.map(({ part }) => part.id));
       }

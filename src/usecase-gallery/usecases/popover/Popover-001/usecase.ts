@@ -5,10 +5,10 @@ export default defineUsecase({
   title: 'Help popover',
   apps: ['pfd', 'pbs', 'agpd', 'rws'],
     layers: [
-        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Material help question button sits beside the field label; app shapes vary.","keyIdea":"The help trigger keeps an explanation available beside the field without adding permanent page text.","selector":"[data-base-ui-click-trigger]","code":["View"]},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Material help question button sits beside the field label; app shapes vary.","keyIdea":"The help trigger keeps an explanation available beside the field without adding permanent page text.","selector":"[data-base-ui-click-trigger]","code":["Popover.Trigger"]},
         {"id":"trigger-icon","partId":"trigger-icon","title":"Trigger icon","explanation":"Circle-question glyph sits inside the Material help trigger.","keyIdea":"A question glyph signals that the control offers supporting information rather than an input choice.","selector":"[data-base-ui-click-trigger] [class~=\"aui-contained-icon\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Elevated soft help surface opens 4px above; width varies by app.","keyIdea":"The raised popup separates help copy from the form while staying anchored to its question mark.","selector":"[data-aui-popup-motion][role=\"dialog\"]","code":["View"]},
-        {"id":"close-row","partId":"close-row","title":"Close row","explanation":"AGPD places its end-aligned close row above the help text.","keyIdea":"AGPD puts dismissal in its own top row because its help surface has no title bar.","selector":"[data-ug-part=\"close-row\"]","code":["View"],"unchanged":true},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Elevated soft help surface opens 4px above; width varies by app.","keyIdea":"The raised popup separates help copy from the form while staying anchored to its question mark.","selector":"[data-aui-popup-motion][role=\"dialog\"]","code":["Popover.Popup"]},
+        {"id":"close-row","partId":"close-row","title":"Close row","explanation":"AGPD places its end-aligned close row above the help text.","keyIdea":"AGPD puts dismissal in its own top row because its help surface has no title bar.","selector":"[data-ug-part=\"close-row\"]"},
         {"id":"close","partId":"close","title":"Close","explanation":"X closes help; PBS, AGPD, and PFD place it differently.","keyIdea":"The close action hides the supplemental explanation and returns attention to the field.","selector":"[data-ug-part=\"close\"]"},
       ],
 options: [

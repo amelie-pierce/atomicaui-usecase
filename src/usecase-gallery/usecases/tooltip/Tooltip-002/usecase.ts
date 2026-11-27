@@ -7,7 +7,7 @@ export default defineUsecase({
     layers: [
         {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Hovering or focusing the existing action reveals its image preview.","keyIdea":"The existing action or link remains the source of the preview explanation.","selector":"[data-ug-part=\"trigger\"]"},
         {"id":"popup","partId":"popup","title":"Popup","explanation":"Image tooltip widths vary by app: 96px, 160px, or 192px.","keyIdea":"The tooltip surface can contain a visual preview without turning it into another selectable control.","selector":"[class~=\"aui-tooltip-popup\"]"},
-        {"id":"image","partId":"image","title":"Preview image","explanation":"Connection drawing previews the named detail without adding another control.","keyIdea":"The image gives the connection tooltip concrete visual detail instead of repeating the trigger label.","selector":"[class~=\"aui-tooltip-popup\"] svg","unchanged":true},
+        {"id":"image","partId":"image","title":"Preview image","explanation":"Connection drawing previews the named detail without adding another control.","keyIdea":"The image gives the connection tooltip concrete visual detail instead of repeating the trigger label.","selector":"[class~=\"aui-tooltip-popup\"] svg","code":["svg"]},
       ],
 options: [
     { id: "pfd-image-preview", name: "Image preview", showContext: false, apps: ["pfd"], source: {"pfd":"src/pfd/ResultsTable.tsx"} ,

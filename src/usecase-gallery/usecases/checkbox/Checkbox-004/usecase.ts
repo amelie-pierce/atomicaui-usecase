@@ -5,10 +5,10 @@ export default defineUsecase({
   title: 'Object visibility checkbox group',
   apps: ['hcs', 'adc', 'adm', 'fd', 'hs', 'pbs', 'agpd', 'rws'],
     layers: [
-        {"id":"title","partId":"title","title":"Group title","explanation":"Object Visibility heading groups the model display checkboxes.","keyIdea":"The group heading makes the visibility controls read as one model-display task.","selector":"[data-aui-typeface]","code":["View"]},
+        {"id":"title","partId":"title","title":"Group title","explanation":"Object Visibility heading groups the model display checkboxes.","keyIdea":"The group heading makes the visibility controls read as one model-display task.","selector":"[data-aui-typeface]","code":["Type"]},
         {"id":"checkbox","partId":"checkbox","title":"Checkbox","explanation":"Each checked box shows its named 3D model part.","keyIdea":"Each checkbox independently controls whether its named model part is shown.","selector":"[class~=\"aui-checkbox\"]"},
-        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The box that shows whether the model part is visible.","keyIdea":"The indicator gives every part a consistent visible-versus-hidden state.","selector":"[class~=\"aui-checkbox-indicator\"]","code":["View"]},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"Five scenes show a check mark; the compact example omits it.","keyIdea":"The check glyph confirms that this model element is currently included in the view.","selector":"[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]","code":["View"],"unchanged":true},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The box that shows whether the model part is visible.","keyIdea":"The indicator gives every part a consistent visible-versus-hidden state.","selector":"[class~=\"aui-checkbox-indicator\"]","code":["Checkbox"]},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"Five scenes show a check mark; the compact example omits it.","keyIdea":"The check glyph confirms that this model element is currently included in the view.","selector":"[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]","code":["Checkbox.Icon"]},
         {"id":"label","partId":"label","title":"Label","explanation":"Part name beside each box identifies the model object it controls.","keyIdea":"Naming the part beside its box lets users change visibility without guessing which object it affects.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
       ],
 options: [

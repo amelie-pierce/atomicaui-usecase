@@ -11,7 +11,7 @@ export default defineUsecase({
         {"id":"body","partId":"body","title":"Body","explanation":"Two material rows show demand and capacity values.","keyIdea":"The body pairs demand with capacity so a limit state can be reviewed in one pass.","selector":"[class~=\"aui-table-body\"]"},
         {"id":"row","partId":"row","title":"Row","explanation":"One limit state with its demand and capacity values.","keyIdea":"A row keeps one engineering limit and its measurements together for comparison.","selector":"[class~=\"aui-table-row\"]"},
         {"id":"cell","partId":"cell","title":"Cell","explanation":"Names align left while numeric figures align right.","keyIdea":"Left-aligning the condition while right-aligning figures separates labels from quantities.","selector":"[class~=\"aui-table-cell\"]"},
-        {"id":"status-dot","partId":"status-dot","title":"Status dot","explanation":"ADM adds a success dot before the Ratio percentage.","keyIdea":"The status dot gives the ADM ratio an at-a-glance success cue before its percentage.","selector":"[class~=\"aui-table-cell\"] [class~=\"aui-symbol\"]","unchanged":true},
+        {"id":"status-dot","partId":"status-dot","title":"Status dot","explanation":"ADM adds a success dot before the Ratio percentage.","keyIdea":"The status dot gives the ADM ratio an at-a-glance success cue before its percentage.","selector":"[class~=\"aui-table-cell\"] [class~=\"aui-symbol\"]"},
       ],
 options: [
     { id: "adm-summary", name: "Centered summary table", showContext: false, apps: ["adm"], source: {"adm":"src/features/calculation/components/shared/ResultTable.tsx"} ,

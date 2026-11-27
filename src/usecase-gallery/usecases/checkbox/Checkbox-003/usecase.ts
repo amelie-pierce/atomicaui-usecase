@@ -6,8 +6,8 @@ export default defineUsecase({
   apps: ['fd'],
     layers: [
         {"id":"checkbox","partId":"checkbox","title":"Checkbox","explanation":"Checked filter keeps passed validations listed in the table below.","keyIdea":"This filter determines whether passed validation rows stay in the results table.","selector":"[class~=\"aui-checkbox\"]"},
-        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"Box turns solid when passed validations are shown in table.","keyIdea":"The empty outline marks the unchecked state before the filter is enabled.","selector":"[class~=\"aui-checkbox-indicator\"]","code":["Checkbox"],"unchanged":true},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"Check mark appears while Show passed validations is enabled.","keyIdea":"The tick confirms that passed validations will remain visible in the table.","selector":"[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]","code":["Checkbox"],"unchanged":true},
+        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"Box turns solid when passed validations are shown in table.","keyIdea":"The empty outline marks the unchecked state before the filter is enabled.","selector":"[class~=\"aui-checkbox-indicator\"]","code":["Checkbox"]},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"Check mark appears while Show passed validations is enabled.","keyIdea":"The tick confirms that passed validations will remain visible in the table.","selector":"[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]","code":["Checkbox.Icon"]},
         {"id":"label","partId":"label","title":"Label","explanation":"Caption names the passed-validation filter in the FD details column.","keyIdea":"The caption states the filtering rule so users know what changing the box will hide.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
       ],
 options: [

@@ -7,7 +7,7 @@ export default defineUsecase({
   apps: ['agpd'],
     layers: [
         {"id":"container","partId":"container","title":"Container","explanation":"Extra-small primary text link opens the Plate Option control.","keyIdea":"The unfilled accent action offers the plate-setting route from the lock explanation.","selector":"[class~=\"aui-button\"]:not([aria-label=\"Thickness is locked\"])"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"288px lock popup shows the current Plate Option above its button.","keyIdea":"The popup explains which plate option currently controls the locked value.","selector":"[data-aui-popup-motion][role=\"dialog\"]","code":["Button"],"unchanged":true},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"288px lock popup shows the current Plate Option above its button.","keyIdea":"The popup explains which plate option currently controls the locked value.","selector":"[data-aui-popup-motion][role=\"dialog\"]","code":["Popover.Popup"]},
       ],
 options: [
     { id: "agpd-lock-hint", name: "Lock hint", apps: ["agpd"], contextAnatomy: [

@@ -23,19 +23,22 @@ export const toSnippet = (source: string): string => {
   return jsx ? dedent(jsx.replace(PREVIEW_ONLY_PROPS, '')) : body;
 };
 
-const CHILDREN_LINE = /^([ \t]*)\{children\}[ \t]*$/m;
+const CHILDREN_SLOT = /^([ \t]*)(.*?)[ \t]*\{children\}[ \t]*(.*)$/m;
 
 /** Turns an option scene source and the example snippet into the complete In context code, replacing its `{children}` slot. */
 export const toContextSnippet = (contextSource: string, exampleSnippet: string): string => {
   const context = toSnippet(contextSource).replace(PREVIEW_ONLY_PROPS, '');
-  const slot = CHILDREN_LINE.exec(context);
+  const slot = CHILDREN_SLOT.exec(context);
   // A scene with no slot writes its own controls (a static state), so it is the snippet.
   if (!slot) return context;
   // A fragment only groups siblings; inside the context's parent element it is noise.
   const unwrapped = /^<>\s*([\s\S]*?)\s*<\/>$/.exec(exampleSnippet.trim())?.[1];
+  const [, indent, before, after] = slot;
+  const inner = before ? `${indent}  ` : indent;
   const indented = (unwrapped ? dedent(unwrapped) : exampleSnippet)
     .split('\n')
-    .map((line, index) => (index === 0 || !line.trim() ? line : slot[1] + line))
+    .map((line) => (line.trim() ? inner + line : line))
     .join('\n');
-  return context.replace(CHILDREN_LINE, slot[1] + indented);
+  const filled = [before && indent + before, indented, after && indent + after].filter(Boolean).join('\n');
+  return context.replace(CHILDREN_SLOT, () => filled);
 };

@@ -13,9 +13,9 @@ export default defineUsecase({
     layers: [
         {"id":"stack","partId":"stack","title":"Link stack","explanation":"No-padding column stacks Edit above Delete at the start.","keyIdea":"The link stack groups edit and removal without adding solid button fills.","selector":"[data-ug-part=\"link-stack\"]"},
         {"id":"edit","partId":"edit","title":"Edit","explanation":"No-padding secondary Edit reads like a text link.","keyIdea":"Edit opens the job row for changes while retaining its text-link treatment.","selector":"[class~=\"aui-button\"]:not([aria-label]):first-of-type"},
-        {"id":"delete","partId":"delete","title":"Delete","explanation":"Secondary text Delete, styled like Edit; it is not tinted as destructive.","keyIdea":"Delete removes the row through a link styled like its editing peer.","selector":"[class~=\"aui-button\"]:not([aria-label]):last-of-type","unchanged":true},
-        {"id":"cell","partId":"cell","title":"Actions cell","explanation":"ACE Job tally cell places both links beside Job 1.","keyIdea":"The actions cell places both row links before the job value.","selector":"[class~=\"aui-table-cell\"]:first-child","code":["View"]},
-        {"id":"header-cell","partId":"header-cell","title":"Actions header","explanation":"The unlabeled Actions column heading (raised) above the links.","keyIdea":"The header labels the otherwise unnamed actions column.","selector":"[class~=\"aui-table-header-cell\"]:first-child","code":["View"],"unchanged":true},
+        {"id":"delete","partId":"delete","title":"Delete","explanation":"Secondary text Delete, styled like Edit; it is not tinted as destructive.","keyIdea":"Delete removes the row through a link styled like its editing peer.","selector":"[class~=\"aui-button\"]:not([aria-label]):last-of-type"},
+        {"id":"cell","partId":"cell","title":"Actions cell","explanation":"ACE Job tally cell places both links beside Job 1.","keyIdea":"The actions cell places both row links before the job value.","selector":"[class~=\"aui-table-cell\"]:first-child"},
+        {"id":"header-cell","partId":"header-cell","title":"Actions header","explanation":"The unlabeled Actions column heading (raised) above the links.","keyIdea":"The header labels the otherwise unnamed actions column.","selector":"[class~=\"aui-table-header-cell\"]:first-child"},
       ],
 options: [
     { id: "ace-links", contextAnatomy: CONTEXT_ANATOMY, name: "Edit and Delete links", apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} ,

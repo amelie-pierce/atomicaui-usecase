@@ -11,7 +11,7 @@ export default defineUsecase({
   apps: ['adc'],
     layers: [
         {"id":"recalculate","partId":"recalculate","title":"Recalculate","explanation":"Extra-small amber warning button reruns the calculation after input changes.","keyIdea":"The warning-colored control reruns the calculation after inputs change.","selector":"[class~=\"aui-button\"]"},
-        {"id":"icon","partId":"icon","title":"Rotate icon","explanation":"The arrows-rotate glyph that conveys running the calculation again.","keyIdea":"The rotate glyph communicates recalculation of the current result.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])","unchanged":true},
+        {"id":"icon","partId":"icon","title":"Rotate icon","explanation":"The arrows-rotate glyph that conveys running the calculation again.","keyIdea":"The rotate glyph communicates recalculation of the current result.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])","code":["IconButton"]},
       ],
 options: [
     { id: "adc-recalculate", contextAnatomy: CONTEXT_ANATOMY, name: "Results header", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,

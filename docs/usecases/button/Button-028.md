@@ -124,6 +124,7 @@ export default function ResultsScene({ children }: ContextProps) {
                     children
                   ) : (
                     <Button
+                      data-ug-part="failed-expander"
                       aria-label={`Why Not for ${row.model}`}
                       aria-expanded={false}
                       aui={{ scale: 'sm', profile: 'square-compact', color: 'error', paint: 'text', sx: { minWidth: '24', minHeight: '24' } }}

@@ -89,7 +89,7 @@ export default function Example() {
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
               <Accordion.Icon name="link" weight="regular" aria-hidden />
-              <Type as="span" role="l4" weight="semi-bold">Connection Type</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Connection Type</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -101,7 +101,7 @@ export default function Example() {
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
               <Accordion.Icon name="arrow-down" weight="regular" aria-hidden />
-              <Type as="span" role="l4" weight="semi-bold">Load Properties</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Load Properties</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -129,7 +129,7 @@ export default function HcsListScene(_props: ContextProps) {
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
                 <Accordion.Icon name="link" weight="regular" aria-hidden />
-                <Type as="span" role="l4" weight="semi-bold">Connection Type</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Connection Type</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -141,7 +141,7 @@ export default function HcsListScene(_props: ContextProps) {
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
                 <Accordion.Icon name="arrow-down" weight="regular" aria-hidden />
-                <Type as="span" role="l4" weight="semi-bold">Load Properties</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Load Properties</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -177,7 +177,7 @@ export default function Example() {
         <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-              <Type as="span" role="l4" weight="semi-bold">Connection Type</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Connection Type</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -188,7 +188,7 @@ export default function Example() {
         <Accordion.Item value="Load Properties" aui={{ color: 'surface', scale: 'sm', shape: 'none', sx: { borderColor: 'outlined', borderStyle: 'solid', borderBlockStartWidth: '1' } }}>
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-              <Type as="span" role="l4" weight="semi-bold">Load Properties</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Load Properties</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -215,7 +215,7 @@ export default function PbsListScene(_props: ContextProps) {
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                <Type as="span" role="l4" weight="semi-bold">Connection Type</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Connection Type</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -226,7 +226,7 @@ export default function PbsListScene(_props: ContextProps) {
           <Accordion.Item value="Load Properties" aui={{ color: 'surface', scale: 'sm', shape: 'none', sx: { borderColor: 'outlined', borderStyle: 'solid', borderBlockStartWidth: '1' } }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                <Type as="span" role="l4" weight="semi-bold">Load Properties</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Load Properties</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -262,7 +262,7 @@ export default function Example() {
         <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-              <Type as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -273,7 +273,7 @@ export default function Example() {
         <Accordion.Item value="Load Properties" aui={{ color: 'surface', scale: 'sm', shape: 'none', sx: { borderColor: 'outlined', borderStyle: 'solid', borderBlockStartWidth: '1' } }}>
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-              <Type as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -300,7 +300,7 @@ export default function FdListScene(_props: ContextProps) {
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                <Type as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -311,7 +311,7 @@ export default function FdListScene(_props: ContextProps) {
           <Accordion.Item value="Load Properties" aui={{ color: 'surface', scale: 'sm', shape: 'none', sx: { borderColor: 'outlined', borderStyle: 'solid', borderBlockStartWidth: '1' } }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                <Type as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -349,7 +349,7 @@ export default function Example() {
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
               <Accordion.Icon name="link" weight="regular" aria-hidden />
-              <Type as="span" role="l4" weight="semi-bold">Connection Type</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Connection Type</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -361,7 +361,7 @@ export default function Example() {
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
               <Accordion.Icon name="arrow-down" weight="regular" aria-hidden />
-              <Type as="span" role="l4" weight="semi-bold">Load Properties</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Load Properties</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -390,7 +390,7 @@ export default function HcsCardsScene(_props: ContextProps) {
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
                 <Accordion.Icon name="link" weight="regular" aria-hidden />
-                <Type as="span" role="l4" weight="semi-bold">Connection Type</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Connection Type</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -402,7 +402,7 @@ export default function HcsCardsScene(_props: ContextProps) {
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
                 <Accordion.Icon name="arrow-down" weight="regular" aria-hidden />
-                <Type as="span" role="l4" weight="semi-bold">Load Properties</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Load Properties</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -439,7 +439,7 @@ export default function Example() {
         <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-              <Type as="span" role="l4" weight="semi-bold">Connection Type</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Connection Type</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -450,7 +450,7 @@ export default function Example() {
         <Accordion.Item value="Load Properties" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-              <Type as="span" role="l4" weight="semi-bold">Load Properties</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Load Properties</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -478,7 +478,7 @@ export default function PbsCardsScene(_props: ContextProps) {
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                <Type as="span" role="l4" weight="semi-bold">Connection Type</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Connection Type</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -489,7 +489,7 @@ export default function PbsCardsScene(_props: ContextProps) {
           <Accordion.Item value="Load Properties" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                <Type as="span" role="l4" weight="semi-bold">Load Properties</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">Load Properties</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -526,7 +526,7 @@ export default function Example() {
         <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-              <Type as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -537,7 +537,7 @@ export default function Example() {
         <Accordion.Item value="Load Properties" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-              <Type as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -565,7 +565,7 @@ export default function FdCardsScene(_props: ContextProps) {
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                <Type as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -576,7 +576,7 @@ export default function FdCardsScene(_props: ContextProps) {
           <Accordion.Item value="Load Properties" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                <Type as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>

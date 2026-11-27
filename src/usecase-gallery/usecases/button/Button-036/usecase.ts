@@ -11,11 +11,11 @@ export default defineUsecase({
 
   apps: ['hcs'],
     layers: [
-        {"id":"expand","partId":"expand","title":"Expand Input","explanation":"28px transparent angle-right reopens the collapsed Input pane.","keyIdea":"The arrow control restores the collapsed Input panel.","selector":"[class~=\"aui-button\"][aria-label=\"Expand Input\"]:not([class~=\"aui-panels-trigger\"])","code":["Panels"]},
-        {"id":"trigger","partId":"trigger","title":"Panel trigger","explanation":"HCS rail uses Panels.Trigger to reopen Input from 40px.","keyIdea":"The HCS panel trigger reopens the named Input panel from its rail.","selector":"[class~=\"aui-panels-trigger\"]","code":["Tooltip.Provider"]},
+        {"id":"expand","partId":"expand","title":"Expand Input","explanation":"28px transparent angle-right reopens the collapsed Input pane.","keyIdea":"The arrow control restores the collapsed Input panel.","selector":"[class~=\"aui-button\"][aria-label=\"Expand Input\"]:not([class~=\"aui-panels-trigger\"])"},
+        {"id":"trigger","partId":"trigger","title":"Panel trigger","explanation":"HCS rail uses Panels.Trigger to reopen Input from 40px.","keyIdea":"The HCS panel trigger reopens the named Input panel from its rail.","selector":"[class~=\"aui-panels-trigger\"]"},
         {"id":"tooltip","partId":"tooltip","title":"Tooltip","explanation":"The Expand Input label shown below the button.","keyIdea":"The tooltip labels the action that expands the side panel.","selector":"[class~=\"aui-tooltip-popup\"]"},
-        {"id":"panel","partId":"panel","title":"Panel","explanation":"Input panel collapses to 40px beside the 3D Viewer.","keyIdea":"The panel keeps input controls beside the 3D viewer when open.","selector":"[class~=\"aui-panels-panel\"]","code":["Tooltip.Provider"]},
-        {"id":"handle","partId":"handle","title":"Resize handle","explanation":"The 8px primary handle between the Input and 3D Viewer panels.","keyIdea":"The resize handle adjusts the space shared by both panels.","selector":"[class~=\"aui-panels-resize-handle\"]","code":["Tooltip.Provider"],"unchanged":true},
+        {"id":"panel","partId":"panel","title":"Panel","explanation":"Input panel collapses to 40px beside the 3D Viewer.","keyIdea":"The panel keeps input controls beside the 3D viewer when open.","selector":"[class~=\"aui-panels-panel\"]"},
+        {"id":"handle","partId":"handle","title":"Resize handle","explanation":"The 8px primary handle between the Input and 3D Viewer panels.","keyIdea":"The resize handle adjusts the space shared by both panels.","selector":"[class~=\"aui-panels-resize-handle\"]"},
       ],
 options: [
     { id: "hcs-rail", contextAnatomy: CONTEXT_ANATOMY, name: "Collapsed rail", apps: ["hcs"], source: {"hcs":"src/components/HcsSplitLayout.tsx"} ,

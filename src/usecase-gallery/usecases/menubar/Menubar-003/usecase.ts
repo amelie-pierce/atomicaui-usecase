@@ -6,10 +6,10 @@ export default defineUsecase({
   apps: ['hcs', 'ace', 'adm', 'hs', 'adc', 'pbs', 'pfd', 'rws', 'agpd'],
     layers: [
         {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"Top bar ends with Help Center; HCS uses small Main navigation.","keyIdea":"The Help Center bar entry keeps support actions at the end of the main navigation.","selector":"[class~=\"aui-menubar\"]"},
-        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Help Center text trigger opens the help menu.","keyIdea":"The text trigger gives the support menu a specific name rather than an icon-only cue.","selector":"[class~=\"aui-menubar-trigger\"]","code":["View"]},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Help Center text trigger opens the help menu.","keyIdea":"The text trigger gives the support menu a specific name rather than an icon-only cue.","selector":"[class~=\"aui-menubar-trigger\"]","code":["Menubar.DropdownTrigger"]},
         {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup aligns below trigger at 192px; HCS expands it to 288px.","keyIdea":"The popup remains anchored under Help Center so support choices retain their origin.","selector":"[class~=\"aui-dropdown-popup\"]"},
         {"id":"item","partId":"item","title":"Item","explanation":"A help action row: \"Feedback\", \"Tutorials\" or \"Add to Home Screen\".","keyIdea":"Each row launches one help destination such as Feedback or Tutorials.","selector":"[class~=\"aui-dropdown-item\"]"},
-        {"id":"submenu-trigger","partId":"submenu-trigger","title":"Submenu trigger","explanation":"HCS Tutorials row opens one nested tutorial choice.","keyIdea":"The Tutorials row reveals a nested choice while other help actions stay direct.","selector":"[class~=\"aui-dropdown-submenu-trigger\"]","code":["View"]},
+        {"id":"submenu-trigger","partId":"submenu-trigger","title":"Submenu trigger","explanation":"HCS Tutorials row opens one nested tutorial choice.","keyIdea":"The Tutorials row reveals a nested choice while other help actions stay direct.","selector":"[class~=\"aui-dropdown-submenu-trigger\"]"},
       ],
 options: [
     { id: "hcs-help-center", showContext: false, name: "Tutorials submenu", apps: ["hcs"], source: {"hcs":"src/App.tsx"} ,

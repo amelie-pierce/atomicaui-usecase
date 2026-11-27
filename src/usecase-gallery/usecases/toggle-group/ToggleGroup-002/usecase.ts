@@ -6,10 +6,10 @@ export default defineUsecase({
   apps: ['agpd'],
     layers: [
         {"id":"group","partId":"group","title":"Group","explanation":"STN22-selected fastener group sizes itself to the option labels.","keyIdea":"The group keeps fastener choices mutually exclusive while sizing to their labels.","selector":"[class~=\"aui-toggle-group\"]"},
-        {"id":"item","partId":"item","title":"Item","explanation":"STN22 and SDWB appear as text buttons without added padding.","keyIdea":"A text button exposes each fastener without adding extra inner padding.","selector":"[class~=\"aui-toggle-group\"] > button","unchanged":true},
+        {"id":"item","partId":"item","title":"Item","explanation":"STN22 and SDWB appear as text buttons without added padding.","keyIdea":"A text button exposes each fastener without adding extra inner padding.","selector":"[class~=\"aui-toggle-group\"] > button","code":["ToggleGroup.Item"]},
         {"id":"segment","partId":"segment","title":"Segment","explanation":"Pressed segment uses soft secondary fill with 6px side padding.","keyIdea":"The segment fill distinguishes the selected fastener from its neighbor.","selector":"[class~=\"aui-toggle-group\"] > button [class~=\"aui-view\"]"},
-        {"id":"text","partId":"text","title":"Option text","explanation":"Fastener code uses medium-weight l5 type at compact scale.","keyIdea":"The concise code names the exact fastener option being applied.","selector":"[class~=\"aui-toggle-group\"] > button [data-aui-typeface]"},
-        {"id":"field","partId":"field","title":"Field below","explanation":"Diameter and Style field sits below the fastener choice.","keyIdea":"The Diameter and Style field shows which value the fastener selection affects.","selector":"[class~=\"aui-field-control\"]","code":["ToggleGroup"],"unchanged":true},
+        {"id":"text","partId":"text","title":"Option text","explanation":"Fastener code uses medium-weight l5 type at compact scale.","keyIdea":"The concise code names the exact fastener option being applied.","selector":"[class~=\"aui-toggle-group\"] > button [data-aui-typeface]","code":["Type"]},
+        {"id":"field","partId":"field","title":"Field below","explanation":"Diameter and Style field sits below the fastener choice.","keyIdea":"The Diameter and Style field shows which value the fastener selection affects.","selector":"[class~=\"aui-field-control\"]"},
       ],
 options: [
     { id: "agpd-fastener", name: "Fastener switch", contextAnatomy: [{ id: 'diameter-field', name: 'Diameter and style field', description: 'The Diameter and Style field control, showing 1/4 in, hex head, that the segments sit above and switch.' }], source: {"agpd":"src/agpd/inputs.tsx"} ,

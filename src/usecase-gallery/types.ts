@@ -13,10 +13,8 @@ export interface LayerStep {
   explanation: string;
   keyIdea: string;
   selector?: string;
-  /** JSX tags (e.g. `Dialog.Popup`) that write the target in the option views of this step, used only where its class or marker is not in the code. */
+  /** JSX tags (e.g. `Dialog.Popup`) that write the target in the option views of this step, used only where its selector matches no tag in the code. */
   code?: string[];
-  /** The step adds nothing to the code beyond the step before it, so its highlight may repeat. */
-  unchanged?: boolean;
   /** Reveal the target's direct text as its own layer. */
   text?: boolean;
   /** Component layers target the selected example; context layers target the whole scene. */

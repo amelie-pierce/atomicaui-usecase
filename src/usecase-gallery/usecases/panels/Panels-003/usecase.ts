@@ -7,8 +7,8 @@ export default defineUsecase({
     layers: [
         {"id":"panels","partId":"panels","title":"Panels","explanation":"Vertical split lets the upper pane fold into a narrow rail.","keyIdea":"The root coordinates a resizable split even when its upper section can collapse.","selector":"[class~=\"aui-panels\"]"},
         {"id":"panel","partId":"panel","title":"Collapsible panel","explanation":"Input collapses to a 40px rail while Output stays open below.","keyIdea":"Collapsing Input preserves a narrow rail while leaving Output available below.","selector":"[class~=\"aui-panels-panel\"]"},
-        {"id":"content","partId":"content","title":"Content","explanation":"Open pane body holds the Input heading beside its collapsed rail.","keyIdea":"The HCS content region carries the input heading when the pane body is open.","selector":"[class~=\"aui-panels-content\"]","code":["Panels"]},
-        {"id":"trigger","partId":"trigger","title":"Expand trigger","explanation":"Angle-down button on the rail reopens Input with a tooltip.","keyIdea":"The rail control restores the collapsed Input content without navigating away.","selector":"[class~=\"aui-panels-trigger\"]","code":["Panels"],"unchanged":true},
+        {"id":"content","partId":"content","title":"Content","explanation":"Open pane body holds the Input heading beside its collapsed rail.","keyIdea":"The HCS content region carries the input heading when the pane body is open.","selector":"[class~=\"aui-panels-content\"]"},
+        {"id":"trigger","partId":"trigger","title":"Expand trigger","explanation":"Angle-down button on the rail reopens Input with a tooltip.","keyIdea":"The rail control restores the collapsed Input content without navigating away.","selector":"[class~=\"aui-panels-trigger\"]"},
         {"id":"resize-handle","partId":"resize-handle","title":"Resize handle","explanation":"Six-pixel horizontal grip adjusts the boundary above the results pane.","keyIdea":"This horizontal grip adjusts the boundary between the input and results sections.","selector":"[class~=\"aui-panels-resize-handle\"]"},
       ],
 options: [

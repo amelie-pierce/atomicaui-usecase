@@ -6,11 +6,11 @@ export default defineUsecase({
   apps: ['hs', 'adc', 'adm', 'ace', 'hcs', 'pbs', 'pfd', 'rws', 'agpd'],
     layers: [
         {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"Top bar starts with File; apps may add About, Reset, or Help.","keyIdea":"A single top bar keeps File first while leaving room for the other application actions.","selector":"[class~=\"aui-menubar\"]"},
-        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The text trigger \"File\" that opens the device, template and print actions.","keyIdea":"The File trigger names the action group before its popup opens.","selector":"[class~=\"aui-menubar-trigger\"]","code":["Menubar"],"unchanged":true},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The text trigger \"File\" that opens the device, template and print actions.","keyIdea":"The File trigger names the action group before its popup opens.","selector":"[class~=\"aui-menubar-trigger\"]","code":["Menubar.DropdownTrigger"]},
         {"id":"popup","partId":"popup","title":"Popup","explanation":"192px menu opens 4px below its start-aligned trigger.","keyIdea":"The narrow popup keeps file commands aligned to their own trigger.","selector":"[class~=\"aui-dropdown-popup\"]"},
         {"id":"item","partId":"item","title":"Item","explanation":"A plain action row: \"Save to device\" or \"Open from device\".","keyIdea":"Each row runs one device action without implying that it has a nested menu.","selector":"[class~=\"aui-dropdown-item\"]"},
         {"id":"separator","partId":"separator","title":"Separator","explanation":"The divider between the device actions and the Print submenu.","keyIdea":"A divider separates file transfer actions from the print submenu.","selector":"[class~=\"aui-dropdown-separator\"]"},
-        {"id":"submenu-trigger","partId":"submenu-trigger","title":"Submenu trigger","explanation":"Print row’s arrow opens a second menu with Print output.","keyIdea":"The trailing arrow signals that Print opens a second level of commands.","selector":"[class~=\"aui-dropdown-submenu-trigger\"]","code":["Menubar"]},
+        {"id":"submenu-trigger","partId":"submenu-trigger","title":"Submenu trigger","explanation":"Print row’s arrow opens a second menu with Print output.","keyIdea":"The trailing arrow signals that Print opens a second level of commands.","selector":"[class~=\"aui-dropdown-submenu-trigger\"]"},
       ],
 options: [
     { id: "hs-file-menu", showContext: false, name: "Print submenu", apps: ["hs","adc"], source: {"hs":"src/hs/TopBar.tsx","adc":"src/adc/Workspace.tsx"} ,

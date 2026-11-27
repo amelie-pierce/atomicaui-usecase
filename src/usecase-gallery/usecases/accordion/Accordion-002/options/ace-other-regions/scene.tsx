@@ -5,7 +5,7 @@ import { Accordion, Chip, Dialog, Type, View } from '../../../../../kit';
 const trigger = (label: string, count: string) => (
   <Accordion.Header>
     <Accordion.Trigger>
-      <span>
+      <span data-ug-part="section-label">
         <Type as="span" role="l3" weight="semi-bold">{label}</Type>{' '}
         <Type as="span" role="l5" color="muted">({count})</Type>
       </span>

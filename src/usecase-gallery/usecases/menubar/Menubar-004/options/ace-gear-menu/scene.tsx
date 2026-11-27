@@ -21,7 +21,7 @@ export default function AceGearMenuScene({ host }: ContextProps) {
             aria-label="Settings"
             aui={{ profile: "square" }}
           >
-            <Menubar.Icon name="gear" />
+            <Menubar.Icon data-ug-part="trigger-icon" name="gear" />
           </Menubar.DropdownTrigger>
           <Menubar.DropdownPortal container={host}>
             <Menubar.DropdownPositioner

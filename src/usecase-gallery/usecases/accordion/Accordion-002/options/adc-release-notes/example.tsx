@@ -6,7 +6,7 @@ export default function Example() {
       <Accordion.Item value="initial" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
         <Accordion.Header>
           <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-            <Type as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
+            <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
             <Accordion.Chevron />
           </Accordion.Trigger>
         </Accordion.Header>

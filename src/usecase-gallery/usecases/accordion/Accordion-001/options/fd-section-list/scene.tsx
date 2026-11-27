@@ -11,7 +11,7 @@ export default function FdListScene(_props: ContextProps) {
           <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                <Type as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>
@@ -22,7 +22,7 @@ export default function FdListScene(_props: ContextProps) {
           <Accordion.Item value="Load Properties" aui={{ color: 'surface', scale: 'sm', shape: 'none', sx: { borderColor: 'outlined', borderStyle: 'solid', borderBlockStartWidth: '1' } }}>
             <Accordion.Header>
               <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                <Type as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
+                <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
                 <Accordion.Chevron />
               </Accordion.Trigger>
             </Accordion.Header>

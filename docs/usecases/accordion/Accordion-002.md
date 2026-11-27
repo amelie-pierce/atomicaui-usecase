@@ -92,7 +92,7 @@ export default function Example() {
       <Accordion.Item value="global">
         <Accordion.Header>
           <Accordion.Trigger>
-            <span>
+            <span data-ug-part="section-label">
               <Type as="span" role="l3" weight="semi-bold">Global changes</Type>{' '}
               <Type as="span" role="l5" color="muted">(1 update)</Type>
             </span>
@@ -142,7 +142,7 @@ export default function HcsReleaseNotesScene({ host }: ContextProps) {
                 <Accordion.Item value="global">
                   <Accordion.Header>
                     <Accordion.Trigger>
-                      <span>
+                      <span data-ug-part="section-label">
                         <Type as="span" role="l3" weight="semi-bold">Global changes</Type>{' '}
                         <Type as="span" role="l5" color="muted">(1 update)</Type>
                       </span>
@@ -198,7 +198,7 @@ export default function Example() {
       <Accordion.Item value="initial" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
         <Accordion.Header>
           <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-            <Type as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
+            <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
             <Accordion.Chevron />
           </Accordion.Trigger>
         </Accordion.Header>
@@ -242,7 +242,7 @@ export default function AdcReleaseNotesScene({ host }: ContextProps) {
                 <Accordion.Item value="initial" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
                   <Accordion.Header>
                     <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                      <Type as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
+                      <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
                       <Accordion.Chevron />
                     </Accordion.Trigger>
                   </Accordion.Header>
@@ -290,7 +290,7 @@ function Trigger({ label, count }: { label: string; count: string }) {
   return (
     <Accordion.Header>
       <Accordion.Trigger>
-        <span>
+        <span data-ug-part="section-label">
           <Type as="span" role="l3" weight="semi-bold">{label}</Type>{' '}
           <Type as="span" role="l5" color="muted">({count})</Type>
         </span>
@@ -340,7 +340,7 @@ import { Accordion, Chip, Dialog, Type, View } from '../../../../../kit';
 const trigger = (label: string, count: string) => (
   <Accordion.Header>
     <Accordion.Trigger>
-      <span>
+      <span data-ug-part="section-label">
         <Type as="span" role="l3" weight="semi-bold">{label}</Type>{' '}
         <Type as="span" role="l5" color="muted">({count})</Type>
       </span>

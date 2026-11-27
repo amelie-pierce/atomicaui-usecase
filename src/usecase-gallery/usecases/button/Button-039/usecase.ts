@@ -12,7 +12,7 @@ export default defineUsecase({
 
     layers: [
         {"id":"button","partId":"button","title":"Reset view","explanation":"Small orange outlined soft IconButton resets the 3D camera.","keyIdea":"The floating control resets the camera within the viewer canvas.","selector":"[class~=\"aui-button\"]"},
-        {"id":"icon","partId":"icon","title":"Bullseye icon","explanation":"The bullseye glyph, drawn in the primary color on a transparent surface.","keyIdea":"The bullseye glyph indicates returning the camera to its target view.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])","unchanged":true},
+        {"id":"icon","partId":"icon","title":"Bullseye icon","explanation":"The bullseye glyph, drawn in the primary color on a transparent surface.","keyIdea":"The bullseye glyph indicates returning the camera to its target view.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])","code":["IconButton"]},
       ],
 options: [
     { id: "default", contextAnatomy: CONTEXT_ANATOMY, name: "Outlined accent, 28px" ,

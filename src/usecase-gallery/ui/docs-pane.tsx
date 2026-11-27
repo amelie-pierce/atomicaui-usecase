@@ -2,7 +2,6 @@ import { Suspense, use } from 'react';
 import { APPS } from '../apps';
 import type { AppKey } from '../apps';
 import { layerCodeLines, stripPartMarkers } from '../catalog/layer-code';
-import { anatomyLayers } from '../catalog/anatomy-layers';
 import { useCopy } from '../hooks/use-copy';
 import { Button, Chip, ToggleGroup, Type } from '../kit';
 import type { AnatomyPart, DocumentMode, LayerStep, LineRange, PreviewMode, Usecase, UsecaseOption } from '../types';
@@ -133,20 +132,6 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
     ? { ...usecase, ...option.contextDocument }
     : { ...usecase, ...option.componentDocument };
   const parts = mode === 'context' ? [...option.contextAnatomy, ...usecase.anatomy] : usecase.anatomy;
-  const orderedParts = availablePartIds
-    ? [...parts].sort((a, b) => {
-      const first = availablePartIds.indexOf(a.id);
-      const second = availablePartIds.indexOf(b.id);
-      return (first < 0 ? Number.MAX_SAFE_INTEGER : first) - (second < 0 ? Number.MAX_SAFE_INTEGER : second);
-    })
-    : parts;
-  const lessonParts = mode === 'context'
-    ? orderedParts.map((part, index) => ({ ...part, scope: index < option.contextAnatomy.length ? part.scope ?? 'context' as const : 'context' as const }))
-    : orderedParts;
-  const lessonLayers = anatomyLayers(lessonParts);
-  const visibleLessonLayers = availablePartIds
-    ? lessonLayers.filter((step) => availablePartIds.includes(step.partId ?? step.id))
-    : lessonLayers;
   const hasAccessibility = !!doc.accessibility?.keyboard || !!doc.accessibility?.focus;
   const hasVariants = !!doc.variants || usecase.options.length > 0;
   return <>
@@ -157,7 +142,7 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
       </ToggleGroup>
     </header>
     <div className="ug-docs">
-    {documentMode === 'layers' ? <LayerLesson layers={visibleLessonLayers} index={layerIndex} onChange={onLayerChange} code={mode === 'component' ? option.loadExampleCode() : option.loadCode()} slotLines={mode === 'component' ? undefined : option.loadSlotLines()} /> : <>
+    {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} code={mode === 'component' ? option.loadExampleCode() : option.loadCode()} slotLines={mode === 'component' ? undefined : option.loadSlotLines()} /> : <>
       <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div>
       </header>
       <div className="ug-docs__sections">

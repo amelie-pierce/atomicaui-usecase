@@ -51,7 +51,7 @@ options: [
     },
     { id: "pfd-field-help", contextAnatomy: LABEL_ROW_CONTEXT, name: "28px popover icon", apps: ["pfd","agpd"], source: {"pfd":"src/pfd/fields.tsx","agpd":"src/agpd/inputs.tsx"} ,
       contextLayers: [
-        {"id":"context-label-row","partId":"label-row","title":"Label row","explanation":"Flex row places Material label and help button above the control.","keyIdea":"The HCS label row associates Download Duration guidance with the selector.","selector":"[data-ug-part=\"label-row\"]","scope":"context"},
+        {"id":"context-label-row","partId":"label-row","title":"Label row","explanation":"Flex row places Download Duration label and help button above the control.","keyIdea":"The HCS label row associates Download Duration guidance with the selector.","selector":"[data-ug-part=\"label-row\"]","scope":"context"},
       ],
     },
   ],

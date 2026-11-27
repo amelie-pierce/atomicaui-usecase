@@ -6,20 +6,19 @@ export interface LayoutPanes {
   tree: ReactNode;
   render: ReactNode;
   detail: ReactNode;
-  treeCollapsed: boolean;
   onTreePanelResize: (size: { asPercentage: number; inPixels: number }) => void;
 }
 
 const PANE_MIN = 220;
 
 /** Three resizable panes; the preview toolbar is anchored across the page from the center panel. */
-export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onTreePanelResize }: LayoutPanes) {
+export function DetailLayout({ toolbar, tree, render, detail, onTreePanelResize }: LayoutPanes) {
   return (
     <Panels orientation="horizontal" className="ug-panels" animate={false}>
       <Panels.Panel
         id="component-tree"
         className="ug-layout__column ug-layout__column--tree"
-        defaultSize={treeCollapsed ? '0%' : '30%'}
+        defaultSize="30%"
         groupResizeBehavior="preserve-relative-size"
         minSize={`${PANE_MIN}px`}
         collapsedSize="0%"

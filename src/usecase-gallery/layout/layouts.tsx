@@ -6,6 +6,7 @@ export interface LayoutPanes {
   toolbar: ReactNode;
   tree: ReactNode;
   render: ReactNode;
+  stepper?: ReactNode;
   detail: ReactNode;
   treeCollapsed: boolean;
   onTreePanelResize: (size: { asPercentage: number; inPixels: number }) => void;
@@ -15,7 +16,7 @@ const PANE_MIN = 220;
 const TREE_DEFAULT_PERCENT = 25;
 
 /** Three resizable panes; the preview toolbar is anchored across the page from the center panel. */
-export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onTreePanelResize }: LayoutPanes) {
+export function DetailLayout({ toolbar, tree, render, stepper, detail, treeCollapsed, onTreePanelResize }: LayoutPanes) {
   const groupRef = useRef<GroupImperativeHandle>(null);
   const mountedCollapsed = useRef(treeCollapsed);
   const onTreeResize: LayoutPanes['onTreePanelResize'] = (size) => {
@@ -52,6 +53,7 @@ export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onT
       <Panels.Panel id="component-preview" className="ug-layout__column ug-layout__column--render" minSize="280px">
         {toolbar}
         {render}
+        {stepper}
       </Panels.Panel>
       <Panels.ResizeHandle aria-label="Resize preview and documentation" />
       <Panels.Panel id="component-documentation" className="ug-layout__column ug-layout__column--detail" defaultSize="30%" groupResizeBehavior="preserve-relative-size" minSize={`${PANE_MIN}px`}>
@@ -62,12 +64,13 @@ export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onT
 }
 
 /** One column for narrow viewports where side-by-side panes would be unusable. */
-export function StackedLayout({ toolbar, tree, render, detail }: LayoutPanes) {
+export function StackedLayout({ toolbar, tree, render, stepper, detail }: LayoutPanes) {
   return (
     <div className="ug-stacked">
       {toolbar}
       {tree}
       {render}
+      {stepper}
       {detail}
     </div>
   );

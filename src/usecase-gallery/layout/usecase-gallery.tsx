@@ -8,6 +8,7 @@ import { DetailPane } from '../ui/detail-pane';
 import { DetailToolbar } from '../ui/detail-toolbar';
 import { RenderPane } from '../ui/render-pane';
 import { TreePane } from '../ui/tree-pane';
+import { LayerStepper } from '../ui/layer-stepper';
 import type { ComponentGroup, DocumentMode, PreviewMode } from '../types';
 import { DetailLayout, StackedLayout } from './layouts';
 import '../styles/gallery.scss';
@@ -139,7 +140,8 @@ export function UsecaseGallery() {
     toolbar: <DetailToolbar treeCollapsed={treeCollapsed} onTreeToggle={() => setTreeCollapsedForSession(!treeCollapsed)} searchQuery={searchQuery} onSearchChange={setSearchQuery} onSearchSubmit={() => { if (searchQuery.trim() && firstSearchMatch) window.location.hash = `#/${encodeURIComponent(firstSearchMatch.componentId)}/${encodeURIComponent(firstSearchMatch.id)}`; }} panelMode={!narrow} />,
     tree: <TreePane groups={visibleGroups} activeComponentId={group.id} activeUsecase={original} collapsed={treeCollapsed} searchActive={Boolean(searchQuery.trim())} />,
     render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={(next) => { setViewMode(next); setLayerIndex(0); }} anatomy={orderedAnatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => { setLayerIndex(0); startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })); }} layers={allLayers} layerIndex={visibleLayerIndex} layerMode={layersReady} />,
-    detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} documentMode={documentMode} onDocumentModeChange={(next) => { setDocumentMode(next); setLayerIndex(0); }} layers={layers} layerIndex={activeLayerIndex} onLayerChange={onLayerChange} />,
+    stepper: documentMode === 'layers' && layers.length > 0 ? <LayerStepper layers={layers} index={activeLayerIndex} onChange={onLayerChange} /> : undefined,
+    detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} documentMode={documentMode} onDocumentModeChange={(next) => { setDocumentMode(next); setLayerIndex(0); }} layers={layers} layerIndex={activeLayerIndex} />,
   };
   return (
     <div ref={galleryRef} className="ug ug--usecase">

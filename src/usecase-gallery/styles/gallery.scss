@@ -256,6 +256,8 @@ $narrow: 840px;
   display: flex;
   flex: 1 1 auto;
   min-block-size: var(--p-px-160);
+  // The anatomy pulse extends past its box; keep that paint from creating scrollbars on the preview pane.
+  overflow: clip;
 }
 
 .ug-render__viewport > .ug-render__stage {

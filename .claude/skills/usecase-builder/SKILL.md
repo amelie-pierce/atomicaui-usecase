@@ -75,7 +75,7 @@ Anatomy is authored data in each `usecase.ts`, not generic component boilerplate
 - In context Anatomy contains scene parts and Component parts in the mounted visual order: parents first, then top to bottom and left to right within a row. The catalog cannot infer this from arbitrary selectors before the lazy option scene mounts; `hooks/use-preview-anatomy.tsx` orders resolved targets at runtime.
 - `hooks/use-layer-visibility.ts` derives hidden-part rules from the Anatomy steps. Keep later parts out of layout, focus and interaction until their step. Never mutate React-owned preview nodes; mark text with an element such as `<span data-ug-part="title-text">` when it needs its own step.
 - The Layer view keeps the selected view's code and highlights selector-matched JSX opening tags. Use `lesson.code` only when a selector cannot identify the element's authored tag. The active step shares the one-way, out-of-stage Anatomy overlay; keep it outside the stage to prevent scrollbars. Its brief pulse uses AtomicAUI motion tokens and respects reduced-motion preferences.
-- Layer mode puts circular numbered step buttons, Back and Next below the center preview in one horizontally scrollable row; the right pane contains only the active step's title, description and always-visible highlighted code. The stepper is absent in Document mode.
+- Layer mode puts circular numbered step buttons between previous and next icon buttons below the center preview in one horizontally scrollable row; the right pane contains only the active step's title, description and always-visible highlighted code. The stepper is absent in Document mode.
 
 ## Renumber ids
 

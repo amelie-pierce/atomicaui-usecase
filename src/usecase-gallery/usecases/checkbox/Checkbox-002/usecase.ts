@@ -5,11 +5,11 @@ export default defineUsecase({
   title: 'Input panel option checkbox',
   apps: ['hcs', 'hs', 'fd', 'adc', 'ace', 'pbs', 'agpd', 'adm'],
     layers: [
+        {"id":"group","partId":"group","title":"Fieldset","explanation":"ACE uses a titled fieldset to name this checkbox group.","keyIdea":"ACE groups the related option under a named fieldset so its scope is clear.","selector":"[class~=\"aui-fieldset\"]"},
         {"id":"checkbox","partId":"checkbox","title":"Checkbox","explanation":"One yes-or-no input starts checked with a solid primary selected style.","keyIdea":"The checkable field stores a single binary input for the current option group.","selector":"[class~=\"aui-checkbox\"]"},
         {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"Box shows whether Galvanized is included; off uses an outlined tonal style.","keyIdea":"The indicator shows whether Galvanized is included without repeating the text label.","selector":"[class~=\"aui-checkbox-indicator\"]","code":["Checkbox"]},
         {"id":"icon","partId":"icon","title":"Icon","explanation":"The \"check\" mark rendered inside the box when Galvanized is on.","keyIdea":"A check glyph makes the affirmative state recognizable in the selected box.","selector":"[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]","code":["Checkbox.Icon"]},
         {"id":"label","partId":"label","title":"Label","explanation":"Galvanized caption identifies the property; ADM places its field label above.","keyIdea":"The adjacent caption identifies exactly which property the checked value controls.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
-        {"id":"group","partId":"group","title":"Fieldset","explanation":"ACE uses a titled fieldset to name this checkbox group.","keyIdea":"ACE groups the related option under a named fieldset so its scope is clear.","selector":"[class~=\"aui-fieldset\"]"},
         {"id":"legend","partId":"legend","title":"Legend","explanation":"ACE legend names the checkbox option before the control.","keyIdea":"The legend names the group before users encounter its individual setting.","selector":"[class~=\"aui-fieldset-legend\"]"},
         {"id":"field-label","partId":"field-label","title":"Field label","explanation":"Form label introduces the checkbox when it has no caption.","keyIdea":"A field label can introduce the row when the checkbox itself has no caption.","selector":"[class~=\"aui-field-label\"]"},
       ],

@@ -18,7 +18,7 @@ export default defineUsecase({
         {"id":"head","partId":"head","title":"Header","explanation":"Printed header lists Model and Load with app-specific fills.","keyIdea":"The printed heading row labels columns in the report rather than acting as controls.","selector":"[class~=\"aui-table-head\"]"},
         {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Printed labels use centered or start alignment across apps.","keyIdea":"Each plain heading stays readable in the compact report layout.","selector":"[class~=\"aui-table-header-cell\"]"},
         {"id":"body","partId":"body","title":"Body","explanation":"Printed report rows contain the saved model values.","keyIdea":"The body holds records in the sequence the report will present them.","selector":"[class~=\"aui-table-body\"]"},
-        {"id":"row","partId":"row","title":"Row","explanation":"Printed row shows Model B-200 and 2,210 lb.","keyIdea":"A row binds one printed model and its load into a single record.","selector":"[class~=\"aui-table-row\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"Printed row shows Model B-200 and 2,210 lb.","keyIdea":"A row binds one printed model and its load into a single record.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"},
         {"id":"cell","partId":"cell","title":"Cell","explanation":"Printed values use compact padding and app-specific alignment.","keyIdea":"Plain cells keep printed values legible without implying editability.","selector":"[class~=\"aui-table-cell\"]"},
       ],
 options: [

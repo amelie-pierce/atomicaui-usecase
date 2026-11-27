@@ -6,10 +6,10 @@ export default defineUsecase({
   apps: ['hcs', 'hs', 'pfd', 'rws', 'fd', 'agpd', 'adm', 'adc', 'ace'],
     layers: [
         {"id":"field","partId":"field","title":"Field","explanation":"Small stacked number field; some apps put its 137px label beside it.","keyIdea":"The Field wrapper keeps the pressure label and its numeric control aligned as one measurement.","selector":"[class~=\"aui-field\"]"},
+        {"id":"number-field","partId":"number-field","title":"Number field","explanation":"FD, AGPD, ADM, ADC use a stepper-free parsed number group.","keyIdea":"The number-field group parses the value without exposing stepper controls that are absent from the design.","selector":"[class~=\"aui-number-field\"]"},
         {"id":"label","partId":"label","title":"Label","explanation":"Fc perp label sits above; inline variants truncate within half the row.","keyIdea":"The label identifies the measurement before the number or unit is read.","selector":"[class~=\"aui-field-label\"]"},
         {"id":"control","partId":"control","title":"Control","explanation":"Outlined 28px row keeps the value beside its unit.","keyIdea":"One outlined row makes the value and its unit feel like a single control.","selector":"[class~=\"aui-field-control\"]"},
         {"id":"input","partId":"input","title":"Input","explanation":"End-aligned 650 accepts decimal entry beside the unit.","keyIdea":"Right alignment keeps decimal digits visually comparable as pressure values change.","selector":"[class~=\"aui-field-control\"] > [class~=\"aui-input\"]"},
-        {"id":"number-field","partId":"number-field","title":"Number field","explanation":"FD, AGPD, ADM, ADC use a stepper-free parsed number group.","keyIdea":"The number-field group parses the value without exposing stepper controls that are absent from the design.","selector":"[class~=\"aui-number-field\"]"},
         {"id":"unit","partId":"unit","title":"Unit","explanation":"Mono psi label follows the number; weight and size vary by app.","keyIdea":"The psi suffix tells users which pressure scale the number uses.","selector":"[class~=\"aui-field-control\"] > [data-aui-typeface], [class~=\"aui-number-field-unit\"]","code":["Type","Symbol"]},
       ],
 options: [

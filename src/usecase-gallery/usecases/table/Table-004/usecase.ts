@@ -9,7 +9,7 @@ export default defineUsecase({
         {"id":"head","partId":"head","title":"Header","explanation":"Raised heading row with the upper-case FIELD, VALUE and STATUS labels.","keyIdea":"Raised headings establish which preview value belongs to each field and status column.","selector":"[class~=\"aui-table-head\"]"},
         {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"FIELD, VALUE, and STATUS headings use default alignment without sorting.","keyIdea":"Each heading identifies a data category without adding sort behavior to the preview.","selector":"[class~=\"aui-table-header-cell\"]"},
         {"id":"body","partId":"body","title":"Body","explanation":"Holds the previewed record that the user checks before confirming the import.","keyIdea":"The body holds the record users need to inspect before confirming the import.","selector":"[class~=\"aui-table-body\"]"},
-        {"id":"row","partId":"row","title":"Row","explanation":"One imported field: Design Method, ACI 318, Supported.","keyIdea":"A row keeps each parsed property together for a single imported record.","selector":"[class~=\"aui-table-row\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"One imported field: Design Method, ACI 318, Supported.","keyIdea":"A row keeps each parsed property together for a single imported record.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"},
         {"id":"cell","partId":"cell","title":"Cell","explanation":"Plain cell shows a field name, parsed value, or support status.","keyIdea":"The cell presents the field name, interpreted value, or compatibility status as plain text.","selector":"[class~=\"aui-table-cell\"]"},
       ],
 options: [

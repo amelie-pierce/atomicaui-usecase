@@ -92,7 +92,7 @@ export default function Example() {
       <Accordion.Item value="global">
         <Accordion.Header>
           <Accordion.Trigger>
-            <span>
+            <span data-ug-part="section-label">
               <Type as="span" role="l3" weight="semi-bold">Global changes</Type>{' '}
               <Type as="span" role="l5" color="muted">(1 update)</Type>
             </span>
@@ -142,7 +142,7 @@ export default function HcsReleaseNotesScene({ host }: ContextProps) {
                 <Accordion.Item value="global">
                   <Accordion.Header>
                     <Accordion.Trigger>
-                      <span>
+                      <span data-ug-part="section-label">
                         <Type as="span" role="l3" weight="semi-bold">Global changes</Type>{' '}
                         <Type as="span" role="l5" color="muted">(1 update)</Type>
                       </span>
@@ -198,7 +198,7 @@ export default function Example() {
       <Accordion.Item value="initial" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
         <Accordion.Header>
           <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-            <Type as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
+            <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
             <Accordion.Chevron />
           </Accordion.Trigger>
         </Accordion.Header>
@@ -242,7 +242,7 @@ export default function AdcReleaseNotesScene({ host }: ContextProps) {
                 <Accordion.Item value="initial" aui={{ color: 'surface', scale: 'sm', shape: 'none' }}>
                   <Accordion.Header>
                     <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-                      <Type as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
+                      <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">1.0 Released on Jan 01, 2027 (TBD)</Type>
                       <Accordion.Chevron />
                     </Accordion.Trigger>
                   </Accordion.Header>
@@ -286,29 +286,31 @@ In context view: Shown.
 ```tsx
 import { Accordion, Chip, Type, View } from '../../../../../kit';
 
-function Trigger({ label, count }: { label: string; count: string }) {
-  return (
-    <Accordion.Header>
-      <Accordion.Trigger>
-        <span>
-          <Type as="span" role="l3" weight="semi-bold">{label}</Type>{' '}
-          <Type as="span" role="l5" color="muted">({count})</Type>
-        </span>
-        <Accordion.Chevron />
-      </Accordion.Trigger>
-    </Accordion.Header>
-  );
-}
-
 export default function Example() {
   return (
     <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['other']}>
       <Accordion.Item value="other">
-        <Trigger label="Updates for other regions" count="1 update" />
+        <Accordion.Header>
+          <Accordion.Trigger>
+            <span data-ug-part="section-label">
+              <Type as="span" role="l3" weight="semi-bold">Updates for other regions</Type>{' '}
+              <Type as="span" role="l5" color="muted">(1 update)</Type>
+            </span>
+            <Accordion.Chevron />
+          </Accordion.Trigger>
+        </Accordion.Header>
         <Accordion.Panel>
           <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['eu']}>
             <Accordion.Item value="eu">
-              <Trigger label="Europe" count="1 update" />
+              <Accordion.Header>
+                <Accordion.Trigger>
+                  <span data-ug-part="section-label">
+                    <Type as="span" role="l3" weight="semi-bold">Europe</Type>{' '}
+                    <Type as="span" role="l5" color="muted">(1 update)</Type>
+                  </span>
+                  <Accordion.Chevron />
+                </Accordion.Trigger>
+              </Accordion.Header>
               <Accordion.Panel>
                 <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', alignItems: 'start', gap: '12', paddingBlockStart: '8', paddingBlockEnd: '8' } }}>
                   <View aui={{ scale: 'sm', paint: 'text', sx: { width: '160', flex: 'none' } }}>
@@ -337,18 +339,6 @@ import type { ContextProps } from '../../../../../types';
 import { Accordion, Chip, Dialog, Type, View } from '../../../../../kit';
 
 // ACE About dialog (src/features/top-navigation/ui/AboutDialog.tsx; HS src/hs/AboutDialog.tsx and FD src/components/AboutDialog.jsx write the same sections): the Popup with a raised Title and the close X, and the release notes Accordion whose second item, Updates for other regions, holds a second Accordion with one item per region (here one, open). Left out: the Release history column, the app header, the Global changes section above, the other regions and the "Updates for your project" band.
-const trigger = (label: string, count: string) => (
-  <Accordion.Header>
-    <Accordion.Trigger>
-      <span>
-        <Type as="span" role="l3" weight="semi-bold">{label}</Type>{' '}
-        <Type as="span" role="l5" color="muted">({count})</Type>
-      </span>
-      <Accordion.Chevron />
-    </Accordion.Trigger>
-  </Accordion.Header>
-);
-
 export default function AceOtherRegionsScene({ host }: ContextProps) {
   return (
     <Dialog open modal={false}>
@@ -365,11 +355,27 @@ export default function AceOtherRegionsScene({ host }: ContextProps) {
               <span data-ug-component-root style={{ display: 'contents' }}>
           <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['other']}>
                 <Accordion.Item value="other">
-                  {trigger('Updates for other regions', '1 update')}
+                  <Accordion.Header>
+                    <Accordion.Trigger>
+                      <span data-ug-part="section-label">
+                        <Type as="span" role="l3" weight="semi-bold">Updates for other regions</Type>{' '}
+                        <Type as="span" role="l5" color="muted">(1 update)</Type>
+                      </span>
+                      <Accordion.Chevron />
+                    </Accordion.Trigger>
+                  </Accordion.Header>
                   <Accordion.Panel>
                     <Accordion aui={{ scale: 'sm' }} openMultiple defaultValue={['eu']}>
                       <Accordion.Item value="eu">
-                        {trigger('Europe', '1 update')}
+                        <Accordion.Header>
+                          <Accordion.Trigger>
+                            <span data-ug-part="section-label">
+                              <Type as="span" role="l3" weight="semi-bold">Europe</Type>{' '}
+                              <Type as="span" role="l5" color="muted">(1 update)</Type>
+                            </span>
+                            <Accordion.Chevron />
+                          </Accordion.Trigger>
+                        </Accordion.Header>
                         <Accordion.Panel>
                           <View aui={{ scale: 'sm', paint: 'text', sx: { display: 'flex', alignItems: 'start', gap: '12', paddingBlockStart: '8', paddingBlockEnd: '8' } }}>
                             <View aui={{ scale: 'sm', paint: 'text', sx: { width: '160', flex: 'none' } }}>

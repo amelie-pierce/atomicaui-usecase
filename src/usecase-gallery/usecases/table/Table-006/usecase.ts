@@ -14,12 +14,12 @@ export default defineUsecase({
     agpd: 'src/App.tsx',
   },
     layers: [
-        {"id":"table","partId":"table","title":"Table","explanation":"Flat print grid at scale \"xs\" with \"all-cells\" borders and no selection. ACE, ADM, HS and RWS override it with shape \"none\", a text-coloured border, compact profile or smaller 10/12 type.","keyIdea":"A flat print grid preserves the table’s values without interactive selection controls.","selector":"[class~=\"aui-table\"]"},
-        {"id":"head","partId":"head","title":"Header","explanation":"Header row printed with Model and Load (lb); ACE and ADM paint it muted with a surface foreground, HS and RWS use a secondary solid fill.","keyIdea":"The printed heading row labels columns in the report rather than acting as controls.","selector":"[class~=\"aui-table-head\"]"},
-        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Printed column label without sort controls; its alignment is centre in ACE and RWS and left or start in ADM and HS.","keyIdea":"Each plain heading stays readable in the compact report layout.","selector":"[class~=\"aui-table-header-cell\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"The printed rows of the report table.","keyIdea":"The body holds records in the sequence the report will present them.","selector":"[class~=\"aui-table-body\"]"},
-        {"id":"row","partId":"row","title":"Row","explanation":"One printed record, Model B-200 with 2,210 lb; HS and RWS switch selectable and expandable off on the row.","keyIdea":"A row binds one printed model and its load into a single record.","selector":"[class~=\"aui-table-row\"]"},
-        {"id":"cell","partId":"cell","title":"Cell","explanation":"Plain printed value; ACE sets 4px by 6px padding with centred text, ADM left-aligns it in the compact profile.","keyIdea":"Plain cells keep printed values legible without implying editability.","selector":"[class~=\"aui-table-cell\"]"},
+        {"id":"table","partId":"table","title":"Table","explanation":"Extra-small print grid has ruled cells and no selection.","keyIdea":"A flat print grid preserves the table’s values without interactive selection controls.","selector":"[class~=\"aui-table\"]"},
+        {"id":"head","partId":"head","title":"Header","explanation":"Printed header lists Model and Load with app-specific fills.","keyIdea":"The printed heading row labels columns in the report rather than acting as controls.","selector":"[class~=\"aui-table-head\"]"},
+        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Printed labels use centered or start alignment across apps.","keyIdea":"Each plain heading stays readable in the compact report layout.","selector":"[class~=\"aui-table-header-cell\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"Printed report rows contain the saved model values.","keyIdea":"The body holds records in the sequence the report will present them.","selector":"[class~=\"aui-table-body\"]"},
+        {"id":"row","partId":"row","title":"Row","explanation":"Printed row shows Model B-200 and 2,210 lb.","keyIdea":"A row binds one printed model and its load into a single record.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"},
+        {"id":"cell","partId":"cell","title":"Cell","explanation":"Printed values use compact padding and app-specific alignment.","keyIdea":"Plain cells keep printed values legible without implying editability.","selector":"[class~=\"aui-table-cell\"]"},
       ],
 options: [
     { id: "ace-print", name: "Print table", showContext: false, apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} ,

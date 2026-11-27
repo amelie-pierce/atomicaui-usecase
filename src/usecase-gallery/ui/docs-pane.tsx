@@ -1,9 +1,10 @@
 import { Suspense, use } from 'react';
 import { APPS } from '../apps';
 import type { AppKey } from '../apps';
+import { layerCodeLines, stripPartMarkers } from '../catalog/layer-code';
 import { useCopy } from '../hooks/use-copy';
 import { Button, Chip, ToggleGroup, Type } from '../kit';
-import type { AnatomyPart, DocumentMode, LayerStep, PreviewMode, Usecase, UsecaseOption } from '../types';
+import type { AnatomyPart, DocumentMode, LayerStep, LineRange, PreviewMode, Usecase, UsecaseOption } from '../types';
 
 function AppBadges({ apps, label }: { apps: AppKey[]; label: string }) {
   return (
@@ -43,7 +44,7 @@ function AnatomySection({ parts, mode, availablePartIds, hoveredPartId, onPartCh
 function CopyBlock({ label, text }: { label: string; text: string }) {
   const { status, copy } = useCopy();
   return <div className="ug-docs__copy-block">
-    <div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{label}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => copy(text)}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
+    <div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{label}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => copy(stripPartMarkers(text))}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
     <Type as="pre" role="l3" family="mono" className="ug-docs__prompt" tabIndex={0}><code>{text}</code></Type>
     <span role="status" className="ug-visually-hidden">{status === 'copied' ? `${label} copied` : status === 'failed' ? `${label} copy failed` : ''}</span>
   </div>;
@@ -51,8 +52,8 @@ function CopyBlock({ label, text }: { label: string; text: string }) {
 
 function CodeBlock({ code, label }: { code: Promise<string>; label: string }) {
   const { status, copy } = useCopy();
-  return <div className="ug-docs__copy-block"><div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{label}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => code.then(copy)}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
-    <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><Type as="pre" role="l3" family="mono" className="ug-docs__code" tabIndex={0}><code>{use(code)}</code></Type></Suspense>
+  return <div className="ug-docs__copy-block"><div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{label}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => code.then((text) => copy(stripPartMarkers(text)))}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
+    <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><Type as="pre" role="l3" family="mono" className="ug-docs__code" tabIndex={0}><code>{stripPartMarkers(use(code))}</code></Type></Suspense>
     <span role="status" className="ug-visually-hidden">{status === 'copied' ? 'Code copied' : status === 'failed' ? 'Code copy failed' : ''}</span>
   </div>;
 }
@@ -65,7 +66,29 @@ function CodeApiSection({ option, mode, api }: { option: UsecaseOption; mode: Pr
   </Section>;
 }
 
-function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: number; onChange: (index: number) => void }) {
+function LayerCode({ code, slotLines, layers, index }: { code: Promise<string>; slotLines?: Promise<LineRange | undefined>; layers: LayerStep[]; index: number }) {
+  const text = use(code);
+  const slot = slotLines && use(slotLines);
+  const { status, copy } = useCopy();
+  const lines = text.split('\n');
+  const current = layerCodeLines(text, layers[index], slot);
+  const previous = layerCodeLines(text, layers[index - 1], slot);
+  return <details className="ug-layer-lesson__code" open>
+    <summary>Code for this step</summary>
+    <div className="ug-docs__copy-block">
+      <div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{layers[index]?.title ?? 'Current step'}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => copy(stripPartMarkers(text))}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
+      <Type as="pre" role="l3" family="mono" className="ug-docs__code" tabIndex={0}><code>{lines.map((line, lineIndex) => {
+        const shown = stripPartMarkers(line);
+        if (!shown.trim() && line.trim()) return null;
+        const added = current.has(lineIndex) && !previous.has(lineIndex);
+        return <span key={lineIndex} className={added ? 'is-added' : current.has(lineIndex) ? 'is-current' : undefined} aria-label={added ? 'Added for this step' : undefined}>{shown}{lineIndex < lines.length - 1 ? '\n' : ''}</span>;
+      })}</code></Type>
+      <span role="status" className="ug-visually-hidden">{status === 'copied' ? 'Code copied' : status === 'failed' ? 'Code copy failed' : ''}</span>
+    </div>
+  </details>;
+}
+
+function LayerLesson({ layers, index, onChange, code, slotLines }: { layers: LayerStep[]; index: number; onChange: (index: number) => void; code: Promise<string>; slotLines?: Promise<LineRange | undefined> }) {
   const active = layers[index] ?? layers[0];
   if (!active) return <Type as="p" role="l3" color="muted">No layer steps are authored for this view.</Type>;
   const onNavigationKey = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -78,7 +101,6 @@ function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: 
     <div className="ug-layer-lesson__copy" aria-live="polite" aria-atomic="true">
       <Type as="h3" role="h5" weight="bold">{active.title}</Type>
       <Type as="p" role="l3">{active.explanation}</Type>
-      <div className="ug-layer-lesson__idea"><Type as="p" role="l3" weight="semi-bold">Key idea</Type><Type as="p" role="l3">{active.keyIdea}</Type></div>
     </div>
     <nav className="ug-layer-lesson__steps" aria-label="Layer steps" onKeyDown={onNavigationKey}>
       {layers.map((step, stepIndex) => {
@@ -92,6 +114,7 @@ function LayerLesson({ layers, index, onChange }: { layers: LayerStep[]; index: 
       <Button aui={{ color: 'secondary', paint: 'outlined', scale: 'sm' }} disabled={index === 0} onClick={() => onChange(Math.max(index - 1, 0))}>Back</Button>
       <Button aui={{ color: 'primary', paint: 'solid', scale: 'sm' }} disabled={index === layers.length - 1} onClick={() => onChange(Math.min(index + 1, layers.length - 1))}>Next</Button>
     </div>
+    <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><LayerCode code={code} slotLines={slotLines} layers={layers} index={index} /></Suspense>
   </div>;
 }
 
@@ -108,7 +131,7 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
       <ToggleGroup.Item value="layers" render={(props, { pressed }) => <Button {...props} aui={{ scale: 'sm', color: pressed ? 'primary' : 'secondary', paint: pressed ? 'solid' : 'text' }}>Layer</Button>} />
     </ToggleGroup>
     <div className="ug-docs">
-    {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} /> : <>
+    {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} code={mode === 'component' ? option.loadExampleCode() : option.loadCode()} slotLines={mode === 'component' ? undefined : option.loadSlotLines()} /> : <>
       <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div>
       </header>
       <div className="ug-docs__sections">

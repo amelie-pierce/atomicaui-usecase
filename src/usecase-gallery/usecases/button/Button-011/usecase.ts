@@ -6,8 +6,8 @@ export default defineUsecase({
 
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent \"between\"), outlined by a 1px border on all four sides from sx.","keyIdea":"A full-row text control gives each tutorial a generous activation target.","selector":"[data-ug-part=\"container\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"The right arrow at the end of the row that signals starting the tour, at scale \"sm\".","keyIdea":"The trailing arrow marks the topic row as an entry point to a guided tour.","selector":"[data-ug-part=\"icon\"]"},
+        {"id":"container","partId":"container","title":"Container","explanation":"Full-width outlined row names a tutorial that users can start.","keyIdea":"A full-row text control gives each tutorial a generous activation target.","selector":"[data-ug-part=\"container\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"Trailing arrow signals that the tutorial tour starts.","keyIdea":"The trailing arrow marks the topic row as an entry point to a guided tour.","selector":"[data-ug-part=\"icon\"]"},
       ],
 options: [
     { id: "hs-topic-row", name: "Topic row", apps: ["hs","agpd","rws"], contextAnatomy: [
@@ -37,7 +37,7 @@ options: [
         {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"The X in the title that closes the dialog.","keyIdea":"The ACE close control dismisses the directory from its title bar.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
         {"id":"context-topic-list","partId":"topic-list","title":"Topic list","explanation":"The nav column that holds one outlined row per tutorial.","keyIdea":"The ACE topic column keeps each available walkthrough in a single list.","selector":"[data-ug-part=\"topic-list\"]","scope":"context"},
         {"id":"context-topic-name","partId":"topic-name","title":"Topic name","explanation":"The semi-bold topic name (\"ACE: General Tutorial\") stacked above the description.","keyIdea":"The topic name identifies the selected ACE walkthrough before its summary.","selector":"[data-ug-part=\"topic-name\"]","scope":"context"},
-        {"id":"context-topic-description","partId":"topic-description","title":"Topic description","explanation":"The muted description under the topic name.","keyIdea":"The muted copy previews what the ACE tutorial will cover.","selector":"[data-ug-part=\"topic-description\"]","scope":"context"},
+        {"id":"context-topic-description","partId":"topic-description","title":"Topic description","explanation":"Muted line explains the selected tutorial topic below.","keyIdea":"The muted copy previews what the ACE tutorial will cover.","selector":"[data-ug-part=\"topic-description\"]","scope":"context"},
       ],
     },
     { id: "adm-topic-row", name: "Icon topic row", apps: ["adm","pfd"], contextAnatomy: [

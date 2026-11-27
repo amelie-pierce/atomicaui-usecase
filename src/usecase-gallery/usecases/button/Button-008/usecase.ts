@@ -6,8 +6,8 @@ export default defineUsecase({
 
   apps: ['hcs', 'pfd', 'hs', 'fd'],
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD.","keyIdea":"The reset control clears the active filters without displacing the toolbar search.","selector":"[class~=\"aui-button\"]"},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"The filter glyph with a cross that signals removing the active filters, at scale \"sm\".","keyIdea":"The crossed filter glyph communicates that current filtering will be removed.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
+        {"id":"container","partId":"container","title":"Container","explanation":"Small Reset filters button removes the active table filters.","keyIdea":"The reset control clears the active filters without displacing the toolbar search.","selector":"[class~=\"aui-button\"]"},
+        {"id":"icon","partId":"icon","title":"Icon","explanation":"Filter glyph with a cross signals that active filters will clear.","keyIdea":"The crossed filter glyph communicates that current filtering will be removed.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
       ],
 options: [
     { id: "hcs-toolbar", name: "Toolbar", apps: ["hcs","pfd","hs"], contextAnatomy: [
@@ -17,10 +17,10 @@ options: [
       { id: "search", name: "Search field", description: "The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button." },
     ], source: {"hcs":"src/App.tsx","pfd":"src/pfd/ResultsTable.tsx","hs":"src/hs/ResultsTable.tsx"} ,
       contextLayers: [
-        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section cut to its title and toolbar.","keyIdea":"The HCS output frame groups its heading and table controls as one section.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"Surface-alt Output pane includes its title and toolbar.","keyIdea":"The HCS output frame groups its heading and table controls as one section.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
         {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The HCS heading identifies the result area above its toolbar.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
-        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it.","keyIdea":"The HCS toolbar lets search use the full line while reset stays beside it.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
-        {"id":"context-search","partId":"search","title":"Search field","explanation":"The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button.","keyIdea":"The populated search field shows the active Model filter and its clear affordance.","selector":"[data-ug-part=\"search\"]","scope":"context"},
+        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"Toolbar row places search before Reset filters with 8px gaps.","keyIdea":"The HCS toolbar lets search use the full line while reset stays beside it.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
+        {"id":"context-search","partId":"search","title":"Search field","explanation":"Magnifier Field contains Model and a clear X button.","keyIdea":"The populated search field shows the active Model filter and its clear affordance.","selector":"[data-ug-part=\"search\"]","scope":"context"},
       ],
     },
     { id: "fd-toolbar", name: "Text reset button", apps: ["fd"], contextAnatomy: [
@@ -30,10 +30,10 @@ options: [
       { id: "search", name: "Search field", description: "The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button." },
     ], source: {"fd":"src/components/Results.jsx"} ,
       contextLayers: [
-        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output pane frame, a surface-alt section cut to its title and toolbar.","keyIdea":"The FD output frame keeps the heading and filtered table controls together.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
+        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"Surface-alt Output pane includes its title and toolbar.","keyIdea":"The FD output frame keeps the heading and filtered table controls together.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
         {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The \"Output\" heading at the start of the pane header.","keyIdea":"The FD heading labels the results before its filtering tools.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
-        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it.","keyIdea":"The FD toolbar reserves the flexible space for search and leaves reset accessible.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
-        {"id":"context-search","partId":"search","title":"Search field","explanation":"The Field with a magnifying-glass icon, the entered text \"Model\" and a clear (x) button.","keyIdea":"The FD search field exposes the current Model query and its clear action.","selector":"[data-ug-part=\"search\"]","scope":"context"},
+        {"id":"context-toolbar","partId":"toolbar","title":"Output toolbar","explanation":"Toolbar row places search before Reset filters with 8px gaps.","keyIdea":"The FD toolbar reserves the flexible space for search and leaves reset accessible.","selector":"[data-ug-part=\"toolbar\"]","scope":"context"},
+        {"id":"context-search","partId":"search","title":"Search field","explanation":"Magnifier Field contains Model and a clear X button.","keyIdea":"The FD search field exposes the current Model query and its clear action.","selector":"[data-ug-part=\"search\"]","scope":"context"},
       ],
     },
   ],

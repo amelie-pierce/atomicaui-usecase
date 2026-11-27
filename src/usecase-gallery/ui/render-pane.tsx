@@ -1,11 +1,11 @@
-import { Suspense, useCallback, useMemo, useRef, useState } from 'react';
+import { Suspense, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Button, ToggleGroup, Type } from '../kit';
 import type { LayerStep, PreviewMode, Usecase, UsecaseOption } from '../types';
 import { StageHostContext } from '../hooks/use-stage-host';
 import type { AnatomyPart } from '../types';
 import { AnatomyOverlay, usePreviewAnatomy } from '../hooks/use-preview-anatomy';
 import { useStageFit } from '../hooks/use-stage-fit';
-import { layerVisibilityCss } from '../hooks/use-layer-visibility';
+import { footprintAttribute, layerSelector, layerTarget, layerVisibilityCss } from '../hooks/use-layer-visibility';
 import { OptionBar } from './option-bar';
 const MODES: { value: PreviewMode; label: string }[] = [
   { value: 'component', label: 'Component' },
@@ -16,8 +16,37 @@ function PreviewPlaceholder() {
 }
 
 function LayerVisibilityStyles({ layers, layerIndex, enabled }: { layers: LayerStep[]; layerIndex: number; enabled: boolean }) {
+  const styleRef = useRef<HTMLStyleElement>(null);
+  const active = layers[layerIndex];
+  useLayoutEffect(() => {
+    const fit = styleRef.current?.parentElement;
+    if (!enabled || !active || !fit) return;
+    const mark = () => {
+      const targets = [...fit.querySelectorAll(layerTarget(active))];
+      for (const target of targets) target.removeAttribute(footprintAttribute);
+      for (const target of targets) {
+        const { width, height } = target.getBoundingClientRect();
+        const spacer = width > 0 && !target.firstChild;
+        if ((!width || !height) && !spacer) target.setAttribute(footprintAttribute, '');
+      }
+    };
+    mark();
+    const observer = new MutationObserver(mark);
+    observer.observe(fit, { childList: true, subtree: true });
+    return () => {
+      observer.disconnect();
+      for (const target of fit.querySelectorAll(`[${footprintAttribute}]`)) target.removeAttribute(footprintAttribute);
+    };
+  }, [enabled, active]);
   const css = useMemo(() => enabled ? layerVisibilityCss(layers, layerIndex) : '', [enabled, layers, layerIndex]);
-  return css ? <style data-ug-layer-styles>{css}</style> : null;
+  return <style ref={styleRef} data-ug-layer-styles>{css}</style>;
+}
+
+const LAYER_PART_ID = 'ug-active-layer';
+
+function withActiveLayerPart(anatomy: AnatomyPart[], layer: LayerStep | undefined): AnatomyPart[] {
+  if (!layer) return anatomy;
+  return [...anatomy, { id: LAYER_PART_ID, name: layer.title, description: layer.explanation, selector: layerSelector(layer), text: layer.text, scope: layer.scope ?? 'component' }];
 }
 
 /** The In context UI of a selection-based use case: the chosen option's scene with the example placed in it, in a stage of its own. */
@@ -30,7 +59,9 @@ function ContextStage({ option, hidden, anatomy, hoveredPartId, onAvailableParts
   const stageRef = useRef<HTMLDivElement | null>(null);
   const { Example, Scene } = option;
   const scale = useStageFit(fit);
-  const overlay = usePreviewAnatomy(stageRef, anatomy, hoveredPartId, hidden ? undefined : onAvailablePartsChange, scale, !hidden);
+  const activeLayer = layerMode ? layers[layerIndex] : undefined;
+  const overlayAnatomy = useMemo(() => withActiveLayerPart(anatomy, activeLayer), [anatomy, activeLayer]);
+  const overlay = usePreviewAnatomy(stageRef, overlayAnatomy, !hidden && layerMode ? LAYER_PART_ID : hoveredPartId, hidden ? undefined : onAvailablePartsChange, scale, !hidden);
   return (
     <div className="ug-render__viewport" hidden={hidden}>
       <div className="ug-render__stage" ref={stageRef}>
@@ -89,7 +120,9 @@ export function RenderPane({
   const setComponentHost = useCallback((node: HTMLDivElement | null) => setComponentHostState((current) => current === node ? current : node), []);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const scale = useStageFit(fit);
-  const overlay = usePreviewAnatomy(stageRef, anatomy, mode === 'component' ? hoveredPartId : undefined, mode === 'component' ? onAvailablePartsChange : undefined, scale, mode === 'component');
+  const activeLayer = layerMode && mode === 'component' ? layers[layerIndex] : undefined;
+  const overlayAnatomy = useMemo(() => withActiveLayerPart(anatomy, activeLayer), [anatomy, activeLayer]);
+  const overlay = usePreviewAnatomy(stageRef, overlayAnatomy, mode === 'component' ? (layerMode ? LAYER_PART_ID : hoveredPartId) : undefined, mode === 'component' ? onAvailablePartsChange : undefined, scale, mode === 'component');
   return (
     <section className="ug-render ug-render--split" role="region" aria-label="Preview">
       <div className="ug-render__header">

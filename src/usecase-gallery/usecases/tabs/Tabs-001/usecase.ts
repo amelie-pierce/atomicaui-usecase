@@ -5,16 +5,16 @@ export default defineUsecase({
   title: 'Pane tabs',
   apps: ['hs', 'pbs', 'fd', 'rws', 'adm', 'adc'],
     layers: [
-        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"Root that switches the pane between its views; Summary is selected first through defaultValue=\"summary\". ADC lists Model and Information, HS lists Summary and Result.","keyIdea":"The root keeps the pane and its visible content synchronized to one selected view.","selector":"[class~=\"aui-tabs\"]"},
-        {"id":"list","partId":"list","title":"List","explanation":"The chip row in the pane header; ADC lets it wrap with flexWrap.","keyIdea":"The tab row presents pane choices inside the existing output header.","selector":"[class~=\"aui-tabs-list\"]"},
-        {"id":"tab","partId":"tab","title":"Tab","explanation":"A 28px soft chip: surface-alt solid when idle and overlay solid when selected.","keyIdea":"Each chip names one view and exposes which view is currently active.","selector":"[class~=\"aui-tabs-tab\"]"},
-        {"id":"panel","partId":"panel","title":"Panel","explanation":"Content of the selected view, \"Summary content\" or \"Result content\" in the example.","keyIdea":"The panel contains only the content controlled by the selected chip.","selector":"[class~=\"aui-tabs-panel\"]"},
+        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"Root shows tabs with Summary selected; app labels can vary across views.","keyIdea":"The root keeps the pane and its visible content synchronized to one selected view.","selector":"[class~=\"aui-tabs\"]"},
+        {"id":"list","partId":"list","title":"List","explanation":"Chip row takes the pane header and wraps when ADC runs short.","keyIdea":"The tab row presents pane choices inside the existing output header.","selector":"[class~=\"aui-tabs-list\"]"},
+        {"id":"tab","partId":"tab","title":"Tab","explanation":"Soft 28px chips use surface-alt idle and overlay selected fills.","keyIdea":"Each chip names one view and exposes which view is currently active.","selector":"[class~=\"aui-tabs-tab\"]"},
+        {"id":"panel","partId":"panel","title":"Panel","explanation":"Selected tab reveals its matching pane content in the main view.","keyIdea":"The panel contains only the content controlled by the selected chip.","selector":"[class~=\"aui-tabs-panel\"]"},
       ],
 options: [
     { id: "hs-pane-tabs", name: "Pane tabs", contextAnatomy: [{ id: 'output-pane', name: 'Output pane', description: 'The Output section (soft, surface-alt) whose tabbed header holds the tab list.' }, { id: 'pane-header', name: 'Pane header', description: 'The 28px header row where the tab list takes the title spot, followed in the app by Print and Back to top actions.' }], apps: ["hs","pbs","fd","rws","adm"], source: {"hs":"src/hs/OutputTabs.tsx","pbs":"src/ResultsSection.tsx","fd":"src/components/Results.jsx","rws":"src/rws/output.tsx","adm":"src/app/layout/Workbench/Workbench.tsx"} ,
       contextLayers: [
         {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The Output section (soft, surface-alt) whose tabbed header holds the tab list.","keyIdea":"The Output section frames the selected tab row as part of the results workspace.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
-        {"id":"context-pane-header","partId":"pane-header","title":"Pane header","explanation":"The 28px header row where the tab list takes the title spot, followed in the app by Print and Back to top actions.","keyIdea":"The header lets tabs occupy the title position while neighboring actions stay in the row.","selector":"[data-ug-part=\"pane-header\"]","scope":"context"},
+        {"id":"context-pane-header","partId":"pane-header","title":"Pane header","explanation":"28px header hosts tabs instead of the title; apps may add actions.","keyIdea":"The header lets tabs occupy the title position while neighboring actions stay in the row.","selector":"[data-ug-part=\"pane-header\"]","scope":"context"},
       ],
     },
     { id: "adc-pane-tabs", name: "Tonal chip tabs", showContext: false, apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,

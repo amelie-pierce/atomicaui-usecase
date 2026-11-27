@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import type { ComponentType } from 'react';
 import { appLabels } from './app-views';
-import { toContextSnippet, toSnippet } from './snippet';
+import { toContextSlotLines, toContextSnippet, toSnippet } from './snippet';
 import type { AppKey } from '../apps';
 import type { ComponentGroup, ComponentMeta, ContextProps, UiTypeGroup, Usecase, UsecaseDoc, UsecaseOption, UsecaseOptionDoc } from '../types';
 
@@ -45,9 +45,17 @@ function validateLayers(
 ) {
   if (!layers.length) fail(`${id} has no ${label} layer steps`);
   const ids = new Set<string>();
+  const explanations = new Set<string>();
   for (const layer of layers) {
     const keyIdea = layer.keyIdea.trim();
-    if (!layer.id || !layer.title || !layer.explanation || !keyIdea || !layer.selector) fail(`${id} has an incomplete ${label} layer step`);
+    const explanation = layer.explanation.trim().replace(/\s+/g, ' ');
+    if (!layer.id || !layer.title || !explanation || !keyIdea || !layer.selector) fail(`${id} has an incomplete ${label} layer step`);
+    const wordCount = explanation.split(' ').length;
+    if (wordCount < 8 || wordCount > 12) fail(`${id} ${label} layer "${layer.id}" explanation must be 8 to 12 words (got ${wordCount})`);
+    const normalizedExplanation = explanation.toLocaleLowerCase();
+    if (explanations.has(normalizedExplanation)) fail(`${id} repeats ${label} layer explanation "${explanation}"`);
+    if (/^(?:this|it) (?:is|shows|adds) (?:the|a) (?:component|element|part|control)\b/i.test(explanation)) fail(`${id} ${label} layer "${layer.id}" uses a generic explanation`);
+    explanations.add(normalizedExplanation);
     if (keyIdea === layer.explanation.trim()) fail(`${id} ${label} layer "${layer.id}" keyIdea must differ from its explanation`);
     if (/\bbuilds on\b/i.test(keyIdea)) fail(`${id} ${label} layer "${layer.id}" uses the forbidden "builds on" keyIdea pattern`);
     if (ids.has(layer.id)) fail(`${id} repeats ${label} layer id "${layer.id}"`);
@@ -190,6 +198,7 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
     const Scene = lazy(() => (loadScene() as Promise<ComponentType<ContextProps>>).then((component) => ({ default: component })));
     let exampleCode: Promise<string> | undefined;
     let sceneCode: Promise<string> | undefined;
+    let slotLines: Promise<LineRange | undefined> | undefined;
     let Example = usecase.Example;
     let loadExampleCode = usecase.loadCode;
     if (index > 0) {
@@ -215,6 +224,7 @@ function buildOptions(usecase: Usecase, docs: UsecaseOptionDoc[], key: string, f
       Example,
       loadExampleCode,
       loadCode: () => (sceneCode ??= Promise.all([loadExampleCode(), loadSceneSource()]).then(([snippet, sceneSource]) => toContextSnippet(sceneSource, snippet))),
+      loadSlotLines: () => (slotLines ??= Promise.all([loadExampleCode(), loadSceneSource()]).then(([snippet, sceneSource]) => toContextSlotLines(sceneSource, snippet))),
     };
   });
   const shown = new Set(options.flatMap((option) => option.apps));

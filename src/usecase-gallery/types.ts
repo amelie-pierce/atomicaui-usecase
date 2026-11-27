@@ -13,6 +13,8 @@ export interface LayerStep {
   explanation: string;
   keyIdea: string;
   selector?: string;
+  /** JSX tags (e.g. `Dialog.Popup`) that write the target in the option views of this step, used only where its selector matches no tag in the code. */
+  code?: string[];
   /** Reveal the target's direct text as its own layer. */
   text?: boolean;
   /** Component layers target the selected example; context layers target the whole scene. */
@@ -187,6 +189,7 @@ export interface UsecaseOption {
   Example: ComponentType;
   loadExampleCode: () => Promise<string>;
   loadCode: () => Promise<string>;
+  loadSlotLines: () => Promise<LineRange | undefined>;
 }
 
 export interface Usecase extends UsecaseDoc {

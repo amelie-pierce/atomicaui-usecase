@@ -5,7 +5,7 @@ export default defineUsecase({
   title: 'Reset to default button',
 
     layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"The Reset to default Button: small, solid, raised color with a soft shape, placed beside a group of beam property inputs in a side panel.","keyIdea":"The compact reset control restores the beam values without taking over the side panel.","selector":"[class~=\"aui-button\"]"},
+        {"id":"container","partId":"container","title":"Container","explanation":"Small raised Reset to default sits below the beam input.","keyIdea":"The compact reset control restores the beam values without taking over the side panel.","selector":"[class~=\"aui-button\"]"},
         {"id":"icon","partId":"icon","title":"Icon","explanation":"The counter-clockwise arrow that signals returning the group to its defaults.","keyIdea":"The reverse arrow communicates a return to the default beam settings.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])"},
       ],
 options: [
@@ -15,7 +15,7 @@ options: [
     ] ,
       contextLayers: [
         {"id":"context-input-pane","partId":"input-pane","title":"Input pane","explanation":"The narrow Input aside that holds the form sections.","keyIdea":"The Input aside gives the property form a dedicated narrow column.","selector":"[data-ug-part=\"input-pane\"]","scope":"context"},
-        {"id":"context-beam-section","partId":"beam-section","title":"Beam Properties section","explanation":"The open \"Beam Properties\" Accordion item with its layer-group icon and chevron, holding the Fc perp number field (650 psi) with Reset to default below it.","keyIdea":"The open section keeps the beam value and its reset action in the same property group.","selector":"[data-ug-part=\"beam-section\"]","scope":"context"},
+        {"id":"context-beam-section","partId":"beam-section","title":"Beam Properties section","explanation":"Open Beam Properties item contains the 650 psi field and reset action.","keyIdea":"The open section keeps the beam value and its reset action in the same property group.","selector":"[data-ug-part=\"beam-section\"]","scope":"context"},
       ],
     },
   ],

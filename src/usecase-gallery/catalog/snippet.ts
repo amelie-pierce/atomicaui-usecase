@@ -9,7 +9,7 @@ const dedent = (jsx: string) => {
   return [first, ...rest.map((line) => line.slice(indent))].join('\n');
 };
 
-const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:anchor|ref)=\{anchor\}|\sclassName=\"ug-anchored\"|\sdata-ug-(?:part=\"[^\"]*\"|component-root)|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
+const PREVIEW_ONLY_PROPS = /\s(?:container|anchor)=\{host\}|\s(?:anchor|ref)=\{anchor\}|\sclassName=\"ug-anchored\"|\sdata-ug-component-root|\s(?:initialFocus|modal)=\{false\}|(?<=<[\w.]+)\sopen(?=[\s>])/g;
 
 export const stripPreviewProps = (code: string): string => code.replace(PREVIEW_ONLY_PROPS, '');
 
@@ -23,19 +23,38 @@ export const toSnippet = (source: string): string => {
   return jsx ? dedent(jsx.replace(PREVIEW_ONLY_PROPS, '')) : body;
 };
 
-const CHILDREN_LINE = /^([ \t]*)\{children\}[ \t]*$/m;
+const CHILDREN_SLOT = /^([ \t]*)(.*?)[ \t]*\{children\}[ \t]*(.*)$/m;
+
+// A fragment only groups siblings; inside the context's parent element it is noise.
+const slotBody = (exampleSnippet: string): string => {
+  const unwrapped = /^<>\s*([\s\S]*?)\s*<\/>$/.exec(exampleSnippet.trim())?.[1];
+  return unwrapped ? dedent(unwrapped) : exampleSnippet;
+};
+
+const contextSlot = (contextSource: string) => {
+  const context = toSnippet(contextSource).replace(PREVIEW_ONLY_PROPS, '');
+  return { context, slot: CHILDREN_SLOT.exec(context) };
+};
 
 /** Turns an option scene source and the example snippet into the complete In context code, replacing its `{children}` slot. */
 export const toContextSnippet = (contextSource: string, exampleSnippet: string): string => {
-  const context = toSnippet(contextSource).replace(PREVIEW_ONLY_PROPS, '');
-  const slot = CHILDREN_LINE.exec(context);
+  const { context, slot } = contextSlot(contextSource);
   // A scene with no slot writes its own controls (a static state), so it is the snippet.
   if (!slot) return context;
-  // A fragment only groups siblings; inside the context's parent element it is noise.
-  const unwrapped = /^<>\s*([\s\S]*?)\s*<\/>$/.exec(exampleSnippet.trim())?.[1];
-  const indented = (unwrapped ? dedent(unwrapped) : exampleSnippet)
+  const [, indent, before, after] = slot;
+  const inner = before ? `${indent}  ` : indent;
+  const indented = slotBody(exampleSnippet)
     .split('\n')
-    .map((line, index) => (index === 0 || !line.trim() ? line : slot[1] + line))
+    .map((line) => (line.trim() ? inner + line : line))
     .join('\n');
-  return context.replace(CHILDREN_LINE, slot[1] + indented);
+  const filled = [before && indent + before, indented, after && indent + after].filter(Boolean).join('\n');
+  return context.replace(CHILDREN_SLOT, () => filled);
+};
+
+/** The first and last 0-based line the example takes in the In context code; nothing for a scene with no slot. */
+export const toContextSlotLines = (contextSource: string, exampleSnippet: string): [number, number] | undefined => {
+  const { context, slot } = contextSlot(contextSource);
+  if (!slot) return undefined;
+  const first = context.slice(0, slot.index).split('\n').length - 1 + (slot[2] ? 1 : 0);
+  return [first, first + slotBody(exampleSnippet).split('\n').length - 1];
 };

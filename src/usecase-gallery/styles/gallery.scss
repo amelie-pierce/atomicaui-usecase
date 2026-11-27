@@ -565,8 +565,7 @@ $narrow: 840px;
   gap: var(--p-px-8);
 }
 
-.ug-layer-lesson__copy > p,
-.ug-layer-lesson__idea > p {
+.ug-layer-lesson__copy > p {
   margin: 0;
 }
 
@@ -575,16 +574,6 @@ $narrow: 840px;
   flex-direction: column;
   gap: var(--p-px-8);
   min-inline-size: 0;
-}
-
-.ug-layer-lesson__idea {
-  display: flex;
-  flex-direction: column;
-  gap: var(--p-px-4);
-  padding: var(--p-px-12);
-  border-inline-start: var(--p-px-3) solid var(--theme-primary);
-  border-radius: var(--p-px-4);
-  background: var(--theme-surface-alt);
 }
 
 .ug-layer-lesson__steps {
@@ -635,6 +624,28 @@ $narrow: 840px;
 
 .ug-layer-lesson__back-next > :first-child {
   margin-inline-end: auto;
+}
+
+.ug-layer-lesson__code {
+  min-inline-size: 0;
+}
+
+.ug-layer-lesson__code > summary {
+  cursor: pointer;
+  margin-block-end: var(--p-px-8);
+  color: var(--theme-on-surface-alt);
+  font: var(--p-font-l3);
+}
+
+.ug-layer-lesson__code .ug-docs__code code > span.is-added {
+  display: block;
+  color: var(--theme-on-primary);
+  background: var(--theme-primary);
+}
+
+.ug-layer-lesson__code .ug-docs__code code > span.is-current {
+  display: block;
+  background: var(--theme-surface-alt);
 }
 
 .ug-docs__copy-block {

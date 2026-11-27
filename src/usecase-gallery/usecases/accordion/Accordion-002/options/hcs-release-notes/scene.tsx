@@ -20,7 +20,7 @@ export default function HcsReleaseNotesScene({ host }: ContextProps) {
                 <Accordion.Item value="global">
                   <Accordion.Header>
                     <Accordion.Trigger>
-                      <span>
+                      <span data-ug-part="section-label">
                         <Type as="span" role="l3" weight="semi-bold">Global changes</Type>{' '}
                         <Type as="span" role="l5" color="muted">(1 update)</Type>
                       </span>

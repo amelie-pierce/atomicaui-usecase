@@ -8,7 +8,7 @@ export default function Example() {
         <Accordion.Item value="Connection Type" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-              <Type as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">CONNECTION TYPE</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>
@@ -19,7 +19,7 @@ export default function Example() {
         <Accordion.Item value="Load Properties" aui={{ color: 'surface', scale: 'sm', shape: 'soft', sx: { overflow: 'hidden', radiusStartStart: 'soft', radiusStartEnd: 'soft', radiusEndStart: 'soft', radiusEndEnd: 'soft' } }}>
           <Accordion.Header>
             <Accordion.Trigger aui={{ color: 'surface', paint: 'text', scale: 'sm', shape: 'none' }}>
-              <Type as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
+              <Type data-ug-part="section-label" as="span" role="l4" weight="semi-bold">LOAD PROPERTIES</Type>
               <Accordion.Chevron />
             </Accordion.Trigger>
           </Accordion.Header>

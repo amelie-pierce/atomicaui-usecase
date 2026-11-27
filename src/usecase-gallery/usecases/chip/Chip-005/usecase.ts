@@ -10,14 +10,14 @@ export default defineUsecase({
   title: 'Attachment chip',
   apps: ['adm', 'pfd', 'pbs', 'hs', 'agpd', 'rws'],
     layers: [
-        {"id":"chip","partId":"chip","title":"Chip","explanation":"The default-styled chip that stands for one attached file in the Feedback form of ADM, PFD, PBS, HS, AGPD and RWS.","keyIdea":"Each file chip keeps an attachment name visible as one removable item.","selector":"[class~=\"aui-chip\"]"},
-        {"id":"dismiss","partId":"dismiss","title":"Dismiss","explanation":"The X button at the end, labelled \"Remove screenshot.png\", that detaches the file.","keyIdea":"The trailing X removes only its associated file from the feedback request.","selector":"[class~=\"aui-chip-dismiss\"]"},
+        {"id":"chip","partId":"chip","title":"Chip","explanation":"Default chip represents one attached file in feedback forms.","keyIdea":"Each file chip keeps an attachment name visible as one removable item.","selector":"[class~=\"aui-chip\"]"},
+        {"id":"dismiss","partId":"dismiss","title":"Dismiss","explanation":"End X removes the attached screenshot from the feedback form.","keyIdea":"The trailing X removes only its associated file from the feedback request.","selector":"[class~=\"aui-chip-dismiss\"]"},
       ],
 options: [
     { id: "adm-attachments", contextAnatomy: CONTEXT_ANATOMY, name: "Feedback attachments", source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
       contextLayers: [
         {"id":"context-attach-label","partId":"attach-label","title":"Attachment heading","explanation":"The \"Attach Screenshot or Markups\" l4 caption above the attached files.","keyIdea":"The attachment heading distinguishes file upload from the feedback fields above it.","selector":"[data-ug-part=\"attach-label\"]","scope":"context"},
-        {"id":"context-attachment-row","partId":"attachment-row","title":"Attachment row","explanation":"The wrapping flex row (8px gap) that lists one Chip per attached file, such as screenshot.png and markup.pdf.","keyIdea":"A wrapping row lets several attached files remain individually visible as the form narrows.","selector":"[data-ug-part=\"attachment-row\"]","scope":"context"},
+        {"id":"context-attachment-row","partId":"attachment-row","title":"Attachment row","explanation":"Wrapping row lists each attached file chip with an 8px gap.","keyIdea":"A wrapping row lets several attached files remain individually visible as the form narrows.","selector":"[data-ug-part=\"attachment-row\"]","scope":"context"},
       ],
     },
   ],

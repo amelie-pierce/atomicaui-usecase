@@ -5,8 +5,8 @@ export default defineUsecase({
   title: 'Small pane spinner',
   apps: ['hcs', 'pfd'],
     layers: [
-        {"id":"spinner","partId":"spinner","title":"Spinner","explanation":"The small default-colour spinner at scale \"sm\", announced as \"Updating Results\" while results are recomputed.","keyIdea":"The status wrapper signals that recalculation is still in progress.","selector":"[class~=\"aui-spinner\"]"},
-        {"id":"ring","partId":"ring","title":"Ring","explanation":"The animated ring that turns while HCS and PFD recompute the results.","keyIdea":"The rotating ring shows ongoing work without implying a determinate percentage.","selector":"[class~=\"aui-spinner-ring\"]"},
+        {"id":"spinner","partId":"spinner","title":"Spinner","explanation":"Small default-colour spinner announces Updating Results while data recomputes.","keyIdea":"The status wrapper signals that recalculation is still in progress.","selector":"[class~=\"aui-spinner\"]"},
+        {"id":"ring","partId":"ring","title":"Ring","explanation":"The animated ring that turns while HCS and PFD recompute the results.","keyIdea":"The rotating ring shows ongoing work without implying a determinate percentage.","selector":"[class~=\"aui-spinner-ring\"]","code":["Spinner"]},
       ],
 options: [
     { id: "pfd-updating", name: "Updating results", source: {"hcs":"src/components/F01Results.tsx","pfd":"src/pfd/OutputPane.tsx"}, contextDocument: {

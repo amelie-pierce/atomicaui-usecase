@@ -5,10 +5,10 @@ export default defineUsecase({
   title: 'Card button tooltip',
   apps: ['pfd', 'rws'],
     layers: [
-        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"The selection target: a 96 by 80 surface image Button labelled \"Show in 3D\" in the example and RWS, or the PFD \"Embedded Strap\" card (a View as button, at least 96px square).","keyIdea":"The image button remains the selection action that opens its 3D explanation.","selector":"[data-ug-part=\"trigger\"]"},
-        {"id":"thumbnail","partId":"thumbnail","title":"Thumbnail","explanation":"The connection image drawn inside the trigger as an aria-hidden svg (72px wide in the example, 64px in the PFD card).","keyIdea":"An aria-hidden thumbnail decorates the trigger without adding redundant accessible content.","selector":"[data-ug-part=\"trigger\"] > svg"},
-        {"id":"positioner","partId":"positioner","title":"Positioner","explanation":"Opens the note to the right of the image button with a 4px offset (side=\"right\"); PFD uses the default side.","keyIdea":"The positioner keeps the note beside its originating connection image.","selector":"[class~=\"aui-tooltip-positioner\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"The text tooltip surface; in PFD it is allowed to grow to 384px for the longer note.","keyIdea":"The popup holds the text explanation, expanding when PFD needs a longer description.","selector":"[class~=\"aui-tooltip-popup\"]"},
+        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Surface image action opens a 3D preview; PFD uses its card.","keyIdea":"The image button remains the selection action that opens its 3D explanation.","selector":"[data-ug-part=\"trigger\"]"},
+        {"id":"thumbnail","partId":"thumbnail","title":"Thumbnail","explanation":"Aria-hidden connection drawing decorates the trigger without extra reading.","keyIdea":"An aria-hidden thumbnail decorates the trigger without adding redundant accessible content.","selector":"[data-ug-part=\"trigger\"] > svg","code":["svg"]},
+        {"id":"positioner","partId":"positioner","title":"Positioner","explanation":"Tooltip opens beside the image with a four-pixel gap.","keyIdea":"The positioner keeps the note beside its originating connection image.","selector":"[class~=\"aui-tooltip-positioner\"]"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"Text surface expands to 384px for the longer PFD note.","keyIdea":"The popup holds the text explanation, expanding when PFD needs a longer description.","selector":"[class~=\"aui-tooltip-popup\"]"},
       ],
 options: [
     { id: "pfd-card-note", name: "Selection card tooltip", showContext: false, apps: ["pfd"], source: {"pfd":"src/pfd/SelectionCards.tsx"} ,

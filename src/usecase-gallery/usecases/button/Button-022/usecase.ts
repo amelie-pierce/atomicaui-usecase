@@ -10,16 +10,16 @@ export default defineUsecase({
 
   apps: ['adc'],
     layers: [
-        {"id":"chip","partId":"chip","title":"Value chip","explanation":"The 12 in value chip (aria-label \"Edit Width, 12 in\") that opens the editor popover; it stands alone here rather than floating over the 3D model.","keyIdea":"The width chip exposes the current value as the entry point to editing.","selector":"[data-base-ui-click-trigger]"},
-        {"id":"popup","partId":"popup","title":"Editor popup","explanation":"The surface (solid, sm, soft, elevation 4) opened 8px to the right of the chip, holding the Width number field and the Cancel and Save buttons in one row.","keyIdea":"The compact popup keeps the field and its two decisions beside the value.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
-        {"id":"actions","partId":"actions","title":"Button row","explanation":"The row at the end of the popup that keeps Cancel and Save together with a 4px gap and no growth, so the Width field takes the remaining width.","keyIdea":"The action row lets the width input take the remaining horizontal space.","selector":"[data-ug-part=\"edit-actions\"]"},
-        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"The filled gray surface-alt Cancel that abandons the edit; ADC fills it like a dialog Cancel.","keyIdea":"Cancel discards the pending width change.","selector":"[class~=\"aui-button\"]:not([aria-label]):first-of-type"},
-        {"id":"save","partId":"save","title":"Save","explanation":"The solid secondary Save that commits the new Width value; it follows Cancel and is the only emphasised action.","keyIdea":"Save commits the edited width as the emphasized action.","selector":"[class~=\"aui-button\"]:not([aria-label]):last-of-type"},
+        {"id":"chip","partId":"chip","title":"Value chip","explanation":"12 in value chip opens its width editor.","keyIdea":"The width chip exposes the current value as the entry point to editing.","selector":"[data-base-ui-click-trigger]"},
+        {"id":"popup","partId":"popup","title":"Editor popup","explanation":"Soft popup sits 8px beside the chip with field and actions.","keyIdea":"The compact popup keeps the field and its two decisions beside the value.","selector":"[data-aui-popup-motion][role=\"dialog\"]","code":["Popover.Popup"]},
+        {"id":"actions","partId":"actions","title":"Button row","explanation":"End row keeps Cancel and Save together without taking field width.","keyIdea":"The action row lets the width input take the remaining horizontal space.","selector":"[data-ug-part=\"edit-actions\"]"},
+        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"Filled gray Cancel discards the pending Width change.","keyIdea":"Cancel discards the pending width change.","selector":"[class~=\"aui-button\"]:not([aria-label]):first-of-type"},
+        {"id":"save","partId":"save","title":"Save","explanation":"Solid secondary Save commits the new Width value.","keyIdea":"Save commits the edited width as the emphasized action.","selector":"[class~=\"aui-button\"]:not([aria-label]):last-of-type"},
       ],
 options: [
     { id: "adc-edit-value", contextAnatomy: CONTEXT_ANATOMY, name: "Edit value", apps: ["adc"], source: {"adc":"src/adc/components/InPlaceEditor.tsx"} ,
       contextLayers: [
-        {"id":"context-width-field","partId":"width-field","title":"Width field","explanation":"The labelled Width number field (12 with an in unit) at the start of the popup, which Cancel and Save commit or discard.","keyIdea":"The labelled field binds the numeric value and its inch unit to Width.","selector":"[data-aui-popup-motion][role=\"dialog\"] [class~=\"aui-field\"]","scope":"context"},
+        {"id":"context-width-field","partId":"width-field","title":"Width field","explanation":"Width field starts at 12 inches beside the actions.","keyIdea":"The labelled field binds the numeric value and its inch unit to Width.","selector":"[data-aui-popup-motion][role=\"dialog\"] [class~=\"aui-field\"]","scope":"context"},
       ],
     },
   ],

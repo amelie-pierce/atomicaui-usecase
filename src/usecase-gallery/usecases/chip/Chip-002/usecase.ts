@@ -10,13 +10,13 @@ export default defineUsecase({
   title: 'Compact soft label',
   apps: ['adc'],
     layers: [
-        {"id":"chip","partId":"chip","title":"Chip","explanation":"The secondary solid chip at scale \"xs\" with soft corners that marks the whole app state, shown in the ADC beta notice and beside the menu.","keyIdea":"The app-wide chip gives the beta state a compact label that can travel with the notice.","selector":"[class~=\"aui-chip\"]"},
+        {"id":"chip","partId":"chip","title":"Chip","explanation":"Extra-small soft secondary chip marks beta app state.","keyIdea":"The app-wide chip gives the beta state a compact label that can travel with the notice.","selector":"[class~=\"aui-chip\"]"},
       ],
 options: [
     { id: "adc-beta", contextAnatomy: CONTEXT_ANATOMY, name: "Beta notice", source: {"adc":"src/adc/Workspace.tsx"} ,
       contextLayers: [
-        {"id":"context-beta-banner","partId":"beta-banner","title":"Beta notice banner","explanation":"The warning solid region labelled \"Beta release notice\" that starts with the BETA Chip, then a triangle-exclamation icon and the message.","keyIdea":"A warning banner keeps the beta status and its supporting message together as one announcement.","selector":"[data-ug-part=\"beta-banner\"]","scope":"context"},
-        {"id":"context-beta-message","partId":"beta-message","title":"Banner message","explanation":"The l3 text \"Beta Release: We are actively refining this application.\" with the lead-in in bold.","keyIdea":"The message explains what the beta label means for people using the application.","selector":"[data-ug-part=\"beta-message\"]","scope":"context"},
+        {"id":"context-beta-banner","partId":"beta-banner","title":"Beta notice banner","explanation":"Warning region places BETA chip, alert icon, then message.","keyIdea":"A warning banner keeps the beta status and its supporting message together as one announcement.","selector":"[data-ug-part=\"beta-banner\"]","scope":"context"},
+        {"id":"context-beta-message","partId":"beta-message","title":"Banner message","explanation":"Bold lead-in introduces the beta release’s active refinement notice.","keyIdea":"The message explains what the beta label means for people using the application.","selector":"[data-ug-part=\"beta-message\"]","scope":"context"},
       ],
     },
   ],

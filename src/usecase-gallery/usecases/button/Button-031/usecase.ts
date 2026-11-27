@@ -14,27 +14,27 @@ export default defineUsecase({
 
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
     layers: [
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"The dialog surface: ADC and PBS use the default width, HCS a 384px popup.","keyIdea":"The dialog surface gives feedback or deletion confirmation a focused boundary.","selector":"[class~=\"aui-dialog-popup\"]"},
-        {"id":"title","partId":"title","title":"Title","explanation":"The raised title bar of the ADC Feedback Form and HCS Send feedback dialogs, with the heading and a spacer pushing Close to its end; PBS has no title.","keyIdea":"The raised title identifies the feedback or confirmation request.","selector":"[class~=\"aui-dialog-title\"]"},
-        {"id":"dialog-close","partId":"dialog-close","title":"Dialog close","explanation":"The transparent xmark control at the end of the title (ADC wraps it in a Close tooltip, HCS names it Close Send feedback); in PBS it sits alone in a right-aligned row above the body.","keyIdea":"The close control is the direct exit from the feedback or confirmation surface.","selector":"[class~=\"aui-dialog-close\"]"},
-        {"id":"icon-button","partId":"icon-button","title":"Close button","explanation":"The standalone 20px transparent xmark IconButton shown in the example before it is mounted as a Dialog.Close.","keyIdea":"The icon-only button models the close control before Dialog owns it.","selector":"[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])"},
+        {"id":"popup","partId":"popup","title":"Popup","explanation":"ADC and PBS use the default width; HCS uses 384px.","keyIdea":"The dialog surface gives feedback or deletion confirmation a focused boundary.","selector":"[class~=\"aui-dialog-popup\"]"},
+        {"id":"title","partId":"title","title":"Title","explanation":"Raised title pairs Send feedback or Feedback Form with Close.","keyIdea":"The raised title identifies the feedback or confirmation request.","selector":"[class~=\"aui-dialog-title\"]"},
+        {"id":"dialog-close","partId":"dialog-close","title":"Dialog close","explanation":"Transparent X closes the dialog; PBS places it above body.","keyIdea":"The close control is the direct exit from the feedback or confirmation surface.","selector":"[class~=\"aui-dialog-close\"]"},
+        {"id":"icon-button","partId":"icon-button","title":"Close button","explanation":"Example shows a transparent 20px X before Dialog.Close.","keyIdea":"The icon-only button models the close control before Dialog owns it.","selector":"[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])"},
         {"id":"tooltip","partId":"tooltip","title":"Close tooltip","explanation":"ADC only: the secondary tooltip reading Close shown above the close control.","keyIdea":"The tooltip explains the ADC close icon before it is activated.","selector":"[class~=\"aui-tooltip-popup\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"PBS only: the body that carries the confirmation Are you sure you want to delete Connection 1.","keyIdea":"The PBS body places the confirmation sentence inside the dialog shell.","selector":"[class~=\"aui-dialog-body\"]"},
+        {"id":"body","partId":"body","title":"Body","explanation":"PBS body asks whether to delete Connection 1.","keyIdea":"The PBS body places the confirmation sentence inside the dialog shell.","selector":"[class~=\"aui-dialog-body\"]"},
       ],
 options: [
     { id: "hcs-close", contextAnatomy: TITLE_CONTEXT, name: "Title-bar close", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/components/F01Experience.tsx","ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellDialog.tsx","fd":"src/components/ui.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
       contextLayers: [
-        {"id":"context-title-spacer","partId":"title-spacer","title":"Title spacer","explanation":"The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar.","keyIdea":"The title spacer pushes the ADC close action to the far edge of its heading.","selector":"[class~=\"aui-dialog-spacer\"]","scope":"context"},
+        {"id":"context-title-spacer","partId":"title-spacer","title":"Title spacer","explanation":"Spacer pushes Close to the raised title bar’s end.","keyIdea":"The title spacer pushes the ADC close action to the far edge of its heading.","selector":"[class~=\"aui-dialog-spacer\"]","scope":"context"},
       ],
     },
     { id: "adc-close", contextAnatomy: TITLE_CONTEXT, name: "Tooltip close button", apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
       contextLayers: [
-        {"id":"context-title-spacer","partId":"title-spacer","title":"Title spacer","explanation":"The Dialog.Spacer between the title text and the close X that pushes the X to the end of the raised title bar.","keyIdea":"The HCS title spacer preserves room between feedback text and dismissal.","selector":"[class~=\"aui-dialog-spacer\"]","scope":"context"},
+        {"id":"context-title-spacer","partId":"title-spacer","title":"Title spacer","explanation":"Spacer pushes Close to the raised title bar’s end.","keyIdea":"The HCS title spacer preserves room between feedback text and dismissal.","selector":"[class~=\"aui-dialog-spacer\"]","scope":"context"},
       ],
     },
     { id: "pbs-close", contextAnatomy: PBS_CONTEXT, name: "Close without Title", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,
       contextLayers: [
-        {"id":"context-close-row","partId":"close-row","title":"Close row","explanation":"The end-aligned row that holds only the close X above the dialog body, since this dialog has no title.","keyIdea":"The PBS close row supplies a titleless confirmation dialog with an exit.","selector":"[data-ug-part=\"close-row\"]","scope":"context"},
+        {"id":"context-close-row","partId":"close-row","title":"Close row","explanation":"PBS row aligns its titleless Close button above the body.","keyIdea":"The PBS close row supplies a titleless confirmation dialog with an exit.","selector":"[data-ug-part=\"close-row\"]","scope":"context"},
       ],
     },
   ],

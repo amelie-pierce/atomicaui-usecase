@@ -748,8 +748,7 @@ $narrow: 840px;
 }
 
 .ug-layer-lesson__code .ug-docs__code {
-  overflow-x: auto;
-  overflow-y: auto;
+  overflow: scroll;
 }
 
 .ug-stepper__step {

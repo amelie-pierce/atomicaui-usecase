@@ -21,14 +21,16 @@ export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onT
   const onTreeResize: LayoutPanes['onTreePanelResize'] = (size) => {
     if (mountedCollapsed.current && size.asPercentage > 0.01) {
       mountedCollapsed.current = false;
-      const layout = groupRef.current?.getLayout();
-      if (layout && size.asPercentage < TREE_DEFAULT_PERCENT) {
+      window.requestAnimationFrame(() => {
+        const layout = groupRef.current?.getLayout();
+        const current = layout?.['component-tree'];
+        if (!layout || current === undefined || current >= TREE_DEFAULT_PERCENT) return;
         groupRef.current?.setLayout({
           ...layout,
           'component-tree': TREE_DEFAULT_PERCENT,
-          'component-preview': layout['component-preview'] - (TREE_DEFAULT_PERCENT - size.asPercentage),
+          'component-preview': layout['component-preview'] - (TREE_DEFAULT_PERCENT - current),
         });
-      }
+      });
     }
     onTreePanelResize(size);
   };

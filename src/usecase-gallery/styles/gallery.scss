@@ -114,11 +114,11 @@ $narrow: 840px;
 }
 
 .ug-render {
-  position: sticky;
-  inset-block-start: 0;
+  position: relative;
   display: flex;
   flex-direction: column;
-  block-size: 100%;
+  flex: 1 1 0;
+  block-size: auto;
   max-block-size: 100%;
   min-inline-size: 0;
   min-block-size: 0;
@@ -233,7 +233,7 @@ $narrow: 840px;
 
 // The Component and In context UIs of the chosen option share the right pane, one at a time; the pane scrolls when it does not fit.
 .ug-render--split {
-  overflow: auto;
+  overflow: hidden;
 }
 
 .ug-render--split .ug-render__stage {
@@ -587,13 +587,6 @@ $narrow: 840px;
   gap: var(--p-px-16);
 }
 
-.ug-layer-lesson__back-next {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--p-px-8);
-}
-
 .ug-layer-lesson__copy > p {
   margin: 0;
 }
@@ -605,54 +598,82 @@ $narrow: 840px;
   min-inline-size: 0;
 }
 
-.ug-layer-lesson__steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--p-px-112)), 1fr));
-  gap: var(--p-px-4);
-  max-block-size: calc(var(--p-px-16) * 14);
-  overflow: auto;
-  padding: var(--p-px-2);
-}
-
-.ug-layer-lesson__step {
+.ug-stepper {
   display: flex;
-  min-inline-size: 0;
-  min-block-size: var(--p-px-36);
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--p-px-8);
-  white-space: normal;
-  text-align: start;
-}
-
-.ug-layer-lesson__step-number {
   flex: none;
-  display: grid;
-  inline-size: var(--p-px-24);
-  block-size: var(--p-px-24);
-  place-items: center;
-  border-radius: 50%;
-  background: var(--theme-raised);
-  font-variant-numeric: tabular-nums;
-  font-weight: var(--p-weight-bold);
-}
-
-.ug-layer-lesson__step.is-completed .ug-layer-lesson__step-number {
-  color: var(--theme-on-primary);
-  background: var(--theme-primary);
-}
-
-.ug-layer-lesson__step.is-upcoming {
-  color: var(--theme-on-surface-alt);
-}
-
-.ug-layer-lesson__step-title {
+  align-items: center;
+  gap: var(--p-px-8);
   min-inline-size: 0;
-  overflow-wrap: anywhere;
+  margin-block-start: var(--p-px-12);
+  padding: var(--p-px-8);
+  background: var(--theme-surface);
+  border: var(--p-px-1) solid var(--theme-raised);
+  border-radius: var(--p-px-8);
 }
 
-.ug-layer-lesson__back-next > :first-child {
-  margin-inline-end: auto;
+.ug-stepper__steps {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: var(--p-px-8);
+  min-inline-size: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: var(--p-px-2);
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+.ug-stepper__step {
+  flex: 0 0 var(--p-px-36);
+  inline-size: var(--p-px-36);
+  block-size: var(--p-px-36);
+  min-inline-size: var(--p-px-36);
+  min-block-size: var(--p-px-36);
+  padding: 0;
+  border-radius: 50%;
+  font-variant-numeric: tabular-nums;
+  transition: color var(--p-ms-120) ease, background-color var(--p-ms-120) ease, border-color var(--p-ms-120) ease;
+}
+
+.ug-stepper__step:not(.is-active) {
+  border: var(--p-px-1) solid var(--theme-raised);
+  background: var(--theme-surface-alt);
+}
+
+.ug-stepper__step.is-completed {
+  color: var(--theme-on-surface-alt);
+  background: var(--theme-raised);
+}
+
+.ug-stepper__step.is-upcoming {
+  color: var(--theme-on-surface-alt);
+  background: var(--theme-surface-alt);
+}
+
+.ug-stepper__step:focus-visible {
+  outline: var(--p-px-2) solid var(--theme-primary);
+  outline-offset: var(--p-px-2);
+}
+
+.ug-stepper__back,
+.ug-stepper__next {
+  flex: none;
+}
+
+.ug-stepper__steps::-webkit-scrollbar {
+  block-size: var(--p-px-4);
+}
+
+.ug-stepper__steps::-webkit-scrollbar-thumb {
+  background: var(--theme-raised);
+  border-radius: var(--p-px-8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ug-stepper__steps { scroll-behavior: auto; }
+  .ug-stepper__step { transition: none; }
 }
 
 .ug-layer-lesson__code {
@@ -661,13 +682,6 @@ $narrow: 840px;
 
 .ug-layer-lesson__code .ug-docs__code {
   max-block-size: min(50dvh, calc(var(--p-px-16) * 24));
-}
-
-.ug-layer-lesson__code > summary {
-  cursor: pointer;
-  margin-block-end: var(--p-px-8);
-  color: var(--theme-on-surface-alt);
-  font: var(--p-font-l3);
 }
 
 .ug-layer-lesson__code .ug-docs__code code > span.is-added {
@@ -680,6 +694,54 @@ $narrow: 840px;
   display: block;
   background: var(--theme-surface-alt);
 }
+
+/* Keep the stepper compact when the desktop preview pane is narrow. */
+@media (max-width: 1080px) and (min-width: #{$narrow + 1}) {
+  .ug-stepper { gap: var(--p-px-4); padding: var(--p-px-4); }
+  .ug-stepper__steps { gap: var(--p-px-4); }
+  .ug-stepper__step { flex-basis: var(--p-px-32); inline-size: var(--p-px-32); block-size: var(--p-px-32); min-inline-size: var(--p-px-32); min-block-size: var(--p-px-32); }
+}
+
+/* The center column stacks above the document on compact screens. */
+@media (max-width: $narrow) {
+  .ug-render { flex: none; }
+  .ug-stepper { margin-block-start: calc(var(--p-px-12) * -1); }
+}
+
+.ug-layer-lesson__code,
+.ug-layer-lesson__code .ug-docs__copy-block,
+.ug-layer-lesson__code .ug-docs__code {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.ug-layer-lesson__code .ug-docs__code {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.ug-stepper__step {
+  justify-content: center;
+  text-align: center;
+}
+
+.ug-stepper__step:focus-visible {
+  z-index: 1;
+}
+
+.ug-stepper__steps {
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x proximity;
+}
+
+.ug-stepper__step {
+  scroll-snap-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ug-stepper__steps { scroll-snap-type: none; }
+}
+
 
 .ug-docs__copy-block {
   min-inline-size: 0;

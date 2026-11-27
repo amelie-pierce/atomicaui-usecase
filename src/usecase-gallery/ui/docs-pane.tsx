@@ -82,10 +82,9 @@ function LayerCode({ code, slotLines, layers, index }: { code: Promise<string>; 
   const lines = text.split('\n');
   const current = layerCodeLines(text, layers[index], slot);
   const previous = layerCodeLines(text, layers[index - 1], slot);
-  return <details className="ug-layer-lesson__code" open>
-    <summary>Code for this step</summary>
+  return <div className="ug-layer-lesson__code">
     <div className="ug-docs__copy-block">
-      <div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">{layers[index]?.title ?? 'Current step'}</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => copy(stripPartMarkers(text))}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
+      <div className="ug-docs__copy-bar"><Type as="span" role="l3" color="muted">Code</Type><Button aui={{ color: status === 'failed' ? 'error' : 'secondary', paint: 'tonal', scale: 'sm' }} onClick={() => copy(stripPartMarkers(text))}>{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}</Button></div>
       <Type as="pre" role="l3" family="mono" className="ug-docs__code" tabIndex={0}><code>{lines.map((line, lineIndex) => {
         const shown = stripPartMarkers(line);
         if (!shown.trim() && line.trim()) return null;
@@ -94,40 +93,22 @@ function LayerCode({ code, slotLines, layers, index }: { code: Promise<string>; 
       })}</code></Type>
       <span role="status" className="ug-visually-hidden">{status === 'copied' ? 'Code copied' : status === 'failed' ? 'Code copy failed' : ''}</span>
     </div>
-  </details>;
+  </div>;
 }
 
-function LayerLesson({ layers, index, onChange, code, slotLines }: { layers: LayerStep[]; index: number; onChange: (index: number) => void; code: Promise<string>; slotLines?: Promise<LineRange | undefined> }) {
+function LayerLesson({ layers, index, code, slotLines }: { layers: LayerStep[]; index: number; code: Promise<string>; slotLines?: Promise<LineRange | undefined> }) {
   const active = layers[index] ?? layers[0];
   if (!active) return <Type as="p" role="l3" color="muted">No layer steps are authored for this view.</Type>;
-  const onNavigationKey = (event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.key === 'ArrowRight') { event.preventDefault(); onChange(Math.min(index + 1, layers.length - 1)); }
-    if (event.key === 'ArrowLeft') { event.preventDefault(); onChange(Math.max(index - 1, 0)); }
-    if (event.key === 'Home') { event.preventDefault(); onChange(0); }
-    if (event.key === 'End') { event.preventDefault(); onChange(layers.length - 1); }
-  };
   return <div className="ug-layer-lesson" aria-label="Layer lesson">
     <div className="ug-layer-lesson__copy" aria-live="polite" aria-atomic="true">
       <Type as="h3" role="h5" weight="bold">{active.title}</Type>
       <Type as="p" role="l3">{active.explanation}</Type>
     </div>
-    <nav className="ug-layer-lesson__steps" aria-label="Layer steps" onKeyDown={onNavigationKey}>
-      {layers.map((step, stepIndex) => {
-        const state = stepIndex === index ? 'active' : stepIndex < index ? 'completed' : 'upcoming';
-        return <Button key={step.id} className={`ug-layer-lesson__step is-${state}`} aui={{ color: state === 'active' ? 'primary' : 'secondary', paint: state === 'active' ? 'solid' : 'text', scale: 'sm' }} aria-current={state === 'active' ? 'step' : undefined} aria-label={`Step ${stepIndex + 1}: ${step.title}, ${state}`} data-state={state} data-ug-layer-id={step.id} data-ug-layer-selector={step.selector ?? `[data-ug-part="${step.id}"]`} data-ug-layer-scope={step.scope ?? 'component'} onClick={() => onChange(stepIndex)}>
-          <span className="ug-layer-lesson__step-number">{stepIndex + 1}</span><span className="ug-layer-lesson__step-title">{step.title}</span>
-        </Button>;
-      })}
-    </nav>
-    <div className="ug-layer-lesson__back-next">
-      <Button aui={{ color: 'secondary', paint: 'outlined', scale: 'sm' }} disabled={index === 0} onClick={() => onChange(Math.max(index - 1, 0))}>Back</Button>
-      <Button aui={{ color: 'primary', paint: 'solid', scale: 'sm' }} disabled={index === layers.length - 1} onClick={() => onChange(Math.min(index + 1, layers.length - 1))}>Next</Button>
-    </div>
     <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><LayerCode code={code} slotLines={slotLines} layers={layers} index={index} /></Suspense>
   </div>;
 }
 
-export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, availablePartIds, onPartChange, onSelectPart, documentMode, onDocumentModeChange, layerIndex, onLayerChange, layers }: { usecase: Usecase; option: UsecaseOption; mode: PreviewMode; componentName: string; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void; documentMode: DocumentMode; onDocumentModeChange: (mode: DocumentMode) => void; layerIndex: number; onLayerChange: (index: number) => void; layers: LayerStep[] }) {
+export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, availablePartIds, onPartChange, onSelectPart, documentMode, onDocumentModeChange, layerIndex, layers }: { usecase: Usecase; option: UsecaseOption; mode: PreviewMode; componentName: string; hoveredPartId?: string; availablePartIds?: string[]; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void; documentMode: DocumentMode; onDocumentModeChange: (mode: DocumentMode) => void; layerIndex: number; layers: LayerStep[] }) {
   const doc = mode === 'context'
     ? { ...usecase, ...option.contextDocument }
     : { ...usecase, ...option.componentDocument };
@@ -142,7 +123,7 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
       </ToggleGroup>
     </header>
     <div className="ug-docs">
-    {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} onChange={onLayerChange} code={mode === 'component' ? option.loadExampleCode() : option.loadCode()} slotLines={mode === 'component' ? undefined : option.loadSlotLines()} /> : <>
+    {documentMode === 'layers' ? <LayerLesson layers={layers} index={layerIndex} code={mode === 'component' ? option.loadExampleCode() : option.loadCode()} slotLines={mode === 'component' ? undefined : option.loadSlotLines()} /> : <>
       <header className="ug-docs__head"><h2 className="ug-docs__title"><Type role="h6" as="span" weight="bold">{componentName}</Type><Type as="code" role="l3" family="mono" color="muted">{usecase.componentId}</Type></h2>{mode === 'component' && !!usecase.aliases?.length && <Type as="p" role="l3" color="muted">Also called: {usecase.aliases.join(', ')}</Type>}<Type role="l3" as="p" color="muted">{doc.summary}</Type><Type role="l3" as="p"><Type as="span" role="l3" weight="semi-bold">UI: </Type>{option.name} · {mode === 'component' ? 'Component' : 'In context'}</Type><div className="ug-docs__apps"><AppBadges apps={option.apps} label="Used in selected option" /></div>
       </header>
       <div className="ug-docs__sections">

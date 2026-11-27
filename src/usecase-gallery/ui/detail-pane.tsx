@@ -14,7 +14,6 @@ export function DetailPane({
   documentMode,
   onDocumentModeChange,
   layerIndex,
-  onLayerChange,
   layers,
 }: {
   usecase: Usecase;
@@ -28,12 +27,11 @@ export function DetailPane({
   documentMode: DocumentMode;
   onDocumentModeChange: (mode: DocumentMode) => void;
   layerIndex: number;
-  onLayerChange: (index: number) => void;
   layers: LayerStep[];
 }) {
   return (
     <section className="ug-detail" role="region" aria-label="Documentation">
-      <DocsPane usecase={usecase} option={option} mode={mode} componentName={componentName} hoveredPartId={hoveredPartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} documentMode={documentMode} onDocumentModeChange={onDocumentModeChange} layerIndex={layerIndex} onLayerChange={onLayerChange} layers={layers} />
+      <DocsPane usecase={usecase} option={option} mode={mode} componentName={componentName} hoveredPartId={hoveredPartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} documentMode={documentMode} onDocumentModeChange={onDocumentModeChange} layerIndex={layerIndex} layers={layers} />
     </section>
   );
 }

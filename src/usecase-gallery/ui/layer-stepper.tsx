@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Button } from '../kit';
+import { Button, IconButton } from '../kit';
 import type { LayerStep } from '../types';
 
 export function LayerStepper({ layers, index, onChange }: { layers: LayerStep[]; index: number; onChange: (index: number) => void }) {
@@ -35,7 +35,7 @@ export function LayerStepper({ layers, index, onChange }: { layers: LayerStep[];
   };
 
   return <section className="ug-stepper" aria-label="Layer step controls">
-    <Button className="ug-stepper__back" aui={{ color: 'secondary', paint: 'outlined', scale: 'sm' }} disabled={index === 0} onClick={() => onChange(Math.max(index - 1, 0))}>Back</Button>
+    <IconButton className="ug-stepper__back" name="arrow-left" aria-label="Previous step" aui={{ color: 'secondary', paint: 'outlined', scale: 'sm' }} disabled={index === 0} onClick={() => onChange(Math.max(index - 1, 0))} />
     <nav className="ug-stepper__steps" aria-label="Layer steps" ref={stepsRef} onKeyDown={onStepKeyDown}>
       {layers.map((step, stepIndex) => {
         const state = stepIndex === index ? 'active' : stepIndex < index ? 'completed' : 'upcoming';
@@ -55,6 +55,6 @@ export function LayerStepper({ layers, index, onChange }: { layers: LayerStep[];
         >{stepIndex + 1}</Button>;
       })}
     </nav>
-    <Button className="ug-stepper__next" aui={{ color: 'primary', paint: 'solid', scale: 'sm' }} disabled={index === layers.length - 1} onClick={() => onChange(Math.min(index + 1, layers.length - 1))}>Next</Button>
+    <IconButton className="ug-stepper__next" name="arrow-right" aria-label="Next step" aui={{ color: 'primary', paint: 'solid', scale: 'sm' }} disabled={index === layers.length - 1} onClick={() => onChange(Math.min(index + 1, layers.length - 1))} />
   </section>;
 }

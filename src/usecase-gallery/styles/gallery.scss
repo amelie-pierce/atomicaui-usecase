@@ -109,6 +109,10 @@ $narrow: 840px;
   position: relative;
 }
 
+.ug-layout__column--render:has(> .ug-stepper) {
+  background: var(--theme-surface-alt);
+}
+
 .ug-layout__column--detail {
   overflow: hidden;
 }
@@ -594,7 +598,7 @@ $narrow: 840px;
 .ug-layer-lesson__copy {
   display: flex;
   flex-direction: column;
-  gap: var(--p-px-8);
+  gap: var(--p-px-4);
   min-inline-size: 0;
 }
 
@@ -626,11 +630,11 @@ $narrow: 840px;
 }
 
 .ug-stepper__step {
-  flex: 0 0 var(--p-px-36);
-  inline-size: var(--p-px-36);
-  block-size: var(--p-px-36);
-  min-inline-size: var(--p-px-36);
-  min-block-size: var(--p-px-36);
+  flex: 0 0 var(--p-px-32);
+  inline-size: var(--p-px-32);
+  block-size: var(--p-px-32);
+  min-inline-size: var(--p-px-32);
+  min-block-size: var(--p-px-32);
   padding: 0;
   border-radius: 50%;
   font-variant-numeric: tabular-nums;
@@ -699,7 +703,7 @@ $narrow: 840px;
 @media (max-width: 1080px) and (min-width: #{$narrow + 1}) {
   .ug-stepper { gap: var(--p-px-4); padding: var(--p-px-4); }
   .ug-stepper__steps { gap: var(--p-px-4); }
-  .ug-stepper__step { flex-basis: var(--p-px-32); inline-size: var(--p-px-32); block-size: var(--p-px-32); min-inline-size: var(--p-px-32); min-block-size: var(--p-px-32); }
+  .ug-stepper__step { flex-basis: var(--p-px-28); inline-size: var(--p-px-28); block-size: var(--p-px-28); min-inline-size: var(--p-px-28); min-block-size: var(--p-px-28); }
 }
 
 /* The center column stacks above the document on compact screens. */

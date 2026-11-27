@@ -101,7 +101,7 @@ function LayerLesson({ layers, index, code, slotLines }: { layers: LayerStep[]; 
   if (!active) return <Type as="p" role="l3" color="muted">No layer steps are authored for this view.</Type>;
   return <div className="ug-layer-lesson" aria-label="Layer lesson">
     <div className="ug-layer-lesson__copy" aria-live="polite" aria-atomic="true">
-      <Type as="h3" role="h5" weight="bold">{active.title}</Type>
+      <Type as="h3" role="h6" weight="bold">{active.title}</Type>
       <Type as="p" role="l3">{active.explanation}</Type>
     </div>
     <Suspense fallback={<Type as="p" role="l3" color="muted">Loading code…</Type>}><LayerCode code={code} slotLines={slotLines} layers={layers} index={index} /></Suspense>

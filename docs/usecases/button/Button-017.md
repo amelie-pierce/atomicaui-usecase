@@ -37,10 +37,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The report-ready Button in the ADC status bar: solid info (blue), extra small, soft shape. Selector: `[class~="aui-button"]`.
-2. **Icon** — The file glyph before the label that marks the item as a report. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Container** — The report-ready Button in the ADC status bar: solid info (blue), extra small, soft shape. Selector: `[class~="aui-button"]`. Layer step: **Container** — Extra-small soft blue report-ready button appears in the ADC status bar.
+2. **Icon** — The file glyph before the label that marks the item as a report. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`. Layer step: **Icon** — File glyph marks the report before its text label.
 3. **Label** — The text "Report is ready" in a span, which reads "Report is ready (outdated)" when inputs changed. Selector: `[class~="aui-button"] > span`. Direct text is highlighted.
 
 ## Apps

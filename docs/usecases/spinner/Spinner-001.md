@@ -36,10 +36,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Spinner** — The small default-colour spinner at scale "sm", announced as "Updating Results" while results are recomputed. Selector: `[class~="aui-spinner"]`.
-2. **Ring** — The animated ring that turns while HCS and PFD recompute the results. Selector: `[class~="aui-spinner-ring"]`.
+1. **Spinner** — The small default-colour spinner at scale "sm", announced as "Updating Results" while results are recomputed. Selector: `[class~="aui-spinner"]`. Layer step: **Spinner** — Small default-colour spinner announces Updating Results while data recomputes.
+2. **Ring** — The animated ring that turns while HCS and PFD recompute the results. Selector: `[class~="aui-spinner-ring"]`. Layer step: **Ring** — The animated ring that turns while HCS and PFD recompute the results. Code target: `Spinner`.
 
 ## Apps
 
@@ -68,7 +68,7 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Output pane** — The pane that centers the progress indicator while results update. Selector: `[data-ug-part="pane"]`.
+1. **Output pane** — The pane that centers the progress indicator while results update. Selector: `[data-ug-part="pane"]`. Layer step: **Output pane** — The pane that centers the progress indicator while results update.
 2. **Caption** — The “Updating Results” status shown under the spinner in PFD. Selector: `[data-ug-part="caption"]`. Direct text is highlighted.
 
 #### Component UI source — `src/usecase-gallery/usecases/spinner/Spinner-001/example.tsx`

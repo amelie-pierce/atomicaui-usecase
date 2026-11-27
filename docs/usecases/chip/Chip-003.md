@@ -37,10 +37,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Chip** — The tonal success chip at scale "sm" shown in the Status column of the HCS results table; a Failed row swaps it for the error colour. Selector: `[class~="aui-chip"]`.
-2. **Icon** — The leading "circle-check" icon at scale "sm" that backs the result with a glyph (a cross for Failed). Selector: `[class~="aui-chip-icon"]`.
+1. **Chip** — The tonal success chip at scale "sm" shown in the Status column of the HCS results table; a Failed row swaps it for the error colour. Selector: `[class~="aui-chip"]`. Layer step: **Chip** — Tonal success chip marks Passed; failed rows use error colour.
+2. **Icon** — The leading "circle-check" icon at scale "sm" that backs the result with a glyph (a cross for Failed). Selector: `[class~="aui-chip-icon"]`. Layer step: **Icon** — Circle-check icon supports Passed; failed results show a cross.
 3. **Label** — The status text "Passed", written directly as the chip's children instead of a Chip.Label. Selector: `[class~="aui-chip"]`. Direct text is highlighted.
 
 ## Apps

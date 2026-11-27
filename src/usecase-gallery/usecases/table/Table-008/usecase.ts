@@ -4,20 +4,8 @@ export default defineUsecase({
   uiType: 'Data table',
   title: 'Print table totals row',
   apps: ['ace'],
-    layers: [
-        {"id":"table","partId":"table","title":"Table","explanation":"Extra-small print table uses ruled cells without selection or padding.","keyIdea":"The print table carries line items and totals without introducing selection behavior.","selector":"[class~=\"aui-table\"]"},
-        {"id":"head","partId":"head","title":"Header","explanation":"Muted header band printed with Model and Qty.","keyIdea":"A muted heading band separates report labels from the printed values.","selector":"[class~=\"aui-table-head\"]"},
-        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Muted centered header wraps labels with surface-coloured text.","keyIdea":"Centered headings stay readable on the report’s softer background.","selector":"[class~=\"aui-table-header-cell\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"The line items being totalled, here Model B-200 with quantity 4.","keyIdea":"The body lists the items that contribute to the final quantity.","selector":"[class~=\"aui-table-body\"]"},
-        {"id":"row","partId":"row","title":"Row","explanation":"Each printed row clearly shows one report item.","keyIdea":"Each row keeps one model and its quantity together in the printed output.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"},
-        {"id":"cell","partId":"cell","title":"Cell","explanation":"Centered cells share compact padding from the CELL constant.","keyIdea":"Shared padding keeps every printed cell aligned in the report grid.","selector":"[class~=\"aui-table-cell\"]"},
-        {"id":"foot","partId":"foot","title":"Foot","explanation":"Bold totals row shows the final label and sum.","keyIdea":"The footer makes the aggregate visible after the contributing line items.","selector":"[class~=\"aui-table-foot\"]"},
-      ],
 options: [
     { id: "ace-print-totals", name: "Print table", showContext: false, apps: ["ace"], source: {"ace":"src/features/print/ui/report-primitives.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: {
@@ -33,42 +21,42 @@ options: [
       name: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Print report table at scale "xs": no profile padding, shape "none", a text-coloured border, all cells ruled, scroll="parent" and selectionMode "none".',
-    },
+     lesson: {"explanation":"Extra-small print table uses ruled cells without selection or padding."}},
     {
       id: 'head',
       name: 'Header',
       selector: '[class~="aui-table-head"]',
       description: 'Muted header band printed with Model and Qty.',
-    },
+     lesson: {"explanation":"Muted header band printed with Model and Qty."}},
     {
       id: 'header-cell',
       name: 'Header cell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'Centred label on the muted fill with a surface-coloured foreground and wrapping allowed.',
-    },
+     lesson: {"explanation":"Muted centered header wraps labels with surface-coloured text."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-table-body"]',
       description: 'The line items being totalled, here Model B-200 with quantity 4.',
-    },
+     lesson: {"explanation":"The line items being totalled, here Model B-200 with quantity 4."}},
     {
       id: 'row',
       name: 'Row',
       selector: '[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]',
       description: 'One printed line item.',
-    },
+     lesson: {"explanation":"Each printed row clearly shows one report item.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"}},
     {
       id: 'cell',
       name: 'Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Centred cell with 4px inline and 6px block padding shared through the CELL constant.',
-    },
+     lesson: {"explanation":"Centered cells share compact padding from the CELL constant."}},
     {
       id: 'foot',
       name: 'Foot',
       selector: '[class~="aui-table-foot"]',
       description: 'Totals row at the bottom of the print table, its Total label and sum set in bold typographyStyle.',
-    },
+     lesson: {"explanation":"Bold totals row shows the final label and sum."}},
   ],
 });

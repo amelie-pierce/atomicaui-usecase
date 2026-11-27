@@ -35,9 +35,9 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — One carousel pager dot: an empty solid Button with no children and an aria-label of "1 / 3"; primary (orange) for the current page, surface-alt for the others. Selector: `[class~="aui-button"][aria-current]`.
+1. **Container** — One carousel pager dot: an empty solid Button with no children and an aria-label of "1 / 3"; primary (orange) for the current page, surface-alt for the others. Selector: `[class~="aui-button"][aria-current]`. Layer step: **Container** — Empty pager dot labels 1 of 3 and highlights the current page.
 
 ## Apps
 
@@ -57,8 +57,8 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Pager** — The row that holds one dot per page with an 8px gap. Part marker: `data-ug-part="pager"`.
-2. **Other pages** — The surface-alt dots for the pages that are not current (2 / 3 and 3 / 3). Part marker: `data-ug-part="other-dot"`.
+1. **Pager** — The row that holds one dot per page with an 8px gap. Part marker: `data-ug-part="pager"`. Layer step: **Pager** — The row that holds one dot per page with an 8px gap.
+2. **Other pages** — The surface-alt dots for the pages that are not current (2 / 3 and 3 / 3). Part marker: `data-ug-part="other-dot"`. Layer step: **Other pages** — Surface-alt dots mark the two pages that are not current.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-020/example.tsx`
 

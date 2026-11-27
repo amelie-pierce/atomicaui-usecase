@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Value chip** — The 12 in value chip (aria-label "Edit Width, 12 in") that opens the editor popover; it stands alone here rather than floating over the 3D model. Selector: `[data-base-ui-click-trigger]`.
-2. **Editor popup** — The surface (solid, sm, soft, elevation 4) opened 8px to the right of the chip, holding the Width number field and the Cancel and Save buttons in one row. Selector: `[data-aui-popup-motion][role="dialog"]`.
-3. **Button row** — The row at the end of the popup that keeps Cancel and Save together with a 4px gap and no growth, so the Width field takes the remaining width. Selector: `[data-ug-part="edit-actions"]`.
-4. **Cancel** — The filled gray surface-alt Cancel that abandons the edit; ADC fills it like a dialog Cancel. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-5. **Save** — The solid secondary Save that commits the new Width value; it follows Cancel and is the only emphasised action. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
+1. **Value chip** — The 12 in value chip (aria-label "Edit Width, 12 in") that opens the editor popover; it stands alone here rather than floating over the 3D model. Selector: `[data-base-ui-click-trigger]`. Layer step: **Value chip** — 12 in value chip opens its width editor.
+2. **Editor popup** — The surface (solid, sm, soft, elevation 4) opened 8px to the right of the chip, holding the Width number field and the Cancel and Save buttons in one row. Selector: `[data-aui-popup-motion][role="dialog"]`. Layer step: **Editor popup** — Soft popup sits 8px beside the chip with field and actions. Code target: `Popover.Popup`.
+3. **Button row** — The row at the end of the popup that keeps Cancel and Save together with a 4px gap and no growth, so the Width field takes the remaining width. Selector: `[data-ug-part="edit-actions"]`. Layer step: **Button row** — End row keeps Cancel and Save together without taking field width.
+4. **Cancel** — The filled gray surface-alt Cancel that abandons the edit; ADC fills it like a dialog Cancel. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`. Layer step: **Cancel** — Filled gray Cancel discards the pending Width change.
+5. **Save** — The solid secondary Save that commits the new Width value; it follows Cancel and is the only emphasised action. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`. Layer step: **Save** — Solid secondary Save commits the new Width value.
 
 ## Apps
 

@@ -37,15 +37,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Table** — Print report table at scale "xs": no profile padding, shape "none", a text-coloured border, all cells ruled, scroll="parent" and selectionMode "none". Selector: `[class~="aui-table"]`.
-2. **Header** — Muted header band printed with Model and Qty. Selector: `[class~="aui-table-head"]`.
-3. **Header cell** — Centred label on the muted fill with a surface-coloured foreground and wrapping allowed. Selector: `[class~="aui-table-header-cell"]`.
-4. **Body** — The line items being totalled, here Model B-200 with quantity 4. Selector: `[class~="aui-table-body"]`.
-5. **Row** — One printed line item. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
-6. **Cell** — Centred cell with 4px inline and 6px block padding shared through the CELL constant. Selector: `[class~="aui-table-cell"]`.
-7. **Foot** — Totals row at the bottom of the print table, its Total label and sum set in bold typographyStyle. Selector: `[class~="aui-table-foot"]`.
+1. **Table** — Print report table at scale "xs": no profile padding, shape "none", a text-coloured border, all cells ruled, scroll="parent" and selectionMode "none". Selector: `[class~="aui-table"]`. Layer step: **Table** — Extra-small print table uses ruled cells without selection or padding.
+2. **Header** — Muted header band printed with Model and Qty. Selector: `[class~="aui-table-head"]`. Layer step: **Header** — Muted header band printed with Model and Qty.
+3. **Header cell** — Centred label on the muted fill with a surface-coloured foreground and wrapping allowed. Selector: `[class~="aui-table-header-cell"]`. Layer step: **Header cell** — Muted centered header wraps labels with surface-coloured text.
+4. **Body** — The line items being totalled, here Model B-200 with quantity 4. Selector: `[class~="aui-table-body"]`. Layer step: **Body** — The line items being totalled, here Model B-200 with quantity 4.
+5. **Row** — One printed line item. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`. Layer step: **Row** — Each printed row clearly shows one report item.
+6. **Cell** — Centred cell with 4px inline and 6px block padding shared through the CELL constant. Selector: `[class~="aui-table-cell"]`. Layer step: **Cell** — Centered cells share compact padding from the CELL constant.
+7. **Foot** — Totals row at the bottom of the print table, its Total label and sum set in bold typographyStyle. Selector: `[class~="aui-table-foot"]`. Layer step: **Foot** — Bold totals row shows the final label and sum.
 
 ## Apps
 

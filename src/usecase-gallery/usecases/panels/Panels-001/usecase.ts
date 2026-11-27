@@ -4,16 +4,8 @@ export default defineUsecase({
   uiType: 'Resizable split',
   title: 'Side by side',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws', 'adc'],
-    layers: [
-        {"id":"panels","partId":"panels","title":"Panels","explanation":"Horizontal split places two panes side by side in a bounded workspace.","keyIdea":"The horizontal root makes input and preview share one bounded workspace instead of separate pages.","selector":"[class~=\"aui-panels\"]"},
-        {"id":"panel","partId":"panel","title":"Panel","explanation":"Soft Input and 3D Viewer panes share width, headings, and content.","keyIdea":"Each pane keeps its heading and content together while the two areas remain peers.","selector":"[class~=\"aui-panels-panel\"]"},
-        {"id":"resize-handle","partId":"resize-handle","title":"Resize handle","explanation":"Six-pixel primary grip drags between Input and 3D Viewer panes.","keyIdea":"Dragging the vertical grip changes how much width each pane can use.","selector":"[class~=\"aui-panels-resize-handle\"]"},
-      ],
 options: [
     { id: "hcs-side-by-side", showContext: false, name: "Side by side", apps: ["hcs","ace","adm","pfd","pbs","hs","fd","agpd","rws","adc"], source: {"hcs":"src/components/HcsSplitLayout.tsx","ace":"src/pages/estimator/EstimatorPage.tsx","adm":"src/app/layout/AppLayout.tsx","pfd":"src/pfd/Workspace.tsx","pbs":"src/App.tsx","hs":"src/App.tsx","fd":"src/App.jsx","agpd":"src/App.tsx","rws":"src/rws/Shell.tsx","adc":"src/adc/Workspace.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { hcs: 'src/components/HcsSplitLayout.tsx', ace: 'src/pages/estimator/EstimatorPage.tsx', adm: 'src/app/layout/AppLayout.tsx', pfd: 'src/pfd/Workspace.tsx', pbs: 'src/App.tsx', hs: 'src/App.tsx', fd: 'src/App.jsx', agpd: 'src/App.tsx', rws: 'src/rws/Shell.tsx', adc: 'src/adc/Workspace.tsx' },
@@ -27,18 +19,18 @@ options: [
       name: 'Panels',
       selector: '[class~="aui-panels"]',
       description: 'Horizontal split group, 560px wide and 160px tall at most, that places the panes side by side.',
-    },
+     lesson: {"explanation":"Horizontal split places two panes side by side in a bounded workspace."}},
     {
       id: 'panel',
       name: 'Panel',
       selector: '[class~="aui-panels-panel"]',
       description: 'Two surface-alt soft panes, Input (id "input", 50% default width) and 3D Viewer, each at least 120px wide with a semi-bold l3 heading.',
-    },
+     lesson: {"explanation":"Soft Input and 3D Viewer panes share width, headings, and content."}},
     {
       id: 'resize-handle',
       name: 'Resize handle',
       selector: '[class~="aui-panels-resize-handle"]',
       description: '6px primary vertical bar between Input and 3D Viewer that the user drags to change the widths.',
-    },
+     lesson: {"explanation":"Six-pixel primary grip drags between Input and 3D Viewer panes."}},
   ],
 });

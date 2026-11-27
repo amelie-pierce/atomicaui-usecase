@@ -37,15 +37,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the New from Template picker. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The narrow default-scale picker window, 480px wide (ADM widens it to 520px). Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar reading "New from Template"; the ACE and HS scenes title it "Templates" and ADM keeps "New from Template". Selector: `[class~="aui-dialog-title"]`.
+1. **Overlay** — The scrim behind the New from Template picker. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — The scrim behind the New from Template picker.
+2. **Popup** — The narrow default-scale picker window, 480px wide (ADM widens it to 520px). Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — The narrow default-scale picker window, 480px wide (ADM widens it to 520px).
+3. **Title bar** — The raised title bar reading "New from Template"; the ACE and HS scenes title it "Templates" and ADM keeps "New from Template". Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Title names New from Template; ACE and HS use Templates.
 4. **Title text** — The picker name at the start of the title bar. Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
-5. **Spacer** — The gap between the picker name and the close X. Selector: `[class~="aui-dialog-spacer"]`.
-6. **Close** — The close X that abandons the picker (labelled "Cancel" in the ACE scene and "Close Templates" in the HS scene). Selector: `[class~="aui-dialog-close"]`.
-7. **Body** — The body that holds the radio list of templates; the HS and FD version also scrolls (overflow auto). Selector: `[class~="aui-dialog-body"]`.
+5. **Spacer** — The gap between the picker name and the close X. Selector: `[class~="aui-dialog-spacer"]`. Layer step: **Spacer** — The gap between the picker name and the close X.
+6. **Close** — The close X that abandons the picker (labelled "Cancel" in the ACE scene and "Close Templates" in the HS scene). Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — Close X abandons the picker; app labels vary.
+7. **Body** — The body that holds the radio list of templates; the HS and FD version also scrolls (overflow auto). Selector: `[class~="aui-dialog-body"]`. Layer step: **Body** — Body holds the template radios and scrolls in HS and FD.
 8. **Template text** — The p3 placeholder line that stands in for the list of templates in the Dialog frame. Part marker: `data-ug-part="template-text"`. Direct text is highlighted.
 
 ## Apps

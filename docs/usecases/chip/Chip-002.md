@@ -38,9 +38,9 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Chip** — The secondary solid chip at scale "xs" with soft corners that marks the whole app state, shown in the ADC beta notice and beside the menu. Selector: `[class~="aui-chip"]`.
+1. **Chip** — The secondary solid chip at scale "xs" with soft corners that marks the whole app state, shown in the ADC beta notice and beside the menu. Selector: `[class~="aui-chip"]`. Layer step: **Chip** — Extra-small soft secondary chip marks beta app state.
 2. **Label** — The word BETA that states the status. Selector: `[class~="aui-chip-label"]`. Direct text is highlighted.
 
 ## Apps

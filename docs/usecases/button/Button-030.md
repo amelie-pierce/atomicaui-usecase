@@ -38,12 +38,12 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Walkthrough card** — The 328px coach-mark card for the Connection Type step with its text and footer navigation. Selector: `[role="region"][aria-label="Walkthrough"]`.
-2. **Close** — The 20px transparent xmark button pinned to the card corner (4px inset) that dismisses the HCS walkthrough; HCS wraps it in an absolute span. Selector: `[class~="aui-button"][aria-label^="Close"]`.
-3. **Close icon** — The xmark glyph inside the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-4. **Next** — The step button that is the only navigation on step 1 / 6 (Next with arrow-right); Close is the way out without finishing. Selector: `[class~="aui-button"]:not([aria-label])`.
+1. **Walkthrough card** — The 328px coach-mark card for the Connection Type step with its text and footer navigation. Selector: `[role="region"][aria-label="Walkthrough"]`. Layer step: **Walkthrough card** — 328px coach mark pairs Connection Type guidance with navigation.
+2. **Close** — The 20px transparent xmark button pinned to the card corner (4px inset) that dismisses the HCS walkthrough; HCS wraps it in an absolute span. Selector: `[class~="aui-button"][aria-label^="Close"]`. Layer step: **Close** — 20px transparent corner X dismisses the HCS walkthrough.
+3. **Close icon** — The xmark glyph inside the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Close icon** — Xmark glyph appears inside the close button itself. Code target: `IconButton`.
+4. **Next** — The step button that is the only navigation on step 1 / 6 (Next with arrow-right); Close is the way out without finishing. Selector: `[class~="aui-button"]:not([aria-label])`. Layer step: **Next** — Step 1 shows Next with arrow-right as its only navigation.
 
 ## Apps
 

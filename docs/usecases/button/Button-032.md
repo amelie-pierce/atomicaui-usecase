@@ -38,15 +38,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Help button** — The 20px transparent secondary circle-question button that sits beside the field label; the Look select swaps it for the 28px ghost version. In scenes it is a Button around a ContainedIcon (square or square-compact, RWS fixed at 20px). Selector: `[class~="aui-button"][aria-label*="elp"]`.
-2. **Help icon** — The circle-question glyph centred in the help button. Selector: `[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Field label** — The label (Material, or Download Duration in HCS) that names the control the help explains. Selector: `[class~="aui-field-label"]`.
-4. **Field control** — The input (Steel) in ADM, HS, PBS, PFD and RWS scenes that the help text describes. Selector: `[class~="aui-field-control"]`.
-5. **Help tooltip** — ADM and HS open the explanation as a tooltip above the button, up to 256px (ADM) or 384px (HS) wide. Selector: `[class~="aui-tooltip-popup"]`.
-6. **Help popover** — PBS, PFD and RWS open the explanation in a solid popover (320px or 384px max) above the button. Selector: `[data-aui-popup-motion][role="dialog"]`.
-7. **Select trigger** — HCS only: the Snow (115) select under the Download Duration label. Selector: `[class~="aui-select-trigger"]`.
+1. **Help button** — The 20px transparent secondary circle-question button that sits beside the field label; the Look select swaps it for the 28px ghost version. In scenes it is a Button around a ContainedIcon (square or square-compact, RWS fixed at 20px). Selector: `[class~="aui-button"][aria-label*="elp"]`. Layer step: **Help button** — Circle-question button sits by the label at 20px or 28px.
+2. **Help icon** — The circle-question glyph centred in the help button. Selector: `[class~="aui-button"][aria-label*="elp"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Help icon** — The circle-question glyph centred in the help button. Code target: `IconButton`, `ContainedIcon`.
+3. **Field label** — The label (Material, or Download Duration in HCS) that names the control the help explains. Selector: `[class~="aui-field-label"]`. Layer step: **Field label** — Material or Download Duration label names the explained control.
+4. **Field control** — The input (Steel) in ADM, HS, PBS, PFD and RWS scenes that the help text describes. Selector: `[class~="aui-field-control"]`. Layer step: **Field control** — Steel field is the control described by the help text.
+5. **Help tooltip** — ADM and HS open the explanation as a tooltip above the button, up to 256px (ADM) or 384px (HS) wide. Selector: `[class~="aui-tooltip-popup"]`. Layer step: **Help tooltip** — ADM and HS show a tooltip above the button, sized per app.
+6. **Help popover** — PBS, PFD and RWS open the explanation in a solid popover (320px or 384px max) above the button. Selector: `[data-aui-popup-motion][role="dialog"]`. Layer step: **Help popover** — PBS, PFD, and RWS show a solid popover above the button. Code target: `Popover.Popup`.
+7. **Select trigger** — HCS only: the Snow (115) select under the Download Duration label. Selector: `[class~="aui-select-trigger"]`. Layer step: **Select trigger** — HCS only: the Snow (115) select under the Download Duration label.
 
 ## Apps
 

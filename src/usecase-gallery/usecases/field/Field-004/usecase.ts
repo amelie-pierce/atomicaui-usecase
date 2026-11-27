@@ -4,23 +4,10 @@ export default defineUsecase({
   uiType: 'Single-line field',
   title: 'Search field',
   apps: ['hcs', 'hs', 'pfd', 'fd', 'pbs', 'rws'],
-    layers: [
-        {"id":"field","partId":"field","title":"Field","explanation":"Small flexible search field shares the toolbar row; apps set 112px minimum.","keyIdea":"The wrapper lets a narrow search field grow within a shared toolbar row.","selector":"[class~=\"aui-field\"]"},
-        {"id":"control","partId":"control","title":"Control","explanation":"Outlined 28px row holds search icon, input, and optional clear button.","keyIdea":"One outline gathers query text, the search glyph and optional clearing into a single field.","selector":"[class~=\"aui-field-control\"]"},
-        {"id":"icon","partId":"icon","title":"Search icon","explanation":"The leading magnifying-glass icon that marks the box as a search.","keyIdea":"The leading magnifier identifies this control as a way to filter content.","selector":"[class~=\"aui-field-control\"] > [class~=\"aui-contained-icon\"]","code":["Field.Icon"]},
-        {"id":"input","partId":"input","title":"Input","explanation":"Search Table input fills remaining width and keeps its accessible name.","keyIdea":"The placeholder previews the search scope before any query has been entered.","selector":"[class~=\"aui-field-control\"] > [class~=\"aui-input\"]"},
-        {"id":"clear","partId":"clear","title":"Clear button","explanation":"End xmark appears after typing; PBS and RWS omit this clear action.","keyIdea":"Clear search appears only when there is text to remove, avoiding an idle extra action.","selector":"[class~=\"aui-field-button\"]"},
-      ],
 options: [
     { id: "hs-search", name: "Search field", apps: ["hcs","hs","pfd","fd"], note: "The box ends with a clear button.", source: {"hcs":"src/App.tsx","hs":"src/hs/ResultsTable.tsx","pfd":"src/pfd/ResultsTable.tsx","fd":"src/components/Results.jsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
     { id: "pbs-search", name: "Icon-only search", apps: ["pbs","rws"], note: "Icon only: the box has no clear button.", source: {"pbs":"src/ResultsSection.tsx","rws":"src/rws/output.tsx"}, showContext: false ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { hcs: 'src/App.tsx', hs: 'src/hs/ResultsTable.tsx', pfd: 'src/pfd/ResultsTable.tsx', fd: 'src/components/Results.jsx', pbs: 'src/ResultsSection.tsx', rws: 'src/rws/output.tsx' },
@@ -34,30 +21,30 @@ options: [
       name: "Field",
       selector: "[class~=\"aui-field\"]",
       description: "The search wrapper at scale \"sm\"; the apps give it a minWidth of 112px and flex fill so it shares a toolbar row.",
-    },
+     lesson: {"explanation":"Small flexible search field shares the toolbar row; apps set 112px minimum."}},
     {
       id: "control",
       name: "Control",
       selector: "[class~=\"aui-field-control\"]",
       description: "The 28px outlined row that holds the magnifying glass, the input and, in HCS, HS, PFD and FD, the clear button.",
-    },
+     lesson: {"explanation":"Outlined 28px row holds search icon, input, and optional clear button."}},
     {
       id: "icon",
       name: "Search icon",
       selector: "[class~=\"aui-field-control\"] > [class~=\"aui-contained-icon\"]",
       description: "The leading magnifying-glass icon that marks the box as a search.",
-    },
+     lesson: {"explanation":"The leading magnifying-glass icon that marks the box as a search.","code":["Field.Icon"]}},
     {
       id: "input",
       name: "Input",
       selector: "[class~=\"aui-field-control\"] > [class~=\"aui-input\"]",
       description: "The text input with the \"Search Table\" placeholder and aria-label, filling the rest of the row.",
-    },
+     lesson: {"explanation":"Search Table input fills remaining width and keeps its accessible name."}},
     {
       id: "clear",
       name: "Clear button",
       selector: "[class~=\"aui-field-button\"]",
       description: "The xmark button labelled \"Clear search\" at the end of the box; it only appears once the box has text, and PBS and RWS leave it out.",
-    },
+     lesson: {"explanation":"End xmark appears after typing; PBS and RWS omit this clear action."}},
   ],
 });

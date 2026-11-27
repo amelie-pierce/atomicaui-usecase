@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Panels** — Vertical split group, 560px wide and 200px tall at most, whose top pane can fold to a rail. Selector: `[class~="aui-panels"]`.
-2. **Collapsible panel** — The Input pane is collapsible with a 40px collapsedSize (starts at 40px in the HCS scene) and minSize 120px; the Output pane below stays open. Selector: `[class~="aui-panels-panel"]`.
-3. **Content** — HCS scene: the pane body that holds the Input heading beside the rail, hidden when the panel is collapsed. Selector: `[class~="aui-panels-content"]`.
-4. **Expand trigger** — HCS scene: angle-down icon button labelled "Expand Input" on the 40px rail, with a bottom tooltip, that reopens the Input pane. Selector: `[class~="aui-panels-trigger"]`.
-5. **Resize handle** — 6px primary horizontal bar between Input and the results pane. Selector: `[class~="aui-panels-resize-handle"]`.
+1. **Panels** — Vertical split group, 560px wide and 200px tall at most, whose top pane can fold to a rail. Selector: `[class~="aui-panels"]`. Layer step: **Panels** — Vertical split lets the upper pane fold into a narrow rail.
+2. **Collapsible panel** — The Input pane is collapsible with a 40px collapsedSize (starts at 40px in the HCS scene) and minSize 120px; the Output pane below stays open. Selector: `[class~="aui-panels-panel"]`. Layer step: **Collapsible panel** — Input collapses to a 40px rail while Output stays open below.
+3. **Content** — HCS scene: the pane body that holds the Input heading beside the rail, hidden when the panel is collapsed. Selector: `[class~="aui-panels-content"]`. Layer step: **Content** — Open pane body holds the Input heading beside its collapsed rail.
+4. **Expand trigger** — HCS scene: angle-down icon button labelled "Expand Input" on the 40px rail, with a bottom tooltip, that reopens the Input pane. Selector: `[class~="aui-panels-trigger"]`. Layer step: **Expand trigger** — Angle-down button on the rail reopens Input with a tooltip.
+5. **Resize handle** — 6px primary horizontal bar between Input and the results pane. Selector: `[class~="aui-panels-resize-handle"]`. Layer step: **Resize handle** — Six-pixel horizontal grip adjusts the boundary above the results pane.
 
 ## Apps
 

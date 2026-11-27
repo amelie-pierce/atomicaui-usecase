@@ -9,18 +9,9 @@ export default defineUsecase({
   uiType: 'Card',
   title: 'Image tile',
   apps: ['adm'],
-    layers: [
-        {"id":"card","partId":"card","title":"Card","explanation":"Square 96-pixel soft tile gives each application an image-led target.","keyIdea":"A square tile turns each application into one image-led discovery target.","selector":"[class~=\"aui-card\"]"},
-        {"id":"image-container","partId":"image-container","title":"Image container","explanation":"Full-card image frame lets artwork fill the square tile.","keyIdea":"The full-bleed container lets the application artwork define the tile rather than an inset frame.","selector":"[class~=\"aui-card-image-container\"]"},
-        {"id":"image","partId":"image","title":"Image","explanation":"One-to-one application image fits whole with its Application alt text.","keyIdea":"Contain fitting keeps the whole application mark visible inside its square tile.","selector":"[class~=\"aui-card-image\"]"},
-      ],
 options: [
     { id: "adm-related-apps", contextAnatomy: CONTEXT_ANATOMY, name: "Related applications", source: {"adm":"src/features/applications/components/RelatedAppsGrid.tsx"} ,
-      contextLayers: [
-        {"id":"context-section-heading","partId":"section-heading","title":"Explore More Applications heading","explanation":"Explore More Applications introduces the image-only discovery tiles.","keyIdea":"The heading distinguishes application discovery from the current design controls.","selector":"[data-ug-part=\"section-heading\"]","scope":"context"},
-        {"id":"context-app-grid","partId":"app-grid","title":"Application grid","explanation":"Three-column grid arranges image-only application cards with even gaps.","keyIdea":"A three-column grid makes the available application choices easy to scan as peers.","selector":"[data-ug-part=\"app-grid\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"section-heading","lesson":{"explanation":"Explore More Applications introduces the image-only discovery tiles.","selector":"[data-ug-part=\"section-heading\"]","scope":"context"}},{"id":"app-grid","lesson":{"explanation":"Three-column grid arranges image-only application cards with even gaps.","selector":"[data-ug-part=\"app-grid\"]","scope":"context"}}]},
   ],
   source: { adm: 'src/features/applications/components/RelatedAppsGrid.tsx' },
   summary: 'An image-only card, 96 by 96, used as the visual of a link in a grid.',
@@ -33,18 +24,18 @@ options: [
       name: 'Card',
       selector: '[class~="aui-card"]',
       description: 'Square 96 by 96 soft tile with no padding; ADM lays three of them across under Explore More Applications.',
-    },
+     lesson: {"explanation":"Square 96-pixel soft tile gives each application an image-led target."}},
     {
       id: 'image-container',
       name: 'Image container',
       selector: '[class~="aui-card-image-container"]',
       description: 'Fills the whole card (width and height "fill"), so the picture is the entire tile.',
-    },
+     lesson: {"explanation":"Full-card image frame lets artwork fill the square tile."}},
     {
       id: 'image',
       name: 'Image',
       selector: '[class~="aui-card-image"]',
       description: 'The application picture with alt "Application", a 1:1 ratio and fit="contain".',
-    },
+     lesson: {"explanation":"One-to-one application image fits whole with its Application alt text."}},
   ],
 });

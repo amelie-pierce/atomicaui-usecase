@@ -38,9 +38,9 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The inline "All Products" Button inside a sentence: profile "no-padding" removes the box, inline-flex and an underline make it read as a warning-colored link; type="button" keeps it from submitting. Selector: `[class~="aui-button"]`.
+1. **Container** — The inline "All Products" Button inside a sentence: profile "no-padding" removes the box, inline-flex and an underline make it read as a warning-colored link; type="button" keeps it from submitting. Selector: `[class~="aui-button"]`. Layer step: **Container** — Underlined All Products link appears inline and does not submit the form.
 2. **Label** — The underlined words "All Products" that sit in the middle of the sentence "Selecting … to review all solutions". Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
 ## Apps
@@ -61,8 +61,8 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **No output results notice** — The tonal warning status with the triangle icon and the "No Output Results" heading. Part marker: `data-ug-part="notice"`.
-2. **Suggestions list** — The "You can try:" bulleted list whose list item holds the inline All Products button. Part marker: `data-ug-part="try-list"`.
+1. **No output results notice** — The tonal warning status with the triangle icon and the "No Output Results" heading. Part marker: `data-ug-part="notice"`. Layer step: **No output results notice** — Tonal warning pairs triangle icon with No Output Results heading.
+2. **Suggestions list** — The "You can try:" bulleted list whose list item holds the inline All Products button. Part marker: `data-ug-part="try-list"`. Layer step: **Suggestions list** — Try list contains an inline All Products action.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-004/example.tsx`
 

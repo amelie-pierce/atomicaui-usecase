@@ -9,17 +9,9 @@ export default defineUsecase({
   uiType: 'Dismissible chip',
   title: 'Attachment chip',
   apps: ['adm', 'pfd', 'pbs', 'hs', 'agpd', 'rws'],
-    layers: [
-        {"id":"chip","partId":"chip","title":"Chip","explanation":"Default chip represents one attached file in feedback forms.","keyIdea":"Each file chip keeps an attachment name visible as one removable item.","selector":"[class~=\"aui-chip\"]"},
-        {"id":"dismiss","partId":"dismiss","title":"Dismiss","explanation":"End X removes the attached screenshot from the feedback form.","keyIdea":"The trailing X removes only its associated file from the feedback request.","selector":"[class~=\"aui-chip-dismiss\"]"},
-      ],
 options: [
     { id: "adm-attachments", contextAnatomy: CONTEXT_ANATOMY, name: "Feedback attachments", source: {"adm":"src/features/top-navigation/components/FeedbackDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
-      contextLayers: [
-        {"id":"context-attach-label","partId":"attach-label","title":"Attachment heading","explanation":"The \"Attach Screenshot or Markups\" l4 caption above the attached files.","keyIdea":"The attachment heading distinguishes file upload from the feedback fields above it.","selector":"[data-ug-part=\"attach-label\"]","scope":"context"},
-        {"id":"context-attachment-row","partId":"attachment-row","title":"Attachment row","explanation":"Wrapping row lists each attached file chip with an 8px gap.","keyIdea":"A wrapping row lets several attached files remain individually visible as the form narrows.","selector":"[data-ug-part=\"attachment-row\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"attach-label","lesson":{"explanation":"The \"Attach Screenshot or Markups\" l4 caption above the attached files.","selector":"[data-ug-part=\"attach-label\"]","scope":"context"}},{"id":"attachment-row","lesson":{"explanation":"Wrapping row lists each attached file chip with an 8px gap.","selector":"[data-ug-part=\"attachment-row\"]","scope":"context"}}]},
   ],
   source: {
     adm: 'src/features/top-navigation/components/FeedbackDialog.tsx',
@@ -39,7 +31,7 @@ options: [
       name: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The default-styled chip that stands for one attached file in the Feedback form of ADM, PFD, PBS, HS, AGPD and RWS.",
-    },
+     lesson: {"explanation":"Default chip represents one attached file in feedback forms."}},
     {
       id: "label",
       name: "Label",
@@ -52,6 +44,6 @@ options: [
       name: "Dismiss",
       selector: "[class~=\"aui-chip-dismiss\"]",
       description: "The X button at the end, labelled \"Remove screenshot.png\", that detaches the file.",
-    },
+     lesson: {"explanation":"End X removes the attached screenshot from the feedback form."}},
   ],
 });

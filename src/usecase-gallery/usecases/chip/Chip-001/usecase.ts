@@ -10,17 +10,9 @@ export default defineUsecase({
   uiType: 'Label chip',
   title: 'Solid release label',
   apps: ['hcs', 'ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-    layers: [
-        {"id":"chip","partId":"chip","title":"Chip","explanation":"Solid success chip labels release-note features; improvements use warning colour.","keyIdea":"The success treatment marks a release entry as a feature before its explanation is read.","selector":"[class~=\"aui-chip\"]"},
-      ],
 options: [
     { id: "hcs-release-note", contextAnatomy: CONTEXT_ANATOMY, name: "Release note row", source: {"hcs":"src/components/HcsAboutDialog.tsx","ace":"src/features/top-navigation/ui/AboutDialog.tsx","adm":"src/features/top-navigation/components/AboutDialog.tsx","pfd":"src/pfd/AboutDialog.tsx","pbs":"src/AboutDialog.tsx","hs":"src/hs/AboutDialog.tsx","fd":"src/components/AboutDialog.jsx","agpd":"src/agpd/AboutDialog.tsx","rws":"src/rws/AboutDialog.tsx"} ,
-      contextLayers: [
-        {"id":"context-change-row","partId":"change-row","title":"Change row","explanation":"Padded release-note row separates each change with a bottom outline.","keyIdea":"The bordered row keeps each release change distinct while maintaining a shared list rhythm.","selector":"[data-ug-part=\"change-row\"]","scope":"context"},
-        {"id":"context-chip-column","partId":"chip-column","title":"Chip column","explanation":"The fixed 160px start column that holds the change Chip (FEATURE, IMPROVEMENT).","keyIdea":"A fixed badge column aligns change categories across neighboring release entries.","selector":"[data-ug-part=\"chip-column\"]","scope":"context"},
-        {"id":"context-change-text","partId":"change-text","title":"Change text","explanation":"Small text describes each change, such as added download help.","keyIdea":"The sentence supplies the concrete change behind the category chip.","selector":"[data-ug-part=\"change-text\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"change-row","lesson":{"explanation":"Padded release-note row separates each change with a bottom outline.","selector":"[data-ug-part=\"change-row\"]","scope":"context"}},{"id":"chip-column","lesson":{"explanation":"The fixed 160px start column that holds the change Chip (FEATURE, IMPROVEMENT).","selector":"[data-ug-part=\"chip-column\"]","scope":"context"}},{"id":"change-text","lesson":{"explanation":"Small text describes each change, such as added download help.","selector":"[data-ug-part=\"change-text\"]","scope":"context"}}]},
   ],
   source: {
     hcs: 'src/components/HcsAboutDialog.tsx',
@@ -43,7 +35,7 @@ options: [
       name: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The solid success chip at scale \"sm\" that tags a release-note entry as a feature (the warning colour is used for an improvement).",
-    },
+     lesson: {"explanation":"Solid success chip labels release-note features; improvements use warning colour."}},
     {
       id: "label",
       name: "Label",

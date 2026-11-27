@@ -9,20 +9,9 @@ export default defineUsecase({
   uiType: 'Drawer',
   title: 'Mobile navigation drawer',
   apps: ['ace', 'adm', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"Drawer scrim covers the workspace while ACE leaves its top bar exposed.","keyIdea":"The backdrop separates navigation from the phone content without covering the persistent top bar.","selector":"[class~=\"aui-drawer-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"288px panel slides from phone right edge to show Navigation.","keyIdea":"The full-height panel provides a dedicated surface for navigation on a narrow screen.","selector":"[class~=\"aui-drawer-popup\"]"},
-        {"id":"content","partId":"content","title":"Content","explanation":"Drawer content holds the vertical menu of top-bar actions.","keyIdea":"The content region gives the menu its space without mixing in page controls.","selector":"[class~=\"aui-drawer-content\"]"},
-        {"id":"menubar","partId":"menubar","title":"Vertical menubar","explanation":"Small-scale vertical menubar stacks drawer actions at full width.","keyIdea":"A vertical menubar stacks the main actions into one narrow navigation column.","selector":"[class~=\"aui-drawer-content\"] [class~=\"aui-menubar\"]"},
-        {"id":"item","partId":"item","title":"Menu rows","explanation":"Save, Open, About and ACE Print appear as drawer menu rows.","keyIdea":"Each row maps a familiar top-bar action into the mobile drawer.","selector":"[class~=\"aui-drawer-content\"] [class~=\"aui-button\"]"},
-      ],
 options: [
     { id: "ace-mobile-nav", name: "Mobile navigation", source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","pfd":"src/pfd/TopBar.tsx","pbs":"src/TopBar.tsx","hs":"src/hs/TopBar.tsx","fd":"src/App.jsx","agpd":"src/agpd/TopBar.tsx","rws":"src/rws/TopBar.tsx"}, contextAnatomy: CONTEXT_ANATOMY ,
-      contextLayers: [
-        {"id":"context-top-bar","partId":"top-bar","title":"Top bar","explanation":"Phone top bar stays visible just above the open drawer.","keyIdea":"The persistent top bar remains the visible anchor above the open navigation surface.","selector":"[class~=\"aui-menubar\"][aria-label=\"Top bar\"]","scope":"context"},
-        {"id":"context-toggle","partId":"toggle","title":"Navigation toggle","explanation":"Close navigation button on the top bar toggles drawer visibility.","keyIdea":"The labelled toggle gives users a direct way to close navigation from the top bar.","selector":"[class~=\"aui-menubar\"][aria-label=\"Top bar\"] [class~=\"aui-button\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"top-bar","lesson":{"explanation":"Phone top bar stays visible just above the open drawer.","scope":"context"}},{"id":"toggle","lesson":{"explanation":"Close navigation button on the top bar toggles drawer visibility.","scope":"context"}}]},
   ],
   source: {
     ace: 'src/features/top-navigation/ui/AceNavBar.tsx',
@@ -44,30 +33,30 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-drawer-backdrop"]',
       description: 'The scrim behind the drawer; in the ACE scene it starts 36px down so the top bar stays uncovered.',
-    },
+     lesson: {"explanation":"Drawer scrim covers the workspace while ACE leaves its top bar exposed."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-drawer-popup"]',
       description: 'The 288px-wide, full-height, square no-padding panel labelled "Navigation" that slides in from the right edge on a phone.',
-    },
+     lesson: {"explanation":"288px panel slides from phone right edge to show Navigation."}},
     {
       id: 'content',
       name: 'Content',
       selector: '[class~="aui-drawer-content"]',
       description: 'The region that holds the vertical menubar of top bar actions.',
-    },
+     lesson: {"explanation":"Drawer content holds the vertical menu of top-bar actions."}},
     {
       id: 'menubar',
       name: 'Vertical menubar',
       selector: '[class~="aui-drawer-content"] [class~="aui-menubar"]',
       description: 'The vertical Menubar at scale "sm" that stacks the actions full width.',
-    },
+     lesson: {"explanation":"Small-scale vertical menubar stacks drawer actions at full width."}},
     {
       id: 'item',
       name: 'Menu rows',
       selector: '[class~="aui-drawer-content"] [class~="aui-button"]',
       description: 'The Save to device, Open from device and About rows of the example; the ACE scene adds Print.',
-    },
+     lesson: {"explanation":"Save, Open, About and ACE Print appear as drawer menu rows."}},
   ],
 });

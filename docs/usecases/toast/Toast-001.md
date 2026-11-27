@@ -35,15 +35,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Viewport** — The stack container pinned to the top end of the pane with 8px insets, rendered inside Toast.Portal. Selector: `[class~="aui-toast-viewport"]`.
-2. **Toast** — The success notification surface the ToastStack adds on mount, one per manager entry. Selector: `[class~="aui-toast"]`.
-3. **Content** — The copy block that Toast renders beside the icon, holding the title and the description. Selector: `[class~="aui-toast-content"]`.
-4. **Icon** — The success status icon that Toast draws itself from type: 'success'. Selector: `[class~="aui-toast-icon"]`.
+1. **Viewport** — The stack container pinned to the top end of the pane with 8px insets, rendered inside Toast.Portal. Selector: `[class~="aui-toast-viewport"]`. Layer step: **Viewport** — Toast portal pins stacked notices at the pane top end with insets.
+2. **Toast** — The success notification surface the ToastStack adds on mount, one per manager entry. Selector: `[class~="aui-toast"]`. Layer step: **Toast** — Toast stack adds one success notice for each saved project.
+3. **Content** — The copy block that Toast renders beside the icon, holding the title and the description. Selector: `[class~="aui-toast-content"]`. Layer step: **Content** — Toast content places its title and detail beside the icon.
+4. **Icon** — The success status icon that Toast draws itself from type: 'success'. Selector: `[class~="aui-toast-icon"]`. Layer step: **Icon** — Success icon marks completion before readers scan notification text.
 5. **Title** — The heading "Success" taken from the title passed to manager.add. Selector: `[class~="aui-toast-title"]`. Direct text is highlighted.
-6. **Description** — The detail line "Your project was saved to the device." taken from the description passed to manager.add. Selector: `[class~="aui-toast-description"]`.
-7. **Close** — The close X that Toast adds so the user can dismiss the message before it times out. Selector: `[class~="aui-toast-close"]`.
+6. **Description** — The detail line "Your project was saved to the device." taken from the description passed to manager.add. Selector: `[class~="aui-toast-description"]`. Layer step: **Description** — This detail says your project was saved to the device.
+7. **Close** — The close X that Toast adds so the user can dismiss the message before it times out. Selector: `[class~="aui-toast-close"]`. Layer step: **Close** — Close button dismisses the notice before its timeout expires.
 
 ## Apps
 
@@ -72,8 +72,8 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Work area pane** — The relatively positioned pane at the app root over which the toast viewport floats at its top end. Part marker: `data-ug-part="pane"`.
-2. **Pane title** — The semi-bold l3 Input heading of the pane the toast appears over. Part marker: `data-ug-part="pane-title"`.
+1. **Work area pane** — The relatively positioned pane at the app root over which the toast viewport floats at its top end. Part marker: `data-ug-part="pane"`. Layer step: **Work area pane** — Positioned work pane anchors the floating toast viewport above content.
+2. **Pane title** — The semi-bold l3 Input heading of the pane the toast appears over. Part marker: `data-ug-part="pane-title"`. Layer step: **Pane title** — Input heading names the work area beneath the toast.
 
 #### Component UI source — `src/usecase-gallery/usecases/toast/Toast-001/example.tsx`
 

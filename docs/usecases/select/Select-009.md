@@ -36,17 +36,17 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field** — Label-less Field at scale "sm" with the "status-filter" class that places the select in the output toolbar. Selector: `[class~="aui-field"]`.
-2. **Trigger** — Full-width trigger labelled "Product status" for assistive tech only, in the kit default style (no surface or fixed colour). Selector: `[class~="aui-select-trigger"]`.
+1. **Field** — Label-less Field at scale "sm" with the "status-filter" class that places the select in the output toolbar. Selector: `[class~="aui-field"]`. Layer step: **Field** — Label-less small field places the status filter in the toolbar.
+2. **Trigger** — Full-width trigger labelled "Product status" for assistive tech only, in the kit default style (no surface or fixed colour). Selector: `[class~="aui-select-trigger"]`. Layer step: **Trigger** — Default trigger uses Product status as its accessible name.
 3. **Value** — Shows "Passed products", the default status filter. Selector: `[class~="aui-select-value"]`. Direct text is highlighted.
-4. **Chevron** — The chevron at the trigger end. Selector: `[class~="aui-select-chevron"]`.
-5. **Popup** — Popup of the trigger width placed 5px below it, offering Passed, Failed and All products. Selector: `[class~="aui-select-popup"]`.
-6. **List** — The list of the three status rows. Selector: `[class~="aui-select-list"]`.
-7. **Item** — A status row; the chosen one is marked by a raised fill. Selector: `[class~="aui-select-item"]`.
-8. **Item text** — The status wording, such as "Failed products". Selector: `[class~="aui-select-item-text"]`.
-9. **Indicator** — Empty indicator slot at the row end. Selector: `[class~="aui-select-item-indicator"]`.
+4. **Chevron** — The chevron at the trigger end. Selector: `[class~="aui-select-chevron"]`. Layer step: **Chevron** — End chevron marks the status trigger as a dropdown.
+5. **Popup** — Popup of the trigger width placed 5px below it, offering Passed, Failed and All products. Selector: `[class~="aui-select-popup"]`. Layer step: **Popup** — Popup offers Passed, Failed, and All products 5px below.
+6. **List** — The list of the three status rows. Selector: `[class~="aui-select-list"]`. Layer step: **List** — Popup list holds Passed, Failed, and All products rows.
+7. **Item** — A status row; the chosen one is marked by a raised fill. Selector: `[class~="aui-select-item"]`. Layer step: **Item** — A status row; the chosen one is marked by a raised fill.
+8. **Item text** — The status wording, such as "Failed products". Selector: `[class~="aui-select-item-text"]`. Layer step: **Item text** — Status wording names each choice, such as Failed products.
+9. **Indicator** — Empty indicator slot at the row end. Selector: `[class~="aui-select-item-indicator"]`. Layer step: **Indicator** — Empty end slot shows no check for this selected option.
 
 ## Apps
 

@@ -5,18 +5,11 @@ export default defineUsecase({
   title: 'Try again button',
 
   apps: ['hcs'],
-    layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Small Try again follows the results error message.","keyIdea":"The small retry action offers another calculation attempt beneath the error.","selector":"[class~=\"aui-button\"]"},
-      ],
 options: [
     { id: "results", name: "Results error strip", apps: ["hcs"], contextAnatomy: [
-      { id: "error-strip", name: "Error strip", description: "The solid error alert of the Output pane that holds the message and the Try again button on the next line." },
-      { id: "error-message", name: "Error message", description: "The text \"We couldn't check products right now. Please try again.\"" },
+      { id: "error-strip", name: "Error strip", description: "The solid error alert of the Output pane that holds the message and the Try again button on the next line." , lesson: {"explanation":"Solid error strip holds its message and the next-line retry.","selector":"[data-ug-part=\"error-strip\"]","scope":"context"}},
+      { id: "error-message", name: "Error message", description: "The text \"We couldn't check products right now. Please try again.\"" , lesson: {"explanation":"The text \"We couldn't check products right now. Please try again.\"","selector":"[data-ug-part=\"error-message\"]","scope":"context"}},
     ], source: {"hcs":"src/components/F01Results.tsx"} ,
-      contextLayers: [
-        {"id":"context-error-strip","partId":"error-strip","title":"Error strip","explanation":"Solid error strip holds its message and the next-line retry.","keyIdea":"The error strip keeps the failure message and its recovery action together.","selector":"[data-ug-part=\"error-strip\"]","scope":"context"},
-        {"id":"context-error-message","partId":"error-message","title":"Error message","explanation":"The text \"We couldn't check products right now. Please try again.\"","keyIdea":"The text \"We couldn't check products right now.","selector":"[data-ug-part=\"error-message\"]","scope":"context"},
-      ],
     },
   ],
   source: { hcs: 'src/components/F01Results.tsx' },
@@ -31,7 +24,7 @@ options: [
       name: "Container",
       description: "The Try again Button under the Results error message: small scale only, taking the default surface-alt color and solid paint.",
       selector: "[class~=\"aui-button\"]",
-    },
+     lesson: {"explanation":"Small Try again follows the results error message."}},
     {
       id: "label",
       name: "Label",

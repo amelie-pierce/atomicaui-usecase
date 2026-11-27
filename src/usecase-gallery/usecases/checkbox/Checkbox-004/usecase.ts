@@ -4,38 +4,16 @@ export default defineUsecase({
   uiType: 'Checkbox group',
   title: 'Object visibility checkbox group',
   apps: ['hcs', 'adc', 'adm', 'fd', 'hs', 'pbs', 'agpd', 'rws'],
-    layers: [
-        {"id":"title","partId":"title","title":"Group title","explanation":"Object Visibility heading groups the model display checkboxes.","keyIdea":"The group heading makes the visibility controls read as one model-display task.","selector":"[data-aui-typeface]","code":["Type"]},
-        {"id":"checkbox","partId":"checkbox","title":"Checkbox","explanation":"Each checked box shows its named 3D model part.","keyIdea":"Each checkbox independently controls whether its named model part is shown.","selector":"[class~=\"aui-checkbox\"]"},
-        {"id":"indicator","partId":"indicator","title":"Indicator","explanation":"The box that shows whether the model part is visible.","keyIdea":"The indicator gives every part a consistent visible-versus-hidden state.","selector":"[class~=\"aui-checkbox-indicator\"]","code":["Checkbox"]},
-        {"id":"icon","partId":"icon","title":"Icon","explanation":"Five scenes show a check mark; the compact example omits it.","keyIdea":"The check glyph confirms that this model element is currently included in the view.","selector":"[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]","code":["Checkbox.Icon"]},
-        {"id":"label","partId":"label","title":"Label","explanation":"Part name beside each box identifies the model object it controls.","keyIdea":"Naming the part beside its box lets users change visibility without guessing which object it affects.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
-      ],
 options: [
     { id: "hcs-visibility", showContext: false, name: "Object visibility", apps: ["hcs"], source: {"hcs":"src/App.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "adc-visibility", showContext: false, name: "Part visibility", apps: ["adc"], source: {"adc":"src/adc/components/ConnectionModel.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "adm-visibility", showContext: false, name: "Assembly visibility", apps: ["adm"], source: {"adm":"src/features/viewer/components/ViewerChrome.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "fd-visibility", showContext: false, name: "Model visibility", apps: ["fd"], source: {"fd":"src/components/Viewer.jsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "hs-visibility", showContext: false, name: "Viewer visibility", apps: ["hs","pbs","agpd","rws"], source: {"hs":"src/hs/ViewerPane.tsx","pbs":"src/Viewer.tsx","agpd":"src/agpd/Viewer.tsx","rws":"src/rws/Viewer.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: {
@@ -58,30 +36,30 @@ options: [
       name: "Group title",
       selector: "[data-aui-typeface]",
       description: "The \"Object Visibility\" title, a Type role \"l4\" at semi-bold weight, that names the group of visibility checkboxes; some apps write it as a Field.Label.",
-    },
+     lesson: {"explanation":"Object Visibility heading groups the model display checkboxes.","code":["Type"]}},
     {
       id: "checkbox",
       name: "Checkbox",
       selector: "[class~=\"aui-checkbox\"]",
       description: "One of the visibility checkboxes (Wall, Roof, and Base plate or Anchors in the scenes) that shows or hides that part of the 3D model; checked by default.",
-    },
+     lesson: {"explanation":"Each checked box shows its named 3D model part."}},
     {
       id: "indicator",
       name: "Indicator",
       selector: "[class~=\"aui-checkbox-indicator\"]",
       description: "The box that shows whether the model part is visible.",
-    },
+     lesson: {"explanation":"The box that shows whether the model part is visible.","code":["Checkbox"]}},
     {
       id: "icon",
       name: "Icon",
       selector: "[class~=\"aui-checkbox-indicator\"] [class~=\"aui-contained-icon\"]",
       description: "The \"check\" mark used in the ADC, ADM, FD, HCS and HS scenes; the compact example draws the box without one.",
-    },
+     lesson: {"explanation":"Five scenes show a check mark; the compact example omits it.","code":["Checkbox.Icon"]}},
     {
       id: "label",
       name: "Label",
       selector: "[class~=\"aui-control-row\"] > [class~=\"aui-label\"]",
       description: "The part name beside the box, such as Wall or Roof, in the wrapped row of the 3D viewer controls.",
-    },
+     lesson: {"explanation":"Part name beside each box identifies the model object it controls."}},
   ],
 });

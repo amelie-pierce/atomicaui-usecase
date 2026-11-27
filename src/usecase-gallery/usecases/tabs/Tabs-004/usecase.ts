@@ -4,19 +4,8 @@ export default defineUsecase({
   uiType: 'Closable tab rail',
   title: 'Design tab rail',
   apps: ['adc'],
-    layers: [
-        {"id":"tabs","partId":"tabs","title":"Tabs","explanation":"Unpadded design rail starts with Design 1 selected.","keyIdea":"The root owns the open design rail and its current design selection.","selector":"[class~=\"aui-tabs\"]"},
-        {"id":"list","partId":"list","title":"List","explanation":"Rail row contains design chips and a trailing add action.","keyIdea":"The row keeps design chips and the add action within one navigable strip.","selector":"[class~=\"aui-tabs-list\"]"},
-        {"id":"tab","partId":"tab","title":"Tab","explanation":"Design chips can contain controls; selected tab uses raised tonal styling.","keyIdea":"Each chip marks an open design while preserving room for its nested controls.","selector":"[class~=\"aui-tabs-tab\"]"},
-        {"id":"pin","partId":"pin","title":"Error dot","explanation":"Error-coloured circle-exclamation on Design 1, labelled \"The design has an error\".","keyIdea":"The error dot marks the affected design without replacing its tab label.","selector":"[class~=\"aui-tabs-pin-button\"]"},
-        {"id":"close","partId":"close","title":"Close","explanation":"Per-design close action, for example \"Close Design 1\".","keyIdea":"A per-design close target removes only the tab it belongs to.","selector":"[class~=\"aui-tabs-close-button\"]"},
-        {"id":"add","partId":"add","title":"Add","explanation":"Trailing file-plus button opens a new design tab.","keyIdea":"The trailing add control starts a new design from the rail.","selector":"[class~=\"aui-tabs-add-button\"]"},
-      ],
 options: [
     { id: "adc-design-rail", name: "Design tab rail", showContext: false, apps: ["adc"], source: {"adc":"src/adc/Workspace.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
@@ -31,36 +20,36 @@ options: [
       name: 'Tabs',
       selector: '[class~="aui-tabs"]',
       description: 'The design rail root with no padding; Design 1 (d1) is selected by default.',
-    },
+     lesson: {"explanation":"Unpadded design rail starts with Design 1 selected."}},
     {
       id: 'list',
       name: 'List',
       selector: '[class~="aui-tabs-list"]',
       description: 'Row holding the design chips and the add button; ADC lets it shrink with overflow="shrink".',
-    },
+     lesson: {"explanation":"Rail row contains design chips and a trailing add action."}},
     {
       id: 'tab',
       name: 'Tab',
       selector: '[class~="aui-tabs-tab"]',
       description: 'One open design (Design 1, Design 2) rendered as a div chip with nativeButton={false} so it can hold buttons; the selected chip is raised and tonal.',
-    },
+     lesson: {"explanation":"Design chips can contain controls; selected tab uses raised tonal styling."}},
     {
       id: 'pin',
       name: 'Error dot',
       selector: '[class~="aui-tabs-pin-button"]',
       description: 'Error-coloured circle-exclamation on Design 1, labelled "The design has an error".',
-    },
+     lesson: {"explanation":"Error-coloured circle-exclamation on Design 1, labelled \"The design has an error\"."}},
     {
       id: 'close',
       name: 'Close',
       selector: '[class~="aui-tabs-close-button"]',
       description: 'Per-design close action, for example "Close Design 1".',
-    },
+     lesson: {"explanation":"Per-design close action, for example \"Close Design 1\"."}},
     {
       id: 'add',
       name: 'Add',
       selector: '[class~="aui-tabs-add-button"]',
       description: 'File-circle-plus button at the end of the rail that opens a new design.',
-    },
+     lesson: {"explanation":"Trailing file-plus button opens a new design tab."}},
   ],
 });

@@ -26,7 +26,16 @@ function Section({ id, title, children }: { id: string; title: string; children:
 }
 
 function AnatomySection({ parts, mode, availablePartIds, hoveredPartId, onPartChange, onSelectPart }: { parts: AnatomyPart[]; mode: PreviewMode; availablePartIds?: string[]; hoveredPartId?: string; onPartChange: (partId: string | undefined, expectedPartId?: string, source?: 'hover' | 'focus') => void; onSelectPart: (partId: string) => void }) {
-  const visibleParts = availablePartIds ? parts.filter((part) => availablePartIds.includes(part.id)) : parts;
+  const orderedParts = availablePartIds
+    ? [...parts].sort((a, b) => {
+      const first = availablePartIds.indexOf(a.id);
+      const second = availablePartIds.indexOf(b.id);
+      return (first < 0 ? Number.MAX_SAFE_INTEGER : first) - (second < 0 ? Number.MAX_SAFE_INTEGER : second);
+    })
+    : parts;
+  const visibleParts = availablePartIds
+    ? orderedParts.filter((part) => availablePartIds.includes(part.id))
+    : orderedParts;
   if (!visibleParts.length) return null;
   const shouldKeepHighlight = (target: EventTarget | null) => target instanceof Element && !!target.closest('.ug-docs__anatomy-button');
   return <Section id="anatomy" title={mode === 'context' ? '1. Anatomy · In context' : '1. Anatomy · Component'}>
@@ -122,7 +131,7 @@ export function DocsPane({ usecase, option, mode, componentName, hoveredPartId, 
   const doc = mode === 'context'
     ? { ...usecase, ...option.contextDocument }
     : { ...usecase, ...option.componentDocument };
-  const parts = mode === 'context' ? [...usecase.anatomy, ...option.contextAnatomy] : usecase.anatomy;
+  const parts = mode === 'context' ? [...option.contextAnatomy, ...usecase.anatomy] : usecase.anatomy;
   const hasAccessibility = !!doc.accessibility?.keyboard || !!doc.accessibility?.focus;
   const hasVariants = !!doc.variants || usecase.options.length > 0;
   return <>

@@ -37,19 +37,21 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim that dims the app behind the About dialog; the dialog is non-modal here so the stage stays visible. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The wide About window at scale "sm", min(860px, 100%) wide with a zero gap so the title bar and the two body columns sit flush. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar that names the window "About" and carries the spacer and the close X at its end. Selector: `[class~="aui-dialog-title"]`.
-4. **Title text** — The word "About", the only text the title bar holds. Selector: `[data-ug-part="title-text"]`. Direct text is highlighted.
-5. **Spacer** — The flexible gap that pushes the close X to the far end of the title bar. Selector: `[class~="aui-dialog-spacer"]`.
-6. **Close** — The close X that dismisses the About dialog, labelled "Close About" for assistive technology. Selector: `[class~="aui-dialog-close"]`.
-7. **Body row** — The one-row body under the title bar that splits the window into the Release history column and the release notes column; it hides overflow so each column manages its own height. Part marker: `data-ug-part="body"`.
-8. **Release history column** — The 224px start column with an end border that holds the Release history heading; in the HCS and PFD scenes it also holds the version count, the search field and the version list. Part marker: `data-ug-part="history-column"`.
-9. **Release history heading** — The bold l4 "Release history" label that names the version list. Part marker: `data-ug-part="history-heading"`. Direct text is highlighted.
-10. **Notes column** — The flexible column that fills the rest of the width and shows the notes of the chosen release; the example holds only the "Release notes" placeholder. Part marker: `data-ug-part="notes-column"`.
-11. **Notes text** — The p3 "Release notes" placeholder line that stands in for the notes in the Dialog frame. Part marker: `data-ug-part="notes-text"`. Direct text is highlighted.
+1. **Overlay** — The scrim that dims the app behind the About dialog; the dialog is non-modal here so the stage stays visible. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim dims the app behind About while the stage stays visible.
+2. **Popup** — The wide About window at scale "sm", min(860px, 100%) wide with a zero gap so the title bar and the two body columns sit flush. Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup container** — Wide popup frames the title and body with zero gap.
+3. **Title bar** — The raised title bar that names the window "About" and carries the spacer and the close X at its end. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Raised title bar tops the popup and carries its label.
+4. **Title text** — The word "About", the only text the title bar holds. Selector: `[data-ug-part="title-text"]`. Direct text is highlighted. Layer step: **Title text** — The word “About” names this dialog window for users.
+5. **Spacer** — The flexible gap that pushes the close X to the far end of the title bar. Selector: `[class~="aui-dialog-spacer"]`. Layer step: **Flexible spacer** — Flexible spacer pushes Close to the far title bar edge.
+6. **Close** — The close X that dismisses the About dialog, labelled "Close About" for assistive technology. Selector: `[class~="aui-dialog-close"]`. Layer step: **Close control** — The labelled close X dismisses the About dialog.
+7. **Body row** — The one-row body under the title bar that splits the window into the Release history column and the release notes column; it hides overflow so each column manages its own height. Part marker: `data-ug-part="body"`. Layer step: **Body row** — The body starts a two-column layout beneath the title bar.
+8. **Release history column** — The 224px start column with an end border that holds the Release history heading; in the HCS and PFD scenes it also holds the version count, the search field and the version list. Part marker: `data-ug-part="history-column"`. Layer step: **Release history column** — The 224px start column holds the release heading and version navigation.
+9. **Release history heading** — The bold l4 "Release history" label that names the version list. Part marker: `data-ug-part="history-heading"`. Direct text is highlighted. Layer step: **Release history heading** — Bold Release history heading labels the version list below.
+10. **Notes column** — The flexible column that fills the rest of the width and shows the notes of the chosen release; the example holds only the "Release notes" placeholder. Part marker: `data-ug-part="notes-column"`. Layer step: **Notes column** — The flexible column shows the selected release notes.
+11. **Notes text** — The p3 "Release notes" placeholder line that stands in for the notes in the Dialog frame. Part marker: `data-ug-part="notes-text"`. Direct text is highlighted. Layer step: **Notes content** — The placeholder line represents the notes for the selected release.
+12. **Footer actions** — Footer holds the Close action last, beneath the dialog body. Selector: `[data-ug-part="footer"]`. Layer step: **Footer actions** — Footer holds the Close action last, beneath the dialog body.
+13. **Close action** — Secondary Close button ends the footer and dismisses About. Selector: `[data-ug-part="footer-close"]`. Layer step: **Close action** — Secondary Close button ends the footer and dismisses About.
 
 ## Apps
 

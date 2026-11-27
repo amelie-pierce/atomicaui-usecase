@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Link stack** — The no-padding column, start-aligned, that stacks Edit above Delete so the row keeps its light, text-like look. Selector: `[data-ug-part="link-stack"]`.
-2. **Edit** — Secondary text Edit with profile no-padding, so it reads as a link rather than a button. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-3. **Delete** — Secondary text Delete, styled like Edit; it is not tinted as destructive. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-4. **Actions cell** — ACE Job tally: the left-aligned first cell of the row that holds the stacked links next to the Job 1 value. Selector: `[class~="aui-table-cell"]:first-child`.
-5. **Actions header** — The unlabeled Actions column heading (raised) above the links. Selector: `[class~="aui-table-header-cell"]:first-child`.
+1. **Link stack** — The no-padding column, start-aligned, that stacks Edit above Delete so the row keeps its light, text-like look. Selector: `[data-ug-part="link-stack"]`. Layer step: **Link stack** — No-padding column stacks Edit above Delete at the start.
+2. **Edit** — Secondary text Edit with profile no-padding, so it reads as a link rather than a button. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`. Layer step: **Edit** — No-padding secondary Edit reads like a text link.
+3. **Delete** — Secondary text Delete, styled like Edit; it is not tinted as destructive. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`. Layer step: **Delete** — Secondary text Delete, styled like Edit; it is not tinted as destructive.
+4. **Actions cell** — ACE Job tally: the left-aligned first cell of the row that holds the stacked links next to the Job 1 value. Selector: `[class~="aui-table-cell"]:first-child`. Layer step: **Actions cell** — ACE Job tally cell places both links beside Job 1.
+5. **Actions header** — The unlabeled Actions column heading (raised) above the links. Selector: `[class~="aui-table-header-cell"]:first-child`. Layer step: **Actions header** — The unlabeled Actions column heading (raised) above the links.
 
 ## Apps
 

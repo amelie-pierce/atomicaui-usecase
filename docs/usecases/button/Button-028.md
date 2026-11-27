@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Expand button** — The 24px minimum square-compact text Button with aria-expanded false that opens the Why Not explanation of one model row; HCS tints it with the error color on failed rows like Model C-300. Selector: `[class~="aui-button"][aria-label^="Why Not"]`.
-2. **Chevron** — The solid angle-right glyph that points to the collapsed content. Selector: `[class~="aui-button"][aria-label^="Why Not"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Table expand trigger** — HCS and HS group rows (A-100 (2)) use the table own expand trigger instead of a Button, placed before the semi-bold group name. Selector: `[class~="aui-table-expand-trigger"]`.
-4. **Row** — The result row that the chevron opens: a model such as Model A-100, or the A-100 (2) group row with an Expand A-100 group label. Selector: `[class~="aui-table-row"]`.
-5. **Model cell** — The Model cell that holds the chevron and the model name side by side with a gap of 12 (4 in group rows). Selector: `[class~="aui-table-cell"]`.
+1. **Expand button** — The 24px minimum square-compact text Button with aria-expanded false that opens the Why Not explanation of one model row; HCS tints it with the error color on failed rows like Model C-300. Selector: `[class~="aui-button"][aria-label^="Why Not"]`. Layer step: **Expand button** — 24px square text control opens Why Not for one model row.
+2. **Chevron** — The solid angle-right glyph that points to the collapsed content. Selector: `[class~="aui-button"][aria-label^="Why Not"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Chevron** — The solid angle-right glyph that points to the collapsed content.
+3. **Table expand trigger** — HCS and HS group rows (A-100 (2)) use the table own expand trigger instead of a Button, placed before the semi-bold group name. Selector: `[class~="aui-table-expand-trigger"]`. Layer step: **Table expand trigger** — HCS and HS expand group rows before the semi-bold model name. Code target: `Button`.
+4. **Row** — The result row that the chevron opens: a model such as Model A-100, or the A-100 (2) group row with an Expand A-100 group label. Selector: `[class~="aui-table-row"]`. Layer step: **Row** — Model row or A-100 group row opens with its expander.
+5. **Model cell** — The Model cell that holds the chevron and the model name side by side with a gap of 12 (4 in group rows). Selector: `[class~="aui-table-cell"]`. Layer step: **Model cell** — Model cell pairs the expander chevron with its name.
 
 ## Apps
 

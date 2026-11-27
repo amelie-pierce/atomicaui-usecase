@@ -14,7 +14,14 @@ export const layerTarget = (layer: LayerStep) => {
 /** Build the hidden-layer rules as React-rendered CSS; preview nodes stay under React ownership. Only elements marked as empty footprints get a visible box. */
 export function layerVisibilityCss(layers: LayerStep[], activeIndex: number) {
   const hidden = layers
-    .map((layer, index) => index > activeIndex ? `${fitScope} ${layerTarget(layer)} { display: none !important; }` : '')
+    .map((layer, index) => {
+      if (index <= activeIndex) return '';
+      const selector = layerSelector(layer);
+      // If a later text or decoration step shares its element with a visible
+      // parent step, hiding that selector would also erase the parent.
+      if (layers.slice(0, activeIndex + 1).some((visible) => layerSelector(visible) === selector && visible.scope === layer.scope)) return '';
+      return `${fitScope} ${layerTarget(layer)} { display: none !important; }`;
+    })
     .filter(Boolean);
   hidden.push(`${fitScope} [${footprintAttribute}] { box-sizing: border-box; min-inline-size: min(80vw, var(--p-px-320)); min-block-size: var(--p-px-160); padding: var(--p-px-16); border: var(--p-px-1) dashed var(--theme-primary); background: var(--theme-surface-alt) !important; }`);
   return hidden.join('\n');

@@ -38,12 +38,12 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Card** — 224px wide raised surface card with elevation 4 that floats beside the option list in a popover. Selector: `[class~="aui-card"]`.
-2. **Body** — Stacks the option name above its illustration. Selector: `[class~="aui-card-body"]`.
-3. **Title** — Name of the highlighted option, "Glulam". Selector: `[class~="aui-card-title"]`.
-4. **Illustration** — 4:3 generic illustration of Glulam, fitted whole with fit="contain". Selector: `[class~="aui-contained-image"]`.
+1. **Card** — 224px wide raised surface card with elevation 4 that floats beside the option list in a popover. Selector: `[class~="aui-card"]`. Layer step: **Card** — Raised 224px card floats beside the popover option list.
+2. **Body** — Stacks the option name above its illustration. Selector: `[class~="aui-card-body"]`. Layer step: **Body** — Stacks the highlighted option name above its illustration.
+3. **Title** — Name of the highlighted option, "Glulam". Selector: `[class~="aui-card-title"]`. Layer step: **Title** — Glulam names the highlighted option represented by the illustration.
+4. **Illustration** — 4:3 generic illustration of Glulam, fitted whole with fit="contain". Selector: `[class~="aui-contained-image"]`. Layer step: **Illustration** — Contain-fitted 4:3 illustration shows the selected Glulam option.
 
 ## Apps
 

@@ -38,15 +38,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Accordion** — Release-notes list at scale "sm" with openMultiple and "global" open by default; the ACE scene nests a second Accordion (Europe) inside Updates for other regions, and ADC uses one 1.0 release item. Selector: `[class~="aui-accordion"]`.
-2. **Item** — One group of changes, for example Global changes. Selector: `[class~="aui-accordion-item"]`.
-3. **Trigger** — Title row that opens the group; it carries the name and a muted update count. Selector: `[class~="aui-accordion-trigger"]`.
-4. **Title and count** — Semi-bold l3 "Global changes" followed by a muted l5 "(1 update)"; ADC uses the release line "1.0 Released on Jan 01, 2027 (TBD)". Selector: `[class~="aui-accordion-trigger-content"]`.
-5. **Chevron** — Disclosure chevron at the end of the title row. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
-6. **Panel** — Holds the change entries: a 160px badge column beside the sentence describing the change. Selector: `[class~="aui-accordion-panel"]`.
-7. **Change chip** — Coloured solid chip that tags the type of change: warning IMPROVEMENT here, success FEATURE in the Europe group. Selector: `[class~="aui-chip"]`.
+1. **Accordion** — Release-notes list at scale "sm" with openMultiple and "global" open by default; the ACE scene nests a second Accordion (Europe) inside Updates for other regions, and ADC uses one 1.0 release item. Selector: `[class~="aui-accordion"]`. Layer step: **Accordion** — Release notes open Global changes first and allow other groups.
+2. **Item** — One group of changes, for example Global changes. Selector: `[class~="aui-accordion-item"]`. Layer step: **Item** — One release group collects related changes, such as Global changes.
+3. **Trigger** — Title row that opens the group; it carries the name and a muted update count. Selector: `[class~="aui-accordion-trigger"]`. Layer step: **Trigger** — Title row opens the group and shows its muted update count.
+4. **Title and count** — Semi-bold l3 "Global changes" followed by a muted l5 "(1 update)"; ADC uses the release line "1.0 Released on Jan 01, 2027 (TBD)". Selector: `[class~="aui-accordion-trigger-content"]`. Layer step: **Title and count** — Bold group name sits beside its muted count, such as one update.
+5. **Chevron** — Disclosure chevron at the end of the title row. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`. Layer step: **Chevron** — Chevron at the title row's end shows whether notes are open.
+6. **Panel** — Holds the change entries: a 160px badge column beside the sentence describing the change. Selector: `[class~="aui-accordion-panel"]`. Layer step: **Panel** — Panel aligns each change badge beside its explanatory sentence.
+7. **Change chip** — Coloured solid chip that tags the type of change: warning IMPROVEMENT here, success FEATURE in the Europe group. Selector: `[class~="aui-chip"]`. Layer step: **Change chip** — Solid chip labels each change as IMPROVEMENT or FEATURE.
 8. **Chip label** — Upper-case change type, IMPROVEMENT or FEATURE. Selector: `[class~="aui-chip-label"]`. Direct text is highlighted.
 
 ## Apps

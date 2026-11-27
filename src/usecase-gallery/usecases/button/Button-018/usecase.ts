@@ -5,14 +5,8 @@ export default defineUsecase({
   title: 'Open products picker button',
 
   apps: ['adc'],
-    layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Full-width fixed-surface Select products button stands in for the field.","keyIdea":"The full-width control stands in for the Products selector in the mock form.","selector":"[class~=\"aui-button\"]"},
-      ],
 options: [
     { id: "adc-products", name: "Products row", apps: ["adc"], showContext: false, source: {"adc":"src/adc/components/ProductsPicker.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { adc: 'src/adc/components/ProductsPicker.tsx' },
@@ -28,7 +22,7 @@ options: [
       name: "Container",
       description: "The Select products Button that stands in for the Products field: extra small, surface color with fixed (bordered) paint, soft shape and full width with content at the start.",
       selector: "[class~=\"aui-button\"]",
-    },
+     lesson: {"explanation":"Full-width fixed-surface Select products button stands in for the field."}},
     {
       id: "label",
       name: "Label",

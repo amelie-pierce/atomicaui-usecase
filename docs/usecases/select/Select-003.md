@@ -37,19 +37,19 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field** — Field at scale "sm" with a 3 gap that stacks the Corrosion Resistance label above the multi-select. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Corrosion Resistance" label at scale "sm". Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — The 28px outlined trigger that stays one line high while it lists every chosen option. Selector: `[class~="aui-select-trigger"]`.
+1. **Field** — Field at scale "sm" with a 3 gap that stacks the Corrosion Resistance label above the multi-select. Selector: `[class~="aui-field"]`. Layer step: **Field** — Small field stacks Corrosion Resistance above the multi-select.
+2. **Label** — The "Corrosion Resistance" label at scale "sm". Selector: `[class~="aui-field-label"]`. Layer step: **Label** — Small Corrosion Resistance label appears above the multi-select.
+3. **Trigger** — The 28px outlined trigger that stays one line high while it lists every chosen option. Selector: `[class~="aui-select-trigger"]`. Layer step: **Trigger** — 28px outlined trigger stays one line for chosen options.
 4. **Value** — Written out as "Standard, Hot dip galvanized": with `multiple` the value is a comma-joined string of the chosen labels. Selector: `[class~="aui-select-value"]`. Direct text is highlighted.
-5. **Chevron** — The chevron at the trigger end; the list stays open while rows are toggled. Selector: `[class~="aui-select-chevron"]`.
-6. **Popup** — Popup of the trigger width listing Standard, Hot dip galvanized and Stainless steel. Selector: `[class~="aui-select-popup"]`.
-7. **List** — The list holding the three corrosion options. Selector: `[class~="aui-select-list"]`.
-8. **Item** — A toggleable option row; both Standard and Hot dip galvanized start selected (the `multiple` defaultValue is an array). Selector: `[class~="aui-select-item"]`.
-9. **Item text** — The option name such as "Stainless steel". Selector: `[class~="aui-select-item-text"]`.
-10. **Indicator** — The indicator slot at the row end; the PFD scene leads each row with a checkbox icon instead. Selector: `[class~="aui-select-item-indicator"]`.
-11. **Checkbox icon** — In the PFD scene each row leads with a square-check icon when chosen and a square when not, with no indicator. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
+5. **Chevron** — The chevron at the trigger end; the list stays open while rows are toggled. Selector: `[class~="aui-select-chevron"]`. Layer step: **Chevron** — Trailing chevron opens a list that stays open during selection.
+6. **Popup** — Popup of the trigger width listing Standard, Hot dip galvanized and Stainless steel. Selector: `[class~="aui-select-popup"]`. Layer step: **Popup** — Popup lists Standard, Hot dip galvanized, and Stainless steel.
+7. **List** — The list holding the three corrosion options. Selector: `[class~="aui-select-list"]`. Layer step: **List** — Popup list holds the three corrosion resistance choices.
+8. **Item** — A toggleable option row; both Standard and Hot dip galvanized start selected (the `multiple` defaultValue is an array). Selector: `[class~="aui-select-item"]`. Layer step: **Item** — Standard and Hot dip galvanized start selected in the multi-select.
+9. **Item text** — The option name such as "Stainless steel". Selector: `[class~="aui-select-item-text"]`. Layer step: **Item text** — Option name appears beside its control, such as Stainless steel.
+10. **Indicator** — The indicator slot at the row end; the PFD scene leads each row with a checkbox icon instead. Selector: `[class~="aui-select-item-indicator"]`. Layer step: **Indicator** — End slot marks selection; PFD uses leading checkbox icons instead.
+11. **Checkbox icon** — In the PFD scene each row leads with a square-check icon when chosen and a square when not, with no indicator. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`. Layer step: **Checkbox icon** — PFD leads each row with a checked or empty square icon.
 
 ## Apps
 

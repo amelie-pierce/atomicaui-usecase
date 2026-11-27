@@ -9,16 +9,9 @@ export default defineUsecase({
   uiType: 'Label chip',
   title: 'Compact soft label',
   apps: ['adc'],
-    layers: [
-        {"id":"chip","partId":"chip","title":"Chip","explanation":"Extra-small soft secondary chip marks beta app state.","keyIdea":"The app-wide chip gives the beta state a compact label that can travel with the notice.","selector":"[class~=\"aui-chip\"]"},
-      ],
 options: [
     { id: "adc-beta", contextAnatomy: CONTEXT_ANATOMY, name: "Beta notice", source: {"adc":"src/adc/Workspace.tsx"} ,
-      contextLayers: [
-        {"id":"context-beta-banner","partId":"beta-banner","title":"Beta notice banner","explanation":"Warning region places BETA chip, alert icon, then message.","keyIdea":"A warning banner keeps the beta status and its supporting message together as one announcement.","selector":"[data-ug-part=\"beta-banner\"]","scope":"context"},
-        {"id":"context-beta-message","partId":"beta-message","title":"Banner message","explanation":"Bold lead-in introduces the beta release’s active refinement notice.","keyIdea":"The message explains what the beta label means for people using the application.","selector":"[data-ug-part=\"beta-message\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"beta-banner","lesson":{"explanation":"Warning region places BETA chip, alert icon, then message.","selector":"[data-ug-part=\"beta-banner\"]","scope":"context"}},{"id":"beta-message","lesson":{"explanation":"Bold lead-in introduces the beta release’s active refinement notice.","selector":"[data-ug-part=\"beta-message\"]","scope":"context"}}]},
   ],
   source: { adc: 'src/adc/Workspace.tsx' },
   summary: 'A compact label with soft corners that marks a state of the whole app: BETA in the notice banner, the version beside the menu.',
@@ -31,7 +24,7 @@ options: [
       name: "Chip",
       selector: "[class~=\"aui-chip\"]",
       description: "The secondary solid chip at scale \"xs\" with soft corners that marks the whole app state, shown in the ADC beta notice and beside the menu.",
-    },
+     lesson: {"explanation":"Extra-small soft secondary chip marks beta app state."}},
     {
       id: "label",
       name: "Label",

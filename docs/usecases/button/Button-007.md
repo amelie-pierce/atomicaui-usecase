@@ -37,9 +37,9 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+1. **Container** — The single Close Button in an info dialog footer, small and default gray (PBS); FD shows the same Close with a black secondary fill. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`. Layer step: **Container** — Close footer button appears gray in PBS, black in FD.
 2. **Label** — The text "Close" that dismisses the info dialog, the only choice it offers. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`. Direct text is highlighted.
 
 ## Apps
@@ -63,11 +63,11 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Dialog** — The open dialog titled "Add to Your Home Screen". Part marker: `data-ug-part="dialog"`.
-2. **Dialog title** — The raised title bar with "Add to Your Home Screen" and the close X at the end. Part marker: `data-ug-part="dialog-title"`.
-3. **Close button** — The X in the title that closes the dialog (aria-label "Close Add to Your Home Screen"). Part marker: `data-ug-part="dialog-close"`.
-4. **Dialog body** — The scrollable body with the Android "Add to Home Screen" instructions. Part marker: `data-ug-part="dialog-body"`.
-5. **Dialog footer** — The Actions row at the end that holds the single Close button. Part marker: `data-ug-part="dialog-footer"`.
+1. **Dialog** — The open dialog titled "Add to Your Home Screen". Part marker: `data-ug-part="dialog"`. Layer step: **Dialog** — Add to Your Home Screen dialog hosts one information action.
+2. **Dialog title** — The raised title bar with "Add to Your Home Screen" and the close X at the end. Part marker: `data-ug-part="dialog-title"`. Layer step: **Dialog title** — Raised title names the information dialog beside Close.
+3. **Close button** — The X in the title that closes the dialog (aria-label "Close Add to Your Home Screen"). Part marker: `data-ug-part="dialog-close"`. Layer step: **Close button** — Title X closes the info dialog with its dialog-specific label.
+4. **Dialog body** — The scrollable body with the Android "Add to Home Screen" instructions. Part marker: `data-ug-part="dialog-body"`. Layer step: **Dialog body** — The scrollable body with the Android "Add to Home Screen" instructions.
+5. **Dialog footer** — The Actions row at the end that holds the single Close button. Part marker: `data-ug-part="dialog-footer"`. Layer step: **Dialog footer** — The Actions row at the end that holds the single Close button.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-007/example.tsx`
 
@@ -128,11 +128,11 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Dialog** — The open dialog titled "Explore More Applications". Part marker: `data-ug-part="dialog"`.
-2. **Dialog title** — The raised title bar with "Explore More Applications" and the close X at the end. Part marker: `data-ug-part="dialog-title"`.
-3. **Close button** — The X in the title that closes the dialog (aria-label "Close Explore More Applications"). Part marker: `data-ug-part="dialog-close"`.
-4. **Dialog body** — The scrollable body with the line "Simpson Strong-Tie design applications." Part marker: `data-ug-part="dialog-body"`.
-5. **Dialog footer** — The Actions row at the end that holds the single Close button. Part marker: `data-ug-part="dialog-footer"`.
+1. **Dialog** — The open dialog titled "Explore More Applications". Part marker: `data-ug-part="dialog"`. Layer step: **Dialog** — Explore More Applications dialog hosts one information action.
+2. **Dialog title** — The raised title bar with "Explore More Applications" and the close X at the end. Part marker: `data-ug-part="dialog-title"`. Layer step: **Dialog title** — Raised title names the information dialog beside Close.
+3. **Close button** — The X in the title that closes the dialog (aria-label "Close Explore More Applications"). Part marker: `data-ug-part="dialog-close"`. Layer step: **Close button** — Title X closes the info dialog with its dialog-specific label.
+4. **Dialog body** — The scrollable body with the line "Simpson Strong-Tie design applications." Part marker: `data-ug-part="dialog-body"`. Layer step: **Dialog body** — The scrollable body with the line "Simpson Strong-Tie design applications."
+5. **Dialog footer** — The Actions row at the end that holds the single Close button. Part marker: `data-ug-part="dialog-footer"`. Layer step: **Dialog footer** — The Actions row at the end that holds the single Close button.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-007/options/fd-close/example.tsx`
 

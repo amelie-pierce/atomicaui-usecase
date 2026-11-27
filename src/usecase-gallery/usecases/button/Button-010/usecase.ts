@@ -5,19 +5,11 @@ export default defineUsecase({
   title: 'Show locked field option button',
 
   apps: ['agpd'],
-    layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Extra-small primary text link opens the Plate Option control.","keyIdea":"The unfilled accent action offers the plate-setting route from the lock explanation.","selector":"[class~=\"aui-button\"]:not([aria-label=\"Thickness is locked\"])"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"288px lock popup shows the current Plate Option above its button.","keyIdea":"The popup explains which plate option currently controls the locked value.","selector":"[data-aui-popup-motion][role=\"dialog\"]"},
-      ],
 options: [
     { id: "agpd-lock-hint", name: "Lock hint", apps: ["agpd"], contextAnatomy: [
-      { id: "lock-trigger", name: "Lock trigger", description: "The square lock button after the field label (aria-label \"Thickness is locked\") that opens the hint on hover or focus." },
-      { id: "hint-text", name: "Hint text", description: "The line \"Controlled by Plate Option\" and its current value \"All Plates based on the stock model\"." },
+      { id: "lock-trigger", name: "Lock trigger", description: "The square lock button after the field label (aria-label \"Thickness is locked\") that opens the hint on hover or focus." , lesson: {"explanation":"Square lock button reveals the Plate Option hint above it.","selector":"[data-ug-part=\"lock-trigger\"]","scope":"context"}},
+      { id: "hint-text", name: "Hint text", description: "The line \"Controlled by Plate Option\" and its current value \"All Plates based on the stock model\"." , lesson: {"explanation":"Hint shows Plate Option ownership and the current All Plates value.","selector":"[data-ug-part=\"hint-text\"]","scope":"context"}},
     ], source: {"agpd":"src/agpd/inputs.tsx"} ,
-      contextLayers: [
-        {"id":"context-lock-trigger","partId":"lock-trigger","title":"Lock trigger","explanation":"Square lock button reveals the Plate Option hint above it.","keyIdea":"The lock trigger reveals why this field cannot be edited directly.","selector":"[data-ug-part=\"lock-trigger\"]","scope":"context"},
-        {"id":"context-hint-text","partId":"hint-text","title":"Hint text","explanation":"Hint shows Plate Option ownership and the current All Plates value.","keyIdea":"The hint pairs the controlling option with its current selected value.","selector":"[data-ug-part=\"hint-text\"]","scope":"context"},
-      ],
     },
   ],
   source: { agpd: 'src/agpd/inputs.tsx' },
@@ -33,7 +25,7 @@ options: [
       name: "Container",
       description: "The Show Plate Option Button at the start of the lock popup: extra small, primary text paint, with no fill so it reads as an accent link under the explanatory line.",
       selector: "[class~=\"aui-button\"]:not([aria-label=\"Thickness is locked\"])",
-    },
+     lesson: {"explanation":"Extra-small primary text link opens the Plate Option control."}},
     {
       id: "label",
       name: "Label",
@@ -46,6 +38,6 @@ options: [
       name: "Popup",
       description: "The 288px popup that opens from the lock icon, holding the line \"Controlled by Plate Option, currently ...\" above this Button.",
       selector: "[data-aui-popup-motion][role=\"dialog\"]",
-    },
+     lesson: {"explanation":"288px lock popup shows the current Plate Option above its button."}},
   ],
 });

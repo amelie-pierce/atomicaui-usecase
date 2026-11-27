@@ -38,14 +38,14 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **List** — The "Columns" list of the Configure columns popover, one row per results-table column. Selector: `[class~="aui-list"]`.
-2. **Row** — The Model row: the column name at the start and its switch in the row actions at the end. Selector: `[class~="aui-list-item"]`.
-3. **Row text** — The column name "Model" that names what the switch shows or hides. Selector: `[class~="aui-list-item-text"]`.
-4. **Row actions** — The trailing slot at the end of the row that holds the switch. Selector: `[class~="aui-list-item-actions"]`.
-5. **Switch** — The on/off control, on by default, with no visible label; its aria-label "Show Model" names it and the selected track is solid primary. Selector: `[class~="aui-switch"]`.
-6. **Thumb** — The movable thumb that sits at the end of the track while the column is shown. Selector: `[class~="aui-switch-thumb"]`.
+1. **List** — The "Columns" list of the Configure columns popover, one row per results-table column. Selector: `[class~="aui-list"]`. Layer step: **List** — Columns popover lists one configurable result column per row.
+2. **Row** — The Model row: the column name at the start and its switch in the row actions at the end. Selector: `[class~="aui-list-item"]`. Layer step: **Row** — Model row pairs its column name with the switch action.
+3. **Row text** — The column name "Model" that names what the switch shows or hides. Selector: `[class~="aui-list-item-text"]`. Layer step: **Row text** — The column name "Model" that names what the switch shows or hides.
+4. **Row actions** — The trailing slot at the end of the row that holds the switch. Selector: `[class~="aui-list-item-actions"]`. Layer step: **Row actions** — Trailing row slot contains the visibility switch control.
+5. **Switch** — The on/off control, on by default, with no visible label; its aria-label "Show Model" names it and the selected track is solid primary. Selector: `[class~="aui-switch"]`. Layer step: **Switch** — On-by-default unlabeled switch uses Show Model for its accessible name.
+6. **Thumb** — The movable thumb that sits at the end of the track while the column is shown. Selector: `[class~="aui-switch-thumb"]`. Layer step: **Thumb** — Thumb rests at track end when the column is shown. Code target: `Switch`.
 
 ## Apps
 
@@ -67,8 +67,8 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Configure columns trigger** — The table-columns IconButton, labelled Configure columns, that opens the popover under it. Part marker: `data-ug-part="columns-trigger"`.
-2. **Configure columns popover** — The elevated popover, 320px wide, anchored under the trigger that holds the column list. Part marker: `data-ug-part="columns-popover"`.
+1. **Configure columns trigger** — The table-columns IconButton, labelled Configure columns, that opens the popover under it. Part marker: `data-ug-part="columns-trigger"`. Layer step: **Configure columns trigger** — The table-columns IconButton, labelled Configure columns, that opens the popover under it.
+2. **Configure columns popover** — The elevated popover, 320px wide, anchored under the trigger that holds the column list. Part marker: `data-ug-part="columns-popover"`. Layer step: **Configure columns popover** — Elevated 320px popover anchors beneath the settings trigger.
 
 #### Component UI source — `src/usecase-gallery/usecases/switch/Switch-001/example.tsx`
 

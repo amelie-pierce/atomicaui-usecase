@@ -38,14 +38,14 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Trigger** — The text circle-question button labelled "Material help" beside the field label; it is a compact square in PBS and the example and a square in PFD and AGPD. Selector: `[data-base-ui-click-trigger]`.
-2. **Trigger icon** — The circle-question glyph inside the help trigger. Selector: `[data-base-ui-click-trigger] [class~="aui-contained-icon"]`.
-3. **Popup** — The elevated soft surface (surface colour, solid, elevation 4) that opens above the trigger with a 4px offset: 320px wide, and up to 384px in PFD. Selector: `[data-aui-popup-motion][role="dialog"]`.
+1. **Trigger** — The text circle-question button labelled "Material help" beside the field label; it is a compact square in PBS and the example and a square in PFD and AGPD. Selector: `[data-base-ui-click-trigger]`. Layer step: **Trigger** — Material help question button sits beside the field label; app shapes vary.
+2. **Trigger icon** — The circle-question glyph inside the help trigger. Selector: `[data-base-ui-click-trigger] [class~="aui-contained-icon"]`. Layer step: **Trigger icon** — Circle-question glyph sits inside the Material help trigger.
+3. **Popup** — The elevated soft surface (surface colour, solid, elevation 4) that opens above the trigger with a 4px offset: 320px wide, and up to 384px in PFD. Selector: `[data-aui-popup-motion][role="dialog"]`. Layer step: **Popup** — Elevated soft help surface opens 4px above; width varies by app. Code target: `Popover.Popup`.
 4. **Help text** — The p3 sentence "Select the base material of the member."; in PBS and the example it fills the row beside the close X, in the other apps it sits under it. Part marker: `data-ug-part="help-text"`. Direct text is highlighted.
-5. **Close row** — The end-aligned row above the text in AGPD that holds only the close X. Part marker: `data-ug-part="close-row"`.
-6. **Close** — The X that closes the popover: an xs icon button at the end of the row in PBS, in its own row in AGPD, and a square Button in PFD. Part marker: `data-ug-part="close"`.
+5. **Close row** — The end-aligned row above the text in AGPD that holds only the close X. Part marker: `data-ug-part="close-row"`. Layer step: **Close row** — AGPD places its end-aligned close row above the help text.
+6. **Close** — The X that closes the popover: an xs icon button at the end of the row in PBS, in its own row in AGPD, and a square Button in PFD. Part marker: `data-ug-part="close"`. Layer step: **Close** — X closes help; PBS, AGPD, and PFD place it differently.
 
 ## Apps
 

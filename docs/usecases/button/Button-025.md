@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **First cell** — The first cell of a saved-list row: HS lays Edit and Duplicate side by side, left-aligned, while PBS stacks them in a centred column. Selector: `[class~="aui-table-cell"]:first-child`.
-2. **Edit** — The tonal secondary Edit that reopens the saved job (HS) or connection (PBS) for changes. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`.
-3. **Duplicate** — The tonal secondary Duplicate that copies the row; same colour and size as Edit so the two read as a pair of equal row actions. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`.
-4. **Header cell** — The unlabeled first column heading (aria-label "Edit or duplicate") above the action buttons. Selector: `[class~="aui-table-header-cell"]:first-child`.
-5. **Button stack** — PBS only: the column (gap 8, centred) that stacks Edit above Duplicate inside the cell. Selector: `[data-ug-part="row-actions"]`.
+1. **First cell** — The first cell of a saved-list row: HS lays Edit and Duplicate side by side, left-aligned, while PBS stacks them in a centred column. Selector: `[class~="aui-table-cell"]:first-child`. Layer step: **First cell** — First saved-list cell pairs Edit and Duplicate side by side or stacked.
+2. **Edit** — The tonal secondary Edit that reopens the saved job (HS) or connection (PBS) for changes. Selector: `[class~="aui-button"]:not([aria-label]):first-of-type`. Layer step: **Edit** — Tonal secondary Edit reopens the saved job or connection.
+3. **Duplicate** — The tonal secondary Duplicate that copies the row; same colour and size as Edit so the two read as a pair of equal row actions. Selector: `[class~="aui-button"]:not([aria-label]):last-of-type`. Layer step: **Duplicate** — Matching tonal Duplicate copies the selected saved row.
+4. **Header cell** — The unlabeled first column heading (aria-label "Edit or duplicate") above the action buttons. Selector: `[class~="aui-table-header-cell"]:first-child`. Layer step: **Header cell** — Unnamed first column labels its action buttons for assistive technology.
+5. **Button stack** — PBS only: the column (gap 8, centred) that stacks Edit above Duplicate inside the cell. Selector: `[data-ug-part="row-actions"]`. Layer step: **Button stack** — PBS centers Edit above Duplicate with an 8px gap.
 
 ## Apps
 

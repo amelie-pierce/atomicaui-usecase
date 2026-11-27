@@ -36,9 +36,9 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The OK Button of an ADC notice dialog: solid primary (orange), small, the only action in the footer. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`.
+1. **Container** — The OK Button of an ADC notice dialog: solid primary (orange), small, the only action in the footer. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`. Layer step: **Container** — Small orange OK is the notice dialog’s only footer action.
 2. **Label** — The text "OK" that acknowledges the Maximum Number of Designs Reached notice. Selector: `[class~="aui-button"]:not([class~="aui-dialog-close"])`. Direct text is highlighted.
 
 ## Apps
@@ -59,11 +59,11 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Dialog** — The open alert dialog. Part marker: `data-ug-part="dialog"`.
-2. **Dialog title** — The raised title bar "Maximum Number of Designs Reached". Part marker: `data-ug-part="dialog-title"`.
-3. **Error icon** — The error-colored circle-xmark icon before the title. Part marker: `data-ug-part="error-icon"`.
-4. **Close button** — The X at the end of the title, shown in a "Close" tooltip. Part marker: `data-ug-part="dialog-close"`.
-5. **Message** — The text that a Project can contain at most 15 Designs. Part marker: `data-ug-part="message"`.
+1. **Dialog** — The open alert dialog. Part marker: `data-ug-part="dialog"`. Layer step: **Dialog** — Alert dialog shows the notice and its only action.
+2. **Dialog title** — The raised title bar "Maximum Number of Designs Reached". Part marker: `data-ug-part="dialog-title"`. Layer step: **Dialog title** — The raised title bar "Maximum Number of Designs Reached".
+3. **Error icon** — The error-colored circle-xmark icon before the title. Part marker: `data-ug-part="error-icon"`. Layer step: **Error icon** — Error-coloured circle-xmark appears before the alert dialog title.
+4. **Close button** — The X at the end of the title, shown in a "Close" tooltip. Part marker: `data-ug-part="dialog-close"`. Layer step: **Close button** — Title X shows a Close tooltip before dismissing the notice.
+5. **Message** — The text that a Project can contain at most 15 Designs. Part marker: `data-ug-part="message"`. Layer step: **Message** — The text that a Project can contain at most 15 Designs.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-015/example.tsx`
 

@@ -38,11 +38,11 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Panels** — Vertical split group that stacks the panes, 560px wide and 160px tall at most. Selector: `[class~="aui-panels"]`.
-2. **Panel** — Input on top (50% default height) and Output below, both surface-alt soft panes that may shrink to 40px high. Selector: `[class~="aui-panels-panel"]`.
-3. **Resize handle** — 6px primary horizontal bar between Input and Output; its label is "Resize Input and Output panels" in the example and "Resize Input and results panels" in the HCS scene. Selector: `[class~="aui-panels-resize-handle"]`.
+1. **Panels** — Vertical split group that stacks the panes, 560px wide and 160px tall at most. Selector: `[class~="aui-panels"]`. Layer step: **Panels** — Vertical split stacks both panes within a bounded workspace.
+2. **Panel** — Input on top (50% default height) and Output below, both surface-alt soft panes that may shrink to 40px high. Selector: `[class~="aui-panels-panel"]`. Layer step: **Panel** — Input sits above Output; both soft panes can shrink independently.
+3. **Resize handle** — 6px primary horizontal bar between Input and Output; its label is "Resize Input and Output panels" in the example and "Resize Input and results panels" in the HCS scene. Selector: `[class~="aui-panels-resize-handle"]`. Layer step: **Resize handle** — Six-pixel bar separates Input and Output; dragging reallocates height.
 
 ## Apps
 

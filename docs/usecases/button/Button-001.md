@@ -38,10 +38,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The Print Output Button: scale "sm", surface color with tonal paint and flex "none" so it keeps its width at the end of the results pane header (HCS look; HS, FD and ADM scenes swap in a solid secondary black Button). Selector: `[class~="aui-button"]`.
-2. **Icon** — The print glyph before the label, at scale "sm" so it matches the small Button. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Container** — The Print Output Button: scale "sm", surface color with tonal paint and flex "none" so it keeps its width at the end of the results pane header (HCS look; HS, FD and ADM scenes swap in a solid secondary black Button). Selector: `[class~="aui-button"]`. Layer step: **Container** — Print Output button sits at header end; app styling varies.
+2. **Icon** — The print glyph before the label, at scale "sm" so it matches the small Button. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`. Layer step: **Icon** — Small print glyph sits before its button label.
 3. **Label** — The text "Print Output" that names the action of printing the results. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
 ## Apps
@@ -65,9 +65,9 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Output pane** — The Output pane frame, a surface-alt section that holds the header row. The toolbar, table and notes are left out. Part marker: `data-ug-part="output-pane"`.
-2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`.
-3. **Header actions** — The action group pushed to the end of the header, which holds the Print Output button (HCS). Part marker: `data-ug-part="header-actions"`.
+1. **Output pane** — The Output pane frame, a surface-alt section that holds the header row. The toolbar, table and notes are left out. Part marker: `data-ug-part="output-pane"`. Layer step: **Output pane** — Surface-alt Output pane contains the header and its controls.
+2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`. Layer step: **Output title** — The "Output" heading at the start of the pane header.
+3. **Header actions** — The action group pushed to the end of the header, which holds the Print Output button (HCS). Part marker: `data-ug-part="header-actions"`. Layer step: **Header actions** — Header action group places Print at the far end.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-001/example.tsx`
 
@@ -123,9 +123,9 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Output pane** — The Output pane frame, a surface-alt section that holds the header row. Only the header is shown. Part marker: `data-ug-part="output-pane"`.
-2. **Output tabs** — The Output and Job List tabs at the start of the header, with the selected tab on an overlay fill. Part marker: `data-ug-part="output-tabs"`.
-3. **Header actions** — The action group that grows and right-aligns itself after the tabs and holds Print Output. Part marker: `data-ug-part="header-actions"`.
+1. **Output pane** — The Output pane frame, a surface-alt section that holds the header row. Only the header is shown. Part marker: `data-ug-part="output-pane"`. Layer step: **Output pane** — Surface-alt Output pane contains the header and its controls.
+2. **Output tabs** — The Output and Job List tabs at the start of the header, with the selected tab on an overlay fill. Part marker: `data-ug-part="output-tabs"`. Layer step: **Output tabs** — Output tabs start the header; selected tab uses overlay fill.
+3. **Header actions** — The action group that grows and right-aligns itself after the tabs and holds Print Output. Part marker: `data-ug-part="header-actions"`. Layer step: **Header actions** — Header action group places Print at the far end.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-001/options/black-icon/example.tsx`
 
@@ -192,9 +192,9 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Output pane** — The Output pane frame, a surface-alt section that holds the header row. Only the header is shown. Part marker: `data-ug-part="output-pane"`.
-2. **Output tabs** — The Summary and Result tabs at the start of the header; the Print label follows the selected tab. Part marker: `data-ug-part="output-tabs"`.
-3. **Header actions** — The action group pushed to the end of the header with an auto inline-start margin; it holds the text-only Print Summary button. Part marker: `data-ug-part="header-actions"`.
+1. **Output pane** — The Output pane frame, a surface-alt section that holds the header row. Only the header is shown. Part marker: `data-ug-part="output-pane"`. Layer step: **Output pane** — Surface-alt Output pane contains the header and its controls.
+2. **Output tabs** — The Summary and Result tabs at the start of the header; the Print label follows the selected tab. Part marker: `data-ug-part="output-tabs"`. Layer step: **Output tabs** — Output tabs start the header; selected tab uses overlay fill.
+3. **Header actions** — The action group pushed to the end of the header with an auto inline-start margin; it holds the text-only Print Summary button. Part marker: `data-ug-part="header-actions"`. Layer step: **Header actions** — Header action group places Print at the far end.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-001/options/black-no-icon/example.tsx`
 
@@ -259,9 +259,9 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Output pane** — The Output pane frame, a surface-alt section that holds the header row. Labelled "Output, inputs invalid". Part marker: `data-ug-part="output-pane"`.
-2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`.
-3. **Header actions** — The action group pushed to the end of the header; its Print Output button is disabled while the inputs are invalid. Part marker: `data-ug-part="header-actions"`.
+1. **Output pane** — The Output pane frame, a surface-alt section that holds the header row. Labelled "Output, inputs invalid". Part marker: `data-ug-part="output-pane"`. Layer step: **Output pane** — Surface-alt Output pane contains the header and its controls.
+2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`. Layer step: **Output title** — The "Output" heading at the start of the pane header.
+3. **Header actions** — The action group pushed to the end of the header; its Print Output button is disabled while the inputs are invalid. Part marker: `data-ug-part="header-actions"`. Layer step: **Header actions** — Header action group places Print at the far end.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-001/options/disabled/example.tsx`
 

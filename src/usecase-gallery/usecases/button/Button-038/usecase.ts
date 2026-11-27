@@ -10,19 +10,9 @@ export default defineUsecase({
   title: 'Remove row button',
 
   apps: ['hs', 'pbs'],
-    layers: [
-        {"id":"remove","partId":"remove","title":"Remove","explanation":"28px trash button removes Job 1 and opens confirmation.","keyIdea":"The row action removes the named job after the confirmation flow.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"]"},
-        {"id":"remove-icon","partId":"remove-icon","title":"Trash icon","explanation":"Trash glyph appears at the end of the job row.","keyIdea":"The trash glyph conveys removal of the job row.","selector":"[class~=\"aui-button\"][aria-label^=\"Remove\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])","code":["IconButton"]},
-        {"id":"cell","partId":"cell","title":"Remove cell","explanation":"Last cell holds the trash action for the Job 1 row.","keyIdea":"The final cell reserves a stable position for row removal.","selector":"[class~=\"aui-table-cell\"]:last-child"},
-        {"id":"header-cell","partId":"header-cell","title":"Remove header","explanation":"The unlabeled column heading (aria-label Remove) above the trash buttons.","keyIdea":"The blank heading labels the removal column for assistive technology.","selector":"[class~=\"aui-table-header-cell\"]:last-child"},
-      ],
 options: [
     { id: "hs-remove", contextAnatomy: CONTEXT_ANATOMY, name: "Remove", apps: ["hs","pbs"], source: {"hs":"src/hs/OutputPane.tsx","pbs":"src/ResultsSection.tsx"} ,
-      contextLayers: [
-        {"id":"context-jobs-table","partId":"jobs-table","title":"Jobs table","explanation":"Jobs table places the trash action after the Job column.","keyIdea":"The jobs table groups each row with its trailing remove action.","selector":"[class~=\"aui-table\"]","scope":"context"},
-        {"id":"context-job-name","partId":"job-name","title":"Job cell","explanation":"The Job 1 label that the Remove Job 1 button belongs to.","keyIdea":"The job label identifies which entry the remove control belongs to.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-cell\"]:first-child","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"jobs-table","lesson":{"explanation":"Jobs table places the trash action after the Job column.","scope":"context"}},{"id":"job-name","lesson":{"explanation":"The Job 1 label that the Remove Job 1 button belongs to.","scope":"context"}}]},
   ],
   source: { hs: 'src/hs/InputFields.tsx', pbs: 'src/ResultsSection.tsx' },
   summary: 'A square transparent trash IconButton, 28px, removes a row from a saved list after a confirmation.',
@@ -30,9 +20,9 @@ options: [
   when: 'Use it for the destructive action of a row; name the button with the row id in its aria-label (Remove <job> or <connection>).',
   how: 'One trash IconButton, aui color "secondary", paint "text", scale "sm" and the default square profile. The other columns are left out. One group, HS and PBS.',
   anatomy: [
-    { id: 'remove', name: 'Remove', selector: '[class~="aui-button"][aria-label^="Remove"]', description: 'The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click.' },
-    { id: 'remove-icon', name: 'Trash icon', selector: '[class~="aui-button"][aria-label^="Remove"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The trash glyph centred in the button.' },
-    { id: 'cell', name: 'Remove cell', selector: '[class~="aui-table-cell"]:last-child', description: 'The last cell of the Job 1 row that holds the trash button next to the job name.' },
-    { id: 'header-cell', name: 'Remove header', selector: '[class~="aui-table-header-cell"]:last-child', description: 'The unlabeled column heading (aria-label Remove) above the trash buttons.' },
+    { id: 'remove', name: 'Remove', selector: '[class~="aui-button"][aria-label^="Remove"]', description: 'The 28px square transparent secondary trash button in the last cell of a row; the HS scene names it Remove Job 1 and the confirmation follows the click.' , lesson: {"explanation":"28px trash button removes Job 1 and opens confirmation."}},
+    { id: 'remove-icon', name: 'Trash icon', selector: '[class~="aui-button"][aria-label^="Remove"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The trash glyph centred in the button.' , lesson: {"explanation":"Trash glyph appears at the end of the job row.","code":["IconButton"]}},
+    { id: 'cell', name: 'Remove cell', selector: '[class~="aui-table-cell"]:last-child', description: 'The last cell of the Job 1 row that holds the trash button next to the job name.' , lesson: {"explanation":"Last cell holds the trash action for the Job 1 row."}},
+    { id: 'header-cell', name: 'Remove header', selector: '[class~="aui-table-header-cell"]:last-child', description: 'The unlabeled column heading (aria-label Remove) above the trash buttons.' , lesson: {"explanation":"The unlabeled column heading (aria-label Remove) above the trash buttons."}},
   ],
 });

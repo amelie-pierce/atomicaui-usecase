@@ -38,10 +38,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD. Selector: `[class~="aui-button"]`.
-2. **Icon** — The filter glyph with a cross that signals removing the active filters, at scale "sm". Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Container** — The Reset filters Button in the table toolbar: small and default gray in HCS, a borderless secondary text Button in FD. Selector: `[class~="aui-button"]`. Layer step: **Container** — Small Reset filters button removes the active table filters.
+2. **Icon** — The filter glyph with a cross that signals removing the active filters, at scale "sm". Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`. Layer step: **Icon** — Filter glyph with a cross signals that active filters will clear.
 3. **Label** — The text "Reset filters" shown while a search or status filter is active. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
 ## Apps
@@ -65,10 +65,10 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Output pane** — The Output pane frame, a surface-alt section cut to its title and toolbar. Part marker: `data-ug-part="output-pane"`.
-2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`.
-3. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it. Part marker: `data-ug-part="toolbar"`.
-4. **Search field** — The Field with a magnifying-glass icon, the entered text "Model" and a clear (x) button. Part marker: `data-ug-part="search"`.
+1. **Output pane** — The Output pane frame, a surface-alt section cut to its title and toolbar. Part marker: `data-ug-part="output-pane"`. Layer step: **Output pane** — Surface-alt Output pane includes its title and toolbar.
+2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`. Layer step: **Output title** — The "Output" heading at the start of the pane header.
+3. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it. Part marker: `data-ug-part="toolbar"`. Layer step: **Output toolbar** — Toolbar row places search before Reset filters with 8px gaps.
+4. **Search field** — The Field with a magnifying-glass icon, the entered text "Model" and a clear (x) button. Part marker: `data-ug-part="search"`. Layer step: **Search field** — Magnifier Field contains Model and a clear X button.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-008/example.tsx`
 
@@ -132,10 +132,10 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Output pane** — The Output pane frame, a surface-alt section cut to its title and toolbar. Part marker: `data-ug-part="output-pane"`.
-2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`.
-3. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it. Part marker: `data-ug-part="toolbar"`.
-4. **Search field** — The Field with a magnifying-glass icon, the entered text "Model" and a clear (x) button. Part marker: `data-ug-part="search"`.
+1. **Output pane** — The Output pane frame, a surface-alt section cut to its title and toolbar. Part marker: `data-ug-part="output-pane"`. Layer step: **Output pane** — Surface-alt Output pane includes its title and toolbar.
+2. **Output title** — The "Output" heading at the start of the pane header. Part marker: `data-ug-part="output-title"`. Layer step: **Output title** — The "Output" heading at the start of the pane header.
+3. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field filling the line and Reset filters after it. Part marker: `data-ug-part="toolbar"`. Layer step: **Output toolbar** — Toolbar row places search before Reset filters with 8px gaps.
+4. **Search field** — The Field with a magnifying-glass icon, the entered text "Model" and a clear (x) button. Part marker: `data-ug-part="search"`. Layer step: **Search field** — Magnifier Field contains Model and a clear X button.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-008/options/fd-toolbar/example.tsx`
 

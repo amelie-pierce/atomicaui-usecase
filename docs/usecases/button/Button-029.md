@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Close** — The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD). Selector: `[class~="aui-button"][aria-label^="Close"]`.
-2. **Close icon** — The xmark glyph centred in the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Popover popup** — The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner. Selector: `[data-aui-popup-motion][role="dialog"]`.
-4. **Help trigger** — The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes. Selector: `[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])`.
-5. **Apps trigger** — FD only: the grip button in the top bar that opens Explore More Applications. Selector: `[class~="aui-button"][aria-label="Apps"]`.
+1. **Close** — The transparent xmark button that dismisses the popover; it is the 20px contained one in the example, and the scenes place it at the corner (AGPD, HCS, PBS) or use a Button with an icon (FD Close applications, PFD). Selector: `[class~="aui-button"][aria-label^="Close"]`. Layer step: **Close** — Transparent X dismisses the popover; apps place it in different corners.
+2. **Close icon** — The xmark glyph centred in the close button. Selector: `[class~="aui-button"][aria-label^="Close"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Close icon** — The xmark glyph centred in the close button. Code target: `IconButton`, `ContainedIcon`.
+3. **Popover popup** — The floating surface (solid, soft, elevation 4) that holds the help text or the Explore More Applications list with the close button in its corner. Selector: `[data-aui-popup-motion][role="dialog"]`. Layer step: **Popover popup** — Floating soft surface holds help text or the app list and Close. Code target: `Popover.Popup`.
+4. **Help trigger** — The circle-question button (Material help, Help with Download Duration) that anchors the popover in the help scenes. Selector: `[class~="aui-button"][aria-label*="elp"]:not([aria-label^="Close"])`. Layer step: **Help trigger** — Circle-question button anchors help to its related control.
+5. **Apps trigger** — FD only: the grip button in the top bar that opens Explore More Applications. Selector: `[class~="aui-button"][aria-label="Apps"]`. Layer step: **Apps trigger** — FD grip in the top bar opens the application list.
 
 ## Apps
 

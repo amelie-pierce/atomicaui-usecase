@@ -1,6 +1,7 @@
 import { startTransition, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { catalog, allUsecases, componentAliases } from '../catalog/catalog';
 import { withOption } from '../catalog/app-views';
+import { anatomyLayers } from '../catalog/anatomy-layers';
 import { useRoute } from '../hooks/use-route';
 import { useMediaQuery } from '../hooks/use-media-query';
 import { DetailPane } from '../ui/detail-pane';
@@ -70,25 +71,27 @@ export function UsecaseGallery() {
   }, [treeCollapsed]);
   const activeMode = option?.showContext ? viewMode : 'component';
   const componentAnatomy = usecase?.anatomy ?? [];
-  const componentLayers = usecase?.layers ?? [];
   const anatomy = useMemo(() => activeMode === 'context'
     ? [
-      ...componentAnatomy.map((part) => ({ ...part, scope: 'component' as const })),
       ...(option?.contextAnatomy ?? []).map((part) => ({ ...part, scope: 'context' as const })),
+      ...componentAnatomy.map((part) => ({ ...part, scope: 'scene' as const })),
     ]
     : componentAnatomy, [activeMode, usecase?.id, option?.id, componentAnatomy]);
   const activePartId = interactedPart?.id ?? selectedPartId;
   const previewKey = `${selectedId}:${option?.id ?? ''}`;
   const activePreviewKey = `${previewKey}:${activeMode}`;
   const availablePartIds = availableParts?.key === activePreviewKey ? availableParts.ids : undefined;
-  const authoredLayers = activeMode === 'context' ? [...(option?.contextLayers ?? []), ...componentLayers] : componentLayers;
-  const anatomyIds = new Set(anatomy.map((part) => part.id));
-  const layers = availablePartIds ? authoredLayers.filter((step) => {
-    const partId = step.partId ?? step.id.replace(/^context-/, '');
-    return !anatomyIds.has(partId) || availablePartIds.includes(partId);
-  }) : authoredLayers;
+  const orderedAnatomy = useMemo(() => {
+    if (!availablePartIds) return anatomy;
+    const rank = new Map(availablePartIds.map((id, index) => [id, index]));
+    return [...anatomy].sort((a, b) => (rank.get(a.id) ?? Number.MAX_SAFE_INTEGER) - (rank.get(b.id) ?? Number.MAX_SAFE_INTEGER));
+  }, [anatomy, availablePartIds]);
+  const allLayers = useMemo(() => anatomyLayers(orderedAnatomy, activeMode === 'context' ? 'context' : 'component'), [orderedAnatomy, activeMode]);
+  const layers = availablePartIds
+    ? allLayers.filter((step) => availablePartIds.includes(step.partId ?? step.id))
+    : allLayers;
   const activeLayerIndex = Math.min(layerIndex, Math.max(0, layers.length - 1));
-  const visibleLayerIndex = Math.max(0, authoredLayers.indexOf(layers[activeLayerIndex]));
+  const visibleLayerIndex = Math.max(0, allLayers.indexOf(layers[activeLayerIndex]));
   useLayoutEffect(() => {
     const root = galleryRef.current;
     const toolbar = root?.querySelector<HTMLElement>('.ug-toolbar');
@@ -124,13 +127,18 @@ export function UsecaseGallery() {
     requestAnimationFrame(() => document.getElementById(`anatomy-${partId}`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
   }, [selectedId]);
   const onLayerChange = useCallback((index: number) => setLayerIndex(index), []);
-  const onAvailablePartsChange = useCallback((ids: string[]) => setAvailableParts({ key: activePreviewKey, ids }), [activePreviewKey]);
+  const layersReady = documentMode === 'layers' && Boolean(availablePartIds);
+  const onAvailablePartsChange = useCallback((ids: string[]) => setAvailableParts((current) =>
+    current?.key === activePreviewKey && current.ids.length === ids.length && current.ids.every((id, index) => id === ids[index])
+      ? current
+      : { key: activePreviewKey, ids },
+  ), [activePreviewKey]);
   if (!original || !group || !usecase) return null;
   // The option change is a transition: the shown UI stays until the next option's lazy example has loaded, so the stage never blanks.
   const panes = {
     toolbar: <DetailToolbar treeCollapsed={treeCollapsed} onTreeToggle={() => setTreeCollapsedForSession(!treeCollapsed)} searchQuery={searchQuery} onSearchChange={setSearchQuery} onSearchSubmit={() => { if (searchQuery.trim() && firstSearchMatch) window.location.hash = `#/${encodeURIComponent(firstSearchMatch.componentId)}/${encodeURIComponent(firstSearchMatch.id)}`; }} panelMode={!narrow} />,
     tree: <TreePane groups={visibleGroups} activeComponentId={group.id} activeUsecase={original} collapsed={treeCollapsed} searchActive={Boolean(searchQuery.trim())} />,
-    render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={(next) => { setViewMode(next); setLayerIndex(0); }} anatomy={anatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => { setLayerIndex(0); startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })); }} layers={authoredLayers} layerIndex={visibleLayerIndex} layerMode={documentMode === 'layers'} />,
+    render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={(next) => { setViewMode(next); setLayerIndex(0); }} anatomy={orderedAnatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => { setLayerIndex(0); startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })); }} layers={allLayers} layerIndex={visibleLayerIndex} layerMode={layersReady} />,
     detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} documentMode={documentMode} onDocumentModeChange={(next) => { setDocumentMode(next); setLayerIndex(0); }} layers={layers} layerIndex={activeLayerIndex} onLayerChange={onLayerChange} />,
   };
   return (

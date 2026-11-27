@@ -36,14 +36,14 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Radio group** — The "Camera projection" RadioGroup (scale "sm", no padding) whose options each carry their own tooltip. Selector: `[class~="aui-radio-group"]`.
-2. **Trigger** — The span, with closeOnClick off, that wraps the Perspective radio so the tooltip does not close on arrow-key selection. Part marker: `data-ug-part="trigger"`.
-3. **Radio** — The "Perspective" radio at scale "sm", selected by default. Selector: `[class~="aui-radio"]`.
-4. **Radio label** — The visible option name "Perspective" beside the radio. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
-5. **Positioner** — Places the note above the radio with a 4px offset (side="top"); RWS requests the bottom side. Selector: `[class~="aui-tooltip-positioner"]`.
-6. **Popup** — The default tooltip surface for the one-line note. Selector: `[class~="aui-tooltip-popup"]`.
+1. **Radio group** — The "Camera projection" RadioGroup (scale "sm", no padding) whose options each carry their own tooltip. Selector: `[class~="aui-radio-group"]`. Layer step: **Radio group** — Small unpadded Camera projection group gives each option its tooltip.
+2. **Trigger** — The span, with closeOnClick off, that wraps the Perspective radio so the tooltip does not close on arrow-key selection. Part marker: `data-ug-part="trigger"`. Layer step: **Trigger** — Wrapper keeps tooltip open while arrow keys select Perspective.
+3. **Radio** — The "Perspective" radio at scale "sm", selected by default. Selector: `[class~="aui-radio"]`. Layer step: **Radio** — The "Perspective" radio at scale "sm", selected by default.
+4. **Radio label** — The visible option name "Perspective" beside the radio. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`. Layer step: **Radio label** — The visible option name "Perspective" beside the radio.
+5. **Positioner** — Places the note above the radio with a 4px offset (side="top"); RWS requests the bottom side. Selector: `[class~="aui-tooltip-positioner"]`. Layer step: **Positioner** — Tooltip sits above the radio with a 4px gap; RWS uses below.
+6. **Popup** — The default tooltip surface for the one-line note. Selector: `[class~="aui-tooltip-popup"]`. Layer step: **Popup** — The default tooltip surface for the one-line note.
 7. **Note** — The note "Show the model in perspective" that explains what the option does. Selector: `[class~="aui-tooltip-popup"]`. Direct text is highlighted.
 
 ## Apps

@@ -4,23 +4,10 @@ export default defineUsecase({
   uiType: 'Menubar with text triggers',
   title: 'Help Center menu',
   apps: ['hcs', 'ace', 'adm', 'hs', 'adc', 'pbs', 'pfd', 'rws', 'agpd'],
-    layers: [
-        {"id":"menubar","partId":"menubar","title":"Menubar","explanation":"Top bar ends with Help Center; HCS uses small Main navigation.","keyIdea":"The Help Center bar entry keeps support actions at the end of the main navigation.","selector":"[class~=\"aui-menubar\"]"},
-        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Help Center text trigger opens the help menu.","keyIdea":"The text trigger gives the support menu a specific name rather than an icon-only cue.","selector":"[class~=\"aui-menubar-trigger\"]","code":["Menubar.DropdownTrigger"]},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Popup aligns below trigger at 192px; HCS expands it to 288px.","keyIdea":"The popup remains anchored under Help Center so support choices retain their origin.","selector":"[class~=\"aui-dropdown-popup\"]"},
-        {"id":"item","partId":"item","title":"Item","explanation":"A help action row: \"Feedback\", \"Tutorials\" or \"Add to Home Screen\".","keyIdea":"Each row launches one help destination such as Feedback or Tutorials.","selector":"[class~=\"aui-dropdown-item\"]"},
-        {"id":"submenu-trigger","partId":"submenu-trigger","title":"Submenu trigger","explanation":"HCS Tutorials row opens one nested tutorial choice.","keyIdea":"The Tutorials row reveals a nested choice while other help actions stay direct.","selector":"[class~=\"aui-dropdown-submenu-trigger\"]"},
-      ],
 options: [
     { id: "hcs-help-center", showContext: false, name: "Tutorials submenu", apps: ["hcs"], source: {"hcs":"src/App.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "pbs-help-center", showContext: false, name: "Plain help actions", apps: ["ace","adm","hs","adc","pbs","pfd","rws","agpd"], source: {"ace":"src/features/top-navigation/ui/AceNavBar.tsx","adm":"src/app/layout/NavBar/NavBar.tsx","hs":"src/hs/TopBar.tsx","adc":"src/adc/Workspace.tsx","pbs":"src/TopBar.tsx","pfd":"src/pfd/TopBar.tsx","rws":"src/rws/TopBar.tsx","agpd":"src/agpd/TopBar.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: {
@@ -44,30 +31,30 @@ options: [
       name: 'Menubar',
       selector: '[class~="aui-menubar"]',
       description: 'The top bar whose last menu is Help Center; the HCS scene sets it at scale "sm" and names it "Main navigation".',
-    },
+     lesson: {"explanation":"Top bar ends with Help Center; HCS uses small Main navigation."}},
     {
       id: 'trigger',
       name: 'Trigger',
       selector: '[class~="aui-menubar-trigger"]',
       description: 'The text trigger "Help Center".',
-    },
+     lesson: {"explanation":"Help Center text trigger opens the help menu.","code":["Menubar.DropdownTrigger"]}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dropdown-popup"]',
       description: 'The 192px wide popup under the trigger (288px in the HCS scene), aligned to the trigger start.',
-    },
+     lesson: {"explanation":"Popup aligns below trigger at 192px; HCS expands it to 288px."}},
     {
       id: 'item',
       name: 'Item',
       selector: '[class~="aui-dropdown-item"]',
       description: 'A help action row: "Feedback", "Tutorials" or "Add to Home Screen".',
-    },
+     lesson: {"explanation":"A help action row: \"Feedback\", \"Tutorials\" or \"Add to Home Screen\"."}},
     {
       id: 'submenu-trigger',
       name: 'Submenu trigger',
       selector: '[class~="aui-dropdown-submenu-trigger"]',
       description: 'In the HCS scene "Tutorials" is a submenu trigger that opens one tutorial to its right.',
-    },
+     lesson: {"explanation":"HCS Tutorials row opens one nested tutorial choice."}},
   ],
 });

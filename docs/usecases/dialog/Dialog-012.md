@@ -35,10 +35,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the expanded HS Output view. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label "Expanded Output". Selector: `[class~="aui-dialog-popup"]`.
+1. **Overlay** — The scrim behind the expanded HS Output view. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — The scrim behind the expanded HS Output view.
+2. **Popup** — The square, no-padding popup that fills the screen with a zero gap; with no Title it is named by aria-label "Expanded Output". Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — No-padding square popup fills the screen and is named Expanded Output.
 3. **Content text** — The p3 line that stands for the content and its own toolbar (the scene reads "Output toolbar"). Part marker: `data-ug-part="content-text"`. Direct text is highlighted.
 
 ## Apps

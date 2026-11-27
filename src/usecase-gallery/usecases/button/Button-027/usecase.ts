@@ -11,21 +11,9 @@ export default defineUsecase({
   title: 'Back to top and Table Notes buttons',
 
   apps: ['hcs', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-    layers: [
-        {"id":"back-to-top","partId":"back-to-top","title":"Back to top","explanation":"Secondary text action returns to the top of the long table.","keyIdea":"Back to top returns readers to the start of the long results table.","selector":"[class~=\"aui-button\"][aria-label=\"Back to top\"]"},
-        {"id":"back-icon","partId":"back-icon","title":"Arrow-up icon","explanation":"The arrow-up glyph that shows the direction of the jump.","keyIdea":"The up arrow previews the direction of the table jump.","selector":"[class~=\"aui-button\"][aria-label=\"Back to top\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-        {"id":"table-notes","partId":"table-notes","title":"Table Notes","explanation":"Secondary text action jumps to Table Notes with an accessible label.","keyIdea":"Table Notes moves readers to the supporting notes below the results.","selector":"[class~=\"aui-button\"][aria-label=\"Jump to table notes\"]"},
-        {"id":"notes-icon","partId":"notes-icon","title":"Arrow-down icon","explanation":"The arrow-down glyph that points toward the notes below the table.","keyIdea":"The down arrow points from the table toward its notes.","selector":"[class~=\"aui-button\"][aria-label=\"Jump to table notes\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-        {"id":"print","partId":"print","title":"Print Output","explanation":"HCS adds tonal Print Output after the two navigation links.","keyIdea":"The HCS print control follows both navigation shortcuts in the header.","selector":"[class~=\"aui-button\"]:not([aria-label])"},
-      ],
 options: [
     { id: "hcs-output-header", contextAnatomy: CONTEXT_ANATOMY, name: "Output header", apps: ["hcs","pfd","pbs","hs","fd","agpd","rws"], source: {"hcs":"src/useOutputNavigation.tsx","pfd":"src/pfd/useOutputNavigation.tsx","pbs":"src/useOutputNavigation.tsx","hs":"src/hs/useOutputNavigation.tsx","fd":"src/components/useOutputNavigation.jsx","agpd":"src/agpd/outputNavigation.tsx","rws":"src/rws/outputNavigation.tsx"} ,
-      contextLayers: [
-        {"id":"context-output-pane","partId":"output-pane","title":"Output pane","explanation":"The surface-alt Output section that frames the header row.","keyIdea":"The pane frames output navigation and its result content together.","selector":"[data-ug-part=\"output-pane\"]","scope":"context"},
-        {"id":"context-output-title","partId":"output-title","title":"Output title","explanation":"The semi-bold Output heading at the start of the header row.","keyIdea":"The heading identifies the output section above the helper actions.","selector":"[data-ug-part=\"output-title\"]","scope":"context"},
-        {"id":"context-header-actions","partId":"header-actions","title":"Header actions","explanation":"End-aligned group wraps two navigation links and Print when space runs out.","keyIdea":"The action group keeps print and scroll shortcuts aligned at the header end.","selector":"[data-ug-part=\"header-actions\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"output-pane","lesson":{"explanation":"The surface-alt Output section that frames the header row.","scope":"context"}},{"id":"output-title","lesson":{"explanation":"The semi-bold Output heading at the start of the header row.","scope":"context"}},{"id":"header-actions","lesson":{"explanation":"End-aligned group wraps two navigation links and Print when space runs out.","scope":"context"}}]},
   ],
   source: { hcs: 'src/useOutputNavigation.tsx', pfd: 'src/pfd/useOutputNavigation.tsx', pbs: 'src/useOutputNavigation.tsx', hs: 'src/hs/useOutputNavigation.tsx', fd: 'src/components/useOutputNavigation.jsx', agpd: 'src/agpd/outputNavigation.tsx', rws: 'src/rws/outputNavigation.tsx' },
   summary: 'Two quiet text Buttons with a leading icon sit together in a header: an arrow jumps to the top of a long table and another down to its notes.',
@@ -38,10 +26,10 @@ options: [
     + 'They are the first two items of the Output header action group, shown as they are once the results are scrolled: the apps reveal Back to top after 80px of scroll (hides below 20px) and Table Notes while the notes heading is below the pane, and all seven turn both into square icon Buttons with a Tooltip carrying the same label when the labels do not fit the header row (this scene shows the labelled state). '
     + 'The Print Output Button after them in the scene is HCS\'s neighbour (PFD, PBS, AGPD and RWS print from the menubar, and HS and FD put Configure columns (HS also Fullscreen) between them and Print); Configure columns and the table are left out.',
   anatomy: [
-    { id: 'back-to-top', name: 'Back to top', selector: '[class~="aui-button"][aria-label="Back to top"]', description: 'Secondary text button that scrolls to the top of the long table; its accessible name matches the visible label.' },
-    { id: 'back-icon', name: 'Arrow-up icon', selector: '[class~="aui-button"][aria-label="Back to top"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The arrow-up glyph that shows the direction of the jump.' },
-    { id: 'table-notes', name: 'Table Notes', selector: '[class~="aui-button"][aria-label="Jump to table notes"]', description: 'Secondary text button that jumps down to the table notes; its accessible name "Jump to table notes" is longer than the visible Table Notes label.' },
-    { id: 'notes-icon', name: 'Arrow-down icon', selector: '[class~="aui-button"][aria-label="Jump to table notes"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The arrow-down glyph that points toward the notes below the table.' },
-    { id: 'print', name: 'Print Output', selector: '[class~="aui-button"]:not([aria-label])', description: 'HCS Output header only: the tonal surface Print Output button with a print icon that sits right after the two jump buttons.' },
+    { id: 'back-to-top', name: 'Back to top', selector: '[class~="aui-button"][aria-label="Back to top"]', description: 'Secondary text button that scrolls to the top of the long table; its accessible name matches the visible label.' , lesson: {"explanation":"Secondary text action returns to the top of the long table."}},
+    { id: 'back-icon', name: 'Arrow-up icon', selector: '[class~="aui-button"][aria-label="Back to top"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The arrow-up glyph that shows the direction of the jump.' , lesson: {"explanation":"The arrow-up glyph that shows the direction of the jump."}},
+    { id: 'table-notes', name: 'Table Notes', selector: '[class~="aui-button"][aria-label="Jump to table notes"]', description: 'Secondary text button that jumps down to the table notes; its accessible name "Jump to table notes" is longer than the visible Table Notes label.' , lesson: {"explanation":"Secondary text action jumps to Table Notes with an accessible label."}},
+    { id: 'notes-icon', name: 'Arrow-down icon', selector: '[class~="aui-button"][aria-label="Jump to table notes"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The arrow-down glyph that points toward the notes below the table.' , lesson: {"explanation":"The arrow-down glyph that points toward the notes below the table."}},
+    { id: 'print', name: 'Print Output', selector: '[class~="aui-button"]:not([aria-label])', description: 'HCS Output header only: the tonal surface Print Output button with a print icon that sits right after the two jump buttons.' , lesson: {"explanation":"HCS adds tonal Print Output after the two navigation links."}},
   ],
 });

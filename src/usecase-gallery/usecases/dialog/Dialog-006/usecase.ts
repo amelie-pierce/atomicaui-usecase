@@ -4,20 +4,8 @@ export default defineUsecase({
   uiType: 'Dialog with title bar',
   title: 'Centered-title dialog',
   apps: ['fd'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"Scrim dims content behind the Help Center window.","keyIdea":"The scrim keeps support navigation in focus over the current workspace.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Small soft Help Center window is 360px; FD uses 420px.","keyIdea":"A compact window gives help destinations a separate space without obscuring the whole stage.","selector":"[class~=\"aui-dialog-popup\"]"},
-        {"id":"title","partId":"title","title":"Title bar","explanation":"Raised centered title leaves 40px padding at each end.","keyIdea":"Centering the Help Center label makes the support destination clear at a glance.","selector":"[class~=\"aui-dialog-title\"]"},
-        {"id":"title-text","partId":"title-text","title":"Title text","explanation":"The centred words \"Help Center\" inside the title bar.","keyIdea":"The centered words name the support section without consuming extra header width.","selector":"[data-ug-part=\"title-text\"]"},
-        {"id":"close","partId":"close","title":"Close","explanation":"Absolutely positioned Close X sits 8px from the inline end.","keyIdea":"Positioning the X at the end keeps dismissal available without disturbing the centered title.","selector":"[class~=\"aui-dialog-close\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"The body that holds the navigation column of help rows.","keyIdea":"The body contains the help destinations as a navigation list.","selector":"[class~=\"aui-dialog-body\"]"},
-        {"id":"help-rows","partId":"help-rows","title":"Help rows","explanation":"Help Center navigation lists Feedback and Tutorials in FD.","keyIdea":"The named nav region groups Feedback and Tutorials as Help Center routes.","selector":"[data-ug-part=\"help-rows\"]"},
-      ],
 options: [
     { id: "fd-help-center", name: "Help Center", showContext: false, source: {"fd":"src/components/HelpCenter.jsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { fd: 'src/components/HelpCenter.jsx' },
@@ -31,40 +19,40 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the Help Center window.',
-    },
+     lesson: {"explanation":"Scrim dims content behind the Help Center window."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The small 360px Help Center window at scale "sm" with a soft shape (FD caps its own copy at 420px and pins it to the screen corner).',
-    },
+     lesson: {"explanation":"Small soft Help Center window is 360px; FD uses 420px."}},
     {
       id: 'title',
       name: 'Title bar',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title bar whose "Help Center" text is centred between 40px start and end padding, with no Spacer.',
-    },
+     lesson: {"explanation":"Raised centered title leaves 40px padding at each end."}},
     {
       id: 'title-text',
       name: 'Title text',
       description: 'The centred words "Help Center" inside the title bar.',
-    },
+     lesson: {"explanation":"The centred words \"Help Center\" inside the title bar.","selector":"[data-ug-part=\"title-text\"]"}},
     {
       id: 'close',
       name: 'Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The close X taken out of the flow and pinned to the inline end with position absolute and an 8px offset.',
-    },
+     lesson: {"explanation":"Absolutely positioned Close X sits 8px from the inline end."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-dialog-body"]',
       description: 'The body that holds the navigation column of help rows.',
-    },
+     lesson: {"explanation":"The body that holds the navigation column of help rows."}},
     {
       id: 'help-rows',
       name: 'Help rows',
       description: 'The nav View labelled "Help Center": a no-padding column with gap 8 whose rows are Feedback and Tutorials in the FD scene.',
-    },
+     lesson: {"explanation":"Help Center navigation lists Feedback and Tutorials in FD.","selector":"[data-ug-part=\"help-rows\"]"}},
   ],
 });

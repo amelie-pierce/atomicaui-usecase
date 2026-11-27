@@ -5,24 +5,14 @@ export default defineUsecase({
   title: 'Cancel upload button',
 
   apps: ['ace', 'pfd', 'pbs', 'hs', 'fd', 'agpd', 'rws'],
-    layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Small gray Cancel waits for a file or dismisses the upload dialog.","keyIdea":"The lone cancel action lets users leave the upload dialog while no file has been dropped.","selector":"[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])"},
-      ],
 options: [
     { id: "ace-upload", name: "Upload Cancel", apps: ["ace","pfd","pbs","hs","fd","agpd","rws"], contextAnatomy: [
-      { id: "dialog", name: "Dialog", description: "The open dialog titled \"Upload JSON File\"." },
-      { id: "dialog-title", name: "Dialog title", description: "The raised title bar with \"Upload JSON File\" and the close X at the end." },
-      { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog like Cancel (aria-label \"Cancel\")." },
-      { id: "upload-body", name: "Upload area", description: "The dialog body that holds the file upload drop zone (\"Drop files here\" with a Browse action)." },
-      { id: "dialog-footer", name: "Dialog footer", description: "The Actions row at the end that holds the single Cancel button." },
+      { id: "dialog", name: "Dialog", description: "The open dialog titled \"Upload JSON File\"." , lesson: {"explanation":"Upload JSON File dialog hosts the file dropzone and actions.","selector":"[data-ug-part=\"dialog\"]","scope":"context"}},
+      { id: "dialog-title", name: "Dialog title", description: "The raised title bar with \"Upload JSON File\" and the close X at the end." , lesson: {"explanation":"Raised title says Upload JSON File beside its Close X.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"}},
+      { id: "dialog-close", name: "Close button", description: "The X in the title that closes the dialog like Cancel (aria-label \"Cancel\")." , lesson: {"explanation":"Title X closes the dialog and is labelled Cancel.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"}},
+      { id: "upload-body", name: "Upload area", description: "The dialog body that holds the file upload drop zone (\"Drop files here\" with a Browse action)." , lesson: {"explanation":"Dialog body contains the Drop files here zone and Browse.","selector":"[data-ug-part=\"upload-body\"]","scope":"context"}},
+      { id: "dialog-footer", name: "Dialog footer", description: "The Actions row at the end that holds the single Cancel button." , lesson: {"explanation":"The Actions row at the end that holds the single Cancel button.","selector":"[data-ug-part=\"dialog-footer\"]","scope":"context"}},
     ], source: {"ace":"src/features/file-persistence/ui/OpenFromDeviceDialog.tsx","pfd":"src/pfd/ShellDialogs.tsx","pbs":"src/WorkspaceTools.tsx","hs":"src/hs/ShellExtras.tsx","fd":"src/App.jsx","agpd":"src/agpd/ShellDialogs.tsx","rws":"src/rws/ShellDialogs.tsx"} ,
-      contextLayers: [
-        {"id":"context-dialog","partId":"dialog","title":"Dialog","explanation":"Upload JSON File dialog hosts the file dropzone and actions.","keyIdea":"The dialog shell frames the JSON upload task as a focused interruption.","selector":"[data-ug-part=\"dialog\"]","scope":"context"},
-        {"id":"context-dialog-title","partId":"dialog-title","title":"Dialog title","explanation":"Raised title says Upload JSON File beside its Close X.","keyIdea":"The title bar identifies the requested file type and provides a close route.","selector":"[data-ug-part=\"dialog-title\"]","scope":"context"},
-        {"id":"context-dialog-close","partId":"dialog-close","title":"Close button","explanation":"Title X closes the dialog and is labelled Cancel.","keyIdea":"The close X gives the upload dialog a second dismissal path alongside Cancel.","selector":"[data-ug-part=\"dialog-close\"]","scope":"context"},
-        {"id":"context-upload-body","partId":"upload-body","title":"Upload area","explanation":"Dialog body contains the Drop files here zone and Browse.","keyIdea":"The body groups the drop target and Browse action as one file-selection area.","selector":"[data-ug-part=\"upload-body\"]","scope":"context"},
-        {"id":"context-dialog-footer","partId":"dialog-footer","title":"Dialog footer","explanation":"The Actions row at the end that holds the single Cancel button.","keyIdea":"The footer anchors Cancel after the upload area.","selector":"[data-ug-part=\"dialog-footer\"]","scope":"context"},
-      ],
     },
   ],
   source: { ace: 'src/features/file-persistence/ui/OpenFromDeviceDialog.tsx', pfd: 'src/pfd/ShellDialogs.tsx', pbs: 'src/WorkspaceTools.tsx', hs: 'src/hs/ShellExtras.tsx', fd: 'src/App.jsx', agpd: 'src/agpd/ShellDialogs.tsx', rws: 'src/rws/ShellDialogs.tsx' },
@@ -37,7 +27,7 @@ options: [
       name: "Container",
       description: "The lone Cancel Button in the upload dialog footer, small and in the default gray solid look, that dismisses the dialog while it waits for a dropped file.",
       selector: "[class~=\"aui-button\"]:not([class~=\"aui-dialog-close\"])",
-    },
+     lesson: {"explanation":"Small gray Cancel waits for a file or dismisses the upload dialog."}},
     {
       id: "label",
       name: "Label",

@@ -37,9 +37,9 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Chip** — The solid success chip at scale "sm" that tags a release-note entry as a feature (the warning colour is used for an improvement). Selector: `[class~="aui-chip"]`.
+1. **Chip** — The solid success chip at scale "sm" that tags a release-note entry as a feature (the warning colour is used for an improvement). Selector: `[class~="aui-chip"]`. Layer step: **Chip** — Solid success chip labels release-note features; improvements use warning colour.
 2. **Label** — The uppercase kind name FEATURE. Selector: `[class~="aui-chip-label"]`. Direct text is highlighted.
 
 ## Apps

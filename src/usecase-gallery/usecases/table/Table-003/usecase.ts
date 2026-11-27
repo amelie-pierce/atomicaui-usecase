@@ -4,25 +4,10 @@ export default defineUsecase({
   uiType: 'Data table',
   title: 'Calculation summary table',
   apps: ['adm', 'adc'],
-    layers: [
-        {"id":"table","partId":"table","title":"Table","explanation":"Soft framed summary uses right-aligned values and between-row borders.","keyIdea":"The summary grid aligns numeric values while keeping comparison columns inside one outlined frame.","selector":"[class~=\"aui-table\"]"},
-        {"id":"head","partId":"head","title":"Header","explanation":"Raised header names Limit state, Demand, and Capacity columns.","keyIdea":"The raised header distinguishes limit names from demand and capacity figures.","selector":"[class~=\"aui-table-head\"]"},
-        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Limit state aligns left while numeric headings align right.","keyIdea":"Each heading names either the condition or the numeric measure beneath it.","selector":"[class~=\"aui-table-header-cell\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"Two material rows show demand and capacity values.","keyIdea":"The body pairs demand with capacity so a limit state can be reviewed in one pass.","selector":"[class~=\"aui-table-body\"]"},
-        {"id":"row","partId":"row","title":"Row","explanation":"One limit state with its demand and capacity values.","keyIdea":"A row keeps one engineering limit and its measurements together for comparison.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"},
-        {"id":"cell","partId":"cell","title":"Cell","explanation":"Names align left while numeric figures align right.","keyIdea":"Left-aligning the condition while right-aligning figures separates labels from quantities.","selector":"[class~=\"aui-table-cell\"]"},
-        {"id":"status-dot","partId":"status-dot","title":"Status dot","explanation":"ADM adds a success dot before the Ratio percentage.","keyIdea":"The status dot gives the ADM ratio an at-a-glance success cue before its percentage.","selector":"[class~=\"aui-table-cell\"] [class~=\"aui-symbol\"]"},
-      ],
 options: [
     { id: "adm-summary", name: "Centered summary table", showContext: false, apps: ["adm"], source: {"adm":"src/features/calculation/components/shared/ResultTable.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "adc-summary", name: "Right-aligned summary", showContext: false, apps: ["adc"], source: {"adc":"src/adc/components/ResultTable.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: {
@@ -39,42 +24,42 @@ options: [
       name: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Short summary table: border "between-rows" in a soft 1px outlined frame, overflow hidden and text right-aligned so the numbers line up.',
-    },
+     lesson: {"explanation":"Soft framed summary uses right-aligned values and between-row borders."}},
     {
       id: 'head',
       name: 'Header',
       selector: '[class~="aui-table-head"]',
       description: 'Raised band with the Limit state, Demand (lb) and Capacity (lb) headings; ADM adds a full-width Limit states title row above them.',
-    },
+     lesson: {"explanation":"Raised header names Limit state, Demand, and Capacity columns."}},
     {
       id: 'header-cell',
       name: 'Header cell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'Column heading; the first, Limit state, is left-aligned while the numeric headings follow the right-aligned table.',
-    },
+     lesson: {"explanation":"Limit state aligns left while numeric headings align right."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-table-body"]',
       description: 'Rows for Steel tension (2,210 / 5,400) and Concrete breakout (1,180 / 3,060), separated by hairlines.',
-    },
+     lesson: {"explanation":"Two material rows show demand and capacity values."}},
     {
       id: 'row',
       name: 'Row',
       selector: '[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]',
       description: 'One limit state with its demand and capacity values.',
-    },
+     lesson: {"explanation":"One limit state with its demand and capacity values.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"}},
     {
       id: 'cell',
       name: 'Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Value cell; the limit state name is left-aligned through its own aui, the figures stay right-aligned.',
-    },
+     lesson: {"explanation":"Names align left while numeric figures align right."}},
     {
       id: 'status-dot',
       name: 'Status dot',
       selector: '[class~="aui-table-cell"] [class~="aui-symbol"]',
       description: 'ADM only: the Ratio cell leads with a coloured success dot before the 41% value.',
-    },
+     lesson: {"explanation":"ADM adds a success dot before the Ratio percentage."}},
   ],
 });

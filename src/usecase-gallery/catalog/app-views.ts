@@ -15,7 +15,6 @@ export const withOption = (usecase: Usecase, optionId?: string): { usecase: Usec
       ...usecase,
       apps: option.apps,
       anatomy: usecase.anatomy.map((part) => ({ ...part, ...anatomy.get(part.id) })),
-      layers: option.componentLayers ?? usecase.layers,
       Example: option.Example,
       loadCode: option.loadExampleCode,
     },

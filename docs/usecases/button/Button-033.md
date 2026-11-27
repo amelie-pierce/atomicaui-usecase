@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Collapse all** — The transparent secondary arrows-to-line button (aria-label Collapse all) that folds every Input section; in HCS it is the angle-left Collapse Input button at the start of the header. Selector: `[class~="aui-button"][aria-label^="Collapse"]`.
-2. **Icon** — The arrows-to-line glyph, which becomes expand when all sections are closed. Selector: `[class~="aui-button"][aria-label^="Collapse"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Tooltip** — The Collapse Input label shown below the button in the HCS panel header. Selector: `[class~="aui-tooltip-popup"]`.
-4. **Section** — The Connection Type and Load Properties sections of the Input pane that the button collapses or expands together. Selector: `[class~="aui-accordion-item"]`.
-5. **Section trigger** — The header row of each section with its icon, semi-bold name and chevron. Selector: `[class~="aui-accordion-trigger"]`.
+1. **Collapse all** — The transparent secondary arrows-to-line button (aria-label Collapse all) that folds every Input section; in HCS it is the angle-left Collapse Input button at the start of the header. Selector: `[class~="aui-button"][aria-label^="Collapse"]`. Layer step: **Collapse all** — Transparent secondary button collapses every Input section at once.
+2. **Icon** — The arrows-to-line glyph, which becomes expand when all sections are closed. Selector: `[class~="aui-button"][aria-label^="Collapse"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Icon** — The arrows-to-line glyph, which becomes expand when all sections are closed. Code target: `IconButton`.
+3. **Tooltip** — The Collapse Input label shown below the button in the HCS panel header. Selector: `[class~="aui-tooltip-popup"]`. Layer step: **Tooltip** — HCS shows the Collapse Input label beneath its button.
+4. **Section** — The Connection Type and Load Properties sections of the Input pane that the button collapses or expands together. Selector: `[class~="aui-accordion-item"]`. Layer step: **Section** — Connection Type and Load Properties sections collapse together.
+5. **Section trigger** — The header row of each section with its icon, semi-bold name and chevron. Selector: `[class~="aui-accordion-trigger"]`. Layer step: **Section trigger** — Section header pairs its icon and name with a chevron.
 
 ## Apps
 

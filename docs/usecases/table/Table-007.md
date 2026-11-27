@@ -38,19 +38,19 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Table** — Self-scrolling table (scroll="self", scale "sm", soft); the ACE job tally also uses bodyFit "content" and striped rows, and the HS list uses a raised, centred header. Selector: `[class~="aui-table"]`.
-2. **Header** — Header row with #, Column Spacing and Row Spacing; the job tally scenes use Job and Model B-200 or Job, Model and Qty. Selector: `[class~="aui-table-head"]`.
-3. **Header cell** — Column heading; the # column is fixed at 32px. Selector: `[class~="aui-table-header-cell"]`.
-4. **Body** — The scrolling record rows whose columns the foot totals. Selector: `[class~="aui-table-body"]`.
-5. **Row** — One record, index 1 with its X and Y spacing inputs. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`.
-6. **Cell** — Body cell; the first is the 32px row number and the other two each host a number field. Selector: `[class~="aui-table-cell"]`.
-7. **Number field** — Spacing input in a cell, "X Spacing 1" defaulting to 6 and "Y Spacing 1" to 8, minimum 1. Selector: `[class~="aui-number-field"]`.
-8. **Input group** — Fixed surface frame that joins the numeric input and its unit. Selector: `[class~="aui-number-field-group"]`.
-9. **Input** — Right-aligned numeric entry that can shrink to zero width. Selector: `[class~="aui-number-field-group"] [class~="aui-input"]`.
-10. **Unit** — The "in" unit shown after the value. Selector: `[class~="aui-number-field-unit"]`.
-11. **Foot** — Totals rows under the body: ACE shows Total 4, HS shows a Fastener Totals heading and "16 nails, 8d" spanning the Model and Qty columns. Selector: `[class~="aui-table-foot"]`.
+1. **Table** — Self-scrolling table (scroll="self", scale "sm", soft); the ACE job tally also uses bodyFit "content" and striped rows, and the HS list uses a raised, centred header. Selector: `[class~="aui-table"]`. Layer step: **Table** — Soft self-scrolling table adapts rows and striping across apps.
+2. **Header** — Header row with #, Column Spacing and Row Spacing; the job tally scenes use Job and Model B-200 or Job, Model and Qty. Selector: `[class~="aui-table-head"]`. Layer step: **Header** — Header lists spacing columns or job tally fields.
+3. **Header cell** — Column heading; the # column is fixed at 32px. Selector: `[class~="aui-table-header-cell"]`. Layer step: **Header cell** — Column heading; the # column is fixed at 32px.
+4. **Body** — The scrolling record rows whose columns the foot totals. Selector: `[class~="aui-table-body"]`. Layer step: **Body** — The scrolling record rows whose columns the foot totals.
+5. **Row** — One record, index 1 with its X and Y spacing inputs. Selector: `[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]`. Layer step: **Row** — One record, index 1 with its X and Y spacing inputs.
+6. **Cell** — Body cell; the first is the 32px row number and the other two each host a number field. Selector: `[class~="aui-table-cell"]`. Layer step: **Cell** — First cell numbers the row; later cells hold spacing inputs.
+7. **Number field** — Spacing input in a cell, "X Spacing 1" defaulting to 6 and "Y Spacing 1" to 8, minimum 1. Selector: `[class~="aui-number-field"]`. Layer step: **Number field** — X 6 and Y 8; minimum spacing is one.
+8. **Input group** — Fixed surface frame that joins the numeric input and its unit. Selector: `[class~="aui-number-field-group"]`. Layer step: **Input group** — Fixed surface frame that joins the numeric input and its unit.
+9. **Input** — Right-aligned numeric entry that can shrink to zero width. Selector: `[class~="aui-number-field-group"] [class~="aui-input"]`. Layer step: **Input** — Right-aligned numeric entry that can shrink to zero width.
+10. **Unit** — The "in" unit shown after the value. Selector: `[class~="aui-number-field-unit"]`. Layer step: **Unit** — The inch unit follows each entered spacing value.
+11. **Foot** — Totals rows under the body: ACE shows Total 4, HS shows a Fastener Totals heading and "16 nails, 8d" spanning the Model and Qty columns. Selector: `[class~="aui-table-foot"]`. Layer step: **Foot** — Totals row shows four items or fastener counts beneath the body.
 
 ## Apps
 

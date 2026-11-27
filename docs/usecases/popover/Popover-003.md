@@ -38,15 +38,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Trigger** — The ellipsis-vertical "Column options" icon button, an xs kebab with a compact square profile; in the table scenes the popover anchors to the Load (lb) kebab instead. Selector: `[data-base-ui-click-trigger]`.
-2. **Results table** — The "Connector calculation results" table of the HCS and PFD scenes whose headers host the kebab. Selector: `[class~="aui-table"]`.
-3. **Sortable header cell** — The Load (lb) header, sorted ascending, whose actions slot carries the kebab (vertical dots in HCS, horizontal in PFD). Selector: `[data-ug-part="header-cell"]`.
-4. **Popup** — The 256px elevated column opened under the kebab, aligned to the cell end in HCS and the example and to its start in PFD. Selector: `[data-aui-popup-motion][role="dialog"]`.
-5. **Close** — The PFD square Close button that starts the popup, end-aligned above the Sort choices. Part marker: `data-ug-part="close"`.
-6. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`.
-7. **Sort option** — A sort choice such as "Sort A to Z" or "Sort Z to A"; the table scenes add "(Smallest to Largest)" hints and a None option, selected options are solid primary. Selector: `[class~="aui-radio"]`.
+1. **Trigger** — The ellipsis-vertical "Column options" icon button, an xs kebab with a compact square profile; in the table scenes the popover anchors to the Load (lb) kebab instead. Selector: `[data-base-ui-click-trigger]`. Layer step: **Trigger** — Kebab opens Column options beside the Load header.
+2. **Results table** — The "Connector calculation results" table of the HCS and PFD scenes whose headers host the kebab. Selector: `[class~="aui-table"]`. Layer step: **Results table** — Connector results table places kebab actions in its headers.
+3. **Sortable header cell** — The Load (lb) header, sorted ascending, whose actions slot carries the kebab (vertical dots in HCS, horizontal in PFD). Selector: `[data-ug-part="header-cell"]`. Layer step: **Sortable header cell** — Sorted Load header holds kebab; dots turn horizontal in PFD.
+4. **Popup** — The 256px elevated column opened under the kebab, aligned to the cell end in HCS and the example and to its start in PFD. Selector: `[data-aui-popup-motion][role="dialog"]`. Layer step: **Popup** — 256px sort menu opens at the cell end, except PFD. Code target: `Popover.Popup`.
+5. **Close** — The PFD square Close button that starts the popup, end-aligned above the Sort choices. Part marker: `data-ug-part="close"`. Layer step: **Close** — PFD close button sits above Sort choices in the popup.
+6. **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices. Selector: `[class~="aui-radio-group"]`. Layer step: **Sort group** — The RadioGroup labelled "Sort" that holds the ordering choices.
+7. **Sort option** — A sort choice such as "Sort A to Z" or "Sort Z to A"; the table scenes add "(Smallest to Largest)" hints and a None option, selected options are solid primary. Selector: `[class~="aui-radio"]`. Layer step: **Sort option** — Sort choices include hints and None; selected option is solid primary.
 
 ## Apps
 

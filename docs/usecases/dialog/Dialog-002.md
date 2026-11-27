@@ -37,15 +37,15 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the Calculation Report window in ADC; the preview stage stays visible because the dialog is non-modal here. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The plain 520px report window at the default scale; the ADC app makes it draggable and resizable, which the example leaves out. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar that names the report "Calculation Report" and ends in the close X. Selector: `[class~="aui-dialog-title"]`.
+1. **Overlay** — The scrim behind the Calculation Report window in ADC; the preview stage stays visible because the dialog is non-modal here. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim behind Calculation Report leaves the preview stage visible.
+2. **Popup** — The plain 520px report window at the default scale; the ADC app makes it draggable and resizable, which the example leaves out. Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — Plain 520px report window; ADC adds drag and resize behavior.
+3. **Title bar** — The raised title bar that names the report "Calculation Report" and ends in the close X. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Raised title names Calculation Report and ends with Close.
 4. **Title text** — The words "Calculation Report" at the start of the title bar. Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
-5. **Spacer** — The gap that pushes the close X to the end of the title bar, ahead of the "Close" tooltip in the ADC scene. Selector: `[class~="aui-dialog-spacer"]`.
-6. **Close** — The close X of the report window; the ADC scene wraps it in a "Close" tooltip trigger. Selector: `[class~="aui-dialog-close"]`.
-7. **Body** — The body of the report window; in the ADC scene it uses the no-padding profile so the document View reaches the popup edges. Selector: `[class~="aui-dialog-body"]`.
+5. **Spacer** — The gap that pushes the close X to the end of the title bar, ahead of the "Close" tooltip in the ADC scene. Selector: `[class~="aui-dialog-spacer"]`. Layer step: **Spacer** — Spacer pushes the Close action to the title bar end.
+6. **Close** — The close X of the report window; the ADC scene wraps it in a "Close" tooltip trigger. Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — Report X closes the window; ADC wraps it in a tooltip.
+7. **Body** — The body of the report window; in the ADC scene it uses the no-padding profile so the document View reaches the popup edges. Selector: `[class~="aui-dialog-body"]`. Layer step: **Body** — No-padding body lets the document view reach both popup edges.
 8. **Preview text** — The p3 line "The preview of the report goes here." that stands in for the generated report in the Dialog frame. Part marker: `data-ug-part="preview-text"`. Direct text is highlighted.
 
 ## Apps

@@ -5,33 +5,12 @@ export default defineUsecase({
   title: 'Delete confirm dialog',
 
   apps: ['ace', 'adm', 'pbs', 'hs', 'fd'],
-    layers: [
-        {"id":"overlay","partId":"overlay","title":"Overlay","explanation":"Scrim focuses attention on the delete confirmation above the workspace.","keyIdea":"The scrim marks the delete decision as a focused interruption over the template list.","selector":"[class~=\"aui-dialog-backdrop\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"Default-width confirm keeps the delete warning and choices together.","keyIdea":"Constrain the confirmation so its warning and choices remain together as one task.","selector":"[class~=\"aui-dialog-popup\"]"},
-        {"id":"title","partId":"title","title":"Title","explanation":"Title warns about deleting a template without naming it.","keyIdea":"Put the delete target in the heading where users can verify it before continuing.","selector":"[class~=\"aui-dialog-title\"]"},
-        {"id":"icon","partId":"icon","title":"Warning icon","explanation":"Warning triangle signals that this template removal is irreversible.","keyIdea":"The solid warning symbol signals irreversible removal independently of the title wording.","selector":"[class~=\"aui-dialog-title\"] [class~=\"aui-contained-icon\"]","code":["Dialog.Icon"]},
-        {"id":"close-row","partId":"close-row","title":"Close row","explanation":"PBS places a close control above the message without title bar.","keyIdea":"PBS needs a separate top row because its dialog has no title bar.","selector":"[data-ug-part=\"close-row\"]"},
-        {"id":"close","partId":"close","title":"Close","explanation":"PBS close X dismisses the alert; other apps omit it.","keyIdea":"The standalone X gives PBS a dismissal route before the delete message.","selector":"[class~=\"aui-dialog-close\"]"},
-        {"id":"description","partId":"description","title":"Description","explanation":"Message asks users to confirm before anything is deleted.","keyIdea":"State that deletion cannot be undone before presenting the removal controls.","selector":"[class~=\"aui-dialog-description\"]"},
-        {"id":"actions","partId":"actions","title":"Footer","explanation":"Footer pairs safe exit with Delete; PBS separates them.","keyIdea":"Collect the safe exit and destructive choice only after the consequence statement.","selector":"[class~=\"aui-dialog-actions\"]"},
-        {"id":"cancel","partId":"cancel","title":"Cancel","explanation":"Cancel or Close keeps the template available for editing.","keyIdea":"Cancel keeps the template available and returns the user to editing.","selector":"[data-ug-part=\"cancel\"]"},
-        {"id":"delete","partId":"delete","title":"Delete","explanation":"Solid error Delete button confirms the permanent removal.","keyIdea":"The error action communicates that this button permanently removes the named template.","selector":"[data-ug-part=\"delete\"]"},
-      ],
 options: [
     { id: "ace-delete", showContext: false, name: "Delete confirm", apps: ["ace","adm"], source: {"ace":"src/features/templates/ui/NewFromTemplateDialog.tsx","adm":"src/features/templates/components/NewFromTemplateDialog.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "pbs-delete", showContext: false, name: "Delete confirmation", apps: ["pbs"], source: {"pbs":"src/ResultsSection.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "hs-delete", showContext: false, name: "Closeable delete alert", apps: ["hs","fd"], source: {"hs":"src/hs/TemplateDialogs.tsx","fd":"src/components/TemplatesDialog.jsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { ace: 'src/features/templates/ui/NewFromTemplateDialog.tsx', adm: 'src/features/templates/components/NewFromTemplateDialog.tsx', pbs: 'src/ResultsSection.tsx', hs: 'src/hs/TemplateDialogs.tsx', fd: 'src/components/TemplatesDialog.jsx' },
@@ -48,25 +27,25 @@ options: [
       name: 'Overlay',
       selector: '[class~="aui-dialog-backdrop"]',
       description: 'The scrim behind the delete confirm.',
-    },
+     lesson: {"explanation":"Scrim focuses attention on the delete confirmation above the workspace."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-dialog-popup"]',
       description: 'The default-width confirm window used by ACE, HS and PBS.',
-    },
+     lesson: {"explanation":"Default-width confirm keeps the delete warning and choices together."}},
     {
       id: 'title',
       name: 'Title',
       selector: '[class~="aui-dialog-title"]',
       description: 'The raised title "Warning: Delete Template?" with a solid warning icon and no close X (HS leaves the bar plain, PBS has no title at all).',
-    },
+     lesson: {"explanation":"Title warns about deleting a template without naming it."}},
     {
       id: 'icon',
       name: 'Warning icon',
       selector: '[class~="aui-dialog-title"] [class~="aui-contained-icon"]',
       description: 'The solid triangle-exclamation glyph in the warning colour.',
-    },
+     lesson: {"explanation":"Warning triangle signals that this template removal is irreversible.","code":["Dialog.Icon"]}},
     {
       id: 'title-text',
       name: 'Title text',
@@ -78,34 +57,34 @@ options: [
       id: 'close-row',
       name: 'Close row',
       description: 'The PBS-only end-aligned row that holds a lone close X above the message instead of a title bar.',
-    },
+     lesson: {"explanation":"PBS places a close control above the message without title bar.","selector":"[data-ug-part=\"close-row\"]"}},
     {
       id: 'close',
       name: 'Close',
       selector: '[class~="aui-dialog-close"]',
       description: 'The PBS close X above the message; the other apps have none.',
-    },
+     lesson: {"explanation":"PBS close X dismisses the alert; other apps omit it."}},
     {
       id: 'description',
       name: 'Description',
       selector: '[class~="aui-dialog-description"]',
       description: 'The message that the deletion cannot be undone and must be confirmed (PBS asks "Are you sure you want to delete Connection 1").',
-    },
+     lesson: {"explanation":"Message asks users to confirm before anything is deleted."}},
     {
       id: 'actions',
       name: 'Footer',
       selector: '[class~="aui-dialog-actions"]',
       description: 'The footer with the back-out and delete buttons; PBS puts a spacer between them.',
-    },
+     lesson: {"explanation":"Footer pairs safe exit with Delete; PBS separates them."}},
     {
       id: 'cancel',
       name: 'Cancel',
       description: 'The default Cancel (labelled Close in PBS) that keeps the template.',
-    },
+     lesson: {"explanation":"Cancel or Close keeps the template available for editing.","selector":"[data-ug-part=\"cancel\"]"}},
     {
       id: 'delete',
       name: 'Delete',
       description: 'The solid error Delete that removes the template.',
-    },
+     lesson: {"explanation":"Solid error Delete button confirms the permanent removal.","selector":"[data-ug-part=\"delete\"]"}},
   ],
 });

@@ -5,17 +5,8 @@ export default defineUsecase({
   title: 'Step carousel buttons',
 
   apps: ['fd'],
-    layers: [
-        {"id":"previous","partId":"previous","title":"Previous","explanation":"28px transparent arrow-left steps the input carousel back.","keyIdea":"The previous control returns to the prior input pane and disables at the start.","selector":"[class~=\"aui-button\"][aria-label=\"Previous\"]"},
-        {"id":"previous-icon","partId":"previous-icon","title":"Arrow-left icon","explanation":"The arrow-left glyph that is the button only visible content.","keyIdea":"The left arrow makes the backward carousel direction explicit.","selector":"[class~=\"aui-button\"][aria-label=\"Previous\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-        {"id":"next","partId":"next","title":"Next","explanation":"Matching arrow-right advances to the next input pane.","keyIdea":"The next control advances to another input pane.","selector":"[class~=\"aui-button\"][aria-label=\"Next\"]"},
-        {"id":"next-icon","partId":"next-icon","title":"Arrow-right icon","explanation":"Arrow-right glyph mirrors the previous arrow beside it.","keyIdea":"The right arrow signals forward movement through the input panes.","selector":"[class~=\"aui-button\"][aria-label=\"Next\"] > :is([class~=\"aui-icon\"], [class~=\"aui-contained-icon\"])"},
-      ],
 options: [
     { id: "fd-carousel-arrows", showContext: false, name: "Carousel arrows", apps: ["fd"], source: {"fd":"src/components/InputPane.jsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { fd: 'src/components/InputPane.jsx' },
@@ -25,9 +16,9 @@ options: [
   how: 'Buttons with aui paint "text" and profile "square" around an Icon arrow-left or arrow-right; measured 28px square, transparent, 4px radius, the same box as the other ghost 28px buttons. '
     + 'The scene disables the first, as on the first page; the card row and the pager (Button-020) are left out. One group, FD only.',
   anatomy: [
-    { id: 'previous', name: 'Previous', selector: '[class~="aui-button"][aria-label="Previous"]', description: 'The 28px square transparent button with arrow-left that steps the input pane carousel back; the FD scene shows it disabled on the first pane.' },
-    { id: 'previous-icon', name: 'Arrow-left icon', selector: '[class~="aui-button"][aria-label="Previous"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The arrow-left glyph that is the button only visible content.' },
-    { id: 'next', name: 'Next', selector: '[class~="aui-button"][aria-label="Next"]', description: 'The matching 28px square button with arrow-right that moves forward to the next input pane.' },
-    { id: 'next-icon', name: 'Arrow-right icon', selector: '[class~="aui-button"][aria-label="Next"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The arrow-right glyph mirroring the previous arrow.' },
+    { id: 'previous', name: 'Previous', selector: '[class~="aui-button"][aria-label="Previous"]', description: 'The 28px square transparent button with arrow-left that steps the input pane carousel back; the FD scene shows it disabled on the first pane.' , lesson: {"explanation":"28px transparent arrow-left steps the input carousel back."}},
+    { id: 'previous-icon', name: 'Arrow-left icon', selector: '[class~="aui-button"][aria-label="Previous"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The arrow-left glyph that is the button only visible content.' , lesson: {"explanation":"The arrow-left glyph that is the button only visible content."}},
+    { id: 'next', name: 'Next', selector: '[class~="aui-button"][aria-label="Next"]', description: 'The matching 28px square button with arrow-right that moves forward to the next input pane.' , lesson: {"explanation":"Matching arrow-right advances to the next input pane."}},
+    { id: 'next-icon', name: 'Arrow-right icon', selector: '[class~="aui-button"][aria-label="Next"] > :is([class~="aui-icon"], [class~="aui-contained-icon"])', description: 'The arrow-right glyph mirroring the previous arrow.' , lesson: {"explanation":"Arrow-right glyph mirrors the previous arrow beside it."}},
   ],
 });

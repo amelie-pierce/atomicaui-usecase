@@ -37,11 +37,11 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent "between"), outlined by a 1px border on all four sides from sx. Selector: `[data-ug-part="container"]`.
+1. **Container** — One tutorial topic row: a full-width small text Button, label at the start and arrow at the end (justifyContent "between"), outlined by a 1px border on all four sides from sx. Selector: `[data-ug-part="container"]`. Layer step: **Container** — Full-width outlined row names a tutorial that users can start.
 2. **Label** — The topic name, "HS: General Tutorial" in the example, wrapping onto several lines when long. Selector: `[data-ug-part="container"]`. Direct text is highlighted.
-3. **Icon** — The right arrow at the end of the row that signals starting the tour, at scale "sm". Selector: `[data-ug-part="icon"]`.
+3. **Icon** — The right arrow at the end of the row that signals starting the tour, at scale "sm". Selector: `[data-ug-part="icon"]`. Layer step: **Icon** — Trailing arrow signals that the tutorial tour starts.
 
 ## Apps
 
@@ -68,10 +68,10 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Help & Tutorials dialog** — The open dialog that lists the tutorial topics. Part marker: `data-ug-part="dialog"`.
-2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Part marker: `data-ug-part="dialog-title"`.
-3. **Close button** — The X in the title that closes the dialog. Part marker: `data-ug-part="dialog-close"`.
-4. **Topic list** — The nav column that holds one outlined row per tutorial. Part marker: `data-ug-part="topic-list"`.
+1. **Help & Tutorials dialog** — The open dialog that lists the tutorial topics. Part marker: `data-ug-part="dialog"`. Layer step: **Help & Tutorials dialog** — The open dialog that lists the tutorial topics.
+2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Part marker: `data-ug-part="dialog-title"`. Layer step: **Dialog title** — The title bar "Help & Tutorials" with the close X.
+3. **Close button** — The X in the title that closes the dialog. Part marker: `data-ug-part="dialog-close"`. Layer step: **Close button** — The X in the title that closes the dialog.
+4. **Topic list** — The nav column that holds one outlined row per tutorial. Part marker: `data-ug-part="topic-list"`. Layer step: **Topic list** — The nav column that holds one outlined row per tutorial.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-011/example.tsx`
 
@@ -147,12 +147,12 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Help & Tutorials dialog** — The open dialog that lists the tutorial topics. Part marker: `data-ug-part="dialog"`.
-2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Part marker: `data-ug-part="dialog-title"`.
-3. **Close button** — The X in the title that closes the dialog. Part marker: `data-ug-part="dialog-close"`.
-4. **Topic list** — The nav column that holds one outlined row per tutorial. Part marker: `data-ug-part="topic-list"`.
-5. **Topic name** — The semi-bold topic name ("ACE: General Tutorial") stacked above the description. Part marker: `data-ug-part="topic-name"`.
-6. **Topic description** — The muted description under the topic name. Part marker: `data-ug-part="topic-description"`.
+1. **Help & Tutorials dialog** — The open dialog that lists the tutorial topics. Part marker: `data-ug-part="dialog"`. Layer step: **Help & Tutorials dialog** — The open dialog that lists the tutorial topics.
+2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Part marker: `data-ug-part="dialog-title"`. Layer step: **Dialog title** — The title bar "Help & Tutorials" with the close X.
+3. **Close button** — The X in the title that closes the dialog. Part marker: `data-ug-part="dialog-close"`. Layer step: **Close button** — The X in the title that closes the dialog.
+4. **Topic list** — The nav column that holds one outlined row per tutorial. Part marker: `data-ug-part="topic-list"`. Layer step: **Topic list** — The nav column that holds one outlined row per tutorial.
+5. **Topic name** — The semi-bold topic name ("ACE: General Tutorial") stacked above the description. Part marker: `data-ug-part="topic-name"`. Layer step: **Topic name** — The semi-bold topic name ("ACE: General Tutorial") stacked above the description.
+6. **Topic description** — The muted description under the topic name. Part marker: `data-ug-part="topic-description"`. Layer step: **Topic description** — Muted line explains the selected tutorial topic below.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-011/options/ace-topic-row/example.tsx`
 
@@ -234,10 +234,10 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Help & Tutorials dialog** — The open dialog that lists the tutorial topics. Part marker: `data-ug-part="dialog"`.
-2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Part marker: `data-ug-part="dialog-title"`.
-3. **Close button** — The X in the title that closes the dialog. Part marker: `data-ug-part="dialog-close"`.
-4. **Topic list** — The nav column that holds one outlined row per tutorial. Part marker: `data-ug-part="topic-list"`.
+1. **Help & Tutorials dialog** — The open dialog that lists the tutorial topics. Part marker: `data-ug-part="dialog"`. Layer step: **Help & Tutorials dialog** — The open dialog that lists the tutorial topics.
+2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Part marker: `data-ug-part="dialog-title"`. Layer step: **Dialog title** — The title bar "Help & Tutorials" with the close X.
+3. **Close button** — The X in the title that closes the dialog. Part marker: `data-ug-part="dialog-close"`. Layer step: **Close button** — The X in the title that closes the dialog.
+4. **Topic list** — The nav column that holds one outlined row per tutorial. Part marker: `data-ug-part="topic-list"`. Layer step: **Topic list** — The nav column that holds one outlined row per tutorial.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-011/options/adm-topic-row/example.tsx`
 
@@ -295,10 +295,10 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Help & Tutorials dialog** — The open dialog that lists the tutorial topics. Part marker: `data-ug-part="dialog"`.
-2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Part marker: `data-ug-part="dialog-title"`.
-3. **Close button** — The X in the title that closes the dialog. Part marker: `data-ug-part="dialog-close"`.
-4. **Topic list** — The nav column that holds one outlined row per tutorial. Part marker: `data-ug-part="topic-list"`.
+1. **Help & Tutorials dialog** — The open dialog that lists the tutorial topics. Part marker: `data-ug-part="dialog"`. Layer step: **Help & Tutorials dialog** — The open dialog that lists the tutorial topics.
+2. **Dialog title** — The title bar "Help & Tutorials" with the close X. Part marker: `data-ug-part="dialog-title"`. Layer step: **Dialog title** — The title bar "Help & Tutorials" with the close X.
+3. **Close button** — The X in the title that closes the dialog. Part marker: `data-ug-part="dialog-close"`. Layer step: **Close button** — The X in the title that closes the dialog.
+4. **Topic list** — The nav column that holds one outlined row per tutorial. Part marker: `data-ug-part="topic-list"`. Layer step: **Topic list** — The nav column that holds one outlined row per tutorial.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-011/options/pbs-topic-row/example.tsx`
 

@@ -92,11 +92,44 @@ export function usePreviewAnatomy(
         targets.set(part.id, elements);
       }
       partTargets.current = targets;
-      const available = parts.filter((part) => (targets.get(part.id)?.length ?? 0) > 0).map((part) => part.id);
-      const availableKey = available.join('|');
-      if (stage.childElementCount > 0 && availableKey !== availablePartIds.current) {
+      const available = parts
+        .filter((part) => (targets.get(part.id)?.length ?? 0) > 0)
+        .map((part, index) => ({ part, index, target: targets.get(part.id)?.[0] }));
+      type Entry = typeof available[number];
+      const readingOrder = (a: Entry, b: Entry) => {
+        if (a.target && b.target && a.target !== b.target) {
+          const aRect = a.target.getBoundingClientRect();
+          const bRect = b.target.getBoundingClientRect();
+          const aCenterY = aRect.top + aRect.height / 2;
+          const bCenterY = bRect.top + bRect.height / 2;
+          const shortest = Math.min(aRect.height || Infinity, bRect.height || Infinity);
+          const rowTolerance = Math.max(4, (Number.isFinite(shortest) ? shortest : 0) * 0.2);
+          if (Math.abs(aCenterY - bCenterY) > rowTolerance) return aCenterY - bCenterY;
+          if (Math.abs(aRect.left - bRect.left) > 1) return aRect.left - bRect.left;
+        }
+        return a.index - b.index;
+      };
+      const children = new Map<Entry | undefined, Entry[]>();
+      for (const entry of available) {
+        const parent = available
+          .filter((candidate) => candidate !== entry && candidate.target && entry.target && candidate.target.contains(entry.target))
+          .sort((a, b) => {
+            const aRect = a.target!.getBoundingClientRect();
+            const bRect = b.target!.getBoundingClientRect();
+            return aRect.width * aRect.height - bRect.width * bRect.height;
+          })[0];
+        children.set(parent, [...(children.get(parent) ?? []), entry]);
+      }
+      const ordered: Entry[] = [];
+      const visit = (entry: Entry) => {
+        ordered.push(entry);
+        for (const child of (children.get(entry) ?? []).sort(readingOrder)) visit(child);
+      };
+      for (const root of (children.get(undefined) ?? []).sort(readingOrder)) visit(root);
+      const availableKey = ordered.map(({ part }) => part.id).join('|');
+      if (ordered.length > 0 && !stage.querySelector('[data-ug-layer-mode="true"]') && availableKey !== availablePartIds.current) {
         availablePartIds.current = availableKey;
-        onAvailablePartsChange?.(available);
+        onAvailablePartsChange?.(ordered.map(({ part }) => part.id));
       }
     };
     refreshTargets();
@@ -148,7 +181,7 @@ export function usePreviewAnatomy(
   return overlay;
 }
 
-export function AnatomyOverlay({ rect }: { rect: OverlayRect | null }) {
+export function AnatomyOverlay({ rect, stepKey }: { rect: OverlayRect | null; stepKey?: string }) {
   if (!rect) return null;
   return (
     <span
@@ -161,6 +194,8 @@ export function AnatomyOverlay({ rect }: { rect: OverlayRect | null }) {
         blockSize: rect.height,
         borderRadius: rect.radius,
       }}
-    />
+    >
+      {stepKey && <span key={stepKey} className="ug-anatomy-overlay__pulse" />}
+    </span>
   );
 }

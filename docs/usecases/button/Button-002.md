@@ -38,10 +38,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The Download CSV Button: secondary text paint, scale "sm", soft shape and flex "none" so it never shrinks in the wrapping toolbar row after the search field and count. Selector: `[class~="aui-button"]`.
-2. **Icon** — The CSV file glyph that sits before the label and tells the export format. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Container** — The Download CSV Button: secondary text paint, scale "sm", soft shape and flex "none" so it never shrinks in the wrapping toolbar row after the search field and count. Selector: `[class~="aui-button"]`. Layer step: **Container** — Small secondary Download CSV stays fixed after search and count.
+2. **Icon** — The CSV file glyph that sits before the label and tells the export format. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`. Layer step: **Icon** — CSV glyph identifies the downloaded file format for users.
 3. **Label** — The label "Download CSV" (written in capitals in RWS) that exports the rows the table shows. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
 ## Apps
@@ -64,9 +64,9 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field first, the count next and Download CSV last. Part marker: `data-ug-part="toolbar"`.
-2. **Search field** — The Search Table Field with a magnifying-glass icon that fills the line. Part marker: `data-ug-part="search"`.
-3. **Result count** — The muted "Showing 1 entry" status text before Download CSV. Part marker: `data-ug-part="count"`.
+1. **Output toolbar** — The wrapping row of small controls (8px gap) with the search field first, the count next and Download CSV last. Part marker: `data-ug-part="toolbar"`. Layer step: **Output toolbar** — Wrapping toolbar places search, count, and Download CSV with 8px gaps.
+2. **Search field** — The Search Table Field with a magnifying-glass icon that fills the line. Part marker: `data-ug-part="search"`. Layer step: **Search field** — The Search Table Field with a magnifying-glass icon that fills the line.
+3. **Result count** — The muted "Showing 1 entry" status text before Download CSV. Part marker: `data-ug-part="count"`. Layer step: **Result count** — The muted "Showing 1 entry" status text before Download CSV.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-002/example.tsx`
 

@@ -1,4 +1,5 @@
 import type { LayerStep, LineRange, Usecase } from '../types';
+import { anatomyLayers } from './anatomy-layers';
 
 const PART_MARKER = /\sdata-ug-part=(["'])[^"']*\1/g;
 
@@ -267,14 +268,22 @@ export function layerCodeProblems(sources: LayerSource[], step: LayerStep) {
 export async function assertLayerCode(usecases: Usecase[]) {
   const problems: string[] = [];
   for (const usecase of usecases) {
-    const views = new Map<LayerStep, LayerSource[]>();
+    const views = new Map<string, { step: LayerStep; sources: LayerSource[] }>();
+    const addView = (step: LayerStep, source: LayerSource) => {
+      const key = JSON.stringify([step.id, step.selector, step.code, step.scope]);
+      const view = views.get(key) ?? { step, sources: [] };
+      view.sources.push(source);
+      views.set(key, view);
+    };
     for (const option of usecase.options) {
       const component = { code: await option.loadExampleCode() };
       const context = { code: await option.loadCode(), slot: await option.loadSlotLines() };
-      for (const step of option.componentLayers ?? usecase.layers) views.set(step, [...(views.get(step) ?? []), component]);
-      for (const step of [...option.contextLayers, ...usecase.layers]) views.set(step, [...(views.get(step) ?? []), context]);
+      const componentAnatomy = usecase.anatomy.map((part) => ({ ...part, ...option.componentAnatomy?.find((override) => override.id === part.id) }));
+      const componentLayers = anatomyLayers(componentAnatomy);
+      for (const step of componentLayers) addView(step, component);
+      for (const step of [...anatomyLayers(option.contextAnatomy, 'context'), ...componentLayers]) addView(step, context);
     }
-    for (const [step, sources] of views) {
+    for (const { step, sources } of views.values()) {
       for (const problem of layerCodeProblems(sources, step)) problems.push(`${usecase.id} ${problem}`);
     }
   }

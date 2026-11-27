@@ -37,12 +37,12 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Trigger** — The element the user already points at: a "Preview" Button in the example, a thumbnail-and-link View in PFD, the "Connection detail" link in RWS, and the solid secondary "A" mark Button in HS. Part marker: `data-ug-part="trigger"`.
+1. **Trigger** — The element the user already points at: a "Preview" Button in the example, a thumbnail-and-link View in PFD, the "Connection detail" link in RWS, and the solid secondary "A" mark Button in HS. Part marker: `data-ug-part="trigger"`. Layer step: **Trigger** — Hovering or focusing the existing action reveals its image preview.
 2. **Product link** — The PFD underlined secondary link "Model C-300" beside the thumbnail. Part marker: `data-ug-part="product-link"`. Direct text is highlighted.
-3. **Popup** — The default tooltip surface, which here holds an image instead of text: 192px wide in the example and RWS, 96px in PFD, 160px in HS. Selector: `[class~="aui-tooltip-popup"]`.
-4. **Preview image** — The representative connection drawing (an svg with role="img") that the tooltip shows, such as "Connection detail" or "Model C-300 connection preview". Selector: `[class~="aui-tooltip-popup"] svg`.
+3. **Popup** — The default tooltip surface, which here holds an image instead of text: 192px wide in the example and RWS, 96px in PFD, 160px in HS. Selector: `[class~="aui-tooltip-popup"]`. Layer step: **Popup** — Image tooltip widths vary by app: 96px, 160px, or 192px.
+4. **Preview image** — The representative connection drawing (an svg with role="img") that the tooltip shows, such as "Connection detail" or "Model C-300 connection preview". Selector: `[class~="aui-tooltip-popup"] svg`. Layer step: **Preview image** — Connection drawing previews the named detail without adding another control. Code target: `svg`.
 5. **Preview title** — The HS-only bold l4 title "Hanger A" above the image. Part marker: `data-ug-part="preview-title"`. Direct text is highlighted.
 
 ## Apps

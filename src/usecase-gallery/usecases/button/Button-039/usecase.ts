@@ -10,18 +10,9 @@ export default defineUsecase({
   uiType: 'Icon button',
   title: 'Reset view button',
 
-    layers: [
-        {"id":"button","partId":"button","title":"Reset view","explanation":"Small orange outlined soft IconButton resets the 3D camera.","keyIdea":"The floating control resets the camera within the viewer canvas.","selector":"[class~=\"aui-button\"]"},
-        {"id":"icon","partId":"icon","title":"Bullseye icon","explanation":"The bullseye glyph, drawn in the primary color on a transparent surface.","keyIdea":"The bullseye glyph indicates returning the camera to its target view.","selector":"[class~=\"aui-button\"] > :is([class~=\"aui-contained-icon\"], [class~=\"aui-icon\"])","code":["IconButton"]},
-      ],
 options: [
     { id: "default", contextAnatomy: CONTEXT_ANATOMY, name: "Outlined accent, 28px" ,
-      contextLayers: [
-        {"id":"context-viewer-pane","partId":"viewer-pane","title":"3D Viewer pane","explanation":"The surface-alt 3D Viewer section that frames the header and the scene.","keyIdea":"The viewer section frames the canvas and its camera control.","selector":"[data-ug-part=\"viewer-pane\"]","scope":"context"},
-        {"id":"context-viewer-title","partId":"viewer-title","title":"Viewer title","explanation":"The semi-bold 3D Viewer heading in the 28px header.","keyIdea":"The header title identifies the area whose view can be adjusted.","selector":"[data-ug-part=\"viewer-title\"]","scope":"context"},
-        {"id":"context-viewer-canvas","partId":"viewer-canvas","title":"Scene canvas","explanation":"Framed canvas stand-in places Reset view at its upper edge.","keyIdea":"The canvas provides the spatial surface where Reset view is overlaid.","selector":"[data-ug-part=\"viewer-canvas\"]","scope":"context"},
-      ],
-    },
+     contextAnatomyOverrides: [{"id":"viewer-pane","lesson":{"explanation":"The surface-alt 3D Viewer section that frames the header and the scene.","scope":"context"}},{"id":"viewer-title","lesson":{"explanation":"The semi-bold 3D Viewer heading in the 28px header.","scope":"context"}},{"id":"viewer-canvas","lesson":{"explanation":"Framed canvas stand-in places Reset view at its upper edge.","scope":"context"}}]},
   ],
   apps: ['hcs'],
   source: { hcs: 'src/App.tsx' },
@@ -32,7 +23,7 @@ options: [
     + 'In context the scene is the 3D Viewer pane with Reset view overlaid at the top end, 62px down and 12px in (the app\'s `.f02-controls-desktop`, here a gallery rule, since the kit sx has no inset axis); the projection radios and the Object Visibility checkboxes under it are left out. '
     + 'The canvas is a framed stand-in: the app draws a live three.js scene.',
   anatomy: [
-    { id: 'button', name: 'Reset view', selector: '[class~="aui-button"]', description: 'The small soft-shaped IconButton with primary orange color and a 1px outlined border that floats over the 3D viewer to reset the camera.' },
-    { id: 'icon', name: 'Bullseye icon', selector: '[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])', description: 'The bullseye glyph, drawn in the primary color on a transparent surface.' },
+    { id: 'button', name: 'Reset view', selector: '[class~="aui-button"]', description: 'The small soft-shaped IconButton with primary orange color and a 1px outlined border that floats over the 3D viewer to reset the camera.' , lesson: {"explanation":"Small orange outlined soft IconButton resets the 3D camera."}},
+    { id: 'icon', name: 'Bullseye icon', selector: '[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])', description: 'The bullseye glyph, drawn in the primary color on a transparent surface.' , lesson: {"explanation":"The bullseye glyph, drawn in the primary color on a transparent surface.","code":["IconButton"]}},
   ],
 });

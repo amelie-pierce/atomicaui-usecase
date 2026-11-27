@@ -4,22 +4,13 @@ export default defineUsecase({
   uiType: 'Menubar with text triggers',
   title: 'Top bar action button',
   apps: ['hs', 'adc', 'adm', 'ace', 'hcs', 'pbs', 'pfd', 'rws', 'agpd'],
-    layers: [
-        {"id":"button","partId":"button","title":"Button","explanation":"About button runs one action and opens the about dialog.","keyIdea":"The About button performs one immediate action instead of opening a choice list.","selector":"[data-ug-part=\"button\"]"},
-      ],
 options: [
     { id: "hs-top-bar", contextAnatomy: [
-      { id: 'top-bar', name: 'Top bar', selector: '[class~="aui-menubar"][aria-label="Top bar"]', description: 'The top bar Menubar that holds both action buttons and menu triggers.' },
-      { id: 'file-menu', name: 'File menu trigger', description: 'The File dropdown trigger at the start of the bar, which opens the file actions.' },
-      { id: 'reset', name: 'Reset button', description: 'The plain Reset Menubar.Button next to About that restores the design to its defaults.' },
-      { id: 'help-menu', name: 'Help Center trigger', description: 'The Help Center dropdown trigger at the end of the bar.' },
+      { id: 'top-bar', name: 'Top bar', selector: '[class~="aui-menubar"][aria-label="Top bar"]', description: 'The top bar Menubar that holds both action buttons and menu triggers.' , lesson: {"explanation":"The top bar Menubar that holds both action buttons and menu triggers.","scope":"context"}},
+      { id: 'file-menu', name: 'File menu trigger', description: 'The File dropdown trigger at the start of the bar, which opens the file actions.' , lesson: {"explanation":"File trigger opens the dropdown of file actions.","selector":"[data-ug-part=\"file-menu\"]","scope":"context"}},
+      { id: 'reset', name: 'Reset button', description: 'The plain Reset Menubar.Button next to About that restores the design to its defaults.' , lesson: {"explanation":"Reset button beside About restores the design to its defaults.","selector":"[data-ug-part=\"reset\"]","scope":"context"}},
+      { id: 'help-menu', name: 'Help Center trigger', description: 'The Help Center dropdown trigger at the end of the bar.' , lesson: {"explanation":"The Help Center dropdown trigger at the end of the bar.","selector":"[data-ug-part=\"help-menu\"]","scope":"context"}},
     ], name: "Action buttons", source: {"hs":"src/hs/TopBar.tsx"} ,
-      contextLayers: [
-        {"id":"context-top-bar","partId":"top-bar","title":"Top bar","explanation":"The top bar Menubar that holds both action buttons and menu triggers.","keyIdea":"The top bar places global actions and menus in one persistent navigation strip.","selector":"[class~=\"aui-menubar\"][aria-label=\"Top bar\"]","scope":"context"},
-        {"id":"context-file-menu","partId":"file-menu","title":"File menu trigger","explanation":"File trigger opens the dropdown of file actions.","keyIdea":"The File trigger exposes device and project actions without taking room in the bar.","selector":"[data-ug-part=\"file-menu\"]","scope":"context"},
-        {"id":"context-reset","partId":"reset","title":"Reset button","explanation":"Reset button beside About restores the design to its defaults.","keyIdea":"Reset remains a direct neighbor to About so restoring defaults does not require a submenu.","selector":"[data-ug-part=\"reset\"]","scope":"context"},
-        {"id":"context-help-menu","partId":"help-menu","title":"Help Center trigger","explanation":"The Help Center dropdown trigger at the end of the bar.","keyIdea":"Help Center sits at the end of the bar as the entry to support destinations.","selector":"[data-ug-part=\"help-menu\"]","scope":"context"},
-      ],
     },
   ],
   source: {
@@ -43,7 +34,7 @@ options: [
       name: 'Button',
       selector: '[data-ug-part="button"]',
       description: 'The plain About button that runs one action, here the about dialog, with no list of choices.',
-    },
+     lesson: {"explanation":"About button runs one action and opens the about dialog."}},
     {
       id: 'label',
       name: 'Label',

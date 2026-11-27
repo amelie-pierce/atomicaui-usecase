@@ -37,22 +37,22 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the feedback form. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The feedback window: 384px wide in HCS, the default width in ACE, and capped at 560px in ADC. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The raised title bar reading "Send feedback" in HCS and "Feedback Form" in the other apps. Selector: `[class~="aui-dialog-title"]`.
-4. **Close** — The close X; it is the only way to leave the HCS form without sending, and ADC wraps it in a "Close" tooltip. Selector: `[class~="aui-dialog-close"]`.
-5. **Description** — The HCS line "Tell us about your experience." under the title bar. Selector: `[class~="aui-dialog-description"]`.
-6. **Body** — The body that wraps the feedback form; in HCS it is a form with id "feedback-form" that the footer Submit button targets. Selector: `[class~="aui-dialog-body"]`.
-7. **Form column** — The column with gap 16 that stacks the Email and Description fields. Part marker: `data-ug-part="form-column"`.
-8. **Email field** — The required Email field with its label and an email-typed input. Selector: `[class~="aui-field"]:has(input[type="email"])`.
-9. **Email input** — The email input of the form. Selector: `[class~="aui-field"] input[type="email"]`.
-10. **Description field** — The Description field with a four-row Textarea for the feedback text. Selector: `[class~="aui-field"]:has(textarea)`.
-11. **Description textarea** — The four-row textarea (Field.Textarea in the ACE and ADC scenes) for the feedback text. Selector: `[class~="aui-field"] textarea`.
-12. **Footer** — The footer: Submit alone in HCS, Cancel then Send in ACE, and a split footer led by a checkbox in ADC. Selector: `[class~="aui-dialog-actions"]`.
-13. **Cancel** — The default Cancel of the ACE and ADC footers; HCS has none. Part marker: `data-ug-part="cancel"`.
-14. **Submit** — The submit button: a secondary Submit tied to "feedback-form" in HCS, a secondary solid Send in ACE, and a primary Send kept disabled in ADC. Part marker: `data-ug-part="send"`.
+1. **Overlay** — The scrim behind the feedback form. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim sits behind the feedback form and dims the page.
+2. **Popup** — The feedback window: 384px wide in HCS, the default width in ACE, and capped at 560px in ADC. Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — Feedback window ranges from default width to 560px across apps.
+3. **Title bar** — The raised title bar reading "Send feedback" in HCS and "Feedback Form" in the other apps. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Raised title says Send feedback in HCS, Feedback Form elsewhere.
+4. **Close** — The close X; it is the only way to leave the HCS form without sending, and ADC wraps it in a "Close" tooltip. Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — Close X exits HCS without sending; ADC adds a tooltip.
+5. **Description** — The HCS line "Tell us about your experience." under the title bar. Selector: `[class~="aui-dialog-description"]`. Layer step: **Description** — The HCS line "Tell us about your experience." under the title bar.
+6. **Body** — The body that wraps the feedback form; in HCS it is a form with id "feedback-form" that the footer Submit button targets. Selector: `[class~="aui-dialog-body"]`. Layer step: **Body** — Feedback body contains the form and links HCS footer Submit.
+7. **Form column** — The column with gap 16 that stacks the Email and Description fields. Part marker: `data-ug-part="form-column"`. Layer step: **Form column** — The column with gap 16 that stacks the Email and Description fields.
+8. **Email field** — The required Email field with its label and an email-typed input. Selector: `[class~="aui-field"]:has(input[type="email"])`. Layer step: **Email field** — The required Email field with its label and an email-typed input.
+9. **Email input** — The email input of the form. Selector: `[class~="aui-field"] input[type="email"]`. Layer step: **Email input** — Email input collects the sender’s contact email address. Code target: `Input`, `Field.Input`.
+10. **Description field** — The Description field with a four-row Textarea for the feedback text. Selector: `[class~="aui-field"]:has(textarea)`. Layer step: **Description field** — The Description field with a four-row Textarea for the feedback text.
+11. **Description textarea** — The four-row textarea (Field.Textarea in the ACE and ADC scenes) for the feedback text. Selector: `[class~="aui-field"] textarea`. Layer step: **Description textarea** — Four-row textarea collects the user’s written feedback in the form. Code target: `Textarea`, `Field.Textarea`.
+12. **Footer** — The footer: Submit alone in HCS, Cancel then Send in ACE, and a split footer led by a checkbox in ADC. Selector: `[class~="aui-dialog-actions"]`. Layer step: **Footer** — Footer actions vary: Submit, Cancel and Send, or split checkbox.
+13. **Cancel** — The default Cancel of the ACE and ADC footers; HCS has none. Part marker: `data-ug-part="cancel"`. Layer step: **Cancel** — The default Cancel of the ACE and ADC footers; HCS has none.
+14. **Submit** — The submit button: a secondary Submit tied to "feedback-form" in HCS, a secondary solid Send in ACE, and a primary Send kept disabled in ADC. Part marker: `data-ug-part="send"`. Layer step: **Submit** — Send action styles vary and ADC keeps it disabled.
 
 ## Apps
 

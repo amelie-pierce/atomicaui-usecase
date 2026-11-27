@@ -36,17 +36,17 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the licence gate that the user must answer before the app opens. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The full-size licence window: scale "sm" with width and height set to "fill" so it fills the stage. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The title bar naming the "Website Application License Agreement"; HCS and the example raise it, the other apps leave it plain. Selector: `[class~="aui-dialog-title"]`.
+1. **Overlay** — The scrim behind the licence gate that the user must answer before the app opens. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim blocks the app until the licence question is answered.
+2. **Popup** — The full-size licence window: scale "sm" with width and height set to "fill" so it fills the stage. Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — Small full-size licence window fills the stage width and height.
+3. **Title bar** — The title bar naming the "Website Application License Agreement"; HCS and the example raise it, the other apps leave it plain. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Title names the Website Application License Agreement for all apps.
 4. **Title text** — The agreement name at the start of the title bar. Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
-5. **Spacer** — The gap before the close X in the title bar. Selector: `[class~="aui-dialog-spacer"]`.
-6. **Close** — The close X, which also declines the licence (labelled "Do Not Accept" in the ADM scene); PBS hides it. Selector: `[class~="aui-dialog-close"]`.
-7. **Description** — The HCS-only line "Review and accept to start using the HCS prototype." that stays fixed under the title while the body scrolls. Selector: `[class~="aui-dialog-description"]`.
-8. **Body** — The scroll owner of the window; it scrolls when the licence text is longer than the popup. Selector: `[class~="aui-dialog-body"]`.
-9. **Licence text** — The licence sections as Type p2 text: one sample clause in the example, and the full mock agreement in a gap-12 column View in the HCS and ADM scenes. Part marker: `data-ug-part="licence-text"`.
+5. **Spacer** — The gap before the close X in the title bar. Selector: `[class~="aui-dialog-spacer"]`. Layer step: **Spacer** — The gap before the close X in the title bar.
+6. **Close** — The close X, which also declines the licence (labelled "Do Not Accept" in the ADM scene); PBS hides it. Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — Close X declines the licence; PBS hides it, ADM labels rejection.
+7. **Description** — The HCS-only line "Review and accept to start using the HCS prototype." that stays fixed under the title while the body scrolls. Selector: `[class~="aui-dialog-description"]`. Layer step: **Description** — HCS keeps its review prompt fixed while the body scrolls.
+8. **Body** — The scroll owner of the window; it scrolls when the licence text is longer than the popup. Selector: `[class~="aui-dialog-body"]`. Layer step: **Body** — Window body scrolls when licence text exceeds popup height.
+9. **Licence text** — The licence sections as Type p2 text: one sample clause in the example, and the full mock agreement in a gap-12 column View in the HCS and ADM scenes. Part marker: `data-ug-part="licence-text"`. Layer step: **Licence text** — Licence text appears as a sample clause or full mock agreement.
 
 ## Apps
 

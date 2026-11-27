@@ -5,14 +5,8 @@ export default defineUsecase({
   title: 'Toggle prototype controls button',
 
   apps: ['hcs'],
-    layers: [
-        {"id":"container","partId":"container","title":"Container","explanation":"Elevated Prototype controls button toggles the panel above the page.","keyIdea":"The elevated prototype control toggles access to the floating demo panel.","selector":"[class~=\"aui-button\"]"},
-      ],
 options: [
     { id: "hcs-prototype-controls", name: "Prototype controls", apps: ["hcs"], showContext: false, source: {"hcs":"src/components/F01Experience.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { hcs: 'src/components/F01Experience.tsx' },
@@ -27,7 +21,7 @@ options: [
       name: "Container",
       description: "The Prototype controls Button: small surface Button with elevation 3 so it floats above the page, toggling the controls panel (aria-expanded in the scene).",
       selector: "[class~=\"aui-button\"]",
-    },
+     lesson: {"explanation":"Elevated Prototype controls button toggles the panel above the page."}},
     {
       id: "label",
       name: "Label",

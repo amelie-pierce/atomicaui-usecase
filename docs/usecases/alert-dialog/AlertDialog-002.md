@@ -35,14 +35,14 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim that blocks the app after the licence agreement was declined. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The default-size blocking notice, with no close X so it cannot be dismissed. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title** — The raised, text-only title "Website Application License Agreement" with no icon and no close X. Selector: `[class~="aui-dialog-title"]`.
-4. **Description** — The explanation that the app cannot continue without agreement and that the user must relaunch it and accept (ACE spells out the EULA). Selector: `[class~="aui-dialog-description"]`.
-5. **Footer** — The footer with align="center" that centres its single button. Selector: `[class~="aui-dialog-actions"]`.
-6. **Re-Launch** — The only way forward: a solid secondary Re-Launch button with dismiss={false} so the notice stays until the app reloads. Part marker: `data-ug-part="relaunch"`.
+1. **Overlay** — The scrim that blocks the app after the licence agreement was declined. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim blocks the app after the licence agreement is declined.
+2. **Popup** — The default-size blocking notice, with no close X so it cannot be dismissed. Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — Blocking notice stays open until the user relaunches.
+3. **Title** — The raised, text-only title "Website Application License Agreement" with no icon and no close X. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title** — Raised text heading names the Website Application License Agreement.
+4. **Description** — The explanation that the app cannot continue without agreement and that the user must relaunch it and accept (ACE spells out the EULA). Selector: `[class~="aui-dialog-description"]`. Layer step: **Description** — User must relaunch and accept the agreement before continuing.
+5. **Footer** — The footer with align="center" that centres its single button. Selector: `[class~="aui-dialog-actions"]`. Layer step: **Footer** — Centered footer gives the notice one available action.
+6. **Re-Launch** — The only way forward: a solid secondary Re-Launch button with dismiss={false} so the notice stays until the app reloads. Part marker: `data-ug-part="relaunch"`. Layer step: **Re-Launch** — Re-Launch stays visible until the app reloads to accept terms.
 
 ## Apps
 

@@ -36,18 +36,18 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the ADM welcome prompt. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The small 384px welcome window at scale "sm", sized through the --aui-dialog-width variable the app sets. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title bar** — The plain (not raised) title bar reading "Welcome to ADM" with the close X at its end. Selector: `[class~="aui-dialog-title"]`.
+1. **Overlay** — The scrim behind the ADM welcome prompt. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim dims the ADM workspace behind its welcome prompt.
+2. **Popup** — The small 384px welcome window at scale "sm", sized through the --aui-dialog-width variable the app sets. Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — Small 384px Welcome window uses the app-set dialog width.
+3. **Title bar** — The plain (not raised) title bar reading "Welcome to ADM" with the close X at its end. Selector: `[class~="aui-dialog-title"]`. Layer step: **Title bar** — Plain title says Welcome to ADM with Close at its end.
 4. **Title text** — The greeting "Welcome to ADM" in the title bar. Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
-5. **Close** — The close X that dismisses the welcome prompt without starting the tour. Selector: `[class~="aui-dialog-close"]`.
-6. **Body** — The body that holds one welcome sentence. Selector: `[class~="aui-dialog-body"]`.
+5. **Close** — The close X that dismisses the welcome prompt without starting the tour. Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — The close X that dismisses the welcome prompt without starting the tour.
+6. **Body** — The body that holds one welcome sentence. Selector: `[class~="aui-dialog-body"]`. Layer step: **Body** — Body holds only the Welcome to ADM sentence.
 7. **Welcome text** — The p2 sentence "Welcome to the Anchor Designer." that introduces the tour. Part marker: `data-ug-part="welcome-text"`. Direct text is highlighted.
-8. **Footer** — The footer that offers Close and Start Walkthrough. Selector: `[class~="aui-dialog-actions"]`.
-9. **Close button** — The default gray Dialog.Button labelled Close; dismiss={false} leaves closing to the app. Part marker: `data-ug-part="dismiss-button"`.
-10. **Start Walkthrough** — The solid secondary button that starts the guided tour. Part marker: `data-ug-part="start"`.
+8. **Footer** — The footer that offers Close and Start Walkthrough. Selector: `[class~="aui-dialog-actions"]`. Layer step: **Footer** — The footer that offers Close and Start Walkthrough.
+9. **Close button** — The default gray Dialog.Button labelled Close; dismiss={false} leaves closing to the app. Part marker: `data-ug-part="dismiss-button"`. Layer step: **Close button** — The default gray Dialog.Button labelled Close; dismiss={false} leaves closing to the app.
+10. **Start Walkthrough** — The solid secondary button that starts the guided tour. Part marker: `data-ug-part="start"`. Layer step: **Start Walkthrough** — The solid secondary button that starts the guided tour.
 
 ## Apps
 

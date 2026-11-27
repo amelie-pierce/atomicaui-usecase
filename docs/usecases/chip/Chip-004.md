@@ -37,10 +37,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Chip** — The compact solid success chip at scale "xs" that reports one check category on an FD result card; a failed category turns red. Selector: `[class~="aui-chip"]`.
-2. **Icon** — The "circle-check" icon at the start of the chip (an exclamation when the check fails). Selector: `[class~="aui-chip-icon"]`.
+1. **Chip** — The compact solid success chip at scale "xs" that reports one check category on an FD result card; a failed category turns red. Selector: `[class~="aui-chip"]`. Layer step: **Chip** — Compact success chip reports a check category; failures turn red.
+2. **Icon** — The "circle-check" icon at the start of the chip (an exclamation when the check fails). Selector: `[class~="aui-chip-icon"]`. Layer step: **Icon** — Circle-check leads the chip; failed checks show an exclamation.
 3. **Label** — The category name "Anchorage". Selector: `[class~="aui-chip-label"]`. Direct text is highlighted.
 
 ## Apps

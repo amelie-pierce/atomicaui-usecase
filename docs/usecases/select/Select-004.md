@@ -37,20 +37,20 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field** — Field at scale "sm", full width with zero minimum width so it fits the configuration panel. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Country" label above the trigger. Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — The 28px outlined trigger (scale "sm", color "surface", paint "fixed") that opens the country list. Selector: `[class~="aui-select-trigger"]`.
-4. **Trigger icon** — The flag icon that leads the trigger and mirrors the chosen row. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`.
+1. **Field** — Field at scale "sm", full width with zero minimum width so it fits the configuration panel. Selector: `[class~="aui-field"]`. Layer step: **Field** — Full-width small field fits within the configuration panel.
+2. **Label** — The "Country" label above the trigger. Selector: `[class~="aui-field-label"]`. Layer step: **Label** — Country label appears above the trigger in this panel.
+3. **Trigger** — The 28px outlined trigger (scale "sm", color "surface", paint "fixed") that opens the country list. Selector: `[class~="aui-select-trigger"]`. Layer step: **Trigger** — 28px fixed-surface outlined trigger opens the country choices.
+4. **Trigger icon** — The flag icon that leads the trigger and mirrors the chosen row. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`. Layer step: **Trigger icon** — The flag icon that leads the trigger and mirrors the chosen row. Code target: `Field.SelectIcon`.
 5. **Value** — Shows "United States", the default country. Selector: `[class~="aui-select-value"]`. Direct text is highlighted.
-6. **Chevron** — The chevron at the end of the trigger. Selector: `[class~="aui-select-chevron"]`.
-7. **Popup** — Popup of the trigger width, 4px below the trigger, holding three flagged rows. Selector: `[class~="aui-select-popup"]`.
-8. **List** — The list of Canada, United States and Mexico rows. Selector: `[class~="aui-select-list"]`.
-9. **Item** — A country row with its flag icon, name and an empty indicator slot; the chosen row is marked by a raised fill. Selector: `[class~="aui-select-item"]`.
-10. **Item icon** — The flag icon at the start of each row, before the country name. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
-11. **Item text** — The country name: Canada, United States or Mexico. Selector: `[class~="aui-select-item-text"]`.
-12. **Indicator** — An empty slot (`{null}`) at the end of each row; in this panel the chosen row has no check. Selector: `[class~="aui-select-item-indicator"]`.
+6. **Chevron** — The chevron at the end of the trigger. Selector: `[class~="aui-select-chevron"]`. Layer step: **Chevron** — The chevron at the end of the trigger.
+7. **Popup** — Popup of the trigger width, 4px below the trigger, holding three flagged rows. Selector: `[class~="aui-select-popup"]`. Layer step: **Popup** — Popup sits 4px below and holds three flagged countries.
+8. **List** — The list of Canada, United States and Mexico rows. Selector: `[class~="aui-select-list"]`. Layer step: **List** — The list of Canada, United States and Mexico rows.
+9. **Item** — A country row with its flag icon, name and an empty indicator slot; the chosen row is marked by a raised fill. Selector: `[class~="aui-select-item"]`. Layer step: **Item** — Country row pairs flag, name, and selection state.
+10. **Item icon** — The flag icon at the start of each row, before the country name. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`. Layer step: **Item icon** — Flag icon appears before each country name in the list. Code target: `Field.SelectIcon`.
+11. **Item text** — The country name: Canada, United States or Mexico. Selector: `[class~="aui-select-item-text"]`. Layer step: **Item text** — The country name: Canada, United States or Mexico.
+12. **Indicator** — An empty slot (`{null}`) at the end of each row; in this panel the chosen row has no check. Selector: `[class~="aui-select-item-indicator"]`. Layer step: **Indicator** — Chosen country uses a raised row without an end check.
 
 ## Apps
 

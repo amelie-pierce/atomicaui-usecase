@@ -4,19 +4,8 @@ export default defineUsecase({
   uiType: 'Tooltip on a radio',
   title: 'Radio option tooltip',
   apps: ['pbs', 'rws'],
-    layers: [
-        {"id":"group","partId":"group","title":"Radio group","explanation":"Small unpadded Camera projection group gives each option its tooltip.","keyIdea":"The radio group gives each camera choice a shared projection decision.","selector":"[class~=\"aui-radio-group\"]"},
-        {"id":"trigger","partId":"trigger","title":"Trigger","explanation":"Wrapper keeps tooltip open while arrow keys select Perspective.","keyIdea":"A wrapper preserves the tooltip while arrow keys change the radio selection.","selector":"[data-ug-part=\"trigger\"]"},
-        {"id":"radio","partId":"radio","title":"Radio","explanation":"The \"Perspective\" radio at scale \"sm\", selected by default.","keyIdea":"The selected Perspective radio identifies which camera mode is active.","selector":"[class~=\"aui-radio\"]"},
-        {"id":"radio-label","partId":"radio-label","title":"Radio label","explanation":"The visible option name \"Perspective\" beside the radio.","keyIdea":"The adjacent label names the projection without relying on the radio’s appearance.","selector":"[class~=\"aui-control-row\"] > [class~=\"aui-label\"]"},
-        {"id":"positioner","partId":"positioner","title":"Positioner","explanation":"Tooltip sits above the radio with a 4px gap; RWS uses below.","keyIdea":"The positioner places the explanation above the camera option it describes.","selector":"[class~=\"aui-tooltip-positioner\"]"},
-        {"id":"popup","partId":"popup","title":"Popup","explanation":"The default tooltip surface for the one-line note.","keyIdea":"The tooltip surface presents the short note without changing the radio layout.","selector":"[class~=\"aui-tooltip-popup\"]"},
-      ],
 options: [
     { id: "pbs-viewer-radio", name: "Viewer control", showContext: false, apps: ["pbs","rws"], source: {"pbs":"src/Viewer.tsx","rws":"src/rws/Viewer.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   source: { pbs: 'src/Viewer.tsx', rws: 'src/rws/Viewer.tsx' },
@@ -30,36 +19,36 @@ options: [
       name: 'Radio group',
       selector: '[class~="aui-radio-group"]',
       description: 'The "Camera projection" RadioGroup (scale "sm", no padding) whose options each carry their own tooltip.',
-    },
+     lesson: {"explanation":"Small unpadded Camera projection group gives each option its tooltip."}},
     {
       id: 'trigger',
       name: 'Trigger',
       description: 'The span, with closeOnClick off, that wraps the Perspective radio so the tooltip does not close on arrow-key selection.',
-    },
+     lesson: {"explanation":"Wrapper keeps tooltip open while arrow keys select Perspective.","selector":"[data-ug-part=\"trigger\"]"}},
     {
       id: 'radio',
       name: 'Radio',
       selector: '[class~="aui-radio"]',
       description: 'The "Perspective" radio at scale "sm", selected by default.',
-    },
+     lesson: {"explanation":"The \"Perspective\" radio at scale \"sm\", selected by default."}},
     {
       id: 'radio-label',
       name: 'Radio label',
       selector: '[class~="aui-control-row"] > [class~="aui-label"]',
       description: 'The visible option name "Perspective" beside the radio.',
-    },
+     lesson: {"explanation":"The visible option name \"Perspective\" beside the radio."}},
     {
       id: 'positioner',
       name: 'Positioner',
       selector: '[class~="aui-tooltip-positioner"]',
       description: 'Places the note above the radio with a 4px offset (side="top"); RWS requests the bottom side.',
-    },
+     lesson: {"explanation":"Tooltip sits above the radio with a 4px gap; RWS uses below."}},
     {
       id: 'popup',
       name: 'Popup',
       selector: '[class~="aui-tooltip-popup"]',
       description: 'The default tooltip surface for the one-line note.',
-    },
+     lesson: {"explanation":"The default tooltip surface for the one-line note."}},
     {
       id: 'note',
       name: 'Note',

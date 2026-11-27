@@ -37,12 +37,12 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Trigger** — The icon-only gear IconButton labelled "Settings" (scale "sm", text paint, secondary colour) that the tooltip names; it is passed to the trigger through render. Part marker: `data-ug-part="trigger"`.
-2. **Positioner** — Places the label below the gear button with a 4px offset (side="bottom"); the HS app requests the default top side and RWS the bottom. Selector: `[class~="aui-tooltip-positioner"]`.
-3. **Popup** — The small tooltip surface that holds the one-word label. Selector: `[class~="aui-tooltip-popup"]`.
-4. **Label** — The text "Settings", repeating the button's accessible name so sighted users can read it. Selector: `[class~="aui-tooltip-popup"]`. Direct text is highlighted.
+1. **Trigger** — The icon-only gear IconButton labelled "Settings" (scale "sm", text paint, secondary colour) that the tooltip names; it is passed to the trigger through render. Part marker: `data-ug-part="trigger"`. Layer step: **Icon button trigger** — Settings gear opens the help label that repeats its accessible name.
+2. **Positioner** — Places the label below the gear button with a 4px offset (side="bottom"); the HS app requests the default top side and RWS the bottom. Selector: `[class~="aui-tooltip-positioner"]`. Layer step: **Tooltip positioner** — The positioner places the tooltip below the trigger with a four-pixel offset.
+3. **Popup** — The small tooltip surface that holds the one-word label. Selector: `[class~="aui-tooltip-popup"]`. Layer step: **Tooltip surface** — The small popup provides a surface for the trigger label.
+4. **Label** — The text "Settings", repeating the button's accessible name so sighted users can read it. Selector: `[class~="aui-tooltip-popup"]`. Direct text is highlighted. Layer step: **Settings label** — The word Settings repeats the button accessible name for sighted users.
 
 ## Apps
 

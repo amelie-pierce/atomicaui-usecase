@@ -83,7 +83,7 @@ function ContextStage({ option, hidden, anatomy, hoveredPartId, onAvailableParts
         </div>
       </div>
       {/* Keep the context highlight outside the scrolling stage, as in Component mode. */}
-      <AnatomyOverlay rect={overlay} />
+      <AnatomyOverlay rect={overlay} stepKey={layerMode ? activeLayer?.id : undefined} />
     </div>
   );
 }
@@ -162,7 +162,7 @@ export function RenderPane({
           </div>
         </div>
         {/* A sibling of the scrolling stage, not a child: inside it the highlight would count as scrollable overflow. */}
-        <AnatomyOverlay rect={overlay} />
+        <AnatomyOverlay rect={overlay} stepKey={layerMode && mode === 'component' ? activeLayer?.id : undefined} />
       </div>
       <ContextStage option={option} hidden={mode !== 'context'} anatomy={anatomy} hoveredPartId={mode === 'context' ? hoveredPartId : undefined} onAvailablePartsChange={onAvailablePartsChange} layers={layers} layerIndex={layerIndex} layerMode={layerMode} />
       {option.note && (

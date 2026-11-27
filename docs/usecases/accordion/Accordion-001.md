@@ -38,14 +38,14 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Item** — One Input-pane section, Connection Type (open by default) or Load Properties; in the list layout (HCS, HS, PFD) items are flush with a 1px outlined line between them, in the cards layout (FD, PBS) each is a soft rounded card. Selector: `[class~="aui-accordion-item"]`.
-2. **Trigger** — Full-width surface title row, scale "sm" and shape "none", that opens or closes its section; openMultiple lets several stay open. Selector: `[class~="aui-accordion-trigger"]`.
-3. **Section icon** — Leading regular-weight topic icon, link for Connection Type and arrow-down for Load Properties; PBS omits it in both layouts, and FD omits it in both layouts while uppercasing titles. Selector: `[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]`.
-4. **Title** — Semi-bold l4 section name, "Connection Type" or "Load Properties" (upper case in the card layouts). Selector: `[class~="aui-accordion-trigger-content"]`.
-5. **Chevron** — Disclosure chevron at the end of the row that turns with the open state. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`.
-6. **Panel** — Body of the open section with default padding; Connection Type shows the placeholder "Section fields" while Load Properties has no panel. Selector: `[class~="aui-accordion-panel"]`.
+1. **Item** — One Input-pane section, Connection Type (open by default) or Load Properties; in the list layout (HCS, HS, PFD) items are flush with a 1px outlined line between them, in the cards layout (FD, PBS) each is a soft rounded card. Selector: `[class~="aui-accordion-item"]`. Layer step: **Item** — One section row opens Connection Type or Load Properties.
+2. **Trigger** — Full-width surface title row, scale "sm" and shape "none", that opens or closes its section; openMultiple lets several stay open. Selector: `[class~="aui-accordion-trigger"]`. Layer step: **Trigger** — Full-width title row opens one section; several can stay open.
+3. **Section icon** — Leading regular-weight topic icon, link for Connection Type and arrow-down for Load Properties; PBS omits it in both layouts, and FD omits it in both layouts while uppercasing titles. Selector: `[class~="aui-accordion-trigger-content"] [class~="aui-contained-icon"]`. Layer step: **Section icon** — Link icon marks Connection Type; arrow-down marks Load Properties. Code target: `Accordion.Icon`.
+4. **Title** — Semi-bold l4 section name, "Connection Type" or "Load Properties" (upper case in the card layouts). Selector: `[class~="aui-accordion-trigger-content"]`. Layer step: **Title** — Semi-bold label names Connection Type or Load Properties.
+5. **Chevron** — Disclosure chevron at the end of the row that turns with the open state. Selector: `[class~="aui-accordion-trigger"] > [class~="aui-accordion-chevron"]`. Layer step: **Chevron** — Disclosure chevron turns to show the section's open state.
+6. **Panel** — Body of the open section with default padding; Connection Type shows the placeholder "Section fields" while Load Properties has no panel. Selector: `[class~="aui-accordion-panel"]`. Layer step: **Panel** — Open panel shows section fields; Load Properties has no panel.
 
 ## Apps
 

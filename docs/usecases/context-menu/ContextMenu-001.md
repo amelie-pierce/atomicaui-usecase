@@ -37,13 +37,18 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Trigger** — The "Design 1" tab is the right-click area: a Tabs.Tab with nativeButton off rendered through ContextMenu.Trigger as a div, which takes no aui. Selector: `[class~="aui-tabs-tab"]`.
-2. **Popup** — The menu labelled "Tab options", opened at the pointer in the app and anchored under the tab in the scene. Selector: `[class~="aui-dropdown-popup"]`.
+1. **Trigger** — The "Design 1" tab is the right-click area: a Tabs.Tab with nativeButton off rendered through ContextMenu.Trigger as a div, which takes no aui. Selector: `[class~="aui-tabs-tab"]`. Layer step: **Design tab trigger** — Design 1 tab opens its secondary menu on right-click.
+2. **Popup** — The menu labelled "Tab options", opened at the pointer in the app and anchored under the tab in the scene. Selector: `[class~="aui-dropdown-popup"]`. Layer step: **Menu surface** — Tab options popup sits beside the tab and groups actions. Code target: `ContextMenu.Popup`.
 3. **Item** — A plain action row: Close, Close all other designs, Rename, Duplicate or Move to top; choosing one runs it and closes the menu. Selector: `[class~="aui-dropdown-item"]`.
 4. **Icon** — The leading glyph of each row: xmark, ban, pen, copy and arrow-up. Selector: `[class~="aui-dropdown-item"] > [class~="aui-contained-icon"]`.
-5. **Separator** — The divider between the close actions (Close, Close all other designs) and the edit actions (Rename, Duplicate, Move to top). Selector: `[class~="aui-dropdown-separator"]`.
+5. **Separator** — The divider between the close actions (Close, Close all other designs) and the edit actions (Rename, Duplicate, Move to top). Selector: `[class~="aui-dropdown-separator"]`. Layer step: **Action group divider** — Divider separates close commands from editing and duplication actions. Code target: `ContextMenu.Separator`.
+6. **Close action** — First row closes the current Design 1 tab. Selector: `[data-ug-part="close-action"]`. Layer step: **Close action** — First row closes the current Design 1 tab.
+7. **Close other designs** — This row closes every other design while keeping the current tab. Selector: `[data-ug-part="close-others-action"]`. Layer step: **Close other designs** — This row closes every other design while keeping the current tab.
+8. **Rename action** — Rename action opens the current design’s name editor. Selector: `[data-ug-part="rename-action"]`. Layer step: **Rename action** — Rename action opens the current design’s name editor.
+9. **Duplicate action** — Duplicate action creates a copy of this design. Selector: `[data-ug-part="duplicate-action"]`. Layer step: **Duplicate action** — Duplicate action creates a copy of this design.
+10. **Move to top action** — Final row moves this design to the tab rail’s start. Selector: `[data-ug-part="move-to-top-action"]`. Layer step: **Move to top action** — Final row moves this design to the tab rail’s start.
 
 ## Apps
 

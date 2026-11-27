@@ -36,13 +36,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Checkbox** — The checkable control, at scale "sm", checked by default: a surface-tonal box with an outlined border when off and a solid primary box when on. Selector: `[class~="aui-checkbox"]`.
-2. **Indicator** — The small box that shows the checked state for the optional copy of the feedback responses. Selector: `[class~="aui-checkbox-indicator"]`.
-3. **Icon** — The "check" mark inside the indicator; the HS, PFD, PBS, AGPD, RWS, ADM and FD feedback dialogs show it when the option is on. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`.
-4. **Label** — The caption "Send me a copy of my responses" beside the box, answering the optional yes or no question at the end of the form. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`.
-5. **Form field** — The feedback-form text fields (name, email, subject) above the checkbox in the dialog scenes, each a Field with a label and an input. Selector: `[class~="aui-field"]`.
+1. **Checkbox** — The checkable control, at scale "sm", checked by default: a surface-tonal box with an outlined border when off and a solid primary box when on. Selector: `[class~="aui-checkbox"]`. Layer step: **Checkbox** — Small checkbox starts checked, with tonal off and solid primary on.
+2. **Indicator** — The small box that shows the checked state for the optional copy of the feedback responses. Selector: `[class~="aui-checkbox-indicator"]`. Layer step: **Indicator** — Box shows whether feedback responses will include a copy. Code target: `Checkbox`.
+3. **Icon** — The "check" mark inside the indicator; the HS, PFD, PBS, AGPD, RWS, ADM and FD feedback dialogs show it when the option is on. Selector: `[class~="aui-checkbox-indicator"] [class~="aui-contained-icon"]`. Layer step: **Icon** — Check mark appears across seven feedback scenes when selected. Code target: `Checkbox.Icon`.
+4. **Label** — The caption "Send me a copy of my responses" beside the box, answering the optional yes or no question at the end of the form. Selector: `[class~="aui-control-row"] > [class~="aui-label"]`. Layer step: **Label** — Caption asks whether users want a copy of their responses.
+5. **Form field** — The feedback-form text fields (name, email, subject) above the checkbox in the dialog scenes, each a Field with a label and an input. Selector: `[class~="aui-field"]`. Layer step: **Form field** — Name, email, and subject fields precede this optional feedback choice.
 
 ## Apps
 

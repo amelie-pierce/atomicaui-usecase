@@ -17,9 +17,10 @@ async function loadUsecase(dir) {
   const sceneSource = (option) => readFile(path.join(dir, `options/${option.id}/scene.tsx`), 'utf8');
   return {
     id: path.basename(dir),
-    layers: doc.layers,
+    anatomy: doc.anatomy,
     options: doc.options.map((option, index) => ({
       ...option,
+      contextAnatomy: (option.contextAnatomy ?? []).map((part) => ({ ...part, ...option.contextAnatomyOverrides?.find((override) => override.id === part.id) })),
       loadExampleCode: () => exampleCode(index, option),
       loadCode: async () => toContextSnippet(await sceneSource(option), await exampleCode(index, option)),
       loadSlotLines: async () => toContextSlotLines(await sceneSource(option), await exampleCode(index, option)),

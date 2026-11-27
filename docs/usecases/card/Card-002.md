@@ -37,11 +37,11 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Card** — Square 96 by 96 soft tile with no padding; ADM lays three of them across under Explore More Applications. Selector: `[class~="aui-card"]`.
-2. **Image container** — Fills the whole card (width and height "fill"), so the picture is the entire tile. Selector: `[class~="aui-card-image-container"]`.
-3. **Image** — The application picture with alt "Application", a 1:1 ratio and fit="contain". Selector: `[class~="aui-card-image"]`.
+1. **Card** — Square 96 by 96 soft tile with no padding; ADM lays three of them across under Explore More Applications. Selector: `[class~="aui-card"]`. Layer step: **Card** — Square 96-pixel soft tile gives each application an image-led target.
+2. **Image container** — Fills the whole card (width and height "fill"), so the picture is the entire tile. Selector: `[class~="aui-card-image-container"]`. Layer step: **Image container** — Full-card image frame lets artwork fill the square tile.
+3. **Image** — The application picture with alt "Application", a 1:1 ratio and fit="contain". Selector: `[class~="aui-card-image"]`. Layer step: **Image** — One-to-one application image fits whole with its Application alt text.
 
 ## Apps
 

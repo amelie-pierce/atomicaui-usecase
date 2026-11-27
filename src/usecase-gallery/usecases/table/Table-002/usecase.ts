@@ -13,40 +13,16 @@ export default defineUsecase({
     adm: 'src/features/multi-design/components/MultiDesignTable.tsx',
     ace: 'src/features/calculation/ui/CalculationOutput.tsx',
   },
-    layers: [
-        {"id":"table","partId":"table","title":"Table","explanation":"Single-select grid places its radio inside the first data cell.","keyIdea":"The single-select grid turns candidate rows into one mutually exclusive choice.","selector":"[class~=\"aui-table\"]"},
-        {"id":"head","partId":"head","title":"Header","explanation":"Raised header is not selectable and contains model and load labels.","keyIdea":"A nonselectable header lets the candidate columns stay readable without looking like a choice.","selector":"[class~=\"aui-table-head\"]"},
-        {"id":"header-cell","partId":"header-cell","title":"Header cell","explanation":"Plain raised heading names columns without a sort control.","keyIdea":"Plain headings describe the data because this selection table does not sort.","selector":"[class~=\"aui-table-header-cell\"]"},
-        {"id":"body","partId":"body","title":"Body","explanation":"The two selectable candidates, Model B-200 and Model C-300.","keyIdea":"The body contains only the candidates available for selection.","selector":"[class~=\"aui-table-body\"]"},
-        {"id":"row","partId":"row","title":"Row","explanation":"Selected B-200 row uses a surface and 4px leading bar.","keyIdea":"The row surface and start edge make the chosen candidate visible beyond its radio.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"},
-        {"id":"cell","partId":"cell","title":"Cell","explanation":"First cell pairs radio and model; second shows the load.","keyIdea":"The first cell keeps the selection marker with the model name it selects.","selector":"[class~=\"aui-table-cell\"]"},
-        {"id":"selection-toggle","partId":"selection-toggle","title":"Selection radio","explanation":"24px radio selects the row; ACE places it above the model.","keyIdea":"The radio exposes the same row choice with a control that supports single selection.","selector":"[class~=\"aui-table-cell\"] [class~=\"aui-radio\"]"},
-      ],
 options: [
     { id: "hcs-selection", name: "Row selection", showContext: false, apps: ["hcs"], source: {"hcs":"src/components/F01Results.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "hs-selection", name: "Selected row table", showContext: false, apps: ["hs","fd","pbs"], source: {"hs":"src/hs/ResultsTable.tsx","fd":"src/components/Results.jsx","pbs":"src/ResultsSection.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "rws-selection", name: "Edge marked row", showContext: false, apps: ["rws"], source: {"rws":"src/rws/output.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "adm-selection", name: "Radio row table", showContext: false, apps: ["adm"], source: {"adm":"src/features/multi-design/components/MultiDesignTable.tsx"} ,
-      contextLayers: [
-
-      ],
     },
     { id: "ace-selection", name: "Compact selection row", showContext: false, apps: ["ace"], source: {"ace":"src/features/calculation/ui/CalculationOutput.tsx"} ,
-      contextLayers: [
-
-      ],
     },
   ],
   summary: 'A radio in the first cell selects one row of a results table; the selected row is marked by the row surface and an edge bar.',
@@ -59,42 +35,42 @@ options: [
       name: 'Table',
       selector: '[class~="aui-table"]',
       description: 'Selectable results table: selectionMode "single" with indicatorType "radio" and no separate indicator column, so the radio lives in the first data cell. HCS, HS, PBS and FD use the 4px secondary edge bar; ADM uses between-rows lines with a raised selected row.',
-    },
+     lesson: {"explanation":"Single-select grid places its radio inside the first data cell."}},
     {
       id: 'head',
       name: 'Header',
       selector: '[class~="aui-table-head"]',
       description: 'Raised header with the Model and Load (lb) labels (Product and Tension (lb) in ADM); its row is marked selectable={false} so it gets no radio.',
-    },
+     lesson: {"explanation":"Raised header is not selectable and contains model and load labels."}},
     {
       id: 'header-cell',
       name: 'Header cell',
       selector: '[class~="aui-table-header-cell"]',
       description: 'Plain column heading on the raised band; no sort control in this use case.',
-    },
+     lesson: {"explanation":"Plain raised heading names columns without a sort control."}},
     {
       id: 'body',
       name: 'Body',
       selector: '[class~="aui-table-body"]',
       description: 'The two selectable candidates, Model B-200 and Model C-300.',
-    },
+     lesson: {"explanation":"The two selectable candidates, Model B-200 and Model C-300."}},
     {
       id: 'row',
       name: 'Row',
       selector: '[class~="aui-table-body"] [class~="aui-table-body"] [class~="aui-table-row"]',
       description: 'A selectable row; the selected one (Model B-200) carries the row surface and a 4px start edge bar, and RWS paints that look with selection="row" and no radio.',
-    },
+     lesson: {"explanation":"Selected B-200 row uses a surface and 4px leading bar.","selector":"[class~=\"aui-table-body\"] [class~=\"aui-table-row\"]"}},
     {
       id: 'cell',
       name: 'Cell',
       selector: '[class~="aui-table-cell"]',
       description: 'Data cell; the first one holds the radio and the model name, the second the load in lb (2,210 and 1,180).',
-    },
+     lesson: {"explanation":"First cell pairs radio and model; second shows the load."}},
     {
       id: 'selection-toggle',
       name: 'Selection radio',
       selector: '[class~="aui-table-cell"] [class~="aui-radio"]',
       description: '24px radio at the start of the first cell that selects the row, filled primary when selected; in ACE it sits above the model name.',
-    },
+     lesson: {"explanation":"24px radio selects the row; ACE places it above the model."}},
   ],
 });

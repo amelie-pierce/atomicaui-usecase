@@ -36,10 +36,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Call** — The round (pill) solid primary phone button; the AGPD scene renders it as a tel: link named Call dealer. Selector: `[class~="aui-button"]`.
-2. **Phone icon** — The phone glyph centred in the round button. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Call** — The round (pill) solid primary phone button; the AGPD scene renders it as a tel: link named Call dealer. Selector: `[class~="aui-button"]`. Layer step: **Call** — Pill-shaped primary phone button calls the dealer directly.
+2. **Phone icon** — The phone glyph centred in the round button. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`. Layer step: **Phone icon** — The phone glyph centred in the round button. Code target: `IconButton`.
 3. **Hint text** — AGPD only: the Need help? 1-800-000-0000 line beside the button. Selector: `[class~="aui-type"]`. Direct text is highlighted.
 
 ## Apps

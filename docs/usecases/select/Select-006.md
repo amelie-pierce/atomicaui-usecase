@@ -37,22 +37,22 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field row** — Field written as a row (flexDirection "row", centred, full width) so the Product label and trigger share one line. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Product" label that takes half the row (flexBasis "half") and truncates with an ellipsis. Selector: `[class~="aui-field-label"]`.
-3. **Trigger** — Outlined trigger that fills the other half of the row (flex fill, flexBasis "half"); the FD scene leads it with the chosen row's icon. Selector: `[class~="aui-select-trigger"]`.
-4. **Trigger icon** — The FD variant leads the trigger with a flag for the selected product. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`.
+1. **Field row** — Field written as a row (flexDirection "row", centred, full width) so the Product label and trigger share one line. Selector: `[class~="aui-field"]`. Layer step: **Field row** — Horizontal field shares one line between Product label and trigger.
+2. **Label** — The "Product" label that takes half the row (flexBasis "half") and truncates with an ellipsis. Selector: `[class~="aui-field-label"]`. Layer step: **Label** — Product label uses half the row and truncates with ellipsis.
+3. **Trigger** — Outlined trigger that fills the other half of the row (flex fill, flexBasis "half"); the FD scene leads it with the chosen row's icon. Selector: `[class~="aui-select-trigger"]`. Layer step: **Trigger** — Trigger fills the other half; FD adds the chosen product icon.
+4. **Trigger icon** — The FD variant leads the trigger with a flag for the selected product. Selector: `[class~="aui-select-trigger"] > [class~="aui-contained-icon"]:not([class~="aui-select-chevron"])`. Layer step: **Trigger icon** — FD grouped trigger leads with the chosen product’s flag. Code target: `Field.SelectIcon`.
 5. **Value** — Shows the chosen product, "Anchor A1" by default. Selector: `[class~="aui-select-value"]`. Direct text is highlighted.
-6. **Chevron** — The chevron at the trigger end. Selector: `[class~="aui-select-chevron"]`.
-7. **Popup** — Popup of the trigger width holding two groups, Anchors and Rods. Selector: `[class~="aui-select-popup"]`.
-8. **List** — The list that stacks the Anchors and Rods groups. Selector: `[class~="aui-select-list"]`.
-9. **Group** — One family of related rows: Anchors (Anchor A1, Anchor A2) or Rods (Rod B1). Selector: `[class~="aui-select-group"]`.
-10. **Group label** — The heading above each family, "Anchors" and "Rods". Selector: `[class~="aui-select-group-label"]`.
-11. **Item** — A product row inside its group; the chosen row is marked by a raised fill. Selector: `[class~="aui-select-item"]`.
-12. **Item icon** — The FD variant places a flag before each grouped product name. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`.
-13. **Item text** — The product name, such as "Anchor A2" or "Rod B1". Selector: `[class~="aui-select-item-text"]`.
-14. **Indicator** — Empty slot (`{null}`) at the row end; no check is drawn. Selector: `[class~="aui-select-item-indicator"]`.
+6. **Chevron** — The chevron at the trigger end. Selector: `[class~="aui-select-chevron"]`. Layer step: **Chevron** — End chevron marks the product trigger as a dropdown.
+7. **Popup** — Popup of the trigger width holding two groups, Anchors and Rods. Selector: `[class~="aui-select-popup"]`. Layer step: **Popup** — Popup of the trigger width holding two groups, Anchors and Rods.
+8. **List** — The list that stacks the Anchors and Rods groups. Selector: `[class~="aui-select-list"]`. Layer step: **List** — The list that stacks the Anchors and Rods groups.
+9. **Group** — One family of related rows: Anchors (Anchor A1, Anchor A2) or Rods (Rod B1). Selector: `[class~="aui-select-group"]`. Layer step: **Group** — Related rows group Anchor A1, Anchor A2, or Rod B1.
+10. **Group label** — The heading above each family, "Anchors" and "Rods". Selector: `[class~="aui-select-group-label"]`. Layer step: **Group label** — The heading above each family, "Anchors" and "Rods".
+11. **Item** — A product row inside its group; the chosen row is marked by a raised fill. Selector: `[class~="aui-select-item"]`. Layer step: **Item** — Raised fill marks the selected product within its group.
+12. **Item icon** — The FD variant places a flag before each grouped product name. Selector: `[class~="aui-select-item"] > [class~="aui-contained-icon"]`. Layer step: **Item icon** — FD places a flag before each grouped product name. Code target: `Field.SelectIcon`.
+13. **Item text** — The product name, such as "Anchor A2" or "Rod B1". Selector: `[class~="aui-select-item-text"]`. Layer step: **Item text** — The product name, such as "Anchor A2" or "Rod B1".
+14. **Indicator** — Empty slot (`{null}`) at the row end; no check is drawn. Selector: `[class~="aui-select-item-indicator"]`. Layer step: **Indicator** — Empty slot (`{null}`) at the row end; no check is drawn.
 
 ## Apps
 

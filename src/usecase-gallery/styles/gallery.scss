@@ -319,7 +319,27 @@ $narrow: 840px;
   border: var(--p-px-2) solid var(--p-palette-orange-600);
   background: color-mix(in srgb, var(--p-palette-orange-600) 16%, transparent);
   box-shadow: 0 0 0 var(--p-px-2) color-mix(in srgb, var(--p-palette-orange-600) 24%, transparent);
-  transition: inset 150ms ease, inline-size 150ms ease, block-size 150ms ease;
+  transition: inset var(--p-ms-240) cubic-bezier(0.2, 0.8, 0.2, 1), inline-size var(--p-ms-240) cubic-bezier(0.2, 0.8, 0.2, 1), block-size var(--p-ms-240) cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ug-anatomy-overlay__pulse {
+  position: absolute;
+  inset: calc(var(--p-px-2) * -1);
+  border: var(--p-px-2) solid var(--p-palette-orange-600);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: ug-anatomy-arrive var(--p-ms-240) cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes ug-anatomy-arrive {
+  0% { opacity: 0; transform: scale(0.94); box-shadow: 0 0 0 0 color-mix(in srgb, var(--p-palette-orange-600) 28%, transparent); }
+  45% { opacity: 1; transform: scale(1.015); box-shadow: 0 0 0 var(--p-px-8) color-mix(in srgb, var(--p-palette-orange-600) 18%, transparent); }
+  100% { opacity: 0; transform: scale(1.04); box-shadow: 0 0 0 var(--p-px-12) transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ug-anatomy-overlay { transition: none; }
+  .ug-anatomy-overlay__pulse { animation: none; }
 }
 
 // A plain labelled frame for an area the kit cannot compose.

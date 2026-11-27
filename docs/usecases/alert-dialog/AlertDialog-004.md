@@ -36,19 +36,19 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Overlay** — The scrim behind the delete confirm. Selector: `[class~="aui-dialog-backdrop"]`.
-2. **Popup** — The default-width confirm window used by ACE, HS and PBS. Selector: `[class~="aui-dialog-popup"]`.
-3. **Title** — The raised title "Warning: Delete Template?" with a solid warning icon and no close X (HS leaves the bar plain, PBS has no title at all). Selector: `[class~="aui-dialog-title"]`.
-4. **Warning icon** — The solid triangle-exclamation glyph in the warning colour. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`.
+1. **Overlay** — The scrim behind the delete confirm. Selector: `[class~="aui-dialog-backdrop"]`. Layer step: **Overlay** — Scrim focuses attention on the delete confirmation above the workspace.
+2. **Popup** — The default-width confirm window used by ACE, HS and PBS. Selector: `[class~="aui-dialog-popup"]`. Layer step: **Popup** — Default-width confirm keeps the delete warning and choices together.
+3. **Title** — The raised title "Warning: Delete Template?" with a solid warning icon and no close X (HS leaves the bar plain, PBS has no title at all). Selector: `[class~="aui-dialog-title"]`. Layer step: **Title** — Title warns about deleting a template without naming it.
+4. **Warning icon** — The solid triangle-exclamation glyph in the warning colour. Selector: `[class~="aui-dialog-title"] [class~="aui-contained-icon"]`. Layer step: **Warning icon** — Warning triangle signals that this template removal is irreversible. Code target: `Dialog.Icon`.
 5. **Title text** — The question "Warning: Delete Template?". Selector: `[class~="aui-dialog-title"]`. Direct text is highlighted.
-6. **Close row** — The PBS-only end-aligned row that holds a lone close X above the message instead of a title bar. Part marker: `data-ug-part="close-row"`.
-7. **Close** — The PBS close X above the message; the other apps have none. Selector: `[class~="aui-dialog-close"]`.
-8. **Description** — The message that the deletion cannot be undone and must be confirmed (PBS asks "Are you sure you want to delete Connection 1"). Selector: `[class~="aui-dialog-description"]`.
-9. **Footer** — The footer with the back-out and delete buttons; PBS puts a spacer between them. Selector: `[class~="aui-dialog-actions"]`.
-10. **Cancel** — The default Cancel (labelled Close in PBS) that keeps the template. Part marker: `data-ug-part="cancel"`.
-11. **Delete** — The solid error Delete that removes the template. Part marker: `data-ug-part="delete"`.
+6. **Close row** — The PBS-only end-aligned row that holds a lone close X above the message instead of a title bar. Part marker: `data-ug-part="close-row"`. Layer step: **Close row** — PBS places a close control above the message without title bar.
+7. **Close** — The PBS close X above the message; the other apps have none. Selector: `[class~="aui-dialog-close"]`. Layer step: **Close** — PBS close X dismisses the alert; other apps omit it.
+8. **Description** — The message that the deletion cannot be undone and must be confirmed (PBS asks "Are you sure you want to delete Connection 1"). Selector: `[class~="aui-dialog-description"]`. Layer step: **Description** — Message asks users to confirm before anything is deleted.
+9. **Footer** — The footer with the back-out and delete buttons; PBS puts a spacer between them. Selector: `[class~="aui-dialog-actions"]`. Layer step: **Footer** — Footer pairs safe exit with Delete; PBS separates them.
+10. **Cancel** — The default Cancel (labelled Close in PBS) that keeps the template. Part marker: `data-ug-part="cancel"`. Layer step: **Cancel** — Cancel or Close keeps the template available for editing.
+11. **Delete** — The solid error Delete that removes the template. Part marker: `data-ug-part="delete"`. Layer step: **Delete** — Solid error Delete button confirms the permanent removal.
 
 ## Apps
 

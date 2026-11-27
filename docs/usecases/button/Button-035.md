@@ -38,13 +38,13 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Column options** — The xs square-compact transparent button that opens the column menu; HCS uses the ellipsis-vertical glyph and PFD the horizontal ellipsis. Selector: `[class~="aui-button"][aria-label*="column options" i]`.
-2. **Icon** — The vertical or horizontal ellipsis glyph, centred in the button. Selector: `[class~="aui-button"][aria-label*="column options" i] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`.
-3. **Column header** — The raised Model and Load (lb) headings; each takes its options button through the actions prop, and Load (lb) is sorted ascending. Selector: `[class~="aui-table-header-cell"]`.
-4. **Column menu** — The 256px popover opened under the Load (lb) heading with a Sort radio group; PFD adds a Close button at its end. Selector: `[data-aui-popup-motion][role="dialog"]`.
-5. **Sort option** — The three sort choices (A to Z, Z to A, None), with the ascending one selected in primary. Selector: `[class~="aui-radio"]`.
+1. **Column options** — The xs square-compact transparent button that opens the column menu; HCS uses the ellipsis-vertical glyph and PFD the horizontal ellipsis. Selector: `[class~="aui-button"][aria-label*="column options" i]`. Layer step: **Column options** — Compact square transparent button opens the menu; apps vary ellipsis direction.
+2. **Icon** — The vertical or horizontal ellipsis glyph, centred in the button. Selector: `[class~="aui-button"][aria-label*="column options" i] > :is([class~="aui-icon"], [class~="aui-contained-icon"])`. Layer step: **Icon** — The vertical or horizontal ellipsis glyph, centred in the button. Code target: `IconButton`, `ContainedIcon`.
+3. **Column header** — The raised Model and Load (lb) headings; each takes its options button through the actions prop, and Load (lb) is sorted ascending. Selector: `[class~="aui-table-header-cell"]`. Layer step: **Column header** — Raised Model and Load headings hold options; Load sorts ascending.
+4. **Column menu** — The 256px popover opened under the Load (lb) heading with a Sort radio group; PFD adds a Close button at its end. Selector: `[data-aui-popup-motion][role="dialog"]`. Layer step: **Column menu** — 256px sort menu opens under Load; PFD adds a Close action. Code target: `Popover.Popup`.
+5. **Sort option** — The three sort choices (A to Z, Z to A, None), with the ascending one selected in primary. Selector: `[class~="aui-radio"]`. Layer step: **Sort option** — Three sort choices include A to Z, Z to A, and None.
 
 ## Apps
 

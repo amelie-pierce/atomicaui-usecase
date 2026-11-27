@@ -38,10 +38,10 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Container** — The Add job Button under the Job tally table: solid secondary, small, stretching across the ACE column. Selector: `[class~="aui-button"]`.
-2. **Icon** — The plus glyph before the label, marked aria-hidden since the label already says what it does. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`.
+1. **Container** — The Add job Button under the Job tally table: solid secondary, small, stretching across the ACE column. Selector: `[class~="aui-button"]`. Layer step: **Container** — Small solid secondary Add job spans the ACE column.
+2. **Icon** — The plus glyph before the label, marked aria-hidden since the label already says what it does. Selector: `[class~="aui-button"] > :is([class~="aui-contained-icon"], [class~="aui-icon"])`. Layer step: **Icon** — Decorative plus glyph precedes the Add job label.
 3. **Label** — The text "Add job" that appends an empty job entry. Selector: `[class~="aui-button"]`. Direct text is highlighted.
 
 ## Apps
@@ -62,9 +62,9 @@ In context view: Shown.
 
 #### In context structure additions
 
-1. **Job tally section** — The section that stacks the title, table and Add job button in a column. Part marker: `data-ug-part="tally-section"`.
-2. **Section title** — The "Job tally" heading. Part marker: `data-ug-part="tally-title"`.
-3. **Job tally table** — The table with a Job header and one "Job 1" row above the button. Part marker: `data-ug-part="tally-table"`.
+1. **Job tally section** — The section that stacks the title, table and Add job button in a column. Part marker: `data-ug-part="tally-section"`. Layer step: **Job tally section** — Vertical section stacks heading, table, and Add job action.
+2. **Section title** — The "Job tally" heading. Part marker: `data-ug-part="tally-title"`. Layer step: **Section title** — Job tally heading names the section above the table.
+3. **Job tally table** — The table with a Job header and one "Job 1" row above the button. Part marker: `data-ug-part="tally-table"`. Layer step: **Job tally table** — Job table shows Job 1 above its Add job button.
 
 #### Component UI source — `src/usecase-gallery/usecases/button/Button-014/example.tsx`
 

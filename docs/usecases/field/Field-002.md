@@ -37,12 +37,12 @@ The source snippets below are authoritative for the complete prop values and com
 
 No separate API prop table is authored. Use the exact props visible in the Component and In context source below.
 
-## Structure (outer to inner)
+## Anatomy parts (gallery ordered by mounted parent and visual reading order)
 
-1. **Field** — Stacked text field with a 3 gap that ties the Connection ID label to its single-line control; ADC lays it out as a wrapping row with a 96px label. Selector: `[class~="aui-field"]`.
-2. **Label** — The "Connection ID" label above the control; in ADC it is a 96px end-aligned label with a required asterisk in the error colour. Selector: `[class~="aui-field-label"]`.
-3. **Control** — The 28px surface-coloured outlined frame, 3/8 padding and a 4px radius, that wraps the text input. Selector: `[class~="aui-field-control"]`.
-4. **Input** — The editable line of text, prefilled with C-1042 and named by its aria-label. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`.
+1. **Field** — Stacked text field with a 3 gap that ties the Connection ID label to its single-line control; ADC lays it out as a wrapping row with a 96px label. Selector: `[class~="aui-field"]`. Layer step: **Field** — Small stacked field joins Connection ID to one text line.
+2. **Label** — The "Connection ID" label above the control; in ADC it is a 96px end-aligned label with a required asterisk in the error colour. Selector: `[class~="aui-field-label"]`. Layer step: **Label** — Connection ID sits above; ADC adds inline layout and required mark.
+3. **Control** — The 28px surface-coloured outlined frame, 3/8 padding and a 4px radius, that wraps the text input. Selector: `[class~="aui-field-control"]`. Layer step: **Control** — Outlined 28px frame wraps the text input with compact padding.
+4. **Input** — The editable line of text, prefilled with C-1042 and named by its aria-label. Selector: `[class~="aui-field-control"] > [class~="aui-input"]`. Layer step: **Input** — Editable line starts with C-1042 and has an accessible name.
 
 ## Apps
 

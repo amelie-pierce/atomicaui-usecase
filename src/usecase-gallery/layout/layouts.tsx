@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react';
+import { useRef, type ReactNode } from 'react';
+import type { GroupImperativeHandle } from 'react-resizable-panels';
 import { Panels } from '../kit';
 
 export interface LayoutPanes {
@@ -6,31 +7,44 @@ export interface LayoutPanes {
   tree: ReactNode;
   render: ReactNode;
   detail: ReactNode;
-  treeWidth?: number;
-  compact?: boolean;
   treeCollapsed: boolean;
   onTreePanelResize: (size: { asPercentage: number; inPixels: number }) => void;
 }
 
-/** The tree pane fits its content, within these pixel bounds. */
-const TREE_MIN = 240;
-const TREE_MAX = 400;
+const PANE_MIN = 220;
+const TREE_DEFAULT_PERCENT = 30;
 
 /** Three resizable panes; the preview toolbar is anchored across the page from the center panel. */
-export function DetailLayout({ toolbar, tree, render, detail, treeWidth, compact = false, treeCollapsed, onTreePanelResize }: LayoutPanes) {
-  const fitted = compact ? TREE_MIN : treeWidth === undefined ? undefined : Math.min(TREE_MAX, Math.max(TREE_MIN, treeWidth));
+export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onTreePanelResize }: LayoutPanes) {
+  const groupRef = useRef<GroupImperativeHandle>(null);
+  const mountedCollapsed = useRef(treeCollapsed);
+  const onTreeResize: LayoutPanes['onTreePanelResize'] = (size) => {
+    if (mountedCollapsed.current && size.asPercentage > 0.01) {
+      mountedCollapsed.current = false;
+      window.requestAnimationFrame(() => {
+        const layout = groupRef.current?.getLayout();
+        const current = layout?.['component-tree'];
+        if (!layout || current === undefined || current >= TREE_DEFAULT_PERCENT) return;
+        groupRef.current?.setLayout({
+          ...layout,
+          'component-tree': TREE_DEFAULT_PERCENT,
+          'component-preview': layout['component-preview'] - (TREE_DEFAULT_PERCENT - current),
+        });
+      });
+    }
+    onTreePanelResize(size);
+  };
   return (
-    <Panels key={fitted} orientation="horizontal" className="ug-panels" animate={false}>
+    <Panels orientation="horizontal" className="ug-panels" animate={false} groupRef={groupRef}>
       <Panels.Panel
         id="component-tree"
         className="ug-layout__column ug-layout__column--tree"
-        defaultSize={treeCollapsed ? '0%' : fitted === undefined ? undefined : `${fitted}px`}
-        groupResizeBehavior="preserve-pixel-size"
-        minSize={fitted === undefined ? undefined : `${fitted}px`}
-        maxSize={`${TREE_MAX}px`}
+        defaultSize={treeCollapsed ? '0%' : '30%'}
+        groupResizeBehavior="preserve-relative-size"
+        minSize={`${PANE_MIN}px`}
         collapsedSize="0%"
         collapsible
-        onResize={onTreePanelResize}
+        onResize={onTreeResize}
       >
         {tree}
       </Panels.Panel>
@@ -40,7 +54,7 @@ export function DetailLayout({ toolbar, tree, render, detail, treeWidth, compact
         {render}
       </Panels.Panel>
       <Panels.ResizeHandle aria-label="Resize preview and documentation" />
-      <Panels.Panel id="component-documentation" className="ug-layout__column ug-layout__column--detail" defaultSize={compact ? '300px' : '340px'} groupResizeBehavior="preserve-pixel-size" minSize="220px">
+      <Panels.Panel id="component-documentation" className="ug-layout__column ug-layout__column--detail" defaultSize="30%" groupResizeBehavior="preserve-relative-size" minSize={`${PANE_MIN}px`}>
         {detail}
       </Panels.Panel>
     </Panels>

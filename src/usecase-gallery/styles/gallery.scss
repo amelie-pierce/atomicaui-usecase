@@ -75,15 +75,6 @@ $narrow: 840px;
   min-inline-size: 0;
 }
 
-.ug-tree--measure {
-  inline-size: max-content;
-  max-inline-size: none;
-
-  .ug-tree__title {
-    white-space: nowrap;
-  }
-}
-
 .ug-tree__id {
   flex: none;
   white-space: nowrap;
@@ -143,10 +134,22 @@ $narrow: 840px;
   block-size: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  padding-inline: var(--p-px-16);
   padding-block-start: var(--p-px-0);
-  border-inline-start: var(--p-px-1) solid var(--theme-raised);
-  padding-block-end: var(--p-px-16);
+  padding-inline: var(--p-px-0);
+  padding-block-end: var(--p-px-0);
+  background: var(--theme-surface-alt);
+}
+
+.ug-detail__header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 3;
+  display: flex;
+  flex: none;
+  align-items: center;
+  min-block-size: var(--p-px-28);
+  margin-block-end: var(--p-px-16);
+  background: var(--theme-surface-alt);
 }
 
 // ── Pane content ────────────────────────────────────────────────────────────
@@ -156,6 +159,10 @@ $narrow: 840px;
   --theme-primary: var(--p-palette-orange-600);
   flex: 1 1 auto;
   min-block-size: 0;
+  padding: var(--p-px-24);
+  background: var(--theme-surface);
+  border: var(--p-px-1) solid var(--theme-raised);
+  border-radius: var(--p-px-8);
 }
 
 .ug-toolbar {
@@ -549,7 +556,7 @@ $narrow: 840px;
   align-self: flex-start;
   inline-size: max-content;
   max-inline-size: 100%;
-  margin-block-end: var(--p-px-16);
+  margin: 0;
 }
 
 .ug-layer-lesson {
@@ -791,7 +798,11 @@ $narrow: 840px;
     block-size: auto;
     overflow: visible;
     padding-inline-start: 0;
-    border-inline-start: 0;
+  }
+
+  .ug-detail__header {
+    position: sticky;
+    inset-block-start: var(--ug-toolbar-height, 0px);
   }
 }
 

@@ -324,7 +324,7 @@ $narrow: 840px;
   pointer-events: none;
   border: var(--p-px-2) solid var(--p-palette-orange-600);
   background: color-mix(in srgb, var(--p-palette-orange-600) 16%, transparent);
-  box-shadow: 0 0 0 var(--p-px-2) color-mix(in srgb, var(--p-palette-orange-600) 24%, transparent);
+  box-shadow: inset 0 0 0 var(--p-px-2) color-mix(in srgb, var(--p-palette-orange-600) 24%, transparent);
   transition: inset var(--p-ms-240) cubic-bezier(0.2, 0.8, 0.2, 1), inline-size var(--p-ms-240) cubic-bezier(0.2, 0.8, 0.2, 1), block-size var(--p-ms-240) cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -338,9 +338,9 @@ $narrow: 840px;
 }
 
 @keyframes ug-anatomy-arrive {
-  0% { opacity: 0; transform: scale(0.94); box-shadow: 0 0 0 0 color-mix(in srgb, var(--p-palette-orange-600) 28%, transparent); }
-  45% { opacity: 1; transform: scale(1.015); box-shadow: 0 0 0 var(--p-px-8) color-mix(in srgb, var(--p-palette-orange-600) 18%, transparent); }
-  100% { opacity: 0; transform: scale(1.04); box-shadow: 0 0 0 var(--p-px-12) transparent; }
+  0% { opacity: 0; transform: scale(0.94); box-shadow: inset 0 0 0 0 color-mix(in srgb, var(--p-palette-orange-600) 28%, transparent); }
+  45% { opacity: 1; transform: scale(0.985); box-shadow: inset 0 0 0 var(--p-px-8) color-mix(in srgb, var(--p-palette-orange-600) 18%, transparent); }
+  100% { opacity: 0; transform: scale(1); box-shadow: inset 0 0 0 var(--p-px-12) transparent; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -680,10 +680,6 @@ $narrow: 840px;
   .ug-stepper__step { transition: none; }
 }
 
-.ug-layer-lesson__code {
-  min-inline-size: 0;
-}
-
 .ug-layer-lesson__code .ug-docs__code code > span.is-added {
   display: block;
   color: var(--theme-on-primary);
@@ -739,9 +735,10 @@ $narrow: 840px;
   max-inline-size: 100%;
 }
 
+// The code block always shows its vertical gutter; horizontal scrolling appears only when code exceeds the pane.
 .ug-layer-lesson__code .ug-docs__code {
   overflow-x: auto;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .ug-stepper__step {

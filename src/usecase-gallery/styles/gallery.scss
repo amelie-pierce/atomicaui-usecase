@@ -109,6 +109,10 @@ $narrow: 840px;
   position: relative;
 }
 
+.ug-layout__column--render:has(> .ug-stepper) {
+  background: var(--theme-surface-alt);
+}
+
 .ug-layout__column--detail {
   overflow: hidden;
 }
@@ -587,7 +591,7 @@ $narrow: 840px;
   gap: var(--p-px-16);
 }
 
-.ug-layer-lesson__copy > p {
+.ug-layer-lesson__copy > :is(h3, p) {
   margin: 0;
 }
 
@@ -626,11 +630,11 @@ $narrow: 840px;
 }
 
 .ug-stepper__step {
-  flex: 0 0 var(--p-px-36);
-  inline-size: var(--p-px-36);
-  block-size: var(--p-px-36);
-  min-inline-size: var(--p-px-36);
-  min-block-size: var(--p-px-36);
+  flex: 0 0 var(--p-px-32);
+  inline-size: var(--p-px-32);
+  block-size: var(--p-px-32);
+  min-inline-size: var(--p-px-32);
+  min-block-size: var(--p-px-32);
   padding: 0;
   border-radius: 50%;
   font-variant-numeric: tabular-nums;
@@ -680,10 +684,6 @@ $narrow: 840px;
   min-inline-size: 0;
 }
 
-.ug-layer-lesson__code .ug-docs__code {
-  max-block-size: min(50dvh, calc(var(--p-px-16) * 24));
-}
-
 .ug-layer-lesson__code .ug-docs__code code > span.is-added {
   display: block;
   color: var(--theme-on-primary);
@@ -699,13 +699,37 @@ $narrow: 840px;
 @media (max-width: 1080px) and (min-width: #{$narrow + 1}) {
   .ug-stepper { gap: var(--p-px-4); padding: var(--p-px-4); }
   .ug-stepper__steps { gap: var(--p-px-4); }
-  .ug-stepper__step { flex-basis: var(--p-px-32); inline-size: var(--p-px-32); block-size: var(--p-px-32); min-inline-size: var(--p-px-32); min-block-size: var(--p-px-32); }
+  .ug-stepper__step { flex-basis: var(--p-px-28); inline-size: var(--p-px-28); block-size: var(--p-px-28); min-inline-size: var(--p-px-28); min-block-size: var(--p-px-28); }
+}
+
+/* Beside the preview, the code block takes the card's remaining height and is the only part that scrolls. */
+@media (min-width: #{$narrow + 1}) {
+  .ug-docs:has(> .ug-layer-lesson) {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .ug-layer-lesson,
+  .ug-layer-lesson__code,
+  .ug-layer-lesson__code .ug-docs__copy-block {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    min-block-size: 0;
+  }
+
+  .ug-layer-lesson__code .ug-docs__code {
+    flex: 1 1 0;
+    min-block-size: 0;
+  }
 }
 
 /* The center column stacks above the document on compact screens. */
 @media (max-width: $narrow) {
   .ug-render { flex: none; }
   .ug-stepper { margin-block-start: calc(var(--p-px-12) * -1); }
+  .ug-layer-lesson__code .ug-docs__code { max-block-size: min(50dvh, calc(var(--p-px-16) * 24)); }
 }
 
 .ug-layer-lesson__code,

@@ -127,17 +127,18 @@ export function UsecaseGallery() {
     requestAnimationFrame(() => document.getElementById(`anatomy-${partId}`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }));
   }, [selectedId]);
   const onLayerChange = useCallback((index: number) => setLayerIndex(index), []);
+  const layersReady = documentMode === 'layers' && Boolean(availablePartIds);
   const onAvailablePartsChange = useCallback((ids: string[]) => setAvailableParts((current) =>
-    current?.key === activePreviewKey && current.ids.length === ids.length && current.ids.every((id, index) => id === ids[index])
+    current?.key === activePreviewKey && (layersReady || (current.ids.length === ids.length && current.ids.every((id, index) => id === ids[index])))
       ? current
       : { key: activePreviewKey, ids },
-  ), [activePreviewKey]);
+  ), [activePreviewKey, layersReady]);
   if (!original || !group || !usecase) return null;
   // The option change is a transition: the shown UI stays until the next option's lazy example has loaded, so the stage never blanks.
   const panes = {
     toolbar: <DetailToolbar treeCollapsed={treeCollapsed} onTreeToggle={() => setTreeCollapsedForSession(!treeCollapsed)} searchQuery={searchQuery} onSearchChange={setSearchQuery} onSearchSubmit={() => { if (searchQuery.trim() && firstSearchMatch) window.location.hash = `#/${encodeURIComponent(firstSearchMatch.componentId)}/${encodeURIComponent(firstSearchMatch.id)}`; }} panelMode={!narrow} />,
     tree: <TreePane groups={visibleGroups} activeComponentId={group.id} activeUsecase={original} collapsed={treeCollapsed} searchActive={Boolean(searchQuery.trim())} />,
-    render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={(next) => { setViewMode(next); setLayerIndex(0); }} anatomy={orderedAnatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => { setLayerIndex(0); startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })); }} layers={allLayers} layerIndex={visibleLayerIndex} layerMode={documentMode === 'layers'} />,
+    render: <RenderPane usecase={usecase} option={option} mode={activeMode} onModeChange={(next) => { setViewMode(next); setLayerIndex(0); }} anatomy={orderedAnatomy} hoveredPartId={activePartId} onAvailablePartsChange={onAvailablePartsChange} onOptionChange={(optionId) => { setLayerIndex(0); startTransition(() => setChosen({ ...chosenForRoute, usecaseId: usecase.id, optionId })); }} layers={allLayers} layerIndex={visibleLayerIndex} layerMode={layersReady} />,
     detail: <DetailPane usecase={usecase} option={option} mode={activeMode} componentName={group.title} hoveredPartId={activePartId} availablePartIds={availablePartIds} onPartChange={onPartChange} onSelectPart={onSelectPart} documentMode={documentMode} onDocumentModeChange={(next) => { setDocumentMode(next); setLayerIndex(0); }} layers={layers} layerIndex={activeLayerIndex} onLayerChange={onLayerChange} />,
   };
   return (

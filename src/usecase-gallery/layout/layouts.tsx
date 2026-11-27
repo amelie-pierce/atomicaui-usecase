@@ -10,7 +10,7 @@ export interface LayoutPanes {
   onTreePanelResize: (size: { asPercentage: number; inPixels: number }) => void;
 }
 
-const PANE_MIN = 240;
+const PANE_MIN = 220;
 
 /** Three resizable panes; the preview toolbar is anchored across the page from the center panel. */
 export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onTreePanelResize }: LayoutPanes) {
@@ -22,7 +22,6 @@ export function DetailLayout({ toolbar, tree, render, detail, treeCollapsed, onT
         defaultSize={treeCollapsed ? '0%' : '30%'}
         groupResizeBehavior="preserve-relative-size"
         minSize={`${PANE_MIN}px`}
-        maxSize="50%"
         collapsedSize="0%"
         collapsible
         onResize={onTreePanelResize}
